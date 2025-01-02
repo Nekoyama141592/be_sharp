@@ -11,8 +11,8 @@ class MyHomePage extends HookWidget {
     final pageIndex = useState(0);
     final pageController = usePageController();
     return BasicPage(
-      drawer: const OriginalDrawer(),
-      bottomNavigationBar: BottomNavigationBar(
+        drawer: const OriginalDrawer(),
+        bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             items: BNBUICore.values(),
             currentIndex: pageIndex.value,
@@ -21,7 +21,7 @@ class MyHomePage extends HookWidget {
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.fastLinearToSlowEaseIn);
             }),
-      child: PageView(
+        child: PageView(
           onPageChanged: (index) => pageIndex.value = index,
           controller: pageController,
           children: const [
@@ -29,7 +29,6 @@ class MyHomePage extends HookWidget {
             SizedBox(),
             SizedBox(),
           ],
-        )
-    );
+        ));
   }
 }

@@ -9,6 +9,7 @@ import 'package:be_sharp/flavors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RunApp {
   static Future<void> runMyApp() async {
@@ -19,7 +20,7 @@ class RunApp {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
     await _requestPermission();
     await _setForegroundNotificationPresentationOptions();
-    runApp(const MyApp());
+    runApp(const ProviderScope(child: MyApp()));
   }
 
   static Future<void> _loadEnv(Flavor flavor) async {

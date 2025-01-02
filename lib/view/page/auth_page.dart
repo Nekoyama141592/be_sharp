@@ -13,11 +13,11 @@ class AuthPage extends ConsumerWidget {
       child: Column(
         children: [
           ElevatedButton(
-                onPressed: notifier().onAppleSignInButtonPressed,
-                child: const Text('Appleで続ける')),
-            ElevatedButton(
-                onPressed: notifier().onGoogleSignInButtonPressed,
-                child: const Text('Googleで続ける')),
+              onPressed: notifier().onAppleSignInButtonPressed,
+              child: const Text('Appleで続ける')),
+          ElevatedButton(
+              onPressed: notifier().onGoogleSignInButtonPressed,
+              child: const Text('Googleで続ける')),
         ],
       ),
     ));
