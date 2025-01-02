@@ -2,23 +2,24 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:be_sharp/constants/enums/env_key.dart';
+import 'package:be_sharp/view/my_app.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:be_sharp/app.dart';
 import 'package:be_sharp/flavors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class RunApp {
-  static Future<void> runMyApp(Flavor flavor) async {
+  static Future<void> runMyApp() async {
+    final flavor = F.appFlavor!;
     await _loadEnv(flavor);
     WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(options: getFirebaseOption(flavor));
+    await Firebase.initializeApp(options: getFirebaseOption());
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
     await _requestPermission();
     await _setForegroundNotificationPresentationOptions();
-    runApp(const App());
+    runApp(const MyApp());
   }
 
   static Future<void> _loadEnv(Flavor flavor) async {
@@ -32,24 +33,26 @@ class RunApp {
     }
   }
 
-  static FirebaseOptions getFirebaseOption(Flavor flavor) {
+  static FirebaseOptions getFirebaseOption() {
     if (Platform.isAndroid) {
       return FirebaseOptions(
         apiKey: dotenv.get(EnvKey.FIREBASE_ANDROID_API_KEY.name),
         appId: dotenv.get(EnvKey.FIREBASE_ANDROID_APP_ID.name),
-        messagingSenderId: dotenv.get(EnvKey.FIREBASE_ANDROID_MESSAGING_SENDER_ID.name),
+        messagingSenderId:
+            dotenv.get(EnvKey.FIREBASE_ANDROID_MESSAGING_SENDER_ID.name),
         projectId: dotenv.get(EnvKey.FIREBASE_ANDROID_PROJECT_ID.name),
         storageBucket: dotenv.get(EnvKey.FIREBASE_ANDROID_STORAGE_BUCKET.name),
       );
     } else if (Platform.isIOS) {
       return FirebaseOptions(
-        apiKey: dotenv.get(EnvKey.FIREBASE_IOS_API_KEY.name),
-        appId: dotenv.get(EnvKey.FIREBASE_IOS_APP_ID.name),
-        messagingSenderId: dotenv.get(EnvKey.FIREBASE_IOS_MESSAGING_SENDER_ID.name),
-        projectId: dotenv.get(EnvKey.FIREBASE_IOS_PROJECT_ID.name),
-        storageBucket: dotenv.get(EnvKey.FIREBASE_IOS_STORAGE_BUCKET.name),
-        iosBundleId: dotenv.get(EnvKey.FIREBASE_IOS_BUNDLE_ID.name)
-      );
+          apiKey: dotenv.get(EnvKey.FIREBASE_IOS_API_KEY.name),
+          appId: dotenv.get(EnvKey.FIREBASE_IOS_APP_ID.name),
+          messagingSenderId:
+              dotenv.get(EnvKey.FIREBASE_IOS_MESSAGING_SENDER_ID.name),
+          projectId: dotenv.get(EnvKey.FIREBASE_IOS_PROJECT_ID.name),
+          storageBucket: dotenv.get(EnvKey.FIREBASE_IOS_STORAGE_BUCKET.name),
+          iosClientId: dotenv.get(EnvKey.FIREBASE_IOS_CLIENT_ID.name),
+          iosBundleId: dotenv.get(EnvKey.FIREBASE_IOS_BUNDLE_ID.name));
     } else {
       throw Error();
     }

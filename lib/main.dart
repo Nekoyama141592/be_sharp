@@ -1,7 +1,6 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
-import 'app.dart';
+import 'package:be_sharp/run_app.dart';
 
 FutureOr<void> main() async {
-  runApp(const App());
+  await RunApp.runMyApp();
 }
