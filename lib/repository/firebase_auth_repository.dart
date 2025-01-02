@@ -19,6 +19,7 @@ class FirebaseAuthRepository {
       return const Result.failure();
     }
   }
+
   FutureResult<User> signInWithGoogle() async {
     try {
       final res = await client.signInWithGoogle();

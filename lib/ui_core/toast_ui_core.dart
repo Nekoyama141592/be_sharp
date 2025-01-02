@@ -28,8 +28,7 @@ class ToastUICore {
     Get.dialog(CupertinoAlertDialog(
       content: Text(msg),
       actions: [
-        CupertinoDialogAction(
-            onPressed: Get.back, child: const Text('キャンセル')),
+        CupertinoDialogAction(onPressed: Get.back, child: const Text('キャンセル')),
         CupertinoDialogAction(
             isDestructiveAction: true,
             onPressed: positiveAction,

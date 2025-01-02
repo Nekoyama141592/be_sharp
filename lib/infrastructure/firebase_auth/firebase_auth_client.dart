@@ -7,6 +7,7 @@ class FirebaseAuthClient {
     final result = await FirebaseAuth.instance.signInWithCredential(credential);
     return result;
   }
+
   Future<UserCredential?> signInWithGoogle() async {
     final credential = await CredentialCore.googleCredential();
     final result = await FirebaseAuth.instance.signInWithCredential(credential);

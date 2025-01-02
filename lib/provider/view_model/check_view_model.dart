@@ -1,12 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CheckViewModel extends AutoDisposeNotifier<String> {
+class CheckViewModel extends AutoDisposeNotifier<bool> {
   @override
-  String build() {
-    return '';
+  bool build() {
+    return true;
   }
 }
 
-final checkProvider = NotifierProvider.autoDispose<CheckViewModel,String>(
-  () => CheckViewModel()
-);
+final checkProvider = NotifierProvider.autoDispose<CheckViewModel, bool>(
+    () => CheckViewModel());

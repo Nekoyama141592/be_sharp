@@ -19,6 +19,7 @@ class CredentialCore {
     );
     return credential;
   }
+
   static Future<AuthCredential> googleCredential() async {
     final clientId = RunApp.getFirebaseOption().iosClientId;
     final GoogleSignInAccount? googleUser =

@@ -12,12 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: GetMaterialApp(
-        title: F.title,
-        debugShowCheckedModeBanner: false,
-        getPages: getPages,
-        initialRoute: path,
-        home: const CheckPage(child: MyHomePage(),)
-      ),
+          title: F.title,
+          debugShowCheckedModeBanner: false,
+          getPages: getPages,
+          initialRoute: path,
+          home: const CheckPage(
+            child: MyHomePage(),
+          )),
     );
   }
 }
