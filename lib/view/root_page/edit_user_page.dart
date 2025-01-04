@@ -242,11 +242,12 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   Future<void> _updateUser(ReadPublicUser publicUser) async {
     final repository = FirestoreRepository();
     final ref = publicUser.typedRef();
+    final object = AWSS3Core.profileObject(publicUser.uid);
     final info = publicUser.registeredInfo.copyWith(
           nickName: publicUser.registeredInfo.typedNickName().copyWith(value: nickName!).toJson(),
           bio: publicUser.registeredInfo.typedBio().copyWith(value: bio!).toJson(),
           birthDate: Timestamp.fromDate(DateTime.parse(stringBirthDate!)),
-          image: const ModeratedImage().toJson(),
+          image: ModeratedImage(object: object).toJson(),
         );
     final json = {'registeredInfo': info.toJson()};
     final result = await repository.updateDoc(ref, json);
