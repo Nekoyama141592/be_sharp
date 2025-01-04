@@ -45,7 +45,7 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
       final readUser = ReadPublicUser.fromJson(readData);
       return readUser.needsEdit();
     } else {
-      final writeData = WritePublicUser(uid: uid).toJson();
+      final writeData = WritePublicUser.instance(uid).toJson();
       await docRef.set(writeData);
       return true;
     }

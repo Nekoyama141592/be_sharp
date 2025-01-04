@@ -242,9 +242,9 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   Future<void> _updateUser(ReadPublicUser publicUser) async {
     final repository = FirestoreRepository();
     final ref = publicUser.typedRef();
-    final info = publicUser.typedRegisteredInfo().copyWith(
-          nickName: publicUser.typedNickName().copyWith(value: nickName!).toJson(),
-          bio: publicUser.typedBio().copyWith(value: bio!).toJson(),
+    final info = publicUser.registeredInfo.copyWith(
+          nickName: publicUser.registeredInfo.typedNickName().copyWith(value: nickName!).toJson(),
+          bio: publicUser.registeredInfo.typedBio().copyWith(value: bio!).toJson(),
           birthDate: Timestamp.fromDate(DateTime.parse(stringBirthDate!)),
           image: const ModeratedImage().toJson(),
         );

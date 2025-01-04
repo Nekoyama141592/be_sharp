@@ -20,6 +20,7 @@ WritePublicUser _$WritePublicUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WritePublicUser {
+  Map<String, dynamic> get registeredInfo => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $WritePublicUserCopyWith<$Res> {
           WritePublicUser value, $Res Function(WritePublicUser) then) =
       _$WritePublicUserCopyWithImpl<$Res, WritePublicUser>;
   @useResult
-  $Res call({String uid});
+  $Res call({Map<String, dynamic> registeredInfo, String uid});
 }
 
 /// @nodoc
@@ -50,9 +51,14 @@ class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? registeredInfo = null,
     Object? uid = null,
   }) {
     return _then(_value.copyWith(
+      registeredInfo: null == registeredInfo
+          ? _value.registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -69,7 +75,7 @@ abstract class _$$WritePublicUserImplCopyWith<$Res>
       __$$WritePublicUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid});
+  $Res call({Map<String, dynamic> registeredInfo, String uid});
 }
 
 /// @nodoc
@@ -83,9 +89,14 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? registeredInfo = null,
     Object? uid = null,
   }) {
     return _then(_$WritePublicUserImpl(
+      registeredInfo: null == registeredInfo
+          ? _value._registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -97,17 +108,28 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WritePublicUserImpl extends _WritePublicUser {
-  const _$WritePublicUserImpl({required this.uid}) : super._();
+  const _$WritePublicUserImpl(
+      {required final Map<String, dynamic> registeredInfo, required this.uid})
+      : _registeredInfo = registeredInfo,
+        super._();
 
   factory _$WritePublicUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$WritePublicUserImplFromJson(json);
+
+  final Map<String, dynamic> _registeredInfo;
+  @override
+  Map<String, dynamic> get registeredInfo {
+    if (_registeredInfo is EqualUnmodifiableMapView) return _registeredInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_registeredInfo);
+  }
 
   @override
   final String uid;
 
   @override
   String toString() {
-    return 'WritePublicUser(uid: $uid)';
+    return 'WritePublicUser(registeredInfo: $registeredInfo, uid: $uid)';
   }
 
   @override
@@ -115,12 +137,15 @@ class _$WritePublicUserImpl extends _WritePublicUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WritePublicUserImpl &&
+            const DeepCollectionEquality()
+                .equals(other._registeredInfo, _registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_registeredInfo), uid);
 
   @JsonKey(ignore: true)
   @override
@@ -138,13 +163,16 @@ class _$WritePublicUserImpl extends _WritePublicUser {
 }
 
 abstract class _WritePublicUser extends WritePublicUser {
-  const factory _WritePublicUser({required final String uid}) =
-      _$WritePublicUserImpl;
+  const factory _WritePublicUser(
+      {required final Map<String, dynamic> registeredInfo,
+      required final String uid}) = _$WritePublicUserImpl;
   const _WritePublicUser._() : super._();
 
   factory _WritePublicUser.fromJson(Map<String, dynamic> json) =
       _$WritePublicUserImpl.fromJson;
 
+  @override
+  Map<String, dynamic> get registeredInfo;
   @override
   String get uid;
   @override

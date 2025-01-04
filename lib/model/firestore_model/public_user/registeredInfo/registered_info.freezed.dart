@@ -139,10 +139,10 @@ class __$$RegisteredInfoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RegisteredInfoImpl extends _RegisteredInfo {
   const _$RegisteredInfoImpl(
-      {final Map<String, dynamic> nickName = const {},
-      final Map<String, dynamic> bio = const {},
+      {required final Map<String, dynamic> nickName,
+      required final Map<String, dynamic> bio,
       required this.birthDate,
-      final Map<String, dynamic> image = const {}})
+      required final Map<String, dynamic> image})
       : _nickName = nickName,
         _bio = bio,
         _image = image,
@@ -153,7 +153,6 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
 
   final Map<String, dynamic> _nickName;
   @override
-  @JsonKey()
   Map<String, dynamic> get nickName {
     if (_nickName is EqualUnmodifiableMapView) return _nickName;
     // ignore: implicit_dynamic_type
@@ -162,7 +161,6 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
 
   final Map<String, dynamic> _bio;
   @override
-  @JsonKey()
   Map<String, dynamic> get bio {
     if (_bio is EqualUnmodifiableMapView) return _bio;
     // ignore: implicit_dynamic_type
@@ -173,7 +171,6 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
   final dynamic birthDate;
   final Map<String, dynamic> _image;
   @override
-  @JsonKey()
   Map<String, dynamic> get image {
     if (_image is EqualUnmodifiableMapView) return _image;
     // ignore: implicit_dynamic_type
@@ -222,10 +219,10 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
 
 abstract class _RegisteredInfo extends RegisteredInfo {
   const factory _RegisteredInfo(
-      {final Map<String, dynamic> nickName,
-      final Map<String, dynamic> bio,
+      {required final Map<String, dynamic> nickName,
+      required final Map<String, dynamic> bio,
       required final dynamic birthDate,
-      final Map<String, dynamic> image}) = _$RegisteredInfoImpl;
+      required final Map<String, dynamic> image}) = _$RegisteredInfoImpl;
   const _RegisteredInfo._() : super._();
 
   factory _RegisteredInfo.fromJson(Map<String, dynamic> json) =

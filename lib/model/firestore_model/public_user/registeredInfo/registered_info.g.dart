@@ -8,10 +8,10 @@ part of 'registered_info.dart';
 
 _$RegisteredInfoImpl _$$RegisteredInfoImplFromJson(Map<String, dynamic> json) =>
     _$RegisteredInfoImpl(
-      nickName: json['nickName'] as Map<String, dynamic>? ?? const {},
-      bio: json['bio'] as Map<String, dynamic>? ?? const {},
+      nickName: json['nickName'] as Map<String, dynamic>,
+      bio: json['bio'] as Map<String, dynamic>,
       birthDate: json['birthDate'],
-      image: json['image'] as Map<String, dynamic>? ?? const {},
+      image: json['image'] as Map<String, dynamic>,
     );
 
 Map<String, dynamic> _$$RegisteredInfoImplToJson(
