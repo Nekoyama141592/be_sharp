@@ -2,8 +2,10 @@ import 'dart:typed_data';
 
 import 'package:be_sharp/core/aws_s3_core.dart';
 import 'package:be_sharp/core/file_core.dart';
+import 'package:be_sharp/model/firestore_model/common/detected_text/detected_text.dart';
 import 'package:be_sharp/model/firestore_model/common/moderated_image/moderated_image.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/model/firestore_model/public_user/registeredInfo/registered_info.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/provider/view_model/edit_user_view_model.dart';
 import 'package:be_sharp/repository/aws_s3_repository.dart';
@@ -243,9 +245,9 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
     final repository = FirestoreRepository();
     final ref = publicUser.typedRef();
     final object = AWSS3Core.profileObject(publicUser.uid);
-    final info = publicUser.registeredInfo.copyWith(
-          nickName: publicUser.registeredInfo.typedNickName().copyWith(value: nickName!).toJson(),
-          bio: publicUser.registeredInfo.typedBio().copyWith(value: bio!).toJson(),
+    final info = RegisteredInfo(
+          nickName: DetectedText(value: nickName!).toJson(),
+          bio: DetectedText(value: bio!).toJson(),
           birthDate: Timestamp.fromDate(DateTime.parse(stringBirthDate!)),
           image: ModeratedImage(object: object).toJson(),
         );
