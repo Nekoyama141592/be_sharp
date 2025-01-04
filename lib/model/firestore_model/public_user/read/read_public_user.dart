@@ -16,7 +16,10 @@ abstract class ReadPublicUser implements _$ReadPublicUser {
   factory ReadPublicUser.fromJson(Map<String, dynamic> json) =>
       _$ReadPublicUserFromJson(json);
   bool needsEdit() {
-    return true;
+    final isBioEmpty = registeredInfo.typedBio().value.isEmpty;
+    final isNickNameEmpty = registeredInfo.typedNickName().value.isEmpty;
+    final isImageEmpty = registeredInfo.typedImage().object.isEmpty;
+    return isBioEmpty || isNickNameEmpty || isImageEmpty;
   }
   DocRef typedRef() => DocRefCore.user(uid);
 }
