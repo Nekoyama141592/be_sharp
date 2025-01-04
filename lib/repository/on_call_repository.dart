@@ -15,7 +15,7 @@ abstract class OnCallRepository {
 
   FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
     try {
-      const name = 'putObjectV2';
+      const name = 'putObject';
       final result = await _client.call(name, request.toJson());
       final res = PutObjectResponse.fromJson(result);
       return Result.success(res);
@@ -26,7 +26,7 @@ abstract class OnCallRepository {
 
   FutureResult<Uint8List> getObject(GetObjectRequest request) async {
     try {
-      const name = 'getObjectV2';
+      const name = 'getObject';
       final result = await _client.call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
       final base64Image = res.base64Image;
@@ -40,7 +40,7 @@ abstract class OnCallRepository {
   FutureResult<DeleteObjectResponse> deleteObject(
       DeleteObjectRequest request) async {
     try {
-      const name = 'deleteObjectV2';
+      const name = 'deleteObject';
       final result = await _client.call(name, request.toJson());
       final res = DeleteObjectResponse.fromJson(result);
       return Result.success(res);

@@ -23,7 +23,7 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
         needsEditUser: false
       );
     } else {
-      final needsEditUser = await checkNeedsEditUser(user);
+      final needsEditUser = await checkNeedsEditUser(user.uid);
       return CheckState(
       needsAgreeToTerms: needsAgreeToTerms,
       needsSignup: false,
@@ -36,8 +36,7 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     return false;
   }
 
-  Future<bool> checkNeedsEditUser(User user) async {
-    final uid = user.uid;
+  Future<bool> checkNeedsEditUser(String uid) async {
     final docRef = DocRefCore.user(uid);
     final result = await docRef.get();
     final readData = result.data();
@@ -51,19 +50,29 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     }
   }
 
-  Future refetchUser(User user) async {
+  Future<void> refetchUser(User user) async {
     final stateValue = state.value;
     if (stateValue == null) return;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final result = stateValue.copyWith(
         needsSignup: false,
-        needsEditUser: await checkNeedsEditUser(user)
+        needsEditUser: await checkNeedsEditUser(user.uid)
       );
       return result;
     });
-
   } 
+  Future<void> onUserUpdateSuccess(String uid) async {
+    final stateValue = state.value;
+    if (stateValue == null) return;
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final result = stateValue.copyWith(
+        needsEditUser: await checkNeedsEditUser(uid)
+      );
+      return result;
+    });
+  }
 }
 
 final checkProvider =

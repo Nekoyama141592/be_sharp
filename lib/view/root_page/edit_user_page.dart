@@ -7,6 +7,7 @@ import 'package:be_sharp/model/firestore_model/common/moderated_image/moderated_
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/firestore_model/public_user/registeredInfo/registered_info.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
+import 'package:be_sharp/provider/view_model/check_view_model.dart';
 import 'package:be_sharp/provider/view_model/edit_user_view_model.dart';
 import 'package:be_sharp/repository/aws_s3_repository.dart';
 import 'package:be_sharp/repository/firestore_repository.dart';
@@ -243,7 +244,7 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
 
   Future<void> _updateUser(ReadPublicUser publicUser) async {
     final repository = FirestoreRepository();
-    final ref = publicUser.typedRef();
+    final docRef = publicUser.typedRef();
     final object = AWSS3Core.profileObject(publicUser.uid);
     final info = RegisteredInfo(
           nickName: DetectedText(value: nickName!).toJson(),
@@ -252,8 +253,9 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
           image: ModeratedImage(object: object).toJson(),
         );
     final json = {'registeredInfo': info.toJson()};
-    final result = await repository.updateDoc(ref, json);
-    result.when(success: (_) {
+    final result = await repository.updateDoc(docRef, json);
+    await result.when(success: (_) async {
+      await ref.read(checkProvider.notifier).onUserUpdateSuccess(publicUser.uid);
       ToastUICore.showFlutterToast("プロフィールを更新しました。");
     }, failure: () {
       ToastUICore.showErrorFlutterToast("プロフィールを更新できませんでした");
