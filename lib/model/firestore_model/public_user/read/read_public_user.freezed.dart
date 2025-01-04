@@ -20,6 +20,7 @@ ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReadPublicUser {
+  Map<String, dynamic> get registeredInfo => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $ReadPublicUserCopyWith<$Res> {
           ReadPublicUser value, $Res Function(ReadPublicUser) then) =
       _$ReadPublicUserCopyWithImpl<$Res, ReadPublicUser>;
   @useResult
-  $Res call({String uid});
+  $Res call({Map<String, dynamic> registeredInfo, String uid});
 }
 
 /// @nodoc
@@ -50,9 +51,14 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? registeredInfo = null,
     Object? uid = null,
   }) {
     return _then(_value.copyWith(
+      registeredInfo: null == registeredInfo
+          ? _value.registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -69,7 +75,7 @@ abstract class _$$ReadPublicUserImplCopyWith<$Res>
       __$$ReadPublicUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid});
+  $Res call({Map<String, dynamic> registeredInfo, String uid});
 }
 
 /// @nodoc
@@ -83,9 +89,14 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? registeredInfo = null,
     Object? uid = null,
   }) {
     return _then(_$ReadPublicUserImpl(
+      registeredInfo: null == registeredInfo
+          ? _value._registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -97,17 +108,28 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReadPublicUserImpl extends _ReadPublicUser {
-  const _$ReadPublicUserImpl({required this.uid}) : super._();
+  const _$ReadPublicUserImpl(
+      {required final Map<String, dynamic> registeredInfo, required this.uid})
+      : _registeredInfo = registeredInfo,
+        super._();
 
   factory _$ReadPublicUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReadPublicUserImplFromJson(json);
+
+  final Map<String, dynamic> _registeredInfo;
+  @override
+  Map<String, dynamic> get registeredInfo {
+    if (_registeredInfo is EqualUnmodifiableMapView) return _registeredInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_registeredInfo);
+  }
 
   @override
   final String uid;
 
   @override
   String toString() {
-    return 'ReadPublicUser(uid: $uid)';
+    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid)';
   }
 
   @override
@@ -115,12 +137,15 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReadPublicUserImpl &&
+            const DeepCollectionEquality()
+                .equals(other._registeredInfo, _registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_registeredInfo), uid);
 
   @JsonKey(ignore: true)
   @override
@@ -138,13 +163,16 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
 }
 
 abstract class _ReadPublicUser extends ReadPublicUser {
-  const factory _ReadPublicUser({required final String uid}) =
-      _$ReadPublicUserImpl;
+  const factory _ReadPublicUser(
+      {required final Map<String, dynamic> registeredInfo,
+      required final String uid}) = _$ReadPublicUserImpl;
   const _ReadPublicUser._() : super._();
 
   factory _ReadPublicUser.fromJson(Map<String, dynamic> json) =
       _$ReadPublicUserImpl.fromJson;
 
+  @override
+  Map<String, dynamic> get registeredInfo;
   @override
   String get uid;
   @override
