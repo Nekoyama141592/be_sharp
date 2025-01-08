@@ -1,7 +1,7 @@
 import 'package:be_sharp/flavors.dart';
 import 'package:be_sharp/provider/user_provider.dart';
 import 'package:be_sharp/view/page/check_page.dart';
-import 'package:be_sharp/view/page/my_home_page.dart';
+import 'package:be_sharp/view/page/my_home_page/my_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

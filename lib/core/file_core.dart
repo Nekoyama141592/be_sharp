@@ -76,4 +76,5 @@ class FileCore {
   static String get squareImageRequestMsg => Platform.isIOS
       ? FormsConsts.iosSquareImageRequestMsg
       : FormsConsts.androidSquareImageRequestMsg;
+  
 }
