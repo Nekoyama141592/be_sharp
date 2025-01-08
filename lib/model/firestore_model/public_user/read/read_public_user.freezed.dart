@@ -22,6 +22,7 @@ ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) {
 mixin _$ReadPublicUser {
   RegisteredInfo get registeredInfo => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
+  dynamic get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $ReadPublicUserCopyWith<$Res> {
           ReadPublicUser value, $Res Function(ReadPublicUser) then) =
       _$ReadPublicUserCopyWithImpl<$Res, ReadPublicUser>;
   @useResult
-  $Res call({RegisteredInfo registeredInfo, String uid});
+  $Res call({RegisteredInfo registeredInfo, String uid, dynamic updatedAt});
 
   $RegisteredInfoCopyWith<$Res> get registeredInfo;
 }
@@ -55,6 +56,7 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
   $Res call({
     Object? registeredInfo = null,
     Object? uid = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       registeredInfo: null == registeredInfo
@@ -65,6 +67,10 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 
@@ -85,7 +91,7 @@ abstract class _$$ReadPublicUserImplCopyWith<$Res>
       __$$ReadPublicUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({RegisteredInfo registeredInfo, String uid});
+  $Res call({RegisteredInfo registeredInfo, String uid, dynamic updatedAt});
 
   @override
   $RegisteredInfoCopyWith<$Res> get registeredInfo;
@@ -104,6 +110,7 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
   $Res call({
     Object? registeredInfo = null,
     Object? uid = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$ReadPublicUserImpl(
       registeredInfo: null == registeredInfo
@@ -114,6 +121,10 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -121,7 +132,10 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReadPublicUserImpl extends _ReadPublicUser {
-  const _$ReadPublicUserImpl({required this.registeredInfo, required this.uid})
+  const _$ReadPublicUserImpl(
+      {required this.registeredInfo,
+      required this.uid,
+      required this.updatedAt})
       : super._();
 
   factory _$ReadPublicUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -131,10 +145,12 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
   final RegisteredInfo registeredInfo;
   @override
   final String uid;
+  @override
+  final dynamic updatedAt;
 
   @override
   String toString() {
-    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid)';
+    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
   }
 
   @override
@@ -144,12 +160,14 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
             other is _$ReadPublicUserImpl &&
             (identical(other.registeredInfo, registeredInfo) ||
                 other.registeredInfo == registeredInfo) &&
-            (identical(other.uid, uid) || other.uid == uid));
+            (identical(other.uid, uid) || other.uid == uid) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, registeredInfo, uid);
+  int get hashCode => Object.hash(runtimeType, registeredInfo, uid,
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +187,8 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
 abstract class _ReadPublicUser extends ReadPublicUser {
   const factory _ReadPublicUser(
       {required final RegisteredInfo registeredInfo,
-      required final String uid}) = _$ReadPublicUserImpl;
+      required final String uid,
+      required final dynamic updatedAt}) = _$ReadPublicUserImpl;
   const _ReadPublicUser._() : super._();
 
   factory _ReadPublicUser.fromJson(Map<String, dynamic> json) =
@@ -179,6 +198,8 @@ abstract class _ReadPublicUser extends ReadPublicUser {
   RegisteredInfo get registeredInfo;
   @override
   String get uid;
+  @override
+  dynamic get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$ReadPublicUserImplCopyWith<_$ReadPublicUserImpl> get copyWith =>

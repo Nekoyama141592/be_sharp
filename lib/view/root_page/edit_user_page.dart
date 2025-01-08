@@ -2,15 +2,11 @@ import 'dart:typed_data';
 
 import 'package:be_sharp/core/aws_s3_core.dart';
 import 'package:be_sharp/core/file_core.dart';
-import 'package:be_sharp/model/firestore_model/common/detected_text/detected_text.dart';
-import 'package:be_sharp/model/firestore_model/common/moderated_image/moderated_image.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/model/firestore_model/public_user/registeredInfo/registered_info.dart';
+import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
-import 'package:be_sharp/provider/view_model/check_view_model.dart';
 import 'package:be_sharp/provider/view_model/edit_user_view_model.dart';
 import 'package:be_sharp/repository/aws_s3_repository.dart';
-import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
@@ -18,7 +14,6 @@ import 'package:be_sharp/view/common/form/form_label.dart';
 import 'package:be_sharp/view/common/form/original_form.dart';
 import 'package:be_sharp/view/common/rounded_button.dart';
 import 'package:be_sharp/view/state/abstract/processing_state.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -38,8 +33,8 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   // ログとフォームキーをとる
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String? nickName;
-  String? bio;
+  String? stringNickName;
+  String? stringBio;
   String? stringBirthDate;
   Uint8List? uint8list;
   bool isPicked = false;
@@ -121,10 +116,10 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
         title: "ニックネーム",
       ),
       OriginalForm(
-          initialValue: nickName,
+          initialValue: stringNickName,
           onSaved: (value) {
             setState(() {
-              nickName = value;
+              stringNickName = value;
             });
           },
           validator: ValidatorUICore.nickName)
@@ -138,12 +133,12 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
         title: "紹介文",
       ),
       OriginalForm(
-        initialValue: bio,
+        initialValue: stringBio,
         keyboardType: TextInputType.multiline,
         maxLines: null,
         onSaved: (value) {
           setState(() {
-            bio = value;
+            stringBio = value;
           });
         },
         validator: ValidatorUICore.bio,
@@ -243,22 +238,16 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   }
 
   Future<void> _updateUser(ReadPublicUser publicUser) async {
-    final repository = FirestoreRepository();
-    final docRef = publicUser.typedRef();
-    final object = AWSS3Core.profileObject(publicUser.uid);
-    final info = RegisteredInfo(
-          nickName: DetectedText(value: nickName!).toJson(),
-          bio: DetectedText(value: bio!).toJson(),
-          birthDate: Timestamp.fromDate(DateTime.parse(stringBirthDate!)),
-          image: ModeratedImage(object: object).toJson(),
-        );
-    final json = {'registeredInfo': info.toJson()};
-    final result = await repository.updateDoc(docRef, json);
-    await result.when(success: (_) async {
-      await ref.read(checkProvider.notifier).onUserUpdateSuccess(publicUser.uid);
-      ToastUICore.showFlutterToast("プロフィールを更新しました。");
-    }, failure: () {
-      ToastUICore.showErrorFlutterToast("プロフィールを更新できませんでした");
-    });
+    final notifier = ref.read(editUserProvider.notifier);
+    final uid = publicUser.uid;
+    final object = AWSS3Core.profileObject(uid);
+    final requst = EditUserInfoRequest(
+      stringNickName: stringNickName!, 
+      stringBio: stringBio!, 
+      stringBirthDate: stringBirthDate!, 
+      object: object);
+    await notifier.updateUser(requst,uid);
   }
+
+  
 }

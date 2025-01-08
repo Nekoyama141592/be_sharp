@@ -11,6 +11,7 @@ _$ReadPublicUserImpl _$$ReadPublicUserImplFromJson(Map<String, dynamic> json) =>
       registeredInfo: RegisteredInfo.fromJson(
           json['registeredInfo'] as Map<String, dynamic>),
       uid: json['uid'] as String,
+      updatedAt: json['updatedAt'],
     );
 
 Map<String, dynamic> _$$ReadPublicUserImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$ReadPublicUserImplToJson(
     <String, dynamic>{
       'registeredInfo': instance.registeredInfo,
       'uid': instance.uid,
+      'updatedAt': instance.updatedAt,
     };

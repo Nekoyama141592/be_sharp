@@ -23,7 +23,7 @@ mixin _$ModeratedImage {
   List<Map<String, dynamic>> get moderationLabels =>
       throw _privateConstructorUsedError;
   String get moderationModelVersion => throw _privateConstructorUsedError;
-  String get object => throw _privateConstructorUsedError;
+  String get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,7 +40,7 @@ abstract class $ModeratedImageCopyWith<$Res> {
   $Res call(
       {List<Map<String, dynamic>> moderationLabels,
       String moderationModelVersion,
-      String object});
+      String value});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$ModeratedImageCopyWithImpl<$Res, $Val extends ModeratedImage>
   $Res call({
     Object? moderationLabels = null,
     Object? moderationModelVersion = null,
-    Object? object = null,
+    Object? value = null,
   }) {
     return _then(_value.copyWith(
       moderationLabels: null == moderationLabels
@@ -69,9 +69,9 @@ class _$ModeratedImageCopyWithImpl<$Res, $Val extends ModeratedImage>
           ? _value.moderationModelVersion
           : moderationModelVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      object: null == object
-          ? _value.object
-          : object // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -88,7 +88,7 @@ abstract class _$$ModeratedImageImplCopyWith<$Res>
   $Res call(
       {List<Map<String, dynamic>> moderationLabels,
       String moderationModelVersion,
-      String object});
+      String value});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$ModeratedImageImplCopyWithImpl<$Res>
   $Res call({
     Object? moderationLabels = null,
     Object? moderationModelVersion = null,
-    Object? object = null,
+    Object? value = null,
   }) {
     return _then(_$ModeratedImageImpl(
       moderationLabels: null == moderationLabels
@@ -115,9 +115,9 @@ class __$$ModeratedImageImplCopyWithImpl<$Res>
           ? _value.moderationModelVersion
           : moderationModelVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      object: null == object
-          ? _value.object
-          : object // ignore: cast_nullable_to_non_nullable
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -129,7 +129,7 @@ class _$ModeratedImageImpl extends _ModeratedImage {
   const _$ModeratedImageImpl(
       {final List<Map<String, dynamic>> moderationLabels = const [],
       this.moderationModelVersion = '',
-      this.object = ''})
+      this.value = ''})
       : _moderationLabels = moderationLabels,
         super._();
 
@@ -151,11 +151,11 @@ class _$ModeratedImageImpl extends _ModeratedImage {
   final String moderationModelVersion;
   @override
   @JsonKey()
-  final String object;
+  final String value;
 
   @override
   String toString() {
-    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, object: $object)';
+    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, value: $value)';
   }
 
   @override
@@ -167,7 +167,7 @@ class _$ModeratedImageImpl extends _ModeratedImage {
                 .equals(other._moderationLabels, _moderationLabels) &&
             (identical(other.moderationModelVersion, moderationModelVersion) ||
                 other.moderationModelVersion == moderationModelVersion) &&
-            (identical(other.object, object) || other.object == object));
+            (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
@@ -176,7 +176,7 @@ class _$ModeratedImageImpl extends _ModeratedImage {
       runtimeType,
       const DeepCollectionEquality().hash(_moderationLabels),
       moderationModelVersion,
-      object);
+      value);
 
   @JsonKey(ignore: true)
   @override
@@ -197,7 +197,7 @@ abstract class _ModeratedImage extends ModeratedImage {
   const factory _ModeratedImage(
       {final List<Map<String, dynamic>> moderationLabels,
       final String moderationModelVersion,
-      final String object}) = _$ModeratedImageImpl;
+      final String value}) = _$ModeratedImageImpl;
   const _ModeratedImage._() : super._();
 
   factory _ModeratedImage.fromJson(Map<String, dynamic> json) =
@@ -208,7 +208,7 @@ abstract class _ModeratedImage extends ModeratedImage {
   @override
   String get moderationModelVersion;
   @override
-  String get object;
+  String get value;
   @override
   @JsonKey(ignore: true)
   _$$ModeratedImageImplCopyWith<_$ModeratedImageImpl> get copyWith =>

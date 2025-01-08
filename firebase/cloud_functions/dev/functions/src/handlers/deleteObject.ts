@@ -46,7 +46,7 @@ export const deleteObject = onCall(async (request) => {
 
     return response;
   } catch (error) {
-    console.error('deleteObjectV2', error);
+    console.error('deleteObject', error);
     throw new HttpsError('internal', 'Internal Server Error');
   }
 });

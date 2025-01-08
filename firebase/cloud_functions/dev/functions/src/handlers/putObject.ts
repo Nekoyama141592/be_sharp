@@ -45,7 +45,7 @@ export const putObject = onCall(async (request) => {
 
     return response;
   } catch (error) {
-    console.error('putObjectV2', error);
+    console.error('putObject', error);
     throw new HttpsError('internal', 'Internal Server Error');
   }
 });

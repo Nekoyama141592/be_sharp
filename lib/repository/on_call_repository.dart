@@ -9,8 +9,10 @@ import 'package:be_sharp/model/rest_api/get_object/request/get_object_request.da
 import 'package:be_sharp/model/rest_api/get_object/response/get_object_response.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/model/rest_api/put_object/response/put_object_response.dart';
+import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
+import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
 
-abstract class OnCallRepository {
+class OnCallRepository {
   OnCallClient get _client => OnCallClient();
 
   FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
@@ -43,6 +45,17 @@ abstract class OnCallRepository {
       const name = 'deleteObject';
       final result = await _client.call(name, request.toJson());
       final res = DeleteObjectResponse.fromJson(result);
+      return Result.success(res);
+    } catch (e) {
+      return const Result.failure();
+    }
+  }
+  FutureResult<EditUserInfoResponse> editUserInfo(
+      EditUserInfoRequest request) async {
+    try {
+      const name = 'editUserInfo';
+      final result = await _client.call(name, request.toJson());
+      final res = EditUserInfoResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {
       return const Result.failure();

@@ -12,13 +12,14 @@ abstract class ReadPublicUser implements _$ReadPublicUser {
   const factory ReadPublicUser({
     required RegisteredInfo registeredInfo,
     required String uid,
+    required dynamic updatedAt,
   }) = _ReadPublicUser;
   factory ReadPublicUser.fromJson(Map<String, dynamic> json) =>
       _$ReadPublicUserFromJson(json);
   bool needsEdit() {
     final isBioEmpty = registeredInfo.typedBio().value.isEmpty;
     final isNickNameEmpty = registeredInfo.typedNickName().value.isEmpty;
-    final isImageEmpty = registeredInfo.typedImage().object.isEmpty;
+    final isImageEmpty = registeredInfo.typedImage().value.isEmpty;
     return isBioEmpty || isNickNameEmpty || isImageEmpty;
   }
   DocRef typedRef() => DocRefCore.user(uid);

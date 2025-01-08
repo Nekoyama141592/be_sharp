@@ -23,9 +23,6 @@ export const getObject = onCall(async (request) => {
     if (!object) {
       throw new HttpsError('invalid-argument', 'Missing required parameters');
     }
-    if (object.split('/')[0] != auth.uid) {
-      throw new HttpsError('permission-denied', 'You do not have permission to access this object.');
-    }
     const bucket = `${process.env.AWS_S3_BUCKET_NAME}`
     const params = {
       Bucket: bucket,
@@ -44,7 +41,7 @@ export const getObject = onCall(async (request) => {
 
     return response;
   } catch (error) {
-    console.error('getObjectV2', error);
+    console.error('getObject', error);
     throw new HttpsError('internal', 'Internal Server Error');
   }
 });
