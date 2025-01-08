@@ -39,49 +39,50 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   Uint8List? uint8list;
   bool isPicked = false;
 
-
   @override
   Widget build(BuildContext context) {
     final asyncValue = ref.watch(editUserProvider);
     _deviceHeight = MediaQuery.of(context).size.height; // 高さを設定
     _deviceWidth = MediaQuery.of(context).size.width; // 幅を設定
-    return AsyncScreen(asyncValue: asyncValue, data: (state) {
-      return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "ユーザー情報を編集",
-        ),
-      ),
-      body: SafeArea(
-          child: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: _deviceWidth! * 0.05),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                // 水平パディング
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _updateUserInfoForm(),
-                  _image(),
-                  _positiveButton(state),
-                ],
+    return AsyncScreen(
+        asyncValue: asyncValue,
+        data: (user) {
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text(
+                "ユーザー情報を編集",
               ),
             ),
-          ),
-        ),
-      )),
-    );
-    });
+            body: SafeArea(
+                child: GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus();
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: _deviceWidth! * 0.05),
+                child: Center(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      // 水平パディング
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        _updateUserInfoForm(user),
+                        _image(),
+                        _positiveButton(user),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )),
+          );
+        });
   }
 
   // 入力フォーム関数
-  Widget _updateUserInfoForm() {
+  Widget _updateUserInfoForm(ReadPublicUser user) {
     return SizedBox(
       height: _deviceHeight! * 0.50,
       child: Form(
@@ -92,14 +93,15 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ..._userNameTextField(),
-                ..._bioTextField(),
-                ..._stringBirthDateTextField(),
+                ..._userNameTextField(user),
+                ..._bioTextField(user),
+                ..._stringBirthDateTextField(user),
               ],
             ),
           )),
     );
   }
+
   // ログインボタン関数
   Widget _positiveButton(ReadPublicUser publicUser) {
     return RoundedButton(
@@ -110,13 +112,13 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   }
 
   // userName入力をする関数
-  List<Widget> _userNameTextField() {
+  List<Widget> _userNameTextField(ReadPublicUser user) {
     return [
       const FormLabel(
         title: "ニックネーム",
       ),
       OriginalForm(
-          initialValue: stringNickName,
+          initialValue: user.nickNameValue(),
           onSaved: (value) {
             setState(() {
               stringNickName = value;
@@ -127,13 +129,13 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   }
 
   // description入力をする関数
-  List<Widget> _bioTextField() {
+  List<Widget> _bioTextField(ReadPublicUser user) {
     return [
       const FormLabel(
         title: "紹介文",
       ),
       OriginalForm(
-        initialValue: stringBio,
+        initialValue: user.bioValue(),
         keyboardType: TextInputType.multiline,
         maxLines: null,
         onSaved: (value) {
@@ -147,13 +149,13 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   }
 
   // 誕生日を入力をする関数
-  List<Widget> _stringBirthDateTextField() {
+  List<Widget> _stringBirthDateTextField(ReadPublicUser user) {
     return [
       const FormLabel(
         title: "誕生日(8桁の数字)",
       ),
       OriginalForm(
-        initialValue: stringBirthDate,
+        initialValue: user.birthDateValue(),
         keyboardType: TextInputType.number,
         decoration: const InputDecoration(hintText: '2004年1月1日生まれなら20040101'),
         onSaved: (value) {
@@ -165,8 +167,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
       )
     ];
   }
-
-  
 
   Widget _image() {
     return uint8list == null
@@ -198,7 +198,7 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
     // フォームフィールドの情報を変数に保存
     _formKey.currentState!.save();
     if (uint8list == null) {
-      await ToastUICore.showErrorFlutterToast("アイコンをタップしてプロフィール画像をアップロードしてください");
+      await ToastUICore.showErrorFlutterToast("アイコンをタップしてプロフィール画像を設定してください");
       return;
     }
     if (isProcessing) return; // 二重リクエストを防止.
@@ -209,6 +209,7 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
       final fileName = AWSS3Core.profileObject(publicUser.uid);
       final request = PutObjectRequest.fromUint8List(
           uint8list: uint8list!, fileName: fileName);
+      ToastUICore.showFlutterToast('更新中...');
       final result = await repository.putObject(request);
       await result.when(success: (res) async {
         await _updateUser(publicUser);
@@ -242,12 +243,10 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
     final uid = publicUser.uid;
     final object = AWSS3Core.profileObject(uid);
     final requst = EditUserInfoRequest(
-      stringNickName: stringNickName!, 
-      stringBio: stringBio!, 
-      stringBirthDate: stringBirthDate!, 
-      object: object);
-    await notifier.updateUser(requst,uid);
+        stringNickName: stringNickName!,
+        stringBio: stringBio!,
+        stringBirthDate: stringBirthDate!,
+        object: object);
+    await notifier.updateUser(requst, uid);
   }
-
-  
 }
