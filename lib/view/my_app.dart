@@ -10,7 +10,7 @@ class MyApp extends ConsumerWidget {
   const MyApp({super.key});
   static const path = "/";
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(userProvider);
     return GetMaterialApp(
         title: F.title,

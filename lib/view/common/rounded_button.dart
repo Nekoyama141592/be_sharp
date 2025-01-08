@@ -2,6 +2,7 @@
 import 'package:be_sharp/core/padding_core.dart';
 import 'package:be_sharp/view/common/texts.dart';
 import 'package:flutter/material.dart';
+
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
     super.key,
@@ -34,8 +35,7 @@ class RoundedButton extends StatelessWidget {
             onPressed: press,
             child: Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: vertical / 2.0,
-                  horizontal: vertical / 2.0),
+                  vertical: vertical / 2.0, horizontal: vertical / 2.0),
               child: icon != null
                   ? Row(
                       children: [

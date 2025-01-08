@@ -1,5 +1,6 @@
 import 'package:be_sharp/core/json_core.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+
 class OnCallClient {
   HttpsCallable _httpsCallable(String functionName) =>
       FirebaseFunctions.instance.httpsCallable(

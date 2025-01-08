@@ -3,7 +3,7 @@ import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 
 class ErrorPage extends StatelessWidget {
-  const ErrorPage({super.key,required this.e});
+  const ErrorPage({super.key, required this.e});
   final Object e;
   @override
   Widget build(BuildContext context) {

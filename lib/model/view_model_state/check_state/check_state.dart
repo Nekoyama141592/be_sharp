@@ -7,8 +7,7 @@ part 'check_state.g.dart';
 abstract class CheckState implements _$CheckState {
   const CheckState._();
   const factory CheckState(
-      {
-      required bool needsAgreeToTerms,
+      {required bool needsAgreeToTerms,
       required bool needsSignup,
       required bool needsEditUser}) = _CheckState;
   factory CheckState.fromJson(Map<String, dynamic> json) =>

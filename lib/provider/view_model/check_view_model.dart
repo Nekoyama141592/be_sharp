@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
   @override
   FutureOr<CheckState> build() async {
-    return _fetchData(); 
+    return _fetchData();
   }
 
   Future<CheckState> _fetchData() async {
@@ -18,17 +18,15 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       return CheckState(
-        needsAgreeToTerms: needsAgreeToTerms,
-        needsSignup: true, 
-        needsEditUser: false
-      );
+          needsAgreeToTerms: needsAgreeToTerms,
+          needsSignup: true,
+          needsEditUser: false);
     } else {
       final needsEditUser = await checkNeedsEditUser(user.uid);
       return CheckState(
-      needsAgreeToTerms: needsAgreeToTerms,
-      needsSignup: false,
-      needsEditUser: needsEditUser
-    );
+          needsAgreeToTerms: needsAgreeToTerms,
+          needsSignup: false,
+          needsEditUser: needsEditUser);
     }
   }
 
@@ -56,24 +54,24 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final result = stateValue.copyWith(
-        needsSignup: false,
-        needsEditUser: await checkNeedsEditUser(user.uid)
-      );
+          needsSignup: false,
+          needsEditUser: await checkNeedsEditUser(user.uid));
       return result;
     });
-  } 
+  }
+
   Future<void> onUserUpdateSuccess(String uid) async {
     final stateValue = state.value;
     if (stateValue == null) return;
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final result = stateValue.copyWith(
-        needsEditUser: await checkNeedsEditUser(uid)
-      );
+      final result =
+          stateValue.copyWith(needsEditUser: await checkNeedsEditUser(uid));
       return result;
     });
   }
 }
 
 final checkProvider =
-    AsyncNotifierProvider.autoDispose<CheckViewModel, CheckState>(() => CheckViewModel());
+    AsyncNotifierProvider.autoDispose<CheckViewModel, CheckState>(
+        () => CheckViewModel());

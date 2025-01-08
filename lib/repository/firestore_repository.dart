@@ -7,7 +7,7 @@ class FirestoreRepository {
   FirestoreClient get client => FirestoreClient();
 
   // write
-  FutureResult<bool> createDoc(DocRef ref, Map<String,dynamic> json) async {
+  FutureResult<bool> createDoc(DocRef ref, Map<String, dynamic> json) async {
     try {
       await client.createDoc(ref, json);
       return const Result.success(true);
@@ -17,7 +17,7 @@ class FirestoreRepository {
     }
   }
 
-  FutureResult<bool> updateDoc(DocRef ref, Map<String,dynamic> json) async {
+  FutureResult<bool> updateDoc(DocRef ref, Map<String, dynamic> json) async {
     try {
       await client.updateDoc(ref, json);
       return const Result.success(true);

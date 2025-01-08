@@ -12,16 +12,18 @@ class CheckPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncCheckValue = ref.watch(checkProvider);
-    return AsyncScreen(asyncValue: asyncCheckValue, data: (state) {
-      if (state.needsAgreeToTerms) {
-        return const TermsPage();
-      } else if (state.needsSignup) {
-        return const AuthPage();
-      } else if (state.needsEditUser) {
-        return const EditUserPage();
-      } else {
-        return child;
-      }
-    });
+    return AsyncScreen(
+        asyncValue: asyncCheckValue,
+        data: (state) {
+          if (state.needsAgreeToTerms) {
+            return const TermsPage();
+          } else if (state.needsSignup) {
+            return const AuthPage();
+          } else if (state.needsEditUser) {
+            return const EditUserPage();
+          } else {
+            return child;
+          }
+        });
   }
 }

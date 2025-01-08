@@ -8,17 +8,19 @@ part 'write_public_user.g.dart';
 @freezed
 abstract class WritePublicUser implements _$WritePublicUser {
   const WritePublicUser._();
-  const factory WritePublicUser({
-    required dynamic createdAt,
-    required Map<String, dynamic> registeredInfo,
-    required String uid,
-    required dynamic updatedAt
-  }) = _WritePublicUser;
+  const factory WritePublicUser(
+      {required dynamic createdAt,
+      required Map<String, dynamic> registeredInfo,
+      required String uid,
+      required dynamic updatedAt}) = _WritePublicUser;
   factory WritePublicUser.fromJson(Map<String, dynamic> json) =>
       _$WritePublicUserFromJson(json);
   factory WritePublicUser.instance(String uid) {
     final now = Timestamp.now();
-    return WritePublicUser(createdAt: now,registeredInfo: RegisteredInfo.instance().toJson(), uid: uid,updatedAt: now);
+    return WritePublicUser(
+        createdAt: now,
+        registeredInfo: RegisteredInfo.instance().toJson(),
+        uid: uid,
+        updatedAt: now);
   }
-      
 }

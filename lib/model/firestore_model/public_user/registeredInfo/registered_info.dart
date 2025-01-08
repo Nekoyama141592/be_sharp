@@ -16,9 +16,21 @@ abstract class RegisteredInfo implements _$RegisteredInfo {
       required Map<String, dynamic> image}) = _RegisteredInfo;
   factory RegisteredInfo.fromJson(Map<String, dynamic> json) =>
       _$RegisteredInfoFromJson(json);
-  factory RegisteredInfo.instance() =>
-      RegisteredInfo(nickName: const DetectedText().toJson(), bio: const DetectedText().toJson(), birthDate: Timestamp.now(), image: const ModeratedImage().toJson());
+  factory RegisteredInfo.instance() => RegisteredInfo(
+      nickName: const DetectedText().toJson(),
+      bio: const DetectedText().toJson(),
+      birthDate: Timestamp.now(),
+      image: const ModeratedImage().toJson());
   DetectedText typedNickName() => DetectedText.fromJson(nickName);
   DetectedText typedBio() => DetectedText.fromJson(bio);
   ModeratedImage typedImage() => ModeratedImage.fromJson(image);
+  Timestamp typedBirthDate() {
+    if (birthDate is Map<String, dynamic>) {
+      const int kThousand = 1000;
+      final milliseconds = (birthDate['_seconds'] as int) * kThousand;
+      return Timestamp.fromMillisecondsSinceEpoch(milliseconds);
+    } else {
+      return birthDate as Timestamp;
+    }
+  }
 }

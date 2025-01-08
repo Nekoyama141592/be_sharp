@@ -17,7 +17,6 @@ class FileCore {
     return compressedImage;
   }
 
-
   static Future<Uint8List?> _compressImage(File? jpgFile) async {
     if (jpgFile == null) {
       return null;

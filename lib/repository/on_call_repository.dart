@@ -50,6 +50,7 @@ class OnCallRepository {
       return const Result.failure();
     }
   }
+
   FutureResult<EditUserInfoResponse> editUserInfo(
       EditUserInfoRequest request) async {
     try {

@@ -5,7 +5,8 @@ class TermsPage extends StatelessWidget {
   const TermsPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const BasicPage(child: Align(
+    return const BasicPage(
+        child: Align(
       alignment: Alignment.center,
       child: Text('TERMS'),
     ));

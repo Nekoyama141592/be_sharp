@@ -16,11 +16,23 @@ abstract class ReadPublicUser implements _$ReadPublicUser {
   }) = _ReadPublicUser;
   factory ReadPublicUser.fromJson(Map<String, dynamic> json) =>
       _$ReadPublicUserFromJson(json);
+  String bioValue() => registeredInfo.typedBio().value;
+  String nickNameValue() => registeredInfo.typedNickName().value;
+  String imageValue() => registeredInfo.typedImage().value;
+  String birthDateValue() {
+    final dateTime = registeredInfo.typedBirthDate().toDate();
+    final year = dateTime.year.toString().padLeft(4, '0');
+    final month = dateTime.month.toString().padLeft(2, '0');
+    final day = dateTime.day.toString().padLeft(2, '0');
+    return '$year$month$day';
+  }
+
   bool needsEdit() {
-    final isBioEmpty = registeredInfo.typedBio().value.isEmpty;
-    final isNickNameEmpty = registeredInfo.typedNickName().value.isEmpty;
-    final isImageEmpty = registeredInfo.typedImage().value.isEmpty;
+    final isBioEmpty = bioValue().isEmpty;
+    final isNickNameEmpty = nickNameValue().isEmpty;
+    final isImageEmpty = imageValue().isEmpty;
     return isBioEmpty || isNickNameEmpty || isImageEmpty;
   }
+
   DocRef typedRef() => DocRefCore.user(uid);
 }
