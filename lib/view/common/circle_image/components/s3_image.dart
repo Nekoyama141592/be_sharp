@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:be_sharp/core/padding_core.dart';
 import 'package:flutter/material.dart';
 
 class S3Image extends StatelessWidget {
@@ -17,12 +16,9 @@ class S3Image extends StatelessWidget {
           shape: BoxShape.circle),
       child: ClipOval(
         child: SizedBox(
-          width: width ?? PaddingCore.userImageSize(context),
-          height: height ?? PaddingCore.userImageSize(context),
-          child: Align(
-            alignment: Alignment.center,
-            child: Image.memory(uint8list),
-          ),
+          width: width,
+          height: height,
+          child: Image.memory(uint8list),
         ),
       ),
     );

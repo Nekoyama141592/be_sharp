@@ -9,12 +9,16 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
     final asyncValue = ref.watch(homeProvider);
-    return AsyncScreen(asyncValue: asyncValue, data: (image) {
-      return Align(
-        alignment: Alignment.center,
-        child: CircleImage(
-          uint8list: image,
-        ),
+    return AsyncScreen(asyncValue: asyncValue, data: (qDocInfoList) {
+      return ListView(
+        children: qDocInfoList.map((e) {
+          final user = e.publicUser;
+          return ListTile(
+            title: Text(user.nickNameValue()),
+            subtitle: Text(user.bioValue()),
+            leading: CircleImage(uint8list: e.userImage),
+          );
+        }).toList()
       );
     } );
   }
