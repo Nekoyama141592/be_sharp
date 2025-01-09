@@ -29,7 +29,7 @@ abstract class ReadPublicUser implements _$ReadPublicUser {
   }
   Timestamp _typedUpdatedAt() => updatedAt as Timestamp;
   String _updatedAtKey() => _typedUpdatedAt().microsecondsSinceEpoch.toString();
-  String imageCacheKey() => 'user-image-$uid-${_updatedAtKey()}';
+  String? imageCacheKey() => imageValue().isNotEmpty ? 'user-image-$uid-${_updatedAtKey()}' : null;
 
   bool needsEdit() {
     final isBioEmpty = bioValue().isEmpty;

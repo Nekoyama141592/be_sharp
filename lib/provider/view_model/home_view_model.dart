@@ -12,11 +12,11 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<List<QDocInfo>> {
   }
 
   Future<List<QDocInfo>> _fetchData() async {
-    final usersQuery = QueryCore.users();
+    final usersQuery = QueryCore.users().where('registeredInfo.image.value',isNotEqualTo: '');
     final qshot = await usersQuery.get();
     final qDocInfoList = await Future.wait(qshot.docs.map((qDoc) async {
       final publicUser = ReadPublicUser.fromJson(qDoc.data());
-      final userImage = await ref.read(prefsProvider).getS3Image(publicUser.imageValue(),publicUser.imageCacheKey());
+      final userImage = await ref.read(prefsProvider).getS3Image(publicUser.imageCacheKey(),publicUser.imageValue());
       return QDocInfo(publicUser: publicUser, qDoc: qDoc, userImage: userImage);
     }));
     return qDocInfoList;

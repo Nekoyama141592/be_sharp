@@ -5,13 +5,13 @@ import 'package:be_sharp/model/rest_api/get_object/request/get_object_request.da
 import 'dart:typed_data';
 
 extension PrefsExtension on SharedPreferences {
-  Uint8List? _getCachedUint8List(String fileName) {
-    final base64String = getString(fileName);
+  Uint8List? _getCachedUint8List(String cacheKey) {
+    final base64String = getString(cacheKey);
     return base64String == null ? null : base64Decode(base64String);
   }
 
-  Future<Uint8List?> getS3Image(String cacheKey,String fileName) async {
-    if (cacheKey.isEmpty || fileName.isEmpty) {
+  Future<Uint8List?> getS3Image(String? cacheKey,String fileName) async {
+    if (cacheKey == null || fileName.isEmpty) {
       return null;
     }
     Uint8List? uint8List = _getCachedUint8List(cacheKey); // キャッシュされている画像を取得.
