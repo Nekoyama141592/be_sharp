@@ -8,6 +8,7 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasicPage(
+      appBarText: 'エラー',
       child: InkWell(
         onTap: () async => await FirebaseAuthClient().signOut(),
         child: Align(
