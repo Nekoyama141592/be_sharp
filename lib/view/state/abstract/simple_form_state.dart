@@ -9,7 +9,7 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
     extends ConsumerState<T> {
   final _formKey = GlobalKey<FormState>();
   // 全要素
-  Widget buildWidget(SimpleFormViewModel notifier) {
+  Widget buildWidget(SimpleFormInterface notifier) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -21,7 +21,7 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
   }
 
   // タイトル関数
-  Widget titleWidget(SimpleFormViewModel notifier) {
+  Widget titleWidget(SimpleFormInterface notifier) {
     return Text(
       notifier.title,
       style: const TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
@@ -29,12 +29,12 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
   }
 
   // 入力フォーム関数
-  Widget form(SimpleFormViewModel notifier) {
+  Widget form(SimpleFormInterface notifier) {
     return Form(key: _formKey, child: textField(notifier));
   }
 
   // 文字の入力をする関数
-  Widget textField(SimpleFormViewModel notifier) {
+  Widget textField(SimpleFormInterface notifier) {
     return TextFieldContainer(
       width: PaddingCore.textFieldWidth(context),
         child: TextFormField(
@@ -46,7 +46,7 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
   }
 
   // 送信するボタン
-  Widget positiveButton(SimpleFormViewModel notifier) {
+  Widget positiveButton(SimpleFormInterface notifier) {
     return RoundedButton(
         press: () {
           if (_formKey.currentState!.validate()) {

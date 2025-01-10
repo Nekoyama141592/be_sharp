@@ -10,9 +10,11 @@ class ProblemsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // TODO: implement build
     final asyncValue = ref.watch(problemsProvider);
+    ProblemsViewModel notifier() => ref.read(problemsProvider.notifier);
     return AsyncScreen(asyncValue: asyncValue, data: (state) => BasicPage(child: ListView(
       children: state.map((e) => ListTile(
         title: Text(e.question),
+        onTap: () => notifier().onCardTap(e),
       )).toList(),
     )));
   }

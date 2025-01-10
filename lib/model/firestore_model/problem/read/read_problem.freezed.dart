@@ -21,6 +21,9 @@ ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ReadProblem {
   String get question => throw _privateConstructorUsedError;
+  String get problemId => throw _privateConstructorUsedError;
+  List<String> get answers => throw _privateConstructorUsedError;
+  dynamic get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +37,11 @@ abstract class $ReadProblemCopyWith<$Res> {
           ReadProblem value, $Res Function(ReadProblem) then) =
       _$ReadProblemCopyWithImpl<$Res, ReadProblem>;
   @useResult
-  $Res call({String question});
+  $Res call(
+      {String question,
+      String problemId,
+      List<String> answers,
+      dynamic updatedAt});
 }
 
 /// @nodoc
@@ -51,12 +58,27 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
   @override
   $Res call({
     Object? question = null,
+    Object? problemId = null,
+    Object? answers = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
+      problemId: null == problemId
+          ? _value.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      answers: null == answers
+          ? _value.answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -69,7 +91,11 @@ abstract class _$$ReadProblemImplCopyWith<$Res>
       __$$ReadProblemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String question});
+  $Res call(
+      {String question,
+      String problemId,
+      List<String> answers,
+      dynamic updatedAt});
 }
 
 /// @nodoc
@@ -84,12 +110,27 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? question = null,
+    Object? problemId = null,
+    Object? answers = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$ReadProblemImpl(
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
+      problemId: null == problemId
+          ? _value.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      answers: null == answers
+          ? _value._answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -97,17 +138,35 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReadProblemImpl extends _ReadProblem {
-  const _$ReadProblemImpl({required this.question}) : super._();
+  const _$ReadProblemImpl(
+      {required this.question,
+      required this.problemId,
+      required final List<String> answers,
+      required this.updatedAt})
+      : _answers = answers,
+        super._();
 
   factory _$ReadProblemImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReadProblemImplFromJson(json);
 
   @override
   final String question;
+  @override
+  final String problemId;
+  final List<String> _answers;
+  @override
+  List<String> get answers {
+    if (_answers is EqualUnmodifiableListView) return _answers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_answers);
+  }
+
+  @override
+  final dynamic updatedAt;
 
   @override
   String toString() {
-    return 'ReadProblem(question: $question)';
+    return 'ReadProblem(question: $question, problemId: $problemId, answers: $answers, updatedAt: $updatedAt)';
   }
 
   @override
@@ -116,12 +175,21 @@ class _$ReadProblemImpl extends _ReadProblem {
         (other.runtimeType == runtimeType &&
             other is _$ReadProblemImpl &&
             (identical(other.question, question) ||
-                other.question == question));
+                other.question == question) &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, question);
+  int get hashCode => Object.hash(
+      runtimeType,
+      question,
+      problemId,
+      const DeepCollectionEquality().hash(_answers),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -138,8 +206,11 @@ class _$ReadProblemImpl extends _ReadProblem {
 }
 
 abstract class _ReadProblem extends ReadProblem {
-  const factory _ReadProblem({required final String question}) =
-      _$ReadProblemImpl;
+  const factory _ReadProblem(
+      {required final String question,
+      required final String problemId,
+      required final List<String> answers,
+      required final dynamic updatedAt}) = _$ReadProblemImpl;
   const _ReadProblem._() : super._();
 
   factory _ReadProblem.fromJson(Map<String, dynamic> json) =
@@ -147,6 +218,12 @@ abstract class _ReadProblem extends ReadProblem {
 
   @override
   String get question;
+  @override
+  String get problemId;
+  @override
+  List<String> get answers;
+  @override
+  dynamic get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$ReadProblemImplCopyWith<_$ReadProblemImpl> get copyWith =>

@@ -22,6 +22,9 @@ WriteProblem _$WriteProblemFromJson(Map<String, dynamic> json) {
 mixin _$WriteProblem {
   String get question => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
+  String get problemId => throw _privateConstructorUsedError;
+  List<String> get answers => throw _privateConstructorUsedError;
+  dynamic get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,12 @@ abstract class $WriteProblemCopyWith<$Res> {
           WriteProblem value, $Res Function(WriteProblem) then) =
       _$WriteProblemCopyWithImpl<$Res, WriteProblem>;
   @useResult
-  $Res call({String question, dynamic createdAt});
+  $Res call(
+      {String question,
+      dynamic createdAt,
+      String problemId,
+      List<String> answers,
+      dynamic updatedAt});
 }
 
 /// @nodoc
@@ -53,6 +61,9 @@ class _$WriteProblemCopyWithImpl<$Res, $Val extends WriteProblem>
   $Res call({
     Object? question = null,
     Object? createdAt = freezed,
+    Object? problemId = null,
+    Object? answers = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       question: null == question
@@ -62,6 +73,18 @@ class _$WriteProblemCopyWithImpl<$Res, $Val extends WriteProblem>
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      problemId: null == problemId
+          ? _value.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      answers: null == answers
+          ? _value.answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
     ) as $Val);
   }
@@ -75,7 +98,12 @@ abstract class _$$WriteProblemImplCopyWith<$Res>
       __$$WriteProblemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String question, dynamic createdAt});
+  $Res call(
+      {String question,
+      dynamic createdAt,
+      String problemId,
+      List<String> answers,
+      dynamic updatedAt});
 }
 
 /// @nodoc
@@ -91,6 +119,9 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
   $Res call({
     Object? question = null,
     Object? createdAt = freezed,
+    Object? problemId = null,
+    Object? answers = null,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$WriteProblemImpl(
       question: null == question
@@ -101,6 +132,18 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      problemId: null == problemId
+          ? _value.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      answers: null == answers
+          ? _value._answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -108,8 +151,14 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WriteProblemImpl extends _WriteProblem {
-  const _$WriteProblemImpl({required this.question, required this.createdAt})
-      : super._();
+  const _$WriteProblemImpl(
+      {required this.question,
+      required this.createdAt,
+      required this.problemId,
+      final List<String> answers = const [],
+      required this.updatedAt})
+      : _answers = answers,
+        super._();
 
   factory _$WriteProblemImpl.fromJson(Map<String, dynamic> json) =>
       _$$WriteProblemImplFromJson(json);
@@ -118,10 +167,23 @@ class _$WriteProblemImpl extends _WriteProblem {
   final String question;
   @override
   final dynamic createdAt;
+  @override
+  final String problemId;
+  final List<String> _answers;
+  @override
+  @JsonKey()
+  List<String> get answers {
+    if (_answers is EqualUnmodifiableListView) return _answers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_answers);
+  }
+
+  @override
+  final dynamic updatedAt;
 
   @override
   String toString() {
-    return 'WriteProblem(question: $question, createdAt: $createdAt)';
+    return 'WriteProblem(question: $question, createdAt: $createdAt, problemId: $problemId, answers: $answers, updatedAt: $updatedAt)';
   }
 
   @override
@@ -131,13 +193,22 @@ class _$WriteProblemImpl extends _WriteProblem {
             other is _$WriteProblemImpl &&
             (identical(other.question, question) ||
                 other.question == question) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            const DeepCollectionEquality().equals(other._answers, _answers) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, question, const DeepCollectionEquality().hash(createdAt));
+      runtimeType,
+      question,
+      const DeepCollectionEquality().hash(createdAt),
+      problemId,
+      const DeepCollectionEquality().hash(_answers),
+      const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
   @override
@@ -156,7 +227,10 @@ class _$WriteProblemImpl extends _WriteProblem {
 abstract class _WriteProblem extends WriteProblem {
   const factory _WriteProblem(
       {required final String question,
-      required final dynamic createdAt}) = _$WriteProblemImpl;
+      required final dynamic createdAt,
+      required final String problemId,
+      final List<String> answers,
+      required final dynamic updatedAt}) = _$WriteProblemImpl;
   const _WriteProblem._() : super._();
 
   factory _WriteProblem.fromJson(Map<String, dynamic> json) =
@@ -166,6 +240,12 @@ abstract class _WriteProblem extends WriteProblem {
   String get question;
   @override
   dynamic get createdAt;
+  @override
+  String get problemId;
+  @override
+  List<String> get answers;
+  @override
+  dynamic get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$WriteProblemImplCopyWith<_$WriteProblemImpl> get copyWith =>
