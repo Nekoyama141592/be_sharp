@@ -22,7 +22,6 @@ WriteProblem _$WriteProblemFromJson(Map<String, dynamic> json) {
 mixin _$WriteProblem {
   String get question => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
-  int get answerCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $WriteProblemCopyWith<$Res> {
           WriteProblem value, $Res Function(WriteProblem) then) =
       _$WriteProblemCopyWithImpl<$Res, WriteProblem>;
   @useResult
-  $Res call({String question, dynamic createdAt, int answerCount});
+  $Res call({String question, dynamic createdAt});
 }
 
 /// @nodoc
@@ -54,7 +53,6 @@ class _$WriteProblemCopyWithImpl<$Res, $Val extends WriteProblem>
   $Res call({
     Object? question = null,
     Object? createdAt = freezed,
-    Object? answerCount = null,
   }) {
     return _then(_value.copyWith(
       question: null == question
@@ -65,10 +63,6 @@ class _$WriteProblemCopyWithImpl<$Res, $Val extends WriteProblem>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      answerCount: null == answerCount
-          ? _value.answerCount
-          : answerCount // ignore: cast_nullable_to_non_nullable
-              as int,
     ) as $Val);
   }
 }
@@ -81,7 +75,7 @@ abstract class _$$WriteProblemImplCopyWith<$Res>
       __$$WriteProblemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String question, dynamic createdAt, int answerCount});
+  $Res call({String question, dynamic createdAt});
 }
 
 /// @nodoc
@@ -97,7 +91,6 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
   $Res call({
     Object? question = null,
     Object? createdAt = freezed,
-    Object? answerCount = null,
   }) {
     return _then(_$WriteProblemImpl(
       question: null == question
@@ -108,10 +101,6 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      answerCount: null == answerCount
-          ? _value.answerCount
-          : answerCount // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
@@ -119,8 +108,7 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WriteProblemImpl extends _WriteProblem {
-  const _$WriteProblemImpl(
-      {required this.question, required this.createdAt, this.answerCount = 0})
+  const _$WriteProblemImpl({required this.question, required this.createdAt})
       : super._();
 
   factory _$WriteProblemImpl.fromJson(Map<String, dynamic> json) =>
@@ -130,13 +118,10 @@ class _$WriteProblemImpl extends _WriteProblem {
   final String question;
   @override
   final dynamic createdAt;
-  @override
-  @JsonKey()
-  final int answerCount;
 
   @override
   String toString() {
-    return 'WriteProblem(question: $question, createdAt: $createdAt, answerCount: $answerCount)';
+    return 'WriteProblem(question: $question, createdAt: $createdAt)';
   }
 
   @override
@@ -146,15 +131,13 @@ class _$WriteProblemImpl extends _WriteProblem {
             other is _$WriteProblemImpl &&
             (identical(other.question, question) ||
                 other.question == question) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            (identical(other.answerCount, answerCount) ||
-                other.answerCount == answerCount));
+            const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, question,
-      const DeepCollectionEquality().hash(createdAt), answerCount);
+  int get hashCode => Object.hash(
+      runtimeType, question, const DeepCollectionEquality().hash(createdAt));
 
   @JsonKey(ignore: true)
   @override
@@ -173,8 +156,7 @@ class _$WriteProblemImpl extends _WriteProblem {
 abstract class _WriteProblem extends WriteProblem {
   const factory _WriteProblem(
       {required final String question,
-      required final dynamic createdAt,
-      final int answerCount}) = _$WriteProblemImpl;
+      required final dynamic createdAt}) = _$WriteProblemImpl;
   const _WriteProblem._() : super._();
 
   factory _WriteProblem.fromJson(Map<String, dynamic> json) =
@@ -184,8 +166,6 @@ abstract class _WriteProblem extends WriteProblem {
   String get question;
   @override
   dynamic get createdAt;
-  @override
-  int get answerCount;
   @override
   @JsonKey(ignore: true)
   _$$WriteProblemImplCopyWith<_$WriteProblemImpl> get copyWith =>
