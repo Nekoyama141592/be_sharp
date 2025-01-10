@@ -2,13 +2,15 @@ import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract class SimpleFormViewModel<T> extends AutoDisposeNotifier<T> implements SimpleFormInterface{
+abstract class SimpleFormViewModel<T> extends AutoDisposeNotifier<T>
+    implements SimpleFormInterface {
   String text = "";
   @override
   void setText(String? value) {
     if (value == null) return;
     text = value;
   }
+
   @override
   bool get obscureText => false;
   @override
@@ -19,20 +21,25 @@ abstract class SimpleFormViewModel<T> extends AutoDisposeNotifier<T> implements 
       onFailure();
     });
   }
+
   void onSuccess() {
     ToastUICore.showFlutterToast(successMsg);
   }
+
   void onFailure() {
     ToastUICore.showErrorFlutterToast(failureMsg);
   }
 }
-abstract class SimpleFormAsyncViewModel<T> extends AutoDisposeAsyncNotifier<T> implements SimpleFormInterface{
+
+abstract class SimpleFormAsyncViewModel<T> extends AutoDisposeAsyncNotifier<T>
+    implements SimpleFormInterface {
   String text = "";
   @override
   void setText(String? value) {
     if (value == null) return;
     text = value;
   }
+
   @override
   bool get obscureText => false;
   @override
@@ -43,13 +50,16 @@ abstract class SimpleFormAsyncViewModel<T> extends AutoDisposeAsyncNotifier<T> i
       onFailure();
     });
   }
+
   void onSuccess() {
     ToastUICore.showFlutterToast(successMsg);
   }
+
   void onFailure() {
     ToastUICore.showErrorFlutterToast(failureMsg);
   }
 }
+
 abstract class SimpleFormInterface {
   void setText(String? value);
   void onPositiveButtonPressed();

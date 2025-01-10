@@ -8,23 +8,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(homeProvider);
     return Scaffold(
       appBar: AppBar(),
       drawer: const OriginalDrawer(),
-      body: AsyncScreen(asyncValue: asyncValue, data: (qDocInfoList) {
-      return ListView(
-        children: qDocInfoList.map((e) {
-          final user = e.publicUser;
-          return ListTile(
-            title: Text(user.nickNameValue()),
-            subtitle: Text(user.bioValue()),
-            leading: CircleImage(uint8list: e.userImage),
-          );
-        }).toList()
-      );
-    } ),
+      body: AsyncScreen(
+          asyncValue: asyncValue,
+          data: (qDocInfoList) {
+            return ListView(
+                children: qDocInfoList.map((e) {
+              final user = e.publicUser;
+              return ListTile(
+                title: Text(user.nickNameValue()),
+                subtitle: Text(user.bioValue()),
+                leading: CircleImage(uint8list: e.userImage),
+              );
+            }).toList());
+          }),
     );
   }
 }

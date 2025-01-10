@@ -34,6 +34,7 @@ class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
     final doc = await docRef.get();
     return ReadProblem.fromJson(doc.data()!);
   }
+
   String? getProblemId() => Get.parameters['problemId'];
   @override
   void onPositiveButtonPressed() async {
@@ -43,21 +44,22 @@ class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
     showDialog(uid, problemId);
   }
 
-  void showDialog(String uid,String problemId) {
+  void showDialog(String uid, String problemId) {
     const msg = '回答を送信します。変更できませんがよろしいですか？';
     ToastUICore.cupertinoAlertDialog(msg, () async {
       final repository = FirestoreRepository();
       final docRef = DocRefCore.userAnswer(uid, problemId);
-    final json = {
-      'answer': text,
-      'createdAt': FieldValue.serverTimestamp(),
-      'problemId': problemId,
-      'uid': uid
-    };
+      final json = {
+        'answer': text,
+        'createdAt': FieldValue.serverTimestamp(),
+        'problemId': problemId,
+        'uid': uid
+      };
       final result = await repository.createDoc(docRef, json);
-    showResult(result);
+      showResult(result);
     });
   }
+
   @override
   void onSuccess() {
     super.onSuccess();
@@ -66,12 +68,14 @@ class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
     }
     Get.back();
   }
+
   @override
   void onFailure() {
     super.onFailure();
     Get.back();
   }
 }
+
 final createUserAnswerProvider =
     AsyncNotifierProvider.autoDispose<CreateUserAnswer, ReadProblem>(
         () => CreateUserAnswer());

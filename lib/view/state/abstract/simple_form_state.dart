@@ -36,13 +36,13 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
   // 文字の入力をする関数
   Widget textField(SimpleFormInterface notifier) {
     return TextFieldContainer(
-      width: PaddingCore.textFieldWidth(context),
+        width: PaddingCore.textFieldWidth(context),
         child: TextFormField(
-      obscureText: notifier.obscureText,
-      decoration: InputDecoration(hintText: notifier.hintText),
-      onSaved: notifier.setText,
-      validator: notifier.validator,
-    ));
+          obscureText: notifier.obscureText,
+          decoration: InputDecoration(hintText: notifier.hintText),
+          onSaved: notifier.setText,
+          validator: notifier.validator,
+        ));
   }
 
   // 送信するボタン

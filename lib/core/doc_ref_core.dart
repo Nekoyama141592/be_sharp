@@ -3,7 +3,9 @@ import 'package:be_sharp/typedefs/firestore_typedef.dart';
 
 class DocRefCore {
   static DocRef user(String uid) => ColRefCore.users().doc(uid);
-  static DocRef userAnswer(String uid,String problemId) => ColRefCore.userAnswers(uid).doc(problemId);
+  static DocRef userAnswer(String uid, String problemId) =>
+      ColRefCore.userAnswers(uid).doc(problemId);
   static DocRef privateUser(String uid) => ColRefCore.privateUsers().doc(uid);
-  static DocRef problem(String problemId) => ColRefCore.problems().doc(problemId);
+  static DocRef problem(String problemId) =>
+      ColRefCore.problems().doc(problemId);
 }

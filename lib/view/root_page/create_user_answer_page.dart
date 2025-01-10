@@ -8,7 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CreateUserAnswerPage extends ConsumerStatefulWidget {
   const CreateUserAnswerPage({super.key});
   static const path = '/problems/:problemId/createUserAnswer';
-  static String generatePath(String problemId) => '/problems/$problemId/createUserAnswer';
+  static String generatePath(String problemId) =>
+      '/problems/$problemId/createUserAnswer';
   @override
   ConsumerState<CreateUserAnswerPage> createState() => _CreateUserAnswerState();
 }
@@ -19,17 +20,19 @@ class _CreateUserAnswerState extends SimpleFormState<CreateUserAnswerPage> {
     final notifier = ref.read(createUserAnswerProvider.notifier);
     final asyncValue = ref.watch(createUserAnswerProvider);
     return BasicPage(
-      appBarText: '',
-      child: AsyncScreen(asyncValue: asyncValue, data: (state) =>  Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('${state.question}'),
-          titleWidget(notifier),
-          form(notifier),
-          positiveButton(notifier),
-        ],
-      ),
-    )));
+        appBarText: '',
+        child: AsyncScreen(
+            asyncValue: asyncValue,
+            data: (state) => Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(state.question),
+                      titleWidget(notifier),
+                      form(notifier),
+                      positiveButton(notifier),
+                    ],
+                  ),
+                )));
   }
 }

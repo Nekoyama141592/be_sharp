@@ -10,7 +10,7 @@ extension PrefsExtension on SharedPreferences {
     return base64String == null ? null : base64Decode(base64String);
   }
 
-  Future<Uint8List?> getS3Image(String? cacheKey,String fileName) async {
+  Future<Uint8List?> getS3Image(String? cacheKey, String fileName) async {
     if (cacheKey == null || fileName.isEmpty) {
       return null;
     }

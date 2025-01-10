@@ -16,16 +16,16 @@ class _AdminState extends SimpleFormState<AdminPage> {
   Widget build(BuildContext context) {
     final notifier = ref.read(adminProvider.notifier);
     return BasicPage(
-      appBarText: '',
-      child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          titleWidget(notifier),
-          form(notifier),
-          positiveButton(notifier),
-        ],
-      ),
-    ));
+        appBarText: '',
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              titleWidget(notifier),
+              form(notifier),
+              positiveButton(notifier),
+            ],
+          ),
+        ));
   }
 }

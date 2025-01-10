@@ -11,7 +11,8 @@ class ProblemsViewModel extends AsyncNotifier<List<ReadProblem>> {
   FutureOr<List<ReadProblem>> build() async {
     final colRef = ColRefCore.problems();
     final qshot = await colRef.get();
-    final results = qshot.docs.map((e) => ReadProblem.fromJson(e.data())).toList();
+    final results =
+        qshot.docs.map((e) => ReadProblem.fromJson(e.data())).toList();
     return results;
   }
 
@@ -21,6 +22,7 @@ class ProblemsViewModel extends AsyncNotifier<List<ReadProblem>> {
     Get.toNamed(path);
   }
 }
+
 final problemsProvider =
     AsyncNotifierProvider<ProblemsViewModel, List<ReadProblem>>(
         () => ProblemsViewModel());

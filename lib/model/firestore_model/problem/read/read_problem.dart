@@ -6,8 +6,11 @@ part 'read_problem.g.dart';
 @freezed
 abstract class ReadProblem implements _$ReadProblem {
   const ReadProblem._();
-  const factory ReadProblem({required String question,required String problemId,required List<String> answers,required dynamic updatedAt}) =
-      _ReadProblem;
+  const factory ReadProblem(
+      {required String question,
+      required String problemId,
+      required List<String> answers,
+      required dynamic updatedAt}) = _ReadProblem;
   factory ReadProblem.fromJson(Map<String, dynamic> json) =>
       _$ReadProblemFromJson(json);
 }

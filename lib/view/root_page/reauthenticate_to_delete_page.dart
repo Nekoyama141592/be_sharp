@@ -16,6 +16,6 @@ class ReauthenticateToDeletePage extends StatelessWidget {
     //               controller.reauthenticateWithGoogleToDelete,
     //           title: "ユーザーの削除には再認証が必要です")),
     // );
-    return Scaffold();
+    return const Scaffold();
   }
 }

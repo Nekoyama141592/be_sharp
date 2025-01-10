@@ -32,7 +32,11 @@ final getPages = [
   GetPage(name: MyApp.path, page: () => const MyApp()),
   GetPage(name: AccountPage.path, page: () => const AccountPage()),
   GetPage(name: AdminPage.path, page: () => const AdminPage()),
-  GetPage(name: CreateUserAnswerPage.path, page: () => const CreateUserAnswerPage()),
+  GetPage(
+      name: CreateUserAnswerPage.path,
+      page: () => const CreateUserAnswerPage()),
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),
-  GetPage(name: ReauthenticateToDeletePage.path, page: () => const ReauthenticateToDeletePage())
+  GetPage(
+      name: ReauthenticateToDeletePage.path,
+      page: () => const ReauthenticateToDeletePage())
 ];

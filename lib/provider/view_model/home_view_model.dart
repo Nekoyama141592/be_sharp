@@ -5,6 +5,7 @@ import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user
 import 'package:be_sharp/model/q_doc_info/q_doc_info.dart';
 import 'package:be_sharp/provider/cache_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 class HomeViewModel extends AutoDisposeAsyncNotifier<List<QDocInfo>> {
   @override
   FutureOr<List<QDocInfo>> build() async {
@@ -12,16 +13,18 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<List<QDocInfo>> {
   }
 
   Future<List<QDocInfo>> _fetchData() async {
-    final usersQuery = QueryCore.users().where('registeredInfo.image.value',isNotEqualTo: '');
+    final usersQuery =
+        QueryCore.users().where('registeredInfo.image.value', isNotEqualTo: '');
     final qshot = await usersQuery.get();
     final qDocInfoList = await Future.wait(qshot.docs.map((qDoc) async {
       final publicUser = ReadPublicUser.fromJson(qDoc.data());
-      final userImage = await ref.read(prefsProvider).getS3Image(publicUser.imageCacheKey(),publicUser.imageValue());
+      final userImage = await ref
+          .read(prefsProvider)
+          .getS3Image(publicUser.imageCacheKey(), publicUser.imageValue());
       return QDocInfo(publicUser: publicUser, qDoc: qDoc, userImage: userImage);
     }));
     return qDocInfoList;
   }
-
 }
 
 final homeProvider =

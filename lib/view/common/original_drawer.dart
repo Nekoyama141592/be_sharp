@@ -10,20 +10,24 @@ class OriginalDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(privateUserProvider);
-    return asyncValue.when(data: (data) => Drawer(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      child: ListView(
-        children: [
-          ListTile(
-            title: const Text("アカウント情報"),
-            onTap: () => Get.toNamed(AccountPage.path),
-          ),
-          if (data.isAdmin) ListTile(
-            title: const Text("管理者ページ"),
-            onTap: () => Get.toNamed(AdminPage.path),
-          ),
-        ],
-      ),
-    ), error: (e,_) => const SizedBox.shrink(), loading: () => const SizedBox.shrink());
+    return asyncValue.when(
+        data: (data) => Drawer(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: const Text("アカウント情報"),
+                    onTap: () => Get.toNamed(AccountPage.path),
+                  ),
+                  if (data.isAdmin)
+                    ListTile(
+                      title: const Text("管理者ページ"),
+                      onTap: () => Get.toNamed(AdminPage.path),
+                    ),
+                ],
+              ),
+            ),
+        error: (e, _) => const SizedBox.shrink(),
+        loading: () => const SizedBox.shrink());
   }
 }

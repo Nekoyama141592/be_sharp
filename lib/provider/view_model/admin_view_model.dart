@@ -12,6 +12,7 @@ class AdminViewModel extends SimpleFormViewModel<String> {
   String build() {
     throw UnimplementedError();
   }
+
   @override
   String get title => '問題作成';
   @override
@@ -31,10 +32,16 @@ class AdminViewModel extends SimpleFormViewModel<String> {
     final problemId = IDCore.ulid();
     final docRef = DocRefCore.problem(problemId);
     final now = Timestamp.now();
-    final json = WriteProblem(question: text,createdAt: now,problemId: problemId,updatedAt: now).toJson();
+    final json = WriteProblem(
+            question: text,
+            createdAt: now,
+            problemId: problemId,
+            updatedAt: now)
+        .toJson();
     final result = await repository.createDoc(docRef, json);
     showResult(result);
   }
 }
-final adminProvider =
-    NotifierProvider.autoDispose<AdminViewModel, String>(() => AdminViewModel());
+
+final adminProvider = NotifierProvider.autoDispose<AdminViewModel, String>(
+    () => AdminViewModel());

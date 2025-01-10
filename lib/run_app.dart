@@ -22,13 +22,9 @@ class RunApp {
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
     await _requestPermission();
     await _setForegroundNotificationPresentationOptions();
-    runApp(ProviderScope(
-      overrides: [
-        prefsProvider
-            .overrideWithValue(await SharedPreferences.getInstance()),
-      ],
-      child: const MyApp()
-    ));
+    runApp(ProviderScope(overrides: [
+      prefsProvider.overrideWithValue(await SharedPreferences.getInstance()),
+    ], child: const MyApp()));
   }
 
   static Future<void> _loadEnv(Flavor flavor) async {

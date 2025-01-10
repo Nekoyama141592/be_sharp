@@ -33,9 +33,11 @@ class ValidatorUICore {
       return null;
     }
   }
+
   static String? text(String? value) {
     return value!.isNotEmpty ? null : "入力を行って下さい";
   }
+
   static String? number(String? value) {
     if (value == null || value.isEmpty) {
       return '入力をしてください';

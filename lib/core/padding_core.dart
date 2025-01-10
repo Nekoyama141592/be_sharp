@@ -8,5 +8,6 @@ class PaddingCore {
   static double vertical(BuildContext context) => _fullHeight(context) * 0.03;
   static double textFieldWidth(BuildContext context) =>
       _fullWidth(context) * 0.8;
-  static double userImageSize(BuildContext context) => _fullWidth(context) * 0.16;
+  static double userImageSize(BuildContext context) =>
+      _fullWidth(context) * 0.16;
 }

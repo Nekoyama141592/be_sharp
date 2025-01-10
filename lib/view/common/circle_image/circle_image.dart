@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 
 class CircleImage extends StatelessWidget {
   const CircleImage(
-      {super.key, this.width, this.height,required this.uint8list, this.onTap});
+      {super.key,
+      this.width,
+      this.height,
+      required this.uint8list,
+      this.onTap});
   final Uint8List? uint8list;
   final double? width, height;
   final void Function()? onTap;
@@ -14,12 +18,11 @@ class CircleImage extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: uint8list == null
-        ? const Icon(Icons.person)
-        : S3Image(
-            uint8list: uint8list!,
-            width: height,
-            
-          ),
+          ? const Icon(Icons.person)
+          : S3Image(
+              uint8list: uint8list!,
+              width: height,
+            ),
     );
   }
 }

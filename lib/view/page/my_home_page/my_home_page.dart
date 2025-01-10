@@ -11,7 +11,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class MyHomePage extends HookConsumerWidget {
   const MyHomePage({super.key});
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final pageIndex = useState(0);
     final pageController = usePageController();
     ref.watch(privateUserProvider);

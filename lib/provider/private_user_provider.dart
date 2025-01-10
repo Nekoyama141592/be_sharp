@@ -25,12 +25,14 @@ class PrivateUserProvider extends AsyncNotifier<PrivateUser> {
       }
       return privateUser;
     } else {
-      final privateUser = PrivateUser(fcmToken: token ?? '', uid: uid, createdAt: Timestamp.now());
+      final privateUser = PrivateUser(
+          fcmToken: token ?? '', uid: uid, createdAt: Timestamp.now());
       final data = privateUser.toJson();
       await docRef.set(data);
       return privateUser;
     }
   }
+
   static Future<String?> _getToken() async {
     try {
       String? token;
@@ -44,8 +46,6 @@ class PrivateUserProvider extends AsyncNotifier<PrivateUser> {
       return null;
     }
   }
-
- 
 }
 
 final privateUserProvider =
