@@ -11,6 +11,7 @@ _$WriteProblemImpl _$$WriteProblemImplFromJson(Map<String, dynamic> json) =>
       question: json['question'] as String,
       createdAt: json['createdAt'],
       problemId: json['problemId'] as String,
+      timeLimitSeconds: (json['timeLimitSeconds'] as num?)?.toInt() ?? 120,
       answers: (json['answers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$WriteProblemImplToJson(_$WriteProblemImpl instance) =>
       'question': instance.question,
       'createdAt': instance.createdAt,
       'problemId': instance.problemId,
+      'timeLimitSeconds': instance.timeLimitSeconds,
       'answers': instance.answers,
       'updatedAt': instance.updatedAt,
     };

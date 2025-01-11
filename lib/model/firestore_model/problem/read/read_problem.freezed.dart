@@ -22,6 +22,7 @@ ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) {
 mixin _$ReadProblem {
   String get question => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
+  int get timeLimitSeconds => throw _privateConstructorUsedError;
   List<String> get answers => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
@@ -40,6 +41,7 @@ abstract class $ReadProblemCopyWith<$Res> {
   $Res call(
       {String question,
       String problemId,
+      int timeLimitSeconds,
       List<String> answers,
       dynamic updatedAt});
 }
@@ -59,6 +61,7 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
   $Res call({
     Object? question = null,
     Object? problemId = null,
+    Object? timeLimitSeconds = null,
     Object? answers = null,
     Object? updatedAt = freezed,
   }) {
@@ -71,6 +74,10 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
+      timeLimitSeconds: null == timeLimitSeconds
+          ? _value.timeLimitSeconds
+          : timeLimitSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
       answers: null == answers
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
@@ -94,6 +101,7 @@ abstract class _$$ReadProblemImplCopyWith<$Res>
   $Res call(
       {String question,
       String problemId,
+      int timeLimitSeconds,
       List<String> answers,
       dynamic updatedAt});
 }
@@ -111,6 +119,7 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
   $Res call({
     Object? question = null,
     Object? problemId = null,
+    Object? timeLimitSeconds = null,
     Object? answers = null,
     Object? updatedAt = freezed,
   }) {
@@ -123,6 +132,10 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
+      timeLimitSeconds: null == timeLimitSeconds
+          ? _value.timeLimitSeconds
+          : timeLimitSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
       answers: null == answers
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
@@ -141,6 +154,7 @@ class _$ReadProblemImpl extends _ReadProblem {
   const _$ReadProblemImpl(
       {required this.question,
       required this.problemId,
+      required this.timeLimitSeconds,
       required final List<String> answers,
       required this.updatedAt})
       : _answers = answers,
@@ -153,6 +167,8 @@ class _$ReadProblemImpl extends _ReadProblem {
   final String question;
   @override
   final String problemId;
+  @override
+  final int timeLimitSeconds;
   final List<String> _answers;
   @override
   List<String> get answers {
@@ -166,7 +182,7 @@ class _$ReadProblemImpl extends _ReadProblem {
 
   @override
   String toString() {
-    return 'ReadProblem(question: $question, problemId: $problemId, answers: $answers, updatedAt: $updatedAt)';
+    return 'ReadProblem(question: $question, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
   }
 
   @override
@@ -178,6 +194,8 @@ class _$ReadProblemImpl extends _ReadProblem {
                 other.question == question) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
+            (identical(other.timeLimitSeconds, timeLimitSeconds) ||
+                other.timeLimitSeconds == timeLimitSeconds) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -188,6 +206,7 @@ class _$ReadProblemImpl extends _ReadProblem {
       runtimeType,
       question,
       problemId,
+      timeLimitSeconds,
       const DeepCollectionEquality().hash(_answers),
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -209,6 +228,7 @@ abstract class _ReadProblem extends ReadProblem {
   const factory _ReadProblem(
       {required final String question,
       required final String problemId,
+      required final int timeLimitSeconds,
       required final List<String> answers,
       required final dynamic updatedAt}) = _$ReadProblemImpl;
   const _ReadProblem._() : super._();
@@ -220,6 +240,8 @@ abstract class _ReadProblem extends ReadProblem {
   String get question;
   @override
   String get problemId;
+  @override
+  int get timeLimitSeconds;
   @override
   List<String> get answers;
   @override

@@ -9,6 +9,7 @@ abstract class ReadProblem implements _$ReadProblem {
   const factory ReadProblem(
       {required String question,
       required String problemId,
+      required int timeLimitSeconds,
       required List<String> answers,
       required dynamic updatedAt}) = _ReadProblem;
   factory ReadProblem.fromJson(Map<String, dynamic> json) =>

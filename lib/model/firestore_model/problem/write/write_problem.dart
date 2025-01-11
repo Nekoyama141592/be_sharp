@@ -10,6 +10,7 @@ abstract class WriteProblem implements _$WriteProblem {
       {required String question,
       required dynamic createdAt,
       required String problemId,
+      @Default(120) int timeLimitSeconds,
       @Default([]) List<String> answers,
       required dynamic updatedAt}) = _WriteProblem;
   factory WriteProblem.fromJson(Map<String, dynamic> json) =>
