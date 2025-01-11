@@ -8,8 +8,8 @@ part 'read_problem.g.dart';
 abstract class ReadProblem implements _$ReadProblem {
   const ReadProblem._();
   const factory ReadProblem(
-      { required dynamic createdAt,
-        required String question,
+      {required dynamic createdAt,
+      required String question,
       required String problemId,
       required int timeLimitSeconds,
       required List<String> answers,
@@ -22,5 +22,17 @@ abstract class ReadProblem implements _$ReadProblem {
     final nowDate = DateTime.now();
     final difference = nowDate.difference(createdAtDate).inSeconds;
     return difference < timeLimitSeconds;
+  }
+
+  DateTime timeLimitDate() {
+    final createdAtDate = typedCreatedAt().toDate();
+    final timeLimitDate =
+        createdAtDate.add(Duration(seconds: timeLimitSeconds));
+    return timeLimitDate;
+  }
+
+  String timeLimitDateText() {
+    final value = timeLimitDate();
+    return '${value.hour}時${value.minute}分${value.second}秒';
   }
 }
