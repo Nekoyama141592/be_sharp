@@ -6,4 +6,5 @@ class QueryCore {
   static const int whereInLimit = 10;
   // 基本
   static MapQuery users() => ColRefCore.users().limit(oneTimeReadCount);
+  static MapQuery latestProblem() => ColRefCore.problems().orderBy('createdAt',descending: true).limit(1);
 }

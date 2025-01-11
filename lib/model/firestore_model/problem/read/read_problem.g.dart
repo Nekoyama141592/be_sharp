@@ -8,6 +8,7 @@ part of 'read_problem.dart';
 
 _$ReadProblemImpl _$$ReadProblemImplFromJson(Map<String, dynamic> json) =>
     _$ReadProblemImpl(
+      createdAt: json['createdAt'],
       question: json['question'] as String,
       problemId: json['problemId'] as String,
       timeLimitSeconds: (json['timeLimitSeconds'] as num).toInt(),
@@ -18,6 +19,7 @@ _$ReadProblemImpl _$$ReadProblemImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ReadProblemImplToJson(_$ReadProblemImpl instance) =>
     <String, dynamic>{
+      'createdAt': instance.createdAt,
       'question': instance.question,
       'problemId': instance.problemId,
       'timeLimitSeconds': instance.timeLimitSeconds,

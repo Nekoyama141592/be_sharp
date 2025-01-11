@@ -8,8 +8,8 @@ part of 'write_problem.dart';
 
 _$WriteProblemImpl _$$WriteProblemImplFromJson(Map<String, dynamic> json) =>
     _$WriteProblemImpl(
-      question: json['question'] as String,
       createdAt: json['createdAt'],
+      question: json['question'] as String,
       problemId: json['problemId'] as String,
       timeLimitSeconds: (json['timeLimitSeconds'] as num?)?.toInt() ?? 120,
       answers: (json['answers'] as List<dynamic>?)
@@ -21,8 +21,8 @@ _$WriteProblemImpl _$$WriteProblemImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$WriteProblemImplToJson(_$WriteProblemImpl instance) =>
     <String, dynamic>{
-      'question': instance.question,
       'createdAt': instance.createdAt,
+      'question': instance.question,
       'problemId': instance.problemId,
       'timeLimitSeconds': instance.timeLimitSeconds,
       'answers': instance.answers,

@@ -20,6 +20,7 @@ ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReadProblem {
+  dynamic get createdAt => throw _privateConstructorUsedError;
   String get question => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
   int get timeLimitSeconds => throw _privateConstructorUsedError;
@@ -39,7 +40,8 @@ abstract class $ReadProblemCopyWith<$Res> {
       _$ReadProblemCopyWithImpl<$Res, ReadProblem>;
   @useResult
   $Res call(
-      {String question,
+      {dynamic createdAt,
+      String question,
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
@@ -59,6 +61,7 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? createdAt = freezed,
     Object? question = null,
     Object? problemId = null,
     Object? timeLimitSeconds = null,
@@ -66,6 +69,10 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -99,7 +106,8 @@ abstract class _$$ReadProblemImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String question,
+      {dynamic createdAt,
+      String question,
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
@@ -117,6 +125,7 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? createdAt = freezed,
     Object? question = null,
     Object? problemId = null,
     Object? timeLimitSeconds = null,
@@ -124,6 +133,10 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(_$ReadProblemImpl(
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -152,7 +165,8 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ReadProblemImpl extends _ReadProblem {
   const _$ReadProblemImpl(
-      {required this.question,
+      {required this.createdAt,
+      required this.question,
       required this.problemId,
       required this.timeLimitSeconds,
       required final List<String> answers,
@@ -163,6 +177,8 @@ class _$ReadProblemImpl extends _ReadProblem {
   factory _$ReadProblemImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReadProblemImplFromJson(json);
 
+  @override
+  final dynamic createdAt;
   @override
   final String question;
   @override
@@ -182,7 +198,7 @@ class _$ReadProblemImpl extends _ReadProblem {
 
   @override
   String toString() {
-    return 'ReadProblem(question: $question, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
+    return 'ReadProblem(createdAt: $createdAt, question: $question, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
   }
 
   @override
@@ -190,6 +206,7 @@ class _$ReadProblemImpl extends _ReadProblem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReadProblemImpl &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.problemId, problemId) ||
@@ -204,6 +221,7 @@ class _$ReadProblemImpl extends _ReadProblem {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(createdAt),
       question,
       problemId,
       timeLimitSeconds,
@@ -226,7 +244,8 @@ class _$ReadProblemImpl extends _ReadProblem {
 
 abstract class _ReadProblem extends ReadProblem {
   const factory _ReadProblem(
-      {required final String question,
+      {required final dynamic createdAt,
+      required final String question,
       required final String problemId,
       required final int timeLimitSeconds,
       required final List<String> answers,
@@ -236,6 +255,8 @@ abstract class _ReadProblem extends ReadProblem {
   factory _ReadProblem.fromJson(Map<String, dynamic> json) =
       _$ReadProblemImpl.fromJson;
 
+  @override
+  dynamic get createdAt;
   @override
   String get question;
   @override
