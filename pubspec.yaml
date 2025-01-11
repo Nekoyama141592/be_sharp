@@ -37,6 +37,7 @@ dependencies:
   cloud_functions: ^5.1.0
   ulid: ^2.0.1
   hooks_riverpod: ^2.6.1
+  in_app_purchase: ^3.2.0
 
 dev_dependencies:
   flutter_test:
