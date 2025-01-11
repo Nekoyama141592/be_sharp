@@ -28,7 +28,7 @@ class _CreateUserAnswerState extends SimpleFormState<CreateUserAnswerPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                          '${state.question}\n${state.timeLimitDateText()}までに解け'),
+                          '${state.question}\n${state.timeLimitDateText()}までに解け\n制限時間は${state.timeLimitSeconds}秒!'),
                       titleWidget(notifier),
                       form(notifier),
                       positiveButton(notifier),

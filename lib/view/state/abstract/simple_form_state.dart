@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 abstract class SimpleFormState<T extends ConsumerStatefulWidget>
     extends ConsumerState<T> {
-  final _formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   // 全要素
   Widget buildWidget(SimpleFormInterface notifier) {
     return Column(
@@ -30,7 +30,7 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
 
   // 入力フォーム関数
   Widget form(SimpleFormInterface notifier) {
-    return Form(key: _formKey, child: textField(notifier));
+    return Form(key: formKey, child: textField(notifier));
   }
 
   // 文字の入力をする関数
@@ -49,8 +49,8 @@ abstract class SimpleFormState<T extends ConsumerStatefulWidget>
   Widget positiveButton(SimpleFormInterface notifier) {
     return RoundedButton(
         press: () {
-          if (_formKey.currentState!.validate()) {
-            _formKey.currentState!.save();
+          if (formKey.currentState!.validate()) {
+            formKey.currentState!.save();
           }
           notifier.onPositiveButtonPressed();
         },

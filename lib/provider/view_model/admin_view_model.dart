@@ -25,9 +25,11 @@ class AdminViewModel extends SimpleFormViewModel<String> {
   String get successMsg => '成功しました';
   @override
   String get failureMsg => '失敗しました';
+  int? timeLimitSecond;
+  String? answer;
   @override
   void onPositiveButtonPressed() async {
-    if (text.isEmpty) return;
+    if (text.isEmpty || timeLimitSecond == null) return;
     final repository = FirestoreRepository();
     final problemId = IDCore.ulid();
     final docRef = DocRefCore.problem(problemId);
@@ -36,10 +38,26 @@ class AdminViewModel extends SimpleFormViewModel<String> {
             question: text,
             createdAt: now,
             problemId: problemId,
+            timeLimitSeconds: timeLimitSecond!,
             updatedAt: now)
         .toJson();
     final result = await repository.createDoc(docRef, json);
     showResult(result);
+    await Future.delayed(Duration(seconds: timeLimitSecond!));
+    final updateResult = await repository.updateDoc(docRef, {
+      'answers': <String>[answer!]
+    });
+    showResult(updateResult);
+  }
+
+  void setAnswer(String? value) {
+    answer = value;
+  }
+  void setTimeLimit(String? value) {
+    if (value == null) return;
+    final intValue = int.tryParse(value);
+    if (intValue == null) return;
+    timeLimitSecond = intValue;
   }
 }
 
