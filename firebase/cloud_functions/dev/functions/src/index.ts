@@ -5,3 +5,4 @@ export { deleteObject } from './handlers/deleteObject';
 export { putObject } from './handlers/putObject';
 export { getObject } from './handlers/getObject';
 export { editUserInfo } from './handlers/editUserInfo';
+export { onProblemCreate } from './handlers/onProblemCreate';
