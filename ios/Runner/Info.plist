@@ -32,6 +32,22 @@
 				<string>com.googleusercontent.apps.149643482533-qm3fqdv6np15e9oa7p962409bqip0r38</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1041614913419-olm58si3ao7cr36uqdhkfd7n2k7ndq7s</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.676895541932-9nv3f1lv3aph830p6ceaj3sbmu60ak9d</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
