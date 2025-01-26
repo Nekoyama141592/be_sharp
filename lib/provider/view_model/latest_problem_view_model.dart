@@ -9,18 +9,21 @@ import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
 
-class LatestProblemViewModel extends AutoDisposeAsyncNotifier<LatestProblemState> {
+class LatestProblemViewModel
+    extends AutoDisposeAsyncNotifier<LatestProblemState> {
   @override
   FutureOr<LatestProblemState> build() async {
     return _fetchData();
   }
+
   Future<LatestProblemState> _fetchData() async {
     final problem = await _fetchLatestProblem();
     final user = ref.read(userProvider);
     if (user == null || problem == null) {
       return LatestProblemState(problem: problem);
     }
-    final userAnswer = await _fetchLatestUserAnswer(user.uid,problem.problemId);
+    final userAnswer =
+        await _fetchLatestUserAnswer(user.uid, problem.problemId);
     return LatestProblemState(problem: problem, userAnswer: userAnswer);
   }
 
@@ -32,8 +35,9 @@ class LatestProblemViewModel extends AutoDisposeAsyncNotifier<LatestProblemState
     return ReadProblem.fromJson(docs.first.data());
   }
 
-  Future<ReadUserAnswer?> _fetchLatestUserAnswer(String uid,String problemId) async {
-    final query = QueryCore.latestUserAnswer(uid,problemId);
+  Future<ReadUserAnswer?> _fetchLatestUserAnswer(
+      String uid, String problemId) async {
+    final query = QueryCore.latestUserAnswer(uid, problemId);
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
@@ -47,9 +51,9 @@ class LatestProblemViewModel extends AutoDisposeAsyncNotifier<LatestProblemState
     final path = CreateUserAnswerPage.generatePath(problemId);
     Get.toNamed(path);
   }
+
   void onCaptionButtonPressed() {}
 }
 
-final latestProblemProvider =
-    AsyncNotifierProvider.autoDispose<LatestProblemViewModel, LatestProblemState>(
-        () => LatestProblemViewModel());
+final latestProblemProvider = AsyncNotifierProvider.autoDispose<
+    LatestProblemViewModel, LatestProblemState>(() => LatestProblemViewModel());

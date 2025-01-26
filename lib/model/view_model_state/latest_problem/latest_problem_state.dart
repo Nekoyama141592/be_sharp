@@ -9,7 +9,7 @@ part 'latest_problem_state.g.dart';
 abstract class LatestProblemState implements _$LatestProblemState {
   const LatestProblemState._();
   const factory LatestProblemState(
-      {ReadProblem? problem,ReadUserAnswer? userAnswer}) = _LatestProblemState;
+      {ReadProblem? problem, ReadUserAnswer? userAnswer}) = _LatestProblemState;
   factory LatestProblemState.fromJson(Map<String, dynamic> json) =>
       _$LatestProblemStateFromJson(json);
 }

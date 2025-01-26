@@ -31,22 +31,24 @@ class _AdminState extends SimpleFormState<AdminPage> {
           ),
         ));
   }
+
   Widget adminForm(AdminViewModel notifier) {
     return Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                textField(notifier),
-                answerField(notifier),
-                timeLimitField(notifier),
-              ],
-            ),
-          ));
+        key: formKey,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              textField(notifier),
+              answerField(notifier),
+              timeLimitField(notifier),
+            ],
+          ),
+        ));
   }
+
   // 正解の入力をする関数
   Widget answerField(AdminViewModel notifier) {
     return TextFieldContainer(
@@ -57,6 +59,7 @@ class _AdminState extends SimpleFormState<AdminPage> {
           validator: ValidatorUICore.text,
         ));
   }
+
   // 制限時間の入力をする関数
   Widget timeLimitField(AdminViewModel notifier) {
     return TextFieldContainer(
@@ -68,5 +71,4 @@ class _AdminState extends SimpleFormState<AdminPage> {
           keyboardType: TextInputType.number,
         ));
   }
-  
 }

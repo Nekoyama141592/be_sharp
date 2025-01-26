@@ -21,23 +21,32 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     if (latestProblem == null) return const HomeState();
     final problemId = latestProblem.problemId;
     final answers = latestProblem.answers;
-    final query = QueryCore.correctUserAnswers(problemId,answers);
+    final query = QueryCore.correctUserAnswers(problemId, answers);
     final qshot = await query.get();
-    final userAnswers = qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
+    final userAnswers =
+        qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
     final uids = userAnswers.map((e) => e.uid).toList();
     final usersQshot = await QueryCore.users(uids).get();
-    final users = usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
-    final nullableAnsweredUsers = await Future.wait(qshot.docs.map((qDoc) async {
+    final users =
+        usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
+    final nullableAnsweredUsers =
+        await Future.wait(qshot.docs.map((qDoc) async {
       final userAnswer = ReadUserAnswer.fromJson(qDoc.data());
       final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
       if (publicUser == null) return null;
       final userImage = await ref
           .read(prefsProvider)
           .getS3Image(publicUser.imageCacheKey(), publicUser.imageValue());
-      return AnsweredUser(publicUser: publicUser, userAnswerQDoc: qDoc, userImage: userImage,userAnswer: userAnswer);
+      return AnsweredUser(
+          publicUser: publicUser,
+          userAnswerQDoc: qDoc,
+          userImage: userImage,
+          userAnswer: userAnswer);
     }));
-    final answeredUsers = nullableAnsweredUsers.whereType<AnsweredUser>().toList();
-    return HomeState(latestProblem: latestProblem,answeredUsers: answeredUsers);
+    final answeredUsers =
+        nullableAnsweredUsers.whereType<AnsweredUser>().toList();
+    return HomeState(
+        latestProblem: latestProblem, answeredUsers: answeredUsers);
   }
 
   Future<ReadProblem?> _fetchLatestProblem() async {

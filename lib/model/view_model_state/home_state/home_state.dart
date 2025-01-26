@@ -9,7 +9,8 @@ part 'home_state.g.dart';
 abstract class HomeState implements _$HomeState {
   const HomeState._();
   const factory HomeState(
-      {ReadProblem? latestProblem,@Default([]) List<AnsweredUser> answeredUsers}) = _HomeState;
+      {ReadProblem? latestProblem,
+      @Default([]) List<AnsweredUser> answeredUsers}) = _HomeState;
   factory HomeState.fromJson(Map<String, dynamic> json) =>
       _$HomeStateFromJson(json);
 }

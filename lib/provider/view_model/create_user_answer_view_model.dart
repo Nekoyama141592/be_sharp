@@ -50,7 +50,12 @@ class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
     ToastUICore.cupertinoAlertDialog(msg, () async {
       final repository = FirestoreRepository();
       final docRef = DocRefCore.userAnswer(uid, problemId);
-      final json = WriteUserAnswer(answer: text, createdAt: FieldValue.serverTimestamp(), problemId: problemId, uid: uid).toJson();
+      final json = WriteUserAnswer(
+              answer: text,
+              createdAt: FieldValue.serverTimestamp(),
+              problemId: problemId,
+              uid: uid)
+          .toJson();
       final result = await repository.createDoc(docRef, json);
       showResult(result);
     });

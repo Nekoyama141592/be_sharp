@@ -18,7 +18,10 @@ class HomeScreen extends ConsumerWidget {
           data: (state) {
             final problem = state.latestProblem;
             if (problem == null) {
-              return const Align(alignment: Alignment.center,child: Text('問題が存在しません'),);
+              return const Align(
+                alignment: Alignment.center,
+                child: Text('問題が存在しません'),
+              );
             }
             return ListView(
                 children: state.answeredUsers.map((e) {

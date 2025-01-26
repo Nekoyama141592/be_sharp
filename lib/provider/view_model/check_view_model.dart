@@ -70,7 +70,6 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
       return result;
     });
   }
-  
 }
 
 final checkProvider =

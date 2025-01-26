@@ -7,8 +7,8 @@ part 'write_problem.g.dart';
 abstract class WriteProblem implements _$WriteProblem {
   const WriteProblem._();
   const factory WriteProblem(
-      { required dynamic createdAt,
-        required String question,
+      {required dynamic createdAt,
+      required String question,
       required String problemId,
       @Default(120) int timeLimitSeconds,
       @Default([]) List<String> answers,

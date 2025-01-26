@@ -10,16 +10,28 @@ class LatestProblemScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(latestProblemProvider);
-    LatestProblemViewModel notifier() => ref.read(latestProblemProvider.notifier);
+    LatestProblemViewModel notifier() =>
+        ref.read(latestProblemProvider.notifier);
     return AsyncScreen(
         asyncValue: asyncValue,
         data: (state) {
           final problem = state.problem;
           final userAnswer = state.userAnswer;
           if (problem == null) {
-            return const BasicPage(child: Align(alignment: Alignment.center,child: Text('問題が存在しません'),));
+            return const BasicPage(
+                child: Align(
+              alignment: Alignment.center,
+              child: Text('問題が存在しません'),
+            ));
           } else if (userAnswer == null) {
-            return BasicPage(child: Align(alignment: Alignment.center,child: RoundedButton(text: '最新の問題に回答',press: notifier().onToAnswerPageButtonPressed,),));
+            return BasicPage(
+                child: Align(
+              alignment: Alignment.center,
+              child: RoundedButton(
+                text: '最新の問題に回答',
+                press: notifier().onToAnswerPageButtonPressed,
+              ),
+            ));
           } else {
             return BasicPage(child: Builder(builder: (context) {
               return Center(
@@ -30,7 +42,10 @@ class LatestProblemScreen extends ConsumerWidget {
                     Text(problem.question),
                     const Text('自分の回答'),
                     Text(userAnswer.answer),
-                    RoundedButton(text: 'キャプションを追加',press: notifier().onCaptionButtonPressed,)
+                    RoundedButton(
+                      text: 'キャプションを追加',
+                      press: notifier().onCaptionButtonPressed,
+                    )
                   ],
                 ),
               );

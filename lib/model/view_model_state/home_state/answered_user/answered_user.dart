@@ -12,12 +12,10 @@ part 'answered_user.g.dart';
 abstract class AnsweredUser implements _$AnsweredUser {
   const AnsweredUser._();
   const factory AnsweredUser(
-      {
-        required ReadPublicUser publicUser,
-        required dynamic userAnswerQDoc,
-        required ReadUserAnswer userAnswer,
-        required dynamic userImage
-      }) = _AnsweredUser;
+      {required ReadPublicUser publicUser,
+      required dynamic userAnswerQDoc,
+      required ReadUserAnswer userAnswer,
+      required dynamic userImage}) = _AnsweredUser;
   factory AnsweredUser.fromJson(Map<String, dynamic> json) =>
       _$AnsweredUserFromJson(json);
   QDoc typedUserAnswerDoc() => userAnswerQDoc as QDoc;

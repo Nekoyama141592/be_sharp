@@ -7,8 +7,18 @@ class QueryCore {
   static const int whereInLimit = 10;
   // 基本
   static FirebaseFirestore get _instance => FirebaseFirestore.instance;
-  static MapQuery users(List<String> uids) => ColRefCore.users().where('uid',whereIn: uids);
-  static MapQuery latestProblem() => ColRefCore.problems().orderBy('createdAt',descending: true).limit(1);
-  static MapQuery latestUserAnswer(String uid,String problemId) => ColRefCore.userAnswers(uid).where('problemId',isEqualTo: problemId).limit(1);
-  static MapQuery correctUserAnswers(String problemId,List<String> answers) => _instance.collectionGroup('userAnswers').where('problemId',isEqualTo: problemId).where('answer',whereIn: answers).limit(whereInLimit);
+  static MapQuery users(List<String> uids) =>
+      ColRefCore.users().where('uid', whereIn: uids);
+  static MapQuery latestProblem() =>
+      ColRefCore.problems().orderBy('createdAt', descending: true).limit(1);
+  static MapQuery latestUserAnswer(String uid, String problemId) =>
+      ColRefCore.userAnswers(uid)
+          .where('problemId', isEqualTo: problemId)
+          .limit(1);
+  static MapQuery correctUserAnswers(String problemId, List<String> answers) =>
+      _instance
+          .collectionGroup('userAnswers')
+          .where('problemId', isEqualTo: problemId)
+          .where('answer', whereIn: answers)
+          .limit(whereInLimit);
 }

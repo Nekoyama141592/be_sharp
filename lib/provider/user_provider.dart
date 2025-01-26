@@ -23,8 +23,7 @@ class UserProvider extends Notifier<User?> {
       state = event;
       if (isLoginEvent) {
         await ref.read(checkProvider.notifier).refetchUser(event);
-      } else if (isLogoutEvent) {
-      }
+      } else if (isLogoutEvent) {}
     });
   }
 

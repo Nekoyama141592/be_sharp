@@ -29,7 +29,7 @@ class RoundedButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(vertical),
         child: ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(
+              backgroundColor: WidgetStateProperty.all<Color>(
                   buttonColor ?? Theme.of(context).primaryColor),
             ),
             onPressed: press,

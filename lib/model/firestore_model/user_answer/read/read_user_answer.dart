@@ -19,7 +19,8 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
   Timestamp _typedCreateAt() => createdAt as Timestamp;
   String getDifference(ReadProblem problem) {
     final problemCreatedAt = problem.typedCreatedAt();
-    final difference = _typedCreateAt().toDate().difference(problemCreatedAt.toDate());
+    final difference =
+        _typedCreateAt().toDate().difference(problemCreatedAt.toDate());
     return difference.toString();
   }
 }

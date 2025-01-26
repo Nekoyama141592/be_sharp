@@ -18,31 +18,35 @@ class MyHomeViewModel extends Notifier<String> {
     _init();
     return '';
   }
+
   FirestoreRepository get repository => FirestoreRepository();
   void _init() {
     final uid = ref.read(userProvider)?.uid;
-      if (uid == null) return;
-      final query = QueryCore.latestProblem();
-      subscriptionStream = query.snapshots().listen((event) async {
-        final docs = event.docs;
-        if (docs.isEmpty) return;
-        final problemDoc = docs.first;
-        await _onFetchProblemSuccess(uid,problemDoc);
-      });
+    if (uid == null) return;
+    final query = QueryCore.latestProblem();
+    subscriptionStream = query.snapshots().listen((event) async {
+      final docs = event.docs;
+      if (docs.isEmpty) return;
+      final problemDoc = docs.first;
+      await _onFetchProblemSuccess(uid, problemDoc);
+    });
   }
+
   Future<void> _onFetchProblemSuccess(String uid, QDoc problemDoc) async {
     final problem = ReadProblem.fromJson(problemDoc.data());
     if (!problem.isInTimeLimit()) return;
     final problemId = problem.problemId;
     final docRef = DocRefCore.userAnswer(uid, problemId);
     final result = await repository.getDoc(docRef);
-    result.when(success: (doc) {
-      final isNoAnswer = !doc.exists;
-      if (isNoAnswer) {
-        final path = CreateUserAnswerPage.generatePath(problemId);
-        Get.toNamed(path);
-      }
-    }, failure: () {});
+    result.when(
+        success: (doc) {
+          final isNoAnswer = !doc.exists;
+          if (isNoAnswer) {
+            final path = CreateUserAnswerPage.generatePath(problemId);
+            Get.toNamed(path);
+          }
+        },
+        failure: () {});
   }
 }
 
