@@ -7,4 +7,5 @@ class QueryCore {
   // 基本
   static MapQuery users() => ColRefCore.users().limit(oneTimeReadCount);
   static MapQuery latestProblem() => ColRefCore.problems().orderBy('createdAt',descending: true).limit(1);
+  static MapQuery latestUserAnswer(String uid,String problemId) => ColRefCore.userAnswers(uid).where('problemId',isEqualTo: problemId).limit(1);
 }

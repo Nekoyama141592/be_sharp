@@ -15,10 +15,26 @@ class LatestProblemScreen extends ConsumerWidget {
         asyncValue: asyncValue,
         data: (state) {
           final problem = state.problem;
+          final userAnswer = state.userAnswer;
           if (problem == null) {
+            return const BasicPage(child: Align(alignment: Alignment.center,child: Text('問題が存在しません'),));
+          } else if (userAnswer == null) {
             return BasicPage(child: Align(alignment: Alignment.center,child: RoundedButton(text: '最新の問題に回答',press: () {},),));
           } else {
-            return BasicPage(child: Container());
+            return BasicPage(child: Builder(builder: (context) {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Text('問題'),
+                    Text(problem.question),
+                    const Text('自分の回答'),
+                    Text(userAnswer.answer),
+                    RoundedButton(text: 'キャプションを追加',press: notifier().onCaptionButtonPressed,)
+                  ],
+                ),
+              );
+            }));
           }
         });
   }

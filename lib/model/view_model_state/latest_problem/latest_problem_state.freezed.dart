@@ -21,6 +21,7 @@ LatestProblemState _$LatestProblemStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LatestProblemState {
   ReadProblem? get problem => throw _privateConstructorUsedError;
+  ReadUserAnswer? get userAnswer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,9 +35,10 @@ abstract class $LatestProblemStateCopyWith<$Res> {
           LatestProblemState value, $Res Function(LatestProblemState) then) =
       _$LatestProblemStateCopyWithImpl<$Res, LatestProblemState>;
   @useResult
-  $Res call({ReadProblem? problem});
+  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
 
   $ReadProblemCopyWith<$Res>? get problem;
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
 }
 
 /// @nodoc
@@ -53,12 +55,17 @@ class _$LatestProblemStateCopyWithImpl<$Res, $Val extends LatestProblemState>
   @override
   $Res call({
     Object? problem = freezed,
+    Object? userAnswer = freezed,
   }) {
     return _then(_value.copyWith(
       problem: freezed == problem
           ? _value.problem
           : problem // ignore: cast_nullable_to_non_nullable
               as ReadProblem?,
+      userAnswer: freezed == userAnswer
+          ? _value.userAnswer
+          : userAnswer // ignore: cast_nullable_to_non_nullable
+              as ReadUserAnswer?,
     ) as $Val);
   }
 
@@ -73,6 +80,18 @@ class _$LatestProblemStateCopyWithImpl<$Res, $Val extends LatestProblemState>
       return _then(_value.copyWith(problem: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer {
+    if (_value.userAnswer == null) {
+      return null;
+    }
+
+    return $ReadUserAnswerCopyWith<$Res>(_value.userAnswer!, (value) {
+      return _then(_value.copyWith(userAnswer: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -83,10 +102,12 @@ abstract class _$$LatestProblemStateImplCopyWith<$Res>
       __$$LatestProblemStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ReadProblem? problem});
+  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
 
   @override
   $ReadProblemCopyWith<$Res>? get problem;
+  @override
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
 }
 
 /// @nodoc
@@ -101,12 +122,17 @@ class __$$LatestProblemStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? problem = freezed,
+    Object? userAnswer = freezed,
   }) {
     return _then(_$LatestProblemStateImpl(
       problem: freezed == problem
           ? _value.problem
           : problem // ignore: cast_nullable_to_non_nullable
               as ReadProblem?,
+      userAnswer: freezed == userAnswer
+          ? _value.userAnswer
+          : userAnswer // ignore: cast_nullable_to_non_nullable
+              as ReadUserAnswer?,
     ));
   }
 }
@@ -114,17 +140,19 @@ class __$$LatestProblemStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LatestProblemStateImpl extends _LatestProblemState {
-  const _$LatestProblemStateImpl({this.problem}) : super._();
+  const _$LatestProblemStateImpl({this.problem, this.userAnswer}) : super._();
 
   factory _$LatestProblemStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$LatestProblemStateImplFromJson(json);
 
   @override
   final ReadProblem? problem;
+  @override
+  final ReadUserAnswer? userAnswer;
 
   @override
   String toString() {
-    return 'LatestProblemState(problem: $problem)';
+    return 'LatestProblemState(problem: $problem, userAnswer: $userAnswer)';
   }
 
   @override
@@ -132,12 +160,14 @@ class _$LatestProblemStateImpl extends _LatestProblemState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LatestProblemStateImpl &&
-            (identical(other.problem, problem) || other.problem == problem));
+            (identical(other.problem, problem) || other.problem == problem) &&
+            (identical(other.userAnswer, userAnswer) ||
+                other.userAnswer == userAnswer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, problem);
+  int get hashCode => Object.hash(runtimeType, problem, userAnswer);
 
   @JsonKey(ignore: true)
   @override
@@ -155,8 +185,9 @@ class _$LatestProblemStateImpl extends _LatestProblemState {
 }
 
 abstract class _LatestProblemState extends LatestProblemState {
-  const factory _LatestProblemState({final ReadProblem? problem}) =
-      _$LatestProblemStateImpl;
+  const factory _LatestProblemState(
+      {final ReadProblem? problem,
+      final ReadUserAnswer? userAnswer}) = _$LatestProblemStateImpl;
   const _LatestProblemState._() : super._();
 
   factory _LatestProblemState.fromJson(Map<String, dynamic> json) =
@@ -164,6 +195,8 @@ abstract class _LatestProblemState extends LatestProblemState {
 
   @override
   ReadProblem? get problem;
+  @override
+  ReadUserAnswer? get userAnswer;
   @override
   @JsonKey(ignore: true)
   _$$LatestProblemStateImplCopyWith<_$LatestProblemStateImpl> get copyWith =>

@@ -12,10 +12,14 @@ _$LatestProblemStateImpl _$$LatestProblemStateImplFromJson(
       problem: json['problem'] == null
           ? null
           : ReadProblem.fromJson(json['problem'] as Map<String, dynamic>),
+      userAnswer: json['userAnswer'] == null
+          ? null
+          : ReadUserAnswer.fromJson(json['userAnswer'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LatestProblemStateImplToJson(
         _$LatestProblemStateImpl instance) =>
     <String, dynamic>{
       'problem': instance.problem,
+      'userAnswer': instance.userAnswer,
     };
