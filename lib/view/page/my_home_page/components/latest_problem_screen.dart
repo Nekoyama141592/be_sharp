@@ -19,7 +19,7 @@ class LatestProblemScreen extends ConsumerWidget {
           if (problem == null) {
             return const BasicPage(child: Align(alignment: Alignment.center,child: Text('問題が存在しません'),));
           } else if (userAnswer == null) {
-            return BasicPage(child: Align(alignment: Alignment.center,child: RoundedButton(text: '最新の問題に回答',press: () {},),));
+            return BasicPage(child: Align(alignment: Alignment.center,child: RoundedButton(text: '最新の問題に回答',press: notifier().onToAnswerPageButtonPressed,),));
           } else {
             return BasicPage(child: Builder(builder: (context) {
               return Center(

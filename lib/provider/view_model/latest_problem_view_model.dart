@@ -5,9 +5,11 @@ import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/view_model_state/latest_problem/latest_problem_state.dart';
 import 'package:be_sharp/provider/user_provider.dart';
+import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/route_manager.dart';
 
-class LatestProblemViewModel extends AsyncNotifier<LatestProblemState> {
+class LatestProblemViewModel extends AutoDisposeAsyncNotifier<LatestProblemState> {
   @override
   FutureOr<LatestProblemState> build() async {
     return _fetchData();
@@ -37,9 +39,17 @@ class LatestProblemViewModel extends AsyncNotifier<LatestProblemState> {
     if (docs.isEmpty) return null;
     return ReadUserAnswer.fromJson(docs.first.data());
   }
+
+  void onToAnswerPageButtonPressed() {
+    final problem = state.value?.problem;
+    if (problem == null) return;
+    final problemId = problem.problemId;
+    final path = CreateUserAnswerPage.generatePath(problemId);
+    Get.toNamed(path);
+  }
   void onCaptionButtonPressed() {}
 }
 
 final latestProblemProvider =
-    AsyncNotifierProvider<LatestProblemViewModel, LatestProblemState>(
+    AsyncNotifierProvider.autoDispose<LatestProblemViewModel, LatestProblemState>(
         () => LatestProblemViewModel());
