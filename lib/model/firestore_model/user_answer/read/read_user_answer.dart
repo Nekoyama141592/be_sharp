@@ -1,3 +1,5 @@
+import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'read_user_answer.freezed.dart';
@@ -14,4 +16,10 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
   }) = _ReadUserAnswer;
   factory ReadUserAnswer.fromJson(Map<String, dynamic> json) =>
       _$ReadUserAnswerFromJson(json);
+  Timestamp _typedCreateAt() => createdAt as Timestamp;
+  String getDifference(ReadProblem problem) {
+    final problemCreatedAt = problem.typedCreatedAt();
+    final difference = _typedCreateAt().toDate().difference(problemCreatedAt.toDate());
+    return difference.toString();
+  }
 }

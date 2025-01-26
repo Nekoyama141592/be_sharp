@@ -15,13 +15,17 @@ class HomeScreen extends ConsumerWidget {
       drawer: const OriginalDrawer(),
       body: AsyncScreen(
           asyncValue: asyncValue,
-          data: (qDocInfoList) {
+          data: (state) {
+            final problem = state.latestProblem;
+            if (problem == null) {
+              return const Align(alignment: Alignment.center,child: Text('問題が存在しません'),);
+            }
             return ListView(
-                children: qDocInfoList.map((e) {
+                children: state.answeredUsers.map((e) {
               final user = e.publicUser;
               return ListTile(
                 title: Text(user.nickNameValue()),
-                subtitle: Text(user.bioValue()),
+                subtitle: Text('回答時間: ${e.userAnswer.getDifference(problem)}'),
                 leading: CircleImage(uint8list: e.userImage),
               );
             }).toList());
