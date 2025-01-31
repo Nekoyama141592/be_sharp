@@ -24,10 +24,7 @@ class BasicPage extends StatelessWidget {
       backgroundColor: scaffoldBackgroundColor,
       appBar: showAppBar ? OriginalAppBar(text: appBarText) : null,
       floatingActionButton: floatingActionButton,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: child,
-      ),
+      body: child,
       drawer: drawer,
       bottomNavigationBar: bottomNavigationBar,
     ));
