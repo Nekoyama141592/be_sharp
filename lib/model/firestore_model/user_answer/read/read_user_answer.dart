@@ -17,10 +17,10 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
   factory ReadUserAnswer.fromJson(Map<String, dynamic> json) =>
       _$ReadUserAnswerFromJson(json);
   Timestamp _typedCreateAt() => createdAt as Timestamp;
-  String getDifference(ReadProblem problem) {
+  Duration getDifference(ReadProblem problem) {
     final problemCreatedAt = problem.typedCreatedAt();
     final difference =
         _typedCreateAt().toDate().difference(problemCreatedAt.toDate());
-    return difference.toString();
+    return difference;
   }
 }

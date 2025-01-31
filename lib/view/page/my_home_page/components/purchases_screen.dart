@@ -53,7 +53,8 @@ class PurchasesScreen extends ConsumerWidget {
                                   color: Colors.blue.shade100,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                child: Icon(Icons.subscriptions, size: 32, color: Colors.blue.shade700),
+                                child: Icon(Icons.subscriptions,
+                                    size: 32, color: Colors.blue.shade700),
                               ),
                               const SizedBox(width: 16),
                               Text(
@@ -93,7 +94,8 @@ class PurchasesScreen extends ConsumerWidget {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue.shade700,
                                 foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(vertical: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 16),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),

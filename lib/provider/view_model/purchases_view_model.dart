@@ -13,8 +13,12 @@ class PurchasesViewModel extends AsyncNotifier<List<ProductDetails>> {
     final identifiers = PurchasesCore.productIds();
     final results = await inAppPurchase.queryProductDetails(identifiers);
     final productDetails = results.productDetails;
-    return productDetails.isEmpty ? PurchasesCore.mockProducts() : productDetails;
+    return productDetails.isEmpty
+        ? PurchasesCore.mockProducts()
+        : productDetails;
   }
 }
-final purchasesProvider = AsyncNotifierProvider<
-    PurchasesViewModel, List<ProductDetails>>(() => PurchasesViewModel());
+
+final purchasesProvider =
+    AsyncNotifierProvider<PurchasesViewModel, List<ProductDetails>>(
+        () => PurchasesViewModel());

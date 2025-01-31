@@ -8,15 +8,16 @@ class PurchasesCore {
     final identifiers = <String>[_itemId()];
     return identifiers.toSet();
   }
+
   static List<ProductDetails> mockProducts() {
     final item = ProductDetails(
-      id: _itemId(),
-      title: "月額プラン",
-      description: "一月使えます",
-      price: "¥500",
-      rawPrice: 500,
-      currencyCode: "JPY",
-      currencySymbol: "¥");
+        id: _itemId(),
+        title: "月額プラン",
+        description: "一月使えます",
+        price: "¥500",
+        rawPrice: 500,
+        currencyCode: "JPY",
+        currencySymbol: "¥");
     return [item];
   }
 }

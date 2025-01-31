@@ -21,11 +21,17 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     if (latestProblem == null) return const HomeState();
     final problemId = latestProblem.problemId;
     final answers = latestProblem.answers;
+    if (answers.isEmpty) {
+      return HomeState(latestProblem: latestProblem);
+    }
     final query = QueryCore.correctUserAnswers(problemId, answers);
     final qshot = await query.get();
     final userAnswers =
         qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
     final uids = userAnswers.map((e) => e.uid).toList();
+    if (uids.isEmpty) {
+      return HomeState(latestProblem: latestProblem);
+    }
     final usersQshot = await QueryCore.users(uids).get();
     final users =
         usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
