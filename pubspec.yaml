@@ -38,6 +38,7 @@ dependencies:
   ulid: ^2.0.1
   hooks_riverpod: ^2.6.1
   in_app_purchase: ^3.2.0
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:

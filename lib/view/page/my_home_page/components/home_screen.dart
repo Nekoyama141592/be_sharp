@@ -1,3 +1,4 @@
+import 'package:be_sharp/constants/colors.dart';
 import 'package:be_sharp/provider/view_model/home_view_model.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/circle_image/circle_image.dart';
@@ -11,7 +12,8 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(homeProvider);
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: scaffoldBackgroundColor,
+      appBar: AppBar(backgroundColor: scaffoldBackgroundColor,),
       drawer: const OriginalDrawer(),
       body: AsyncScreen(
           asyncValue: asyncValue,

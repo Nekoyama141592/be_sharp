@@ -1,3 +1,4 @@
+import 'package:be_sharp/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class BasicPage extends StatelessWidget {
@@ -17,6 +18,7 @@ class BasicPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          backgroundColor: scaffoldBackgroundColor,
       appBar: appBarText == null
           ? null
           : AppBar(
