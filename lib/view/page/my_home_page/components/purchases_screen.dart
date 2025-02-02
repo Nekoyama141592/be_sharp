@@ -98,30 +98,12 @@ class PurchasesScreen extends ConsumerWidget {
                             ),
                           ),
                           const SizedBox(height: 24),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                notifier().onPurchaseButtonPressed(product);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue.shade700,
-                                foregroundColor: Colors.white,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
-                              child: Text(
-                                '購入する',
-                                style: GoogleFonts.notoSans(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
+                          PurchaseButton(
+                            isPurchased: state.isPurchased(product.id),
+                            onPressed: () {
+                              notifier().onPurchaseButtonPressed(product);
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -132,6 +114,36 @@ class PurchasesScreen extends ConsumerWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class PurchaseButton extends StatelessWidget {
+  const PurchaseButton({super.key, required this.isPurchased, this.onPressed});
+  final bool isPurchased;
+  final void Function()? onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: isPurchased ? null : onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: isPurchased ? Colors.grey : Colors.blue.shade700,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        child: Text(
+          isPurchased ? '購入済みです' : '購入する',
+          style: GoogleFonts.notoSans(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 }

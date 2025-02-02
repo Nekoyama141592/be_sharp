@@ -19,4 +19,9 @@ class PurchasesState {
       products: products ?? this.products,
     );
   }
+
+  bool isPurchased(String productID) {
+    return verifiedPurchases.any(
+        (e) => e.isValid() && productID == e.typedPurchaseDetails().productID);
+  }
 }

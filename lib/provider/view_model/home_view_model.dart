@@ -65,5 +65,4 @@ class HomeViewModel extends AsyncNotifier<HomeState> {
 }
 
 final homeProvider =
-    AsyncNotifierProvider<HomeViewModel, HomeState>(
-        () => HomeViewModel());
+    AsyncNotifierProvider<HomeViewModel, HomeState>(() => HomeViewModel());

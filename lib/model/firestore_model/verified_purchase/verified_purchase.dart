@@ -32,11 +32,13 @@ abstract class VerifiedPurchase implements _$VerifiedPurchase {
         : _iosReceipt.purchase_details;
     return PurchasesCore.purchaseDetailsFromJson(data);
   }
+
   String get _expiryTimeMillis {
     return _isAndroidReceipt()
         ? _androidReceipt.expiryTimeMillis
         : _iosReceipt.expires_date_ms;
   }
+
   bool isValid() {
     final intExpiryMills = int.tryParse(_expiryTimeMillis);
     if (intExpiryMills == null) {

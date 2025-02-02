@@ -28,15 +28,18 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     final res = await inAppPurchase.queryProductDetails(identifiers);
     final products = PurchasesCore.getProducts(res);
     final verifiedPurchases = await _fetchPurchases();
-    return PurchasesState(products: products,verifiedPurchases: verifiedPurchases);
+    return PurchasesState(
+        products: products, verifiedPurchases: verifiedPurchases);
   }
+
   Future<List<VerifiedPurchase>> _fetchPurchases() async {
     final uid = ref.read(userProvider)?.uid;
     if (uid == null) return [];
     final colRef = ColRefCore.verifiedPurchases(uid);
     final qshot = await colRef.get();
     final docs = qshot.docs;
-    final verifiedPurchases = docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
+    final verifiedPurchases =
+        docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
     final results = verifiedPurchases.where((e) => e.isValid()).toList();
     return results;
   }

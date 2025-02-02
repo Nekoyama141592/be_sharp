@@ -9,8 +9,7 @@ import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
 
-class LatestProblemViewModel
-    extends AsyncNotifier<LatestProblemState> {
+class LatestProblemViewModel extends AsyncNotifier<LatestProblemState> {
   @override
   FutureOr<LatestProblemState> build() async {
     return _fetchData();
@@ -55,5 +54,6 @@ class LatestProblemViewModel
   void onCaptionButtonPressed() {}
 }
 
-final latestProblemProvider = AsyncNotifierProvider<
-    LatestProblemViewModel, LatestProblemState>(() => LatestProblemViewModel());
+final latestProblemProvider =
+    AsyncNotifierProvider<LatestProblemViewModel, LatestProblemState>(
+        () => LatestProblemViewModel());
