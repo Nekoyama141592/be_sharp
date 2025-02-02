@@ -2,9 +2,11 @@ import 'dart:typed_data';
 
 import 'package:be_sharp/core/aws_s3_core.dart';
 import 'package:be_sharp/core/file_core.dart';
+import 'package:be_sharp/extensions/prefs_extension.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
+import 'package:be_sharp/provider/cache_provider.dart';
 import 'package:be_sharp/provider/view_model/edit_user_view_model.dart';
 import 'package:be_sharp/repository/aws_s3_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
@@ -15,7 +17,8 @@ import 'package:be_sharp/view/common/form/original_form.dart';
 import 'package:be_sharp/view/common/rounded_button.dart';
 import 'package:be_sharp/view/state/abstract/processing_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 // ユーザー情報を編集するページ
@@ -38,7 +41,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
   String? stringBirthDate;
   Uint8List? uint8list;
   bool isPicked = false;
-
   @override
   Widget build(BuildContext context) {
     final asyncValue = ref.watch(editUserProvider);
@@ -69,7 +71,13 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         _updateUserInfoForm(user),
-                        _image(),
+                        EditImage(
+                            onTap: _onImagePickButtonPressed,
+                            uint8list: uint8list,
+                            user: user),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
                         _positiveButton(user),
                       ],
                     ),
@@ -168,30 +176,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
     ];
   }
 
-  Widget _image() {
-    return uint8list == null
-        ? Row(
-            children: [
-              InkWell(
-                onTap: _onImagePickButtonPressed,
-                child: const Icon(
-                  Icons.image,
-                  size: 100.0,
-                ),
-              ),
-              const Text("画像を選択")
-            ],
-          )
-        : InkWell(
-            onTap: _onImagePickButtonPressed,
-            child: SizedBox(
-              width: 100.0,
-              height: 100.0,
-              child: Image.memory(uint8list!),
-            ),
-          );
-  }
-
   void _onUpdateButtonPressed(ReadPublicUser publicUser) async {
     final isValid = _formKey.currentState!.validate();
     if (!isValid) return;
@@ -248,5 +232,63 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
         stringBirthDate: stringBirthDate!,
         object: object);
     await notifier.updateUser(requst, uid);
+  }
+}
+
+class EditImage extends HookConsumerWidget {
+  const EditImage({
+    super.key,
+    this.onTap,
+    required this.uint8list,
+    required this.user,
+  });
+
+  final ReadPublicUser user;
+  final Uint8List? uint8list;
+  final void Function()? onTap;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final initialImage = useState<Uint8List?>(null);
+
+    useEffect(() {
+      _loadInitialImage(ref, initialImage);
+      return;
+    }, []);
+
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        width: 100.0,
+        height: 100.0,
+        child: _buildImageContent(initialImage.value),
+      ),
+    );
+  }
+
+  Future<void> _loadInitialImage(
+      WidgetRef ref, ValueNotifier<Uint8List?> initialImage) async {
+    final userImage = await ref
+        .read(prefsProvider)
+        .getS3Image(user.imageCacheKey(), user.imageValue());
+    initialImage.value = userImage;
+  }
+
+  Widget _buildImageContent(Uint8List? initialValue) {
+    if (uint8list != null) {
+      return Image.memory(uint8list!);
+    } else if (initialValue != null) {
+      return Image.memory(initialValue);
+    } else {
+      return const Row(
+        children: [
+          Icon(
+            Icons.image,
+            size: 100.0,
+          ),
+          Text("画像を選択"),
+        ],
+      );
+    }
   }
 }

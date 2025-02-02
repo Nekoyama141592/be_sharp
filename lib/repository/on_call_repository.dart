@@ -71,8 +71,7 @@ class OnCallRepository {
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyAndroidReceipt';
-      final request =
-          ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
+      final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _client.call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
@@ -85,8 +84,7 @@ class OnCallRepository {
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyIOSReceipt';
-      final request =
-          ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
+      final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _client.call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
