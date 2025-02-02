@@ -99,7 +99,7 @@ class LatestProblemScreen extends ConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: Card(
@@ -114,7 +114,7 @@ class LatestProblemScreen extends ConsumerWidget {
                       Text(
                         '問題',
                         style: GoogleFonts.notoSans(
-                          fontSize: 36,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.blue.shade700,
                         ),
@@ -123,7 +123,7 @@ class LatestProblemScreen extends ConsumerWidget {
                       Text(
                         problem.question,
                         style: GoogleFonts.notoSans(
-                          fontSize: 32,
+                          fontSize: 24,
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,
@@ -147,7 +147,7 @@ class LatestProblemScreen extends ConsumerWidget {
               label: Text(
                 'キャプションを追加',
                 style: GoogleFonts.notoSans(
-                  fontSize: 24,
+                  fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -185,7 +185,7 @@ class LatestProblemScreen extends ConsumerWidget {
               Text(
                 title,
                 style: GoogleFonts.notoSans(
-                  fontSize: 36,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color:
                       isCorrect ? Colors.green.shade700 : Colors.red.shade700,
@@ -195,7 +195,7 @@ class LatestProblemScreen extends ConsumerWidget {
               Text(
                 content,
                 style: GoogleFonts.notoSans(
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: FontWeight.w500,
                 ),
                 textAlign: TextAlign.center,
