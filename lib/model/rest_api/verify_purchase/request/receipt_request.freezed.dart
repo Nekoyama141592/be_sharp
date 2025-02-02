@@ -22,7 +22,6 @@ ReceiptRequest _$ReceiptRequestFromJson(Map<String, dynamic> json) {
 mixin _$ReceiptRequest {
   Map<String, dynamic> get purchaseDetails =>
       throw _privateConstructorUsedError;
-  String get os => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $ReceiptRequestCopyWith<$Res> {
           ReceiptRequest value, $Res Function(ReceiptRequest) then) =
       _$ReceiptRequestCopyWithImpl<$Res, ReceiptRequest>;
   @useResult
-  $Res call({Map<String, dynamic> purchaseDetails, String os});
+  $Res call({Map<String, dynamic> purchaseDetails});
 }
 
 /// @nodoc
@@ -53,17 +52,12 @@ class _$ReceiptRequestCopyWithImpl<$Res, $Val extends ReceiptRequest>
   @override
   $Res call({
     Object? purchaseDetails = null,
-    Object? os = null,
   }) {
     return _then(_value.copyWith(
       purchaseDetails: null == purchaseDetails
           ? _value.purchaseDetails
           : purchaseDetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      os: null == os
-          ? _value.os
-          : os // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -76,7 +70,7 @@ abstract class _$$ReceiptRequestImplCopyWith<$Res>
       __$$ReceiptRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<String, dynamic> purchaseDetails, String os});
+  $Res call({Map<String, dynamic> purchaseDetails});
 }
 
 /// @nodoc
@@ -91,17 +85,12 @@ class __$$ReceiptRequestImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? purchaseDetails = null,
-    Object? os = null,
   }) {
     return _then(_$ReceiptRequestImpl(
       purchaseDetails: null == purchaseDetails
           ? _value._purchaseDetails
           : purchaseDetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
-      os: null == os
-          ? _value.os
-          : os // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -110,7 +99,7 @@ class __$$ReceiptRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ReceiptRequestImpl extends _ReceiptRequest {
   const _$ReceiptRequestImpl(
-      {required final Map<String, dynamic> purchaseDetails, required this.os})
+      {required final Map<String, dynamic> purchaseDetails})
       : _purchaseDetails = purchaseDetails,
         super._();
 
@@ -126,11 +115,8 @@ class _$ReceiptRequestImpl extends _ReceiptRequest {
   }
 
   @override
-  final String os;
-
-  @override
   String toString() {
-    return 'ReceiptRequest(purchaseDetails: $purchaseDetails, os: $os)';
+    return 'ReceiptRequest(purchaseDetails: $purchaseDetails)';
   }
 
   @override
@@ -139,14 +125,13 @@ class _$ReceiptRequestImpl extends _ReceiptRequest {
         (other.runtimeType == runtimeType &&
             other is _$ReceiptRequestImpl &&
             const DeepCollectionEquality()
-                .equals(other._purchaseDetails, _purchaseDetails) &&
-            (identical(other.os, os) || other.os == os));
+                .equals(other._purchaseDetails, _purchaseDetails));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_purchaseDetails), os);
+      runtimeType, const DeepCollectionEquality().hash(_purchaseDetails));
 
   @JsonKey(ignore: true)
   @override
@@ -165,8 +150,8 @@ class _$ReceiptRequestImpl extends _ReceiptRequest {
 
 abstract class _ReceiptRequest extends ReceiptRequest {
   const factory _ReceiptRequest(
-      {required final Map<String, dynamic> purchaseDetails,
-      required final String os}) = _$ReceiptRequestImpl;
+          {required final Map<String, dynamic> purchaseDetails}) =
+      _$ReceiptRequestImpl;
   const _ReceiptRequest._() : super._();
 
   factory _ReceiptRequest.fromJson(Map<String, dynamic> json) =
@@ -174,8 +159,6 @@ abstract class _ReceiptRequest extends ReceiptRequest {
 
   @override
   Map<String, dynamic> get purchaseDetails;
-  @override
-  String get os;
   @override
   @JsonKey(ignore: true)
   _$$ReceiptRequestImplCopyWith<_$ReceiptRequestImpl> get copyWith =>

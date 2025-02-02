@@ -7,8 +7,7 @@ part 'receipt_request.g.dart';
 abstract class ReceiptRequest implements _$ReceiptRequest {
   const ReceiptRequest._();
   const factory ReceiptRequest(
-      {required Map<String, dynamic> purchaseDetails,
-      required String os}) = _ReceiptRequest;
+      {required Map<String, dynamic> purchaseDetails}) = _ReceiptRequest;
   factory ReceiptRequest.fromJson(Map<String, dynamic> json) =>
       _$ReceiptRequestFromJson(json);
 }
