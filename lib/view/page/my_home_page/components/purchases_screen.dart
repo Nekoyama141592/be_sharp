@@ -82,7 +82,7 @@ class PurchasesScreen extends ConsumerWidget {
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            product.description,
+                            'キャプションを追加できるようになります',
                             style: GoogleFonts.notoSans(
                               fontSize: 16,
                               color: Colors.black54,
