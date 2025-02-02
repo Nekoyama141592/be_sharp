@@ -6,8 +6,8 @@ class ColRefCore {
   static ColRef users() => _instance.collection('users');
   static ColRef userAnswers(String uid) =>
       _instance.collection('users/$uid/userAnswers');
-  static ColRef verifiedPurchases(String uid) =>
-      _instance.collection('users/$uid/verifiedPurchases');
   static ColRef privateUsers() => _instance.collection('privateUsers');
+  static ColRef verifiedPurchases(String uid) =>
+      _instance.collection('privateUsers/$uid/verifiedPurchases');
   static ColRef problems() => _instance.collection('problems');
 }

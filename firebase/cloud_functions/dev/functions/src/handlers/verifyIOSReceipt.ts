@@ -3,6 +3,10 @@ import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 
+interface VerifyIOSRequest {
+    purchaseDetails: PurchaseDetails
+}
+
 interface PurchaseDetails {
   error: string;
   productID: string;
@@ -25,7 +29,7 @@ export const verifyIOSReceipt = onCall(async (request) => {
       throw new HttpsError('unauthenticated', 'Please authenticate.');
     }
     const { uid } = auth;
-    const purchaseDetails :PurchaseDetails = request.data.data;
+    const { purchaseDetails } : VerifyIOSRequest = request.data;
     if (!purchaseDetails) {
       throw new HttpsError('invalid-argument', 'Missing required parameters');
     }
@@ -79,7 +83,7 @@ export const verifyIOSReceipt = onCall(async (request) => {
             uid,
             os: 'iOS'
         }
-        await admin.firestore().collection('users').doc(uid).collection('verifiedPurchases').doc(transactionID).set(result);
+        await admin.firestore().collection('privateUsers').doc(uid).collection('verifiedPurchases').doc(transactionID).set(result);
         await admin.firestore().collection('rootVerifiedPurchases').doc(transactionID).set(result);
         return result;
     } else {
