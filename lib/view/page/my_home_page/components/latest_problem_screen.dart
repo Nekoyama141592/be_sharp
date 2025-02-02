@@ -23,19 +23,9 @@ class LatestProblemScreen extends ConsumerWidget {
 
         return BasicPage(
           showAppBar: false,
-          child: Container(
-            width: double.infinity,
-            // decoration: BoxDecoration(
-            //   gradient: LinearGradient(
-            //     begin: Alignment.topLeft,
-            //     end: Alignment.bottomRight,
-            //     colors: [Colors.blue.shade300, Colors.purple.shade300],
-            //   ),
-            // ),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: _buildContent(context, problem, userAnswer, notifier),
-            ),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: _buildContent(context, problem, userAnswer, notifier),
           ),
         );
       },
@@ -91,13 +81,10 @@ class LatestProblemScreen extends ConsumerWidget {
 
   Widget _buildQuizResult(BuildContext context, ReadProblem problem,
       ReadUserAnswer userAnswer, LatestProblemViewModel Function() notifier) {
-    final isCorrect = problem.answers.contains(userAnswer.answer);
     if (problem.answers.isEmpty) {
-      return const Align(
-        alignment: Alignment.center,
-        child: Text('ただいま正誤を判定中です'),
-      );
+      return _buildCenteredMessage('ただいま正誤を判定中です');
     }
+    final isCorrect = problem.answers.contains(userAnswer.answer);
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
