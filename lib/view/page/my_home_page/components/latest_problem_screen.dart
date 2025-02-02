@@ -38,19 +38,22 @@ class LatestProblemScreen extends ConsumerWidget {
       return _buildCenteredMessage('問題が存在しません');
     } else if (userAnswer == null) {
       return _buildCenteredButton('最新の問題に回答', notifier().onToAnswerPageButtonPressed);
-    } else {
+    } else if (problem.answers.isEmpty) {
+      return _buildCenteredMessage('回答時間中...');
+    }
+    else {
       return _buildQuizResult(context, problem, userAnswer, notifier);
     }
   }
 
   Widget _buildCenteredMessage(String message) {
-    return Center(
+    return Align(
+      alignment: Alignment.center,
       child: Text(
         message,
         style: GoogleFonts.notoSans(
-          fontSize: 18,
+          fontSize: 36,
           fontWeight: FontWeight.w500,
-          color: Colors.white,
         ),
       ),
     );
@@ -81,113 +84,118 @@ class LatestProblemScreen extends ConsumerWidget {
 
   Widget _buildQuizResult(BuildContext context, ReadProblem problem,
       ReadUserAnswer userAnswer, LatestProblemViewModel Function() notifier) {
-    if (problem.answers.isEmpty) {
-      return _buildCenteredMessage('ただいま正誤を判定中です');
-    }
     final isCorrect = problem.answers.contains(userAnswer.answer);
     return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20),
-          const SizedBox(height: 20),
-          Text(
-            isCorrect ? '正解です！' : '残念、不正解です、、、',
-            style: GoogleFonts.notoSans(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 30),
-          Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Text(
-                    '問題',
-                    style: GoogleFonts.notoSans(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue.shade700,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    problem.question,
-                    style: GoogleFonts.notoSans(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          _buildAnswerSection('正解', problem.answers.isEmpty ? '集計中' : problem.answers.join(','), isCorrect),
-          const SizedBox(height: 20),
-          _buildAnswerSection('あなたの回答', userAnswer.answer, isCorrect),
-          const SizedBox(height: 30),
-          ElevatedButton.icon(
-            onPressed: notifier().onCaptionButtonPressed,
-            icon: const Icon(Icons.add_comment),
-            label: Text(
-              'キャプションを追加',
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20),
+            Text(
+              isCorrect ? '正解です！' : '残念、不正解です、、、',
               style: GoogleFonts.notoSans(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.blue.shade700,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+            const SizedBox(height: 30),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Text(
+                        '問題',
+                        style: GoogleFonts.notoSans(
+                          fontSize: 36,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue.shade700,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        problem.question,
+                        style: GoogleFonts.notoSans(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-        ],
+            const SizedBox(height: 20),
+            _buildAnswerSection(context,'正解', problem.answers.join(','), isCorrect),
+            const SizedBox(height: 20),
+            _buildAnswerSection(context,'あなたの回答', userAnswer.answer, isCorrect),
+            const SizedBox(height: 30),
+            ElevatedButton.icon(
+              onPressed: notifier().onCaptionButtonPressed,
+              icon: const Icon(Icons.add_comment),
+              label: Text(
+                'キャプションを追加',
+                style: GoogleFonts.notoSans(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.blue.shade700,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildAnswerSection(String title, String content, bool isCorrect) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      color: isCorrect ? Colors.green.shade50 : Colors.red.shade50,
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            Text(
-              title,
-              style: GoogleFonts.notoSans(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+  Widget _buildAnswerSection(BuildContext context,String title, String content, bool isCorrect) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        color: isCorrect ? Colors.green.shade50 : Colors.red.shade50,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.notoSans(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  color: isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+                ),
               ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              content,
-              style: GoogleFonts.notoSans(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+              const SizedBox(height: 10),
+              Text(
+                content,
+                style: GoogleFonts.notoSans(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w500,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
