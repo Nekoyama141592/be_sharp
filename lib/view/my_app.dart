@@ -8,6 +8,7 @@ import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:be_sharp/view/root_page/logouted_page.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';
+import 'package:be_sharp/view/root_page/user_deleted_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -40,5 +41,10 @@ final getPages = [
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),
   GetPage(
       name: ReauthenticateToDeletePage.path,
-      page: () => const ReauthenticateToDeletePage())
+      page: () => const ReauthenticateToDeletePage(),
+  ),
+  GetPage(
+      name: UserDeletedPage.path,
+      page: () => const UserDeletedPage(),
+  )
 ];

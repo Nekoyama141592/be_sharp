@@ -258,11 +258,7 @@ class EditImage extends HookConsumerWidget {
 
     return InkWell(
       onTap: onTap,
-      child: SizedBox(
-        width: 100.0,
-        height: 100.0,
-        child: _buildImageContent(initialImage.value),
-      ),
+      child: _buildImageContent(initialImage.value),
     );
   }
 

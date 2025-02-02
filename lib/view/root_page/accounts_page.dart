@@ -30,7 +30,10 @@ class AccountPage extends ConsumerWidget {
               onTap: notifier().onSignoutButtonPressed,
             ),
             ListTile(
-                title: const Text("ユーザーを消去する"),
+                title: const Text(
+                  "ユーザーを消去する",
+                  style: TextStyle(color: Colors.red),
+                ),
                 onTap: () => Get.toNamed(ReauthenticateToDeletePage.path))
           ]
         ],
