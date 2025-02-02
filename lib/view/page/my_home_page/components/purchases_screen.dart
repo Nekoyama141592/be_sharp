@@ -11,6 +11,7 @@ class PurchasesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    PurchasesViewModel notifier() => ref.read(purchasesProvider.notifier);
     final asyncValue = ref.watch(purchasesProvider);
     return AsyncScreen(
       asyncValue: asyncValue,
@@ -34,6 +35,18 @@ class PurchasesScreen extends ConsumerWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
+                  TextButton(
+                    onPressed: notifier().onRestoreButtonPressed,
+                    child: Text(
+                      '購入を復元',
+                      style: GoogleFonts.notoSans(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
                   Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -89,7 +102,7 @@ class PurchasesScreen extends ConsumerWidget {
                             width: double.infinity,
                             child: ElevatedButton(
                               onPressed: () {
-                                // 購入処理をここに追加
+                                notifier().onPurchaseButtonPressed(product);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.blue.shade700,

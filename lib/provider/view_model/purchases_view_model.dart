@@ -34,7 +34,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     return result;
   }
 
-  Future<void> onPurchaseButtonPressed(ProductDetails details) async {
+  void onPurchaseButtonPressed(ProductDetails details) async {
     await PurchasesCore.cancelTransctions();
     final oldDetails = _getOldDetails(details);
     final purchaseParam = PurchasesCore.param(details, oldDetails: oldDetails);
@@ -54,7 +54,9 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     final stateValue = state.value;
     if (stateValue == null) return null;
     GooglePlayPurchaseDetails? oldSubscription;
-    final purchases = stateValue.verifiedPurchases.map((e) => e.typedPurchaseDetails()).toList();
+    final purchases = stateValue.verifiedPurchases
+        .map((e) => e.typedPurchaseDetails())
+        .toList();
     if (purchases.isNotEmpty && purchases.last.productID != details.id) {
       oldSubscription = purchases.last as GooglePlayPurchaseDetails;
     }
@@ -82,8 +84,8 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     // 成功した時の処理.
     ToastUICore.showFlutterToast("購入の検証が成功しました");
     state = await AsyncValue.guard(() async {
-      final result = stateValue.copyWith(
-          verifiedPurchases: [...stateValue.verifiedPurchases,res]);
+      final result = stateValue
+          .copyWith(verifiedPurchases: [...stateValue.verifiedPurchases, res]);
       return result;
     });
   }
@@ -91,6 +93,20 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
   Future<void> _onVerifyFailed() async {
     // 失敗した時の処理.
     ToastUICore.showErrorFlutterToast("購入の検証が失敗しました");
+  }
+
+  void onRestoreButtonPressed() async {
+    final repository = PurchasesRepository();
+    final result = await repository.restorePurchases();
+    result.when(success: _onRestoreSuccess, failure: _onRestoreFailure);
+  }
+
+  void _onRestoreSuccess(bool res) {
+    ToastUICore.showFlutterToast('購入情報を復元しました');
+  }
+
+  void _onRestoreFailure() {
+    ToastUICore.showErrorFlutterToast('購入情報を復元できませんでした');
   }
 }
 

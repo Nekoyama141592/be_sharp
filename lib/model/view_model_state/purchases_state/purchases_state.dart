@@ -6,12 +6,14 @@ class PurchasesState {
   final List<ProductDetails> products;
 
   PurchasesState(
-      {List<VerifiedPurchase>? verifiedPurchases, List<ProductDetails>? products})
+      {List<VerifiedPurchase>? verifiedPurchases,
+      List<ProductDetails>? products})
       : verifiedPurchases = verifiedPurchases ?? [],
         products = products ?? [];
 
   PurchasesState copyWith(
-      {List<VerifiedPurchase>? verifiedPurchases, List<ProductDetails>? products}) {
+      {List<VerifiedPurchase>? verifiedPurchases,
+      List<ProductDetails>? products}) {
     return PurchasesState(
       verifiedPurchases: verifiedPurchases ?? this.verifiedPurchases,
       products: products ?? this.products,

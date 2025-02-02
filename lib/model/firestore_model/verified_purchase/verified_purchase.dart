@@ -11,8 +11,8 @@ part 'verified_purchase.g.dart';
 abstract class VerifiedPurchase implements _$VerifiedPurchase {
   const VerifiedPurchase._();
   const factory VerifiedPurchase({
-    required Map<String,dynamic> purchaseDetails,
-    required Map<String,dynamic> verifiedReceipt,
+    required Map<String, dynamic> purchaseDetails,
+    required Map<String, dynamic> verifiedReceipt,
     required String uid,
     required String os,
   }) = _VerifiedPurchase;
@@ -27,7 +27,9 @@ abstract class VerifiedPurchase implements _$VerifiedPurchase {
   IOSReceiptResponse get _iosReceipt =>
       IOSReceiptResponse.fromJson(verifiedReceipt);
   PurchaseDetails typedPurchaseDetails() {
-    final data = _isAndroidReceipt() ? _androidReceipt.purchaseDetails : _iosReceipt.purchase_details;
+    final data = _isAndroidReceipt()
+        ? _androidReceipt.purchaseDetails
+        : _iosReceipt.purchase_details;
     return PurchasesCore.purchaseDetailsFromJson(data);
   }
 }

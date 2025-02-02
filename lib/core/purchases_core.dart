@@ -45,6 +45,7 @@ class PurchasesCore {
         currencySymbol: "¥");
     return [item];
   }
+
   static List<ProductDetails> getProducts(ProductDetailsResponse res) {
     final productDetails = res.productDetails;
     final products = productDetails.isEmpty ? _mockProducts() : productDetails;

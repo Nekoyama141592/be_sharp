@@ -11,4 +11,13 @@ class PurchasesRepository {
       return const Result.failure();
     }
   }
+
+  FutureResult<bool> restorePurchases() async {
+    try {
+      await inAppPurchase.restorePurchases();
+      return const Result.success(true);
+    } catch (e) {
+      return const Result.failure();
+    }
+  }
 }
