@@ -20,7 +20,9 @@ ReceiptRequest _$ReceiptRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReceiptRequest {
-  Map<String, dynamic> get data => throw _privateConstructorUsedError;
+  Map<String, dynamic> get purchaseDetails =>
+      throw _privateConstructorUsedError;
+  String get os => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,7 @@ abstract class $ReceiptRequestCopyWith<$Res> {
           ReceiptRequest value, $Res Function(ReceiptRequest) then) =
       _$ReceiptRequestCopyWithImpl<$Res, ReceiptRequest>;
   @useResult
-  $Res call({Map<String, dynamic> data});
+  $Res call({Map<String, dynamic> purchaseDetails, String os});
 }
 
 /// @nodoc
@@ -50,13 +52,18 @@ class _$ReceiptRequestCopyWithImpl<$Res, $Val extends ReceiptRequest>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? purchaseDetails = null,
+    Object? os = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      purchaseDetails: null == purchaseDetails
+          ? _value.purchaseDetails
+          : purchaseDetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      os: null == os
+          ? _value.os
+          : os // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -69,7 +76,7 @@ abstract class _$$ReceiptRequestImplCopyWith<$Res>
       __$$ReceiptRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Map<String, dynamic> data});
+  $Res call({Map<String, dynamic> purchaseDetails, String os});
 }
 
 /// @nodoc
@@ -83,13 +90,18 @@ class __$$ReceiptRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? purchaseDetails = null,
+    Object? os = null,
   }) {
     return _then(_$ReceiptRequestImpl(
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
+      purchaseDetails: null == purchaseDetails
+          ? _value._purchaseDetails
+          : purchaseDetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
+      os: null == os
+          ? _value.os
+          : os // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -97,24 +109,28 @@ class __$$ReceiptRequestImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReceiptRequestImpl extends _ReceiptRequest {
-  const _$ReceiptRequestImpl({required final Map<String, dynamic> data})
-      : _data = data,
+  const _$ReceiptRequestImpl(
+      {required final Map<String, dynamic> purchaseDetails, required this.os})
+      : _purchaseDetails = purchaseDetails,
         super._();
 
   factory _$ReceiptRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReceiptRequestImplFromJson(json);
 
-  final Map<String, dynamic> _data;
+  final Map<String, dynamic> _purchaseDetails;
   @override
-  Map<String, dynamic> get data {
-    if (_data is EqualUnmodifiableMapView) return _data;
+  Map<String, dynamic> get purchaseDetails {
+    if (_purchaseDetails is EqualUnmodifiableMapView) return _purchaseDetails;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_data);
+    return EqualUnmodifiableMapView(_purchaseDetails);
   }
 
   @override
+  final String os;
+
+  @override
   String toString() {
-    return 'ReceiptRequest(data: $data)';
+    return 'ReceiptRequest(purchaseDetails: $purchaseDetails, os: $os)';
   }
 
   @override
@@ -122,13 +138,15 @@ class _$ReceiptRequestImpl extends _ReceiptRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReceiptRequestImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality()
+                .equals(other._purchaseDetails, _purchaseDetails) &&
+            (identical(other.os, os) || other.os == os));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_purchaseDetails), os);
 
   @JsonKey(ignore: true)
   @override
@@ -146,15 +164,18 @@ class _$ReceiptRequestImpl extends _ReceiptRequest {
 }
 
 abstract class _ReceiptRequest extends ReceiptRequest {
-  const factory _ReceiptRequest({required final Map<String, dynamic> data}) =
-      _$ReceiptRequestImpl;
+  const factory _ReceiptRequest(
+      {required final Map<String, dynamic> purchaseDetails,
+      required final String os}) = _$ReceiptRequestImpl;
   const _ReceiptRequest._() : super._();
 
   factory _ReceiptRequest.fromJson(Map<String, dynamic> json) =
       _$ReceiptRequestImpl.fromJson;
 
   @override
-  Map<String, dynamic> get data;
+  Map<String, dynamic> get purchaseDetails;
+  @override
+  String get os;
   @override
   @JsonKey(ignore: true)
   _$$ReceiptRequestImplCopyWith<_$ReceiptRequestImpl> get copyWith =>

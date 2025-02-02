@@ -68,10 +68,11 @@ class OnCallRepository {
   }
 
   FutureResult<VerifiedPurchase> verifyAndroidReceipt(
-      PurchaseDetails purchaseDetails) async {
+      PurchaseDetails purchaseDetails, String os) async {
     try {
       const name = 'verifyAndroidReceipt';
-      final request = ReceiptRequest(data: purchaseDetails.toJson());
+      final request =
+          ReceiptRequest(purchaseDetails: purchaseDetails.toJson(), os: os);
       final result = await _client.call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
@@ -81,10 +82,11 @@ class OnCallRepository {
   }
 
   FutureResult<VerifiedPurchase> verifyIOSReceipt(
-      PurchaseDetails purchaseDetails) async {
+      PurchaseDetails purchaseDetails, String os) async {
     try {
       const name = 'verifyIOSReceipt';
-      final request = ReceiptRequest(data: purchaseDetails.toJson());
+      final request =
+          ReceiptRequest(purchaseDetails: purchaseDetails.toJson(), os: os);
       final result = await _client.call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);

@@ -8,11 +8,13 @@ part of 'receipt_request.dart';
 
 _$ReceiptRequestImpl _$$ReceiptRequestImplFromJson(Map<String, dynamic> json) =>
     _$ReceiptRequestImpl(
-      data: json['data'] as Map<String, dynamic>,
+      purchaseDetails: json['purchaseDetails'] as Map<String, dynamic>,
+      os: json['os'] as String,
     );
 
 Map<String, dynamic> _$$ReceiptRequestImplToJson(
         _$ReceiptRequestImpl instance) =>
     <String, dynamic>{
-      'data': instance.data,
+      'purchaseDetails': instance.purchaseDetails,
+      'os': instance.os,
     };
