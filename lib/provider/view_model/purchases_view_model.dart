@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:be_sharp/core/col_ref_core.dart';
 import 'package:be_sharp/core/purchases_core.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/view_model_state/purchases_state/purchases_state.dart';
+import 'package:be_sharp/provider/user_provider.dart';
 import 'package:be_sharp/repository/purchases_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +27,18 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     final identifiers = PurchasesCore.productIds();
     final res = await inAppPurchase.queryProductDetails(identifiers);
     final products = PurchasesCore.getProducts(res);
-    return PurchasesState(products: products);
+    final verifiedPurchases = await _fetchPurchases();
+    return PurchasesState(products: products,verifiedPurchases: verifiedPurchases);
+  }
+  Future<List<VerifiedPurchase>> _fetchPurchases() async {
+    final uid = ref.read(userProvider)?.uid;
+    if (uid == null) return [];
+    final colRef = ColRefCore.verifiedPurchases(uid);
+    final qshot = await colRef.get();
+    final docs = qshot.docs;
+    final verifiedPurchases = docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
+    final results = verifiedPurchases.where((e) => e.isValid()).toList();
+    return results;
   }
 
   StreamSubscription<List<PurchaseDetails>> _getSubscription() {
