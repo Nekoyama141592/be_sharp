@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
 
 class LatestProblemViewModel
-    extends AutoDisposeAsyncNotifier<LatestProblemState> {
+    extends AsyncNotifier<LatestProblemState> {
   @override
   FutureOr<LatestProblemState> build() async {
     return _fetchData();
@@ -55,5 +55,5 @@ class LatestProblemViewModel
   void onCaptionButtonPressed() {}
 }
 
-final latestProblemProvider = AsyncNotifierProvider.autoDispose<
+final latestProblemProvider = AsyncNotifierProvider<
     LatestProblemViewModel, LatestProblemState>(() => LatestProblemViewModel());
