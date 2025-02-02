@@ -63,7 +63,7 @@ class RankingCard extends StatelessWidget {
       case 1:
         return Colors.amber;
       case 2:
-        return Colors.grey[300]!;
+        return Colors.grey[400]!;
       case 3:
         return Colors.brown[300]!;
       default:
