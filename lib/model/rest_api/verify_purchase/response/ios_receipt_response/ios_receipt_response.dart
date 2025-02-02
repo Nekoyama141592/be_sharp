@@ -21,11 +21,9 @@ abstract class IOSReceiptResponse implements _$IOSReceiptResponse {
       required String purchase_date,
       required String purchase_date_ms,
       required String purchase_date_pst,
-      required Map<String, dynamic> purchase_details, // 独自設定
       required String quantity,
       required String subscription_group_identifier,
       required String transaction_id,
-      required String uid, // 独自設定
       required String web_order_line_item_id}) = _IOSReceiptResponse;
   factory IOSReceiptResponse.fromJson(Map<String, dynamic> json) =>
       _$IOSReceiptResponseFromJson(json);

@@ -27,10 +27,7 @@ abstract class VerifiedPurchase implements _$VerifiedPurchase {
   IOSReceiptResponse get _iosReceipt =>
       IOSReceiptResponse.fromJson(verifiedReceipt);
   PurchaseDetails typedPurchaseDetails() {
-    final data = _isAndroidReceipt()
-        ? _androidReceipt.purchaseDetails
-        : _iosReceipt.purchase_details;
-    return PurchasesCore.purchaseDetailsFromJson(data);
+    return PurchasesCore.purchaseDetailsFromJson(purchaseDetails);
   }
 
   String get _expiryTimeMillis {

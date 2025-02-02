@@ -24,7 +24,7 @@ class PurchasesCore {
         source: json['verificationData']['source'],
       ),
       transactionDate: json['transactionDate'],
-      status: PurchaseStatus.values.firstWhere((e) => e.name == json['status']),
+      status: PurchaseStatus.values.byName(json['status']),
     )..pendingCompletePurchase = json['pendingCompletePurchase'] ?? false;
   }
 

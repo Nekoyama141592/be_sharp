@@ -31,11 +31,8 @@ mixin _$AndroidReceiptResponse {
   int get paymentState => throw _privateConstructorUsedError;
   String get priceAmountMicros => throw _privateConstructorUsedError;
   String get priceCurrencyCode => throw _privateConstructorUsedError;
-  Map<String, dynamic> get purchaseDetails =>
-      throw _privateConstructorUsedError; // 独自設定
   int get purchaseType => throw _privateConstructorUsedError;
   String get startTimeMillis => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,10 +57,8 @@ abstract class $AndroidReceiptResponseCopyWith<$Res> {
       int paymentState,
       String priceAmountMicros,
       String priceCurrencyCode,
-      Map<String, dynamic> purchaseDetails,
       int purchaseType,
-      String startTimeMillis,
-      String uid});
+      String startTimeMillis});
 }
 
 /// @nodoc
@@ -90,10 +85,8 @@ class _$AndroidReceiptResponseCopyWithImpl<$Res,
     Object? paymentState = null,
     Object? priceAmountMicros = null,
     Object? priceCurrencyCode = null,
-    Object? purchaseDetails = null,
     Object? purchaseType = null,
     Object? startTimeMillis = null,
-    Object? uid = null,
   }) {
     return _then(_value.copyWith(
       acknowledgementState: null == acknowledgementState
@@ -136,10 +129,6 @@ class _$AndroidReceiptResponseCopyWithImpl<$Res,
           ? _value.priceCurrencyCode
           : priceCurrencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      purchaseDetails: null == purchaseDetails
-          ? _value.purchaseDetails
-          : purchaseDetails // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
       purchaseType: null == purchaseType
           ? _value.purchaseType
           : purchaseType // ignore: cast_nullable_to_non_nullable
@@ -147,10 +136,6 @@ class _$AndroidReceiptResponseCopyWithImpl<$Res,
       startTimeMillis: null == startTimeMillis
           ? _value.startTimeMillis
           : startTimeMillis // ignore: cast_nullable_to_non_nullable
-              as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -176,10 +161,8 @@ abstract class _$$AndroidReceiptResponseImplCopyWith<$Res>
       int paymentState,
       String priceAmountMicros,
       String priceCurrencyCode,
-      Map<String, dynamic> purchaseDetails,
       int purchaseType,
-      String startTimeMillis,
-      String uid});
+      String startTimeMillis});
 }
 
 /// @nodoc
@@ -205,10 +188,8 @@ class __$$AndroidReceiptResponseImplCopyWithImpl<$Res>
     Object? paymentState = null,
     Object? priceAmountMicros = null,
     Object? priceCurrencyCode = null,
-    Object? purchaseDetails = null,
     Object? purchaseType = null,
     Object? startTimeMillis = null,
-    Object? uid = null,
   }) {
     return _then(_$AndroidReceiptResponseImpl(
       acknowledgementState: null == acknowledgementState
@@ -251,10 +232,6 @@ class __$$AndroidReceiptResponseImplCopyWithImpl<$Res>
           ? _value.priceCurrencyCode
           : priceCurrencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      purchaseDetails: null == purchaseDetails
-          ? _value._purchaseDetails
-          : purchaseDetails // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
       purchaseType: null == purchaseType
           ? _value.purchaseType
           : purchaseType // ignore: cast_nullable_to_non_nullable
@@ -262,10 +239,6 @@ class __$$AndroidReceiptResponseImplCopyWithImpl<$Res>
       startTimeMillis: null == startTimeMillis
           ? _value.startTimeMillis
           : startTimeMillis // ignore: cast_nullable_to_non_nullable
-              as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -285,12 +258,9 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
       required this.paymentState,
       required this.priceAmountMicros,
       required this.priceCurrencyCode,
-      required final Map<String, dynamic> purchaseDetails,
       required this.purchaseType,
-      required this.startTimeMillis,
-      required this.uid})
-      : _purchaseDetails = purchaseDetails,
-        super._();
+      required this.startTimeMillis})
+      : super._();
 
   factory _$AndroidReceiptResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AndroidReceiptResponseImplFromJson(json);
@@ -315,25 +285,14 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
   final String priceAmountMicros;
   @override
   final String priceCurrencyCode;
-  final Map<String, dynamic> _purchaseDetails;
-  @override
-  Map<String, dynamic> get purchaseDetails {
-    if (_purchaseDetails is EqualUnmodifiableMapView) return _purchaseDetails;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_purchaseDetails);
-  }
-
-// 独自設定
   @override
   final int purchaseType;
   @override
   final String startTimeMillis;
-  @override
-  final String uid;
 
   @override
   String toString() {
-    return 'AndroidReceiptResponse(acknowledgementState: $acknowledgementState, autoRenewing: $autoRenewing, countryCode: $countryCode, developerPayload: $developerPayload, expiryTimeMillis: $expiryTimeMillis, kind: $kind, orderId: $orderId, paymentState: $paymentState, priceAmountMicros: $priceAmountMicros, priceCurrencyCode: $priceCurrencyCode, purchaseDetails: $purchaseDetails, purchaseType: $purchaseType, startTimeMillis: $startTimeMillis, uid: $uid)';
+    return 'AndroidReceiptResponse(acknowledgementState: $acknowledgementState, autoRenewing: $autoRenewing, countryCode: $countryCode, developerPayload: $developerPayload, expiryTimeMillis: $expiryTimeMillis, kind: $kind, orderId: $orderId, paymentState: $paymentState, priceAmountMicros: $priceAmountMicros, priceCurrencyCode: $priceCurrencyCode, purchaseType: $purchaseType, startTimeMillis: $startTimeMillis)';
   }
 
   @override
@@ -359,13 +318,10 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
                 other.priceAmountMicros == priceAmountMicros) &&
             (identical(other.priceCurrencyCode, priceCurrencyCode) ||
                 other.priceCurrencyCode == priceCurrencyCode) &&
-            const DeepCollectionEquality()
-                .equals(other._purchaseDetails, _purchaseDetails) &&
             (identical(other.purchaseType, purchaseType) ||
                 other.purchaseType == purchaseType) &&
             (identical(other.startTimeMillis, startTimeMillis) ||
-                other.startTimeMillis == startTimeMillis) &&
-            (identical(other.uid, uid) || other.uid == uid));
+                other.startTimeMillis == startTimeMillis));
   }
 
   @JsonKey(ignore: true)
@@ -382,10 +338,8 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
       paymentState,
       priceAmountMicros,
       priceCurrencyCode,
-      const DeepCollectionEquality().hash(_purchaseDetails),
       purchaseType,
-      startTimeMillis,
-      uid);
+      startTimeMillis);
 
   @JsonKey(ignore: true)
   @override
@@ -414,10 +368,8 @@ abstract class _AndroidReceiptResponse extends AndroidReceiptResponse {
       required final int paymentState,
       required final String priceAmountMicros,
       required final String priceCurrencyCode,
-      required final Map<String, dynamic> purchaseDetails,
       required final int purchaseType,
-      required final String startTimeMillis,
-      required final String uid}) = _$AndroidReceiptResponseImpl;
+      required final String startTimeMillis}) = _$AndroidReceiptResponseImpl;
   const _AndroidReceiptResponse._() : super._();
 
   factory _AndroidReceiptResponse.fromJson(Map<String, dynamic> json) =
@@ -444,13 +396,9 @@ abstract class _AndroidReceiptResponse extends AndroidReceiptResponse {
   @override
   String get priceCurrencyCode;
   @override
-  Map<String, dynamic> get purchaseDetails;
-  @override // 独自設定
   int get purchaseType;
   @override
   String get startTimeMillis;
-  @override
-  String get uid;
   @override
   @JsonKey(ignore: true)
   _$$AndroidReceiptResponseImplCopyWith<_$AndroidReceiptResponseImpl>

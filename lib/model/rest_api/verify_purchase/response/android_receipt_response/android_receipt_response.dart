@@ -17,10 +17,8 @@ abstract class AndroidReceiptResponse implements _$AndroidReceiptResponse {
       required int paymentState,
       required String priceAmountMicros,
       required String priceCurrencyCode,
-      required Map<String, dynamic> purchaseDetails, // 独自設定
       required int purchaseType,
       required String startTimeMillis,
-      required String uid // 独自設定
       }) = _AndroidReceiptResponse;
   factory AndroidReceiptResponse.fromJson(Map<String, dynamic> json) =>
       _$AndroidReceiptResponseFromJson(json);

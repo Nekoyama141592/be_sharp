@@ -19,10 +19,8 @@ _$AndroidReceiptResponseImpl _$$AndroidReceiptResponseImplFromJson(
       paymentState: (json['paymentState'] as num).toInt(),
       priceAmountMicros: json['priceAmountMicros'] as String,
       priceCurrencyCode: json['priceCurrencyCode'] as String,
-      purchaseDetails: json['purchaseDetails'] as Map<String, dynamic>,
       purchaseType: (json['purchaseType'] as num).toInt(),
       startTimeMillis: json['startTimeMillis'] as String,
-      uid: json['uid'] as String,
     );
 
 Map<String, dynamic> _$$AndroidReceiptResponseImplToJson(
@@ -38,8 +36,6 @@ Map<String, dynamic> _$$AndroidReceiptResponseImplToJson(
       'paymentState': instance.paymentState,
       'priceAmountMicros': instance.priceAmountMicros,
       'priceCurrencyCode': instance.priceCurrencyCode,
-      'purchaseDetails': instance.purchaseDetails,
       'purchaseType': instance.purchaseType,
       'startTimeMillis': instance.startTimeMillis,
-      'uid': instance.uid,
     };
