@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
-class PurchasesViewModel extends AutoDisposeAsyncNotifier<PurchasesState> {
+class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
   late StreamSubscription<List<PurchaseDetails>> subscription;
   @override
   FutureOr<PurchasesState> build() async {
@@ -127,5 +127,5 @@ class PurchasesViewModel extends AutoDisposeAsyncNotifier<PurchasesState> {
 }
 
 final purchasesProvider =
-    AsyncNotifierProvider.autoDispose<PurchasesViewModel, PurchasesState>(
+    AsyncNotifierProvider<PurchasesViewModel, PurchasesState>(
         () => PurchasesViewModel());

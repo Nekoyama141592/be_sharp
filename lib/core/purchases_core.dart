@@ -71,10 +71,9 @@ class PurchasesCore {
   static FutureResult<VerifiedPurchase> verifyPurchase(
       PurchaseDetails purchaseDetails) async {
     final repository = OnCallRepository();
-    final os = Platform.isAndroid ? 'Android' : 'iOS';
     return Platform.isAndroid
-        ? await repository.verifyAndroidReceipt(purchaseDetails,os)
-        : await repository.verifyIOSReceipt(purchaseDetails,os);
+        ? await repository.verifyAndroidReceipt(purchaseDetails)
+        : await repository.verifyIOSReceipt(purchaseDetails);
   }
 
   static Future<void> cancelTransctions() async {
