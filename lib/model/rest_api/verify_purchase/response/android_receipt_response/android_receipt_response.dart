@@ -17,7 +17,7 @@ abstract class AndroidReceiptResponse implements _$AndroidReceiptResponse {
       required int paymentState,
       required String priceAmountMicros,
       required String priceCurrencyCode,
-      required String productId, // 独自設定
+      required Map<String, dynamic> purchaseDetails, // 独自設定
       required int purchaseType,
       required String startTimeMillis,
       required String uid // 独自設定

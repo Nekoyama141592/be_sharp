@@ -31,7 +31,8 @@ mixin _$AndroidReceiptResponse {
   int get paymentState => throw _privateConstructorUsedError;
   String get priceAmountMicros => throw _privateConstructorUsedError;
   String get priceCurrencyCode => throw _privateConstructorUsedError;
-  String get productId => throw _privateConstructorUsedError; // 独自設定
+  Map<String, dynamic> get purchaseDetails =>
+      throw _privateConstructorUsedError; // 独自設定
   int get purchaseType => throw _privateConstructorUsedError;
   String get startTimeMillis => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
@@ -59,7 +60,7 @@ abstract class $AndroidReceiptResponseCopyWith<$Res> {
       int paymentState,
       String priceAmountMicros,
       String priceCurrencyCode,
-      String productId,
+      Map<String, dynamic> purchaseDetails,
       int purchaseType,
       String startTimeMillis,
       String uid});
@@ -89,7 +90,7 @@ class _$AndroidReceiptResponseCopyWithImpl<$Res,
     Object? paymentState = null,
     Object? priceAmountMicros = null,
     Object? priceCurrencyCode = null,
-    Object? productId = null,
+    Object? purchaseDetails = null,
     Object? purchaseType = null,
     Object? startTimeMillis = null,
     Object? uid = null,
@@ -135,10 +136,10 @@ class _$AndroidReceiptResponseCopyWithImpl<$Res,
           ? _value.priceCurrencyCode
           : priceCurrencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
+      purchaseDetails: null == purchaseDetails
+          ? _value.purchaseDetails
+          : purchaseDetails // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       purchaseType: null == purchaseType
           ? _value.purchaseType
           : purchaseType // ignore: cast_nullable_to_non_nullable
@@ -175,7 +176,7 @@ abstract class _$$AndroidReceiptResponseImplCopyWith<$Res>
       int paymentState,
       String priceAmountMicros,
       String priceCurrencyCode,
-      String productId,
+      Map<String, dynamic> purchaseDetails,
       int purchaseType,
       String startTimeMillis,
       String uid});
@@ -204,7 +205,7 @@ class __$$AndroidReceiptResponseImplCopyWithImpl<$Res>
     Object? paymentState = null,
     Object? priceAmountMicros = null,
     Object? priceCurrencyCode = null,
-    Object? productId = null,
+    Object? purchaseDetails = null,
     Object? purchaseType = null,
     Object? startTimeMillis = null,
     Object? uid = null,
@@ -250,10 +251,10 @@ class __$$AndroidReceiptResponseImplCopyWithImpl<$Res>
           ? _value.priceCurrencyCode
           : priceCurrencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      productId: null == productId
-          ? _value.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
+      purchaseDetails: null == purchaseDetails
+          ? _value._purchaseDetails
+          : purchaseDetails // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       purchaseType: null == purchaseType
           ? _value.purchaseType
           : purchaseType // ignore: cast_nullable_to_non_nullable
@@ -284,11 +285,12 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
       required this.paymentState,
       required this.priceAmountMicros,
       required this.priceCurrencyCode,
-      required this.productId,
+      required final Map<String, dynamic> purchaseDetails,
       required this.purchaseType,
       required this.startTimeMillis,
       required this.uid})
-      : super._();
+      : _purchaseDetails = purchaseDetails,
+        super._();
 
   factory _$AndroidReceiptResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$AndroidReceiptResponseImplFromJson(json);
@@ -313,8 +315,14 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
   final String priceAmountMicros;
   @override
   final String priceCurrencyCode;
+  final Map<String, dynamic> _purchaseDetails;
   @override
-  final String productId;
+  Map<String, dynamic> get purchaseDetails {
+    if (_purchaseDetails is EqualUnmodifiableMapView) return _purchaseDetails;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_purchaseDetails);
+  }
+
 // 独自設定
   @override
   final int purchaseType;
@@ -325,7 +333,7 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
 
   @override
   String toString() {
-    return 'AndroidReceiptResponse(acknowledgementState: $acknowledgementState, autoRenewing: $autoRenewing, countryCode: $countryCode, developerPayload: $developerPayload, expiryTimeMillis: $expiryTimeMillis, kind: $kind, orderId: $orderId, paymentState: $paymentState, priceAmountMicros: $priceAmountMicros, priceCurrencyCode: $priceCurrencyCode, productId: $productId, purchaseType: $purchaseType, startTimeMillis: $startTimeMillis, uid: $uid)';
+    return 'AndroidReceiptResponse(acknowledgementState: $acknowledgementState, autoRenewing: $autoRenewing, countryCode: $countryCode, developerPayload: $developerPayload, expiryTimeMillis: $expiryTimeMillis, kind: $kind, orderId: $orderId, paymentState: $paymentState, priceAmountMicros: $priceAmountMicros, priceCurrencyCode: $priceCurrencyCode, purchaseDetails: $purchaseDetails, purchaseType: $purchaseType, startTimeMillis: $startTimeMillis, uid: $uid)';
   }
 
   @override
@@ -351,8 +359,8 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
                 other.priceAmountMicros == priceAmountMicros) &&
             (identical(other.priceCurrencyCode, priceCurrencyCode) ||
                 other.priceCurrencyCode == priceCurrencyCode) &&
-            (identical(other.productId, productId) ||
-                other.productId == productId) &&
+            const DeepCollectionEquality()
+                .equals(other._purchaseDetails, _purchaseDetails) &&
             (identical(other.purchaseType, purchaseType) ||
                 other.purchaseType == purchaseType) &&
             (identical(other.startTimeMillis, startTimeMillis) ||
@@ -374,7 +382,7 @@ class _$AndroidReceiptResponseImpl extends _AndroidReceiptResponse {
       paymentState,
       priceAmountMicros,
       priceCurrencyCode,
-      productId,
+      const DeepCollectionEquality().hash(_purchaseDetails),
       purchaseType,
       startTimeMillis,
       uid);
@@ -406,7 +414,7 @@ abstract class _AndroidReceiptResponse extends AndroidReceiptResponse {
       required final int paymentState,
       required final String priceAmountMicros,
       required final String priceCurrencyCode,
-      required final String productId,
+      required final Map<String, dynamic> purchaseDetails,
       required final int purchaseType,
       required final String startTimeMillis,
       required final String uid}) = _$AndroidReceiptResponseImpl;
@@ -436,7 +444,7 @@ abstract class _AndroidReceiptResponse extends AndroidReceiptResponse {
   @override
   String get priceCurrencyCode;
   @override
-  String get productId;
+  Map<String, dynamic> get purchaseDetails;
   @override // 独自設定
   int get purchaseType;
   @override

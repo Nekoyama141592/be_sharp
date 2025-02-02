@@ -23,6 +23,7 @@ _$IOSReceiptResponseImpl _$$IOSReceiptResponseImplFromJson(
       purchase_date: json['purchase_date'] as String,
       purchase_date_ms: json['purchase_date_ms'] as String,
       purchase_date_pst: json['purchase_date_pst'] as String,
+      purchase_details: json['purchase_details'] as Map<String, dynamic>,
       quantity: json['quantity'] as String,
       subscription_group_identifier:
           json['subscription_group_identifier'] as String,
@@ -48,6 +49,7 @@ Map<String, dynamic> _$$IOSReceiptResponseImplToJson(
       'purchase_date': instance.purchase_date,
       'purchase_date_ms': instance.purchase_date_ms,
       'purchase_date_pst': instance.purchase_date_pst,
+      'purchase_details': instance.purchase_details,
       'quantity': instance.quantity,
       'subscription_group_identifier': instance.subscription_group_identifier,
       'transaction_id': instance.transaction_id,

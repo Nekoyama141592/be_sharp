@@ -34,6 +34,8 @@ mixin _$IOSReceiptResponse {
   String get purchase_date => throw _privateConstructorUsedError;
   String get purchase_date_ms => throw _privateConstructorUsedError;
   String get purchase_date_pst => throw _privateConstructorUsedError;
+  Map<String, dynamic> get purchase_details =>
+      throw _privateConstructorUsedError; // 独自設定
   String get quantity => throw _privateConstructorUsedError;
   String get subscription_group_identifier =>
       throw _privateConstructorUsedError;
@@ -68,6 +70,7 @@ abstract class $IOSReceiptResponseCopyWith<$Res> {
       String purchase_date,
       String purchase_date_ms,
       String purchase_date_pst,
+      Map<String, dynamic> purchase_details,
       String quantity,
       String subscription_group_identifier,
       String transaction_id,
@@ -102,6 +105,7 @@ class _$IOSReceiptResponseCopyWithImpl<$Res, $Val extends IOSReceiptResponse>
     Object? purchase_date = null,
     Object? purchase_date_ms = null,
     Object? purchase_date_pst = null,
+    Object? purchase_details = null,
     Object? quantity = null,
     Object? subscription_group_identifier = null,
     Object? transaction_id = null,
@@ -165,6 +169,10 @@ class _$IOSReceiptResponseCopyWithImpl<$Res, $Val extends IOSReceiptResponse>
           ? _value.purchase_date_pst
           : purchase_date_pst // ignore: cast_nullable_to_non_nullable
               as String,
+      purchase_details: null == purchase_details
+          ? _value.purchase_details
+          : purchase_details // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -212,6 +220,7 @@ abstract class _$$IOSReceiptResponseImplCopyWith<$Res>
       String purchase_date,
       String purchase_date_ms,
       String purchase_date_pst,
+      Map<String, dynamic> purchase_details,
       String quantity,
       String subscription_group_identifier,
       String transaction_id,
@@ -244,6 +253,7 @@ class __$$IOSReceiptResponseImplCopyWithImpl<$Res>
     Object? purchase_date = null,
     Object? purchase_date_ms = null,
     Object? purchase_date_pst = null,
+    Object? purchase_details = null,
     Object? quantity = null,
     Object? subscription_group_identifier = null,
     Object? transaction_id = null,
@@ -307,6 +317,10 @@ class __$$IOSReceiptResponseImplCopyWithImpl<$Res>
           ? _value.purchase_date_pst
           : purchase_date_pst // ignore: cast_nullable_to_non_nullable
               as String,
+      purchase_details: null == purchase_details
+          ? _value._purchase_details
+          : purchase_details // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       quantity: null == quantity
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -349,12 +363,14 @@ class _$IOSReceiptResponseImpl extends _IOSReceiptResponse {
       required this.purchase_date,
       required this.purchase_date_ms,
       required this.purchase_date_pst,
+      required final Map<String, dynamic> purchase_details,
       required this.quantity,
       required this.subscription_group_identifier,
       required this.transaction_id,
       required this.uid,
       required this.web_order_line_item_id})
-      : super._();
+      : _purchase_details = purchase_details,
+        super._();
 
   factory _$IOSReceiptResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$IOSReceiptResponseImplFromJson(json);
@@ -387,6 +403,15 @@ class _$IOSReceiptResponseImpl extends _IOSReceiptResponse {
   final String purchase_date_ms;
   @override
   final String purchase_date_pst;
+  final Map<String, dynamic> _purchase_details;
+  @override
+  Map<String, dynamic> get purchase_details {
+    if (_purchase_details is EqualUnmodifiableMapView) return _purchase_details;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_purchase_details);
+  }
+
+// 独自設定
   @override
   final String quantity;
   @override
@@ -401,7 +426,7 @@ class _$IOSReceiptResponseImpl extends _IOSReceiptResponse {
 
   @override
   String toString() {
-    return 'IOSReceiptResponse(expires_date: $expires_date, expires_date_ms: $expires_date_ms, expires_date_pst: $expires_date_pst, in_app_ownership_type: $in_app_ownership_type, is_in_intro_offer_period: $is_in_intro_offer_period, is_trial_period: $is_trial_period, original_purchase_date: $original_purchase_date, original_purchase_date_ms: $original_purchase_date_ms, original_purchase_date_pst: $original_purchase_date_pst, original_transaction_id: $original_transaction_id, product_id: $product_id, purchase_date: $purchase_date, purchase_date_ms: $purchase_date_ms, purchase_date_pst: $purchase_date_pst, quantity: $quantity, subscription_group_identifier: $subscription_group_identifier, transaction_id: $transaction_id, uid: $uid, web_order_line_item_id: $web_order_line_item_id)';
+    return 'IOSReceiptResponse(expires_date: $expires_date, expires_date_ms: $expires_date_ms, expires_date_pst: $expires_date_pst, in_app_ownership_type: $in_app_ownership_type, is_in_intro_offer_period: $is_in_intro_offer_period, is_trial_period: $is_trial_period, original_purchase_date: $original_purchase_date, original_purchase_date_ms: $original_purchase_date_ms, original_purchase_date_pst: $original_purchase_date_pst, original_transaction_id: $original_transaction_id, product_id: $product_id, purchase_date: $purchase_date, purchase_date_ms: $purchase_date_ms, purchase_date_pst: $purchase_date_pst, purchase_details: $purchase_details, quantity: $quantity, subscription_group_identifier: $subscription_group_identifier, transaction_id: $transaction_id, uid: $uid, web_order_line_item_id: $web_order_line_item_id)';
   }
 
   @override
@@ -417,8 +442,7 @@ class _$IOSReceiptResponseImpl extends _IOSReceiptResponse {
                 other.expires_date_pst == expires_date_pst) &&
             (identical(other.in_app_ownership_type, in_app_ownership_type) ||
                 other.in_app_ownership_type == in_app_ownership_type) &&
-            (identical(
-                    other.is_in_intro_offer_period, is_in_intro_offer_period) ||
+            (identical(other.is_in_intro_offer_period, is_in_intro_offer_period) ||
                 other.is_in_intro_offer_period == is_in_intro_offer_period) &&
             (identical(other.is_trial_period, is_trial_period) ||
                 other.is_trial_period == is_trial_period) &&
@@ -439,6 +463,8 @@ class _$IOSReceiptResponseImpl extends _IOSReceiptResponse {
                 other.purchase_date_ms == purchase_date_ms) &&
             (identical(other.purchase_date_pst, purchase_date_pst) ||
                 other.purchase_date_pst == purchase_date_pst) &&
+            const DeepCollectionEquality()
+                .equals(other._purchase_details, _purchase_details) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.subscription_group_identifier,
@@ -470,6 +496,7 @@ class _$IOSReceiptResponseImpl extends _IOSReceiptResponse {
         purchase_date,
         purchase_date_ms,
         purchase_date_pst,
+        const DeepCollectionEquality().hash(_purchase_details),
         quantity,
         subscription_group_identifier,
         transaction_id,
@@ -508,6 +535,7 @@ abstract class _IOSReceiptResponse extends IOSReceiptResponse {
       required final String purchase_date,
       required final String purchase_date_ms,
       required final String purchase_date_pst,
+      required final Map<String, dynamic> purchase_details,
       required final String quantity,
       required final String subscription_group_identifier,
       required final String transaction_id,
@@ -547,6 +575,8 @@ abstract class _IOSReceiptResponse extends IOSReceiptResponse {
   @override
   String get purchase_date_pst;
   @override
+  Map<String, dynamic> get purchase_details;
+  @override // 独自設定
   String get quantity;
   @override
   String get subscription_group_identifier;

@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/infrastructure/on_call_client.dart';
+import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/rest_api/verify_purchase/request/receipt_request.dart';
-import 'package:be_sharp/model/rest_api/verify_purchase/response/receipt_response.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/model/rest_api/delete_object/request/delete_object_request.dart';
 import 'package:be_sharp/model/rest_api/delete_object/response/delete_object_response.dart';
@@ -67,26 +67,26 @@ class OnCallRepository {
     }
   }
 
-  FutureResult<ReceiptResponse> verifyAndroidReceipt(
+  FutureResult<VerifiedPurchase> verifyAndroidReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(data: purchaseDetails.toJson());
       final result = await _client.call(name, request.toJson());
-      final res = ReceiptResponse.fromJson(result);
+      final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
     } catch (e) {
       return const Result.failure();
     }
   }
 
-  FutureResult<ReceiptResponse> verifyIOSReceipt(
+  FutureResult<VerifiedPurchase> verifyIOSReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyIOSReceipt';
       final request = ReceiptRequest(data: purchaseDetails.toJson());
       final result = await _client.call(name, request.toJson());
-      final res = ReceiptResponse.fromJson(result);
+      final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
     } catch (e) {
       return const Result.failure();

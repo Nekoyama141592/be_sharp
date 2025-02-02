@@ -15,7 +15,7 @@ class PurchasesScreen extends ConsumerWidget {
     return AsyncScreen(
       asyncValue: asyncValue,
       data: (state) {
-        final ProductDetails product = state.first;
+        final ProductDetails product = state.products.first;
         return Scaffold(
           backgroundColor: scaffoldBackgroundColor,
           body: SafeArea(
