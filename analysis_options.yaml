@@ -9,5 +9,6 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "lib/constants/enums/env_key.dart"
+    - "lib/model/rest_api/verify_purchase/response/ios_receipt_response/ios_receipt_response.dart"
   errors:
     invalid_annotation_target: ignore

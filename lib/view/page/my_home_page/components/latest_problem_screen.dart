@@ -6,6 +6,7 @@ import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class LatestProblemScreen extends ConsumerWidget {
   const LatestProblemScreen({super.key});
 
@@ -37,11 +38,11 @@ class LatestProblemScreen extends ConsumerWidget {
     if (problem == null) {
       return _buildCenteredMessage('問題が存在しません');
     } else if (userAnswer == null) {
-      return _buildCenteredButton('最新の問題に回答', notifier().onToAnswerPageButtonPressed);
+      return _buildCenteredButton(
+          '最新の問題に回答', notifier().onToAnswerPageButtonPressed);
     } else if (problem.answers.isEmpty) {
       return _buildCenteredMessage('回答時間中...');
-    }
-    else {
+    } else {
       return _buildQuizResult(context, problem, userAnswer, notifier);
     }
   }
@@ -134,9 +135,11 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            _buildAnswerSection(context,'正解', problem.answers.join(','), isCorrect),
+            _buildAnswerSection(
+                context, '正解', problem.answers.join(','), isCorrect),
             const SizedBox(height: 20),
-            _buildAnswerSection(context,'あなたの回答', userAnswer.answer, isCorrect),
+            _buildAnswerSection(
+                context, 'あなたの回答', userAnswer.answer, isCorrect),
             const SizedBox(height: 30),
             ElevatedButton.icon(
               onPressed: notifier().onCaptionButtonPressed,
@@ -151,7 +154,8 @@ class LatestProblemScreen extends ConsumerWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 foregroundColor: Colors.blue.shade700,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
@@ -164,7 +168,8 @@ class LatestProblemScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildAnswerSection(BuildContext context,String title, String content, bool isCorrect) {
+  Widget _buildAnswerSection(
+      BuildContext context, String title, String content, bool isCorrect) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: Card(
@@ -182,7 +187,8 @@ class LatestProblemScreen extends ConsumerWidget {
                 style: GoogleFonts.notoSans(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
-                  color: isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+                  color:
+                      isCorrect ? Colors.green.shade700 : Colors.red.shade700,
                 ),
               ),
               const SizedBox(height: 10),

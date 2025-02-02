@@ -6,6 +6,6 @@ class LoadingPage extends StatelessWidget {
   const LoadingPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return const BasicPage(showAppBar: false,child: LoadingScreen());
+    return const BasicPage(showAppBar: false, child: LoadingScreen());
   }
 }
