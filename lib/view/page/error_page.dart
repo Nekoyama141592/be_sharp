@@ -6,11 +6,12 @@ class ErrorPage extends StatelessWidget {
   final Object e;
   @override
   Widget build(BuildContext context) {
-    return BasicPage(
+    debugPrint(e.toString());
+    return const BasicPage(
       appBarText: 'エラー',
       child: Align(
         alignment: Alignment.center,
-        child: SelectableText('エラーが発生しました。やり直してください。$e'),
+        child: SelectableText('エラーが発生しました。やり直してください。'),
       ),
     );
   }
