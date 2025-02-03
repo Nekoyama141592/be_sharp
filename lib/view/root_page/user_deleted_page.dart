@@ -10,6 +10,7 @@ class UserDeletedPage extends StatelessWidget {
       child: Align(
         alignment: Alignment.center,
         child: Text('ユーザーを削除しました\n\nお疲れ様でした'),
-      ),);
+      ),
+    );
   }
 }

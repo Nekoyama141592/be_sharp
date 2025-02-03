@@ -62,6 +62,7 @@ class HomeScreen extends ConsumerWidget {
                         userName: user.nickNameValue(),
                         answerTime: e.userAnswer.getDifference(problem),
                         userImage: MemoryImage(e.userImage),
+                        caption: e.userAnswer.caption,
                       ),
                     );
                   },

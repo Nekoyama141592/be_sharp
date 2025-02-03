@@ -3,8 +3,12 @@ import 'dart:async';
 import 'package:be_sharp/core/query_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
+import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/model/view_model_state/latest_problem/latest_problem_state.dart';
 import 'package:be_sharp/provider/user_provider.dart';
+import 'package:be_sharp/repository/on_call_repository.dart';
+import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/view/common/dialog/form_dialog.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
@@ -51,7 +55,40 @@ class LatestProblemViewModel extends AsyncNotifier<LatestProblemState> {
     Get.toNamed(path);
   }
 
-  void onCaptionButtonPressed() {}
+  void onCaptionButtonPressed() {
+    Get.dialog(FormDialog(
+      initialValue: state.value?.userAnswer?.caption,
+      onSend: _onSend,
+    ));
+  }
+
+  Future<void> _onSend(String caption) async {
+    final userAnswer = state.value?.userAnswer;
+    if (userAnswer == null) return;
+    final problemId = userAnswer.problemId;
+    final repository = OnCallRepository();
+    final result = await repository.addCaption(problemId, caption);
+    result.when(success: _onSendSuccess, failure: _onSendFailure);
+  }
+
+  void _onSendSuccess(AddCaptionResponse res) async {
+    ToastUICore.showFlutterToast('キャプションの追加が成功しました');
+    if (Get.isDialogOpen ?? false) {
+      Get.back();
+    }
+    final stateValue = state.value;
+    final oldUserAnswer = stateValue?.userAnswer;
+    if (stateValue == null || oldUserAnswer == null) return;
+    state = await AsyncValue.guard(() async {
+      final userAnswer = await _fetchLatestUserAnswer(oldUserAnswer.uid,oldUserAnswer.problemId);
+      final result = stateValue.copyWith(userAnswer: userAnswer);
+      return result;
+    });
+  }
+
+  void _onSendFailure() {
+    ToastUICore.showErrorFlutterToast('キャプションの追加が失敗しました');
+  }
 }
 
 final latestProblemProvider =

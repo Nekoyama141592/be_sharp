@@ -8,6 +8,7 @@ abstract class WriteUserAnswer implements _$WriteUserAnswer {
   const WriteUserAnswer._();
   const factory WriteUserAnswer({
     required String answer,
+    @Default('') String caption,
     required dynamic createdAt,
     required String problemId,
     required String uid,

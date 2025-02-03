@@ -14,8 +14,12 @@ class ReauthenticateToDeletePage extends ConsumerWidget {
     return BasicPage(
         appBarText: 'ユーザーを削除',
         child: AuthScreen(
-          useApple: state?.providerData.any((e) => e.providerId == 'apple.com') ?? false,
-          useGoogle: state?.providerData.any((e) => e.providerId == 'google.com') ?? false,
+            useApple:
+                state?.providerData.any((e) => e.providerId == 'apple.com') ??
+                    false,
+            useGoogle:
+                state?.providerData.any((e) => e.providerId == 'google.com') ??
+                    false,
             iconData: Icons.delete,
             title: "ユーザーの削除には再認証が必要です",
             onAppleSignInButtonPressed: notifier().onAppleSignInButtonPressed,

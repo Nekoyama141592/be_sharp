@@ -4,6 +4,8 @@ import 'dart:typed_data';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/infrastructure/on_call_client.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
+import 'package:be_sharp/model/rest_api/addCaption/request/add_caption_request.dart';
+import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/model/rest_api/verify_purchase/request/receipt_request.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/model/rest_api/delete_object/request/delete_object_request.dart';
@@ -14,6 +16,7 @@ import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.da
 import 'package:be_sharp/model/rest_api/put_object/response/put_object_response.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
+import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 class OnCallRepository {
@@ -89,6 +92,20 @@ class OnCallRepository {
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
     } catch (e) {
+      return const Result.failure();
+    }
+  }
+
+  FutureResult<AddCaptionResponse> addCaption(
+      String problemId, String caption) async {
+    try {
+      const name = 'addCaption';
+      final request = AddCaptionRequest(problemId: problemId, caption: caption);
+      final result = await _client.call(name, request.toJson());
+      final res = AddCaptionResponse.fromJson(result);
+      return Result.success(res);
+    } catch (e) {
+      debugPrint(e.toString());
       return const Result.failure();
     }
   }

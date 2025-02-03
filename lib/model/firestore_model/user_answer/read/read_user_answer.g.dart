@@ -11,6 +11,7 @@ _$ReadUserAnswerImpl _$$ReadUserAnswerImplFromJson(Map<String, dynamic> json) =>
       answer: json['answer'] as String,
       createdAt: json['createdAt'],
       problemId: json['problemId'] as String,
+      caption: json['caption'] as String,
       uid: json['uid'] as String,
     );
 
@@ -20,5 +21,6 @@ Map<String, dynamic> _$$ReadUserAnswerImplToJson(
       'answer': instance.answer,
       'createdAt': instance.createdAt,
       'problemId': instance.problemId,
+      'caption': instance.caption,
       'uid': instance.uid,
     };

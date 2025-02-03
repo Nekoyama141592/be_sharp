@@ -30,15 +30,19 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
     final repository = FirebaseAuthRepository();
     final result =
         await repository.reauthenticateWithCredential(state!, credential);
-    result.when(success: onReauthenticateSuccess, failure: onReauthenticateFailure);
+    result.when(
+        success: onReauthenticateSuccess, failure: onReauthenticateFailure);
   }
 
   void onReauthenticateSuccess(bool res) {
-    ToastUICore.cupertinoAlertDialog("ユーザーを削除しますが本当によろしいですか？", _deletePublicUser);
+    ToastUICore.cupertinoAlertDialog(
+        "ユーザーを削除しますが本当によろしいですか？", _deletePublicUser);
   }
+
   void onReauthenticateFailure() {
     ToastUICore.showErrorFlutterToast('再認証に失敗しました');
   }
+
   Future<void> _deletePublicUser() async {
     final repository = FirestoreRepository();
     final ref = DocRefCore.user(state!.uid);
@@ -47,12 +51,12 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   }
 
   void onDeleteSuccess(bool res) {
-     Get.toNamed(UserDeletedPage.path);
+    Get.toNamed(UserDeletedPage.path);
   }
+
   void onDeleteFailure() {
     ToastUICore.showErrorFlutterToast("ユーザーの削除が失敗しました");
   }
-
 }
 
 final deleteUserProvider =

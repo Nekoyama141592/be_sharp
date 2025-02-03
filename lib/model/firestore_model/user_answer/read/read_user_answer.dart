@@ -12,6 +12,7 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
     required String answer,
     required dynamic createdAt,
     required String problemId,
+    required String caption,
     required String uid,
   }) = _ReadUserAnswer;
   factory ReadUserAnswer.fromJson(Map<String, dynamic> json) =>

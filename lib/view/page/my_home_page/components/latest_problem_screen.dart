@@ -86,6 +86,7 @@ class LatestProblemScreen extends ConsumerWidget {
   Widget _buildQuizResult(BuildContext context, ReadProblem problem,
       ReadUserAnswer userAnswer, LatestProblemViewModel Function() notifier) {
     final isCorrect = problem.answers.contains(userAnswer.answer);
+    final isCaptionExists = userAnswer.caption.isNotEmpty;
     return SingleChildScrollView(
       child: Center(
         child: Column(
@@ -145,7 +146,7 @@ class LatestProblemScreen extends ConsumerWidget {
               onPressed: notifier().onCaptionButtonPressed,
               icon: const Icon(Icons.add_comment),
               label: Text(
-                'キャプションを追加',
+                'キャプションを${isCaptionExists ? '編集': '追加'}',
                 style: GoogleFonts.notoSans(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -162,6 +163,14 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
+            if (isCaptionExists) 
+                Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),child: Text(
+                userAnswer.caption,
+                style: GoogleFonts.notoSans(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
           ],
         ),
       ),

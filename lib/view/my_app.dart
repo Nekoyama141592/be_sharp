@@ -40,11 +40,11 @@ final getPages = [
       page: () => const CreateUserAnswerPage()),
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),
   GetPage(
-      name: ReauthenticateToDeletePage.path,
-      page: () => const ReauthenticateToDeletePage(),
+    name: ReauthenticateToDeletePage.path,
+    page: () => const ReauthenticateToDeletePage(),
   ),
   GetPage(
-      name: UserDeletedPage.path,
-      page: () => const UserDeletedPage(),
+    name: UserDeletedPage.path,
+    page: () => const UserDeletedPage(),
   )
 ];

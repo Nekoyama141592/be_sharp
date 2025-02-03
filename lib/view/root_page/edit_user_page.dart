@@ -273,16 +273,10 @@ class EditImage extends HookConsumerWidget {
   Widget _buildImageContent(Uint8List? initialValue) {
     if (uint8list != null) {
       return SizedBox(
-        height: 100.0,
-        width: 100.0,
-        child: Image.memory(uint8list!)
-      );
+          height: 100.0, width: 100.0, child: Image.memory(uint8list!));
     } else if (initialValue != null) {
       return SizedBox(
-        height: 100.0,
-        width: 100.0,
-        child: Image.memory(initialValue)
-      );
+          height: 100.0, width: 100.0, child: Image.memory(initialValue));
     } else {
       return const Row(
         children: [

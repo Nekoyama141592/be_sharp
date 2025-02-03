@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final scaffoldBackgroundColor = Colors.grey[100];
 
 class AppColors {
-  static const Color primary = Color(0xFF6200EE);
+  static const Color primary = Color(0xFF0066ff);
   static const Color background = Color(0xFFF5F5F5);
   static const Color card = Colors.white;
   static const Color text = Color(0xFF333333);

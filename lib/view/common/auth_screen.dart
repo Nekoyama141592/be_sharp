@@ -10,8 +10,7 @@ class AuthScreen extends StatelessWidget {
       required this.onAppleSignInButtonPressed,
       required this.onGoogleSignInButtonPressed,
       required this.useApple,
-      required this.useGoogle
-    });
+      required this.useGoogle});
   final IconData iconData;
   final String title;
   final VoidCallback onAppleSignInButtonPressed;
@@ -47,30 +46,32 @@ class AuthScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 48),
-              if(useApple) RoundedButton(
-                press: onAppleSignInButtonPressed,
-                icon: const FaIcon(
-                  FontAwesomeIcons.apple,
-                  size: 36,
-                  color: Colors.white,
+              if (useApple)
+                RoundedButton(
+                  press: onAppleSignInButtonPressed,
+                  icon: const FaIcon(
+                    FontAwesomeIcons.apple,
+                    size: 36,
+                    color: Colors.white,
+                  ),
+                  text: 'Appleで続ける',
+                  textColor: Colors.white,
+                  buttonColor: Colors.black87,
                 ),
-                text: 'Appleで続ける',
-                textColor: Colors.white,
-                buttonColor: Colors.black87,
-              ),
               const SizedBox(height: 16),
-              if (useGoogle) RoundedButton(
-                borderColor: Colors.black,
-                press: onGoogleSignInButtonPressed,
-                icon: const FaIcon(
-                  FontAwesomeIcons.google,
-                  size: 36,
-                  color: Colors.black87,
+              if (useGoogle)
+                RoundedButton(
+                  borderColor: Colors.black,
+                  press: onGoogleSignInButtonPressed,
+                  icon: const FaIcon(
+                    FontAwesomeIcons.google,
+                    size: 36,
+                    color: Colors.black87,
+                  ),
+                  text: 'Googleで続ける',
+                  textColor: Colors.black87,
+                  buttonColor: Colors.white,
                 ),
-                text: 'Googleで続ける',
-                textColor: Colors.black87,
-                buttonColor: Colors.white,
-              ),
             ],
           ),
         ),

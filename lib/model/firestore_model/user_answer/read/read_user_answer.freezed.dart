@@ -23,6 +23,7 @@ mixin _$ReadUserAnswer {
   String get answer => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
+  String get caption => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +38,12 @@ abstract class $ReadUserAnswerCopyWith<$Res> {
           ReadUserAnswer value, $Res Function(ReadUserAnswer) then) =
       _$ReadUserAnswerCopyWithImpl<$Res, ReadUserAnswer>;
   @useResult
-  $Res call({String answer, dynamic createdAt, String problemId, String uid});
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      String problemId,
+      String caption,
+      String uid});
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
     Object? answer = null,
     Object? createdAt = freezed,
     Object? problemId = null,
+    Object? caption = null,
     Object? uid = null,
   }) {
     return _then(_value.copyWith(
@@ -70,6 +77,10 @@ class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
       problemId: null == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: null == caption
+          ? _value.caption
+          : caption // ignore: cast_nullable_to_non_nullable
               as String,
       uid: null == uid
           ? _value.uid
@@ -87,7 +98,12 @@ abstract class _$$ReadUserAnswerImplCopyWith<$Res>
       __$$ReadUserAnswerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String answer, dynamic createdAt, String problemId, String uid});
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      String problemId,
+      String caption,
+      String uid});
 }
 
 /// @nodoc
@@ -104,6 +120,7 @@ class __$$ReadUserAnswerImplCopyWithImpl<$Res>
     Object? answer = null,
     Object? createdAt = freezed,
     Object? problemId = null,
+    Object? caption = null,
     Object? uid = null,
   }) {
     return _then(_$ReadUserAnswerImpl(
@@ -118,6 +135,10 @@ class __$$ReadUserAnswerImplCopyWithImpl<$Res>
       problemId: null == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: null == caption
+          ? _value.caption
+          : caption // ignore: cast_nullable_to_non_nullable
               as String,
       uid: null == uid
           ? _value.uid
@@ -134,6 +155,7 @@ class _$ReadUserAnswerImpl extends _ReadUserAnswer {
       {required this.answer,
       required this.createdAt,
       required this.problemId,
+      required this.caption,
       required this.uid})
       : super._();
 
@@ -147,11 +169,13 @@ class _$ReadUserAnswerImpl extends _ReadUserAnswer {
   @override
   final String problemId;
   @override
+  final String caption;
+  @override
   final String uid;
 
   @override
   String toString() {
-    return 'ReadUserAnswer(answer: $answer, createdAt: $createdAt, problemId: $problemId, uid: $uid)';
+    return 'ReadUserAnswer(answer: $answer, createdAt: $createdAt, problemId: $problemId, caption: $caption, uid: $uid)';
   }
 
   @override
@@ -163,13 +187,14 @@ class _$ReadUserAnswerImpl extends _ReadUserAnswer {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
+            (identical(other.caption, caption) || other.caption == caption) &&
             (identical(other.uid, uid) || other.uid == uid));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, answer,
-      const DeepCollectionEquality().hash(createdAt), problemId, uid);
+      const DeepCollectionEquality().hash(createdAt), problemId, caption, uid);
 
   @JsonKey(ignore: true)
   @override
@@ -191,6 +216,7 @@ abstract class _ReadUserAnswer extends ReadUserAnswer {
       {required final String answer,
       required final dynamic createdAt,
       required final String problemId,
+      required final String caption,
       required final String uid}) = _$ReadUserAnswerImpl;
   const _ReadUserAnswer._() : super._();
 
@@ -203,6 +229,8 @@ abstract class _ReadUserAnswer extends ReadUserAnswer {
   dynamic get createdAt;
   @override
   String get problemId;
+  @override
+  String get caption;
   @override
   String get uid;
   @override

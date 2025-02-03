@@ -15,8 +15,8 @@ class AuthPage extends ConsumerWidget {
     return BasicPage(
         showAppBar: false,
         child: AuthScreen(
-          useApple: Platform.isIOS,
-          useGoogle: true,
+            useApple: Platform.isIOS,
+            useGoogle: true,
             iconData: Icons.lock_outline,
             title: 'アカウントにサインインして始めましょう',
             onAppleSignInButtonPressed: notifier().onAppleSignInButtonPressed,
