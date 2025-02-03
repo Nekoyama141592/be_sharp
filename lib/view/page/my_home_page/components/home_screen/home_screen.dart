@@ -12,13 +12,13 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(homeProvider);
-
     return Scaffold(
       backgroundColor: AppColors.background,
       drawer: const OriginalDrawer(),
       body: AsyncScreen(
         asyncValue: asyncValue,
         data: (state) {
+          final users = state.answeredUsers;
           final problem = state.latestProblem;
           if (problem == null) {
             return const Center(
@@ -52,7 +52,7 @@ class HomeScreen extends ConsumerWidget {
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    final e = state.answeredUsers[index];
+                    final e = users[index];
                     final user = e.publicUser;
                     return AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
@@ -66,7 +66,7 @@ class HomeScreen extends ConsumerWidget {
                       ),
                     );
                   },
-                  childCount: state.answeredUsers.length,
+                  childCount: users.length,
                 ),
               ),
             ],

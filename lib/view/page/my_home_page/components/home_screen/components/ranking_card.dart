@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RankingCard extends StatelessWidget {
@@ -51,7 +52,7 @@ class RankingCard extends StatelessWidget {
                       child: Icon(
                         Icons.star,
                         size: 100,
-                        color: Colors.white.withOpacity(0.1),
+                        color: _userTextColor().withOpacity(0.2),
                       ),
                     ),
                     Padding(
@@ -87,7 +88,8 @@ class RankingCard extends StatelessWidget {
       },
     );
   }
-
+  bool _isTopUser() => rank == 1 || rank == 2;
+  Color _userTextColor() => _isTopUser() ? Colors.black87 : Colors.white;
   Widget _buildRankCircle() {
     return Container(
       width: 60,
@@ -142,12 +144,12 @@ class RankingCard extends StatelessWidget {
   Widget _buildAnswerTime() {
     return Row(
       children: [
-        const Icon(Icons.timer, color: Colors.white70, size: 16),
+        Icon(Icons.timer, color: _userTextColor(), size: 24),
         const SizedBox(width: 4),
         Text(
           _formatDuration(answerTime),
           style: GoogleFonts.roboto(
-            color: Colors.white,
+            color: _userTextColor(),
             fontSize: 18,
           ),
         ),
@@ -159,7 +161,7 @@ class RankingCard extends StatelessWidget {
     return Text(
       caption,
       style: GoogleFonts.roboto(
-        color: Colors.black,
+        color: _userTextColor(),
         fontSize: 18,
         fontStyle: FontStyle.italic,
       ),
