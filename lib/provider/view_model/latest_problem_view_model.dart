@@ -13,7 +13,7 @@ import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
 
-class LatestProblemViewModel extends AsyncNotifier<LatestProblemState> {
+class LatestProblemViewModel extends AutoDisposeAsyncNotifier<LatestProblemState> {
   @override
   FutureOr<LatestProblemState> build() async {
     return _fetchData();
@@ -92,5 +92,5 @@ class LatestProblemViewModel extends AsyncNotifier<LatestProblemState> {
 }
 
 final latestProblemProvider =
-    AsyncNotifierProvider<LatestProblemViewModel, LatestProblemState>(
+    AsyncNotifierProvider.autoDispose<LatestProblemViewModel, LatestProblemState>(
         () => LatestProblemViewModel());

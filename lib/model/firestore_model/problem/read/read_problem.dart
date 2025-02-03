@@ -31,6 +31,11 @@ abstract class ReadProblem implements _$ReadProblem {
     return timeLimitDate;
   }
 
+  Duration leftTime() {
+    final now = DateTime.now();
+    return timeLimitDate().difference(now);
+  }
+
   String timeLimitDateText() {
     final value = timeLimitDate();
     return '${value.hour}時${value.minute}分${value.second}秒';

@@ -8,11 +8,12 @@ import 'package:be_sharp/provider/view_model/abstract/simple_form_view_model.dar
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/ui_core/validator_ui_core.dart';
+import 'package:be_sharp/view/my_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
 
-class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
+class CreateUserAnswerViewModel extends SimpleFormAsyncViewModel<ReadProblem> {
   @override
   String get title => '回答ページ';
   @override
@@ -67,7 +68,7 @@ class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
     if (Get.isDialogOpen ?? false) {
       Get.back();
     }
-    Get.back();
+    Get.offAllNamed(MyApp.path);
   }
 
   @override
@@ -78,5 +79,5 @@ class CreateUserAnswer extends SimpleFormAsyncViewModel<ReadProblem> {
 }
 
 final createUserAnswerProvider =
-    AsyncNotifierProvider.autoDispose<CreateUserAnswer, ReadProblem>(
-        () => CreateUserAnswer());
+    AsyncNotifierProvider.autoDispose<CreateUserAnswerViewModel, ReadProblem>(
+        () => CreateUserAnswerViewModel());

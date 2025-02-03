@@ -10,7 +10,7 @@ import 'package:be_sharp/provider/cache_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-class HomeViewModel extends AsyncNotifier<HomeState> {
+class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
   @override
   FutureOr<HomeState> build() async {
     return _fetchData();
@@ -65,4 +65,4 @@ class HomeViewModel extends AsyncNotifier<HomeState> {
 }
 
 final homeProvider =
-    AsyncNotifierProvider<HomeViewModel, HomeState>(() => HomeViewModel());
+    AsyncNotifierProvider.autoDispose<HomeViewModel, HomeState>(() => HomeViewModel());
