@@ -24,4 +24,9 @@ class PurchasesState {
     return verifiedPurchases.any(
         (e) => e.isValid() && productID == e.typedPurchaseDetails().productID);
   }
+
+  bool isSubscribing() {
+    return verifiedPurchases.any(
+        (e) => e.isValid());
+  }
 }
