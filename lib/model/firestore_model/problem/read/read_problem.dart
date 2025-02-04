@@ -23,11 +23,11 @@ abstract class ReadProblem implements _$ReadProblem {
     final difference = nowDate.difference(createdAtDate).inSeconds;
     return difference < timeLimitSeconds;
   }
-
+  Duration timeLimitDuration() => Duration(seconds: timeLimitSeconds);
   DateTime timeLimitDate() {
     final createdAtDate = typedCreatedAt().toDate();
     final timeLimitDate =
-        createdAtDate.add(Duration(seconds: timeLimitSeconds));
+        createdAtDate.add(timeLimitDuration());
     return timeLimitDate;
   }
 

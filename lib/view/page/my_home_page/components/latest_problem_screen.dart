@@ -1,6 +1,7 @@
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/provider/view_model/latest_problem_view_model.dart';
+import 'package:be_sharp/ui_core/format_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,7 @@ class LatestProblemScreen extends ConsumerWidget {
       ReadUserAnswer userAnswer, LatestProblemViewModel Function() notifier) {
     final isCorrect = userAnswer.isCorrect(problem);
     final isInTime = userAnswer.isInTime(problem);
+    final answerTime = userAnswer.getDifference(problem);
     final isCaptionExists = userAnswer.caption.isNotEmpty;
     String title() {
       if (isCorrect) {
@@ -147,11 +149,26 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildAnswerSection(
+                context, '正解', problem.answers.join(','), isCorrect),
+            const SizedBox(width: 20),
             _buildAnswerSection(
-                context, '正解', problem.answers.join(','), isCorrect, isInTime),
+                context, '回答', userAnswer.answer, isCorrect),]
+            ),
             const SizedBox(height: 20),
-            _buildAnswerSection(
-                context, 'あなたの回答', userAnswer.answer, isCorrect, isInTime),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildAnswerSection(
+                context, '制限時間', FormatUICore.formatDuration(problem.timeLimitDuration()), isInTime),
+                const SizedBox(width: 20),
+                _buildAnswerSection(
+                context, '回答時間', FormatUICore.formatDuration(answerTime), isInTime),
+              ],
+            ),
             const SizedBox(height: 30),
             ElevatedButton.icon(
               onPressed: notifier().onCaptionButtonPressed,
@@ -192,17 +209,13 @@ class LatestProblemScreen extends ConsumerWidget {
   }
 
   Widget _buildAnswerSection(BuildContext context, String title, String content,
-      bool isCorrect, bool isInTime) {
+      bool isValid) {
     MaterialColor resultColor() {
-      if (isCorrect) {
-        return isInTime ? Colors.green : Colors.orange;
-      } else {
-        return Colors.red;
-      }
+      return isValid ? Colors.green : Colors.red;
     }
 
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.8,
+      width: MediaQuery.of(context).size.width * 0.4,
       child: Card(
         elevation: 3,
         shape: RoundedRectangleBorder(

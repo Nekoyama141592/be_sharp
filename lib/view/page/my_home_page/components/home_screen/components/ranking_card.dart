@@ -1,3 +1,4 @@
+import 'package:be_sharp/ui_core/format_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -149,7 +150,7 @@ class RankingCard extends StatelessWidget {
         Icon(Icons.timer, color: _userTextColor(), size: 24),
         const SizedBox(width: 4),
         Text(
-          _formatDuration(answerTime, isInTime),
+          FormatUICore.formatDurationWithResult(answerTime, isInTime),
           style: GoogleFonts.roboto(
             color: _userTextColor(),
             fontSize: 18,
@@ -202,13 +203,5 @@ class RankingCard extends StatelessWidget {
     }
   }
 
-  String _formatDuration(Duration duration, bool isInTime) {
-    String twoDigits(int n) => n.toString().padLeft(2, "0");
-    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
-    String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
-    final result =
-        "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
-    final suffix = isInTime ? '(クリア)' : '';
-    return '$result$suffix';
-  }
+  
 }
