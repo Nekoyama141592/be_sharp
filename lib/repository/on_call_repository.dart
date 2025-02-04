@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/infrastructure/on_call_client.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';

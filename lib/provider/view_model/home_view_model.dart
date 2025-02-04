@@ -65,4 +65,5 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
 }
 
 final homeProvider =
-    AsyncNotifierProvider.autoDispose<HomeViewModel, HomeState>(() => HomeViewModel());
+    AsyncNotifierProvider.autoDispose<HomeViewModel, HomeState>(
+        () => HomeViewModel());

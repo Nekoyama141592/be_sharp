@@ -35,9 +35,7 @@ final getPages = [
   GetPage(name: AccountPage.path, page: () => const AccountPage()),
   GetPage(name: AdminPage.path, page: () => const AdminPage()),
   GetPage(name: EditUserPage.path, page: () => const EditUserPage()),
-  GetPage(
-      name: CreateUserAnswerPage.path,
-      page: () => const CreateUserAnswerPage()),
+  GetPage(name: CreateUserAnswerPage.path, page: () => CreateUserAnswerPage()),
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),
   GetPage(
     name: ReauthenticateToDeletePage.path,

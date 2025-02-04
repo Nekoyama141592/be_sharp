@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RankingCard extends StatelessWidget {
@@ -31,7 +30,8 @@ class RankingCard extends StatelessWidget {
             child: Card(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               elevation: 8,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -88,6 +88,7 @@ class RankingCard extends StatelessWidget {
       },
     );
   }
+
   bool _isTopUser() => rank == 1 || rank == 2;
   Color _userTextColor() => _isTopUser() ? Colors.black87 : Colors.white;
   Widget _buildRankCircle() {

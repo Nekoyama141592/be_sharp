@@ -146,7 +146,7 @@ class LatestProblemScreen extends ConsumerWidget {
               onPressed: notifier().onCaptionButtonPressed,
               icon: const Icon(Icons.add_comment),
               label: Text(
-                'キャプションを${isCaptionExists ? '編集': '追加'}',
+                'キャプションを${isCaptionExists ? '編集' : '追加'}',
                 style: GoogleFonts.notoSans(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -163,14 +163,17 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            if (isCaptionExists) 
-                Padding(padding: const EdgeInsets.symmetric(vertical: 16.0),child: Text(
-                userAnswer.caption,
-                style: GoogleFonts.notoSans(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
+            if (isCaptionExists)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Text(
+                  userAnswer.caption,
+                  style: GoogleFonts.notoSans(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),),
+              ),
           ],
         ),
       ),

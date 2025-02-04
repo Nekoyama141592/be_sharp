@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 
 class FormDialog extends HookWidget {
-  FormDialog({super.key,required this.initialValue, required this.onSend});
+  FormDialog({super.key, required this.initialValue, required this.onSend});
   final Future<void> Function(String) onSend;
   final String? initialValue;
   final formKey = GlobalKey<FormState>();
