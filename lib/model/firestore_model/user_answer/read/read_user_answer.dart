@@ -24,10 +24,13 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
         _typedCreateAt().toDate().difference(problemCreatedAt.toDate());
     return difference;
   }
+
   bool isCorrect(ReadProblem problem) {
     return problem.answers.contains(answer);
   }
+
   bool isInTime(ReadProblem problem) {
-    return _typedCreateAt().toDate().millisecondsSinceEpoch < problem.timeLimitDate().microsecondsSinceEpoch;
+    return _typedCreateAt().toDate().millisecondsSinceEpoch <
+        problem.timeLimitDate().millisecondsSinceEpoch;
   }
 }

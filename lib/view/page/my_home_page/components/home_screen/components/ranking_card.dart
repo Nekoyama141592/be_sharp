@@ -9,15 +9,14 @@ class RankingCard extends StatelessWidget {
   final String caption;
   final bool isInTime;
 
-  const RankingCard({
-    super.key,
-    required this.rank,
-    required this.userName,
-    required this.answerTime,
-    required this.userImage,
-    required this.caption,
-    required this.isInTime
-  });
+  const RankingCard(
+      {super.key,
+      required this.rank,
+      required this.userName,
+      required this.answerTime,
+      required this.userImage,
+      required this.caption,
+      required this.isInTime});
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +149,7 @@ class RankingCard extends StatelessWidget {
         Icon(Icons.timer, color: _userTextColor(), size: 24),
         const SizedBox(width: 4),
         Text(
-          _formatDuration(answerTime,isInTime),
+          _formatDuration(answerTime, isInTime),
           style: GoogleFonts.roboto(
             color: _userTextColor(),
             fontSize: 18,
@@ -203,11 +202,12 @@ class RankingCard extends StatelessWidget {
     }
   }
 
-  String _formatDuration(Duration duration,bool isInTime) {
+  String _formatDuration(Duration duration, bool isInTime) {
     String twoDigits(int n) => n.toString().padLeft(2, "0");
     String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
     String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
-    final result = "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
+    final result =
+        "${twoDigits(duration.inHours)}:$twoDigitMinutes:$twoDigitSeconds";
     final suffix = isInTime ? '(クリア)' : '';
     return '$result$suffix';
   }

@@ -90,11 +90,14 @@ class LatestProblemScreen extends ConsumerWidget {
     final isCaptionExists = userAnswer.caption.isNotEmpty;
     String title() {
       if (isCorrect) {
-        return isInTime ? '制限時間以内に正解したのでクリアです！' : '正解です！次は制限時間以内に正解できるように頑張りましょう！';
+        return isInTime
+            ? 'おめでとうございます！制限時間以内に正解したのでクリアです！'
+            : '正解です！次は制限時間以内に正解できるように頑張りましょう！';
       } else {
         return '残念、不正解です、、、';
       }
     }
+
     return SingleChildScrollView(
       child: Center(
         child: Column(
@@ -145,10 +148,10 @@ class LatestProblemScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
             _buildAnswerSection(
-                context, '正解', problem.answers.join(','), isCorrect,isInTime),
+                context, '正解', problem.answers.join(','), isCorrect, isInTime),
             const SizedBox(height: 20),
             _buildAnswerSection(
-                context, 'あなたの回答', userAnswer.answer, isCorrect,isInTime),
+                context, 'あなたの回答', userAnswer.answer, isCorrect, isInTime),
             const SizedBox(height: 30),
             ElevatedButton.icon(
               onPressed: notifier().onCaptionButtonPressed,
@@ -188,8 +191,8 @@ class LatestProblemScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildAnswerSection(
-      BuildContext context, String title, String content, bool isCorrect,bool isInTime) {
+  Widget _buildAnswerSection(BuildContext context, String title, String content,
+      bool isCorrect, bool isInTime) {
     MaterialColor resultColor() {
       if (isCorrect) {
         return isInTime ? Colors.green : Colors.orange;
@@ -197,6 +200,7 @@ class LatestProblemScreen extends ConsumerWidget {
         return Colors.red;
       }
     }
+
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: Card(
@@ -214,8 +218,7 @@ class LatestProblemScreen extends ConsumerWidget {
                 style: GoogleFonts.notoSans(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color:
-                      resultColor().shade700,
+                  color: resultColor().shade700,
                 ),
               ),
               const SizedBox(height: 10),
