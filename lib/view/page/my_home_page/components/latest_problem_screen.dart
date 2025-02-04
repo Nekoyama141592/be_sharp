@@ -85,8 +85,16 @@ class LatestProblemScreen extends ConsumerWidget {
 
   Widget _buildQuizResult(BuildContext context, ReadProblem problem,
       ReadUserAnswer userAnswer, LatestProblemViewModel Function() notifier) {
-    final isCorrect = problem.answers.contains(userAnswer.answer);
+    final isCorrect = userAnswer.isCorrect(problem);
+    final isInTime = userAnswer.isInTime(problem);
     final isCaptionExists = userAnswer.caption.isNotEmpty;
+    String title() {
+      if (isCorrect) {
+        return isInTime ? '制限時間以内に正解したのでクリアです！' : '正解です！次は制限時間以内に正解できるように頑張りましょう！';
+      } else {
+        return '残念、不正解です、、、';
+      }
+    }
     return SingleChildScrollView(
       child: Center(
         child: Column(
@@ -94,7 +102,7 @@ class LatestProblemScreen extends ConsumerWidget {
           children: [
             const SizedBox(height: 20),
             Text(
-              isCorrect ? '正解です！' : '残念、不正解です、、、',
+              title(),
               style: GoogleFonts.notoSans(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -137,10 +145,10 @@ class LatestProblemScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 20),
             _buildAnswerSection(
-                context, '正解', problem.answers.join(','), isCorrect),
+                context, '正解', problem.answers.join(','), isCorrect,isInTime),
             const SizedBox(height: 20),
             _buildAnswerSection(
-                context, 'あなたの回答', userAnswer.answer, isCorrect),
+                context, 'あなたの回答', userAnswer.answer, isCorrect,isInTime),
             const SizedBox(height: 30),
             ElevatedButton.icon(
               onPressed: notifier().onCaptionButtonPressed,
@@ -181,7 +189,14 @@ class LatestProblemScreen extends ConsumerWidget {
   }
 
   Widget _buildAnswerSection(
-      BuildContext context, String title, String content, bool isCorrect) {
+      BuildContext context, String title, String content, bool isCorrect,bool isInTime) {
+    MaterialColor resultColor() {
+      if (isCorrect) {
+        return isInTime ? Colors.green : Colors.orange;
+      } else {
+        return Colors.red;
+      }
+    }
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: Card(
@@ -189,7 +204,7 @@ class LatestProblemScreen extends ConsumerWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        color: isCorrect ? Colors.green.shade50 : Colors.red.shade50,
+        color: resultColor().shade50,
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(
@@ -200,7 +215,7 @@ class LatestProblemScreen extends ConsumerWidget {
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                   color:
-                      isCorrect ? Colors.green.shade700 : Colors.red.shade700,
+                      resultColor().shade700,
                 ),
               ),
               const SizedBox(height: 10),

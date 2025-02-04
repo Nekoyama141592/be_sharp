@@ -42,7 +42,7 @@ class HomeScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(16),
                 sliver: SliverToBoxAdapter(
                   child: Text(
-                    '回答者ランキング',
+                    '正解者ランキング',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -63,6 +63,7 @@ class HomeScreen extends ConsumerWidget {
                         answerTime: e.userAnswer.getDifference(problem),
                         userImage: MemoryImage(e.userImage),
                         caption: e.userAnswer.caption,
+                        isInTime: e.userAnswer.isInTime(problem),
                       ),
                     );
                   },
