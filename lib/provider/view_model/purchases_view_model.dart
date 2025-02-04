@@ -97,8 +97,6 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
   Future<void> _onVerifySuccess(VerifiedPurchase res) async {
     final stateValue = state.value;
     if (stateValue == null) return;
-    // 成功した時の処理.
-    ToastUICore.showFlutterToast("購入の検証が成功しました");
     state = await AsyncValue.guard(() async {
       final result = stateValue
           .copyWith(verifiedPurchases: [...stateValue.verifiedPurchases, res]);
