@@ -202,6 +202,4 @@ class RankingCard extends StatelessWidget {
         return [const Color(0xFF4CAF50), const Color(0xFF2E7D32)];
     }
   }
-
-  
 }

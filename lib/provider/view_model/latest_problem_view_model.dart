@@ -11,6 +11,7 @@ import 'package:be_sharp/repository/on_call_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/dialog/form_dialog.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
 
@@ -61,6 +62,7 @@ class LatestProblemViewModel
     final isSubscribing = ref.read(purchasesProvider.notifier).isSubscribing();
     if (!isSubscribing) {
       ToastUICore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
+      return;
     }
     Get.dialog(FormDialog(
       initialValue: state.value?.userAnswer?.caption,
@@ -95,6 +97,26 @@ class LatestProblemViewModel
 
   void _onSendFailure() {
     ToastUICore.showErrorFlutterToast('キャプションの追加が失敗しました');
+  }
+
+  void onRankingButtonPressed() async {
+    final isSubscribing = ref.read(purchasesProvider.notifier).isSubscribing();
+    if (!isSubscribing) {
+      ToastUICore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
+      return;
+    }
+    final answers = state.value?.problem?.answers;
+    final userAnswer = state.value?.userAnswer;
+    if (answers == null || userAnswer == null) return;
+    final problemId = userAnswer.problemId;
+    final query = QueryCore.rankingQuery(problemId, answers, userAnswer.typedCreateAt());
+    try {
+      final qshot = await query.count().get();
+      final result = qshot.count ?? 0;
+      print(result);
+    } catch(e) {
+      debugPrint(e.toString());
+    }
   }
 }
 

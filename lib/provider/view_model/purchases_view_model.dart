@@ -78,6 +78,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     }
     return oldSubscription;
   }
+
   bool isSubscribing() => state.value?.isSubscribing() ?? false;
   Future<void> _onListen(List<PurchaseDetails> detailsList) async {
     if (isSubscribing()) return;

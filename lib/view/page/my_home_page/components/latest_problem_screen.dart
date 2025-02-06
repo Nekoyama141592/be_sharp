@@ -148,55 +148,47 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildAnswerSection(
-                context, '正解', problem.answers.join(','), isCorrect),
-            const SizedBox(width: 20),
-            _buildAnswerSection(
-                context, '回答', userAnswer.answer, isCorrect),]
-            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              _buildAnswerSection(
+                  context, '正解', problem.answers.join(','), isCorrect),
+              const SizedBox(width: 20),
+              _buildAnswerSection(context, '回答', userAnswer.answer, isCorrect),
+            ]),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _buildAnswerSection(
-                context, '制限時間', FormatUICore.formatDuration(problem.timeLimitDuration()), isInTime),
+                    context,
+                    '制限時間',
+                    FormatUICore.formatDuration(problem.timeLimitDuration()),
+                    isInTime),
                 const SizedBox(width: 20),
-                _buildAnswerSection(
-                context, '回答時間', FormatUICore.formatDuration(answerTime), isInTime),
+                _buildAnswerSection(context, '回答時間',
+                    FormatUICore.formatDuration(answerTime), isInTime),
               ],
             ),
             const SizedBox(height: 30),
-            ElevatedButton.icon(
+            OriginalButton(
               onPressed: notifier().onCaptionButtonPressed,
-              icon: const Icon(Icons.add_comment),
-              label: Text(
-                'キャプションを${isCaptionExists ? '編集' : '追加'}',
-                style: GoogleFonts.notoSans(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.blue.shade700,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
+              labelText: 'キャプションを${isCaptionExists ? '編集' : '追加'}',
+              iconData: Icons.add_comment,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16.0),
+              child: OriginalButton(
+                onPressed: notifier().onRankingButtonPressed,
+                labelText: 'ランキングを見る',
+                iconData: Icons.star
               ),
             ),
-            const SizedBox(height: 20),
             if (isCaptionExists)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
                   userAnswer.caption,
                   style: GoogleFonts.notoSans(
-                    fontSize: 28,
+                    fontSize: 21,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -207,8 +199,8 @@ class LatestProblemScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildAnswerSection(BuildContext context, String title, String content,
-      bool isValid) {
+  Widget _buildAnswerSection(
+      BuildContext context, String title, String content, bool isValid) {
     MaterialColor resultColor() {
       return isValid ? Colors.green : Colors.red;
     }
@@ -244,6 +236,39 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class OriginalButton extends StatelessWidget {
+  const OriginalButton(
+      {super.key,
+      this.onPressed,
+      required this.labelText,
+      required this.iconData});
+  final void Function()? onPressed;
+  final String labelText;
+  final IconData iconData;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: onPressed,
+      icon: Icon(iconData),
+      label: Text(
+        labelText,
+        style: GoogleFonts.notoSans(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.blue.shade700,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
         ),
       ),
     );

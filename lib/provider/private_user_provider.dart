@@ -46,6 +46,7 @@ class PrivateUserProvider extends AsyncNotifier<PrivateUser> {
       return null;
     }
   }
+
   bool isAdmin() {
     return state.value?.isAdmin ?? false;
   }

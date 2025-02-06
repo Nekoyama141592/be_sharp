@@ -26,7 +26,6 @@ class PurchasesState {
   }
 
   bool isSubscribing() {
-    return verifiedPurchases.any(
-        (e) => e.isValid());
+    return verifiedPurchases.any((e) => e.isValid());
   }
 }

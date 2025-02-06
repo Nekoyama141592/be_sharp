@@ -21,4 +21,10 @@ class QueryCore {
           .where('problemId', isEqualTo: problemId)
           .where('answer', whereIn: answers)
           .limit(whereInLimit);
+  static MapQuery rankingQuery(String problemId, List<String> answers,Timestamp myCreatedAt) =>
+      _instance
+          .collectionGroup('userAnswers')
+          .where('problemId', isEqualTo: problemId)
+          .where('answer', whereIn: answers)
+          .where('createdAt',isLessThanOrEqualTo: myCreatedAt);
 }

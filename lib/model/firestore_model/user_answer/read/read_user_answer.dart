@@ -17,11 +17,11 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
   }) = _ReadUserAnswer;
   factory ReadUserAnswer.fromJson(Map<String, dynamic> json) =>
       _$ReadUserAnswerFromJson(json);
-  Timestamp _typedCreateAt() => createdAt as Timestamp;
+  Timestamp typedCreateAt() => createdAt as Timestamp;
   Duration getDifference(ReadProblem problem) {
     final problemCreatedAt = problem.typedCreatedAt();
     final difference =
-        _typedCreateAt().toDate().difference(problemCreatedAt.toDate());
+        typedCreateAt().toDate().difference(problemCreatedAt.toDate());
     return difference;
   }
 
@@ -30,7 +30,7 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
   }
 
   bool isInTime(ReadProblem problem) {
-    return _typedCreateAt().toDate().millisecondsSinceEpoch <
+    return typedCreateAt().toDate().millisecondsSinceEpoch <
         problem.timeLimitDate().millisecondsSinceEpoch;
   }
 }
