@@ -26,7 +26,7 @@ class LatestProblemScreen extends ConsumerWidget {
         return BasicPage(
           showAppBar: false,
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(16.0),
             child: _buildContent(context, problem, userAnswer, notifier),
           ),
         );
@@ -105,11 +105,10 @@ class LatestProblemScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 20),
             Text(
               title(),
               style: GoogleFonts.notoSans(
-                fontSize: 24,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
