@@ -177,10 +177,9 @@ class LatestProblemScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: OriginalButton(
-                onPressed: notifier().onRankingButtonPressed,
-                labelText: 'ランキングを見る',
-                iconData: Icons.star
-              ),
+                  onPressed: notifier().onRankingButtonPressed,
+                  labelText: '自分の順位を見る',
+                  iconData: Icons.star),
             ),
             if (isCaptionExists)
               Padding(

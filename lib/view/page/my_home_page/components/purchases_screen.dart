@@ -81,13 +81,9 @@ class PurchasesScreen extends ConsumerWidget {
                             ],
                           ),
                           const SizedBox(height: 16),
-                          Text(
-                            'キャプションを追加できるようになります',
-                            style: GoogleFonts.notoSans(
-                              fontSize: 16,
-                              color: Colors.black54,
-                            ),
-                          ),
+                          const SubscriptionEffect(text: 'キャプションが追加可能に'),
+                          const SizedBox(height: 12),
+                          const SubscriptionEffect(text: '自分の順位が閲覧可能に'),
                           const SizedBox(height: 24),
                           Text(
                             '${product.price}(1ヶ月ごと)',
@@ -144,6 +140,32 @@ class PurchaseButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class SubscriptionEffect extends StatelessWidget {
+  const SubscriptionEffect({super.key, required this.text});
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Icon(
+          Icons.check,
+          color: Colors.green,
+        ),
+        const SizedBox(
+          width: 4,
+        ),
+        Text(
+          text,
+          style: GoogleFonts.notoSans(
+            fontSize: 16,
+            color: Colors.black,
+          ),
+        ),
+      ],
     );
   }
 }

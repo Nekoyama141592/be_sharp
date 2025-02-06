@@ -10,6 +10,7 @@ import 'package:be_sharp/provider/view_model/purchases_view_model.dart';
 import 'package:be_sharp/repository/on_call_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/dialog/form_dialog.dart';
+import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -109,12 +110,13 @@ class LatestProblemViewModel
     final userAnswer = state.value?.userAnswer;
     if (answers == null || userAnswer == null) return;
     final problemId = userAnswer.problemId;
-    final query = QueryCore.rankingQuery(problemId, answers, userAnswer.typedCreateAt());
+    final query =
+        QueryCore.rankingQuery(problemId, answers, userAnswer.typedCreateAt());
     try {
       final qshot = await query.count().get();
       final result = qshot.count ?? 0;
-      print(result);
-    } catch(e) {
+      Get.dialog(RankDialog(rank: result));
+    } catch (e) {
       debugPrint(e.toString());
     }
   }
