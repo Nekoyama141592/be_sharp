@@ -1,10 +1,11 @@
+import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/ui_core/format_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RankingCard extends StatelessWidget {
   final int rank;
-  final String userName;
+  final ReadPublicUser user;
   final Duration answerTime;
   final ImageProvider userImage;
   final String caption;
@@ -13,7 +14,7 @@ class RankingCard extends StatelessWidget {
   const RankingCard(
       {super.key,
       required this.rank,
-      required this.userName,
+      required this.user,
       required this.answerTime,
       required this.userImage,
       required this.caption,
@@ -21,6 +22,40 @@ class RankingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userName = user.nickNameValue();
+    final isInvalidNickName = user.registeredInfo.typedNickName().isInvalid();
+    final isInvalidImage = user.registeredInfo.typedImage().isInvalid();
+    if (isInvalidNickName || isInvalidImage) {
+      String reason = '';
+      if (isInvalidNickName) {
+        reason += 'ニックネームが不適切';
+      }
+      if (isInvalidImage && isInvalidImage) {
+        reason += 'かつ、';
+      }
+      if (isInvalidImage) {
+        reason += '画像が不適切(理由: ${user.registeredInfo.typedImage().reason()})';
+      }
+      reason += 'なユーザー';
+      return Card(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        elevation: 8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Container(
+          height: 100,
+          color: Colors.black,
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              reason,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      );
+    }
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
       duration: const Duration(milliseconds: 500),
@@ -67,7 +102,7 @@ class RankingCard extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _buildUserInfo(),
+                                _buildUserInfo(userName),
                                 const SizedBox(height: 8),
                                 _buildAnswerTime(),
                                 if (caption.isNotEmpty) ...[
@@ -121,7 +156,7 @@ class RankingCard extends StatelessWidget {
     );
   }
 
-  Widget _buildUserInfo() {
+  Widget _buildUserInfo(String userName) {
     return Row(
       children: [
         CircleAvatar(

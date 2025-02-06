@@ -150,13 +150,14 @@ class __$$DetectedTextImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DetectedTextImpl implements _DetectedText {
+class _$DetectedTextImpl extends _DetectedText {
   const _$DetectedTextImpl(
       {this.languageCode = "",
       this.negativeScore = 0,
       this.positiveScore = 0,
       this.sentiment = "",
-      this.value = ""});
+      this.value = ""})
+      : super._();
 
   factory _$DetectedTextImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetectedTextImplFromJson(json);
@@ -217,13 +218,14 @@ class _$DetectedTextImpl implements _DetectedText {
   }
 }
 
-abstract class _DetectedText implements DetectedText {
+abstract class _DetectedText extends DetectedText {
   const factory _DetectedText(
       {final String languageCode,
       final int negativeScore,
       final int positiveScore,
       final String sentiment,
       final String value}) = _$DetectedTextImpl;
+  const _DetectedText._() : super._();
 
   factory _DetectedText.fromJson(Map<String, dynamic> json) =
       _$DetectedTextImpl.fromJson;

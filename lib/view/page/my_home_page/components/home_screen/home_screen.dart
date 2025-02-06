@@ -59,7 +59,7 @@ class HomeScreen extends ConsumerWidget {
                       opacity: 1,
                       child: RankingCard(
                         rank: index + 1,
-                        userName: user.nickNameValue(),
+                        user: user,
                         answerTime: e.userAnswer.getDifference(problem),
                         userImage: MemoryImage(e.userImage),
                         caption: e.userAnswer.caption,

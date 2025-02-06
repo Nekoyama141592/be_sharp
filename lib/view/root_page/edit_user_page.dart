@@ -205,9 +205,7 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
     final uid = publicUser.uid;
     final object = AWSS3Core.profileObject(uid);
     final requst = EditUserInfoRequest(
-        stringNickName: stringNickName!,
-        stringBio: stringBio!,
-        object: object);
+        stringNickName: stringNickName!, stringBio: stringBio!, object: object);
     await notifier.updateUser(requst, uid);
   }
 }
