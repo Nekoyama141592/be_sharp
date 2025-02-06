@@ -9,7 +9,6 @@ abstract class EditUserInfoRequest implements _$EditUserInfoRequest {
   const factory EditUserInfoRequest({
     required String stringNickName,
     required String stringBio,
-    required String stringBirthDate,
     required String object,
   }) = _EditUserInfoRequest;
   factory EditUserInfoRequest.fromJson(Map<String, dynamic> json) =>

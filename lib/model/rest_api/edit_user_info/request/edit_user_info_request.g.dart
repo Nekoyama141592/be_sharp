@@ -11,7 +11,6 @@ _$EditUserInfoRequestImpl _$$EditUserInfoRequestImplFromJson(
     _$EditUserInfoRequestImpl(
       stringNickName: json['stringNickName'] as String,
       stringBio: json['stringBio'] as String,
-      stringBirthDate: json['stringBirthDate'] as String,
       object: json['object'] as String,
     );
 
@@ -20,6 +19,5 @@ Map<String, dynamic> _$$EditUserInfoRequestImplToJson(
     <String, dynamic>{
       'stringNickName': instance.stringNickName,
       'stringBio': instance.stringBio,
-      'stringBirthDate': instance.stringBirthDate,
       'object': instance.object,
     };

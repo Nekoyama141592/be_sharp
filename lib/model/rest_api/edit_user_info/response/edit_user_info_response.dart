@@ -11,7 +11,6 @@ abstract class EditUserInfoResponse with _$EditUserInfoResponse {
     required DetectedText nickName,
     required DetectedText bio,
     required ModeratedImage image,
-    required dynamic birthDate,
   }) = _EditUserInfoResponse;
 
   factory EditUserInfoResponse.fromJson(Map<String, dynamic> json) =>

@@ -23,7 +23,6 @@ mixin _$EditUserInfoResponse {
   DetectedText get nickName => throw _privateConstructorUsedError;
   DetectedText get bio => throw _privateConstructorUsedError;
   ModeratedImage get image => throw _privateConstructorUsedError;
-  dynamic get birthDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,11 +36,7 @@ abstract class $EditUserInfoResponseCopyWith<$Res> {
           $Res Function(EditUserInfoResponse) then) =
       _$EditUserInfoResponseCopyWithImpl<$Res, EditUserInfoResponse>;
   @useResult
-  $Res call(
-      {DetectedText nickName,
-      DetectedText bio,
-      ModeratedImage image,
-      dynamic birthDate});
+  $Res call({DetectedText nickName, DetectedText bio, ModeratedImage image});
 
   $DetectedTextCopyWith<$Res> get nickName;
   $DetectedTextCopyWith<$Res> get bio;
@@ -65,7 +60,6 @@ class _$EditUserInfoResponseCopyWithImpl<$Res,
     Object? nickName = null,
     Object? bio = null,
     Object? image = null,
-    Object? birthDate = freezed,
   }) {
     return _then(_value.copyWith(
       nickName: null == nickName
@@ -80,10 +74,6 @@ class _$EditUserInfoResponseCopyWithImpl<$Res,
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ModeratedImage,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ) as $Val);
   }
 
@@ -120,11 +110,7 @@ abstract class _$$EditUserInfoResponseImplCopyWith<$Res>
       __$$EditUserInfoResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DetectedText nickName,
-      DetectedText bio,
-      ModeratedImage image,
-      dynamic birthDate});
+  $Res call({DetectedText nickName, DetectedText bio, ModeratedImage image});
 
   @override
   $DetectedTextCopyWith<$Res> get nickName;
@@ -148,7 +134,6 @@ class __$$EditUserInfoResponseImplCopyWithImpl<$Res>
     Object? nickName = null,
     Object? bio = null,
     Object? image = null,
-    Object? birthDate = freezed,
   }) {
     return _then(_$EditUserInfoResponseImpl(
       nickName: null == nickName
@@ -163,10 +148,6 @@ class __$$EditUserInfoResponseImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ModeratedImage,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ));
   }
 }
@@ -175,10 +156,7 @@ class __$$EditUserInfoResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EditUserInfoResponseImpl implements _EditUserInfoResponse {
   const _$EditUserInfoResponseImpl(
-      {required this.nickName,
-      required this.bio,
-      required this.image,
-      required this.birthDate});
+      {required this.nickName, required this.bio, required this.image});
 
   factory _$EditUserInfoResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$EditUserInfoResponseImplFromJson(json);
@@ -189,12 +167,10 @@ class _$EditUserInfoResponseImpl implements _EditUserInfoResponse {
   final DetectedText bio;
   @override
   final ModeratedImage image;
-  @override
-  final dynamic birthDate;
 
   @override
   String toString() {
-    return 'EditUserInfoResponse(nickName: $nickName, bio: $bio, image: $image, birthDate: $birthDate)';
+    return 'EditUserInfoResponse(nickName: $nickName, bio: $bio, image: $image)';
   }
 
   @override
@@ -205,14 +181,12 @@ class _$EditUserInfoResponseImpl implements _EditUserInfoResponse {
             (identical(other.nickName, nickName) ||
                 other.nickName == nickName) &&
             (identical(other.bio, bio) || other.bio == bio) &&
-            (identical(other.image, image) || other.image == image) &&
-            const DeepCollectionEquality().equals(other.birthDate, birthDate));
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, nickName, bio, image,
-      const DeepCollectionEquality().hash(birthDate));
+  int get hashCode => Object.hash(runtimeType, nickName, bio, image);
 
   @JsonKey(ignore: true)
   @override
@@ -234,8 +208,7 @@ abstract class _EditUserInfoResponse implements EditUserInfoResponse {
   const factory _EditUserInfoResponse(
       {required final DetectedText nickName,
       required final DetectedText bio,
-      required final ModeratedImage image,
-      required final dynamic birthDate}) = _$EditUserInfoResponseImpl;
+      required final ModeratedImage image}) = _$EditUserInfoResponseImpl;
 
   factory _EditUserInfoResponse.fromJson(Map<String, dynamic> json) =
       _$EditUserInfoResponseImpl.fromJson;
@@ -246,8 +219,6 @@ abstract class _EditUserInfoResponse implements EditUserInfoResponse {
   DetectedText get bio;
   @override
   ModeratedImage get image;
-  @override
-  dynamic get birthDate;
   @override
   @JsonKey(ignore: true)
   _$$EditUserInfoResponseImplCopyWith<_$EditUserInfoResponseImpl>

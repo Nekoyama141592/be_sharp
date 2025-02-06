@@ -22,7 +22,6 @@ EditUserInfoRequest _$EditUserInfoRequestFromJson(Map<String, dynamic> json) {
 mixin _$EditUserInfoRequest {
   String get stringNickName => throw _privateConstructorUsedError;
   String get stringBio => throw _privateConstructorUsedError;
-  String get stringBirthDate => throw _privateConstructorUsedError;
   String get object => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,11 +36,7 @@ abstract class $EditUserInfoRequestCopyWith<$Res> {
           EditUserInfoRequest value, $Res Function(EditUserInfoRequest) then) =
       _$EditUserInfoRequestCopyWithImpl<$Res, EditUserInfoRequest>;
   @useResult
-  $Res call(
-      {String stringNickName,
-      String stringBio,
-      String stringBirthDate,
-      String object});
+  $Res call({String stringNickName, String stringBio, String object});
 }
 
 /// @nodoc
@@ -59,7 +54,6 @@ class _$EditUserInfoRequestCopyWithImpl<$Res, $Val extends EditUserInfoRequest>
   $Res call({
     Object? stringNickName = null,
     Object? stringBio = null,
-    Object? stringBirthDate = null,
     Object? object = null,
   }) {
     return _then(_value.copyWith(
@@ -70,10 +64,6 @@ class _$EditUserInfoRequestCopyWithImpl<$Res, $Val extends EditUserInfoRequest>
       stringBio: null == stringBio
           ? _value.stringBio
           : stringBio // ignore: cast_nullable_to_non_nullable
-              as String,
-      stringBirthDate: null == stringBirthDate
-          ? _value.stringBirthDate
-          : stringBirthDate // ignore: cast_nullable_to_non_nullable
               as String,
       object: null == object
           ? _value.object
@@ -91,11 +81,7 @@ abstract class _$$EditUserInfoRequestImplCopyWith<$Res>
       __$$EditUserInfoRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String stringNickName,
-      String stringBio,
-      String stringBirthDate,
-      String object});
+  $Res call({String stringNickName, String stringBio, String object});
 }
 
 /// @nodoc
@@ -111,7 +97,6 @@ class __$$EditUserInfoRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? stringNickName = null,
     Object? stringBio = null,
-    Object? stringBirthDate = null,
     Object? object = null,
   }) {
     return _then(_$EditUserInfoRequestImpl(
@@ -122,10 +107,6 @@ class __$$EditUserInfoRequestImplCopyWithImpl<$Res>
       stringBio: null == stringBio
           ? _value.stringBio
           : stringBio // ignore: cast_nullable_to_non_nullable
-              as String,
-      stringBirthDate: null == stringBirthDate
-          ? _value.stringBirthDate
-          : stringBirthDate // ignore: cast_nullable_to_non_nullable
               as String,
       object: null == object
           ? _value.object
@@ -141,7 +122,6 @@ class _$EditUserInfoRequestImpl extends _EditUserInfoRequest {
   const _$EditUserInfoRequestImpl(
       {required this.stringNickName,
       required this.stringBio,
-      required this.stringBirthDate,
       required this.object})
       : super._();
 
@@ -153,13 +133,11 @@ class _$EditUserInfoRequestImpl extends _EditUserInfoRequest {
   @override
   final String stringBio;
   @override
-  final String stringBirthDate;
-  @override
   final String object;
 
   @override
   String toString() {
-    return 'EditUserInfoRequest(stringNickName: $stringNickName, stringBio: $stringBio, stringBirthDate: $stringBirthDate, object: $object)';
+    return 'EditUserInfoRequest(stringNickName: $stringNickName, stringBio: $stringBio, object: $object)';
   }
 
   @override
@@ -171,15 +149,13 @@ class _$EditUserInfoRequestImpl extends _EditUserInfoRequest {
                 other.stringNickName == stringNickName) &&
             (identical(other.stringBio, stringBio) ||
                 other.stringBio == stringBio) &&
-            (identical(other.stringBirthDate, stringBirthDate) ||
-                other.stringBirthDate == stringBirthDate) &&
             (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, stringNickName, stringBio, stringBirthDate, object);
+  int get hashCode =>
+      Object.hash(runtimeType, stringNickName, stringBio, object);
 
   @JsonKey(ignore: true)
   @override
@@ -200,7 +176,6 @@ abstract class _EditUserInfoRequest extends EditUserInfoRequest {
   const factory _EditUserInfoRequest(
       {required final String stringNickName,
       required final String stringBio,
-      required final String stringBirthDate,
       required final String object}) = _$EditUserInfoRequestImpl;
   const _EditUserInfoRequest._() : super._();
 
@@ -211,8 +186,6 @@ abstract class _EditUserInfoRequest extends EditUserInfoRequest {
   String get stringNickName;
   @override
   String get stringBio;
-  @override
-  String get stringBirthDate;
   @override
   String get object;
   @override

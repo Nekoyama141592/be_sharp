@@ -12,7 +12,6 @@ _$EditUserInfoResponseImpl _$$EditUserInfoResponseImplFromJson(
       nickName: DetectedText.fromJson(json['nickName'] as Map<String, dynamic>),
       bio: DetectedText.fromJson(json['bio'] as Map<String, dynamic>),
       image: ModeratedImage.fromJson(json['image'] as Map<String, dynamic>),
-      birthDate: json['birthDate'],
     );
 
 Map<String, dynamic> _$$EditUserInfoResponseImplToJson(
@@ -21,5 +20,4 @@ Map<String, dynamic> _$$EditUserInfoResponseImplToJson(
       'nickName': instance.nickName,
       'bio': instance.bio,
       'image': instance.image,
-      'birthDate': instance.birthDate,
     };

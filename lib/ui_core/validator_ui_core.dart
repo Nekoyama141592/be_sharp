@@ -22,11 +22,8 @@ class ValidatorUICore {
   }
 
   static String? stringBirthDate(String? value) {
-    const length = 8;
     if (value == null || value.isEmpty) {
-      return '入力をしてください';
-    } else if (value.length != length) {
-      return '$length文字で入力してください';
+      return null;
     } else if (int.tryParse(value) == null) {
       return '数字を入力してください';
     } else {

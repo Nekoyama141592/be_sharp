@@ -38,7 +38,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
 
   String? stringNickName;
   String? stringBio;
-  String? stringBirthDate;
   Uint8List? uint8list;
   bool isPicked = false;
   @override
@@ -103,7 +102,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
               children: [
                 ..._userNameTextField(user),
                 ..._bioTextField(user),
-                ..._stringBirthDateTextField(user),
               ],
             ),
           )),
@@ -152,26 +150,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
           });
         },
         validator: ValidatorUICore.bio,
-      )
-    ];
-  }
-
-  // 誕生日を入力をする関数
-  List<Widget> _stringBirthDateTextField(ReadPublicUser user) {
-    return [
-      const FormLabel(
-        title: "誕生日(8桁の数字)",
-      ),
-      OriginalForm(
-        initialValue: user.birthDateValue(),
-        keyboardType: TextInputType.number,
-        decoration: const InputDecoration(hintText: '2004年1月1日生まれなら20040101'),
-        onSaved: (value) {
-          setState(() {
-            stringBirthDate = value;
-          });
-        },
-        validator: ValidatorUICore.stringBirthDate,
       )
     ];
   }
@@ -229,7 +207,6 @@ class _EditUserPageState extends ProcessingState<EditUserPage> {
     final requst = EditUserInfoRequest(
         stringNickName: stringNickName!,
         stringBio: stringBio!,
-        stringBirthDate: stringBirthDate!,
         object: object);
     await notifier.updateUser(requst, uid);
   }
