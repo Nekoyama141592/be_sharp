@@ -2,6 +2,7 @@ import 'package:be_sharp/provider/private_user_provider.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
+import 'package:be_sharp/view/root_page/mute_users_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
@@ -23,6 +24,10 @@ class OriginalDrawer extends ConsumerWidget {
                   ListTile(
                     title: const Text("アカウント情報"),
                     onTap: () => Get.toNamed(AccountPage.path),
+                  ),
+                  ListTile(
+                    title: const Text("ミュートしているユーザー"),
+                    onTap: () => Get.toNamed(MuteUsersPage.path),
                   ),
                   if (data.isAdmin)
                     ListTile(

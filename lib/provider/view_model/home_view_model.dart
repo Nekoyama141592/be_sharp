@@ -72,7 +72,8 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     if (uid == null || uid == muteUid) return;
     final docRef = DocRefCore.muteUser(uid, muteUid);
     final repository = FirestoreRepository();
-    final json = MuteUser(muteUid: muteUid, createdAt: Timestamp.now()).toJson();
+    final json =
+        MuteUser(muteUid: muteUid, createdAt: Timestamp.now()).toJson();
     final result = await repository.createDoc(docRef, json);
     result.when(
         success: (_) => _onMuteSuccess(context, muteUid),

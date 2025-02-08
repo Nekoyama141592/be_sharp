@@ -7,6 +7,7 @@ import 'package:be_sharp/view/root_page/admin_page.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:be_sharp/view/root_page/logouted_page.dart';
+import 'package:be_sharp/view/root_page/mute_users_page.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';
 import 'package:be_sharp/view/root_page/user_deleted_page.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ final getPages = [
   GetPage(name: AdminPage.path, page: () => const AdminPage()),
   GetPage(name: EditUserPage.path, page: () => const EditUserPage()),
   GetPage(name: CreateUserAnswerPage.path, page: () => CreateUserAnswerPage()),
+  GetPage(name: MuteUsersPage.path, page: () => const MuteUsersPage()),
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),
   GetPage(
     name: ReauthenticateToDeletePage.path,
