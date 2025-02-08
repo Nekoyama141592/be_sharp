@@ -4,28 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RankingCard extends StatelessWidget {
+  final bool isMute;
   final int rank;
   final ReadPublicUser user;
   final Duration answerTime;
   final ImageProvider userImage;
   final String caption;
   final bool isInTime;
+  final void Function()? onMoreButtonPressed;
 
   const RankingCard(
       {super.key,
+      required this.isMute,
       required this.rank,
       required this.user,
       required this.answerTime,
       required this.userImage,
       required this.caption,
-      required this.isInTime});
+      required this.isInTime,
+      required this.onMoreButtonPressed});
 
   @override
   Widget build(BuildContext context) {
     final userName = user.nickNameValue();
     final isInvalidNickName = user.registeredInfo.typedNickName().isInvalid();
     final isInvalidImage = user.registeredInfo.typedImage().isInvalid();
-    if (isInvalidNickName || isInvalidImage) {
+    if (isInvalidNickName || isInvalidImage || isMute) {
       String reason = '';
       if (isInvalidNickName) {
         reason += 'ニックネームが不適切';
@@ -37,6 +41,9 @@ class RankingCard extends StatelessWidget {
         reason += '画像が不適切(理由: ${user.registeredInfo.typedImage().reason()})';
       }
       reason += 'なユーザー';
+      if (isMute) {
+        reason = 'ミュートしているユーザー';
+      }
       return Card(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         elevation: 8,
@@ -90,6 +97,17 @@ class RankingCard extends StatelessWidget {
                         Icons.star,
                         size: 100,
                         color: _userTextColor().withOpacity(0.2),
+                      ),
+                    ),
+                    Positioned(
+                      top: 8,
+                      right: 24,
+                      child: InkWell(
+                        onTap: onMoreButtonPressed,
+                        child: const Icon(
+                          Icons.more_horiz,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     Padding(

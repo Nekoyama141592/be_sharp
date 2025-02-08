@@ -12,6 +12,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(homeProvider);
+    HomeViewModel notifier() => ref.read(homeProvider.notifier);
     return Scaffold(
       backgroundColor: AppColors.background,
       drawer: const OriginalDrawer(),
@@ -54,16 +55,20 @@ class HomeScreen extends ConsumerWidget {
                   (context, index) {
                     final e = users[index];
                     final user = e.publicUser;
+                    final isMute = state.isMute(user.uid);
                     return AnimatedOpacity(
                       duration: const Duration(milliseconds: 500),
                       opacity: 1,
                       child: RankingCard(
+                        isMute: isMute,
                         rank: index + 1,
                         user: user,
                         answerTime: e.userAnswer.getDifference(problem),
                         userImage: MemoryImage(e.userImage),
                         caption: e.userAnswer.caption,
                         isInTime: e.userAnswer.isInTime(problem),
+                        onMoreButtonPressed: () => notifier()
+                            .onMoreButtonPressed(context, e.userAnswer.uid),
                       ),
                     );
                   },

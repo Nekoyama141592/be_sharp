@@ -28,4 +28,8 @@ class QueryCore {
           .where('problemId', isEqualTo: problemId)
           .where('answer', whereIn: answers)
           .where('createdAt', isLessThanOrEqualTo: myCreatedAt);
+  static MapQuery muteUsers({required String uid, List<String>? uids}) {
+    final baseQuery = ColRefCore.muteUsers(uid);
+    return uids == null ? baseQuery : baseQuery.where('uid', whereIn: uids);
+  }
 }

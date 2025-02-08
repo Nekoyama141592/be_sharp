@@ -1,14 +1,21 @@
 import 'dart:async';
+import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/query_core.dart';
-import 'package:be_sharp/extensions/prefs_extension.dart';
+import 'package:be_sharp/core/view_core/home_core.dart';
+import 'package:be_sharp/model/dialog/text_action.dart';
+import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/provider/cache_provider.dart';
+import 'package:be_sharp/provider/user_provider.dart';
+import 'package:be_sharp/repository/firestore_repository.dart';
+import 'package:be_sharp/ui_core/dialog_ui_core.dart';
+import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
 
 class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
   @override
@@ -26,33 +33,16 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     }
     final query = QueryCore.correctUserAnswers(problemId, answers);
     final qshot = await query.get();
-    final userAnswers =
-        qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
-    final uids = userAnswers.map((e) => e.uid).toList();
-    if (uids.isEmpty) {
-      return HomeState(latestProblem: latestProblem);
-    }
-    final usersQshot = await QueryCore.users(uids).get();
-    final users =
-        usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
-    final nullableAnsweredUsers =
-        await Future.wait(qshot.docs.map((qDoc) async {
-      final userAnswer = ReadUserAnswer.fromJson(qDoc.data());
-      final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
-      if (publicUser == null) return null;
-      final userImage = await ref
-          .read(prefsProvider)
-          .getS3Image(publicUser.imageCacheKey(), publicUser.imageValue());
-      return AnsweredUser(
-          publicUser: publicUser,
-          userAnswerQDoc: qDoc,
-          userImage: userImage,
-          userAnswer: userAnswer);
-    }));
-    final answeredUsers =
-        nullableAnsweredUsers.whereType<AnsweredUser>().toList();
+    final prefs = ref.read(prefsProvider);
+    final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>)] =
+        await Future.wait([
+      HomeCore.fetchAnsweredUsers(qshot, prefs),
+      HomeCore.fetchMuteUsers(ref.read(userProvider)?.uid, qshot),
+    ]);
     return HomeState(
-        latestProblem: latestProblem, answeredUsers: answeredUsers);
+        latestProblem: latestProblem,
+        answeredUsers: answeredUsers,
+        muteUids: muteUids);
   }
 
   Future<ReadProblem?> _fetchLatestProblem() async {
@@ -61,6 +51,50 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
     return ReadProblem.fromJson(docs.first.data());
+  }
+
+  void onMoreButtonPressed(BuildContext context, String muteUid) {
+    // print(state.value?.muteUids);
+    // return;
+    final actions = <TextAction>[
+      TextAction(
+          text: 'このユーザーをミュートする',
+          action: (iContext) {
+            _muteUser(iContext, muteUid);
+          }),
+      TextAction(text: 'キャンセル', action: Navigator.pop),
+    ];
+    DialogUiCore.showPopup(context: context, actions: actions);
+  }
+
+  Future<void> _muteUser(BuildContext context, String muteUid) async {
+    final uid = ref.read(userProvider)?.uid;
+    if (uid == null || uid == muteUid) return;
+    final docRef = DocRefCore.muteUser(uid, muteUid);
+    final repository = FirestoreRepository();
+    final json = MuteUser(muteUid: muteUid, createdAt: Timestamp.now()).toJson();
+    final result = await repository.createDoc(docRef, json);
+    result.when(
+        success: (_) => _onMuteSuccess(context, muteUid),
+        failure: () => _onMuteFailure(context));
+  }
+
+  void _onMuteSuccess(BuildContext context, String muteUid) async {
+    Navigator.pop(context);
+    final stateValue = state.value;
+    if (stateValue == null) return;
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() async {
+      final muteUids = [...stateValue.muteUids, muteUid];
+      final result = stateValue.copyWith(muteUids: muteUids);
+      return result;
+    });
+    ToastUICore.showFlutterToast('ユーザーをミュートしました');
+  }
+
+  void _onMuteFailure(BuildContext context) {
+    Navigator.pop(context);
+    ToastUICore.showErrorFlutterToast('ユーザーをミュートできませんでした');
   }
 }
 

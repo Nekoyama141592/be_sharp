@@ -5,6 +5,8 @@ class DocRefCore {
   static DocRef user(String uid) => ColRefCore.users().doc(uid);
   static DocRef userAnswer(String uid, String problemId) =>
       ColRefCore.userAnswers(uid).doc(problemId);
+  static DocRef muteUser(String uid, String muteUid) =>
+      ColRefCore.muteUsers(uid).doc(muteUid);
   static DocRef privateUser(String uid) => ColRefCore.privateUsers().doc(uid);
   static DocRef problem(String problemId) =>
       ColRefCore.problems().doc(problemId);

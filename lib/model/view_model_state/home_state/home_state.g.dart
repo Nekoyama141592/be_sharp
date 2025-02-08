@@ -15,10 +15,15 @@ _$HomeStateImpl _$$HomeStateImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => AnsweredUser.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      muteUids: (json['muteUids'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$HomeStateImplToJson(_$HomeStateImpl instance) =>
     <String, dynamic>{
       'latestProblem': instance.latestProblem,
       'answeredUsers': instance.answeredUsers,
+      'muteUids': instance.muteUids,
     };
