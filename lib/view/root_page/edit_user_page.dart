@@ -42,7 +42,7 @@ class EditUserPage extends HookConsumerWidget {
             child: TextFormField(
               initialValue: user?.nickNameValue(),
               onSaved: notifier().setNickName,
-              validator: ValidatorUICore.text,
+              validator: ValidatorUICore.nickName,
             ))
       ];
     }
@@ -58,7 +58,7 @@ class EditUserPage extends HookConsumerWidget {
               initialValue: user?.bioValue(),
               decoration: const InputDecoration(hintText: '紹介文を入力'),
               onSaved: notifier().setBio,
-              validator: ValidatorUICore.text,
+              validator: ValidatorUICore.bio,
             ))
       ];
     }
