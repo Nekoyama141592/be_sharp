@@ -15,6 +15,8 @@ _$ReadProblemImpl _$$ReadProblemImplFromJson(Map<String, dynamic> json) =>
       timeLimitSeconds: (json['timeLimitSeconds'] as num).toInt(),
       answers:
           (json['answers'] as List<dynamic>).map((e) => e as String).toList(),
+      subject: json['subject'] as String? ?? 'math',
+      category: json['category'] as String? ?? 'unlimited',
       updatedAt: json['updatedAt'],
     );
 
@@ -26,5 +28,7 @@ Map<String, dynamic> _$$ReadProblemImplToJson(_$ReadProblemImpl instance) =>
       'problemId': instance.problemId,
       'timeLimitSeconds': instance.timeLimitSeconds,
       'answers': instance.answers,
+      'subject': instance.subject,
+      'category': instance.category,
       'updatedAt': instance.updatedAt,
     };

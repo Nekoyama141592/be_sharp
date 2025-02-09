@@ -111,6 +111,7 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
   void _onCreateFailure() {
     ToastUICore.showErrorFlutterToast('作成が失敗しました');
   }
+
   void _onUpdateSuccess(bool res) {
     ToastUICore.showFlutterToast('更新が成功しました');
   }

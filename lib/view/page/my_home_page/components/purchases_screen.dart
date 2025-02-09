@@ -49,20 +49,20 @@ class PurchasesScreen extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                            const SubscriptionEffect(text: 'キャプションが追加可能に'),
-                            const SizedBox(height: 12),
-                            const SubscriptionEffect(text: '自分の順位が閲覧可能に'),
-                            const SizedBox(height: 24),
+                    const SubscriptionEffect(text: 'キャプションが追加可能に'),
+                    const SizedBox(height: 12),
+                    const SubscriptionEffect(text: '自分の順位が閲覧可能に'),
+                    const SizedBox(height: 24),
                     ...products.map((product) {
                       return PurchaseCard(
-                      product: product,
-                      isMonthPlan: product.id == PurchasesCore.monthItemId(),
-                      isPurchased: state.isPurchased(product.id),
-                      onPressed: () {
-                        notifier().onPurchaseButtonPressed(product);
-                      },
-                    );
-                    } )
+                        product: product,
+                        isMonthPlan: product.id == PurchasesCore.monthItemId(),
+                        isPurchased: state.isPurchased(product.id),
+                        onPressed: () {
+                          notifier().onPurchaseButtonPressed(product);
+                        },
+                      );
+                    })
                   ],
                 ),
               ),

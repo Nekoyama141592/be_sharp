@@ -26,6 +26,8 @@ mixin _$ReadProblem {
   String get problemId => throw _privateConstructorUsedError;
   int get timeLimitSeconds => throw _privateConstructorUsedError;
   List<String> get answers => throw _privateConstructorUsedError;
+  String get subject => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,6 +49,8 @@ abstract class $ReadProblemCopyWith<$Res> {
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
+      String subject,
+      String category,
       dynamic updatedAt});
 }
 
@@ -69,6 +73,8 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
     Object? problemId = null,
     Object? timeLimitSeconds = null,
     Object? answers = null,
+    Object? subject = null,
+    Object? category = null,
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,6 +102,14 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
           ? _value.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -119,6 +133,8 @@ abstract class _$$ReadProblemImplCopyWith<$Res>
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
+      String subject,
+      String category,
       dynamic updatedAt});
 }
 
@@ -139,6 +155,8 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
     Object? problemId = null,
     Object? timeLimitSeconds = null,
     Object? answers = null,
+    Object? subject = null,
+    Object? category = null,
     Object? updatedAt = freezed,
   }) {
     return _then(_$ReadProblemImpl(
@@ -166,6 +184,14 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
           ? _value._answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      subject: null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
       updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
@@ -184,6 +210,8 @@ class _$ReadProblemImpl extends _ReadProblem {
       required this.problemId,
       required this.timeLimitSeconds,
       required final List<String> answers,
+      this.subject = 'math',
+      this.category = 'unlimited',
       required this.updatedAt})
       : _answers = answers,
         super._();
@@ -210,11 +238,17 @@ class _$ReadProblemImpl extends _ReadProblem {
   }
 
   @override
+  @JsonKey()
+  final String subject;
+  @override
+  @JsonKey()
+  final String category;
+  @override
   final dynamic updatedAt;
 
   @override
   String toString() {
-    return 'ReadProblem(createdAt: $createdAt, question: $question, latex: $latex, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
+    return 'ReadProblem(createdAt: $createdAt, question: $question, latex: $latex, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, subject: $subject, category: $category, updatedAt: $updatedAt)';
   }
 
   @override
@@ -231,6 +265,9 @@ class _$ReadProblemImpl extends _ReadProblem {
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
                 other.timeLimitSeconds == timeLimitSeconds) &&
             const DeepCollectionEquality().equals(other._answers, _answers) &&
+            (identical(other.subject, subject) || other.subject == subject) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
@@ -244,6 +281,8 @@ class _$ReadProblemImpl extends _ReadProblem {
       problemId,
       timeLimitSeconds,
       const DeepCollectionEquality().hash(_answers),
+      subject,
+      category,
       const DeepCollectionEquality().hash(updatedAt));
 
   @JsonKey(ignore: true)
@@ -268,6 +307,8 @@ abstract class _ReadProblem extends ReadProblem {
       required final String problemId,
       required final int timeLimitSeconds,
       required final List<String> answers,
+      final String subject,
+      final String category,
       required final dynamic updatedAt}) = _$ReadProblemImpl;
   const _ReadProblem._() : super._();
 
@@ -286,6 +327,10 @@ abstract class _ReadProblem extends ReadProblem {
   int get timeLimitSeconds;
   @override
   List<String> get answers;
+  @override
+  String get subject;
+  @override
+  String get category;
   @override
   dynamic get updatedAt;
   @override

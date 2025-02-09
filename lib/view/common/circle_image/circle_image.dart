@@ -18,7 +18,10 @@ class CircleImage extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: uint8list == null
-          ? Icon(Icons.image,size: width,)
+          ? Icon(
+              Icons.image,
+              size: width,
+            )
           : S3Image(
               uint8list: uint8list!,
               width: width,
