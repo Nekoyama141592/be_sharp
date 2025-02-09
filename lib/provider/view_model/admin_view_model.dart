@@ -2,7 +2,6 @@ import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/id_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/write/write_problem.dart';
 import 'package:be_sharp/repository/firestore_repository.dart';
-import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -17,8 +16,6 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
     throw UnimplementedError();
   }
 
-  String get successMsg => '成功しました';
-  String get failureMsg => '失敗しました';
   int? timeLimitSecond;
   String? answer;
   String latex = '';
@@ -99,24 +96,27 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
             updatedAt: now)
         .toJson();
     final result = await repository.createDoc(docRef, json);
-    showResult(result);
+    result.when(success: _onCreateSuccess, failure: _onCreateFailure);
     await Future.delayed(Duration(seconds: timeLimitSecond!));
     final updateResult = await repository.updateDoc(docRef, {
       'answers': <String>[answer!]
     });
-    showResult(updateResult);
+    updateResult.when(success: _onUpdateSuccess, failure: _onUpdateFailure);
   }
 
-  void showResult(Result result) {
-    result.when(success: _success, failure: _failure);
+  void _onCreateSuccess(bool res) {
+    ToastUICore.showFlutterToast('作成が成功しました');
   }
 
-  void _success(dynamic res) {
-    ToastUICore.showFlutterToast(successMsg);
+  void _onCreateFailure() {
+    ToastUICore.showErrorFlutterToast('作成が失敗しました');
+  }
+  void _onUpdateSuccess(bool res) {
+    ToastUICore.showFlutterToast('更新が成功しました');
   }
 
-  void _failure() {
-    ToastUICore.showErrorFlutterToast(failureMsg);
+  void _onUpdateFailure() {
+    ToastUICore.showErrorFlutterToast('更新が失敗しました');
   }
 }
 
