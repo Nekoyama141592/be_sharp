@@ -64,8 +64,8 @@ class EditUserViewModel extends AutoDisposeAsyncNotifier<EditUserState> {
       // 写真が新しくなった場合の処理
       final repository = AWSS3Repository();
       final object = AWSS3Core.profileObject(uid);
-      final request = PutObjectRequest.fromUint8List(
-          uint8list: image, fileName: object);
+      final request =
+          PutObjectRequest.fromUint8List(uint8list: image, fileName: object);
       ToastUICore.showFlutterToast('更新中...');
       final result = await repository.putObject(request);
       await result.when(success: (res) async {

@@ -4,8 +4,12 @@ import 'package:be_sharp/model/firestore_model/problem/write/write_problem.dart'
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AdminViewModel extends AutoDisposeNotifier<String> {
   @override
@@ -40,7 +44,48 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
     timeLimitSecond = intValue;
   }
 
-  void onPositiveButtonPressed() async {
+  void onPositiveButtonPressed() {
+    Get.dialog(AlertDialog(
+        content: SizedBox(
+      height: Get.height * 0.8,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            'プレビュー',
+          ),
+          const SizedBox(height: 10),
+          Text(
+            question,
+            style: GoogleFonts.notoSans(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 10),
+          LatexText(
+              data: latex,
+              style: GoogleFonts.notoSans(
+                fontSize: 28,
+                fontWeight: FontWeight.w500,
+              )),
+          const Divider(),
+          TextButton(
+              onPressed: () async {
+                if (Get.isDialogOpen ?? false) {
+                  Get.back();
+                }
+                await _send();
+              },
+              child: const Text(
+                'OK',
+              )),
+        ],
+      ),
+    )));
+  }
+
+  Future<void> _send() async {
     final repository = FirestoreRepository();
     final problemId = IDCore.ulid();
     final docRef = DocRefCore.problem(problemId);

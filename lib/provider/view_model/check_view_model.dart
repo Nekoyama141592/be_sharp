@@ -18,9 +18,7 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       return CheckState(
-          needsAgreeToTerms: needsAgreeToTerms,
-          needsSignup: true,
-          user: null);
+          needsAgreeToTerms: needsAgreeToTerms, needsSignup: true, user: null);
     } else {
       final readUser = await _fetchUser(user.uid);
       return CheckState(
@@ -55,8 +53,7 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final result = stateValue.copyWith(
-          needsSignup: false,
-          user: await _fetchUser(user.uid));
+          needsSignup: false, user: await _fetchUser(user.uid));
       return result;
     });
   }
@@ -66,8 +63,7 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     if (stateValue == null) return;
     state = await AsyncValue.guard(() async {
       final newUser = await _fetchUser(uid);
-      final result =
-          stateValue.copyWith(user: newUser);
+      final result = stateValue.copyWith(user: newUser);
       return result;
     });
   }

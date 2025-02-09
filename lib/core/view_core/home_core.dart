@@ -48,6 +48,7 @@ class HomeCore {
       String? currentUid, QSnapshot qshot) async {
     if (currentUid == null) return [];
     final uids = _getUids(qshot);
+    if (uids.isEmpty) return [];
     final query = QueryCore.muteUsers(uid: currentUid, uids: uids);
     final usersQshot = await query.get();
     final docs = usersQshot.docs;

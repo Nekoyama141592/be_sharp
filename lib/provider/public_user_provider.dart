@@ -11,8 +11,8 @@ class PublicUserProvider extends AutoDisposeAsyncNotifier<UserAndImageState> {
   FutureOr<UserAndImageState> build() async {
     final user = ref.read(checkProvider).value?.user;
     if (user == null) {
-      return  UserAndImageState(user: user, image: null);
-    } 
+      return UserAndImageState(user: user, image: null);
+    }
     final image = await ref
         .read(prefsProvider)
         .getS3Image(user.imageCacheKey(), user.imageValue());
