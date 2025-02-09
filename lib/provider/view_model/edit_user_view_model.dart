@@ -66,7 +66,6 @@ class EditUserViewModel extends AutoDisposeAsyncNotifier<EditUserState> {
       final object = AWSS3Core.profileObject(uid);
       final request =
           PutObjectRequest.fromUint8List(uint8list: image, fileName: object);
-      ToastUICore.showFlutterToast('更新中...');
       final result = await repository.putObject(request);
       await result.when(success: (res) async {
         await _updateUser();
