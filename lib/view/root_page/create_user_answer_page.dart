@@ -4,6 +4,7 @@ import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/provider/view_model/create_user_answer_view_model.dart';
 import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
+import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -122,10 +123,17 @@ class QuestionCard extends StatelessWidget {
               Text(
                 state.question,
                 style: GoogleFonts.roboto(
-                    fontSize: 24, fontWeight: FontWeight.bold),
+                    fontSize: 18),
                 textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 10),
+              LatexText(
+                data: state.latex,
+                style: GoogleFonts.roboto(
+                    fontSize: 28, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 15),
+              const Divider(),
               Text(
                 '制限時間: ${state.timeLimitSeconds}秒',
                 style:
