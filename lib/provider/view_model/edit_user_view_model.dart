@@ -110,7 +110,8 @@ class EditUserViewModel extends AutoDisposeAsyncNotifier<EditUserState> {
   }
 
   Future<void> _success(EditUserInfoResponse res) async {
-    await ref.read(checkProvider.notifier).onUserUpdateSuccess();
+    final uid = ref.read(userProvider)!.uid;
+    await ref.read(checkProvider.notifier).onUserUpdateSuccess(uid);
     ToastUICore.showFlutterToast("プロフィールを更新しました。");
     if (Get.currentRoute == EditUserPage.path) {
       Get.back();

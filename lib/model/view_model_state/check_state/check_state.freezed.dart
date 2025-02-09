@@ -22,7 +22,7 @@ CheckState _$CheckStateFromJson(Map<String, dynamic> json) {
 mixin _$CheckState {
   bool get needsAgreeToTerms => throw _privateConstructorUsedError;
   bool get needsSignup => throw _privateConstructorUsedError;
-  bool get needsEditUser => throw _privateConstructorUsedError;
+  ReadPublicUser? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,9 @@ abstract class $CheckStateCopyWith<$Res> {
           CheckState value, $Res Function(CheckState) then) =
       _$CheckStateCopyWithImpl<$Res, CheckState>;
   @useResult
-  $Res call({bool needsAgreeToTerms, bool needsSignup, bool needsEditUser});
+  $Res call({bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user});
+
+  $ReadPublicUserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -54,7 +56,7 @@ class _$CheckStateCopyWithImpl<$Res, $Val extends CheckState>
   $Res call({
     Object? needsAgreeToTerms = null,
     Object? needsSignup = null,
-    Object? needsEditUser = null,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       needsAgreeToTerms: null == needsAgreeToTerms
@@ -65,11 +67,23 @@ class _$CheckStateCopyWithImpl<$Res, $Val extends CheckState>
           ? _value.needsSignup
           : needsSignup // ignore: cast_nullable_to_non_nullable
               as bool,
-      needsEditUser: null == needsEditUser
-          ? _value.needsEditUser
-          : needsEditUser // ignore: cast_nullable_to_non_nullable
-              as bool,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as ReadPublicUser?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadPublicUserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $ReadPublicUserCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -81,7 +95,10 @@ abstract class _$$CheckStateImplCopyWith<$Res>
       __$$CheckStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool needsAgreeToTerms, bool needsSignup, bool needsEditUser});
+  $Res call({bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user});
+
+  @override
+  $ReadPublicUserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -97,7 +114,7 @@ class __$$CheckStateImplCopyWithImpl<$Res>
   $Res call({
     Object? needsAgreeToTerms = null,
     Object? needsSignup = null,
-    Object? needsEditUser = null,
+    Object? user = freezed,
   }) {
     return _then(_$CheckStateImpl(
       needsAgreeToTerms: null == needsAgreeToTerms
@@ -108,10 +125,10 @@ class __$$CheckStateImplCopyWithImpl<$Res>
           ? _value.needsSignup
           : needsSignup // ignore: cast_nullable_to_non_nullable
               as bool,
-      needsEditUser: null == needsEditUser
-          ? _value.needsEditUser
-          : needsEditUser // ignore: cast_nullable_to_non_nullable
-              as bool,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as ReadPublicUser?,
     ));
   }
 }
@@ -122,7 +139,7 @@ class _$CheckStateImpl extends _CheckState {
   const _$CheckStateImpl(
       {required this.needsAgreeToTerms,
       required this.needsSignup,
-      required this.needsEditUser})
+      required this.user})
       : super._();
 
   factory _$CheckStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -133,11 +150,11 @@ class _$CheckStateImpl extends _CheckState {
   @override
   final bool needsSignup;
   @override
-  final bool needsEditUser;
+  final ReadPublicUser? user;
 
   @override
   String toString() {
-    return 'CheckState(needsAgreeToTerms: $needsAgreeToTerms, needsSignup: $needsSignup, needsEditUser: $needsEditUser)';
+    return 'CheckState(needsAgreeToTerms: $needsAgreeToTerms, needsSignup: $needsSignup, user: $user)';
   }
 
   @override
@@ -149,14 +166,13 @@ class _$CheckStateImpl extends _CheckState {
                 other.needsAgreeToTerms == needsAgreeToTerms) &&
             (identical(other.needsSignup, needsSignup) ||
                 other.needsSignup == needsSignup) &&
-            (identical(other.needsEditUser, needsEditUser) ||
-                other.needsEditUser == needsEditUser));
+            (identical(other.user, user) || other.user == user));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, needsAgreeToTerms, needsSignup, needsEditUser);
+      Object.hash(runtimeType, needsAgreeToTerms, needsSignup, user);
 
   @JsonKey(ignore: true)
   @override
@@ -176,7 +192,7 @@ abstract class _CheckState extends CheckState {
   const factory _CheckState(
       {required final bool needsAgreeToTerms,
       required final bool needsSignup,
-      required final bool needsEditUser}) = _$CheckStateImpl;
+      required final ReadPublicUser? user}) = _$CheckStateImpl;
   const _CheckState._() : super._();
 
   factory _CheckState.fromJson(Map<String, dynamic> json) =
@@ -187,7 +203,7 @@ abstract class _CheckState extends CheckState {
   @override
   bool get needsSignup;
   @override
-  bool get needsEditUser;
+  ReadPublicUser? get user;
   @override
   @JsonKey(ignore: true)
   _$$CheckStateImplCopyWith<_$CheckStateImpl> get copyWith =>

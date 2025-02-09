@@ -20,13 +20,13 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
       return CheckState(
           needsAgreeToTerms: needsAgreeToTerms,
           needsSignup: true,
-          needsEditUser: false);
+          user: null);
     } else {
-      final needsEditUser = await checkNeedsEditUser(user.uid);
+      final readUser = await _fetchUser(user.uid);
       return CheckState(
           needsAgreeToTerms: needsAgreeToTerms,
           needsSignup: false,
-          needsEditUser: needsEditUser);
+          user: readUser);
     }
   }
 
@@ -34,17 +34,18 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     return false;
   }
 
-  Future<bool> checkNeedsEditUser(String uid) async {
+  Future<ReadPublicUser> _fetchUser(String uid) async {
     final docRef = DocRefCore.user(uid);
     final result = await docRef.get();
     final readData = result.data();
     if (result.exists && readData != null) {
       final readUser = ReadPublicUser.fromJson(readData);
-      return readUser.needsEdit();
+      return readUser;
     } else {
-      final writeData = WritePublicUser.instance(uid).toJson();
+      final writeUser = WritePublicUser.instance(uid);
+      final writeData = writeUser.toJson();
       await docRef.set(writeData);
-      return true;
+      return ReadPublicUser.fromJson(writeData);
     }
   }
 
@@ -55,17 +56,18 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     state = await AsyncValue.guard(() async {
       final result = stateValue.copyWith(
           needsSignup: false,
-          needsEditUser: await checkNeedsEditUser(user.uid));
+          user: await _fetchUser(user.uid));
       return result;
     });
   }
 
-  Future<void> onUserUpdateSuccess() async {
+  Future<void> onUserUpdateSuccess(String uid) async {
     final stateValue = state.value;
     if (stateValue == null) return;
     state = await AsyncValue.guard(() async {
+      final newUser = await _fetchUser(uid);
       final result =
-          stateValue.copyWith(needsEditUser: false);
+          stateValue.copyWith(user: newUser);
       return result;
     });
   }

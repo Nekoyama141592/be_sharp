@@ -19,7 +19,7 @@ class CheckPage extends HookConsumerWidget {
             return const TermsPage();
           } else if (state.needsSignup) {
             return const AuthPage();
-          } else if (state.needsEditUser) {
+          } else if (state.user?.needsEdit() ?? false) {
             return EditUserPage();
           } else {
             return child;
