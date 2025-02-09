@@ -145,7 +145,7 @@ class LatestProblemScreen extends ConsumerWidget {
                       LatexText(
                           data: problem.latex,
                           style: GoogleFonts.notoSans(
-                            fontSize: 24,
+                            fontSize: 28,
                             fontWeight: FontWeight.w500,
                           )),
                     ],

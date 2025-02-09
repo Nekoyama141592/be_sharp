@@ -73,7 +73,7 @@ class MuteUsersViewModel
       final result = stateValue..removeWhere((e) => e.uid == muteUid);
       return result;
     });
-    ToastUICore.showFlutterToast('ミュートを開示しました');
+    ToastUICore.showFlutterToast('ミュートを解除しました');
   }
 
   void _failure() {

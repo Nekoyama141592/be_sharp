@@ -34,8 +34,8 @@ class MyApp extends ConsumerWidget {
 final getPages = [
   GetPage(name: MyApp.path, page: () => const MyApp()),
   GetPage(name: AccountPage.path, page: () => const AccountPage()),
-  GetPage(name: AdminPage.path, page: () => const AdminPage()),
-  GetPage(name: EditUserPage.path, page: () => const EditUserPage()),
+  GetPage(name: AdminPage.path, page: () => AdminPage()),
+  GetPage(name: EditUserPage.path, page: () => EditUserPage()),
   GetPage(name: CreateUserAnswerPage.path, page: () => CreateUserAnswerPage()),
   GetPage(name: MuteUsersPage.path, page: () => const MuteUsersPage()),
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),

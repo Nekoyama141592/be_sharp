@@ -12,7 +12,7 @@ class LatexText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MarkdownBody(
-      data: example,
+      data: data,
       builders: {
         'latex': LatexElementBuilder(textStyle: style),
       },
