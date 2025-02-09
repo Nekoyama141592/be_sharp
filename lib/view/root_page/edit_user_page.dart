@@ -56,7 +56,6 @@ class EditUserPage extends HookConsumerWidget {
             width: PaddingCore.textFieldWidth(context),
             child: TextFormField(
               initialValue: user?.bioValue(),
-              decoration: const InputDecoration(hintText: '紹介文を入力'),
               onSaved: notifier().setBio,
               validator: ValidatorUICore.bio,
             ))

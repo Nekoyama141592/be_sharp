@@ -818,9 +818,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -831,7 +831,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1293,9 +1293,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9740EEB21CF90195004384FC /* Debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -1306,7 +1306,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1319,9 +1319,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
@@ -1332,7 +1332,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1559,12 +1559,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4B86145ED6144F09F9A173D /* Pods-Runner.debug-dev.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-dev";
@@ -1573,12 +1573,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED6B39E3B7013C3FD8C41BDD /* Pods-Runner.profile-dev.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-dev";
@@ -1587,12 +1587,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00CB1916ED0CC35243BF1CE8 /* Pods-Runner.release-dev.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-dev";
@@ -1601,12 +1601,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 67363CC3439B38FC59BA0B76 /* Pods-Runner.debug-stg.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-stg";
@@ -1615,12 +1615,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37BBD7B7DA073F7BF5E96B81 /* Pods-Runner.profile-stg.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-stg";
@@ -1629,12 +1629,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B7577F1CF1BD92830296DFC /* Pods-Runner.release-stg.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-stg";
@@ -1643,12 +1643,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 912907A9FBF7E589706B642E /* Pods-Runner.debug-prd.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prd";
@@ -1657,12 +1657,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7EDC8195573522F8E0403A0C /* Pods-Runner.profile-prd.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prd";
@@ -1671,12 +1671,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 668442760286EDEA671412E9 /* Pods-Runner.release-prd.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prd";
@@ -1757,12 +1757,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4991694482FE08607EB1D35C /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prod";
@@ -1771,12 +1771,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B41739A769652E07D6FA666 /* Pods-Runner.profile-prod.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prod";
@@ -1785,12 +1785,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E24139819809F65D95121D0B /* Pods-Runner.release-prod.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-stg";
+				BUNDLE_DISPLAY_NAME = "BeSharp. STG";
+				BUNDLE_NAME = "BeSharp. STG";
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpStg;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prod";
