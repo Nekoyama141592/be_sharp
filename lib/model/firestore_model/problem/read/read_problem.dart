@@ -14,6 +14,8 @@ abstract class ReadProblem implements _$ReadProblem {
       required String problemId,
       required int timeLimitSeconds,
       required List<String> answers,
+      @Default('math') String subject,
+      @Default('unlimited') String category,
       required dynamic updatedAt}) = _ReadProblem;
   factory ReadProblem.fromJson(Map<String, dynamic> json) =>
       _$ReadProblemFromJson(json);

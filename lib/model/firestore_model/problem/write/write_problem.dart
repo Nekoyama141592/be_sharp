@@ -13,6 +13,8 @@ abstract class WriteProblem implements _$WriteProblem {
       required String problemId,
       @Default(120) int timeLimitSeconds,
       @Default([]) List<String> answers,
+      @Default('math') String subject,
+      @Default('unlimited') String category,
       required dynamic updatedAt}) = _WriteProblem;
   factory WriteProblem.fromJson(Map<String, dynamic> json) =>
       _$WriteProblemFromJson(json);
