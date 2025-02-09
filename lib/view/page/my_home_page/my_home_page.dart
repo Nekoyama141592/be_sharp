@@ -2,7 +2,7 @@ import 'package:be_sharp/provider/private_user_provider.dart';
 import 'package:be_sharp/provider/view_model/noitifier/my_home_view_model.dart';
 import 'package:be_sharp/provider/view_model/purchases_view_model.dart';
 import 'package:be_sharp/ui_core/bnb_ui_core.dart';
-import 'package:be_sharp/view/common/original_drawer.dart';
+import 'package:be_sharp/view/common/drawer/original_drawer.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:be_sharp/view/page/my_home_page/components/home_screen/home_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/latest_problem_screen.dart';

@@ -33,14 +33,14 @@ class EditUserPage extends HookConsumerWidget {
     }
 
     // ニックネームの入力をする関数
-    List<Widget> nickNameField(ReadPublicUser user) {
+    List<Widget> nickNameField(ReadPublicUser? user) {
       return [
         const Text('ニックネームを入力'),
         const SizedBox(height: 4.0),
         TextFieldContainer(
             width: PaddingCore.textFieldWidth(context),
             child: TextFormField(
-              initialValue: user.nickNameValue(),
+              initialValue: user?.nickNameValue(),
               onSaved: notifier().setNickName,
               validator: ValidatorUICore.text,
             ))
@@ -48,14 +48,14 @@ class EditUserPage extends HookConsumerWidget {
     }
 
     // 紹介文の入力をする関数
-    List<Widget> bioField(ReadPublicUser user) {
+    List<Widget> bioField(ReadPublicUser? user) {
       return [
         const Text('紹介文を入力'),
         const SizedBox(height: 4.0),
         TextFieldContainer(
             width: PaddingCore.textFieldWidth(context),
             child: TextFormField(
-              initialValue: user.bioValue(),
+              initialValue: user?.bioValue(),
               decoration: const InputDecoration(hintText: '紹介文を入力'),
               onSaved: notifier().setBio,
               validator: ValidatorUICore.text,
@@ -63,7 +63,7 @@ class EditUserPage extends HookConsumerWidget {
       ];
     }
 
-    Widget updateUserInfoForm(ReadPublicUser user) {
+    Widget updateUserInfoForm(ReadPublicUser? user) {
       return Form(
           key: formKey,
           child: SingleChildScrollView(
