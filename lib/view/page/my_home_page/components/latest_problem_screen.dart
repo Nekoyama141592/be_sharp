@@ -42,8 +42,7 @@ class LatestProblemScreen extends ConsumerWidget {
     } else if (userAnswer == null) {
       final isInTime = problem.isInTimeLimit();
       final text = '最新の問題に${isInTime ? '回答(まだ間に合います！)' : '遅れて回答'}';
-      return _buildCenteredButton(
-          text, notifier().onToAnswerPageButtonPressed);
+      return _buildCenteredButton(text, notifier().onToAnswerPageButtonPressed);
     } else if (problem.answers.isEmpty) {
       return _buildCenteredMessage('回答時間中...');
     } else {

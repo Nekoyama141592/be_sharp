@@ -28,22 +28,35 @@ class PurchasesCore {
     )..pendingCompletePurchase = json['pendingCompletePurchase'] ?? false;
   }
 
-  static String _itemId() => dotenv.get(EnvKey.SUBSCRIPTION_ITEM_ID.name);
+  static String monthItemId() =>
+      dotenv.get(EnvKey.SUBSCRIPTION_MONTH_ITEM_ID.name);
+  static String _annualItemId() =>
+      dotenv.get(EnvKey.SUBSCRIPTION_ANNUAL_ITEM_ID.name);
+  static List<String> _itemIds() => [monthItemId(), _annualItemId()];
   static Set<String> productIds() {
-    final identifiers = <String>[_itemId()];
+    final identifiers = _itemIds();
     return identifiers.toSet();
   }
 
   static List<ProductDetails> _mockProducts() {
-    final item = ProductDetails(
-        id: _itemId(),
-        title: "月額プラン",
-        description: "一月使えます",
-        price: "¥500",
-        rawPrice: 500,
-        currencyCode: "JPY",
-        currencySymbol: "¥");
-    return [item];
+    return [
+      ProductDetails(
+          id: monthItemId(),
+          title: "月額プラン",
+          description: "一月ごとに課金されます",
+          price: "¥500",
+          rawPrice: 500,
+          currencyCode: "JPY",
+          currencySymbol: "¥"),
+      ProductDetails(
+          id: monthItemId(),
+          title: "年間プラン",
+          description: "一年ごとに課金されます",
+          price: "¥4980",
+          rawPrice: 4980,
+          currencyCode: "JPY",
+          currencySymbol: "¥"),
+    ];
   }
 
   static List<ProductDetails> getProducts(ProductDetailsResponse res) {

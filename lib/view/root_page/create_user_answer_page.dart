@@ -122,8 +122,7 @@ class QuestionCard extends StatelessWidget {
             children: [
               Text(
                 state.question,
-                style: GoogleFonts.roboto(
-                    fontSize: 18),
+                style: GoogleFonts.roboto(fontSize: 18),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
