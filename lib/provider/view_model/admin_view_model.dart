@@ -27,6 +27,7 @@ class AdminViewModel extends SimpleFormViewModel<String> {
   String get failureMsg => '失敗しました';
   int? timeLimitSecond;
   String? answer;
+  String latex = '';
   @override
   void onPositiveButtonPressed() async {
     if (text.isEmpty || timeLimitSecond == null) return;
@@ -36,6 +37,7 @@ class AdminViewModel extends SimpleFormViewModel<String> {
     final now = Timestamp.now();
     final json = WriteProblem(
             question: text,
+            latex: latex,
             createdAt: now,
             problemId: problemId,
             timeLimitSeconds: timeLimitSecond!,

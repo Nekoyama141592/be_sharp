@@ -22,6 +22,7 @@ WriteProblem _$WriteProblemFromJson(Map<String, dynamic> json) {
 mixin _$WriteProblem {
   dynamic get createdAt => throw _privateConstructorUsedError;
   String get question => throw _privateConstructorUsedError;
+  String get latex => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
   int get timeLimitSeconds => throw _privateConstructorUsedError;
   List<String> get answers => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $WriteProblemCopyWith<$Res> {
   $Res call(
       {dynamic createdAt,
       String question,
+      String latex,
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
@@ -63,6 +65,7 @@ class _$WriteProblemCopyWithImpl<$Res, $Val extends WriteProblem>
   $Res call({
     Object? createdAt = freezed,
     Object? question = null,
+    Object? latex = null,
     Object? problemId = null,
     Object? timeLimitSeconds = null,
     Object? answers = null,
@@ -76,6 +79,10 @@ class _$WriteProblemCopyWithImpl<$Res, $Val extends WriteProblem>
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
+              as String,
+      latex: null == latex
+          ? _value.latex
+          : latex // ignore: cast_nullable_to_non_nullable
               as String,
       problemId: null == problemId
           ? _value.problemId
@@ -108,6 +115,7 @@ abstract class _$$WriteProblemImplCopyWith<$Res>
   $Res call(
       {dynamic createdAt,
       String question,
+      String latex,
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
@@ -127,6 +135,7 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
   $Res call({
     Object? createdAt = freezed,
     Object? question = null,
+    Object? latex = null,
     Object? problemId = null,
     Object? timeLimitSeconds = null,
     Object? answers = null,
@@ -140,6 +149,10 @@ class __$$WriteProblemImplCopyWithImpl<$Res>
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
+              as String,
+      latex: null == latex
+          ? _value.latex
+          : latex // ignore: cast_nullable_to_non_nullable
               as String,
       problemId: null == problemId
           ? _value.problemId
@@ -167,6 +180,7 @@ class _$WriteProblemImpl extends _WriteProblem {
   const _$WriteProblemImpl(
       {required this.createdAt,
       required this.question,
+      required this.latex,
       required this.problemId,
       this.timeLimitSeconds = 120,
       final List<String> answers = const [],
@@ -181,6 +195,8 @@ class _$WriteProblemImpl extends _WriteProblem {
   final dynamic createdAt;
   @override
   final String question;
+  @override
+  final String latex;
   @override
   final String problemId;
   @override
@@ -200,7 +216,7 @@ class _$WriteProblemImpl extends _WriteProblem {
 
   @override
   String toString() {
-    return 'WriteProblem(createdAt: $createdAt, question: $question, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
+    return 'WriteProblem(createdAt: $createdAt, question: $question, latex: $latex, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
   }
 
   @override
@@ -211,6 +227,7 @@ class _$WriteProblemImpl extends _WriteProblem {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.question, question) ||
                 other.question == question) &&
+            (identical(other.latex, latex) || other.latex == latex) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
@@ -225,6 +242,7 @@ class _$WriteProblemImpl extends _WriteProblem {
       runtimeType,
       const DeepCollectionEquality().hash(createdAt),
       question,
+      latex,
       problemId,
       timeLimitSeconds,
       const DeepCollectionEquality().hash(_answers),
@@ -248,6 +266,7 @@ abstract class _WriteProblem extends WriteProblem {
   const factory _WriteProblem(
       {required final dynamic createdAt,
       required final String question,
+      required final String latex,
       required final String problemId,
       final int timeLimitSeconds,
       final List<String> answers,
@@ -261,6 +280,8 @@ abstract class _WriteProblem extends WriteProblem {
   dynamic get createdAt;
   @override
   String get question;
+  @override
+  String get latex;
   @override
   String get problemId;
   @override

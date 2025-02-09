@@ -9,6 +9,7 @@ abstract class WriteProblem implements _$WriteProblem {
   const factory WriteProblem(
       {required dynamic createdAt,
       required String question,
+      required String latex,
       required String problemId,
       @Default(120) int timeLimitSeconds,
       @Default([]) List<String> answers,

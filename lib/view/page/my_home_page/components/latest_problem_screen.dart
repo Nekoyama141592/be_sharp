@@ -3,6 +3,7 @@ import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer
 import 'package:be_sharp/provider/view_model/latest_problem_view_model.dart';
 import 'package:be_sharp/ui_core/format_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
+import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -136,12 +137,17 @@ class LatestProblemScreen extends ConsumerWidget {
                       Text(
                         problem.question,
                         style: GoogleFonts.notoSans(
-                          fontSize: 24,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
                       ),
+                      const SizedBox(height: 10),
+                      LatexText(
+                          data: problem.latex,
+                          style: GoogleFonts.notoSans(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                          )),
                     ],
                   ),
                 ),

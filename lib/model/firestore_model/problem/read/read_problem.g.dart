@@ -10,6 +10,7 @@ _$ReadProblemImpl _$$ReadProblemImplFromJson(Map<String, dynamic> json) =>
     _$ReadProblemImpl(
       createdAt: json['createdAt'],
       question: json['question'] as String,
+      latex: json['latex'] as String,
       problemId: json['problemId'] as String,
       timeLimitSeconds: (json['timeLimitSeconds'] as num).toInt(),
       answers:
@@ -21,6 +22,7 @@ Map<String, dynamic> _$$ReadProblemImplToJson(_$ReadProblemImpl instance) =>
     <String, dynamic>{
       'createdAt': instance.createdAt,
       'question': instance.question,
+      'latex': instance.latex,
       'problemId': instance.problemId,
       'timeLimitSeconds': instance.timeLimitSeconds,
       'answers': instance.answers,

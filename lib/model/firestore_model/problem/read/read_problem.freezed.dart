@@ -22,6 +22,7 @@ ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) {
 mixin _$ReadProblem {
   dynamic get createdAt => throw _privateConstructorUsedError;
   String get question => throw _privateConstructorUsedError;
+  String get latex => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
   int get timeLimitSeconds => throw _privateConstructorUsedError;
   List<String> get answers => throw _privateConstructorUsedError;
@@ -42,6 +43,7 @@ abstract class $ReadProblemCopyWith<$Res> {
   $Res call(
       {dynamic createdAt,
       String question,
+      String latex,
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
@@ -63,6 +65,7 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
   $Res call({
     Object? createdAt = freezed,
     Object? question = null,
+    Object? latex = null,
     Object? problemId = null,
     Object? timeLimitSeconds = null,
     Object? answers = null,
@@ -76,6 +79,10 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
+              as String,
+      latex: null == latex
+          ? _value.latex
+          : latex // ignore: cast_nullable_to_non_nullable
               as String,
       problemId: null == problemId
           ? _value.problemId
@@ -108,6 +115,7 @@ abstract class _$$ReadProblemImplCopyWith<$Res>
   $Res call(
       {dynamic createdAt,
       String question,
+      String latex,
       String problemId,
       int timeLimitSeconds,
       List<String> answers,
@@ -127,6 +135,7 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
   $Res call({
     Object? createdAt = freezed,
     Object? question = null,
+    Object? latex = null,
     Object? problemId = null,
     Object? timeLimitSeconds = null,
     Object? answers = null,
@@ -140,6 +149,10 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
       question: null == question
           ? _value.question
           : question // ignore: cast_nullable_to_non_nullable
+              as String,
+      latex: null == latex
+          ? _value.latex
+          : latex // ignore: cast_nullable_to_non_nullable
               as String,
       problemId: null == problemId
           ? _value.problemId
@@ -167,6 +180,7 @@ class _$ReadProblemImpl extends _ReadProblem {
   const _$ReadProblemImpl(
       {required this.createdAt,
       required this.question,
+      required this.latex,
       required this.problemId,
       required this.timeLimitSeconds,
       required final List<String> answers,
@@ -181,6 +195,8 @@ class _$ReadProblemImpl extends _ReadProblem {
   final dynamic createdAt;
   @override
   final String question;
+  @override
+  final String latex;
   @override
   final String problemId;
   @override
@@ -198,7 +214,7 @@ class _$ReadProblemImpl extends _ReadProblem {
 
   @override
   String toString() {
-    return 'ReadProblem(createdAt: $createdAt, question: $question, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
+    return 'ReadProblem(createdAt: $createdAt, question: $question, latex: $latex, problemId: $problemId, timeLimitSeconds: $timeLimitSeconds, answers: $answers, updatedAt: $updatedAt)';
   }
 
   @override
@@ -209,6 +225,7 @@ class _$ReadProblemImpl extends _ReadProblem {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.question, question) ||
                 other.question == question) &&
+            (identical(other.latex, latex) || other.latex == latex) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.timeLimitSeconds, timeLimitSeconds) ||
@@ -223,6 +240,7 @@ class _$ReadProblemImpl extends _ReadProblem {
       runtimeType,
       const DeepCollectionEquality().hash(createdAt),
       question,
+      latex,
       problemId,
       timeLimitSeconds,
       const DeepCollectionEquality().hash(_answers),
@@ -246,6 +264,7 @@ abstract class _ReadProblem extends ReadProblem {
   const factory _ReadProblem(
       {required final dynamic createdAt,
       required final String question,
+      required final String latex,
       required final String problemId,
       required final int timeLimitSeconds,
       required final List<String> answers,
@@ -259,6 +278,8 @@ abstract class _ReadProblem extends ReadProblem {
   dynamic get createdAt;
   @override
   String get question;
+  @override
+  String get latex;
   @override
   String get problemId;
   @override
