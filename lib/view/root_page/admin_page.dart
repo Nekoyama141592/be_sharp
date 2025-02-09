@@ -25,6 +25,7 @@ class AdminPage extends HookConsumerWidget {
             validator: ValidatorUICore.text,
           ));
     }
+
     // Latexの入力をする関数
     Widget latexField() {
       return TextFieldContainer(
@@ -35,6 +36,7 @@ class AdminPage extends HookConsumerWidget {
             validator: ValidatorUICore.text,
           ));
     }
+
     // 正解の入力をする関数
     Widget answerField() {
       return TextFieldContainer(

@@ -60,13 +60,12 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     });
   }
 
-  Future<void> onUserUpdateSuccess(String uid) async {
+  Future<void> onUserUpdateSuccess() async {
     final stateValue = state.value;
     if (stateValue == null) return;
-    state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final result =
-          stateValue.copyWith(needsEditUser: await checkNeedsEditUser(uid));
+          stateValue.copyWith(needsEditUser: false);
       return result;
     });
   }

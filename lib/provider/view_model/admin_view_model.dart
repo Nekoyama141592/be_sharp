@@ -23,6 +23,7 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
     if (value == null) return;
     question = value;
   }
+
   void setLatex(String? value) {
     if (value == null) return;
     latex = value;
