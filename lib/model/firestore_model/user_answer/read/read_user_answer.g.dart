@@ -11,7 +11,9 @@ _$ReadUserAnswerImpl _$$ReadUserAnswerImplFromJson(Map<String, dynamic> json) =>
       answer: json['answer'] as String,
       createdAt: json['createdAt'],
       problemId: json['problemId'] as String,
-      caption: json['caption'] as String,
+      caption: json['caption'] == null
+          ? null
+          : DetectedText.fromJson(json['caption'] as Map<String, dynamic>),
       uid: json['uid'] as String,
     );
 

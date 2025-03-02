@@ -23,7 +23,7 @@ mixin _$ReadUserAnswer {
   String get answer => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
-  String get caption => throw _privateConstructorUsedError;
+  DetectedText? get caption => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,8 +42,10 @@ abstract class $ReadUserAnswerCopyWith<$Res> {
       {String answer,
       dynamic createdAt,
       String problemId,
-      String caption,
+      DetectedText? caption,
       String uid});
+
+  $DetectedTextCopyWith<$Res>? get caption;
 }
 
 /// @nodoc
@@ -62,7 +64,7 @@ class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
     Object? answer = null,
     Object? createdAt = freezed,
     Object? problemId = null,
-    Object? caption = null,
+    Object? caption = freezed,
     Object? uid = null,
   }) {
     return _then(_value.copyWith(
@@ -78,15 +80,27 @@ class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
-      caption: null == caption
+      caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DetectedText?,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res>? get caption {
+    if (_value.caption == null) {
+      return null;
+    }
+
+    return $DetectedTextCopyWith<$Res>(_value.caption!, (value) {
+      return _then(_value.copyWith(caption: value) as $Val);
+    });
   }
 }
 
@@ -102,8 +116,11 @@ abstract class _$$ReadUserAnswerImplCopyWith<$Res>
       {String answer,
       dynamic createdAt,
       String problemId,
-      String caption,
+      DetectedText? caption,
       String uid});
+
+  @override
+  $DetectedTextCopyWith<$Res>? get caption;
 }
 
 /// @nodoc
@@ -120,7 +137,7 @@ class __$$ReadUserAnswerImplCopyWithImpl<$Res>
     Object? answer = null,
     Object? createdAt = freezed,
     Object? problemId = null,
-    Object? caption = null,
+    Object? caption = freezed,
     Object? uid = null,
   }) {
     return _then(_$ReadUserAnswerImpl(
@@ -136,10 +153,10 @@ class __$$ReadUserAnswerImplCopyWithImpl<$Res>
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
-      caption: null == caption
+      caption: freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DetectedText?,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -169,7 +186,7 @@ class _$ReadUserAnswerImpl extends _ReadUserAnswer {
   @override
   final String problemId;
   @override
-  final String caption;
+  final DetectedText? caption;
   @override
   final String uid;
 
@@ -216,7 +233,7 @@ abstract class _ReadUserAnswer extends ReadUserAnswer {
       {required final String answer,
       required final dynamic createdAt,
       required final String problemId,
-      required final String caption,
+      required final DetectedText? caption,
       required final String uid}) = _$ReadUserAnswerImpl;
   const _ReadUserAnswer._() : super._();
 
@@ -230,7 +247,7 @@ abstract class _ReadUserAnswer extends ReadUserAnswer {
   @override
   String get problemId;
   @override
-  String get caption;
+  DetectedText? get caption;
   @override
   String get uid;
   @override

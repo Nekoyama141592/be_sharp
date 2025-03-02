@@ -21,7 +21,7 @@ AddCaptionResponse _$AddCaptionResponseFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AddCaptionResponse {
   String get problemId => throw _privateConstructorUsedError;
-  String get caption => throw _privateConstructorUsedError;
+  DetectedText get caption => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,9 @@ abstract class $AddCaptionResponseCopyWith<$Res> {
           AddCaptionResponse value, $Res Function(AddCaptionResponse) then) =
       _$AddCaptionResponseCopyWithImpl<$Res, AddCaptionResponse>;
   @useResult
-  $Res call({String problemId, String caption});
+  $Res call({String problemId, DetectedText caption});
+
+  $DetectedTextCopyWith<$Res> get caption;
 }
 
 /// @nodoc
@@ -62,8 +64,16 @@ class _$AddCaptionResponseCopyWithImpl<$Res, $Val extends AddCaptionResponse>
       caption: null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DetectedText,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res> get caption {
+    return $DetectedTextCopyWith<$Res>(_value.caption, (value) {
+      return _then(_value.copyWith(caption: value) as $Val);
+    });
   }
 }
 
@@ -75,7 +85,10 @@ abstract class _$$AddCaptionResponseImplCopyWith<$Res>
       __$$AddCaptionResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String problemId, String caption});
+  $Res call({String problemId, DetectedText caption});
+
+  @override
+  $DetectedTextCopyWith<$Res> get caption;
 }
 
 /// @nodoc
@@ -100,7 +113,7 @@ class __$$AddCaptionResponseImplCopyWithImpl<$Res>
       caption: null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DetectedText,
     ));
   }
 }
@@ -118,7 +131,7 @@ class _$AddCaptionResponseImpl extends _AddCaptionResponse {
   @override
   final String problemId;
   @override
-  final String caption;
+  final DetectedText caption;
 
   @override
   String toString() {
@@ -157,7 +170,7 @@ class _$AddCaptionResponseImpl extends _AddCaptionResponse {
 abstract class _AddCaptionResponse extends AddCaptionResponse {
   const factory _AddCaptionResponse(
       {required final String problemId,
-      required final String caption}) = _$AddCaptionResponseImpl;
+      required final DetectedText caption}) = _$AddCaptionResponseImpl;
   const _AddCaptionResponse._() : super._();
 
   factory _AddCaptionResponse.fromJson(Map<String, dynamic> json) =
@@ -166,7 +179,7 @@ abstract class _AddCaptionResponse extends AddCaptionResponse {
   @override
   String get problemId;
   @override
-  String get caption;
+  DetectedText get caption;
   @override
   @JsonKey(ignore: true)
   _$$AddCaptionResponseImplCopyWith<_$AddCaptionResponseImpl> get copyWith =>

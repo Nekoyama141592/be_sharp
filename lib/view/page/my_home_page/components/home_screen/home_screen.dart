@@ -65,7 +65,7 @@ class HomeScreen extends ConsumerWidget {
                         user: user,
                         answerTime: e.userAnswer.getDifference(problem),
                         userImage: MemoryImage(e.userImage),
-                        caption: e.userAnswer.caption,
+                        caption: e.userAnswer.caption?.value,
                         isInTime: e.userAnswer.isInTime(problem),
                         onMoreButtonPressed: () => notifier()
                             .onMoreButtonPressed(context, e.userAnswer.uid),

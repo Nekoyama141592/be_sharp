@@ -10,12 +10,12 @@ _$AddCaptionRequestImpl _$$AddCaptionRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$AddCaptionRequestImpl(
       problemId: json['problemId'] as String,
-      caption: json['caption'] as String,
+      stringCaption: json['stringCaption'] as String,
     );
 
 Map<String, dynamic> _$$AddCaptionRequestImplToJson(
         _$AddCaptionRequestImpl instance) =>
     <String, dynamic>{
       'problemId': instance.problemId,
-      'caption': instance.caption,
+      'stringCaption': instance.stringCaption,
     };

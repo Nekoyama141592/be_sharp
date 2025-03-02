@@ -91,7 +91,8 @@ class LatestProblemScreen extends ConsumerWidget {
     final isCorrect = userAnswer.isCorrect(problem);
     final isInTime = userAnswer.isInTime(problem);
     final answerTime = userAnswer.getDifference(problem);
-    final isCaptionExists = userAnswer.caption.isNotEmpty;
+    final caption = userAnswer.caption;
+    final isCaptionExists = caption != null;
     String title() {
       if (isCorrect) {
         return isInTime
@@ -192,7 +193,7 @@ class LatestProblemScreen extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: Text(
-                  userAnswer.caption,
+                  caption.value,
                   style: GoogleFonts.notoSans(
                     fontSize: 21,
                     fontWeight: FontWeight.bold,

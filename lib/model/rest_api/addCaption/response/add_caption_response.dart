@@ -1,3 +1,4 @@
+import 'package:be_sharp/model/firestore_model/common/detected_text/detected_text.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'add_caption_response.freezed.dart';
@@ -8,7 +9,7 @@ abstract class AddCaptionResponse implements _$AddCaptionResponse {
   const AddCaptionResponse._();
   const factory AddCaptionResponse(
       {required String problemId,
-      required String caption}) = _AddCaptionResponse;
+      required DetectedText caption}) = _AddCaptionResponse;
   factory AddCaptionResponse.fromJson(Map<String, dynamic> json) =>
       _$AddCaptionResponseFromJson(json);
 }

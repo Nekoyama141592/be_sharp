@@ -10,7 +10,7 @@ _$AddCaptionResponseImpl _$$AddCaptionResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$AddCaptionResponseImpl(
       problemId: json['problemId'] as String,
-      caption: json['caption'] as String,
+      caption: DetectedText.fromJson(json['caption'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$AddCaptionResponseImplToJson(

@@ -8,7 +8,7 @@ abstract class AddCaptionRequest implements _$AddCaptionRequest {
   const AddCaptionRequest._();
   const factory AddCaptionRequest(
       {required String problemId,
-      required String caption}) = _AddCaptionRequest;
+      required String stringCaption}) = _AddCaptionRequest;
   factory AddCaptionRequest.fromJson(Map<String, dynamic> json) =>
       _$AddCaptionRequestFromJson(json);
 }

@@ -66,7 +66,7 @@ class LatestProblemViewModel
       return;
     }
     Get.dialog(FormDialog(
-      initialValue: state.value?.userAnswer?.caption,
+      initialValue: state.value?.userAnswer?.caption?.value,
       onSend: _onSend,
     ));
   }
@@ -77,14 +77,15 @@ class LatestProblemViewModel
     final problemId = userAnswer.problemId;
     final repository = OnCallRepository();
     final result = await repository.addCaption(problemId, caption);
+    if (Get.isDialogOpen ?? false) {
+      Get.back();
+    }
+    state = const AsyncValue.loading();
     result.when(success: _onSendSuccess, failure: _onSendFailure);
   }
 
   void _onSendSuccess(AddCaptionResponse res) async {
     ToastUICore.showFlutterToast('キャプションの追加が成功しました');
-    if (Get.isDialogOpen ?? false) {
-      Get.back();
-    }
     final stateValue = state.value;
     final oldUserAnswer = stateValue?.userAnswer;
     if (stateValue == null || oldUserAnswer == null) return;

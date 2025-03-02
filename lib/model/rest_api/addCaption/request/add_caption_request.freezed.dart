@@ -21,7 +21,7 @@ AddCaptionRequest _$AddCaptionRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AddCaptionRequest {
   String get problemId => throw _privateConstructorUsedError;
-  String get caption => throw _privateConstructorUsedError;
+  String get stringCaption => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $AddCaptionRequestCopyWith<$Res> {
           AddCaptionRequest value, $Res Function(AddCaptionRequest) then) =
       _$AddCaptionRequestCopyWithImpl<$Res, AddCaptionRequest>;
   @useResult
-  $Res call({String problemId, String caption});
+  $Res call({String problemId, String stringCaption});
 }
 
 /// @nodoc
@@ -52,16 +52,16 @@ class _$AddCaptionRequestCopyWithImpl<$Res, $Val extends AddCaptionRequest>
   @override
   $Res call({
     Object? problemId = null,
-    Object? caption = null,
+    Object? stringCaption = null,
   }) {
     return _then(_value.copyWith(
       problemId: null == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
-      caption: null == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
+      stringCaption: null == stringCaption
+          ? _value.stringCaption
+          : stringCaption // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +75,7 @@ abstract class _$$AddCaptionRequestImplCopyWith<$Res>
       __$$AddCaptionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String problemId, String caption});
+  $Res call({String problemId, String stringCaption});
 }
 
 /// @nodoc
@@ -90,16 +90,16 @@ class __$$AddCaptionRequestImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? problemId = null,
-    Object? caption = null,
+    Object? stringCaption = null,
   }) {
     return _then(_$AddCaptionRequestImpl(
       problemId: null == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
-      caption: null == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
+      stringCaption: null == stringCaption
+          ? _value.stringCaption
+          : stringCaption // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -109,7 +109,7 @@ class __$$AddCaptionRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AddCaptionRequestImpl extends _AddCaptionRequest {
   const _$AddCaptionRequestImpl(
-      {required this.problemId, required this.caption})
+      {required this.problemId, required this.stringCaption})
       : super._();
 
   factory _$AddCaptionRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -118,11 +118,11 @@ class _$AddCaptionRequestImpl extends _AddCaptionRequest {
   @override
   final String problemId;
   @override
-  final String caption;
+  final String stringCaption;
 
   @override
   String toString() {
-    return 'AddCaptionRequest(problemId: $problemId, caption: $caption)';
+    return 'AddCaptionRequest(problemId: $problemId, stringCaption: $stringCaption)';
   }
 
   @override
@@ -132,12 +132,13 @@ class _$AddCaptionRequestImpl extends _AddCaptionRequest {
             other is _$AddCaptionRequestImpl &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
-            (identical(other.caption, caption) || other.caption == caption));
+            (identical(other.stringCaption, stringCaption) ||
+                other.stringCaption == stringCaption));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, problemId, caption);
+  int get hashCode => Object.hash(runtimeType, problemId, stringCaption);
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +158,7 @@ class _$AddCaptionRequestImpl extends _AddCaptionRequest {
 abstract class _AddCaptionRequest extends AddCaptionRequest {
   const factory _AddCaptionRequest(
       {required final String problemId,
-      required final String caption}) = _$AddCaptionRequestImpl;
+      required final String stringCaption}) = _$AddCaptionRequestImpl;
   const _AddCaptionRequest._() : super._();
 
   factory _AddCaptionRequest.fromJson(Map<String, dynamic> json) =
@@ -166,7 +167,7 @@ abstract class _AddCaptionRequest extends AddCaptionRequest {
   @override
   String get problemId;
   @override
-  String get caption;
+  String get stringCaption;
   @override
   @JsonKey(ignore: true)
   _$$AddCaptionRequestImplCopyWith<_$AddCaptionRequestImpl> get copyWith =>

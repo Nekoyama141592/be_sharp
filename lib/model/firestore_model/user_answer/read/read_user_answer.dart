@@ -1,3 +1,4 @@
+import 'package:be_sharp/model/firestore_model/common/detected_text/detected_text.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,7 +13,7 @@ abstract class ReadUserAnswer implements _$ReadUserAnswer {
     required String answer,
     required dynamic createdAt,
     required String problemId,
-    required String caption,
+    required DetectedText? caption,
     required String uid,
   }) = _ReadUserAnswer;
   factory ReadUserAnswer.fromJson(Map<String, dynamic> json) =>

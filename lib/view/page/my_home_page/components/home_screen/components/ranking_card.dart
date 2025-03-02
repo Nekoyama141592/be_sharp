@@ -9,7 +9,7 @@ class RankingCard extends StatelessWidget {
   final ReadPublicUser user;
   final Duration answerTime;
   final ImageProvider userImage;
-  final String caption;
+  final String? caption;
   final bool isInTime;
   final void Function()? onMoreButtonPressed;
 
@@ -123,7 +123,7 @@ class RankingCard extends StatelessWidget {
                                 _buildUserInfo(userName),
                                 const SizedBox(height: 8),
                                 _buildAnswerTime(),
-                                if (caption.isNotEmpty) ...[
+                                if (caption?.isNotEmpty ?? false) ...[
                                   const SizedBox(height: 8),
                                   _buildCaption(),
                                 ],
@@ -215,7 +215,7 @@ class RankingCard extends StatelessWidget {
 
   Widget _buildCaption() {
     return Text(
-      caption,
+      caption ?? '',
       style: GoogleFonts.roboto(
         color: _userTextColor(),
         fontSize: 18,
