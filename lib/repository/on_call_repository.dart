@@ -98,7 +98,8 @@ class OnCallRepository {
       String problemId, String caption) async {
     try {
       const name = 'addCaption';
-      final request = AddCaptionRequest(problemId: problemId, stringCaption: caption);
+      final request =
+          AddCaptionRequest(problemId: problemId, stringCaption: caption);
       final result = await _client.call(name, request.toJson());
       final res = AddCaptionResponse.fromJson(result);
       return Result.success(res);
