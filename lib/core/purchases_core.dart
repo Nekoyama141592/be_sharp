@@ -49,7 +49,7 @@ class PurchasesCore {
           currencyCode: "JPY",
           currencySymbol: "¥"),
       ProductDetails(
-          id: monthItemId(),
+          id: _annualItemId(),
           title: "年間プラン",
           description: "一年ごとに課金されます",
           price: "¥4980",
