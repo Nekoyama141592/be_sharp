@@ -11,9 +11,7 @@ class AsyncScreen<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return asyncValue.when(
         data: data,
-        error: (e, s) => ErrorPage(
-              e: e,
-            ),
+        error: (e, s) => ErrorPage(e: e),
         loading: () => const LoadingPage());
   }
 }
