@@ -102,11 +102,6 @@ class LatestProblemViewModel
   }
 
   void onRankingButtonPressed() async {
-    final isSubscribing = ref.read(purchasesProvider.notifier).isSubscribing();
-    if (!isSubscribing) {
-      ToastUICore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
-      return;
-    }
     final answers = state.value?.problem?.answers;
     final userAnswer = state.value?.userAnswer;
     if (answers == null || userAnswer == null) return;
