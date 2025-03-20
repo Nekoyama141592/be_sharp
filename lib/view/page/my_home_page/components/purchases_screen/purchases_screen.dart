@@ -2,6 +2,7 @@ import 'package:be_sharp/constants/colors.dart';
 import 'package:be_sharp/core/purchases_core.dart';
 import 'package:be_sharp/provider/view_model/purchases_view_model.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
+import 'package:be_sharp/view/page/my_home_page/components/purchases_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -36,6 +37,8 @@ class PurchasesScreen extends ConsumerWidget {
                         color: Colors.black87,
                       ),
                     ),
+                    const SizedBox(height: 24),
+                    const PolicyButtons(),
                     const SizedBox(height: 24),
                     TextButton(
                       onPressed: notifier().onRestoreButtonPressed,
