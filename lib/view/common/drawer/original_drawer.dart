@@ -51,7 +51,7 @@ class OriginalDrawer extends ConsumerWidget {
                 ],
               ),
             ),
-        error: (e, _) => const SizedBox.shrink(),
-        loading: () => const SizedBox.shrink());
+        error: (e, _) => const Drawer(),
+        loading: () => const Drawer(),);
   }
 }

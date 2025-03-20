@@ -26,8 +26,12 @@ mixin _$ReadUserAnswer {
   DetectedText? get caption => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
+  /// Serializes this ReadUserAnswer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReadUserAnswerCopyWith<ReadUserAnswer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -91,6 +97,8 @@ class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
     ) as $Val);
   }
 
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetectedTextCopyWith<$Res>? get caption {
@@ -131,6 +139,8 @@ class __$$ReadUserAnswerImplCopyWithImpl<$Res>
       _$ReadUserAnswerImpl _value, $Res Function(_$ReadUserAnswerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -208,12 +218,14 @@ class _$ReadUserAnswerImpl extends _ReadUserAnswer {
             (identical(other.uid, uid) || other.uid == uid));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, answer,
       const DeepCollectionEquality().hash(createdAt), problemId, caption, uid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReadUserAnswerImplCopyWith<_$ReadUserAnswerImpl> get copyWith =>
@@ -250,8 +262,11 @@ abstract class _ReadUserAnswer extends ReadUserAnswer {
   DetectedText? get caption;
   @override
   String get uid;
+
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReadUserAnswerImplCopyWith<_$ReadUserAnswerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

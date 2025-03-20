@@ -24,8 +24,12 @@ mixin _$EditUserInfoRequest {
   String get stringBio => throw _privateConstructorUsedError;
   String get object => throw _privateConstructorUsedError;
 
+  /// Serializes this EditUserInfoRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditUserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EditUserInfoRequestCopyWith<EditUserInfoRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$EditUserInfoRequestCopyWithImpl<$Res, $Val extends EditUserInfoRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EditUserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$EditUserInfoRequestImplCopyWithImpl<$Res>
       $Res Function(_$EditUserInfoRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditUserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,12 +160,14 @@ class _$EditUserInfoRequestImpl extends _EditUserInfoRequest {
             (identical(other.object, object) || other.object == object));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, stringNickName, stringBio, object);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditUserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditUserInfoRequestImplCopyWith<_$EditUserInfoRequestImpl> get copyWith =>
@@ -188,8 +198,11 @@ abstract class _EditUserInfoRequest extends EditUserInfoRequest {
   String get stringBio;
   @override
   String get object;
+
+  /// Create a copy of EditUserInfoRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditUserInfoRequestImplCopyWith<_$EditUserInfoRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

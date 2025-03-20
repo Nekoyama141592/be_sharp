@@ -24,8 +24,12 @@ mixin _$ReadPublicUser {
   String get uid => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
+  /// Serializes this ReadPublicUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReadPublicUserCopyWith<ReadPublicUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,6 +80,8 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
     ) as $Val);
   }
 
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RegisteredInfoCopyWith<$Res>? get registeredInfo {
@@ -109,6 +117,8 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
       _$ReadPublicUserImpl _value, $Res Function(_$ReadPublicUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,12 +178,14 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, registeredInfo, uid,
       const DeepCollectionEquality().hash(updatedAt));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReadPublicUserImplCopyWith<_$ReadPublicUserImpl> get copyWith =>
@@ -204,8 +216,11 @@ abstract class _ReadPublicUser extends ReadPublicUser {
   String get uid;
   @override
   dynamic get updatedAt;
+
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReadPublicUserImplCopyWith<_$ReadPublicUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$AnsweredUser {
   ReadUserAnswer get userAnswer => throw _privateConstructorUsedError;
   dynamic get userImage => throw _privateConstructorUsedError;
 
+  /// Serializes this AnsweredUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnsweredUserCopyWith<AnsweredUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
     ) as $Val);
   }
 
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReadPublicUserCopyWith<$Res> get publicUser {
@@ -93,6 +101,8 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
     });
   }
 
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReadUserAnswerCopyWith<$Res> get userAnswer {
@@ -130,6 +140,8 @@ class __$$AnsweredUserImplCopyWithImpl<$Res>
       _$AnsweredUserImpl _value, $Res Function(_$AnsweredUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -200,7 +212,7 @@ class _$AnsweredUserImpl extends _AnsweredUser {
             const DeepCollectionEquality().equals(other.userImage, userImage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -209,7 +221,9 @@ class _$AnsweredUserImpl extends _AnsweredUser {
       userAnswer,
       const DeepCollectionEquality().hash(userImage));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnsweredUserImplCopyWith<_$AnsweredUserImpl> get copyWith =>
@@ -242,8 +256,11 @@ abstract class _AnsweredUser extends AnsweredUser {
   ReadUserAnswer get userAnswer;
   @override
   dynamic get userImage;
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnsweredUserImplCopyWith<_$AnsweredUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

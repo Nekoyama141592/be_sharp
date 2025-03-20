@@ -28,8 +28,12 @@ mixin _$CreateProblemRequest {
   String get subject => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateProblemRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateProblemRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateProblemRequestCopyWith<CreateProblemRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$CreateProblemRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateProblemRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +137,8 @@ class __$$CreateProblemRequestImplCopyWithImpl<$Res>
       $Res Function(_$CreateProblemRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateProblemRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -239,7 +247,7 @@ class _$CreateProblemRequestImpl extends _CreateProblemRequest {
                 other.category == category));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -251,7 +259,9 @@ class _$CreateProblemRequestImpl extends _CreateProblemRequest {
       subject,
       category);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateProblemRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateProblemRequestImplCopyWith<_$CreateProblemRequestImpl>
@@ -295,8 +305,11 @@ abstract class _CreateProblemRequest extends CreateProblemRequest {
   String get subject;
   @override
   String get category;
+
+  /// Create a copy of CreateProblemRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateProblemRequestImplCopyWith<_$CreateProblemRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

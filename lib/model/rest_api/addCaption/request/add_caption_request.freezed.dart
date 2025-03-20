@@ -23,8 +23,12 @@ mixin _$AddCaptionRequest {
   String get problemId => throw _privateConstructorUsedError;
   String get stringCaption => throw _privateConstructorUsedError;
 
+  /// Serializes this AddCaptionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddCaptionRequestCopyWith<AddCaptionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$AddCaptionRequestCopyWithImpl<$Res, $Val extends AddCaptionRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$AddCaptionRequestImplCopyWithImpl<$Res>
       $Res Function(_$AddCaptionRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,11 +144,13 @@ class _$AddCaptionRequestImpl extends _AddCaptionRequest {
                 other.stringCaption == stringCaption));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, problemId, stringCaption);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddCaptionRequestImplCopyWith<_$AddCaptionRequestImpl> get copyWith =>
@@ -168,8 +178,11 @@ abstract class _AddCaptionRequest extends AddCaptionRequest {
   String get problemId;
   @override
   String get stringCaption;
+
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddCaptionRequestImplCopyWith<_$AddCaptionRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

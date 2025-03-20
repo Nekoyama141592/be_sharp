@@ -23,8 +23,12 @@ mixin _$AddCaptionResponse {
   String get problemId => throw _privateConstructorUsedError;
   DetectedText get caption => throw _privateConstructorUsedError;
 
+  /// Serializes this AddCaptionResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddCaptionResponseCopyWith<AddCaptionResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$AddCaptionResponseCopyWithImpl<$Res, $Val extends AddCaptionResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +74,8 @@ class _$AddCaptionResponseCopyWithImpl<$Res, $Val extends AddCaptionResponse>
     ) as $Val);
   }
 
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetectedTextCopyWith<$Res> get caption {
@@ -99,6 +107,8 @@ class __$$AddCaptionResponseImplCopyWithImpl<$Res>
       $Res Function(_$AddCaptionResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,11 +158,13 @@ class _$AddCaptionResponseImpl extends _AddCaptionResponse {
             (identical(other.caption, caption) || other.caption == caption));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, problemId, caption);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddCaptionResponseImplCopyWith<_$AddCaptionResponseImpl> get copyWith =>
@@ -180,8 +192,11 @@ abstract class _AddCaptionResponse extends AddCaptionResponse {
   String get problemId;
   @override
   DetectedText get caption;
+
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddCaptionResponseImplCopyWith<_$AddCaptionResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,8 +24,12 @@ mixin _$EditUserInfoResponse {
   DetectedText get bio => throw _privateConstructorUsedError;
   ModeratedImage get image => throw _privateConstructorUsedError;
 
+  /// Serializes this EditUserInfoResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EditUserInfoResponseCopyWith<EditUserInfoResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$EditUserInfoResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class _$EditUserInfoResponseCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetectedTextCopyWith<$Res> get nickName {
@@ -85,6 +93,8 @@ class _$EditUserInfoResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetectedTextCopyWith<$Res> get bio {
@@ -93,6 +103,8 @@ class _$EditUserInfoResponseCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ModeratedImageCopyWith<$Res> get image {
@@ -128,6 +140,8 @@ class __$$EditUserInfoResponseImplCopyWithImpl<$Res>
       $Res Function(_$EditUserInfoResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,11 +198,13 @@ class _$EditUserInfoResponseImpl implements _EditUserInfoResponse {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickName, bio, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EditUserInfoResponseImplCopyWith<_$EditUserInfoResponseImpl>
@@ -219,8 +235,11 @@ abstract class _EditUserInfoResponse implements EditUserInfoResponse {
   DetectedText get bio;
   @override
   ModeratedImage get image;
+
+  /// Create a copy of EditUserInfoResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EditUserInfoResponseImplCopyWith<_$EditUserInfoResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -24,8 +24,12 @@ mixin _$WritePublicUser {
   String get uid => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
+  /// Serializes this WritePublicUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WritePublicUserCopyWith<WritePublicUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
       _$WritePublicUserImpl _value, $Res Function(_$WritePublicUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,7 +156,7 @@ class _$WritePublicUserImpl extends _WritePublicUser {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -156,7 +164,9 @@ class _$WritePublicUserImpl extends _WritePublicUser {
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WritePublicUserImplCopyWith<_$WritePublicUserImpl> get copyWith =>
@@ -187,8 +197,11 @@ abstract class _WritePublicUser extends WritePublicUser {
   String get uid;
   @override
   dynamic get updatedAt;
+
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WritePublicUserImplCopyWith<_$WritePublicUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,8 +24,12 @@ mixin _$CheckState {
   bool get needsSignup => throw _privateConstructorUsedError;
   ReadPublicUser? get user => throw _privateConstructorUsedError;
 
+  /// Serializes this CheckState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CheckState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CheckStateCopyWith<CheckState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CheckStateCopyWithImpl<$Res, $Val extends CheckState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CheckState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,6 +80,8 @@ class _$CheckStateCopyWithImpl<$Res, $Val extends CheckState>
     ) as $Val);
   }
 
+  /// Create a copy of CheckState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReadPublicUserCopyWith<$Res>? get user {
@@ -109,6 +117,8 @@ class __$$CheckStateImplCopyWithImpl<$Res>
       _$CheckStateImpl _value, $Res Function(_$CheckStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CheckState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -169,12 +179,14 @@ class _$CheckStateImpl extends _CheckState {
             (identical(other.user, user) || other.user == user));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, needsAgreeToTerms, needsSignup, user);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CheckState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckStateImplCopyWith<_$CheckStateImpl> get copyWith =>
@@ -204,8 +216,11 @@ abstract class _CheckState extends CheckState {
   bool get needsSignup;
   @override
   ReadPublicUser? get user;
+
+  /// Create a copy of CheckState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CheckStateImplCopyWith<_$CheckStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -30,8 +30,12 @@ mixin _$ReadProblem {
   String get category => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
+  /// Serializes this ReadProblem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReadProblem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReadProblemCopyWith<ReadProblem> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$ReadProblemCopyWithImpl<$Res, $Val extends ReadProblem>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReadProblem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,6 +152,8 @@ class __$$ReadProblemImplCopyWithImpl<$Res>
       _$ReadProblemImpl _value, $Res Function(_$ReadProblemImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReadProblem
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -271,7 +279,7 @@ class _$ReadProblemImpl extends _ReadProblem {
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -285,7 +293,9 @@ class _$ReadProblemImpl extends _ReadProblem {
       category,
       const DeepCollectionEquality().hash(updatedAt));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReadProblem
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReadProblemImplCopyWith<_$ReadProblemImpl> get copyWith =>
@@ -333,8 +343,11 @@ abstract class _ReadProblem extends ReadProblem {
   String get category;
   @override
   dynamic get updatedAt;
+
+  /// Create a copy of ReadProblem
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReadProblemImplCopyWith<_$ReadProblemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

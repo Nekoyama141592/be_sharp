@@ -24,8 +24,12 @@ mixin _$RegisteredInfo {
   DetectedText get bio => throw _privateConstructorUsedError;
   ModeratedImage get image => throw _privateConstructorUsedError;
 
+  /// Serializes this RegisteredInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RegisteredInfoCopyWith<RegisteredInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$RegisteredInfoCopyWithImpl<$Res, $Val extends RegisteredInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +82,8 @@ class _$RegisteredInfoCopyWithImpl<$Res, $Val extends RegisteredInfo>
     ) as $Val);
   }
 
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetectedTextCopyWith<$Res> get nickName {
@@ -84,6 +92,8 @@ class _$RegisteredInfoCopyWithImpl<$Res, $Val extends RegisteredInfo>
     });
   }
 
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DetectedTextCopyWith<$Res> get bio {
@@ -92,6 +102,8 @@ class _$RegisteredInfoCopyWithImpl<$Res, $Val extends RegisteredInfo>
     });
   }
 
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ModeratedImageCopyWith<$Res> get image {
@@ -127,6 +139,8 @@ class __$$RegisteredInfoImplCopyWithImpl<$Res>
       _$RegisteredInfoImpl _value, $Res Function(_$RegisteredInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,11 +198,13 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, nickName, bio, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RegisteredInfoImplCopyWith<_$RegisteredInfoImpl> get copyWith =>
@@ -219,8 +235,11 @@ abstract class _RegisteredInfo extends RegisteredInfo {
   DetectedText get bio;
   @override
   ModeratedImage get image;
+
+  /// Create a copy of RegisteredInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RegisteredInfoImplCopyWith<_$RegisteredInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

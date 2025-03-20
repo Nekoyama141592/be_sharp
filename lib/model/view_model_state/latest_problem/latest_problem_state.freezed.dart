@@ -23,8 +23,12 @@ mixin _$LatestProblemState {
   ReadProblem? get problem => throw _privateConstructorUsedError;
   ReadUserAnswer? get userAnswer => throw _privateConstructorUsedError;
 
+  /// Serializes this LatestProblemState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LatestProblemStateCopyWith<LatestProblemState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$LatestProblemStateCopyWithImpl<$Res, $Val extends LatestProblemState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,6 +75,8 @@ class _$LatestProblemStateCopyWithImpl<$Res, $Val extends LatestProblemState>
     ) as $Val);
   }
 
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReadProblemCopyWith<$Res>? get problem {
@@ -81,6 +89,8 @@ class _$LatestProblemStateCopyWithImpl<$Res, $Val extends LatestProblemState>
     });
   }
 
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReadUserAnswerCopyWith<$Res>? get userAnswer {
@@ -118,6 +128,8 @@ class __$$LatestProblemStateImplCopyWithImpl<$Res>
       $Res Function(_$LatestProblemStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,11 +177,13 @@ class _$LatestProblemStateImpl extends _LatestProblemState {
                 other.userAnswer == userAnswer));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, problem, userAnswer);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LatestProblemStateImplCopyWith<_$LatestProblemStateImpl> get copyWith =>
@@ -197,8 +211,11 @@ abstract class _LatestProblemState extends LatestProblemState {
   ReadProblem? get problem;
   @override
   ReadUserAnswer? get userAnswer;
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LatestProblemStateImplCopyWith<_$LatestProblemStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

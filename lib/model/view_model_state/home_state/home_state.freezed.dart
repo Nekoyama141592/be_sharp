@@ -24,8 +24,12 @@ mixin _$HomeState {
   List<AnsweredUser> get answeredUsers => throw _privateConstructorUsedError;
   List<String> get muteUids => throw _privateConstructorUsedError;
 
+  /// Serializes this HomeState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HomeStateCopyWith<HomeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +82,8 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     ) as $Val);
   }
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ReadProblemCopyWith<$Res>? get latestProblem {
@@ -114,6 +122,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
       _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,7 +199,7 @@ class _$HomeStateImpl extends _HomeState {
             const DeepCollectionEquality().equals(other._muteUids, _muteUids));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -197,7 +207,9 @@ class _$HomeStateImpl extends _HomeState {
       const DeepCollectionEquality().hash(_answeredUsers),
       const DeepCollectionEquality().hash(_muteUids));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
@@ -227,8 +239,11 @@ abstract class _HomeState extends HomeState {
   List<AnsweredUser> get answeredUsers;
   @override
   List<String> get muteUids;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

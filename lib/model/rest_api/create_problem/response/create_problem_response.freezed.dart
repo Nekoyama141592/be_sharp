@@ -23,8 +23,12 @@ CreateProblemResponse _$CreateProblemResponseFromJson(
 mixin _$CreateProblemResponse {
   int get status => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateProblemResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateProblemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateProblemResponseCopyWith<CreateProblemResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$CreateProblemResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateProblemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +90,8 @@ class __$$CreateProblemResponseImplCopyWithImpl<$Res>
       $Res Function(_$CreateProblemResponseImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateProblemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,11 +130,13 @@ class _$CreateProblemResponseImpl extends _CreateProblemResponse {
             (identical(other.status, status) || other.status == status));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateProblemResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateProblemResponseImplCopyWith<_$CreateProblemResponseImpl>
@@ -151,8 +161,11 @@ abstract class _CreateProblemResponse extends CreateProblemResponse {
 
   @override
   int get status;
+
+  /// Create a copy of CreateProblemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateProblemResponseImplCopyWith<_$CreateProblemResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -28,6 +28,7 @@ service cloud.firestore {
     match /privateUsers/{uid} {
       allow read: if isUserAuthenticated(uid);
       allow create: if isUserAuthenticated(uid) && isValidPrivateUser(request.resource.data);
+      allow update: if isUserAuthenticated(uid) && isValidPrivateUserUpdate(request.resource.data);
       match /verifiedPurchases/{purchaseId} {
         allow read: if isUserAuthenticated(uid);
       }
@@ -60,6 +61,11 @@ service cloud.firestore {
     "createdAt" in user && user.createdAt is timestamp &&
     "uid" in user && user.uid is string &&
     "isAdmin" in user && user.isAdmin == false;
+  }
+
+  function isValidPrivateUserUpdate(data) {
+    return data.size() == 1 &&
+     "fcmToken" in data && data.fcmToken is string;
   }
 
   function isAuthenticated() {

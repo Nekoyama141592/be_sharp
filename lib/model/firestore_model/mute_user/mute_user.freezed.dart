@@ -23,8 +23,12 @@ mixin _$MuteUser {
   String get muteUid => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
 
+  /// Serializes this MuteUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MuteUserCopyWith<MuteUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$MuteUserCopyWithImpl<$Res, $Val extends MuteUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$MuteUserImplCopyWithImpl<$Res>
       _$MuteUserImpl _value, $Res Function(_$MuteUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,12 +140,14 @@ class _$MuteUserImpl extends _MuteUser {
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, muteUid, const DeepCollectionEquality().hash(createdAt));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MuteUserImplCopyWith<_$MuteUserImpl> get copyWith =>
@@ -164,8 +174,11 @@ abstract class _MuteUser extends MuteUser {
   String get muteUid;
   @override
   dynamic get createdAt;
+
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MuteUserImplCopyWith<_$MuteUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$ModeratedImage {
   String get moderationModelVersion => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
+  /// Serializes this ModeratedImage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ModeratedImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ModeratedImageCopyWith<ModeratedImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ModeratedImageCopyWithImpl<$Res, $Val extends ModeratedImage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ModeratedImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$ModeratedImageImplCopyWithImpl<$Res>
       _$ModeratedImageImpl _value, $Res Function(_$ModeratedImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ModeratedImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,7 +178,7 @@ class _$ModeratedImageImpl extends _ModeratedImage {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -178,7 +186,9 @@ class _$ModeratedImageImpl extends _ModeratedImage {
       moderationModelVersion,
       value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ModeratedImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ModeratedImageImplCopyWith<_$ModeratedImageImpl> get copyWith =>
@@ -209,8 +219,11 @@ abstract class _ModeratedImage extends ModeratedImage {
   String get moderationModelVersion;
   @override
   String get value;
+
+  /// Create a copy of ModeratedImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ModeratedImageImplCopyWith<_$ModeratedImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

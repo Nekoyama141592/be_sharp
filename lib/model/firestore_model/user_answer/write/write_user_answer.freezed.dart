@@ -25,8 +25,12 @@ mixin _$WriteUserAnswer {
   String get problemId => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
+  /// Serializes this WriteUserAnswer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WriteUserAnswerCopyWith<WriteUserAnswer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$WriteUserAnswerCopyWithImpl<$Res, $Val extends WriteUserAnswer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$WriteUserAnswerImplCopyWithImpl<$Res>
       _$WriteUserAnswerImpl _value, $Res Function(_$WriteUserAnswerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,12 +174,14 @@ class _$WriteUserAnswerImpl extends _WriteUserAnswer {
             (identical(other.uid, uid) || other.uid == uid));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, answer,
       const DeepCollectionEquality().hash(createdAt), problemId, uid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WriteUserAnswerImplCopyWith<_$WriteUserAnswerImpl> get copyWith =>
@@ -205,8 +215,11 @@ abstract class _WriteUserAnswer extends WriteUserAnswer {
   String get problemId;
   @override
   String get uid;
+
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WriteUserAnswerImplCopyWith<_$WriteUserAnswerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
