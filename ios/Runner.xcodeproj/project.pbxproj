@@ -832,7 +832,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1308,7 +1308,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1335,7 +1335,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1568,7 +1568,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-dev";
@@ -1583,7 +1583,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-dev";
@@ -1598,7 +1598,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-dev";
@@ -1613,7 +1613,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-stg";
@@ -1628,7 +1628,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-stg";
@@ -1643,7 +1643,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-stg";
@@ -1658,7 +1658,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prd";
@@ -1673,7 +1673,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prd";
@@ -1688,7 +1688,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prd";
@@ -1775,7 +1775,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prod";
@@ -1790,7 +1790,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prod";
@@ -1805,7 +1805,7 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				FLUTTER_TARGET = lib/main_prod.dart;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpProd;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prod";

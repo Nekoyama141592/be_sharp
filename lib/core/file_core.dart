@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:ui' as ui;
 import 'dart:typed_data';
 import 'package:be_sharp/constants/form_consts.dart';
-import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,24 +12,10 @@ class FileCore {
     final xFile = await _pickImage(source);
     final croppedFile = await _cropImage(xFile);
     final jpgFile = await _convertToJpg(croppedFile);
-    final compressedImage = await _compressImage(jpgFile);
-    return compressedImage;
+    return jpgFile;
   }
 
-  static Future<Uint8List?> _compressImage(File? jpgFile) async {
-    if (jpgFile == null) {
-      return null;
-    }
-    final result = await FlutterImageCompress.compressWithFile(
-      jpgFile.path,
-      minWidth: 512,
-      minHeight: 512,
-      quality: 80,
-    );
-    return result;
-  }
-
-  static Future<File?> _convertToJpg(CroppedFile? croppedFile) async {
+  static Future<Uint8List?> _convertToJpg(CroppedFile? croppedFile) async {
     if (croppedFile == null) {
       return null;
     }
@@ -39,8 +24,9 @@ class FileCore {
 
     if (image != null) {
       final Directory tempDir = await getTemporaryDirectory();
-      return File("${tempDir.absolute.path}/converted.jpg")
+      final result = File("${tempDir.absolute.path}/converted.jpg")
         ..writeAsBytesSync(img.encodeJpg(image));
+      return result.readAsBytes();
     } else {
       return null;
     }
@@ -60,7 +46,7 @@ class FileCore {
 
   static Future<XFile?> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: source);
+    final XFile? image = await picker.pickImage(source: source,imageQuality: 80,maxHeight: 512,maxWidth: 512);
     return image;
   }
 
