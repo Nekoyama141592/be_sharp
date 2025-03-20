@@ -4,6 +4,8 @@ import 'package:be_sharp/infrastructure/on_call_client.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/rest_api/addCaption/request/add_caption_request.dart';
 import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
+import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
+import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/model/rest_api/verify_purchase/request/receipt_request.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/model/rest_api/delete_object/request/delete_object_request.dart';
@@ -102,6 +104,18 @@ class OnCallRepository {
           AddCaptionRequest(problemId: problemId, stringCaption: caption);
       final result = await _client.call(name, request.toJson());
       final res = AddCaptionResponse.fromJson(result);
+      return Result.success(res);
+    } catch (e) {
+      debugPrint(e.toString());
+      return const Result.failure();
+    }
+  }
+  FutureResult<CreateProblemResponse> createProblem(
+      CreateProblemRequest request) async {
+    try {
+      const name = 'createProblem';
+      final result = await _client.call(name, request.toJson());
+      final res = CreateProblemResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {
       debugPrint(e.toString());

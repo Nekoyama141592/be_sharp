@@ -1,10 +1,9 @@
-import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/id_core.dart';
-import 'package:be_sharp/model/firestore_model/problem/write/write_problem.dart';
-import 'package:be_sharp/repository/firestore_repository.dart';
+import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
+import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
+import 'package:be_sharp/repository/on_call_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/latex_text.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
@@ -83,41 +82,25 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
   }
 
   Future<void> _send() async {
-    final repository = FirestoreRepository();
     final problemId = IDCore.ulid();
-    final docRef = DocRefCore.problem(problemId);
-    final now = Timestamp.now();
-    final json = WriteProblem(
+    final repository = OnCallRepository();
+    final request = CreateProblemRequest(
             question: question,
             latex: latex,
-            createdAt: now,
             problemId: problemId,
             timeLimitSeconds: timeLimitSecond!,
-            updatedAt: now)
-        .toJson();
-    final result = await repository.createDoc(docRef, json);
-    result.when(success: _onCreateSuccess, failure: _onCreateFailure);
-    await Future.delayed(Duration(seconds: timeLimitSecond!));
-    final updateResult = await repository.updateDoc(docRef, {
-      'answers': <String>[answer!]
-    });
-    updateResult.when(success: _onUpdateSuccess, failure: _onUpdateFailure);
+            answers: <String>[answer!]);
+    final result = await repository.createProblem(request);
+    result.when(success: _onSuccess, failure: _onFailure);
   }
 
-  void _onCreateSuccess(bool res) {
+  void _onSuccess(CreateProblemResponse res) {
     ToastUICore.showFlutterToast('作成が成功しました');
+    print(res.toString());
   }
 
-  void _onCreateFailure() {
+  void _onFailure() {
     ToastUICore.showErrorFlutterToast('作成が失敗しました');
-  }
-
-  void _onUpdateSuccess(bool res) {
-    ToastUICore.showFlutterToast('更新が成功しました');
-  }
-
-  void _onUpdateFailure() {
-    ToastUICore.showErrorFlutterToast('更新が失敗しました');
   }
 }
 
