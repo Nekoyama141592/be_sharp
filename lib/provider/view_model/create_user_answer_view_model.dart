@@ -10,6 +10,7 @@ import 'package:be_sharp/view/my_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/route_manager.dart';
+import 'package:in_app_review/in_app_review.dart';
 
 class CreateUserAnswerViewModel extends AutoDisposeAsyncNotifier<ReadProblem> {
   @override
@@ -56,6 +57,14 @@ class CreateUserAnswerViewModel extends AutoDisposeAsyncNotifier<ReadProblem> {
       Get.back();
     }
     Get.offAllNamed(MyApp.path);
+    _requestReview();
+  }
+
+  Future<void> _requestReview() async {
+    final inAppReview = InAppReview.instance;
+    final isAvailable = await inAppReview.isAvailable();
+    if (!isAvailable) return;
+    await inAppReview.requestReview();
   }
 
   void onFailure() {
