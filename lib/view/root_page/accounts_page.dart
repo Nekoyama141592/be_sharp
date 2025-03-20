@@ -24,6 +24,7 @@ class AccountPage extends ConsumerWidget {
               title: Text(
                   "認証情報: ${state?.providerData.map((e) => e.providerId).join(',') ?? ''}")),
           ListTile(title: SelectableText("ユーザーID: ${state?.uid ?? ''}")),
+          ListTile(title: SelectableText("メールアドレス: ${state?.email ?? ''}")),
           if (state != null) ...[
             ListTile(
               title: const Text("ログアウトする"),
