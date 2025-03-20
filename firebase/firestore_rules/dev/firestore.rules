@@ -64,8 +64,7 @@ service cloud.firestore {
   }
 
   function isValidPrivateUserUpdate(data) {
-    return data.size() == 1 &&
-     "fcmToken" in data && data.fcmToken is string;
+    return "fcmToken" in data && data.fcmToken is string;
   }
 
   function isAuthenticated() {
