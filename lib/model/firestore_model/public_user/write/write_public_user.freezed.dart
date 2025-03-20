@@ -21,7 +21,6 @@ WritePublicUser _$WritePublicUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WritePublicUser {
   dynamic get createdAt => throw _privateConstructorUsedError;
-  Map<String, dynamic> get registeredInfo => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
@@ -37,11 +36,7 @@ abstract class $WritePublicUserCopyWith<$Res> {
           WritePublicUser value, $Res Function(WritePublicUser) then) =
       _$WritePublicUserCopyWithImpl<$Res, WritePublicUser>;
   @useResult
-  $Res call(
-      {dynamic createdAt,
-      Map<String, dynamic> registeredInfo,
-      String uid,
-      dynamic updatedAt});
+  $Res call({dynamic createdAt, String uid, dynamic updatedAt});
 }
 
 /// @nodoc
@@ -58,7 +53,6 @@ class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
   @override
   $Res call({
     Object? createdAt = freezed,
-    Object? registeredInfo = null,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
@@ -67,10 +61,6 @@ class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      registeredInfo: null == registeredInfo
-          ? _value.registeredInfo
-          : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -91,11 +81,7 @@ abstract class _$$WritePublicUserImplCopyWith<$Res>
       __$$WritePublicUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {dynamic createdAt,
-      Map<String, dynamic> registeredInfo,
-      String uid,
-      dynamic updatedAt});
+  $Res call({dynamic createdAt, String uid, dynamic updatedAt});
 }
 
 /// @nodoc
@@ -110,7 +96,6 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = freezed,
-    Object? registeredInfo = null,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
@@ -119,10 +104,6 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      registeredInfo: null == registeredInfo
-          ? _value._registeredInfo
-          : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -139,26 +120,14 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WritePublicUserImpl extends _WritePublicUser {
   const _$WritePublicUserImpl(
-      {required this.createdAt,
-      required final Map<String, dynamic> registeredInfo,
-      required this.uid,
-      required this.updatedAt})
-      : _registeredInfo = registeredInfo,
-        super._();
+      {required this.createdAt, required this.uid, required this.updatedAt})
+      : super._();
 
   factory _$WritePublicUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$WritePublicUserImplFromJson(json);
 
   @override
   final dynamic createdAt;
-  final Map<String, dynamic> _registeredInfo;
-  @override
-  Map<String, dynamic> get registeredInfo {
-    if (_registeredInfo is EqualUnmodifiableMapView) return _registeredInfo;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_registeredInfo);
-  }
-
   @override
   final String uid;
   @override
@@ -166,7 +135,7 @@ class _$WritePublicUserImpl extends _WritePublicUser {
 
   @override
   String toString() {
-    return 'WritePublicUser(createdAt: $createdAt, registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
+    return 'WritePublicUser(createdAt: $createdAt, uid: $uid, updatedAt: $updatedAt)';
   }
 
   @override
@@ -175,8 +144,6 @@ class _$WritePublicUserImpl extends _WritePublicUser {
         (other.runtimeType == runtimeType &&
             other is _$WritePublicUserImpl &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality()
-                .equals(other._registeredInfo, _registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -186,7 +153,6 @@ class _$WritePublicUserImpl extends _WritePublicUser {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(_registeredInfo),
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -208,7 +174,6 @@ class _$WritePublicUserImpl extends _WritePublicUser {
 abstract class _WritePublicUser extends WritePublicUser {
   const factory _WritePublicUser(
       {required final dynamic createdAt,
-      required final Map<String, dynamic> registeredInfo,
       required final String uid,
       required final dynamic updatedAt}) = _$WritePublicUserImpl;
   const _WritePublicUser._() : super._();
@@ -218,8 +183,6 @@ abstract class _WritePublicUser extends WritePublicUser {
 
   @override
   dynamic get createdAt;
-  @override
-  Map<String, dynamic> get registeredInfo;
   @override
   String get uid;
   @override

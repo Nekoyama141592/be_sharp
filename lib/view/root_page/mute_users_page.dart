@@ -20,9 +20,14 @@ class MuteUsersPage extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: ListView(
                 children: state.map((e) {
+                  final nickName = e.nickNameValue();
+                  final bio = e.bioValue();
+                  if (nickName == null || bio == null) {
+                    return const SizedBox.shrink();
+                  }
                   return ListTile(
-                    title: Text(e.nickNameValue()),
-                    subtitle: Text(e.bioValue()),
+                    title: Text(nickName),
+                    subtitle: Text(bio),
                     onTap: () => notifier().onTap(e.uid),
                   );
                 }).toList(),

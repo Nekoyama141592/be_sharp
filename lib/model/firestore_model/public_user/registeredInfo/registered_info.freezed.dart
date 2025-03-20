@@ -20,10 +20,9 @@ RegisteredInfo _$RegisteredInfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegisteredInfo {
-  Map<String, dynamic> get nickName => throw _privateConstructorUsedError;
-  Map<String, dynamic> get bio => throw _privateConstructorUsedError;
-  dynamic get birthDate => throw _privateConstructorUsedError;
-  Map<String, dynamic> get image => throw _privateConstructorUsedError;
+  DetectedText get nickName => throw _privateConstructorUsedError;
+  DetectedText get bio => throw _privateConstructorUsedError;
+  ModeratedImage get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,11 +36,11 @@ abstract class $RegisteredInfoCopyWith<$Res> {
           RegisteredInfo value, $Res Function(RegisteredInfo) then) =
       _$RegisteredInfoCopyWithImpl<$Res, RegisteredInfo>;
   @useResult
-  $Res call(
-      {Map<String, dynamic> nickName,
-      Map<String, dynamic> bio,
-      dynamic birthDate,
-      Map<String, dynamic> image});
+  $Res call({DetectedText nickName, DetectedText bio, ModeratedImage image});
+
+  $DetectedTextCopyWith<$Res> get nickName;
+  $DetectedTextCopyWith<$Res> get bio;
+  $ModeratedImageCopyWith<$Res> get image;
 }
 
 /// @nodoc
@@ -59,27 +58,46 @@ class _$RegisteredInfoCopyWithImpl<$Res, $Val extends RegisteredInfo>
   $Res call({
     Object? nickName = null,
     Object? bio = null,
-    Object? birthDate = freezed,
     Object? image = null,
   }) {
     return _then(_value.copyWith(
       nickName: null == nickName
           ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as DetectedText,
       bio: null == bio
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DetectedText,
       image: null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as ModeratedImage,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res> get nickName {
+    return $DetectedTextCopyWith<$Res>(_value.nickName, (value) {
+      return _then(_value.copyWith(nickName: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res> get bio {
+    return $DetectedTextCopyWith<$Res>(_value.bio, (value) {
+      return _then(_value.copyWith(bio: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ModeratedImageCopyWith<$Res> get image {
+    return $ModeratedImageCopyWith<$Res>(_value.image, (value) {
+      return _then(_value.copyWith(image: value) as $Val);
+    });
   }
 }
 
@@ -91,11 +109,14 @@ abstract class _$$RegisteredInfoImplCopyWith<$Res>
       __$$RegisteredInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Map<String, dynamic> nickName,
-      Map<String, dynamic> bio,
-      dynamic birthDate,
-      Map<String, dynamic> image});
+  $Res call({DetectedText nickName, DetectedText bio, ModeratedImage image});
+
+  @override
+  $DetectedTextCopyWith<$Res> get nickName;
+  @override
+  $DetectedTextCopyWith<$Res> get bio;
+  @override
+  $ModeratedImageCopyWith<$Res> get image;
 }
 
 /// @nodoc
@@ -111,26 +132,21 @@ class __$$RegisteredInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? nickName = null,
     Object? bio = null,
-    Object? birthDate = freezed,
     Object? image = null,
   }) {
     return _then(_$RegisteredInfoImpl(
       nickName: null == nickName
-          ? _value._nickName
+          ? _value.nickName
           : nickName // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as DetectedText,
       bio: null == bio
-          ? _value._bio
+          ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      birthDate: freezed == birthDate
-          ? _value.birthDate
-          : birthDate // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DetectedText,
       image: null == image
-          ? _value._image
+          ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as ModeratedImage,
     ));
   }
 }
@@ -139,47 +155,22 @@ class __$$RegisteredInfoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RegisteredInfoImpl extends _RegisteredInfo {
   const _$RegisteredInfoImpl(
-      {required final Map<String, dynamic> nickName,
-      required final Map<String, dynamic> bio,
-      required this.birthDate,
-      required final Map<String, dynamic> image})
-      : _nickName = nickName,
-        _bio = bio,
-        _image = image,
-        super._();
+      {required this.nickName, required this.bio, required this.image})
+      : super._();
 
   factory _$RegisteredInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegisteredInfoImplFromJson(json);
 
-  final Map<String, dynamic> _nickName;
   @override
-  Map<String, dynamic> get nickName {
-    if (_nickName is EqualUnmodifiableMapView) return _nickName;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_nickName);
-  }
-
-  final Map<String, dynamic> _bio;
+  final DetectedText nickName;
   @override
-  Map<String, dynamic> get bio {
-    if (_bio is EqualUnmodifiableMapView) return _bio;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_bio);
-  }
-
+  final DetectedText bio;
   @override
-  final dynamic birthDate;
-  final Map<String, dynamic> _image;
-  @override
-  Map<String, dynamic> get image {
-    if (_image is EqualUnmodifiableMapView) return _image;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_image);
-  }
+  final ModeratedImage image;
 
   @override
   String toString() {
-    return 'RegisteredInfo(nickName: $nickName, bio: $bio, birthDate: $birthDate, image: $image)';
+    return 'RegisteredInfo(nickName: $nickName, bio: $bio, image: $image)';
   }
 
   @override
@@ -187,20 +178,15 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisteredInfoImpl &&
-            const DeepCollectionEquality().equals(other._nickName, _nickName) &&
-            const DeepCollectionEquality().equals(other._bio, _bio) &&
-            const DeepCollectionEquality().equals(other.birthDate, birthDate) &&
-            const DeepCollectionEquality().equals(other._image, _image));
+            (identical(other.nickName, nickName) ||
+                other.nickName == nickName) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_nickName),
-      const DeepCollectionEquality().hash(_bio),
-      const DeepCollectionEquality().hash(birthDate),
-      const DeepCollectionEquality().hash(_image));
+  int get hashCode => Object.hash(runtimeType, nickName, bio, image);
 
   @JsonKey(ignore: true)
   @override
@@ -219,23 +205,20 @@ class _$RegisteredInfoImpl extends _RegisteredInfo {
 
 abstract class _RegisteredInfo extends RegisteredInfo {
   const factory _RegisteredInfo(
-      {required final Map<String, dynamic> nickName,
-      required final Map<String, dynamic> bio,
-      required final dynamic birthDate,
-      required final Map<String, dynamic> image}) = _$RegisteredInfoImpl;
+      {required final DetectedText nickName,
+      required final DetectedText bio,
+      required final ModeratedImage image}) = _$RegisteredInfoImpl;
   const _RegisteredInfo._() : super._();
 
   factory _RegisteredInfo.fromJson(Map<String, dynamic> json) =
       _$RegisteredInfoImpl.fromJson;
 
   @override
-  Map<String, dynamic> get nickName;
+  DetectedText get nickName;
   @override
-  Map<String, dynamic> get bio;
+  DetectedText get bio;
   @override
-  dynamic get birthDate;
-  @override
-  Map<String, dynamic> get image;
+  ModeratedImage get image;
   @override
   @JsonKey(ignore: true)
   _$$RegisteredInfoImplCopyWith<_$RegisteredInfoImpl> get copyWith =>

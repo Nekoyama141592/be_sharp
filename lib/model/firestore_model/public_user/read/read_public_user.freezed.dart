@@ -20,7 +20,7 @@ ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ReadPublicUser {
-  RegisteredInfo get registeredInfo => throw _privateConstructorUsedError;
+  RegisteredInfo? get registeredInfo => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
@@ -36,9 +36,9 @@ abstract class $ReadPublicUserCopyWith<$Res> {
           ReadPublicUser value, $Res Function(ReadPublicUser) then) =
       _$ReadPublicUserCopyWithImpl<$Res, ReadPublicUser>;
   @useResult
-  $Res call({RegisteredInfo registeredInfo, String uid, dynamic updatedAt});
+  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
 
-  $RegisteredInfoCopyWith<$Res> get registeredInfo;
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
 }
 
 /// @nodoc
@@ -54,15 +54,15 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? registeredInfo = null,
+    Object? registeredInfo = freezed,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      registeredInfo: null == registeredInfo
+      registeredInfo: freezed == registeredInfo
           ? _value.registeredInfo
           : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as RegisteredInfo,
+              as RegisteredInfo?,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -76,8 +76,12 @@ class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
 
   @override
   @pragma('vm:prefer-inline')
-  $RegisteredInfoCopyWith<$Res> get registeredInfo {
-    return $RegisteredInfoCopyWith<$Res>(_value.registeredInfo, (value) {
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo {
+    if (_value.registeredInfo == null) {
+      return null;
+    }
+
+    return $RegisteredInfoCopyWith<$Res>(_value.registeredInfo!, (value) {
       return _then(_value.copyWith(registeredInfo: value) as $Val);
     });
   }
@@ -91,10 +95,10 @@ abstract class _$$ReadPublicUserImplCopyWith<$Res>
       __$$ReadPublicUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({RegisteredInfo registeredInfo, String uid, dynamic updatedAt});
+  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
 
   @override
-  $RegisteredInfoCopyWith<$Res> get registeredInfo;
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
 }
 
 /// @nodoc
@@ -108,15 +112,15 @@ class __$$ReadPublicUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? registeredInfo = null,
+    Object? registeredInfo = freezed,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
     return _then(_$ReadPublicUserImpl(
-      registeredInfo: null == registeredInfo
+      registeredInfo: freezed == registeredInfo
           ? _value.registeredInfo
           : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as RegisteredInfo,
+              as RegisteredInfo?,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -142,7 +146,7 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
       _$$ReadPublicUserImplFromJson(json);
 
   @override
-  final RegisteredInfo registeredInfo;
+  final RegisteredInfo? registeredInfo;
   @override
   final String uid;
   @override
@@ -186,7 +190,7 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
 
 abstract class _ReadPublicUser extends ReadPublicUser {
   const factory _ReadPublicUser(
-      {required final RegisteredInfo registeredInfo,
+      {required final RegisteredInfo? registeredInfo,
       required final String uid,
       required final dynamic updatedAt}) = _$ReadPublicUserImpl;
   const _ReadPublicUser._() : super._();
@@ -195,7 +199,7 @@ abstract class _ReadPublicUser extends ReadPublicUser {
       _$ReadPublicUserImpl.fromJson;
 
   @override
-  RegisteredInfo get registeredInfo;
+  RegisteredInfo? get registeredInfo;
   @override
   String get uid;
   @override

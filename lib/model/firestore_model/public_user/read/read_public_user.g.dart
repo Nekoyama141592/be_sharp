@@ -8,8 +8,10 @@ part of 'read_public_user.dart';
 
 _$ReadPublicUserImpl _$$ReadPublicUserImplFromJson(Map<String, dynamic> json) =>
     _$ReadPublicUserImpl(
-      registeredInfo: RegisteredInfo.fromJson(
-          json['registeredInfo'] as Map<String, dynamic>),
+      registeredInfo: json['registeredInfo'] == null
+          ? null
+          : RegisteredInfo.fromJson(
+              json['registeredInfo'] as Map<String, dynamic>),
       uid: json['uid'] as String,
       updatedAt: json['updatedAt'],
     );

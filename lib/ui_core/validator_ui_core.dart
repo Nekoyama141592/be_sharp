@@ -20,17 +20,6 @@ class ValidatorUICore {
       return null;
     }
   }
-
-  static String? stringBirthDate(String? value) {
-    if (value == null || value.isEmpty) {
-      return null;
-    } else if (int.tryParse(value) == null) {
-      return '数字を入力してください';
-    } else {
-      return null;
-    }
-  }
-
   static String? text(String? value) {
     return value!.isNotEmpty ? null : "入力を行って下さい";
   }

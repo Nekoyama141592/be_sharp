@@ -26,9 +26,9 @@ class RankingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userName = user.nickNameValue();
-    final isInvalidNickName = user.registeredInfo.typedNickName().isInvalid();
-    final isInvalidImage = user.registeredInfo.typedImage().isInvalid();
+    final userName = user.nickNameValue() ?? '';
+    final isInvalidNickName = user.registeredInfo?.nickName.isInvalid() ?? false;
+    final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
     if (isInvalidNickName || isInvalidImage || isMute) {
       String reason = '';
       if (isInvalidNickName) {
@@ -38,7 +38,7 @@ class RankingCard extends StatelessWidget {
         reason += 'かつ、';
       }
       if (isInvalidImage) {
-        reason += '画像が不適切(理由: ${user.registeredInfo.typedImage().reason()})';
+        reason += '画像が不適切(理由: ${user.registeredInfo?.image.reason() ?? '不明'})';
       }
       reason += 'なユーザー';
       if (isMute) {
