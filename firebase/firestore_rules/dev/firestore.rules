@@ -1,19 +1,59 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-
-    // This rule allows anyone with your Firestore database reference to view, edit,
-    // and delete all data in your Firestore database. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Firestore database will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you Update
-    // your rules
-    match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2025, 2, 3);
+    // collectionGroupのルール
+    match /{path=**}/users/{uid} {
+      allow read: if isAuthenticated();
     }
+    match /{path=**}/userAnswers/{answerId} {
+      allow read: if isAuthenticated();
+    }
+    match /problems/{problemId} {
+      allow read: if isAuthenticated();
+    }
+    match /users/{uid} {
+      allow read: if isAuthenticated();
+      allow create: if isUserAuthenticated(uid) && isValidPublicUser(request.resource.data);
+      allow delete: if isUserAuthenticated(uid);
+      match /userAnswers/{answerId} {
+        allow read: if isUserAuthenticated(uid);
+        allow create: if isUserAuthenticated(uid) && isValidAnswer(request.resource.data);
+      }
+      match /muteUsers/{muteUid} {
+        allow read, delete: if isUserAuthenticated(uid);
+        allow create: if isUserAuthenticated(uid) && isValidMuteUser(request.resource.data);
+      }
+    }
+    // Private data
+    match /privateUsers/{uid} {
+      allow read: if isUserAuthenticated(uid);
+      allow create: if isUserAuthenticated(uid) && isValidPrivateUser(request.resource.data);
+      match /verifiedPurchases/{purchaseId} {
+        allow read: if isUserAuthenticated(uid);
+      }
+    }
+  }
+  function isValidPublicUser(user) {
+    return true
+  }
+  
+  function isValidAnswer(data) {
+    return true
+  }
+
+  function isValidMuteUser(data) {
+    return true
+  }
+
+  function isValidPrivateUser(user) {
+    return true
+  }
+
+  function isAuthenticated() {
+  	return request.auth != null;
+  }
+
+  function isUserAuthenticated(uid) {
+    return request.auth.uid == uid && request.auth.token.email_verified;
   }
 }
