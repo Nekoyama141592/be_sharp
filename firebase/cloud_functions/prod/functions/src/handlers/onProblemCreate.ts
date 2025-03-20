@@ -17,23 +17,26 @@ export const onProblemCreate = onDocumentCreated(
         const newValue = doc?.data() as Problem;
         const { timeLimitSeconds } = newValue;
         const privateUsersQshot = await db.collection('privateUsers').get();
-        for (const doc of privateUsersQshot.docs) {
+        
+        // Promiseの配列を作成して、すべてのメッセージ送信を並列で実行
+        const sendPromises = privateUsersQshot.docs.map(async (doc) => {
             const user = doc.data() as PrivateUser;
-            if (user) {
-                const token = user.fcmToken;
-                if (!token) return;
-                const payload = {
-                    notification: {
-                      title: 'BeSharp.',
-                      body: `${timeLimitSeconds}秒で問題を解こう!`
-                    },
-                  };
-                  await admin.messaging().send({
-                    token,
-                    ...payload,
-                  });
-            }
+            if (!user || !user.fcmToken) return null;
             
-        }
+            const payload = {
+                notification: {
+                    title: 'BeSharp.',
+                    body: `${timeLimitSeconds}秒で問題を解こう!`
+                },
+            };
+            
+            return admin.messaging().send({
+                token: user.fcmToken,
+                ...payload,
+            });
+        });
+
+        // すべてのPromiseが解決するのを待つ
+        await Promise.all(sendPromises);
     }
 );

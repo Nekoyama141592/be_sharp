@@ -9,14 +9,12 @@ import { Timestamp } from 'firebase-admin/firestore';
 interface EditUserRequest {
   stringNickName: string;
   stringBio: string;
-  stringBirthDate: string;
   object: string;
 }
 
 interface EditUserResponse {
   nickName: DetectedText;
   bio: DetectedText;
-  birthDate: Timestamp;
   image: ModeratedImage;
 }
 
@@ -27,8 +25,8 @@ export const editUserInfo = onCall(async (request) => {
     if (!auth) {
       throw new HttpsError('unauthenticated', 'Please authenticate.');
     }
-    const { stringNickName,stringBio,stringBirthDate,object }: EditUserRequest = request.data;
-    if (!stringNickName || !stringBio  || !stringBirthDate || !object) {
+    const { stringNickName,stringBio,object }: EditUserRequest = request.data;
+    if (!stringNickName || !stringBio || !object) {
       throw new HttpsError('invalid-argument', 'Missing required parameters');
     }
     if (object.split('/')[0] != auth.uid) {
@@ -39,16 +37,10 @@ export const editUserInfo = onCall(async (request) => {
       detectText(stringBio),
       detectModerationLabels(object)
     ]);
-    const birthDate = Timestamp.fromDate(new Date(
-      parseInt(stringBirthDate.substring(0, 4)),
-      parseInt(stringBirthDate.substring(4, 6)) - 1,
-      parseInt(stringBirthDate.substring(6, 8))
-    ));
     const updatedAt = Timestamp.now();
     const response: EditUserResponse = {
       nickName,
       bio,
-      birthDate,
       image,
     };
     const { uid } = auth;
