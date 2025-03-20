@@ -34,19 +34,32 @@ service cloud.firestore {
     }
   }
   function isValidPublicUser(user) {
-    return true
+    return user.size() == 3 &&
+    "createdAt" in user && user.createdAt is timestamp &&
+    "uid" in user && user.uid is string &&
+    "updatedAt" in user && user.updatedAt is timestamp;
   }
   
   function isValidAnswer(data) {
-    return true
+    return data.size() == 4 &&
+    "answer" in data && data.answer is string &&
+    "createdAt" in data && data.createdAt is timestamp &&
+    "problemId" in data && data.problemId is string &&
+    "uid" in data && data.uid is string;
   }
 
   function isValidMuteUser(data) {
-    return true
+    return data.size() == 2 &&
+    "muteUid" in data && data.muteUid is string &&
+    "createdAt" in data && data.createdAt is timestamp;
   }
 
   function isValidPrivateUser(user) {
-    return true
+    return user.size() == 4 &&
+    "fcmToken" in user && user.fcmToken is string &&
+    "createdAt" in user && user.createdAt is timestamp &&
+    "uid" in user && user.uid is string &&
+    "isAdmin" in user && user.isAdmin == false;
   }
 
   function isAuthenticated() {

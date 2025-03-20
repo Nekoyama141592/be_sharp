@@ -1,9 +1,72 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
+    // collectionGroupのルール
+    match /{path=**}/users/{uid} {
+      allow read: if isAuthenticated();
     }
+    match /{path=**}/userAnswers/{answerId} {
+      allow read: if isAuthenticated();
+    }
+    match /problems/{problemId} {
+      allow read: if isAuthenticated();
+    }
+    match /users/{uid} {
+      allow read: if isAuthenticated();
+      allow create: if isUserAuthenticated(uid) && isValidPublicUser(request.resource.data);
+      allow delete: if isUserAuthenticated(uid);
+      match /userAnswers/{answerId} {
+        allow read: if isUserAuthenticated(uid);
+        allow create: if isUserAuthenticated(uid) && isValidAnswer(request.resource.data);
+      }
+      match /muteUsers/{muteUid} {
+        allow read, delete: if isUserAuthenticated(uid);
+        allow create: if isUserAuthenticated(uid) && isValidMuteUser(request.resource.data);
+      }
+    }
+    // Private data
+    match /privateUsers/{uid} {
+      allow read: if isUserAuthenticated(uid);
+      allow create: if isUserAuthenticated(uid) && isValidPrivateUser(request.resource.data);
+      match /verifiedPurchases/{purchaseId} {
+        allow read: if isUserAuthenticated(uid);
+      }
+    }
+  }
+  function isValidPublicUser(user) {
+    return user.size() == 3 &&
+    "createdAt" in user && user.createdAt is timestamp &&
+    "uid" in user && user.uid is string &&
+    "updatedAt" in user && user.updatedAt is timestamp;
+  }
+  
+  function isValidAnswer(data) {
+    return data.size() == 4 &&
+    "answer" in data && data.answer is string &&
+    "createdAt" in data && data.createdAt is timestamp &&
+    "problemId" in data && data.problemId is string &&
+    "uid" in data && data.uid is string;
+  }
+
+  function isValidMuteUser(data) {
+    return data.size() == 2 &&
+    "muteUid" in data && data.muteUid is string &&
+    "createdAt" in data && data.createdAt is timestamp;
+  }
+
+  function isValidPrivateUser(user) {
+    return user.size() == 4 &&
+    "fcmToken" in user && user.fcmToken is string &&
+    "createdAt" in user && user.createdAt is timestamp &&
+    "uid" in user && user.uid is string &&
+    "isAdmin" in user && user.isAdmin == false;
+  }
+
+  function isAuthenticated() {
+  	return request.auth != null;
+  }
+
+  function isUserAuthenticated(uid) {
+    return request.auth.uid == uid && request.auth.token.email_verified;
   }
 }
