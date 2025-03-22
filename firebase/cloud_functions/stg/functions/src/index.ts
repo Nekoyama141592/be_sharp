@@ -9,3 +9,4 @@ export { getObject } from './handlers/getObject';
 export { editUserInfo } from './handlers/editUserInfo';
 export { onProblemCreate } from './handlers/onProblemCreate';
 export { verifyIOSReceipt } from './handlers/verifyIOSReceipt';
+export { verifyAndroidReceipt } from './handlers/verifyAndroidReceipt';

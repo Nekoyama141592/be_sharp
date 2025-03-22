@@ -65,10 +65,7 @@ export const verifyIOSReceipt = onCall(async (request) => {
             uid,
             os: 'iOS'
         }
-        const batch = admin.firestore().batch();
-        batch.set(admin.firestore().collection(`privateUsers/${uid}/verifiedPurchases`).doc(transactionID), result);
-        batch.set(admin.firestore().collection('rootVerifiedPurchased').doc(transactionID), result);
-        await batch.commit();
+        await admin.firestore().collection(`privateUsers/${uid}/verifiedPurchases`).doc(transactionID).set(result);
         return result;
     } else {
         throw new HttpsError('permission-denied', 'This receipt is expired.');

@@ -3,24 +3,6 @@ import { onCall, HttpsError } from 'firebase-functions/v2/https';
 import type { AxiosResponse } from 'axios';
 import axios from 'axios';
 
-interface VerifyIOSRequest {
-    purchaseDetails: PurchaseDetails
-}
-
-interface PurchaseDetails {
-  error: string;
-  productID: string;
-  purchaseID: string | null;
-  verificationData: {
-    localVerificationData: string;
-    serverVerificationData: string;
-    source: string;
-  };
-  transactionDate: string;
-  status: string;
-  pendingCompletePurchase: boolean;
-}
-
 export const verifyIOSReceipt = onCall(async (request) => {
     try {
         const { auth } = request;
@@ -29,7 +11,7 @@ export const verifyIOSReceipt = onCall(async (request) => {
       throw new HttpsError('unauthenticated', 'Please authenticate.');
     }
     const { uid } = auth;
-    const { purchaseDetails } : VerifyIOSRequest = request.data;
+    const { purchaseDetails } : ReceiptRequest = request.data;
     if (!purchaseDetails) {
       throw new HttpsError('invalid-argument', 'Missing required parameters');
     }
@@ -77,13 +59,13 @@ export const verifyIOSReceipt = onCall(async (request) => {
     const expireDate = Number(latestReceipt.expires_date_ms);
     if (now < expireDate) {
         const transactionID = latestReceipt.transaction_id;
-        const result = {
+        const result : ReceiptResponse = {
             purchaseDetails,
             verifiedReceipt: latestReceipt,
             uid,
             os: 'iOS'
         }
-        await admin.firestore().collection('privateUsers').doc(uid).collection('verifiedPurchases').doc(transactionID).set(result);
+        await admin.firestore().collection(`privateUsers/${uid}/verifiedPurchases`).doc(transactionID).set(result);
         return result;
     } else {
         throw new HttpsError('permission-denied', 'This receipt is expired.');
