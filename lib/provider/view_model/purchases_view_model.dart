@@ -14,6 +14,7 @@ import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
   late StreamSubscription<List<PurchaseDetails>> subscription;
+  bool isVerifing = false;
   @override
   FutureOr<PurchasesState> build() async {
     subscription = _getSubscription();
@@ -33,15 +34,19 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
   }
 
   Future<List<VerifiedPurchase>> _fetchPurchases() async {
-    final uid = ref.read(userProvider)?.uid;
-    if (uid == null) return [];
-    final colRef = ColRefCore.verifiedPurchases(uid);
-    final qshot = await colRef.get();
-    final docs = qshot.docs;
-    final verifiedPurchases =
-        docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
-    final results = verifiedPurchases.where((e) => e.isValid()).toList();
-    return results;
+    try {
+      final uid = ref.read(userProvider)?.uid;
+      if (uid == null) return [];
+      final colRef = ColRefCore.verifiedPurchases(uid);
+      final qshot = await colRef.get();
+      final docs = qshot.docs;
+      final verifiedPurchases =
+          docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
+      final results = verifiedPurchases.where((e) => e.isValid()).toList();
+      return results;
+    } catch(e) {
+      return [];
+    }
   }
 
   StreamSubscription<List<PurchaseDetails>> _getSubscription() {
@@ -81,31 +86,36 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
 
   bool isSubscribing() => state.value?.isSubscribing() ?? false;
   Future<void> _onListen(List<PurchaseDetails> detailsList) async {
-    if (isSubscribing()) return;
+    isVerifing = true;
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
-      await PurchasesCore.completePurchase(details);
-      await PurchasesCore.acknowledge(details);
       if (details.isError) {
         ToastUICore.showErrorFlutterToast("購入時にエラーが発生");
         return;
       }
       if (!details.isPurchased) continue;
       final result = await PurchasesCore.verifyPurchase(details);
-      await result.when(success: _onVerifySuccess, failure: _onVerifyFailed);
+      await result.when(success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
     }
+    await _updateVerifiedPurchases();
+    isVerifing = false;
   }
 
-  Future<void> _onVerifySuccess(VerifiedPurchase res) async {
+  Future<void> _onVerifySuccess(PurchaseDetails details) async {
+    await PurchasesCore.completePurchase(details);
+    await PurchasesCore.acknowledge(details);
+  }
+  Future<void> _updateVerifiedPurchases() async {
     final stateValue = state.value;
     if (stateValue == null) return;
     state = await AsyncValue.guard(() async {
-      final result = stateValue
-          .copyWith(verifiedPurchases: [...stateValue.verifiedPurchases, res]);
+      final newVerifiedPurchases = await _fetchPurchases();
+      final result = stateValue.copyWith(
+        verifiedPurchases: newVerifiedPurchases,
+      );
       return result;
     });
   }
-
   Future<void> _onVerifyFailed() async {
     // 失敗した時の処理.
     ToastUICore.showErrorFlutterToast("購入の検証が失敗しました");
