@@ -81,6 +81,15 @@ class RankDialogState extends State<RankDialog>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'BeSharp.',
+                style: GoogleFonts.notoSans(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 10),
               RotationTransition(
                 turns: _rotateAnimation,
                 child: Icon(
