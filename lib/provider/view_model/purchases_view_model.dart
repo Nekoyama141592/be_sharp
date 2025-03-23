@@ -86,19 +86,17 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
 
   bool isSubscribing() => state.value?.isSubscribing() ?? false;
   Future<void> _onListen(List<PurchaseDetails> detailsList) async {
+    ToastUICore.showFlutterToast('購入情報を検証しています');
     isVerifing = true;
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
-      if (details.isError) {
-        ToastUICore.showErrorFlutterToast("購入時にエラーが発生");
-        return;
-      }
-      if (!details.isPurchased) continue;
+      if (details.isError || !details.isPurchased) continue;
       final result = await PurchasesCore.verifyPurchase(details);
       await result.when(success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
     }
     await _updateVerifiedPurchases();
     isVerifing = false;
+    ToastUICore.showFlutterToast('購入情報の検証が完了しましたå');
   }
 
   Future<void> _onVerifySuccess(PurchaseDetails details) async {
@@ -123,16 +121,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
 
   void onRestoreButtonPressed() async {
     final repository = PurchasesRepository();
-    final result = await repository.restorePurchases();
-    result.when(success: _onRestoreSuccess, failure: _onRestoreFailure);
-  }
-
-  void _onRestoreSuccess(bool res) {
-    ToastUICore.showFlutterToast('購入情報を復元しました');
-  }
-
-  void _onRestoreFailure() {
-    ToastUICore.showErrorFlutterToast('購入情報を復元できませんでした');
+    await repository.restorePurchases();
   }
 }
 
