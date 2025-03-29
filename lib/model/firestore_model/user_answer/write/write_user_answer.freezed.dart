@@ -22,6 +22,7 @@ WriteUserAnswer _$WriteUserAnswerFromJson(Map<String, dynamic> json) {
 mixin _$WriteUserAnswer {
   String get answer => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
+  int get likeCount => throw _privateConstructorUsedError;
   String get problemId => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
 
@@ -41,7 +42,12 @@ abstract class $WriteUserAnswerCopyWith<$Res> {
           WriteUserAnswer value, $Res Function(WriteUserAnswer) then) =
       _$WriteUserAnswerCopyWithImpl<$Res, WriteUserAnswer>;
   @useResult
-  $Res call({String answer, dynamic createdAt, String problemId, String uid});
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      int likeCount,
+      String problemId,
+      String uid});
 }
 
 /// @nodoc
@@ -61,6 +67,7 @@ class _$WriteUserAnswerCopyWithImpl<$Res, $Val extends WriteUserAnswer>
   $Res call({
     Object? answer = null,
     Object? createdAt = freezed,
+    Object? likeCount = null,
     Object? problemId = null,
     Object? uid = null,
   }) {
@@ -73,6 +80,10 @@ class _$WriteUserAnswerCopyWithImpl<$Res, $Val extends WriteUserAnswer>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
       problemId: null == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
@@ -93,7 +104,12 @@ abstract class _$$WriteUserAnswerImplCopyWith<$Res>
       __$$WriteUserAnswerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String answer, dynamic createdAt, String problemId, String uid});
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      int likeCount,
+      String problemId,
+      String uid});
 }
 
 /// @nodoc
@@ -111,6 +127,7 @@ class __$$WriteUserAnswerImplCopyWithImpl<$Res>
   $Res call({
     Object? answer = null,
     Object? createdAt = freezed,
+    Object? likeCount = null,
     Object? problemId = null,
     Object? uid = null,
   }) {
@@ -123,6 +140,10 @@ class __$$WriteUserAnswerImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
       problemId: null == problemId
           ? _value.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
@@ -141,6 +162,7 @@ class _$WriteUserAnswerImpl extends _WriteUserAnswer {
   const _$WriteUserAnswerImpl(
       {required this.answer,
       required this.createdAt,
+      this.likeCount = 0,
       required this.problemId,
       required this.uid})
       : super._();
@@ -153,13 +175,16 @@ class _$WriteUserAnswerImpl extends _WriteUserAnswer {
   @override
   final dynamic createdAt;
   @override
+  @JsonKey()
+  final int likeCount;
+  @override
   final String problemId;
   @override
   final String uid;
 
   @override
   String toString() {
-    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, problemId: $problemId, uid: $uid)';
+    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
   }
 
   @override
@@ -169,6 +194,8 @@ class _$WriteUserAnswerImpl extends _WriteUserAnswer {
             other is _$WriteUserAnswerImpl &&
             (identical(other.answer, answer) || other.answer == answer) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.likeCount, likeCount) ||
+                other.likeCount == likeCount) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.uid, uid) || other.uid == uid));
@@ -176,8 +203,13 @@ class _$WriteUserAnswerImpl extends _WriteUserAnswer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, answer,
-      const DeepCollectionEquality().hash(createdAt), problemId, uid);
+  int get hashCode => Object.hash(
+      runtimeType,
+      answer,
+      const DeepCollectionEquality().hash(createdAt),
+      likeCount,
+      problemId,
+      uid);
 
   /// Create a copy of WriteUserAnswer
   /// with the given fields replaced by the non-null parameter values.
@@ -200,6 +232,7 @@ abstract class _WriteUserAnswer extends WriteUserAnswer {
   const factory _WriteUserAnswer(
       {required final String answer,
       required final dynamic createdAt,
+      final int likeCount,
       required final String problemId,
       required final String uid}) = _$WriteUserAnswerImpl;
   const _WriteUserAnswer._() : super._();
@@ -211,6 +244,8 @@ abstract class _WriteUserAnswer extends WriteUserAnswer {
   String get answer;
   @override
   dynamic get createdAt;
+  @override
+  int get likeCount;
   @override
   String get problemId;
   @override

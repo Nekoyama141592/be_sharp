@@ -11,6 +11,7 @@ _$WriteUserAnswerImpl _$$WriteUserAnswerImplFromJson(
     _$WriteUserAnswerImpl(
       answer: json['answer'] as String,
       createdAt: json['createdAt'],
+      likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
       problemId: json['problemId'] as String,
       uid: json['uid'] as String,
     );
@@ -20,6 +21,7 @@ Map<String, dynamic> _$$WriteUserAnswerImplToJson(
     <String, dynamic>{
       'answer': instance.answer,
       'createdAt': instance.createdAt,
+      'likeCount': instance.likeCount,
       'problemId': instance.problemId,
       'uid': instance.uid,
     };

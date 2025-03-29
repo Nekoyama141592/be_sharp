@@ -21,6 +21,9 @@ WritePublicUser _$WritePublicUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WritePublicUser {
   dynamic get createdAt => throw _privateConstructorUsedError;
+  int get followerCount => throw _privateConstructorUsedError;
+  int get followingCount => throw _privateConstructorUsedError;
+  int get muteCount => throw _privateConstructorUsedError;
   String get uid => throw _privateConstructorUsedError;
   dynamic get updatedAt => throw _privateConstructorUsedError;
 
@@ -40,7 +43,13 @@ abstract class $WritePublicUserCopyWith<$Res> {
           WritePublicUser value, $Res Function(WritePublicUser) then) =
       _$WritePublicUserCopyWithImpl<$Res, WritePublicUser>;
   @useResult
-  $Res call({dynamic createdAt, String uid, dynamic updatedAt});
+  $Res call(
+      {dynamic createdAt,
+      int followerCount,
+      int followingCount,
+      int muteCount,
+      String uid,
+      dynamic updatedAt});
 }
 
 /// @nodoc
@@ -59,6 +68,9 @@ class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
   @override
   $Res call({
     Object? createdAt = freezed,
+    Object? followerCount = null,
+    Object? followingCount = null,
+    Object? muteCount = null,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
@@ -67,6 +79,18 @@ class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      followerCount: null == followerCount
+          ? _value.followerCount
+          : followerCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followingCount: null == followingCount
+          ? _value.followingCount
+          : followingCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      muteCount: null == muteCount
+          ? _value.muteCount
+          : muteCount // ignore: cast_nullable_to_non_nullable
+              as int,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -87,7 +111,13 @@ abstract class _$$WritePublicUserImplCopyWith<$Res>
       __$$WritePublicUserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic createdAt, String uid, dynamic updatedAt});
+  $Res call(
+      {dynamic createdAt,
+      int followerCount,
+      int followingCount,
+      int muteCount,
+      String uid,
+      dynamic updatedAt});
 }
 
 /// @nodoc
@@ -104,6 +134,9 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = freezed,
+    Object? followerCount = null,
+    Object? followingCount = null,
+    Object? muteCount = null,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
@@ -112,6 +145,18 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
+      followerCount: null == followerCount
+          ? _value.followerCount
+          : followerCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followingCount: null == followingCount
+          ? _value.followingCount
+          : followingCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      muteCount: null == muteCount
+          ? _value.muteCount
+          : muteCount // ignore: cast_nullable_to_non_nullable
+              as int,
       uid: null == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -128,7 +173,12 @@ class __$$WritePublicUserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WritePublicUserImpl extends _WritePublicUser {
   const _$WritePublicUserImpl(
-      {required this.createdAt, required this.uid, required this.updatedAt})
+      {required this.createdAt,
+      this.followerCount = 0,
+      this.followingCount = 0,
+      this.muteCount = 0,
+      required this.uid,
+      required this.updatedAt})
       : super._();
 
   factory _$WritePublicUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -137,13 +187,22 @@ class _$WritePublicUserImpl extends _WritePublicUser {
   @override
   final dynamic createdAt;
   @override
+  @JsonKey()
+  final int followerCount;
+  @override
+  @JsonKey()
+  final int followingCount;
+  @override
+  @JsonKey()
+  final int muteCount;
+  @override
   final String uid;
   @override
   final dynamic updatedAt;
 
   @override
   String toString() {
-    return 'WritePublicUser(createdAt: $createdAt, uid: $uid, updatedAt: $updatedAt)';
+    return 'WritePublicUser(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
   }
 
   @override
@@ -152,6 +211,12 @@ class _$WritePublicUserImpl extends _WritePublicUser {
         (other.runtimeType == runtimeType &&
             other is _$WritePublicUserImpl &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.followerCount, followerCount) ||
+                other.followerCount == followerCount) &&
+            (identical(other.followingCount, followingCount) ||
+                other.followingCount == followingCount) &&
+            (identical(other.muteCount, muteCount) ||
+                other.muteCount == muteCount) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -161,6 +226,9 @@ class _$WritePublicUserImpl extends _WritePublicUser {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(createdAt),
+      followerCount,
+      followingCount,
+      muteCount,
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -184,6 +252,9 @@ class _$WritePublicUserImpl extends _WritePublicUser {
 abstract class _WritePublicUser extends WritePublicUser {
   const factory _WritePublicUser(
       {required final dynamic createdAt,
+      final int followerCount,
+      final int followingCount,
+      final int muteCount,
       required final String uid,
       required final dynamic updatedAt}) = _$WritePublicUserImpl;
   const _WritePublicUser._() : super._();
@@ -193,6 +264,12 @@ abstract class _WritePublicUser extends WritePublicUser {
 
   @override
   dynamic get createdAt;
+  @override
+  int get followerCount;
+  @override
+  int get followingCount;
+  @override
+  int get muteCount;
   @override
   String get uid;
   @override

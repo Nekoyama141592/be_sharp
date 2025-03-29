@@ -9,6 +9,9 @@ abstract class WritePublicUser implements _$WritePublicUser {
   const WritePublicUser._();
   const factory WritePublicUser(
       {required dynamic createdAt,
+      @Default(0) int followerCount,
+      @Default(0) int followingCount,
+      @Default(0) int muteCount,
       required String uid,
       required dynamic updatedAt}) = _WritePublicUser;
   factory WritePublicUser.fromJson(Map<String, dynamic> json) =>
