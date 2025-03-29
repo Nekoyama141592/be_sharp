@@ -36,7 +36,7 @@ export const createProblem = onCall(async (request) => {
       throw new HttpsError('invalid-argument', 'timeLimitSeconds must be smaller than timeout');
     }
     const now = admin.firestore.FieldValue.serverTimestamp()
-    const data = { createdAt: now, updatedAt: now,question,latex, problemId, timeLimitSeconds, subject, category ,answers: []}
+    const data = { createdAt: now, updatedAt: now,question,latex, problemId, timeLimitSeconds, subject, category ,answers: [], likeCount: 0, commentCount: 0 }
     const docRef = admin.firestore().collection('problems').doc(problemId)
     await docRef.set(data)
     await sleep(timeLimitSeconds * 1000)
