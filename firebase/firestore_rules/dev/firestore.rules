@@ -35,8 +35,11 @@ service cloud.firestore {
     }
   }
   function isValidPublicUser(user) {
-    return user.size() == 3 &&
+    return user.size() == 6 &&
     "createdAt" in user && user.createdAt is timestamp &&
+    "followerCount" in user && user.followerCount == 0 &&
+    "followingCount" in user && user.followingCount == 0 &&
+    "muteCount" in user && user.muteCount == 0 &&
     "uid" in user && user.uid is string &&
     "updatedAt" in user && user.updatedAt is timestamp;
   }
@@ -45,6 +48,7 @@ service cloud.firestore {
     return data.size() == 4 &&
     "answer" in data && data.answer is string &&
     "createdAt" in data && data.createdAt is timestamp &&
+    "likeCount" in data && data.likeCount == 0 &&
     "problemId" in data && data.problemId is string &&
     "uid" in data && data.uid is string;
   }
