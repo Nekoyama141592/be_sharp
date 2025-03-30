@@ -98,14 +98,30 @@ class PurchasesCore {
     }
   }
 
-  static PurchaseParam param(ProductDetails newDetails,
-      {GooglePlayPurchaseDetails? oldDetails}) {
-    final purchaseParam = Platform.isAndroid
-        ? GooglePlayPurchaseParam(
-            productDetails: newDetails,
-            changeSubscriptionParam: _changeParam(oldDetails))
-        : PurchaseParam(productDetails: newDetails);
-    return purchaseParam;
+  static PurchaseParam param(
+      ProductDetails newDetails, List<VerifiedPurchase>? purchases) {
+    if (Platform.isAndroid) {
+      final oldSubscription = _getOldSubscription(newDetails, purchases);
+      return GooglePlayPurchaseParam(
+        productDetails: newDetails,
+        changeSubscriptionParam: _changeParam(oldSubscription),
+      );
+    } else {
+      return PurchaseParam(productDetails: newDetails);
+    }
+  }
+
+  static GooglePlayPurchaseDetails? _getOldSubscription(
+      ProductDetails productDetails,
+      List<VerifiedPurchase>? verifiedPurchases) {
+    GooglePlayPurchaseDetails? oldSubscription;
+    if (verifiedPurchases == null) return oldSubscription;
+    final purchases =
+        verifiedPurchases.map((e) => e.typedPurchaseDetails()).toList();
+    if (purchases.isNotEmpty && purchases.last.productID != productDetails.id) {
+      oldSubscription = purchases.last as GooglePlayPurchaseDetails;
+    }
+    return oldSubscription;
   }
 
   static ChangeSubscriptionParam? _changeParam(

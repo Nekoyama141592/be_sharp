@@ -10,7 +10,6 @@ import 'package:be_sharp/repository/purchases_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
   late StreamSubscription<List<PurchaseDetails>> subscription;
@@ -57,8 +56,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
 
   void onPurchaseButtonPressed(ProductDetails details) async {
     await PurchasesCore.cancelTransctions();
-    final oldDetails = _getOldDetails(details);
-    final purchaseParam = PurchasesCore.param(details, oldDetails: oldDetails);
+    final purchaseParam = PurchasesCore.param(details, state.value?.verifiedPurchases);
     await ToastUICore.showFlutterToast("情報を取得しています。 \nしばらくお待ちください。");
     final repository = PurchasesRepository();
     final result = await repository.buyNonConsumable(purchaseParam);
@@ -69,19 +67,6 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
 
   void _onPurchaseFailed() {
     ToastUICore.showFlutterToast("もう一度ボタンを押してください");
-  }
-
-  GooglePlayPurchaseDetails? _getOldDetails(ProductDetails details) {
-    final stateValue = state.value;
-    if (stateValue == null) return null;
-    GooglePlayPurchaseDetails? oldSubscription;
-    final purchases = stateValue.verifiedPurchases
-        .map((e) => e.typedPurchaseDetails())
-        .toList();
-    if (purchases.isNotEmpty && purchases.last.productID != details.id) {
-      oldSubscription = purchases.last as GooglePlayPurchaseDetails;
-    }
-    return oldSubscription;
   }
 
   bool isSubscribing() => state.value?.isSubscribing() ?? false;
