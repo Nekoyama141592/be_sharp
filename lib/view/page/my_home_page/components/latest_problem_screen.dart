@@ -180,19 +180,19 @@ class LatestProblemScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               OriginalButton(
+                  onPressed: notifier().onRankingButtonPressed,
+                  isPaid: false,
+                  labelText: 'ランキング',
+                  iconData: Icons.star),
+              const SizedBox(
+                width: 16.0,
+              ),
+              OriginalButton(
                 onPressed: notifier().onCaptionButtonPressed,
                 isPaid: true,
                 labelText: 'キャプション',
                 iconData: isCaptionExists ? Icons.edit : Icons.add_comment,
               ),
-              const SizedBox(
-                width: 16.0,
-              ),
-              OriginalButton(
-                  onPressed: notifier().onRankingButtonPressed,
-                  isPaid: false,
-                  labelText: 'ランキング',
-                  iconData: Icons.star),
             ],
           ),
           if (isCaptionExists)
@@ -270,7 +270,10 @@ class OriginalButton extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return isPaid ? _buildPremiumButton(context) : _buildRegularButton(context);
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.40,
+      child: isPaid ? _buildPremiumButton(context) : _buildRegularButton(context),
+    );
   }
   
   Widget _buildRegularButton(BuildContext context) {
@@ -280,7 +283,7 @@ class OriginalButton extends StatelessWidget {
       label: Text(
         labelText,
         style: GoogleFonts.notoSans(
-          fontSize: 18,
+          fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -327,7 +330,7 @@ class OriginalButton extends StatelessWidget {
         label: Text(
           labelText,
           style: GoogleFonts.notoSans(
-            fontSize: 18,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.5,
             color: childColor,
