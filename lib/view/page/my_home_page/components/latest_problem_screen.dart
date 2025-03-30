@@ -181,6 +181,7 @@ class LatestProblemScreen extends ConsumerWidget {
             children: [
               OriginalButton(
                 onPressed: notifier().onCaptionButtonPressed,
+                isPaid: true,
                 labelText: 'キャプション',
                 iconData: isCaptionExists ? Icons.edit : Icons.add_comment,
               ),
@@ -189,6 +190,7 @@ class LatestProblemScreen extends ConsumerWidget {
               ),
               OriginalButton(
                   onPressed: notifier().onRankingButtonPressed,
+                  isPaid: false,
                   labelText: 'ランキング',
                   iconData: Icons.star),
             ],
@@ -253,16 +255,25 @@ class LatestProblemScreen extends ConsumerWidget {
 }
 
 class OriginalButton extends StatelessWidget {
-  const OriginalButton(
-      {super.key,
-      this.onPressed,
-      required this.labelText,
-      required this.iconData});
+  const OriginalButton({
+    super.key,
+    this.onPressed,
+    required this.isPaid,
+    required this.labelText,
+    required this.iconData,
+  });
+  
   final void Function()? onPressed;
+  final bool isPaid; // 有料機能か
   final String labelText;
   final IconData iconData;
+  
   @override
   Widget build(BuildContext context) {
+    return isPaid ? _buildPremiumButton(context) : _buildRegularButton(context);
+  }
+  
+  Widget _buildRegularButton(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: onPressed,
       icon: Icon(iconData),
@@ -279,6 +290,65 @@ class OriginalButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
+        ),
+      ),
+    );
+  }
+  
+  Widget _buildPremiumButton(BuildContext context) {
+    const childColor = Color(0xFFFFD700);
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        gradient: const LinearGradient(
+          colors: [
+            Color(0xFFAD1457),  // 深い紫色
+            Color(0xFFD81B60),  // 鮮やかなピンク
+            Color(0xFFE91E63),  // ピンク
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.purple.withOpacity(0.3),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ElevatedButton.icon(
+        onPressed: onPressed,
+        icon: Icon(
+          iconData,
+          color: childColor,
+          size: 24,
+        ),
+        label: Text(
+          labelText,
+          style: GoogleFonts.notoSans(
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
+            color: childColor,
+            shadows: [
+              Shadow(
+                color: Colors.black.withOpacity(0.3),
+                blurRadius: 2,
+                offset: const Offset(0, 1),
+              ),
+            ],
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
         ),
       ),
     );
