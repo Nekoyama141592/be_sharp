@@ -209,179 +209,181 @@ class RankDialogState extends State<RankDialog>
                 // メインコンテンツ
                 Padding(
                   padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      // ロゴ
-                      FadeTransition(
-                        opacity: _fadeAnimation,
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, -0.5),
-                            end: Offset.zero,
-                          ).animate(_fadeAnimation),
-                          child: Text(
-                            'BeSharp.',
-                            style: GoogleFonts.poppins(
-                              fontSize: 28,
-                              fontWeight: FontWeight.w700,
-                              color: mainColor,
-                              letterSpacing: 1.2,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        // ロゴ
+                        FadeTransition(
+                          opacity: _fadeAnimation,
+                          child: SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(0, -0.5),
+                              end: Offset.zero,
+                            ).animate(_fadeAnimation),
+                            child: Text(
+                              'BeSharp.',
+                              style: GoogleFonts.poppins(
+                                fontSize: 28,
+                                fontWeight: FontWeight.w700,
+                                color: mainColor,
+                                letterSpacing: 1.2,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      
-                      const SizedBox(height: 20),
-                      
-                      // アイコン（回転アニメーションを維持）
-                      Container(
-                        width: 120,
-                        height: 120,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: mainColor.withOpacity(0.2),
-                              blurRadius: 15,
-                              spreadRadius: 2,
+                        
+                        const SizedBox(height: 20),
+                        
+                        // アイコン（回転アニメーションを維持）
+                        Container(
+                          width: 120,
+                          height: 120,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: mainColor.withOpacity(0.2),
+                                blurRadius: 15,
+                                spreadRadius: 2,
+                              ),
+                            ],
+                          ),
+                          child: Center(
+                            child: RotationTransition(
+                              turns: _rotateAnimation,
+                              child: ShaderMask(
+                                shaderCallback: (Rect bounds) {
+                                  return LinearGradient(
+                                    colors: [
+                                      mainColor,
+                                      mainColor.withOpacity(0.7),
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ).createShader(bounds);
+                                },
+                                child: Icon(
+                                  _getRankIcon(),
+                                  size: 70,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
-                          ],
+                          ),
                         ),
-                        child: Center(
-                          child: RotationTransition(
-                            turns: _rotateAnimation,
-                            child: ShaderMask(
-                              shaderCallback: (Rect bounds) {
-                                return LinearGradient(
+                        
+                        const SizedBox(height: 24),
+                        
+                        // おめでとうメッセージ
+                        FadeTransition(
+                          opacity: _fadeAnimation,
+                          child: SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(0, 0.5),
+                              end: Offset.zero,
+                            ).animate(_fadeAnimation),
+                            child: Text(
+                              'おめでとうございます！',
+                              style: GoogleFonts.notoSans(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        ),
+                        
+                        const SizedBox(height: 8),
+                        
+                        // 説明テキスト
+                        FadeTransition(
+                          opacity: _fadeAnimation,
+                          child: SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(0, 0.5),
+                              end: Offset.zero,
+                            ).animate(_fadeAnimation),
+                            child: Text(
+                              _getRankDescription(),
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.notoSans(
+                                fontSize: 16,
+                                color: Colors.black54,
+                                height: 1.4,
+                              ),
+                            ),
+                          ),
+                        ),
+                        
+                        const SizedBox(height: 24),
+                        
+                        // ランク表示
+                        FadeTransition(
+                          opacity: _fadeAnimation,
+                          child: Transform.translate(
+                            offset: Offset(0, _slideAnimation.value),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
                                   colors: [
                                     mainColor,
-                                    mainColor.withOpacity(0.7),
+                                    mainColor.withOpacity(0.8),
                                   ],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
-                                ).createShader(bounds);
-                              },
-                              child: Icon(
-                                _getRankIcon(),
-                                size: 70,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 24),
-                      
-                      // おめでとうメッセージ
-                      FadeTransition(
-                        opacity: _fadeAnimation,
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, 0.5),
-                            end: Offset.zero,
-                          ).animate(_fadeAnimation),
-                          child: Text(
-                            'おめでとうございます！',
-                            style: GoogleFonts.notoSans(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black87,
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 8),
-                      
-                      // 説明テキスト
-                      FadeTransition(
-                        opacity: _fadeAnimation,
-                        child: SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, 0.5),
-                            end: Offset.zero,
-                          ).animate(_fadeAnimation),
-                          child: Text(
-                            _getRankDescription(),
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.notoSans(
-                              fontSize: 16,
-                              color: Colors.black54,
-                              height: 1.4,
-                            ),
-                          ),
-                        ),
-                      ),
-                      
-                      const SizedBox(height: 24),
-                      
-                      // ランク表示
-                      FadeTransition(
-                        opacity: _fadeAnimation,
-                        child: Transform.translate(
-                          offset: Offset(0, _slideAnimation.value),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  mainColor,
-                                  mainColor.withOpacity(0.8),
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: mainColor.withOpacity(0.4),
-                                  blurRadius: 15,
-                                  offset: const Offset(0, 8),
                                 ),
-                              ],
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: mainColor.withOpacity(0.4),
+                                    blurRadius: 15,
+                                    offset: const Offset(0, 8),
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                _getRankText(),
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 48,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  letterSpacing: 1.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        
+                        const Spacer(),
+                        
+                        // 閉じるボタン
+                        FadeTransition(
+                          opacity: _fadeAnimation,
+                          child: TextButton(
+                            onPressed: (Get.isDialogOpen ?? false) ? Get.back : null,
+                            style: TextButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                side: BorderSide(color: mainColor.withOpacity(0.3), width: 1.5),
+                              ),
                             ),
                             child: Text(
-                              _getRankText(),
-                              style: GoogleFonts.montserrat(
-                                fontSize: 48,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                letterSpacing: 1.5,
+                              '閉じる',
+                              style: GoogleFonts.notoSans(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      
-                      const Spacer(),
-                      
-                      // 閉じるボタン
-                      FadeTransition(
-                        opacity: _fadeAnimation,
-                        child: TextButton(
-                          onPressed: (Get.isDialogOpen ?? false) ? Get.back : null,
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                              side: BorderSide(color: mainColor.withOpacity(0.3), width: 1.5),
-                            ),
-                          ),
-                          child: Text(
-                            '閉じる',
-                            style: GoogleFonts.notoSans(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 

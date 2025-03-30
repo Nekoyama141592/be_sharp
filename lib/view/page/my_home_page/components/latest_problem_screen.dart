@@ -105,7 +105,7 @@ class LatestProblemScreen extends ConsumerWidget {
 
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             title(),
