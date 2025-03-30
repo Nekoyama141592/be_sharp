@@ -325,7 +325,6 @@ class OriginalButton extends StatelessWidget {
         icon: Icon(
           iconData,
           color: childColor,
-          size: 24,
         ),
         label: Text(
           labelText,
