@@ -13,7 +13,7 @@ class PolicyButton extends StatelessWidget {
             child: Text(
               label,
               style: const TextStyle(
-                  fontWeight: FontWeight.bold,color: Colors.blue),
+                  fontWeight: FontWeight.bold, color: Colors.blue),
             )));
   }
 }

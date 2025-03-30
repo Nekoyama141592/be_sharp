@@ -27,7 +27,8 @@ class RankingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userName = user.nickNameValue() ?? '';
-    final isInvalidNickName = user.registeredInfo?.nickName.isInvalid() ?? false;
+    final isInvalidNickName =
+        user.registeredInfo?.nickName.isInvalid() ?? false;
     final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
     if (isInvalidNickName || isInvalidImage || isMute) {
       String reason = '';

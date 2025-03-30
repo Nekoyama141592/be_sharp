@@ -85,18 +85,17 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
     final problemId = IDCore.ulid();
     final repository = OnCallRepository();
     final request = CreateProblemRequest(
-            question: question,
-            latex: latex,
-            problemId: problemId,
-            timeLimitSeconds: timeLimitSecond!,
-            answers: <String>[answer!]);
+        question: question,
+        latex: latex,
+        problemId: problemId,
+        timeLimitSeconds: timeLimitSecond!,
+        answers: <String>[answer!]);
     final result = await repository.createProblem(request);
     result.when(success: _onSuccess, failure: _onFailure);
   }
 
   void _onSuccess(CreateProblemResponse res) {
     ToastUICore.showFlutterToast('作成が成功しました');
-    print(res.toString());
   }
 
   void _onFailure() {

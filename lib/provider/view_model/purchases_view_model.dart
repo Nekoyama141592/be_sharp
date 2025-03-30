@@ -44,7 +44,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
           docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
       final results = verifiedPurchases.where((e) => e.isValid()).toList();
       return results;
-    } catch(e) {
+    } catch (e) {
       return [];
     }
   }
@@ -92,7 +92,8 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
       final details = detailsList[i];
       if (details.isError || !details.isPurchased) continue;
       final result = await PurchasesCore.verifyPurchase(details);
-      await result.when(success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
+      await result.when(
+          success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
     }
     await _updateVerifiedPurchases();
     isVerifing = false;
@@ -103,6 +104,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     await PurchasesCore.completePurchase(details);
     await PurchasesCore.acknowledge(details);
   }
+
   Future<void> _updateVerifiedPurchases() async {
     final stateValue = state.value;
     if (stateValue == null) return;
@@ -114,6 +116,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
       return result;
     });
   }
+
   Future<void> _onVerifyFailed() async {
     // 失敗した時の処理.
     ToastUICore.showErrorFlutterToast("購入の検証が失敗しました");

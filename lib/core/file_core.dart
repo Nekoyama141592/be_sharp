@@ -46,7 +46,8 @@ class FileCore {
 
   static Future<XFile?> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: source,imageQuality: 80,maxHeight: 512,maxWidth: 512);
+    final XFile? image = await picker.pickImage(
+        source: source, imageQuality: 80, maxHeight: 512, maxWidth: 512);
     return image;
   }
 

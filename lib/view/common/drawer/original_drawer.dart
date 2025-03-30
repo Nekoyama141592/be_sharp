@@ -14,44 +14,45 @@ class OriginalDrawer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(privateUserProvider);
     return asyncValue.when(
-        data: (data) => Drawer(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              child: ListView(
-                children: [
-                  const OriginalDrawerHeader(),
-                  ListTile(
-                    title: const Text("プロフィール編集"),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Get.toNamed(EditUserPage.path);
-                    },
-                  ),
-                  ListTile(
-                    title: const Text("アカウント情報"),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Get.toNamed(AccountPage.path);
-                    },
-                  ),
-                  ListTile(
-                    title: const Text("ミュートしているユーザー"),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                      Get.toNamed(MuteUsersPage.path);
-                    },
-                  ),
-                  if (data.isAdmin)
-                    ListTile(
-                      title: const Text("管理者ページ"),
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        Get.toNamed(AdminPage.path);
-                      },
-                    ),
-                ],
-              ),
+      data: (data) => Drawer(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        child: ListView(
+          children: [
+            const OriginalDrawerHeader(),
+            ListTile(
+              title: const Text("プロフィール編集"),
+              onTap: () {
+                Navigator.of(context).pop();
+                Get.toNamed(EditUserPage.path);
+              },
             ),
-        error: (e, _) => const Drawer(),
-        loading: () => const Drawer(),);
+            ListTile(
+              title: const Text("アカウント情報"),
+              onTap: () {
+                Navigator.of(context).pop();
+                Get.toNamed(AccountPage.path);
+              },
+            ),
+            ListTile(
+              title: const Text("ミュートしているユーザー"),
+              onTap: () {
+                Navigator.of(context).pop();
+                Get.toNamed(MuteUsersPage.path);
+              },
+            ),
+            if (data.isAdmin)
+              ListTile(
+                title: const Text("管理者ページ"),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Get.toNamed(AdminPage.path);
+                },
+              ),
+          ],
+        ),
+      ),
+      error: (e, _) => const Drawer(),
+      loading: () => const Drawer(),
+    );
   }
 }

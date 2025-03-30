@@ -13,21 +13,21 @@ class EditUserPage extends HookConsumerWidget {
   EditUserPage({super.key});
   final formKey = GlobalKey<FormState>();
   static const path = "/editUser";
-  
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     EditUserViewModel notifier() => ref.read(editUserProvider.notifier);
     final asyncValue = ref.watch(editUserProvider);
-    
+
     // テーマカラーの定義
     const primaryColor = Color(0xFF6C63FF);
     const secondaryColor = Color(0xFF8F8CF2);
     const backgroundColor = Color(0xFFF8F9FE);
     const textColor = Color(0xFF2E3E5C);
-    
+
     // アニメーション用のコントローラー
     const animationDuration = Duration(milliseconds: 300);
-    
+
     // 更新ボタン
     Widget positiveButton() {
       return Container(
@@ -191,7 +191,8 @@ class EditUserPage extends HookConsumerWidget {
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide.none,
               ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             ),
           ),
         ),
@@ -226,7 +227,10 @@ class EditUserPage extends HookConsumerWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
-                  colors: [primaryColor.withOpacity(0.2), secondaryColor.withOpacity(0.2)],
+                  colors: [
+                    primaryColor.withOpacity(0.2),
+                    secondaryColor.withOpacity(0.2)
+                  ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -366,4 +370,3 @@ class EditUserPage extends HookConsumerWidget {
     );
   }
 }
-

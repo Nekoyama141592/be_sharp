@@ -18,9 +18,6 @@ abstract class WritePublicUser implements _$WritePublicUser {
       _$WritePublicUserFromJson(json);
   factory WritePublicUser.instance(String uid) {
     final now = Timestamp.now();
-    return WritePublicUser(
-        createdAt: now,
-        uid: uid,
-        updatedAt: now);
+    return WritePublicUser(createdAt: now, uid: uid, updatedAt: now);
   }
 }

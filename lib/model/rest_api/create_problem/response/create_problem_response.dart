@@ -6,8 +6,8 @@ part 'create_problem_response.g.dart';
 @freezed
 abstract class CreateProblemResponse implements _$CreateProblemResponse {
   const CreateProblemResponse._();
-  const factory CreateProblemResponse(
-      {required int status}) = _CreateProblemResponse;
+  const factory CreateProblemResponse({required int status}) =
+      _CreateProblemResponse;
   factory CreateProblemResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateProblemResponseFromJson(json);
 }
