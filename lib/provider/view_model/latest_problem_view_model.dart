@@ -110,8 +110,8 @@ class LatestProblemViewModel
         QueryCore.rankingQuery(problemId, answers, userAnswer.typedCreateAt());
     try {
       final qshot = await query.count().get();
-      final result = qshot.count ?? 0;
-      Get.dialog(RankDialog(rank: result));
+      final rank = qshot.count ?? 0;
+      Get.dialog(RankDialog(rank: rank));
     } catch (e) {
       debugPrint(e.toString());
     }
