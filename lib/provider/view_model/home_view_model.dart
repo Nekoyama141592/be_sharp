@@ -39,9 +39,11 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
       HomeCore.fetchAnsweredUsers(qshot, prefs),
       HomeCore.fetchMuteUsers(ref.read(userProvider)?.uid, qshot),
     ]);
+    // 早い順に並べる
+    final result = [...answeredUsers]..sort((a,b) => a.userAnswer.typedCreateAt().compareTo(b.userAnswer.typedCreateAt()));
     return HomeState(
         latestProblem: latestProblem,
-        answeredUsers: answeredUsers,
+        answeredUsers: result,
         muteUids: muteUids);
   }
 
