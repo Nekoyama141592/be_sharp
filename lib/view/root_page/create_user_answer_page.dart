@@ -72,30 +72,32 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Form(
                     key: formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        QuestionCard(state: state),
-                        const SizedBox(height: 30),
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.9),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15),
-                              child: TextFormField(
-                                controller: textController,
-                                decoration: const InputDecoration(
-                                  labelText: '回答',
-                                ),
-                                validator: ValidatorUICore.number,
-                                keyboardType: TextInputType.text,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          QuestionCard(state: state),
+                          const SizedBox(height: 30),
+                          Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.9),
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            )),
-                        const SizedBox(height: 20),
-                        submitButton(),
-                      ],
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 15),
+                                child: TextFormField(
+                                  controller: textController,
+                                  decoration: const InputDecoration(
+                                    labelText: '回答',
+                                  ),
+                                  validator: ValidatorUICore.number,
+                                  keyboardType: TextInputType.text,
+                                ),
+                              )),
+                          const SizedBox(height: 20),
+                          submitButton(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
