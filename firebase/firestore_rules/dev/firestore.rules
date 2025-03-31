@@ -45,7 +45,7 @@ service cloud.firestore {
   }
   
   function isValidAnswer(data) {
-    return data.size() == 4 &&
+    return data.size() == 5 &&
     "answer" in data && data.answer is string &&
     "createdAt" in data && data.createdAt is timestamp &&
     "likeCount" in data && data.likeCount == 0 &&
