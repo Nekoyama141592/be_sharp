@@ -52,9 +52,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
 
     return BasicPage(
       child: GestureDetector(
-        onTap: () {
-            FocusScope.of(context).unfocus();
-          },
+        onTap: FocusScope.of(context).unfocus,
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
