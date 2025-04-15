@@ -15,6 +15,9 @@ class QueryCore {
       ColRefCore.userAnswers(uid)
           .where('problemId', isEqualTo: problemId)
           .limit(1);
+  static MapQuery userAnswers(String problemId) => _instance
+      .collectionGroup('userAnswers')
+      .where('problemId', isEqualTo: problemId);
   static MapQuery correctUserAnswers(String problemId, List<String> answers) =>
       _instance
           .collectionGroup('userAnswers')

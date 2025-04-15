@@ -43,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(16),
                 sliver: SliverToBoxAdapter(
                   child: Text(
-                    '正解者TOP10',
+                    '正解者TOP10(回答者数: ${state.userCount})',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

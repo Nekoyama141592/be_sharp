@@ -23,6 +23,7 @@ mixin _$HomeState {
   ReadProblem? get latestProblem => throw _privateConstructorUsedError;
   List<AnsweredUser> get answeredUsers => throw _privateConstructorUsedError;
   List<String> get muteUids => throw _privateConstructorUsedError;
+  int get userCount => throw _privateConstructorUsedError;
 
   /// Serializes this HomeState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +43,8 @@ abstract class $HomeStateCopyWith<$Res> {
   $Res call(
       {ReadProblem? latestProblem,
       List<AnsweredUser> answeredUsers,
-      List<String> muteUids});
+      List<String> muteUids,
+      int userCount});
 
   $ReadProblemCopyWith<$Res>? get latestProblem;
 }
@@ -65,6 +67,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? latestProblem = freezed,
     Object? answeredUsers = null,
     Object? muteUids = null,
+    Object? userCount = null,
   }) {
     return _then(_value.copyWith(
       latestProblem: freezed == latestProblem
@@ -79,6 +82,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.muteUids
           : muteUids // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      userCount: null == userCount
+          ? _value.userCount
+          : userCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -108,7 +115,8 @@ abstract class _$$HomeStateImplCopyWith<$Res>
   $Res call(
       {ReadProblem? latestProblem,
       List<AnsweredUser> answeredUsers,
-      List<String> muteUids});
+      List<String> muteUids,
+      int userCount});
 
   @override
   $ReadProblemCopyWith<$Res>? get latestProblem;
@@ -130,6 +138,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? latestProblem = freezed,
     Object? answeredUsers = null,
     Object? muteUids = null,
+    Object? userCount = null,
   }) {
     return _then(_$HomeStateImpl(
       latestProblem: freezed == latestProblem
@@ -144,6 +153,10 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value._muteUids
           : muteUids // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      userCount: null == userCount
+          ? _value.userCount
+          : userCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -154,7 +167,8 @@ class _$HomeStateImpl extends _HomeState {
   const _$HomeStateImpl(
       {this.latestProblem,
       final List<AnsweredUser> answeredUsers = const [],
-      final List<String> muteUids = const []})
+      final List<String> muteUids = const [],
+      this.userCount = 0})
       : _answeredUsers = answeredUsers,
         _muteUids = muteUids,
         super._();
@@ -183,8 +197,12 @@ class _$HomeStateImpl extends _HomeState {
   }
 
   @override
+  @JsonKey()
+  final int userCount;
+
+  @override
   String toString() {
-    return 'HomeState(latestProblem: $latestProblem, answeredUsers: $answeredUsers, muteUids: $muteUids)';
+    return 'HomeState(latestProblem: $latestProblem, answeredUsers: $answeredUsers, muteUids: $muteUids, userCount: $userCount)';
   }
 
   @override
@@ -196,7 +214,9 @@ class _$HomeStateImpl extends _HomeState {
                 other.latestProblem == latestProblem) &&
             const DeepCollectionEquality()
                 .equals(other._answeredUsers, _answeredUsers) &&
-            const DeepCollectionEquality().equals(other._muteUids, _muteUids));
+            const DeepCollectionEquality().equals(other._muteUids, _muteUids) &&
+            (identical(other.userCount, userCount) ||
+                other.userCount == userCount));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -205,7 +225,8 @@ class _$HomeStateImpl extends _HomeState {
       runtimeType,
       latestProblem,
       const DeepCollectionEquality().hash(_answeredUsers),
-      const DeepCollectionEquality().hash(_muteUids));
+      const DeepCollectionEquality().hash(_muteUids),
+      userCount);
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +248,8 @@ abstract class _HomeState extends HomeState {
   const factory _HomeState(
       {final ReadProblem? latestProblem,
       final List<AnsweredUser> answeredUsers,
-      final List<String> muteUids}) = _$HomeStateImpl;
+      final List<String> muteUids,
+      final int userCount}) = _$HomeStateImpl;
   const _HomeState._() : super._();
 
   factory _HomeState.fromJson(Map<String, dynamic> json) =
@@ -239,6 +261,8 @@ abstract class _HomeState extends HomeState {
   List<AnsweredUser> get answeredUsers;
   @override
   List<String> get muteUids;
+  @override
+  int get userCount;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.

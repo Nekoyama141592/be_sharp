@@ -54,4 +54,11 @@ class HomeCore {
     final docs = usersQshot.docs;
     return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
   }
+
+  static Future<int> fetchUserCount(String problemId) async {
+    final query = QueryCore.userAnswers(problemId);
+    final qshot = await query.count().get();
+    final result = qshot.count ?? 0;
+    return result;
+  }
 }

@@ -8,11 +8,11 @@ part 'home_state.g.dart';
 @freezed
 abstract class HomeState implements _$HomeState {
   const HomeState._();
-  const factory HomeState({
-    ReadProblem? latestProblem,
-    @Default([]) List<AnsweredUser> answeredUsers,
-    @Default([]) List<String> muteUids,
-  }) = _HomeState;
+  const factory HomeState(
+      {ReadProblem? latestProblem,
+      @Default([]) List<AnsweredUser> answeredUsers,
+      @Default([]) List<String> muteUids,
+      @Default(0) int userCount}) = _HomeState;
   factory HomeState.fromJson(Map<String, dynamic> json) =>
       _$HomeStateFromJson(json);
   bool isMute(String uid) => muteUids.contains(uid);

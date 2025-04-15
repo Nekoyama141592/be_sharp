@@ -32,7 +32,8 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
       return HomeState(latestProblem: latestProblem);
     }
     final query = QueryCore.correctUserAnswers(problemId, answers);
-    final qshot = await query.get();
+    final [(qshot as QuerySnapshot<Map<String, dynamic>>), (userCount as int)] =
+        await Future.wait([query.get(), HomeCore.fetchUserCount(problemId)]);
     final prefs = ref.read(prefsProvider);
     final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>)] =
         await Future.wait([
@@ -45,7 +46,8 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     return HomeState(
         latestProblem: latestProblem,
         answeredUsers: result,
-        muteUids: muteUids);
+        muteUids: muteUids,
+        userCount: userCount);
   }
 
   Future<ReadProblem?> _fetchLatestProblem() async {

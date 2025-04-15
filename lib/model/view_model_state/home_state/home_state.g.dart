@@ -19,6 +19,7 @@ _$HomeStateImpl _$$HomeStateImplFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      userCount: (json['userCount'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$HomeStateImplToJson(_$HomeStateImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$HomeStateImplToJson(_$HomeStateImpl instance) =>
       'latestProblem': instance.latestProblem,
       'answeredUsers': instance.answeredUsers,
       'muteUids': instance.muteUids,
+      'userCount': instance.userCount,
     };

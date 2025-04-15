@@ -13,13 +13,14 @@ class ToastUICore {
 
   static Future<void> showFlutterToast(String msg) async {
     await ft.Fluttertoast.showToast(
-      gravity: ft.ToastGravity.TOP,
-        msg: msg, timeInSecForIosWeb: timeInSecForIosWeb);
+        gravity: ft.ToastGravity.TOP,
+        msg: msg,
+        timeInSecForIosWeb: timeInSecForIosWeb);
   }
 
   static Future<void> showErrorFlutterToast(String msg) async {
     await ft.Fluttertoast.showToast(
-      gravity: ft.ToastGravity.TOP,
+        gravity: ft.ToastGravity.TOP,
         msg: msg,
         timeInSecForIosWeb: timeInSecForIosWeb,
         backgroundColor: Colors.red);
