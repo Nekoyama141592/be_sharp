@@ -56,7 +56,8 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
 
   void onPurchaseButtonPressed(ProductDetails details) async {
     await PurchasesCore.cancelTransctions();
-    final purchaseParam = PurchasesCore.param(details, state.value?.verifiedPurchases);
+    final purchaseParam =
+        PurchasesCore.param(details, state.value?.verifiedPurchases);
     await ToastUICore.showFlutterToast("情報を取得しています。 \nしばらくお待ちください。");
     final repository = PurchasesRepository();
     final result = await repository.buyNonConsumable(purchaseParam);

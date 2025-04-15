@@ -262,20 +262,21 @@ class OriginalButton extends StatelessWidget {
     required this.labelText,
     required this.iconData,
   });
-  
+
   final void Function()? onPressed;
   final bool isPaid; // 有料機能か
   final String labelText;
   final IconData iconData;
-  
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.40,
-      child: isPaid ? _buildPremiumButton(context) : _buildRegularButton(context),
+      child:
+          isPaid ? _buildPremiumButton(context) : _buildRegularButton(context),
     );
   }
-  
+
   Widget _buildRegularButton(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: onPressed,
@@ -297,7 +298,7 @@ class OriginalButton extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildPremiumButton(BuildContext context) {
     const childColor = Color(0xFFFFD700);
     return DecoratedBox(
@@ -305,9 +306,9 @@ class OriginalButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         gradient: const LinearGradient(
           colors: [
-            Color(0xFFAD1457),  // 深い紫色
-            Color(0xFFD81B60),  // 鮮やかなピンク
-            Color(0xFFE91E63),  // ピンク
+            Color(0xFFAD1457), // 深い紫色
+            Color(0xFFD81B60), // 鮮やかなピンク
+            Color(0xFFE91E63), // ピンク
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,

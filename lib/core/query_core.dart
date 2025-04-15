@@ -20,7 +20,7 @@ class QueryCore {
           .collectionGroup('userAnswers')
           .where('problemId', isEqualTo: problemId)
           .where('answer', whereIn: answers)
-          .orderBy('createdAt',descending: false)
+          .orderBy('createdAt', descending: false)
           .limit(whereInLimit);
   static MapQuery rankingQuery(
           String problemId, List<String> answers, Timestamp myCreatedAt) =>

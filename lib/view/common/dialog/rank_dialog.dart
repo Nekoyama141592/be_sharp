@@ -26,31 +26,30 @@ class RankDialogState extends State<RankDialog>
       vsync: this,
       duration: const Duration(milliseconds: 1500),
     );
-    
+
     // 元のアニメーションを維持
     _rotateAnimation = Tween<double>(begin: 0, end: 5.73 * 3.14159).animate(
         CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack));
-    
+
     // 新しいアニメーションを追加
     _scaleAnimation = CurvedAnimation(
-      parent: _controller, 
-      curve: const Interval(0.0, 0.7, curve: Curves.elasticOut)
-    );
-    
+        parent: _controller,
+        curve: const Interval(0.0, 0.7, curve: Curves.elasticOut));
+
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.3, 1.0, curve: Curves.easeOut),
       ),
     );
-    
+
     _slideAnimation = Tween<double>(begin: 50.0, end: 0.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.3, 0.8, curve: Curves.easeOutCubic),
       ),
     );
-    
+
     _controller.forward();
   }
 
@@ -178,7 +177,7 @@ class RankDialogState extends State<RankDialog>
                     ),
                   ),
                 ),
-                
+
                 // 装飾的な背景要素
                 Positioned(
                   top: -20,
@@ -192,7 +191,7 @@ class RankDialogState extends State<RankDialog>
                     ),
                   ),
                 ),
-                
+
                 Positioned(
                   bottom: -30,
                   left: -30,
@@ -205,7 +204,7 @@ class RankDialogState extends State<RankDialog>
                     ),
                   ),
                 ),
-                
+
                 // メインコンテンツ
                 Padding(
                   padding: const EdgeInsets.all(24.0),
@@ -232,9 +231,9 @@ class RankDialogState extends State<RankDialog>
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 20),
-                        
+
                         // アイコン（回転アニメーションを維持）
                         Container(
                           width: 120,
@@ -273,9 +272,9 @@ class RankDialogState extends State<RankDialog>
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 24),
-                        
+
                         // おめでとうメッセージ
                         FadeTransition(
                           opacity: _fadeAnimation,
@@ -294,9 +293,9 @@ class RankDialogState extends State<RankDialog>
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 8),
-                        
+
                         // 説明テキスト
                         FadeTransition(
                           opacity: _fadeAnimation,
@@ -316,16 +315,17 @@ class RankDialogState extends State<RankDialog>
                             ),
                           ),
                         ),
-                        
+
                         const SizedBox(height: 24),
-                        
+
                         // ランク表示
                         FadeTransition(
                           opacity: _fadeAnimation,
                           child: Transform.translate(
                             offset: Offset(0, _slideAnimation.value),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 16),
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
@@ -356,20 +356,24 @@ class RankDialogState extends State<RankDialog>
                             ),
                           ),
                         ),
-                        
+
                         const Spacer(),
-                        
+
                         // 閉じるボタン
                         FadeTransition(
                           opacity: _fadeAnimation,
                           child: TextButton(
-                            onPressed: (Get.isDialogOpen ?? false) ? Get.back : null,
+                            onPressed:
+                                (Get.isDialogOpen ?? false) ? Get.back : null,
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
-                                side: BorderSide(color: mainColor.withOpacity(0.3), width: 1.5),
+                                side: BorderSide(
+                                    color: mainColor.withOpacity(0.3),
+                                    width: 1.5),
                               ),
                             ),
                             child: Text(
@@ -386,7 +390,7 @@ class RankDialogState extends State<RankDialog>
                     ),
                   ),
                 ),
-                
+
                 // 装飾的な要素（キラキラエフェクト）
                 if (widget.rank <= 3) ..._buildSparkles(mainColor),
               ],
@@ -396,19 +400,19 @@ class RankDialogState extends State<RankDialog>
       ),
     );
   }
-  
+
   // キラキラエフェクトを生成
   List<Widget> _buildSparkles(Color color) {
     final random = math.Random(42); // 固定シードで再現性を確保
     final sparkles = <Widget>[];
-    
+
     for (var i = 0; i < 12; i++) {
       final size = random.nextDouble() * 10 + 5;
       final top = random.nextDouble() * 450;
       final left = random.nextDouble() * 300;
       final opacity = random.nextDouble() * 0.5 + 0.3;
       final delay = random.nextDouble() * 0.5;
-      
+
       sparkles.add(
         Positioned(
           top: top,
@@ -434,8 +438,7 @@ class RankDialogState extends State<RankDialog>
         ),
       );
     }
-    
+
     return sparkles;
   }
 }
-

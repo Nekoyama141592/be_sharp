@@ -82,7 +82,8 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
                                 child: TextFormField(
                                   controller: textController,
                                   decoration: const InputDecoration(
