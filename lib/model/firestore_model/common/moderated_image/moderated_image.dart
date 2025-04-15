@@ -34,10 +34,10 @@ class ModerationLabel {
 
   factory ModerationLabel.fromJson(Map<String, dynamic> json) {
     return ModerationLabel(
-      confidence: (json['confidence'] as num).toDouble(),
-      name: json['name'] as String,
-      parentName: json['parentName'] as String,
-      taxonomyLevel: json['taxonomyLevel'] as int,
+      confidence: (json['Confidence'] as num).toDouble(),
+      name: json['Name'] as String,
+      parentName: json['ParentName'] as String,
+      taxonomyLevel: json['TaxonomyLevel'] as int,
     );
   }
 }
