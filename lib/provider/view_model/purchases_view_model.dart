@@ -83,7 +83,7 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     }
     await _updateVerifiedPurchases();
     isVerifing = false;
-    ToastUICore.showFlutterToast('購入情報の検証が完了しましたå');
+    ToastUICore.showFlutterToast('購入情報の検証が完了しました');
   }
 
   Future<void> _onVerifySuccess(PurchaseDetails details) async {
