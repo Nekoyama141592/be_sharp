@@ -35,7 +35,7 @@ class RankingCard extends StatelessWidget {
       if (isInvalidNickName) {
         reason += 'ニックネームが不適切';
       }
-      if (isInvalidImage && isInvalidImage) {
+      if (isInvalidNickName && isInvalidImage) {
         reason += 'かつ、';
       }
       if (isInvalidImage) {
