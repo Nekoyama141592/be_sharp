@@ -37,6 +37,9 @@ export const editUserInfo = onCall(async (request) => {
       detectText(stringBio),
       detectModerationLabels(object)
     ]);
+    if (nickName.negativeScore > 95 || bio.negativeScore > 95 || image.moderationLabels.length !== 0) {
+      throw new HttpsError('permission-denied', 'You do not have permission to update user info');
+    }
     const updatedAt = Timestamp.now();
     const response: EditUserResponse = {
       nickName,
