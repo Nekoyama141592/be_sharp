@@ -13,11 +13,12 @@ import 'package:be_sharp/view/common/dialog/form_dialog.dart';
 import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:get/route_manager.dart';
+part 'latest_problem_view_model.g.dart';
 
-class LatestProblemViewModel
-    extends AutoDisposeAsyncNotifier<LatestProblemState> {
+@riverpod
+class LatestProblemViewModel extends _$LatestProblemViewModel {
   @override
   FutureOr<LatestProblemState> build() async {
     return _fetchData();
@@ -118,5 +119,5 @@ class LatestProblemViewModel
   }
 }
 
-final latestProblemProvider = AsyncNotifierProvider.autoDispose<
+final latestProblemViewModelProvider= AsyncNotifierProvider.autoDispose<
     LatestProblemViewModel, LatestProblemState>(() => LatestProblemViewModel());

@@ -14,9 +14,9 @@ class LatestProblemScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncValue = ref.watch(latestProblemProvider);
+    final asyncValue = ref.watch(latestProblemViewModelProvider);
     LatestProblemViewModel notifier() =>
-        ref.read(latestProblemProvider.notifier);
+        ref.read(latestProblemViewModelProvider.notifier);
 
     return AsyncScreen(
       asyncValue: asyncValue,
