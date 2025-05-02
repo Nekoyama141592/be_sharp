@@ -13,7 +13,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 part 'purchases_view_model.g.dart';
 
 @Riverpod(keepAlive: true)
-class PurchasesViewModel extends _$PurchasesViewModel {
+class Purchases extends _$Purchases {
   late StreamSubscription<List<PurchaseDetails>> subscription;
   bool isVerifing = false;
   @override

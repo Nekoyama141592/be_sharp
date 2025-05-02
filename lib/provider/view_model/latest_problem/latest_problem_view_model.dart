@@ -6,7 +6,7 @@ import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer
 import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/model/view_model_state/latest_problem/latest_problem_state.dart';
 import 'package:be_sharp/provider/user_provider.dart';
-import 'package:be_sharp/provider/view_model/purchases/purchases_view_model.dart';
+import 'package:be_sharp/provider/global/purchases/purchases_view_model.dart';
 import 'package:be_sharp/repository/on_call_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/dialog/form_dialog.dart';
@@ -61,7 +61,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   void onCaptionButtonPressed() {
-    final isSubscribing = ref.read(purchasesViewModelProvider.notifier).isSubscribing();
+    final isSubscribing = ref.read(purchasesProvider.notifier).isSubscribing();
     if (!isSubscribing) {
       ToastUICore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
       return;

@@ -1,6 +1,6 @@
 import 'package:be_sharp/provider/private_user_provider.dart';
 import 'package:be_sharp/provider/view_model/noitifier/my_home_view_model.dart';
-import 'package:be_sharp/provider/view_model/purchases/purchases_view_model.dart';
+import 'package:be_sharp/provider/global/purchases/purchases_view_model.dart';
 import 'package:be_sharp/ui_core/bnb_ui_core.dart';
 import 'package:be_sharp/view/common/drawer/original_drawer.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
@@ -19,7 +19,7 @@ class MyHomePage extends HookConsumerWidget {
     final pageController = usePageController();
     ref.watch(privateUserProvider);
     ref.watch(myhomeViewModelProvider);
-    ref.watch(purchasesViewModelProvider);
+    ref.watch(purchasesProvider);
     return BasicPage(
         drawer: const OriginalDrawer(),
         bottomNavigationBar: BottomNavigationBar(
