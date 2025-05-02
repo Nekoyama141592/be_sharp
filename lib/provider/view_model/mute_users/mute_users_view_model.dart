@@ -7,11 +7,11 @@ import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user
 import 'package:be_sharp/provider/user_provider.dart';
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:get/get.dart';
-
-class MuteUsersViewModel
-    extends AutoDisposeAsyncNotifier<List<ReadPublicUser>> {
+part 'mute_users_view_model.g.dart';
+@riverpod
+class MuteUsersViewModel extends _$MuteUsersViewModel {
   @override
   FutureOr<List<ReadPublicUser>> build() {
     return _fetchData();
@@ -81,7 +81,3 @@ class MuteUsersViewModel
     ToastUICore.showErrorFlutterToast('ミュート解除に失敗しました');
   }
 }
-
-final muteUsersProvider =
-    AsyncNotifierProvider.autoDispose<MuteUsersViewModel, List<ReadPublicUser>>(
-        () => MuteUsersViewModel());
