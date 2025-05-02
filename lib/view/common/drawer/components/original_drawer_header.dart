@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/public_user_provider.dart';
+import 'package:be_sharp/provider/global/public_user/public_user_provider.dart';
 import 'package:be_sharp/view/common/circle_image/circle_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +8,7 @@ class OriginalDrawerHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncValue = ref.watch(publicUserProvider);
+    final asyncValue = ref.watch(originalDrawerProvider);
 
     return asyncValue.when(
       data: (data) {

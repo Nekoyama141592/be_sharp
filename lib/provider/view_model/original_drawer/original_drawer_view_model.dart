@@ -1,12 +1,12 @@
-import 'dart:async';
-
 import 'package:be_sharp/model/view_model_state/abstract/user_and_image_state.dart';
 import 'package:be_sharp/provider/overrides/prefs_provider.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/extensions/prefs_extension.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'original_drawer_view_model.g.dart';
 
-class PublicUserProvider extends AutoDisposeAsyncNotifier<UserAndImageState> {
+@riverpod
+class OriginalDrawerViewModel extends _$OriginalDrawerViewModel {
   @override
   FutureOr<UserAndImageState> build() async {
     final user = ref.read(checkViewModelProvider).value?.user;
@@ -20,6 +20,6 @@ class PublicUserProvider extends AutoDisposeAsyncNotifier<UserAndImageState> {
   }
 }
 
-final publicUserProvider =
-    AsyncNotifierProvider.autoDispose<PublicUserProvider, UserAndImageState>(
-        () => PublicUserProvider());
+final originalDrawerProvider =
+    AsyncNotifierProvider.autoDispose<OriginalDrawerViewModel, UserAndImageState>(
+        () => OriginalDrawerViewModel());
