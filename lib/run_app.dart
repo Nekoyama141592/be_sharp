@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:be_sharp/constants/enums/env_key.dart';
-import 'package:be_sharp/provider/cache_provider.dart';
+import 'package:be_sharp/provider/overrides/prefs_provider.dart';
 import 'package:be_sharp/view/my_app.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
