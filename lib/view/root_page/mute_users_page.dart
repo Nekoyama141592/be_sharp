@@ -10,7 +10,8 @@ class MuteUsersPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(muteUsersViewModelProvider);
-    MuteUsersViewModel notifier() => ref.read(muteUsersViewModelProvider.notifier);
+    MuteUsersViewModel notifier() =>
+        ref.read(muteUsersViewModelProvider.notifier);
     return AsyncScreen(
         asyncValue: asyncValue,
         data: (state) {

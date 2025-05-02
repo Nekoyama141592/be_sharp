@@ -123,4 +123,3 @@ class EditUserViewModel extends _$EditUserViewModel {
     ToastUICore.showErrorFlutterToast("プロフィールを更新できませんでした");
   }
 }
-

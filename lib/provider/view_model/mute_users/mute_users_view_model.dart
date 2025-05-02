@@ -10,6 +10,7 @@ import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:get/get.dart';
 part 'mute_users_view_model.g.dart';
+
 @riverpod
 class MuteUsersViewModel extends _$MuteUsersViewModel {
   @override

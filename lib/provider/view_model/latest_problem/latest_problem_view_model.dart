@@ -119,5 +119,5 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 }
 
-final latestProblemViewModelProvider= AsyncNotifierProvider.autoDispose<
+final latestProblemViewModelProvider = AsyncNotifierProvider.autoDispose<
     LatestProblemViewModel, LatestProblemState>(() => LatestProblemViewModel());

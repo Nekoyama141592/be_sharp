@@ -20,6 +20,6 @@ class OriginalDrawerViewModel extends _$OriginalDrawerViewModel {
   }
 }
 
-final originalDrawerProvider =
-    AsyncNotifierProvider.autoDispose<OriginalDrawerViewModel, UserAndImageState>(
-        () => OriginalDrawerViewModel());
+final originalDrawerProvider = AsyncNotifierProvider.autoDispose<
+    OriginalDrawerViewModel,
+    UserAndImageState>(() => OriginalDrawerViewModel());

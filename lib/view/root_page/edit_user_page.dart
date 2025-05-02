@@ -17,7 +17,8 @@ class EditUserPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    EditUserViewModel notifier() => ref.read(editUserViewModelProvider.notifier);
+    EditUserViewModel notifier() =>
+        ref.read(editUserViewModelProvider.notifier);
     final asyncValue = ref.watch(editUserViewModelProvider);
 
     // テーマカラーの定義
@@ -317,13 +318,15 @@ class EditUserPage extends HookConsumerWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            leading: Get.currentRoute == path ? IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: textColor,
-              ),
-              onPressed: () => Navigator.of(context).pop(),
-            ) : null,
+            leading: Get.currentRoute == path
+                ? IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: textColor,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                : null,
           ),
           body: SafeArea(
             child: GestureDetector(
