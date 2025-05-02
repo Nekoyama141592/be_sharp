@@ -19,8 +19,8 @@ class CreateUserAnswerPage extends HookConsumerWidget {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.read(createUserAnswerProvider.notifier);
-    final asyncValue = ref.watch(createUserAnswerProvider);
+    final notifier = ref.read(createUserAnswerViewModelProvider.notifier);
+    final asyncValue = ref.watch(createUserAnswerViewModelProvider);
     final textController = useTextEditingController();
     final animationController = useAnimationController(
       duration: const Duration(seconds: 1),

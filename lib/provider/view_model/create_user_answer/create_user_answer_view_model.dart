@@ -8,11 +8,13 @@ import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/my_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:get/route_manager.dart';
 import 'package:in_app_review/in_app_review.dart';
+part 'create_user_answer_view_model.g.dart';
 
-class CreateUserAnswerViewModel extends AutoDisposeAsyncNotifier<ReadProblem> {
+@riverpod
+class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   @override
   FutureOr<ReadProblem> build() async {
     final problemId = getProblemId();
@@ -71,7 +73,3 @@ class CreateUserAnswerViewModel extends AutoDisposeAsyncNotifier<ReadProblem> {
     Get.back();
   }
 }
-
-final createUserAnswerProvider =
-    AsyncNotifierProvider.autoDispose<CreateUserAnswerViewModel, ReadProblem>(
-        () => CreateUserAnswerViewModel());
