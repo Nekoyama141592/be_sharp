@@ -15,9 +15,11 @@ import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'home_view_model.g.dart';
 
-class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
+@riverpod
+class HomeViewModel extends _$HomeViewModel {
   @override
   FutureOr<HomeState> build() async {
     return _fetchData();
@@ -103,7 +105,3 @@ class HomeViewModel extends AutoDisposeAsyncNotifier<HomeState> {
     ToastUICore.showErrorFlutterToast('ユーザーをミュートできませんでした');
   }
 }
-
-final homeProvider =
-    AsyncNotifierProvider.autoDispose<HomeViewModel, HomeState>(
-        () => HomeViewModel());

@@ -18,7 +18,7 @@ class MyHomePage extends HookConsumerWidget {
     final pageIndex = useState(0);
     final pageController = usePageController();
     ref.watch(privateUserProvider);
-    ref.watch(myHomeProvider);
+    ref.watch(myhomeViewModelProvider);
     ref.watch(purchasesProvider);
     return BasicPage(
         drawer: const OriginalDrawer(),

@@ -11,8 +11,8 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncValue = ref.watch(homeProvider);
-    HomeViewModel notifier() => ref.read(homeProvider.notifier);
+    final asyncValue = ref.watch(homeViewModelProvider);
+    HomeViewModel notifier() => ref.read(homeViewModelProvider.notifier);
     return Scaffold(
       backgroundColor: AppColors.background,
       drawer: const OriginalDrawer(),

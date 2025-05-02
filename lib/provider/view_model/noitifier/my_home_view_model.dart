@@ -53,5 +53,5 @@ class MyHomeViewModel extends Notifier<String> {
   }
 }
 
-final myHomeProvider =
+final myhomeViewModelProvider =
     NotifierProvider<MyHomeViewModel, String>(() => MyHomeViewModel());
