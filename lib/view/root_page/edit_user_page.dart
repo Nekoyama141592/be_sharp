@@ -17,8 +17,8 @@ class EditUserPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    EditUserViewModel notifier() => ref.read(editUserProvider.notifier);
-    final asyncValue = ref.watch(editUserProvider);
+    EditUserViewModel notifier() => ref.read(editUserViewModelProvider.notifier);
+    final asyncValue = ref.watch(editUserViewModelProvider);
 
     // テーマカラーの定義
     const primaryColor = Color(0xFF6C63FF);
