@@ -5,9 +5,11 @@ import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user
 import 'package:be_sharp/model/firestore_model/public_user/write/write_public_user.dart';
 import 'package:be_sharp/model/view_model_state/check_state/check_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'check_view_model.g.dart';
 
-class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
+@riverpod
+class CheckViewModel extends _$CheckViewModel {
   @override
   FutureOr<CheckState> build() async {
     return _fetchData();
@@ -68,7 +70,3 @@ class CheckViewModel extends AutoDisposeAsyncNotifier<CheckState> {
     });
   }
 }
-
-final checkProvider =
-    AsyncNotifierProvider.autoDispose<CheckViewModel, CheckState>(
-        () => CheckViewModel());

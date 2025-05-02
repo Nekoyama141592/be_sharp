@@ -22,7 +22,7 @@ class UserProvider extends Notifier<User?> {
       final isLogoutEvent = state != null && event == null;
       state = event;
       if (isLoginEvent) {
-        await ref.read(checkProvider.notifier).refetchUser(event);
+        await ref.read(checkViewModelProvider.notifier).refetchUser(event);
       } else if (isLogoutEvent) {}
     });
   }

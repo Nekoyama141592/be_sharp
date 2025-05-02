@@ -9,7 +9,7 @@ import 'package:be_sharp/extensions/prefs_extension.dart';
 class PublicUserProvider extends AutoDisposeAsyncNotifier<UserAndImageState> {
   @override
   FutureOr<UserAndImageState> build() async {
-    final user = ref.read(checkProvider).value?.user;
+    final user = ref.read(checkViewModelProvider).value?.user;
     if (user == null) {
       return UserAndImageState(user: user, image: null);
     }

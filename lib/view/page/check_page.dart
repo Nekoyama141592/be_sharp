@@ -11,7 +11,7 @@ class CheckPage extends HookConsumerWidget {
   final Widget child;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncCheckValue = ref.watch(checkProvider);
+    final asyncCheckValue = ref.watch(checkViewModelProvider);
     return AsyncScreen(
         asyncValue: asyncCheckValue,
         data: (state) {
