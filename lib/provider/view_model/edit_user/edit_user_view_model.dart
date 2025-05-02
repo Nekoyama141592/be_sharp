@@ -7,7 +7,7 @@ import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/model/view_model_state/edit_user/edit_user_state.dart';
-import 'package:be_sharp/provider/cache_provider.dart';
+import 'package:be_sharp/provider/overrides/prefs_provider.dart';
 import 'package:be_sharp/provider/user_provider.dart';
 import 'package:be_sharp/repository/aws_s3_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
