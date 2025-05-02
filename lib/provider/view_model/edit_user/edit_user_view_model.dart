@@ -22,7 +22,7 @@ import 'package:image_picker/image_picker.dart';
 part 'edit_user_view_model.g.dart';
 
 @riverpod
-class EditUserViewModel extends AutoDisposeAsyncNotifier<EditUserState> {
+class EditUserViewModel extends _$EditUserViewModel {
   String? stringNickName;
   String? stringBio;
   bool isPicked = false;
