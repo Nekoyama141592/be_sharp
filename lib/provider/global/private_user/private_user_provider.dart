@@ -5,9 +5,11 @@ import 'package:be_sharp/model/firestore_model/private_user/private_user.dart';
 import 'package:be_sharp/provider/user_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+part 'private_user_provider.g.dart';
 
-class PrivateUserProvider extends AsyncNotifier<PrivateUser> {
+@Riverpod(keepAlive: true)
+class PrivateUserNotifier extends _$PrivateUserNotifier {
   @override
   FutureOr<PrivateUser> build() async {
     return _fetchData();
@@ -51,7 +53,3 @@ class PrivateUserProvider extends AsyncNotifier<PrivateUser> {
     return state.value?.isAdmin ?? false;
   }
 }
-
-final privateUserProvider =
-    AsyncNotifierProvider<PrivateUserProvider, PrivateUser>(
-        () => PrivateUserProvider());

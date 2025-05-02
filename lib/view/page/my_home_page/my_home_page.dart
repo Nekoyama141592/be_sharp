@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/private_user_provider.dart';
+import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
 import 'package:be_sharp/provider/view_model/noitifier/my_home_view_model.dart';
 import 'package:be_sharp/provider/global/purchases/purchases_view_model.dart';
 import 'package:be_sharp/ui_core/bnb_ui_core.dart';
@@ -17,7 +17,7 @@ class MyHomePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pageIndex = useState(0);
     final pageController = usePageController();
-    ref.watch(privateUserProvider);
+    ref.watch(privateUserNotifierProvider);
     ref.watch(myhomeViewModelProvider);
     ref.watch(purchasesProvider);
     return BasicPage(

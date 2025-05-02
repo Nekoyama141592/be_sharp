@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:be_sharp/provider/private_user_provider.dart';
+import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -26,7 +26,7 @@ class MyHomeViewModel extends Notifier<String> {
     if (uid == null) return;
     final query = QueryCore.latestProblem();
     subscriptionStream = query.snapshots().listen((event) async {
-      final isAdmin = ref.read(privateUserProvider.notifier).isAdmin();
+      final isAdmin = ref.read(privateUserNotifierProvider.notifier).isAdmin();
       if (isAdmin) return;
       final docs = event.docs;
       if (docs.isEmpty) return;

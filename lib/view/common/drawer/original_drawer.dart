@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/private_user_provider.dart';
+import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
@@ -12,7 +12,7 @@ class OriginalDrawer extends ConsumerWidget {
   const OriginalDrawer({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncValue = ref.watch(privateUserProvider);
+    final asyncValue = ref.watch(privateUserNotifierProvider);
     return asyncValue.when(
       data: (data) => Drawer(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
