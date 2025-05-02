@@ -5,11 +5,14 @@ import 'package:be_sharp/repository/on_call_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-class AdminViewModel extends AutoDisposeNotifier<String> {
+part 'admin_view_model.g.dart';
+
+@riverpod
+class AdminViewModel extends _$AdminViewModel {
   @override
   String build() {
     throw UnimplementedError();
@@ -102,6 +105,3 @@ class AdminViewModel extends AutoDisposeNotifier<String> {
     ToastUICore.showErrorFlutterToast('作成が失敗しました');
   }
 }
-
-final adminProvider = NotifierProvider.autoDispose<AdminViewModel, String>(
-    () => AdminViewModel());

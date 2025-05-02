@@ -13,7 +13,7 @@ class AdminPage extends HookConsumerWidget {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.read(adminProvider.notifier);
+    final notifier = ref.read(adminViewModelProvider.notifier);
 
     // 問題の入力をする関数
     Widget questionField() {
