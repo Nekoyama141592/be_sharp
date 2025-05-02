@@ -13,8 +13,8 @@ class PurchasesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    PurchasesViewModel notifier() => ref.read(purchasesProvider.notifier);
-    final asyncValue = ref.watch(purchasesProvider);
+    PurchasesViewModel notifier() => ref.read(purchasesViewModelProvider.notifier);
+    final asyncValue = ref.watch(purchasesViewModelProvider);
     return AsyncScreen(
       asyncValue: asyncValue,
       data: (state) {

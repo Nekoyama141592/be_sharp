@@ -61,7 +61,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   void onCaptionButtonPressed() {
-    final isSubscribing = ref.read(purchasesProvider.notifier).isSubscribing();
+    final isSubscribing = ref.read(purchasesViewModelProvider.notifier).isSubscribing();
     if (!isSubscribing) {
       ToastUICore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
       return;

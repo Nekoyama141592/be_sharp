@@ -8,10 +8,12 @@ import 'package:be_sharp/model/view_model_state/purchases_state/purchases_state.
 import 'package:be_sharp/provider/user_provider.dart';
 import 'package:be_sharp/repository/purchases_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+part 'purchases_view_model.g.dart';
 
-class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
+@Riverpod(keepAlive: true)
+class PurchasesViewModel extends _$PurchasesViewModel {
   late StreamSubscription<List<PurchaseDetails>> subscription;
   bool isVerifing = false;
   @override
@@ -113,7 +115,3 @@ class PurchasesViewModel extends AsyncNotifier<PurchasesState> {
     await repository.restorePurchases();
   }
 }
-
-final purchasesProvider =
-    AsyncNotifierProvider<PurchasesViewModel, PurchasesState>(
-        () => PurchasesViewModel());
