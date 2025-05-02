@@ -1,6 +1,6 @@
 import 'package:be_sharp/constants/colors.dart';
 import 'package:be_sharp/core/purchases_core.dart';
-import 'package:be_sharp/provider/view_model/purchases_view_model.dart';
+import 'package:be_sharp/provider/view_model/purchases/purchases_view_model.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/purchases_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';

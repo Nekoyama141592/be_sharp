@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:be_sharp/provider/view_model/check_view_model.dart';
+import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/repository/firebase_auth_repository.dart';
 import 'package:be_sharp/view/root_page/logouted_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';

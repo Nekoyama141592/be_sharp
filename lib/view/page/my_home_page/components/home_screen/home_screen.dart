@@ -1,5 +1,5 @@
 import 'package:be_sharp/constants/colors.dart';
-import 'package:be_sharp/provider/view_model/home_view_model.dart';
+import 'package:be_sharp/provider/view_model/home/home_view_model.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/drawer/original_drawer.dart';
 import 'package:be_sharp/view/page/my_home_page/components/home_screen/components/ranking_card.dart';

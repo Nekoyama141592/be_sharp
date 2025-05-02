@@ -1,6 +1,6 @@
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
-import 'package:be_sharp/provider/view_model/latest_problem_view_model.dart';
+import 'package:be_sharp/provider/view_model/latest_problem/latest_problem_view_model.dart';
 import 'package:be_sharp/ui_core/format_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/latex_text.dart';

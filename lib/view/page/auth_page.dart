@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:be_sharp/provider/view_model/auth_view_model.dart';
+import 'package:be_sharp/provider/view_model/auth/auth_view_model.dart';
 import 'package:be_sharp/view/common/auth_screen.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';

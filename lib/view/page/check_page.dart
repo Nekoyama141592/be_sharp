@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/view_model/check_view_model.dart';
+import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/auth_page.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';

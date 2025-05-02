@@ -14,7 +14,7 @@ import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:be_sharp/repository/on_call_repository.dart';
-import 'package:be_sharp/provider/view_model/check_view_model.dart';
+import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:be_sharp/extensions/prefs_extension.dart';
 import 'package:get/get.dart';
