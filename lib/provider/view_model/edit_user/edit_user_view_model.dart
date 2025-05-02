@@ -8,7 +8,7 @@ import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_r
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/model/view_model_state/edit_user/edit_user_state.dart';
 import 'package:be_sharp/provider/overrides/prefs_provider.dart';
-import 'package:be_sharp/provider/user_provider.dart';
+import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/repository/aws_s3_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
@@ -123,3 +123,4 @@ class EditUserViewModel extends _$EditUserViewModel {
     ToastUICore.showErrorFlutterToast("プロフィールを更新できませんでした");
   }
 }
+

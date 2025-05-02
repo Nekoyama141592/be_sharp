@@ -8,7 +8,7 @@ import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/provider/overrides/prefs_provider.dart';
-import 'package:be_sharp/provider/user_provider.dart';
+import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/ui_core/dialog_ui_core.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';

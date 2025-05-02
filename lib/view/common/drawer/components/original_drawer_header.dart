@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/global/public_user/public_user_provider.dart';
+import 'package:be_sharp/provider/view_model/original_drawer/original_drawer_view_model.dart';
 import 'package:be_sharp/view/common/circle_image/circle_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

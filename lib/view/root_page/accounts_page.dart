@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/user_provider.dart';
+import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
