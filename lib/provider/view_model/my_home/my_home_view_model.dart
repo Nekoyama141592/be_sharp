@@ -3,7 +3,7 @@ import 'package:be_sharp/provider/global/private_user/private_user_provider.dart
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:get/route_manager.dart';
 import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/query_core.dart';
@@ -11,8 +11,10 @@ import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/provider/user_provider.dart';
 import 'package:be_sharp/typedefs/firestore_typedef.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
+part 'my_home_view_model.g.dart';
 
-class MyHomeViewModel extends Notifier<String> {
+@Riverpod(keepAlive: true)
+class MyHomeViewModel extends _$MyHomeViewModel {
   StreamSubscription<QuerySnapshot<Map<String, dynamic>>>? subscriptionStream;
   @override
   String build() {
@@ -52,6 +54,3 @@ class MyHomeViewModel extends Notifier<String> {
         failure: () {});
   }
 }
-
-final myhomeViewModelProvider =
-    NotifierProvider<MyHomeViewModel, String>(() => MyHomeViewModel());
