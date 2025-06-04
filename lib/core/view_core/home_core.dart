@@ -1,3 +1,4 @@
+
 import 'package:be_sharp/core/query_core.dart';
 import 'package:be_sharp/extensions/prefs_extension.dart';
 import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
@@ -5,8 +6,8 @@ import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/typedefs/firestore_typedef.dart';
+import 'package:collection/collection.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:get/get.dart';
 
 class HomeCore {
   static List<String> _getUids(QSnapshot qshot) {
