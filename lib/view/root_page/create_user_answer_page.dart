@@ -160,48 +160,30 @@ class QuestionCard extends StatelessWidget {
   }
 }
 
-class CountdownTimer extends StatefulWidget {
+
+class CountdownTimer extends HookWidget {
   final int seconds;
 
   const CountdownTimer({super.key, required this.seconds});
 
   @override
-  CountdownTimerState createState() => CountdownTimerState();
-}
-
-class CountdownTimerState extends State<CountdownTimer> {
-  late Timer _timer;
-  late int _currentSeconds;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentSeconds = widget.seconds;
-    _startTimer();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_currentSeconds > 0) {
-          _currentSeconds--;
+  Widget build(BuildContext context) {
+    final currentSeconds = useState(seconds);
+    useEffect(() {
+      final timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+        if (currentSeconds.value > 0) {
+          currentSeconds.value--;
         } else {
-          _timer.cancel();
+          timer.cancel();
         }
       });
-    });
-  }
+      return timer.cancel;
+    }, const []);
 
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Text(
-      _currentSeconds > 0 ? '残り時間: $_currentSeconds秒' : 'タイムアップです',
+      currentSeconds.value > 0
+          ? '残り時間: ${currentSeconds.value}秒'
+          : 'タイムアップです',
       style: GoogleFonts.roboto(
           fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
     );
