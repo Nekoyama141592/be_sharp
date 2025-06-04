@@ -97,7 +97,7 @@ class RankingCard extends StatelessWidget {
                       child: Icon(
                         Icons.star,
                         size: 100,
-                        color: _userTextColor().withOpacity(0.2),
+                        color: _userTextColor().withValues(alpha: 0.2),
                       ),
                     ),
                     Positioned(
@@ -156,7 +156,7 @@ class RankingCard extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -233,7 +233,7 @@ class RankingCard extends StatelessWidget {
         return LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [Colors.white, Colors.white.withOpacity(0.5)],
+          colors: [Colors.white, Colors.white.withValues(alpha: 0.5)],
         ).createShader(bounds);
       },
       child: const Icon(

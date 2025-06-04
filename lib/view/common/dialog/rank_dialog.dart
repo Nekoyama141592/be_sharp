@@ -154,7 +154,7 @@ class RankDialogState extends State<RankDialog>
               borderRadius: BorderRadius.circular(28),
               boxShadow: [
                 BoxShadow(
-                  color: mainColor.withOpacity(0.3),
+                  color: mainColor.withValues(alpha: 0.3),
                   blurRadius: 30,
                   spreadRadius: 5,
                 ),
@@ -187,7 +187,7 @@ class RankDialogState extends State<RankDialog>
                     height: 150,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: mainColor.withOpacity(0.15),
+                      color: mainColor.withValues(alpha: 0.15),
                     ),
                   ),
                 ),
@@ -200,7 +200,7 @@ class RankDialogState extends State<RankDialog>
                     height: 180,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: mainColor.withOpacity(0.1),
+                      color: mainColor.withValues(alpha: 0.1),
                     ),
                   ),
                 ),
@@ -243,7 +243,7 @@ class RankDialogState extends State<RankDialog>
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(
-                                color: mainColor.withOpacity(0.2),
+                                color: mainColor.withValues(alpha: 0.2),
                                 blurRadius: 15,
                                 spreadRadius: 2,
                               ),
@@ -257,7 +257,7 @@ class RankDialogState extends State<RankDialog>
                                   return LinearGradient(
                                     colors: [
                                       mainColor,
-                                      mainColor.withOpacity(0.7),
+                                      mainColor.withValues(alpha: 0.7),
                                     ],
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
@@ -330,7 +330,7 @@ class RankDialogState extends State<RankDialog>
                                 gradient: LinearGradient(
                                   colors: [
                                     mainColor,
-                                    mainColor.withOpacity(0.8),
+                                    mainColor.withValues(alpha: 0.8),
                                   ],
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
@@ -338,7 +338,7 @@ class RankDialogState extends State<RankDialog>
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: mainColor.withOpacity(0.4),
+                                    color: mainColor.withValues(alpha: 0.4),
                                     blurRadius: 15,
                                     offset: const Offset(0, 8),
                                   ),
@@ -372,7 +372,7 @@ class RankDialogState extends State<RankDialog>
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 side: BorderSide(
-                                    color: mainColor.withOpacity(0.3),
+                                    color: mainColor.withValues(alpha: 0.3),
                                     width: 1.5),
                               ),
                             ),
@@ -429,7 +429,7 @@ class RankDialogState extends State<RankDialog>
                   child: Icon(
                     Icons.star,
                     size: size,
-                    color: color.withOpacity(0.8),
+                    color: color.withValues(alpha: 0.8),
                   ),
                 ),
               );

@@ -78,7 +78,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                           const SizedBox(height: 30),
                           Container(
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.9),
+                                color: Colors.white.withValues(alpha: 0.9),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Padding(

@@ -44,7 +44,7 @@ class EditUserPage extends HookConsumerWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: primaryColor.withOpacity(0.3),
+              color: primaryColor.withValues(alpha: 0.3),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -102,7 +102,7 @@ class EditUserPage extends HookConsumerWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -161,7 +161,7 @@ class EditUserPage extends HookConsumerWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withValues(alpha: 0.05),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -230,15 +230,15 @@ class EditUserPage extends HookConsumerWidget {
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
                   colors: [
-                    primaryColor.withOpacity(0.2),
-                    secondaryColor.withOpacity(0.2)
+                    primaryColor.withValues(alpha: 0.2),
+                    secondaryColor.withValues(alpha: 0.2)
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
                 boxShadow: [
                   BoxShadow(
-                    color: primaryColor.withOpacity(0.2),
+                    color: primaryColor.withValues(alpha: 0.2),
                     blurRadius: 15,
                     offset: const Offset(0, 5),
                   ),
@@ -265,7 +265,7 @@ class EditUserPage extends HookConsumerWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: primaryColor.withOpacity(0.3),
+                    color: primaryColor.withValues(alpha: 0.3),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -290,7 +290,7 @@ class EditUserPage extends HookConsumerWidget {
           Text(
             'プロフィール画像を選択',
             style: TextStyle(
-              color: textColor.withOpacity(0.7),
+              color: textColor.withValues(alpha: 0.7),
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
