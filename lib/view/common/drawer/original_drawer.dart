@@ -1,3 +1,4 @@
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
@@ -5,7 +6,6 @@ import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:be_sharp/view/root_page/mute_users_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/route_manager.dart';
 import 'package:be_sharp/view/common/drawer/components/original_drawer_header.dart';
 
 class OriginalDrawer extends ConsumerWidget {
@@ -22,30 +22,30 @@ class OriginalDrawer extends ConsumerWidget {
             ListTile(
               title: const Text("プロフィール編集"),
               onTap: () {
-                Navigator.of(context).pop();
-                Get.toNamed(EditUserPage.path);
+                RouteCore.back();
+                RouteCore.pushPath(EditUserPage.path);
               },
             ),
             ListTile(
               title: const Text("アカウント情報"),
               onTap: () {
-                Navigator.of(context).pop();
-                Get.toNamed(AccountPage.path);
+                RouteCore.back();
+                RouteCore.pushPath(AccountPage.path);
               },
             ),
             ListTile(
               title: const Text("ミュートしているユーザー"),
               onTap: () {
-                Navigator.of(context).pop();
-                Get.toNamed(MuteUsersPage.path);
+                RouteCore.back();
+                RouteCore.pushPath(MuteUsersPage.path);
               },
             ),
             if (data.isAdmin)
               ListTile(
                 title: const Text("管理者ページ"),
                 onTap: () {
-                  Navigator.of(context).pop();
-                  Get.toNamed(AdminPage.path);
+                  RouteCore.back();
+                  RouteCore.pushPath(AdminPage.path);
                 },
               ),
           ],

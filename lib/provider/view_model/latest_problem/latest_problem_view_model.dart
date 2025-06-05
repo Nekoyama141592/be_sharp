@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:be_sharp/core/query_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
@@ -57,7 +58,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     if (problem == null) return;
     final problemId = problem.problemId;
     final path = CreateUserAnswerPage.generatePath(problemId);
-    Get.toNamed(path);
+    RouteCore.pushPath(path);
   }
 
   void onCaptionButtonPressed() {
@@ -79,7 +80,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     final repository = OnCallRepository();
     final result = await repository.addCaption(problemId, caption);
     if (Get.isDialogOpen ?? false) {
-      Get.back();
+      RouteCore.back();
     }
     state = const AsyncValue.loading();
     result.when(success: _onSendSuccess, failure: _onSendFailure);

@@ -1,12 +1,12 @@
 import 'package:be_sharp/core/credential_core.dart';
 import 'package:be_sharp/core/doc_ref_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/repository/firebase_auth_repository.dart';
 import 'package:be_sharp/repository/firestore_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/root_page/user_deleted_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
 
 class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   @override
@@ -51,7 +51,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   }
 
   void onDeleteSuccess(bool res) {
-    Get.toNamed(UserDeletedPage.path);
+    RouteCore.pushPath(UserDeletedPage.path);
   }
 
   void onDeleteFailure() {

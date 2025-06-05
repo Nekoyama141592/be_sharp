@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:be_sharp/core/doc_ref_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/write/write_user_answer.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
@@ -31,10 +32,10 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
     final uid = ref.read(userProvider)?.uid;
     final problemId = getProblemId();
     if (uid == null || problemId == null) return;
-    showDialog(uid, problemId, answer);
+    _showDialog(uid, problemId, answer);
   }
 
-  void showDialog(String uid, String problemId, String answer) {
+  void _showDialog(String uid, String problemId, String answer) {
     const msg = '回答を送信します。変更できませんがよろしいですか？';
     ToastUICore.cupertinoAlertDialog(
         msg, () async => await _positiveAction(uid, problemId, answer));
@@ -56,9 +57,9 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
 
   void onSuccess(bool res) {
     if (Get.isDialogOpen ?? false) {
-      Get.back();
+      RouteCore.back();
     }
-    Get.offAllNamed(MyApp.path);
+    RouteCore.pushReplace(MyApp.path);
     _requestReview();
   }
 
@@ -70,6 +71,6 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   }
 
   void onFailure() {
-    Get.back();
+    RouteCore.back();
   }
 }

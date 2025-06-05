@@ -1,4 +1,5 @@
 import 'package:be_sharp/core/id_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/repository/on_call_repository.dart';
@@ -72,7 +73,7 @@ class AdminViewModel extends _$AdminViewModel {
           TextButton(
               onPressed: () async {
                 if (Get.isDialogOpen ?? false) {
-                  Get.back();
+                  RouteCore.back();
                 }
                 await _send();
               },

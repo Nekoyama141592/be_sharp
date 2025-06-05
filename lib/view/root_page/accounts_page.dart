@@ -2,7 +2,7 @@ import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
+import 'package:be_sharp/core/route_core.dart';
 
 class AccountPage extends ConsumerWidget {
   const AccountPage({
@@ -35,7 +35,7 @@ class AccountPage extends ConsumerWidget {
                   "ユーザーを消去する",
                   style: TextStyle(color: Colors.red),
                 ),
-                onTap: () => Get.toNamed(ReauthenticateToDeletePage.path))
+                onTap: () => RouteCore.pushPath(ReauthenticateToDeletePage.path))
           ]
         ],
       ),

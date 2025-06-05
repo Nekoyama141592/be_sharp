@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:be_sharp/core/aws_s3_core.dart';
 import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/file_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
@@ -115,7 +116,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     await ref.read(checkViewModelProvider.notifier).onUserUpdateSuccess(uid);
     ToastUICore.showFlutterToast("プロフィールを更新しました。");
     if (Get.currentRoute == EditUserPage.path) {
-      Get.back();
+      RouteCore.back();
     }
   }
 

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/query_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
@@ -61,7 +62,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
 
   void _closeDialog() {
     if (Get.isDialogOpen ?? false) {
-      Get.back();
+      RouteCore.back();
     }
   }
 

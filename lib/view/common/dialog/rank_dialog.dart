@@ -1,3 +1,4 @@
+import 'package:be_sharp/core/route_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -380,7 +381,7 @@ class RankDialog extends HookWidget {
                           opacity: fadeAnimation,
                           child: TextButton(
                             onPressed:
-                                (Get.isDialogOpen ?? false) ? Get.back : null,
+                                (Get.isDialogOpen ?? false) ? RouteCore.back : null,
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(

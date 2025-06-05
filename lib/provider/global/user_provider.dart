@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/repository/firebase_auth_repository.dart';
 import 'package:be_sharp/view/root_page/logouted_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/route_manager.dart';
 
 class UserProvider extends Notifier<User?> {
   StreamSubscription<User?>? subscriptionStream;
@@ -33,7 +33,7 @@ class UserProvider extends Notifier<User?> {
     result.when(
         success: (_) {
           state = null;
-          Get.offAndToNamed(LogoutedPage.path);
+          RouteCore.pushReplace(LogoutedPage.path);
         },
         failure: () {});
   }

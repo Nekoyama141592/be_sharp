@@ -5,8 +5,8 @@ import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/circle_image/circle_image.dart';
 import 'package:flutter/material.dart';
-import 'package:get/dart';
-import 'package:get/instance_manager.dart';
+import 'package:be_sharp/core/route_core.dart';
+import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/services.dart';
 
@@ -325,7 +325,7 @@ class EditUserPage extends HookConsumerWidget {
                       Icons.arrow_back_ios,
                       color: textColor,
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => RouteCore.back(),
                   )
                 : null,
           ),
