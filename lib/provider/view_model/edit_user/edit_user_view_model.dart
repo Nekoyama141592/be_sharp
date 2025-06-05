@@ -65,7 +65,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     state = const AsyncValue.loading();
     if (isPicked) {
       // 写真が新しくなった場合の処理
-      final repository = AWSS3Repository();
+      final repository = ref.read(cloudFunctionsRepositoryProvider);
       final object = AWSS3Core.profileObject(uid);
       final request =
           PutObjectRequest.fromUint8List(uint8list: image, fileName: object);
