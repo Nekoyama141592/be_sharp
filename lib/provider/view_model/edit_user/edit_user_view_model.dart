@@ -10,10 +10,11 @@ import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.da
 import 'package:be_sharp/model/view_model_state/edit_user/edit_user_state.dart';
 import 'package:be_sharp/provider/overrides/prefs_provider.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:be_sharp/repository/on_call_repository.dart';
+import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:be_sharp/extensions/prefs_extension.dart';
@@ -40,6 +41,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     return _fetchData();
   }
 
+  CloudFunctionsRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<EditUserState> _fetchData() async {
     final uid = ref.read(userProvider)!.uid;
     final doc = await DocRefCore.user(uid).get();
@@ -64,7 +66,6 @@ class EditUserViewModel extends _$EditUserViewModel {
     state = const AsyncValue.loading();
     if (isPicked) {
       // 写真が新しくなった場合の処理
-      final repository = ref.read(cloudFunctionsRepositoryProvider);
       final object = AWSS3Core.profileObject(uid);
       final request =
           PutObjectRequest.fromUint8List(uint8list: image, fileName: object);
@@ -105,7 +106,6 @@ class EditUserViewModel extends _$EditUserViewModel {
     final object = AWSS3Core.profileObject(uid);
     final request = EditUserInfoRequest(
         stringNickName: stringNickName!, stringBio: stringBio!, object: object);
-    final repository = OnCallRepository();
     final result = await repository.editUserInfo(request);
     await result.when(success: _success, failure: _failure);
   }

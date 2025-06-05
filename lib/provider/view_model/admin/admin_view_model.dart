@@ -2,7 +2,7 @@ import 'package:be_sharp/core/id_core.dart';
 import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
-import 'package:be_sharp/repository/on_call_repository.dart';
+import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +87,7 @@ class AdminViewModel extends _$AdminViewModel {
 
   Future<void> _send() async {
     final problemId = IDCore.ulid();
-    final repository = OnCallRepository();
+    final repository = ref.read(cloudFunctionsRepositoryProvider);
     final request = CreateProblemRequest(
         question: question,
         latex: latex,

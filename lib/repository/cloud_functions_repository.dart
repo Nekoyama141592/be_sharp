@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:be_sharp/core/json_core.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
-import 'package:be_sharp/infrastructure/on_call_client.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/rest_api/addCaption/request/add_caption_request.dart';
 import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
@@ -16,16 +16,30 @@ import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.da
 import 'package:be_sharp/model/rest_api/put_object/response/put_object_response.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-class OnCallRepository {
-  OnCallClient get _client => OnCallClient();
-
+class CloudFunctionsRepository {
+  CloudFunctionsRepository(this.instance);
+  final FirebaseFunctions instance;
+  Future<Map<String, dynamic>> call(
+      String name, Map<String, dynamic> request) async {
+    final callable = instance.httpsCallable(
+        name,
+        options: HttpsCallableOptions(
+          timeout: const Duration(seconds: 300),
+        ),
+      );
+    final result = await callable.call(request);
+    final data = result.data;
+    final decoded = JsonCore.encodeDecode(data);
+    return decoded;
+  }
   FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
     try {
       const name = 'putObject';
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = PutObjectResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {
@@ -36,7 +50,7 @@ class OnCallRepository {
   FutureResult<Uint8List> getObject(GetObjectRequest request) async {
     try {
       const name = 'getObject';
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
       final base64Image = res.base64Image;
       final image = base64Decode(base64Image);
@@ -50,7 +64,7 @@ class OnCallRepository {
       DeleteObjectRequest request) async {
     try {
       const name = 'deleteObject';
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = DeleteObjectResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {
@@ -62,7 +76,7 @@ class OnCallRepository {
       EditUserInfoRequest request) async {
     try {
       const name = 'editUserInfo';
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = EditUserInfoResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {
@@ -75,7 +89,7 @@ class OnCallRepository {
     try {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
     } catch (e) {
@@ -88,7 +102,7 @@ class OnCallRepository {
     try {
       const name = 'verifyIOSReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return Result.success(res);
     } catch (e) {
@@ -102,7 +116,7 @@ class OnCallRepository {
       const name = 'addCaption';
       final request =
           AddCaptionRequest(problemId: problemId, stringCaption: caption);
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = AddCaptionResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {
@@ -115,7 +129,7 @@ class OnCallRepository {
       CreateProblemRequest request) async {
     try {
       const name = 'createProblem';
-      final result = await _client.call(name, request.toJson());
+      final result = await call(name, request.toJson());
       final res = CreateProblemResponse.fromJson(result);
       return Result.success(res);
     } catch (e) {

@@ -8,7 +8,7 @@ import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response
 import 'package:be_sharp/model/view_model_state/latest_problem/latest_problem_state.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/global/purchases/purchases_view_model.dart';
-import 'package:be_sharp/repository/on_call_repository.dart';
+import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/dialog/form_dialog.dart';
 import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
@@ -77,7 +77,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     final userAnswer = state.value?.userAnswer;
     if (userAnswer == null) return;
     final problemId = userAnswer.problemId;
-    final repository = OnCallRepository();
+    final repository = ref.read(cloudFunctionsRepositoryProvider);
     final result = await repository.addCaption(problemId, caption);
     if (Get.isDialogOpen ?? false) {
       RouteCore.back();

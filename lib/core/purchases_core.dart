@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:be_sharp/constants/enums/env_key.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
-import 'package:be_sharp/repository/on_call_repository.dart';
+import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -83,7 +83,7 @@ class PurchasesCore {
 
   static FutureResult<VerifiedPurchase> verifyPurchase(
       PurchaseDetails purchaseDetails) async {
-    final repository = OnCallRepository();
+    final repository = CloudFunctionsRepository();
     return Platform.isAndroid
         ? await repository.verifyAndroidReceipt(purchaseDetails)
         : await repository.verifyIOSReceipt(purchaseDetails);

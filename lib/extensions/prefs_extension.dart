@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:be_sharp/repository/on_call_repository.dart';
+import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:be_sharp/model/rest_api/get_object/request/get_object_request.dart';
 import 'dart:typed_data';
 
@@ -17,7 +17,7 @@ extension PrefsExtension on SharedPreferences {
     Uint8List? uint8List = _getCachedUint8List(cacheKey); // キャッシュされている画像を取得.
     // キャッシュされていない場合、S3から取得.
     if (uint8List == null) {
-      final repository = OnCallRepository();
+      final repository = CloudFunctionsRepository();
       final request = GetObjectRequest(object: fileName);
       final result = await repository.getObject(request);
       result.when(success: (res) {
