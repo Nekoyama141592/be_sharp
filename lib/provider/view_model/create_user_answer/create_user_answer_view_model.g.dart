@@ -7,7 +7,7 @@ part of 'create_user_answer_view_model.dart';
 // **************************************************************************
 
 String _$createUserAnswerViewModelHash() =>
-    r'd3c7eeb7218d18758a3167d88f4fe8d8b32043ac';
+    r'3bf3f58ecb71c2ee152602d0cc2ee564aa2d1d94';
 
 /// See also [CreateUserAnswerViewModel].
 @ProviderFor(CreateUserAnswerViewModel)

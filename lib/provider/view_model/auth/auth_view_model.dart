@@ -1,4 +1,4 @@
-import 'package:be_sharp/repository/firebase_auth_repository.dart';
+import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,7 +8,7 @@ class AuthViewModel extends AutoDisposeNotifier<User?> {
     return FirebaseAuth.instance.currentUser;
   }
 
-  FirebaseAuthRepository get repository => FirebaseAuthRepository();
+  AuthRepository get repository => AuthRepository();
   void onGoogleSignInButtonPressed() async {
     final result = await repository.signInWithGoogle();
     result.when(

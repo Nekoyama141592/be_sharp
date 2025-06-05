@@ -6,7 +6,7 @@ import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
-import 'package:be_sharp/repository/firestore_repository.dart';
+import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:get/get.dart';
@@ -55,7 +55,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
 
   Future<void> _unMute(String uid, String muteUid) async {
     final docRef = DocRefCore.muteUser(uid, muteUid);
-    final repository = FirestoreRepository();
+    final repository = DatabaseRepository();
     final result = await repository.deleteDoc(docRef);
     result.when(success: (_) => _success(muteUid), failure: _failure);
   }

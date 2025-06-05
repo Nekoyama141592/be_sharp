@@ -5,7 +5,7 @@ import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/write/write_user_answer.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
-import 'package:be_sharp/repository/firestore_repository.dart';
+import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/my_app.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -43,7 +43,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
 
   Future<void> _positiveAction(
       String uid, String problemId, String answer) async {
-    final repository = FirestoreRepository();
+    final repository = DatabaseRepository();
     final docRef = DocRefCore.userAnswer(uid, problemId);
     final json = WriteUserAnswer(
             answer: answer,

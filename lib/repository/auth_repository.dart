@@ -4,7 +4,7 @@ import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class FirebaseAuthRepository {
+class AuthRepository {
   FirebaseAuthClient get client => FirebaseAuthClient();
   FutureResult<User> signInWithApple() async {
     try {
