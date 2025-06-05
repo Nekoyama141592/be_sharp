@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_home_view_model.dart';
+part of 'firebase_firestore_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myHomeViewModelHash() => r'9a244d04539b5200c031460011bc56a049826782';
+String _$firebaseFirestoreHash() => r'211c9d7cd91051da8adfacbf85a09b8bad1d41e8';
 
-/// See also [MyHomeViewModel].
-@ProviderFor(MyHomeViewModel)
-final myHomeViewModelProvider =
-    NotifierProvider<MyHomeViewModel, String>.internal(
-  MyHomeViewModel.new,
-  name: r'myHomeViewModelProvider',
+/// See also [firebaseFirestore].
+@ProviderFor(firebaseFirestore)
+final firebaseFirestoreProvider = Provider<FirebaseFirestore>.internal(
+  firebaseFirestore,
+  name: r'firebaseFirestoreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$myHomeViewModelHash,
+      : _$firebaseFirestoreHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MyHomeViewModel = Notifier<String>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef FirebaseFirestoreRef = ProviderRef<FirebaseFirestore>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

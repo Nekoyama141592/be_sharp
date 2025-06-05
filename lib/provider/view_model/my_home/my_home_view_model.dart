@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -22,7 +23,7 @@ class MyHomeViewModel extends _$MyHomeViewModel {
     return '';
   }
 
-  DatabaseRepository get repository => DatabaseRepository();
+  DatabaseRepository get repository => ref.read(databaseRepositoryProvider);
   void _init() {
     final uid = ref.read(userProvider)?.uid;
     if (uid == null) return;

@@ -1,6 +1,8 @@
 import 'package:be_sharp/core/credential_core.dart';
 import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
@@ -14,7 +16,8 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
     return FirebaseAuth.instance.currentUser;
   }
 
-  AuthRepository get repository => AuthRepository();
+  AuthRepository get authRepository => ref.read(authRepositoryProvider);
+  DatabaseRepository get _databaseRepository => ref.read(databaseRepositoryProvider);
   void onGoogleSignInButtonPressed() async {
     final credential = await CredentialCore.googleCredential();
     await _reauthenticateToDelete(credential);
@@ -27,9 +30,8 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
 
   Future<void> _reauthenticateToDelete(AuthCredential credential) async {
     if (state == null) return;
-    final repository = AuthRepository();
     final result =
-        await repository.reauthenticateWithCredential(state!, credential);
+        await authRepository.reauthenticateWithCredential(state!, credential);
     result.when(
         success: onReauthenticateSuccess, failure: onReauthenticateFailure);
   }
@@ -44,9 +46,8 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   }
 
   Future<void> _deletePublicUser() async {
-    final repository = DatabaseRepository();
     final ref = DocRefCore.user(state!.uid);
-    final result = await repository.deleteDoc(ref);
+    final result = await _databaseRepository.deleteDoc(ref);
     result.when(success: onDeleteSuccess, failure: onDeleteFailure);
   }
 

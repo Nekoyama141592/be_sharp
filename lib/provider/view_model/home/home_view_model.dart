@@ -9,7 +9,7 @@ import 'package:be_sharp/model/view_model_state/home_state/answered_user/answere
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/provider/overrides/prefs_provider.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
-import 'package:be_sharp/repository/database_repository.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/ui_core/dialog_ui_core.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -78,7 +78,7 @@ class HomeViewModel extends _$HomeViewModel {
     final uid = ref.read(userProvider)?.uid;
     if (uid == null || uid == muteUid) return;
     final docRef = DocRefCore.muteUser(uid, muteUid);
-    final repository = DatabaseRepository();
+    final repository = ref.read(databaseRepositoryProvider);
     final json =
         MuteUser(muteUid: muteUid, createdAt: Timestamp.now()).toJson();
     final result = await repository.createDoc(docRef, json);

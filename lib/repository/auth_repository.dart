@@ -1,18 +1,21 @@
-import 'package:be_sharp/infrastructure/firebase_auth/firebase_auth_client.dart';
+import 'package:be_sharp/core/credential_core.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthRepository {
-  FirebaseAuthClient get client => FirebaseAuthClient();
+  AuthRepository(this.client);
+  final FirebaseAuth client;
   FutureResult<User> signInWithApple() async {
     try {
-      final res = await client.signinWithApple();
-      if (res == null || res.user == null) {
+      final credential = await CredentialCore.appleCredential();
+      final res = await client.signInWithCredential(credential);
+      final user = res.user;
+      if (user == null) {
         return const Result.failure();
       } else {
-        return Result.success(res.user!);
+        return Result.success(user);
       }
     } on FirebaseAuthException catch (e) {
       _manageErrorCredential(e);
@@ -22,11 +25,13 @@ class AuthRepository {
 
   FutureResult<User> signInWithGoogle() async {
     try {
-      final res = await client.signInWithGoogle();
-      if (res == null || res.user == null) {
+      final credential = await CredentialCore.googleCredential();
+      final res = await client.signInWithCredential(credential);
+      final user = res.user;
+      if (user == null) {
         return const Result.failure();
       } else {
-        return Result.success(res.user!);
+        return Result.success(user);
       }
     } on FirebaseAuthException catch (e) {
       _manageErrorCredential(e);
@@ -47,7 +52,7 @@ class AuthRepository {
   FutureResult<bool> reauthenticateWithCredential(
       User user, AuthCredential credential) async {
     try {
-      await client.reauthenticateWithCredential(user, credential);
+      await client.currentUser?.reauthenticateWithCredential(credential);
       return const Result.success(true);
     } on FirebaseAuthException catch (e) {
       final String errorCode = e.code;
@@ -70,7 +75,7 @@ class AuthRepository {
 
   FutureResult<bool> deleteUser(User user) async {
     try {
-      await client.deleteUser(user);
+      await client.currentUser?.delete();
       return const Result.success(true);
     } on FirebaseAuthException catch (e) {
       final String errorCode = e.code;

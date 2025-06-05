@@ -11,7 +11,7 @@ class AuthPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AuthViewModel notifier() => ref.read(authProvider.notifier);
+    AuthViewModel notifier() => ref.read(authViewModelProvider.notifier);
     return BasicPage(
         showAppBar: false,
         child: AuthScreen(

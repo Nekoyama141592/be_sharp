@@ -1,26 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_home_view_model.dart';
+part of 'database_repository_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$myHomeViewModelHash() => r'9a244d04539b5200c031460011bc56a049826782';
+String _$databaseRepositoryHash() =>
+    r'b248b0c6d81e4ab63c8abed218b473f84341b915';
 
-/// See also [MyHomeViewModel].
-@ProviderFor(MyHomeViewModel)
-final myHomeViewModelProvider =
-    NotifierProvider<MyHomeViewModel, String>.internal(
-  MyHomeViewModel.new,
-  name: r'myHomeViewModelProvider',
+/// See also [databaseRepository].
+@ProviderFor(databaseRepository)
+final databaseRepositoryProvider =
+    AutoDisposeProvider<DatabaseRepository>.internal(
+  databaseRepository,
+  name: r'databaseRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$myHomeViewModelHash,
+      : _$databaseRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MyHomeViewModel = Notifier<String>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef DatabaseRepositoryRef = AutoDisposeProviderRef<DatabaseRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
