@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'latest_problem_view_model.dart';
+part of 'delete_user_view_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$latestProblemViewModelHash() =>
-    r'1959421267120823652537ef28840bc41482d0c3';
+String _$deleteUserViewModelHash() =>
+    r'aaba32b440d28b6fb0593d196a765d7798d2c6d9';
 
-/// See also [LatestProblemViewModel].
-@ProviderFor(LatestProblemViewModel)
-final latestProblemViewModelProvider = AutoDisposeAsyncNotifierProvider<
-    LatestProblemViewModel, LatestProblemState>.internal(
-  LatestProblemViewModel.new,
-  name: r'latestProblemViewModelProvider',
+/// See also [DeleteUserViewModel].
+@ProviderFor(DeleteUserViewModel)
+final deleteUserViewModelProvider =
+    AutoDisposeNotifierProvider<DeleteUserViewModel, User?>.internal(
+  DeleteUserViewModel.new,
+  name: r'deleteUserViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$latestProblemViewModelHash,
+      : _$deleteUserViewModelHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$LatestProblemViewModel = AutoDisposeAsyncNotifier<LatestProblemState>;
+typedef _$DeleteUserViewModel = AutoDisposeNotifier<User?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

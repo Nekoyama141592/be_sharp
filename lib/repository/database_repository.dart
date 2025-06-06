@@ -1,5 +1,12 @@
+import 'package:be_sharp/constants/limit_constant.dart';
+import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/private_user/private_user.dart';
+import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/model/firestore_model/public_user/write/write_public_user.dart';
+import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
+import 'package:be_sharp/model/firestore_model/user_answer/write/write_user_answer.dart';
+import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/repository/result.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -8,8 +15,7 @@ import 'package:be_sharp/typedefs/firestore_typedef.dart';
 class DatabaseRepository {
   DatabaseRepository(this._instance);
   final FirebaseFirestore _instance;
-  static const int oneTimeReadCount = whereInLimit;
-  static const int whereInLimit = 10;
+  
   DocRef _userDocRef(String uid) => _usersColRef().doc(uid);
   DocRef _userAnswerDocRef(String uid, String problemId) =>
       _userAnswersColRef(uid).doc(problemId);
@@ -36,7 +42,7 @@ class DatabaseRepository {
           .where('problemId', isEqualTo: problemId)
           .where('answer', whereIn: answers)
           .orderBy('createdAt', descending: false)
-          .limit(whereInLimit);
+          .limit(LimitConstant.whereInLimit);
   MapQuery _rankingQuery(
           String problemId, List<String> answers, Timestamp myCreatedAt) =>
       _instance
@@ -128,6 +134,11 @@ class DatabaseRepository {
     }
   }
 
+  FutureResult<bool> deleteUser(String uid) {
+    final docRef = _userDocRef(uid);
+    return deleteDoc(docRef);
+  }
+
   FutureResult<Doc> getDoc(DocRef ref) async {
     try {
       final Doc doc = await _getDoc(ref);
@@ -144,6 +155,159 @@ class DatabaseRepository {
       return Result.success(qDocs);
     } catch (e) {
       return const Result.failure();
+    }
+  }
+  Future<List<ReadPublicUser>> getUsers(List<String> uids) async {
+    try {
+      if (uids.isEmpty) return [];
+      final usersQshot = await _usersQuery(uids).get();
+      final users =
+        usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
+      return users;
+    } catch (e) {
+      debugPrint(e.toString());
+      return [];
+    }
+  }
+  Future<List<VerifiedPurchase>> getVerifiedPurchases(String? uid) async {
+    try {
+      if (uid == null) return [];
+      final colRef = _verifiedPurchasesColRef(uid);
+      final qshot = await colRef.get();
+      final docs = qshot.docs;
+      final verifiedPurchases =
+          docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
+      final results = verifiedPurchases.where((e) => e.isValid()).toList();
+      return results;
+    } catch (e) {
+      debugPrint(e.toString());
+      return [];
+    }
+  }
+  Future<List<String>> getMuteUsers(String? uid,List<String> muteUids) async {
+    try {
+      if (uid == null || muteUids.isEmpty) return [];
+      final query = _muteUsers(uid: uid, uids: muteUids);
+      final usersQshot = await query.get();
+      final docs = usersQshot.docs;
+      return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
+    } catch (e) {
+      debugPrint(e.toString());
+      return [];
+    }
+  }
+
+  Future<int> getUserCount(String problemId) async {
+    final query = _userAnswersQuery(problemId);
+    final qshot = await query.count().get();
+    final result = qshot.count ?? 0;
+    return result;
+  }
+  Future<int> getRank(String problemId,List<String> answers,ReadUserAnswer userAnswer) async {
+     final query =
+        _rankingQuery(problemId, answers, userAnswer.typedCreateAt());
+    final qshot = await query.count().get();
+    final result = qshot.count ?? 0;
+    return result;
+  }
+
+  Future<ReadPublicUser?> createPublicUser(String uid) async {
+    try {
+      final docRef = _userDocRef(uid);
+      final writeUser = WritePublicUser.instance(uid);
+      final writeData = writeUser.toJson();
+      await _createDoc(docRef, writeData);
+      return getPublicUser(uid);
+    } catch(e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
+  Future<ReadProblem?> getProblem(String problemId) async {
+    try {
+      final docRef = _problemDocRef(problemId);
+      final doc = await _getDoc(docRef);
+      return ReadProblem.fromJson(doc.data()!);
+    } catch(e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+
+  FutureResult<bool> createAnswer(String uid, String problemId, String answer) async {
+    final docRef = _userAnswerDocRef(uid, problemId);
+    final json = WriteUserAnswer(
+            answer: answer,
+            createdAt: FieldValue.serverTimestamp(),
+            problemId: problemId,
+            uid: uid)
+        .toJson();
+    return createDoc(docRef, json);
+  }
+
+  Future<ReadProblem?> fetchLatestProblem() async {
+    final query = _latestProblemQuery();
+    final qshot = await query.get();
+    final docs = qshot.docs;
+    if (docs.isEmpty) return null;
+    return ReadProblem.fromJson(docs.first.data());
+  }
+
+  Future<ReadUserAnswer?> fetchLatestUserAnswer(
+      String uid, String problemId) async {
+    final query = _latestUserAnswerQuery(uid, problemId);
+    final qshot = await query.get();
+    final docs = qshot.docs;
+    if (docs.isEmpty) return null;
+    return ReadUserAnswer.fromJson(docs.first.data());
+  }
+  Future<List<String>> _fetchMuteUids(String? uid) async {
+    if (uid == null) return [];
+    final query = _muteUsers(uid: uid);
+    final qshot = await _getDocs(query);
+    final docs = qshot.docs;
+    return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
+  }
+  Future<List<ReadPublicUser>> fetchMutePublicUsers(String? uid) async {
+    final uids = await _fetchMuteUids(uid);
+    if (uids.isEmpty) return [];
+    final chunks = <Future<List<ReadPublicUser>>>[];
+    const whereInLimit = LimitConstant.whereInLimit;
+    for (var i = 0; i < uids.length; i += whereInLimit) {
+      final chunk = uids.sublist(
+          i,
+          i + whereInLimit > uids.length
+              ? uids.length
+              : i + whereInLimit);
+      final query = _usersQuery(chunk);
+      final qshot = _getDocs(query).then((snapshot) =>
+          snapshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList());
+      chunks.add(qshot);
+    }
+    final results = await Future.wait(chunks);
+    return results.expand((x) => x).toList();
+  }
+
+  FutureResult<bool> muteUser(String uid,String muteUid) {
+    final docRef = _muteUserDocRef(uid, muteUid);
+    final json =
+        MuteUser(muteUid: muteUid, createdAt: FieldValue.serverTimestamp()).toJson();
+    return createDoc(docRef, json);
+  }
+  FutureResult<bool> unMute(String uid,String muteUid) {
+    final docRef = _muteUserDocRef(uid, muteUid);
+    return deleteDoc(docRef);
+  }
+
+  Future<List<ReadUserAnswer>> fetchCorrectUserAnswers(String problemId,List<String> answers) async {
+    try {
+      final query = _correctUserAnswersQuery(problemId, answers);
+      final qshot = await _getDocs(query);
+      return qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
+    } catch(e) {
+      debugPrint(e.toString());
+      return [];
     }
   }
 }

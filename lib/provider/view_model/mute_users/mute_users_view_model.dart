@@ -1,9 +1,6 @@
 import 'dart:async';
 
-import 'package:be_sharp/core/doc_ref_core.dart';
-import 'package:be_sharp/core/query_core.dart';
 import 'package:be_sharp/core/route_core.dart';
-import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
@@ -19,32 +16,11 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
   }
 
   Future<List<ReadPublicUser>> _fetchData() async {
-    final uids = await _fetchMuteUids();
-    if (uids.isEmpty) return [];
-    final chunks = <Future<List<ReadPublicUser>>>[];
-    for (var i = 0; i < uids.length; i += QueryCore.whereInLimit) {
-      final chunk = uids.sublist(
-          i,
-          i + QueryCore.whereInLimit > uids.length
-              ? uids.length
-              : i + QueryCore.whereInLimit);
-      final query = QueryCore.usersQuery(chunk);
-      final qshot = query.get().then((snapshot) =>
-          snapshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList());
-      chunks.add(qshot);
-    }
-    final results = await Future.wait(chunks);
-    return results.expand((x) => x).toList();
+    final uid = ref.read(userProvider)?.uid;
+    return ref.read(databaseRepositoryProvider).fetchMutePublicUsers(uid);
   }
 
-  Future<List<String>> _fetchMuteUids() async {
-    final uid = ref.read(userProvider)?.uid;
-    if (uid == null) return [];
-    final query = QueryCore.muteUsers(uid: uid);
-    final qshot = await query.get();
-    final docs = qshot.docs;
-    return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
-  }
+  
 
   void onTap(String muteUid) {
     final uid = ref.read(userProvider)?.uid;
@@ -54,9 +30,8 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
   }
 
   Future<void> _unMute(String uid, String muteUid) async {
-    final docRef = DocRefCore.muteUserDocRef(uid, muteUid);
     final repository = ref.read(databaseRepositoryProvider);
-    final result = await repository.deleteDoc(docRef);
+    final result = await repository.unMute(uid, muteUid);
     result.when(success: (_) => _success(muteUid), failure: _failure);
   }
 

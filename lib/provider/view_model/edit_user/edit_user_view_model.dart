@@ -2,15 +2,15 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:be_sharp/core/aws_s3_core.dart';
-import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/file_core.dart';
 import 'package:be_sharp/core/route_core.dart';
-import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/model/view_model_state/common/user_and_image/user_and_image_state.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/user_case/file/file_usecase.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
@@ -40,16 +40,14 @@ class EditUserViewModel extends _$EditUserViewModel {
   FutureOr<UserAndImageState> build() async {
     return _fetchData();
   }
-
+  DatabaseRepository get _databaseRepository => ref.read(databaseRepositoryProvider);
   CloudFunctionsRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
     final uid = ref.read(userProvider)!.uid;
-    final doc = await DocRefCore.userDocRef(uid).get();
-    final docData = doc.data()!;
-    final user = ReadPublicUser.fromJson(docData);
-    final image = await ref
+    final user = await _databaseRepository.getPublicUser(uid);
+    final image = user != null ? await ref
         .read(fileUseCaseProvider)
-        .getS3Image(user.imageCacheKey(), user.imageValue());
+        .getS3Image(user.imageCacheKey(), user.imageValue()) : null;
     return UserAndImageState(user: user, image: image);
   }
 

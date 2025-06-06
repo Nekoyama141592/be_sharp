@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/model/firestore_model/public_user/write/write_public_user.dart';
 import 'package:be_sharp/model/view_model_state/check_state/check_state.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/repository/database_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'check_view_model.g.dart';
@@ -15,6 +15,7 @@ class CheckViewModel extends _$CheckViewModel {
     return _fetchData();
   }
 
+  DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
   Future<CheckState> _fetchData() async {
     final needsAgreeToTerms = checkNeedsAgreeToTerms();
     final user = FirebaseAuth.instance.currentUser;
@@ -34,19 +35,10 @@ class CheckViewModel extends _$CheckViewModel {
     return false;
   }
 
-  Future<ReadPublicUser> _fetchUser(String uid) async {
-    final docRef = DocRefCore.userDocRef(uid);
-    final result = await docRef.get();
-    final readData = result.data();
-    if (result.exists && readData != null) {
-      final readUser = ReadPublicUser.fromJson(readData);
-      return readUser;
-    } else {
-      final writeUser = WritePublicUser.instance(uid);
-      final writeData = writeUser.toJson();
-      await docRef.set(writeData);
-      return ReadPublicUser.fromJson(writeData);
-    }
+  Future<ReadPublicUser?> _fetchUser(String uid) async {
+    final user = await _repository.getPublicUser(uid);
+    if (user != null) return user;
+    return _repository.createPublicUser(uid);
   }
 
   Future<void> refetchUser(User user) async {

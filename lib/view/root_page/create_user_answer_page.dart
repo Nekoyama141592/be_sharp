@@ -8,6 +8,7 @@ import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,8 +20,9 @@ class CreateUserAnswerPage extends HookConsumerWidget {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.read(createUserAnswerViewModelProvider.notifier);
-    final asyncValue = ref.watch(createUserAnswerViewModelProvider);
+    final problemId = Get.parameters['problemId']!;
+    final notifier = ref.read(createUserAnswerViewModelProvider(problemId).notifier);
+    final asyncValue = ref.watch(createUserAnswerViewModelProvider(problemId));
     final textController = useTextEditingController();
     final animationController = useAnimationController(
       duration: const Duration(seconds: 1),
@@ -74,7 +76,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          QuestionCard(state: state),
+                          if (state != null) QuestionCard(state: state),
                           const SizedBox(height: 30),
                           Container(
                               decoration: BoxDecoration(
