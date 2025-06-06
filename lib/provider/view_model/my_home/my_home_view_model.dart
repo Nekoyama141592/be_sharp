@@ -27,7 +27,7 @@ class MyHomeViewModel extends _$MyHomeViewModel {
   void _init() {
     final uid = ref.read(userProvider)?.uid;
     if (uid == null) return;
-    final query = QueryCore.latestProblem();
+    final query = QueryCore.latestProblemQuery();
     subscriptionStream = query.snapshots().listen((event) async {
       final isAdmin = ref.read(privateUserNotifierProvider.notifier).isAdmin();
       if (isAdmin) return;
@@ -42,7 +42,7 @@ class MyHomeViewModel extends _$MyHomeViewModel {
     final problem = ReadProblem.fromJson(problemDoc.data());
     if (!problem.isInTimeLimit()) return;
     final problemId = problem.problemId;
-    final docRef = DocRefCore.userAnswer(uid, problemId);
+    final docRef = DocRefCore.userAnswerDocRef(uid, problemId);
     final result = await repository.getDoc(docRef);
     result.when(
         success: (doc) {

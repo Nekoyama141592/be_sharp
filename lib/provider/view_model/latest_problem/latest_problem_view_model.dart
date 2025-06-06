@@ -37,7 +37,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   Future<ReadProblem?> _fetchLatestProblem() async {
-    final query = QueryCore.latestProblem();
+    final query = QueryCore.latestProblemQuery();
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
@@ -46,7 +46,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
 
   Future<ReadUserAnswer?> _fetchLatestUserAnswer(
       String uid, String problemId) async {
-    final query = QueryCore.latestUserAnswer(uid, problemId);
+    final query = QueryCore.latestUserAnswerQuery(uid, problemId);
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;

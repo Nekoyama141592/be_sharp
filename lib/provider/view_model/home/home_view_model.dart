@@ -34,7 +34,7 @@ class HomeViewModel extends _$HomeViewModel {
     if (answers.isEmpty) {
       return HomeState(latestProblem: latestProblem);
     }
-    final query = QueryCore.correctUserAnswers(problemId, answers);
+    final query = QueryCore.correctUserAnswersQuery(problemId, answers);
     final [(qshot as QuerySnapshot<Map<String, dynamic>>), (userCount as int)] =
         await Future.wait([query.get(), _homeUseCase.fetchUserCount(problemId)]);
     final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>)] =
@@ -53,7 +53,7 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   Future<ReadProblem?> _fetchLatestProblem() async {
-    final query = QueryCore.latestProblem();
+    final query = QueryCore.latestProblemQuery();
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
@@ -75,7 +75,7 @@ class HomeViewModel extends _$HomeViewModel {
   Future<void> _muteUser(BuildContext context, String muteUid) async {
     final uid = ref.read(userProvider)?.uid;
     if (uid == null || uid == muteUid) return;
-    final docRef = DocRefCore.muteUser(uid, muteUid);
+    final docRef = DocRefCore.muteUserDocRef(uid, muteUid);
     final repository = ref.read(databaseRepositoryProvider);
     final json =
         MuteUser(muteUid: muteUid, createdAt: Timestamp.now()).toJson();

@@ -44,7 +44,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   CloudFunctionsRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
     final uid = ref.read(userProvider)!.uid;
-    final doc = await DocRefCore.user(uid).get();
+    final doc = await DocRefCore.userDocRef(uid).get();
     final docData = doc.data()!;
     final user = ReadPublicUser.fromJson(docData);
     final image = await ref

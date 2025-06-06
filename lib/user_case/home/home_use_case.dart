@@ -36,7 +36,7 @@ class HomeUseCase {
       QSnapshot qshot) async {
     final uids = _getUids(qshot);
     if (uids.isEmpty) return [];
-    final usersQshot = await QueryCore.users(uids).get();
+    final usersQshot = await QueryCore.usersQuery(uids).get();
     final users =
         usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
     final nullableAnsweredUsers =
@@ -58,7 +58,7 @@ class HomeUseCase {
   }
 
   Future<int> fetchUserCount(String problemId) async {
-    final query = QueryCore.userAnswers(problemId);
+    final query = QueryCore.userAnswersQuery(problemId);
     final qshot = await query.count().get();
     final result = qshot.count ?? 0;
     return result;

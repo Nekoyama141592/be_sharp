@@ -46,7 +46,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   }
 
   Future<void> _deletePublicUser() async {
-    final ref = DocRefCore.user(state!.uid);
+    final ref = DocRefCore.userDocRef(state!.uid);
     final result = await _databaseRepository.deleteDoc(ref);
     result.when(success: onDeleteSuccess, failure: onDeleteFailure);
   }

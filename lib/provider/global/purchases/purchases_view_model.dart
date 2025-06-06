@@ -39,7 +39,7 @@ class Purchases extends _$Purchases {
     try {
       final uid = ref.read(userProvider)?.uid;
       if (uid == null) return [];
-      final colRef = ColRefCore.verifiedPurchases(uid);
+      final colRef = ColRefCore.verifiedPurchasesColRef(uid);
       final qshot = await colRef.get();
       final docs = qshot.docs;
       final verifiedPurchases =

@@ -22,7 +22,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
     if (problemId == null) {
       throw Error();
     }
-    final docRef = DocRefCore.problem(problemId);
+    final docRef = DocRefCore.problemDocRef(problemId);
     final doc = await docRef.get();
     return ReadProblem.fromJson(doc.data()!);
   }
@@ -44,7 +44,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   Future<void> _positiveAction(
       String uid, String problemId, String answer) async {
     final repository = ref.read(databaseRepositoryProvider);
-    final docRef = DocRefCore.userAnswer(uid, problemId);
+    final docRef = DocRefCore.userAnswerDocRef(uid, problemId);
     final json = WriteUserAnswer(
             answer: answer,
             createdAt: FieldValue.serverTimestamp(),

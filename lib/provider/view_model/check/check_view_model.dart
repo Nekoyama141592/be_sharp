@@ -35,7 +35,7 @@ class CheckViewModel extends _$CheckViewModel {
   }
 
   Future<ReadPublicUser> _fetchUser(String uid) async {
-    final docRef = DocRefCore.user(uid);
+    final docRef = DocRefCore.userDocRef(uid);
     final result = await docRef.get();
     final readData = result.data();
     if (result.exists && readData != null) {

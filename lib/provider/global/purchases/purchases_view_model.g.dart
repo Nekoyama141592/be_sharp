@@ -6,7 +6,7 @@ part of 'purchases_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$purchasesHash() => r'85310fbd630c2314eea0fdf67dd921bd6be9d2ac';
+String _$purchasesHash() => r'd709fb84610c75fbd221dd32dcae8d67b364b8c1';
 
 /// See also [Purchases].
 @ProviderFor(Purchases)

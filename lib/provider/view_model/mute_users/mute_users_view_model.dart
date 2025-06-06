@@ -28,7 +28,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
           i + QueryCore.whereInLimit > uids.length
               ? uids.length
               : i + QueryCore.whereInLimit);
-      final query = QueryCore.users(chunk);
+      final query = QueryCore.usersQuery(chunk);
       final qshot = query.get().then((snapshot) =>
           snapshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList());
       chunks.add(qshot);
@@ -54,7 +54,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
   }
 
   Future<void> _unMute(String uid, String muteUid) async {
-    final docRef = DocRefCore.muteUser(uid, muteUid);
+    final docRef = DocRefCore.muteUserDocRef(uid, muteUid);
     final repository = ref.read(databaseRepositoryProvider);
     final result = await repository.deleteDoc(docRef);
     result.when(success: (_) => _success(muteUid), failure: _failure);

@@ -40,7 +40,7 @@ class OriginalDrawer extends ConsumerWidget {
                 RouteCore.pushPath(MuteUsersPage.path);
               },
             ),
-            if (data.isAdmin)
+            if (data?.isAdmin ?? false)
               ListTile(
                 title: const Text("管理者ページ"),
                 onTap: () {
