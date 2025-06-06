@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:be_sharp/core/json_core.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
@@ -47,16 +46,16 @@ class CloudFunctionsRepository {
     }
   }
 
-  FutureResult<Uint8List> getObject(GetObjectRequest request) async {
+  Future<String?> getObject(GetObjectRequest request) async {
     try {
       const name = 'getObject';
       final result = await call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
-      final base64Image = res.base64Image;
-      final image = base64Decode(base64Image);
-      return Result.success(image);
+      final image =  res.base64Image;
+      return image;
     } catch (e) {
-      return const Result.failure();
+      debugPrint('getImage: $e');
+      return null;
     }
   }
 

@@ -1,7 +1,6 @@
-import 'package:be_sharp/model/view_model_state/abstract/user_and_image_state.dart';
-import 'package:be_sharp/provider/overrides/prefs_provider.dart';
+import 'package:be_sharp/model/view_model_state/common/user_and_image/user_and_image_state.dart';
 import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
-import 'package:be_sharp/extensions/prefs_extension.dart';
+import 'package:be_sharp/user_case/file/file_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'original_drawer_view_model.g.dart';
 
@@ -14,7 +13,7 @@ class OriginalDrawerViewModel extends _$OriginalDrawerViewModel {
       return UserAndImageState(user: user, image: null);
     }
     final image = await ref
-        .read(prefsProvider)
+        .read(fileUseCaseProvider)
         .getS3Image(user.imageCacheKey(), user.imageValue());
     return UserAndImageState(user: user, image: image);
   }

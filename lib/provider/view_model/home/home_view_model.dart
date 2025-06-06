@@ -1,17 +1,17 @@
 import 'dart:async';
 import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/query_core.dart';
-import 'package:be_sharp/core/view_core/home_core.dart';
 import 'package:be_sharp/model/dialog/text_action.dart';
 import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
-import 'package:be_sharp/provider/overrides/prefs_provider.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/user_case/home_use_case_provider.dart';
 import 'package:be_sharp/ui_core/dialog_ui_core.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/user_case/home/home_use_case.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +24,7 @@ class HomeViewModel extends _$HomeViewModel {
   FutureOr<HomeState> build() async {
     return _fetchData();
   }
+  HomeUseCase get _homeUseCase => ref.read(homeUseCaseProvider);
 
   Future<HomeState> _fetchData() async {
     final latestProblem = await _fetchLatestProblem();
@@ -35,12 +36,11 @@ class HomeViewModel extends _$HomeViewModel {
     }
     final query = QueryCore.correctUserAnswers(problemId, answers);
     final [(qshot as QuerySnapshot<Map<String, dynamic>>), (userCount as int)] =
-        await Future.wait([query.get(), HomeCore.fetchUserCount(problemId)]);
-    final prefs = ref.read(prefsProvider);
+        await Future.wait([query.get(), _homeUseCase.fetchUserCount(problemId)]);
     final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>)] =
         await Future.wait([
-      HomeCore.fetchAnsweredUsers(qshot, prefs),
-      HomeCore.fetchMuteUsers(ref.read(userProvider)?.uid, qshot),
+      _homeUseCase.fetchAnsweredUsers(qshot),
+      _homeUseCase.fetchMuteUsers(ref.read(userProvider)?.uid, qshot),
     ]);
     // 早い順に並べる
     final result = [...answeredUsers]..sort((a, b) =>
@@ -61,8 +61,6 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   void onMoreButtonPressed(BuildContext context, String muteUid) {
-    // print(state.value?.muteUids);
-    // return;
     final actions = <TextAction>[
       TextAction(
           text: 'このユーザーをミュートする',

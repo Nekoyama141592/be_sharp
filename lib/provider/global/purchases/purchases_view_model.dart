@@ -8,6 +8,7 @@ import 'package:be_sharp/model/view_model_state/purchases_state/purchases_state.
 import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/repository/purchases_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/user_case/purchases/purchases_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 part 'purchases_view_model.g.dart';
@@ -79,7 +80,7 @@ class Purchases extends _$Purchases {
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
       if (details.isError || !details.isPurchased) continue;
-      final result = await PurchasesCore.verifyPurchase(details);
+      final result = await ref.read(purchasesUsecaseProvider).verifyPurchase(details);
       await result.when(
           success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
     }

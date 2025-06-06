@@ -218,7 +218,7 @@ class EditUserPage extends HookConsumerWidget {
     }
 
     // プロフィール画像
-    List<Widget> userImage(Uint8List? image) {
+    List<Widget> userImage(String? image) {
       final isImageNull = image == null;
       return [
         Stack(
@@ -250,7 +250,7 @@ class EditUserPage extends HookConsumerWidget {
                 child: CircleImage(
                   height: 112.0,
                   width: 112.0,
-                  uint8list: image,
+                  image: image,
                   onTap: () {
                     HapticFeedback.lightImpact();
                     notifier().onImagePickButtonPressed();

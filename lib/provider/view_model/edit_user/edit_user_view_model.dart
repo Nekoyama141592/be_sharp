@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:be_sharp/core/aws_s3_core.dart';
 import 'package:be_sharp/core/doc_ref_core.dart';
@@ -7,17 +8,16 @@ import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
-import 'package:be_sharp/model/view_model_state/edit_user/edit_user_state.dart';
-import 'package:be_sharp/provider/overrides/prefs_provider.dart';
+import 'package:be_sharp/model/view_model_state/common/user_and_image/user_and_image_state.dart';
 import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/user_case/file/file_usecase.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
-import 'package:be_sharp/extensions/prefs_extension.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 part 'edit_user_view_model.g.dart';
@@ -37,20 +37,20 @@ class EditUserViewModel extends _$EditUserViewModel {
   }
 
   @override
-  FutureOr<EditUserState> build() async {
+  FutureOr<UserAndImageState> build() async {
     return _fetchData();
   }
 
   CloudFunctionsRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
-  Future<EditUserState> _fetchData() async {
+  Future<UserAndImageState> _fetchData() async {
     final uid = ref.read(userProvider)!.uid;
     final doc = await DocRefCore.user(uid).get();
     final docData = doc.data()!;
     final user = ReadPublicUser.fromJson(docData);
     final image = await ref
-        .read(prefsProvider)
+        .read(fileUseCaseProvider)
         .getS3Image(user.imageCacheKey(), user.imageValue());
-    return EditUserState(user: user, image: image);
+    return UserAndImageState(user: user, image: image);
   }
 
   void onUpdateButtonPressed() async {
@@ -68,7 +68,7 @@ class EditUserViewModel extends _$EditUserViewModel {
       // 写真が新しくなった場合の処理
       final object = AWSS3Core.profileObject(uid);
       final request =
-          PutObjectRequest.fromUint8List(uint8list: image, fileName: object);
+          PutObjectRequest(base64Image: image, object: object);
       final result = await repository.putObject(request);
       await result.when(success: (res) async {
         await _updateUser();
@@ -96,7 +96,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     final stateValue = state.value;
     if (stateValue == null) return;
     state = await AsyncValue.guard(() async {
-      return stateValue.copyWith(image: result);
+      return stateValue.copyWith(image: base64Encode(result));
     });
     isPicked = true;
   }

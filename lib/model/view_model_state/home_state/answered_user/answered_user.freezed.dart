@@ -23,7 +23,7 @@ mixin _$AnsweredUser {
   ReadPublicUser get publicUser => throw _privateConstructorUsedError;
   dynamic get userAnswerQDoc => throw _privateConstructorUsedError;
   ReadUserAnswer get userAnswer => throw _privateConstructorUsedError;
-  dynamic get userImage => throw _privateConstructorUsedError;
+  String? get userImage => throw _privateConstructorUsedError;
 
   /// Serializes this AnsweredUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $AnsweredUserCopyWith<$Res> {
       {ReadPublicUser publicUser,
       dynamic userAnswerQDoc,
       ReadUserAnswer userAnswer,
-      dynamic userImage});
+      String? userImage});
 
   $ReadPublicUserCopyWith<$Res> get publicUser;
   $ReadUserAnswerCopyWith<$Res> get userAnswer;
@@ -87,7 +87,7 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
       userImage: freezed == userImage
           ? _value.userImage
           : userImage // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ) as $Val);
   }
 
@@ -124,7 +124,7 @@ abstract class _$$AnsweredUserImplCopyWith<$Res>
       {ReadPublicUser publicUser,
       dynamic userAnswerQDoc,
       ReadUserAnswer userAnswer,
-      dynamic userImage});
+      String? userImage});
 
   @override
   $ReadPublicUserCopyWith<$Res> get publicUser;
@@ -166,7 +166,7 @@ class __$$AnsweredUserImplCopyWithImpl<$Res>
       userImage: freezed == userImage
           ? _value.userImage
           : userImage // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ));
   }
 }
@@ -191,7 +191,7 @@ class _$AnsweredUserImpl extends _AnsweredUser {
   @override
   final ReadUserAnswer userAnswer;
   @override
-  final dynamic userImage;
+  final String? userImage;
 
   @override
   String toString() {
@@ -209,7 +209,8 @@ class _$AnsweredUserImpl extends _AnsweredUser {
                 .equals(other.userAnswerQDoc, userAnswerQDoc) &&
             (identical(other.userAnswer, userAnswer) ||
                 other.userAnswer == userAnswer) &&
-            const DeepCollectionEquality().equals(other.userImage, userImage));
+            (identical(other.userImage, userImage) ||
+                other.userImage == userImage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -219,7 +220,7 @@ class _$AnsweredUserImpl extends _AnsweredUser {
       publicUser,
       const DeepCollectionEquality().hash(userAnswerQDoc),
       userAnswer,
-      const DeepCollectionEquality().hash(userImage));
+      userImage);
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.
@@ -242,7 +243,7 @@ abstract class _AnsweredUser extends AnsweredUser {
       {required final ReadPublicUser publicUser,
       required final dynamic userAnswerQDoc,
       required final ReadUserAnswer userAnswer,
-      required final dynamic userImage}) = _$AnsweredUserImpl;
+      required final String? userImage}) = _$AnsweredUserImpl;
   const _AnsweredUser._() : super._();
 
   factory _AnsweredUser.fromJson(Map<String, dynamic> json) =
@@ -255,7 +256,7 @@ abstract class _AnsweredUser extends AnsweredUser {
   @override
   ReadUserAnswer get userAnswer;
   @override
-  dynamic get userImage;
+  String? get userImage;
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.

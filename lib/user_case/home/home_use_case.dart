@@ -1,28 +1,29 @@
+import 'package:be_sharp/typedefs/firestore_typedef.dart';
+import 'package:be_sharp/user_case/file/file_usecase.dart';
 
 import 'package:be_sharp/core/query_core.dart';
-import 'package:be_sharp/extensions/prefs_extension.dart';
 import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
-import 'package:be_sharp/typedefs/firestore_typedef.dart';
 import 'package:collection/collection.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeCore {
-  static List<String> _getUids(QSnapshot qshot) {
+class HomeUseCase {
+  HomeUseCase({required this.fileUseCase});
+  final FileUseCase fileUseCase;
+  List<String> _getUids(QSnapshot qshot) {
     final userAnswers =
         qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
     final uids = userAnswers.map((e) => e.uid).toList();
     return uids;
   }
 
-  static Future<AnsweredUser?> _answer(
-      QDoc qDoc, List<ReadPublicUser> users, SharedPreferences prefs) async {
+  Future<AnsweredUser?> _answer(
+      QDoc qDoc, List<ReadPublicUser> users) async {
     final userAnswer = ReadUserAnswer.fromJson(qDoc.data());
     final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
     if (publicUser == null) return null;
-    final userImage = await prefs.getS3Image(
+    final userImage = await fileUseCase.getS3Image(
         publicUser.imageCacheKey(), publicUser.imageValue());
     return AnsweredUser(
         publicUser: publicUser,
@@ -31,21 +32,21 @@ class HomeCore {
         userAnswer: userAnswer);
   }
 
-  static Future<List<AnsweredUser>> fetchAnsweredUsers(
-      QSnapshot qshot, SharedPreferences prefs) async {
+  Future<List<AnsweredUser>> fetchAnsweredUsers(
+      QSnapshot qshot) async {
     final uids = _getUids(qshot);
     if (uids.isEmpty) return [];
     final usersQshot = await QueryCore.users(uids).get();
     final users =
         usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
     final nullableAnsweredUsers =
-        await Future.wait(qshot.docs.map((e) => _answer(e, users, prefs)));
+        await Future.wait(qshot.docs.map((e) => _answer(e, users)));
     final answeredUsers =
         nullableAnsweredUsers.whereType<AnsweredUser>().toList();
     return answeredUsers;
   }
 
-  static Future<List<String>> fetchMuteUsers(
+  Future<List<String>> fetchMuteUsers(
       String? currentUid, QSnapshot qshot) async {
     if (currentUid == null) return [];
     final uids = _getUids(qshot);
@@ -56,7 +57,7 @@ class HomeCore {
     return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
   }
 
-  static Future<int> fetchUserCount(String problemId) async {
+  Future<int> fetchUserCount(String problemId) async {
     final query = QueryCore.userAnswers(problemId);
     final qshot = await query.count().get();
     final result = qshot.count ?? 0;
