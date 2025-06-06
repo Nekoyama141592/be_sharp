@@ -70,7 +70,7 @@ class EditUserViewModel extends _$EditUserViewModel {
       final result = await repository.putObject(request);
       await result.when(success: (res) async {
         await _updateUser();
-      }, failure: () {
+      }, failure: (String msg) {
         ToastUICore.showErrorFlutterToast("画像のアップロードが失敗しました");
       });
     } else {
@@ -117,7 +117,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     }
   }
 
-  Future<void> _failure() async {
+  Future<void> _failure(String msg) async {
     ToastUICore.showErrorFlutterToast("プロフィールを更新できませんでした");
   }
 }

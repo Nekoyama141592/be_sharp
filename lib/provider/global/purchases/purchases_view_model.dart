@@ -58,8 +58,8 @@ class Purchases extends _$Purchases {
 
   void _onPurchaseSuccess(bool res) {}
 
-  void _onPurchaseFailed() {
-    ToastUICore.showFlutterToast("もう一度ボタンを押してください");
+  void _onPurchaseFailed(String msg) {
+    ToastUICore.showFlutterToast(msg);
   }
 
   bool isSubscribing() => state.value?.isSubscribing() ?? false;
@@ -95,9 +95,9 @@ class Purchases extends _$Purchases {
     });
   }
 
-  Future<void> _onVerifyFailed() async {
+  Future<void> _onVerifyFailed(String msg) async {
     // 失敗した時の処理.
-    ToastUICore.showErrorFlutterToast("購入の検証が失敗しました");
+    ToastUICore.showErrorFlutterToast(msg);
   }
 
   void onRestoreButtonPressed() async {

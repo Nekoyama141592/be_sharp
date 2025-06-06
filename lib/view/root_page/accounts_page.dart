@@ -34,8 +34,8 @@ class AccountPage extends ConsumerWidget {
                 final result = await ref.read(authRepositoryProvider).signOut();
                 result.when(success: (_) {
                   RouteCore.pushPath(LogoutedPage.path);
-                }, failure: () {
-                  ToastUICore.showErrorFlutterToast('ログアウトが失敗しました');
+                }, failure: (msg) {
+                  ToastUICore.showErrorFlutterToast(msg);
                 });
               },
             ),

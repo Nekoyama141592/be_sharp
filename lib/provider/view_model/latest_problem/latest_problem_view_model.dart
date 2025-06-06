@@ -92,7 +92,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     });
   }
 
-  void _onSendFailure() {
+  void _onSendFailure(String msg) {
     ToastUICore.showErrorFlutterToast('キャプションの追加が失敗しました');
   }
 

@@ -52,7 +52,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
     ToastUICore.showFlutterToast('ミュートを解除しました');
   }
 
-  void _failure() {
+  void _failure(String msg) {
     _closeDialog();
     ToastUICore.showErrorFlutterToast('ミュート解除に失敗しました');
   }

@@ -52,7 +52,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
     await inAppReview.requestReview();
   }
 
-  void onFailure() {
+  void onFailure(String msg) {
     RouteCore.back();
   }
 }

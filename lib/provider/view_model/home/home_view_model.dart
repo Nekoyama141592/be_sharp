@@ -64,7 +64,7 @@ class HomeViewModel extends _$HomeViewModel {
     final result = await ref.read(databaseRepositoryProvider).muteUser(uid, muteUid);
     result.when(
         success: (_) => _onMuteSuccess(context, muteUid),
-        failure: () => _onMuteFailure(context));
+        failure: (_) => _onMuteFailure(context));
   }
 
   void _onMuteSuccess(BuildContext context, String muteUid) async {

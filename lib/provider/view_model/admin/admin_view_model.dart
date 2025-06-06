@@ -101,7 +101,7 @@ class AdminViewModel extends _$AdminViewModel {
     ToastUICore.showFlutterToast('作成が成功しました');
   }
 
-  void _onFailure() {
-    ToastUICore.showErrorFlutterToast('作成が失敗しました');
+  void _onFailure(String msg) {
+    ToastUICore.showErrorFlutterToast(msg);
   }
 }

@@ -43,7 +43,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
         "ユーザーを削除しますが本当によろしいですか？", _deletePublicUser);
   }
 
-  void onReauthenticateFailure() {
+  void onReauthenticateFailure(String msg) {
     ToastUICore.showErrorFlutterToast('再認証に失敗しました');
   }
 
@@ -56,7 +56,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
     RouteCore.pushPath(UserDeletedPage.path);
   }
 
-  void onDeleteFailure() {
+  void onDeleteFailure(String msg) {
     ToastUICore.showErrorFlutterToast("ユーザーの削除が失敗しました");
   }
 }

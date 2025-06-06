@@ -19,7 +19,7 @@ class AuthViewModel extends _$AuthViewModel {
         success: (res) {
           state = res;
         },
-        failure: () {});
+        failure: (_) {});
   }
 
   void onAppleSignInButtonPressed() async {
@@ -28,6 +28,6 @@ class AuthViewModel extends _$AuthViewModel {
         success: (res) {
           state = res;
         },
-        failure: () {});
+        failure: (_) {});
   }
 }
