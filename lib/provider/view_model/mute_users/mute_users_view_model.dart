@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,14 +16,14 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
   }
 
   Future<List<ReadPublicUser>> _fetchData() async {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     return ref.read(databaseRepositoryProvider).fetchMutePublicUsers(uid);
   }
 
   
 
   void onTap(String muteUid) {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     const msg = 'このユーザーのミュートを解除しますか？';
     ToastUICore.cupertinoAlertDialog(msg, () => _unMute(uid, muteUid));

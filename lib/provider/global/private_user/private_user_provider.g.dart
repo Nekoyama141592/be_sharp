@@ -7,7 +7,7 @@ part of 'private_user_provider.dart';
 // **************************************************************************
 
 String _$privateUserNotifierHash() =>
-    r'881f23e6514e45aa6b654372fa2d72ed166df184';
+    r'61fe3597beb9032b048c453e5f3e590a075dc608';
 
 /// See also [PrivateUserNotifier].
 @ProviderFor(PrivateUserNotifier)

@@ -1,5 +1,4 @@
 import 'package:be_sharp/flavors.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/view/page/check_page.dart';
 import 'package:be_sharp/view/page/my_home_page/my_home_page.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
@@ -19,7 +18,6 @@ class MyApp extends ConsumerWidget {
   static const path = "/";
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(userProvider);
     return GetMaterialApp(
         title: F.title,
         debugShowCheckedModeBanner: false,

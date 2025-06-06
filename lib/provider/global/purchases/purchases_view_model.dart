@@ -4,8 +4,8 @@ import 'package:be_sharp/core/purchases_core.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/view_model_state/purchases_state/purchases_state.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/purchases_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/user_case/purchases/purchases_usecase.dart';
@@ -36,7 +36,7 @@ class Purchases extends _$Purchases {
   }
 
   Future<List<VerifiedPurchase>> _fetchPurchases() {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     return ref.read(databaseRepositoryProvider).getVerifiedPurchases(uid);
   }
 

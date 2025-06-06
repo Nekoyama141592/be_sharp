@@ -2,6 +2,7 @@ import 'package:be_sharp/core/credential_core.dart';
 import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
@@ -14,7 +15,7 @@ part 'delete_user_view_model.g.dart';
 class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   @override
   User? build() {
-    return FirebaseAuth.instance.currentUser;
+    return ref.watch(streamAuthProvider).value;
   }
 
   AuthRepository get authRepository => ref.read(authRepositoryProvider);
@@ -32,7 +33,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   Future<void> _reauthenticateToDelete(AuthCredential credential) async {
     if (state == null) return;
     final result =
-        await authRepository.reauthenticateWithCredential(state!, credential);
+        await authRepository.reauthenticateWithCredential(credential);
     result.when(
         success: onReauthenticateSuccess, failure: onReauthenticateFailure);
   }

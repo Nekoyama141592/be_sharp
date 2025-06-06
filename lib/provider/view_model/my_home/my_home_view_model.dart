@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/typedefs/firestore_typedef.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 part 'my_home_view_model.g.dart';
@@ -23,7 +23,7 @@ class MyHomeViewModel extends _$MyHomeViewModel {
 
   DatabaseRepository get repository => ref.read(databaseRepositoryProvider);
   void _init() {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     subscriptionStream = repository.latestPromblemSnapshots().listen((event) async {
       final isAdmin = ref.read(privateUserNotifierProvider.notifier).isAdmin();

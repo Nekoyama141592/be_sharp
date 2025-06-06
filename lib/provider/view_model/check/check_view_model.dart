@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/view_model_state/check_state/check_state.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -18,7 +19,7 @@ class CheckViewModel extends _$CheckViewModel {
   DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
   Future<CheckState> _fetchData() async {
     final needsAgreeToTerms = checkNeedsAgreeToTerms();
-    final user = FirebaseAuth.instance.currentUser;
+    final user = ref.watch(streamAuthProvider).value;
     if (user == null) {
       return CheckState(
           needsAgreeToTerms: needsAgreeToTerms, needsSignup: true, user: null);

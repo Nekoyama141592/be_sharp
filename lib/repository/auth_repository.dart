@@ -49,8 +49,7 @@ class AuthRepository {
     }
   }
 
-  FutureResult<bool> reauthenticateWithCredential(
-      User user, AuthCredential credential) async {
+  FutureResult<bool> reauthenticateWithCredential(AuthCredential credential) async {
     try {
       await client.currentUser?.reauthenticateWithCredential(credential);
       return const Result.success(true);
@@ -73,7 +72,7 @@ class AuthRepository {
     }
   }
 
-  FutureResult<bool> deleteUser(User user) async {
+  FutureResult<bool> deleteUser() async {
     try {
       await client.currentUser?.delete();
       return const Result.success(true);

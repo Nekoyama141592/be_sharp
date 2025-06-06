@@ -4,7 +4,7 @@ import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/model/view_model_state/latest_problem/latest_problem_state.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/global/purchases/purchases_view_model.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
@@ -26,12 +26,12 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
 
   Future<LatestProblemState> _fetchData() async {
     final problem = await _fetchLatestProblem();
-    final user = ref.read(userProvider);
-    if (user == null || problem == null) {
+    final uid = ref.read(streamAuthUidProvider).value;
+    if (uid == null || problem == null) {
       return LatestProblemState(problem: problem);
     }
     final userAnswer =
-        await _fetchLatestUserAnswer(user.uid, problem.problemId);
+        await _fetchLatestUserAnswer(uid, problem.problemId);
     return LatestProblemState(problem: problem, userAnswer: userAnswer);
   }
 

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:be_sharp/model/firestore_model/private_user/private_user.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,7 +16,8 @@ class PrivateUserNotifier extends _$PrivateUserNotifier {
   }
   DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
   Future<PrivateUser?> _fetchData() async {
-    final uid = ref.read(userProvider)!.uid;
+    final uid = ref.watch(streamAuthUidProvider).value;
+    if (uid == null) return null;
     final privateUser = await _repository.getPrivateUser(uid);
     final token = await _getToken();
     if (privateUser != null) {

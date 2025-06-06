@@ -3,7 +3,7 @@ import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/dialog/text_action.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/provider/user_case/home_use_case_provider.dart';
 import 'package:be_sharp/ui_core/dialog_ui_core.dart';
@@ -34,7 +34,7 @@ class HomeViewModel extends _$HomeViewModel {
     final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>),(userCount as int)] =
         await Future.wait([
       _homeUseCase.fetchAnsweredUsers(userAnswers),
-      _homeUseCase.fetchMuteUsers(ref.read(userProvider)?.uid, userAnswers),
+      _homeUseCase.fetchMuteUsers(ref.read(streamAuthUidProvider).value, userAnswers),
       _homeUseCase.fetchUserCount(problemId)
     ]);
     // 早い順に並べる
@@ -59,7 +59,7 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   Future<void> _muteUser(BuildContext context, String muteUid) async {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null || uid == muteUid) return;
     final result = await ref.read(databaseRepositoryProvider).muteUser(uid, muteUid);
     result.when(

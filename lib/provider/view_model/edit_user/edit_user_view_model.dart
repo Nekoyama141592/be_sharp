@@ -7,7 +7,7 @@ import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
 import 'package:be_sharp/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/model/view_model_state/common/user_and_image/user_and_image_state.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
@@ -43,7 +43,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   DatabaseRepository get _databaseRepository => ref.read(databaseRepositoryProvider);
   CloudFunctionsRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
-    final uid = ref.read(userProvider)!.uid;
+    final uid = ref.read(streamAuthUidProvider).value!;
     final user = await _databaseRepository.getPublicUser(uid);
     final image = user != null ? await ref
         .read(fileUseCaseProvider)
@@ -52,7 +52,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   }
 
   void onUpdateButtonPressed() async {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     final image = state.value?.image;
     if (image == null) {
@@ -100,7 +100,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   }
 
   Future<void> _updateUser() async {
-    final uid = ref.read(userProvider)!.uid;
+    final uid = ref.read(streamAuthUidProvider).value!;
     final object = AWSS3Core.profileObject(uid);
     final request = EditUserInfoRequest(
         stringNickName: stringNickName!, stringBio: stringBio!, object: object);
@@ -109,7 +109,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   }
 
   Future<void> _success(EditUserInfoResponse res) async {
-    final uid = ref.read(userProvider)!.uid;
+    final uid = ref.read(streamAuthUidProvider).value!;
     await ref.read(checkViewModelProvider.notifier).onUserUpdateSuccess(uid);
     ToastUICore.showFlutterToast("プロフィールを更新しました。");
     if (Get.currentRoute == EditUserPage.path) {
