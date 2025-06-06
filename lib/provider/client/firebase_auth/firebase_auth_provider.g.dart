@@ -10,9 +10,9 @@ String _$firebaseAuthHash() => r'8c3e9d11b27110ca96130356b5ef4d5d34a5ffc2';
 
 /// See also [firebaseAuth].
 @ProviderFor(firebaseAuth)
-final firebaseauthViewModelProvider = Provider<FirebaseAuth>.internal(
+final firebaseAuthProvider = Provider<FirebaseAuth>.internal(
   firebaseAuth,
-  name: r'firebaseauthViewModelProvider',
+  name: r'firebaseAuthProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$firebaseAuthHash,
   dependencies: null,

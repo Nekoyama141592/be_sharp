@@ -9,8 +9,8 @@ class ReauthenticateToDeletePage extends ConsumerWidget {
   static const path = "/reauthenticate/delete";
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(deleteUserProvider);
-    DeleteUserViewModel notifier() => ref.read(deleteUserProvider.notifier);
+    final state = ref.watch(deleteUserViewModelProvider);
+    DeleteUserViewModel notifier() => ref.read(deleteUserViewModelProvider.notifier);
     return BasicPage(
         appBarText: 'ユーザーを削除',
         child: AuthScreen(

@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'dart:convert';
 
 import 'package:be_sharp/view/common/circle_image/components/s3_image.dart';
 import 'package:flutter/material.dart';
@@ -8,22 +8,22 @@ class CircleImage extends StatelessWidget {
       {super.key,
       this.width,
       this.height,
-      required this.uint8list,
+      required this.image,
       this.onTap});
-  final Uint8List? uint8list;
+  final String? image;
   final double? width, height;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: uint8list == null
+      child: image == null
           ? Icon(
               Icons.image,
               size: width,
             )
           : S3Image(
-              uint8list: uint8list!,
+              uint8list: base64Decode(image!),
               width: width,
             ),
     );

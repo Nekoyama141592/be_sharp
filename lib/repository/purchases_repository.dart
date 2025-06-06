@@ -1,4 +1,4 @@
-import 'package:be_sharp/repository/result.dart';
+import 'package:be_sharp/repository/result/result.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 class PurchasesRepository {
@@ -8,7 +8,7 @@ class PurchasesRepository {
       await inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
       return const Result.success(true);
     } catch (e) {
-      return const Result.failure();
+      return const Result.failure('もう一度ボタンを押してください');
     }
   }
 
@@ -17,7 +17,7 @@ class PurchasesRepository {
       await inAppPurchase.restorePurchases();
       return const Result.success(true);
     } catch (e) {
-      return const Result.failure();
+      return const Result.failure('購入の復元が失敗しました');
     }
   }
 }

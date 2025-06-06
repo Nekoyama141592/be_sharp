@@ -1,19 +1,21 @@
 import 'package:be_sharp/core/credential_core.dart';
-import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/root_page/user_deleted_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+part 'delete_user_view_model.g.dart';
+@riverpod
 class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   @override
   User? build() {
-    return FirebaseAuth.instance.currentUser;
+    return ref.watch(streamAuthProvider).value;
   }
 
   AuthRepository get authRepository => ref.read(authRepositoryProvider);
@@ -31,7 +33,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   Future<void> _reauthenticateToDelete(AuthCredential credential) async {
     if (state == null) return;
     final result =
-        await authRepository.reauthenticateWithCredential(state!, credential);
+        await authRepository.reauthenticateWithCredential(credential);
     result.when(
         success: onReauthenticateSuccess, failure: onReauthenticateFailure);
   }
@@ -41,13 +43,12 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
         "ユーザーを削除しますが本当によろしいですか？", _deletePublicUser);
   }
 
-  void onReauthenticateFailure() {
+  void onReauthenticateFailure(String msg) {
     ToastUICore.showErrorFlutterToast('再認証に失敗しました');
   }
 
   Future<void> _deletePublicUser() async {
-    final ref = DocRefCore.user(state!.uid);
-    final result = await _databaseRepository.deleteDoc(ref);
+    final result = await _databaseRepository.deleteUser(state!.uid);
     result.when(success: onDeleteSuccess, failure: onDeleteFailure);
   }
 
@@ -55,11 +56,7 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
     RouteCore.pushPath(UserDeletedPage.path);
   }
 
-  void onDeleteFailure() {
+  void onDeleteFailure(String msg) {
     ToastUICore.showErrorFlutterToast("ユーザーの削除が失敗しました");
   }
 }
-
-final deleteUserProvider =
-    NotifierProvider.autoDispose<DeleteUserViewModel, User?>(
-        () => DeleteUserViewModel());

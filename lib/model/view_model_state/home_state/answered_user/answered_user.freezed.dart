@@ -21,9 +21,8 @@ AnsweredUser _$AnsweredUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AnsweredUser {
   ReadPublicUser get publicUser => throw _privateConstructorUsedError;
-  dynamic get userAnswerQDoc => throw _privateConstructorUsedError;
   ReadUserAnswer get userAnswer => throw _privateConstructorUsedError;
-  dynamic get userImage => throw _privateConstructorUsedError;
+  String? get userImage => throw _privateConstructorUsedError;
 
   /// Serializes this AnsweredUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,9 +42,8 @@ abstract class $AnsweredUserCopyWith<$Res> {
   @useResult
   $Res call(
       {ReadPublicUser publicUser,
-      dynamic userAnswerQDoc,
       ReadUserAnswer userAnswer,
-      dynamic userImage});
+      String? userImage});
 
   $ReadPublicUserCopyWith<$Res> get publicUser;
   $ReadUserAnswerCopyWith<$Res> get userAnswer;
@@ -67,7 +65,6 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
   @override
   $Res call({
     Object? publicUser = null,
-    Object? userAnswerQDoc = freezed,
     Object? userAnswer = null,
     Object? userImage = freezed,
   }) {
@@ -76,10 +73,6 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
           ? _value.publicUser
           : publicUser // ignore: cast_nullable_to_non_nullable
               as ReadPublicUser,
-      userAnswerQDoc: freezed == userAnswerQDoc
-          ? _value.userAnswerQDoc
-          : userAnswerQDoc // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       userAnswer: null == userAnswer
           ? _value.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
@@ -87,7 +80,7 @@ class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
       userImage: freezed == userImage
           ? _value.userImage
           : userImage // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ) as $Val);
   }
 
@@ -122,9 +115,8 @@ abstract class _$$AnsweredUserImplCopyWith<$Res>
   @useResult
   $Res call(
       {ReadPublicUser publicUser,
-      dynamic userAnswerQDoc,
       ReadUserAnswer userAnswer,
-      dynamic userImage});
+      String? userImage});
 
   @override
   $ReadPublicUserCopyWith<$Res> get publicUser;
@@ -146,7 +138,6 @@ class __$$AnsweredUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? publicUser = null,
-    Object? userAnswerQDoc = freezed,
     Object? userAnswer = null,
     Object? userImage = freezed,
   }) {
@@ -155,10 +146,6 @@ class __$$AnsweredUserImplCopyWithImpl<$Res>
           ? _value.publicUser
           : publicUser // ignore: cast_nullable_to_non_nullable
               as ReadPublicUser,
-      userAnswerQDoc: freezed == userAnswerQDoc
-          ? _value.userAnswerQDoc
-          : userAnswerQDoc // ignore: cast_nullable_to_non_nullable
-              as dynamic,
       userAnswer: null == userAnswer
           ? _value.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
@@ -166,7 +153,7 @@ class __$$AnsweredUserImplCopyWithImpl<$Res>
       userImage: freezed == userImage
           ? _value.userImage
           : userImage // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
     ));
   }
 }
@@ -176,7 +163,6 @@ class __$$AnsweredUserImplCopyWithImpl<$Res>
 class _$AnsweredUserImpl extends _AnsweredUser {
   const _$AnsweredUserImpl(
       {required this.publicUser,
-      required this.userAnswerQDoc,
       required this.userAnswer,
       required this.userImage})
       : super._();
@@ -187,15 +173,13 @@ class _$AnsweredUserImpl extends _AnsweredUser {
   @override
   final ReadPublicUser publicUser;
   @override
-  final dynamic userAnswerQDoc;
-  @override
   final ReadUserAnswer userAnswer;
   @override
-  final dynamic userImage;
+  final String? userImage;
 
   @override
   String toString() {
-    return 'AnsweredUser(publicUser: $publicUser, userAnswerQDoc: $userAnswerQDoc, userAnswer: $userAnswer, userImage: $userImage)';
+    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer, userImage: $userImage)';
   }
 
   @override
@@ -205,21 +189,16 @@ class _$AnsweredUserImpl extends _AnsweredUser {
             other is _$AnsweredUserImpl &&
             (identical(other.publicUser, publicUser) ||
                 other.publicUser == publicUser) &&
-            const DeepCollectionEquality()
-                .equals(other.userAnswerQDoc, userAnswerQDoc) &&
             (identical(other.userAnswer, userAnswer) ||
                 other.userAnswer == userAnswer) &&
-            const DeepCollectionEquality().equals(other.userImage, userImage));
+            (identical(other.userImage, userImage) ||
+                other.userImage == userImage));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      publicUser,
-      const DeepCollectionEquality().hash(userAnswerQDoc),
-      userAnswer,
-      const DeepCollectionEquality().hash(userImage));
+  int get hashCode =>
+      Object.hash(runtimeType, publicUser, userAnswer, userImage);
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.
@@ -240,9 +219,8 @@ class _$AnsweredUserImpl extends _AnsweredUser {
 abstract class _AnsweredUser extends AnsweredUser {
   const factory _AnsweredUser(
       {required final ReadPublicUser publicUser,
-      required final dynamic userAnswerQDoc,
       required final ReadUserAnswer userAnswer,
-      required final dynamic userImage}) = _$AnsweredUserImpl;
+      required final String? userImage}) = _$AnsweredUserImpl;
   const _AnsweredUser._() : super._();
 
   factory _AnsweredUser.fromJson(Map<String, dynamic> json) =
@@ -251,11 +229,9 @@ abstract class _AnsweredUser extends AnsweredUser {
   @override
   ReadPublicUser get publicUser;
   @override
-  dynamic get userAnswerQDoc;
-  @override
   ReadUserAnswer get userAnswer;
   @override
-  dynamic get userImage;
+  String? get userImage;
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.

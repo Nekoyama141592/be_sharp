@@ -4,10 +4,10 @@ import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/provider/view_model/create_user_answer/create_user_answer_view_model.dart';
 import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
-import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -19,8 +19,9 @@ class CreateUserAnswerPage extends HookConsumerWidget {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.read(createUserAnswerViewModelProvider.notifier);
-    final asyncValue = ref.watch(createUserAnswerViewModelProvider);
+    final problemId = Get.parameters['problemId']!;
+    final notifier = ref.read(createUserAnswerViewModelProvider(problemId).notifier);
+    final asyncValue = ref.watch(createUserAnswerViewModelProvider(problemId));
     final textController = useTextEditingController();
     final animationController = useAnimationController(
       duration: const Duration(seconds: 1),
@@ -74,7 +75,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          QuestionCard(state: state),
+                          if (state != null) QuestionCard(state: state),
                           const SizedBox(height: 30),
                           Container(
                               decoration: BoxDecoration(
@@ -132,8 +133,8 @@ class QuestionCard extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
-              LatexText(
-                data: state.latex,
+              Text(
+                state.latex,
                 style: GoogleFonts.roboto(
                     fontSize: 28, fontWeight: FontWeight.bold),
               ),

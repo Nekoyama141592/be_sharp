@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:be_sharp/constants/colors.dart';
 import 'package:be_sharp/provider/view_model/home/home_view_model.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
@@ -64,7 +66,7 @@ class HomeScreen extends ConsumerWidget {
                         rank: index + 1,
                         user: user,
                         answerTime: e.userAnswer.getDifference(problem),
-                        userImage: MemoryImage(e.userImage),
+                        userImage: MemoryImage(base64Decode(e.userImage!)),
                         caption: e.userAnswer.caption?.value,
                         isInTime: e.userAnswer.isInTime(problem),
                         onMoreButtonPressed: () => notifier()

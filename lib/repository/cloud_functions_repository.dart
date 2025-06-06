@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:be_sharp/core/json_core.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
@@ -7,7 +6,7 @@ import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response
 import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/model/rest_api/verify_purchase/request/receipt_request.dart';
-import 'package:be_sharp/repository/result.dart';
+import 'package:be_sharp/repository/result/result.dart' as rs;
 import 'package:be_sharp/model/rest_api/delete_object/request/delete_object_request.dart';
 import 'package:be_sharp/model/rest_api/delete_object/response/delete_object_response.dart';
 import 'package:be_sharp/model/rest_api/get_object/request/get_object_request.dart';
@@ -36,81 +35,81 @@ class CloudFunctionsRepository {
     final decoded = JsonCore.encodeDecode(data);
     return decoded;
   }
-  FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
+  rs.FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
     try {
       const name = 'putObject';
       final result = await call(name, request.toJson());
       final res = PutObjectResponse.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
-      return const Result.failure();
+      return rs.Result.failure('Failed to put object: $e');
     }
   }
 
-  FutureResult<Uint8List> getObject(GetObjectRequest request) async {
+  Future<String?> getObject(GetObjectRequest request) async {
     try {
       const name = 'getObject';
       final result = await call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
-      final base64Image = res.base64Image;
-      final image = base64Decode(base64Image);
-      return Result.success(image);
+      final image =  res.base64Image;
+      return image;
     } catch (e) {
-      return const Result.failure();
+      debugPrint('getImage: $e');
+      return null;
     }
   }
 
-  FutureResult<DeleteObjectResponse> deleteObject(
+  rs.FutureResult<DeleteObjectResponse> deleteObject(
       DeleteObjectRequest request) async {
     try {
       const name = 'deleteObject';
       final result = await call(name, request.toJson());
       final res = DeleteObjectResponse.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
-      return const Result.failure();
+      return rs.Result.failure('Failed to delete object: $e');
     }
   }
 
-  FutureResult<EditUserInfoResponse> editUserInfo(
+  rs.FutureResult<EditUserInfoResponse> editUserInfo(
       EditUserInfoRequest request) async {
     try {
       const name = 'editUserInfo';
       final result = await call(name, request.toJson());
       final res = EditUserInfoResponse.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
-      return const Result.failure();
+      return rs.Result.failure('Failed to edit user info: $e');
     }
   }
 
-  FutureResult<VerifiedPurchase> verifyAndroidReceipt(
+  rs.FutureResult<VerifiedPurchase> verifyAndroidReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
-      return const Result.failure();
+      return rs.Result.failure('Failed to verify Android receipt: $e');
     }
   }
 
-  FutureResult<VerifiedPurchase> verifyIOSReceipt(
+  rs.FutureResult<VerifiedPurchase> verifyIOSReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyIOSReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
-      return const Result.failure();
+      return rs.Result.failure('Failed to verify iOS receipt: $e');
     }
   }
 
-  FutureResult<AddCaptionResponse> addCaption(
+  rs.FutureResult<AddCaptionResponse> addCaption(
       String problemId, String caption) async {
     try {
       const name = 'addCaption';
@@ -118,23 +117,23 @@ class CloudFunctionsRepository {
           AddCaptionRequest(problemId: problemId, stringCaption: caption);
       final result = await call(name, request.toJson());
       final res = AddCaptionResponse.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
       debugPrint(e.toString());
-      return const Result.failure();
+      return rs.Result.failure('Failed to add caption: $e');
     }
   }
 
-  FutureResult<CreateProblemResponse> createProblem(
+  rs.FutureResult<CreateProblemResponse> createProblem(
       CreateProblemRequest request) async {
     try {
       const name = 'createProblem';
       final result = await call(name, request.toJson());
       final res = CreateProblemResponse.fromJson(result);
-      return Result.success(res);
+      return rs.Result.success(res);
     } catch (e) {
       debugPrint(e.toString());
-      return const Result.failure();
+      return rs.Result.failure('Failed to create problem: $e');
     }
   }
 }

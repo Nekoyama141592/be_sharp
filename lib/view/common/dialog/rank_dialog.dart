@@ -64,7 +64,7 @@ class RankDialog extends HookWidget {
     if (rank == 1) return '1位';
     if (rank == 2) return '2位';
     if (rank == 3) return '3位';
-    return '${rank}位';
+    return '$rank位';
   }
 
   IconData _getRankIcon(int rank) {

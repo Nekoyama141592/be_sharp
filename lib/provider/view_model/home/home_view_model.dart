@@ -1,18 +1,14 @@
 import 'dart:async';
-import 'package:be_sharp/core/doc_ref_core.dart';
-import 'package:be_sharp/core/query_core.dart';
-import 'package:be_sharp/core/view_core/home_core.dart';
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/dialog/text_action.dart';
-import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
-import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
-import 'package:be_sharp/provider/overrides/prefs_provider.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/user_case/home_use_case_provider.dart';
 import 'package:be_sharp/ui_core/dialog_ui_core.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:be_sharp/user_case/home/home_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -24,23 +20,22 @@ class HomeViewModel extends _$HomeViewModel {
   FutureOr<HomeState> build() async {
     return _fetchData();
   }
+  HomeUseCase get _homeUseCase => ref.read(homeUseCaseProvider);
 
   Future<HomeState> _fetchData() async {
-    final latestProblem = await _fetchLatestProblem();
+    final latestProblem = await ref.read(databaseRepositoryProvider).fetchLatestProblem();
     if (latestProblem == null) return const HomeState();
     final problemId = latestProblem.problemId;
     final answers = latestProblem.answers;
     if (answers.isEmpty) {
       return HomeState(latestProblem: latestProblem);
     }
-    final query = QueryCore.correctUserAnswers(problemId, answers);
-    final [(qshot as QuerySnapshot<Map<String, dynamic>>), (userCount as int)] =
-        await Future.wait([query.get(), HomeCore.fetchUserCount(problemId)]);
-    final prefs = ref.read(prefsProvider);
-    final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>)] =
+    final userAnswers = await ref.read(databaseRepositoryProvider).fetchCorrectUserAnswers(problemId, answers);
+    final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>),(userCount as int)] =
         await Future.wait([
-      HomeCore.fetchAnsweredUsers(qshot, prefs),
-      HomeCore.fetchMuteUsers(ref.read(userProvider)?.uid, qshot),
+      _homeUseCase.fetchAnsweredUsers(userAnswers),
+      _homeUseCase.fetchMuteUsers(ref.read(streamAuthUidProvider).value, userAnswers),
+      _homeUseCase.fetchUserCount(problemId)
     ]);
     // 早い順に並べる
     final result = [...answeredUsers]..sort((a, b) =>
@@ -51,18 +46,7 @@ class HomeViewModel extends _$HomeViewModel {
         muteUids: muteUids,
         userCount: userCount);
   }
-
-  Future<ReadProblem?> _fetchLatestProblem() async {
-    final query = QueryCore.latestProblem();
-    final qshot = await query.get();
-    final docs = qshot.docs;
-    if (docs.isEmpty) return null;
-    return ReadProblem.fromJson(docs.first.data());
-  }
-
   void onMoreButtonPressed(BuildContext context, String muteUid) {
-    // print(state.value?.muteUids);
-    // return;
     final actions = <TextAction>[
       TextAction(
           text: 'このユーザーをミュートする',
@@ -75,20 +59,16 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   Future<void> _muteUser(BuildContext context, String muteUid) async {
-    final uid = ref.read(userProvider)?.uid;
+    final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null || uid == muteUid) return;
-    final docRef = DocRefCore.muteUser(uid, muteUid);
-    final repository = ref.read(databaseRepositoryProvider);
-    final json =
-        MuteUser(muteUid: muteUid, createdAt: Timestamp.now()).toJson();
-    final result = await repository.createDoc(docRef, json);
+    final result = await ref.read(databaseRepositoryProvider).muteUser(uid, muteUid);
     result.when(
         success: (_) => _onMuteSuccess(context, muteUid),
-        failure: () => _onMuteFailure(context));
+        failure: (_) => _onMuteFailure(context));
   }
 
   void _onMuteSuccess(BuildContext context, String muteUid) async {
-    Navigator.pop(context);
+    RouteCore.backWithContext(context);
     final stateValue = state.value;
     if (stateValue == null) return;
     state = const AsyncValue.loading();
@@ -101,7 +81,7 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   void _onMuteFailure(BuildContext context) {
-    Navigator.pop(context);
+    RouteCore.backWithContext(context);
     ToastUICore.showErrorFlutterToast('ユーザーをミュートできませんでした');
   }
 }

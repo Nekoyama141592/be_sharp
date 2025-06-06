@@ -1,4 +1,7 @@
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/view/root_page/logouted_page.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,8 +15,7 @@ class AccountPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(userProvider);
-    UserProvider notifier() => ref.read(userProvider.notifier);
+    final state = ref.watch(streamAuthProvider).value;
     return Scaffold(
       appBar: AppBar(
         title: const Text("アカウントページ"),
@@ -28,7 +30,14 @@ class AccountPage extends ConsumerWidget {
           if (state != null) ...[
             ListTile(
               title: const Text("ログアウトする"),
-              onTap: notifier().onSignoutButtonPressed,
+              onTap: () async {
+                final result = await ref.read(authRepositoryProvider).signOut();
+                result.when(success: (_) {
+                  RouteCore.pushPath(LogoutedPage.path);
+                }, failure: (msg) {
+                  ToastUICore.showErrorFlutterToast(msg);
+                });
+              },
             ),
             ListTile(
                 title: const Text(

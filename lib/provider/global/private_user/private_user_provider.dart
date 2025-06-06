@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:be_sharp/core/doc_ref_core.dart';
 import 'package:be_sharp/model/firestore_model/private_user/private_user.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/repository/database_repository.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'private_user_provider.g.dart';
@@ -11,27 +11,24 @@ part 'private_user_provider.g.dart';
 @Riverpod(keepAlive: true)
 class PrivateUserNotifier extends _$PrivateUserNotifier {
   @override
-  FutureOr<PrivateUser> build() async {
+  FutureOr<PrivateUser?> build() async {
     return _fetchData();
   }
-
-  Future<PrivateUser> _fetchData() async {
-    final uid = ref.read(userProvider)!.uid;
-    final docRef = DocRefCore.privateUser(uid);
-    final doc = await docRef.get();
+  DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
+  Future<PrivateUser?> _fetchData() async {
+    final uid = ref.watch(streamAuthUidProvider).value;
+    if (uid == null) return null;
+    final privateUser = await _repository.getPrivateUser(uid);
     final token = await _getToken();
-    if (doc.exists) {
-      final privateUser = PrivateUser.fromJson(doc.data()!);
+    if (privateUser != null) {
       if (token != null && token != privateUser.fcmToken) {
-        await doc.reference.update({'fcmToken': token});
+        await _repository.updateToken(uid, token);
       }
       return privateUser;
     } else {
-      final privateUser = PrivateUser(
-          fcmToken: token ?? '', uid: uid, createdAt: Timestamp.now());
-      final data = privateUser.toJson();
-      await docRef.set(data);
-      return privateUser;
+      await _repository.createPrivateUser(uid, token);
+      final newPrivateUser = await _repository.getPrivateUser(uid);
+      return newPrivateUser;
     }
   }
 

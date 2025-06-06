@@ -4,7 +4,6 @@ import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_re
 import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:be_sharp/view/common/latex_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -63,8 +62,8 @@ class AdminViewModel extends _$AdminViewModel {
             ),
           ),
           const SizedBox(height: 10),
-          LatexText(
-              data: latex,
+          Text(
+              latex,
               style: GoogleFonts.notoSans(
                 fontSize: 28,
                 fontWeight: FontWeight.w500,
@@ -102,7 +101,7 @@ class AdminViewModel extends _$AdminViewModel {
     ToastUICore.showFlutterToast('作成が成功しました');
   }
 
-  void _onFailure() {
-    ToastUICore.showErrorFlutterToast('作成が失敗しました');
+  void _onFailure(String msg) {
+    ToastUICore.showErrorFlutterToast(msg);
   }
 }

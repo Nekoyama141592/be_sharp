@@ -1,13 +1,14 @@
 import 'dart:async';
 
-import 'package:be_sharp/core/col_ref_core.dart';
 import 'package:be_sharp/core/purchases_core.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/view_model_state/purchases_state/purchases_state.dart';
-import 'package:be_sharp/provider/global/user_provider.dart';
+import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
+import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/purchases_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/user_case/purchases/purchases_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 part 'purchases_view_model.g.dart';
@@ -34,20 +35,9 @@ class Purchases extends _$Purchases {
         products: products, verifiedPurchases: verifiedPurchases);
   }
 
-  Future<List<VerifiedPurchase>> _fetchPurchases() async {
-    try {
-      final uid = ref.read(userProvider)?.uid;
-      if (uid == null) return [];
-      final colRef = ColRefCore.verifiedPurchases(uid);
-      final qshot = await colRef.get();
-      final docs = qshot.docs;
-      final verifiedPurchases =
-          docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
-      final results = verifiedPurchases.where((e) => e.isValid()).toList();
-      return results;
-    } catch (e) {
-      return [];
-    }
+  Future<List<VerifiedPurchase>> _fetchPurchases() {
+    final uid = ref.read(streamAuthUidProvider).value;
+    return ref.read(databaseRepositoryProvider).getVerifiedPurchases(uid);
   }
 
   StreamSubscription<List<PurchaseDetails>> _getSubscription() {
@@ -68,8 +58,8 @@ class Purchases extends _$Purchases {
 
   void _onPurchaseSuccess(bool res) {}
 
-  void _onPurchaseFailed() {
-    ToastUICore.showFlutterToast("もう一度ボタンを押してください");
+  void _onPurchaseFailed(String msg) {
+    ToastUICore.showFlutterToast(msg);
   }
 
   bool isSubscribing() => state.value?.isSubscribing() ?? false;
@@ -79,7 +69,7 @@ class Purchases extends _$Purchases {
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
       if (details.isError || !details.isPurchased) continue;
-      final result = await PurchasesCore.verifyPurchase(details);
+      final result = await ref.read(purchasesUsecaseProvider).verifyPurchase(details);
       await result.when(
           success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
     }
@@ -105,9 +95,9 @@ class Purchases extends _$Purchases {
     });
   }
 
-  Future<void> _onVerifyFailed() async {
+  Future<void> _onVerifyFailed(String msg) async {
     // 失敗した時の処理.
-    ToastUICore.showErrorFlutterToast("購入の検証が失敗しました");
+    ToastUICore.showErrorFlutterToast(msg);
   }
 
   void onRestoreButtonPressed() async {

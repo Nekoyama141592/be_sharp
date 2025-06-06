@@ -21,7 +21,7 @@ class OriginalDrawerHeader extends ConsumerWidget {
           currentAccountPicture: CircleImage(
             height: 72.0,
             width: 72.0,
-            uint8list: image,
+            image: image,
           ),
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
