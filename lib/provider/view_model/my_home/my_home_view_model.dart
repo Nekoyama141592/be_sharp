@@ -25,8 +25,7 @@ class MyHomeViewModel extends _$MyHomeViewModel {
   void _init() {
     final uid = ref.read(userProvider)?.uid;
     if (uid == null) return;
-    final query = QueryCore.latestProblemQuery();
-    subscriptionStream = query.snapshots().listen((event) async {
+    subscriptionStream = repository.latestPromblemSnapshots().listen((event) async {
       final isAdmin = ref.read(privateUserNotifierProvider.notifier).isAdmin();
       if (isAdmin) return;
       final docs = event.docs;
@@ -40,16 +39,10 @@ class MyHomeViewModel extends _$MyHomeViewModel {
     final problem = ReadProblem.fromJson(problemDoc.data());
     if (!problem.isInTimeLimit()) return;
     final problemId = problem.problemId;
-    final docRef = DocRefCore.userAnswerDocRef(uid, problemId);
-    final result = await repository.getDoc(docRef);
-    result.when(
-        success: (doc) {
-          final isNoAnswer = !doc.exists;
-          if (isNoAnswer) {
-            final path = CreateUserAnswerPage.generatePath(problemId);
-            RouteCore.pushPathWithoutContext(path);
-          }
-        },
-        failure: () {});
+    final doc = await repository.getUserAnswerDoc(uid, problemId);
+    final isExists = doc != null && doc.exists;
+    if (isExists) return;
+    final path = CreateUserAnswerPage.generatePath(problemId);
+    RouteCore.pushPathWithoutContext(path);
   }
 }

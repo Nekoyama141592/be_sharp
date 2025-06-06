@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:be_sharp/constants/limit_constant.dart';
 import 'package:be_sharp/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/model/firestore_model/private_user/private_user.dart';
@@ -309,5 +311,18 @@ class DatabaseRepository {
       debugPrint(e.toString());
       return [];
     }
+  }
+
+  Future<Doc?> getUserAnswerDoc(String uid,String problemId) async {
+    try {
+      final docRef = _userAnswerDocRef(uid, problemId);
+      return _getDoc(docRef);
+    } catch(e) {
+      debugPrint(e.toString());
+      return null;
+    }
+  }
+  Stream<QuerySnapshot<Map<String, dynamic>>> latestPromblemSnapshots() {
+    return _latestProblemQuery().snapshots();
   }
 }
