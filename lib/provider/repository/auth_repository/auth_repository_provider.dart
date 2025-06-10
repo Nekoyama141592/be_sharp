@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/client/firebase_auth/firebase_auth_provider.dart';
+import 'package:be_sharp/provider/keep_alive/infrastructure/firebase/firebase_auth/firebase_auth_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

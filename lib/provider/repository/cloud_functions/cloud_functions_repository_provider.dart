@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/client/firebase_functions/firebase_functions_provider.dart';
+import 'package:be_sharp/provider/keep_alive/infrastructure/firebase/firebase_functions/firebase_functions_provider.dart';
 import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

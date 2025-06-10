@@ -5,10 +5,10 @@ import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/view_model_state/purchases_state/purchases_state.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
-import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
-import 'package:be_sharp/repository/purchases_repository.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/repository/purchase_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:be_sharp/user_case/purchases/purchases_usecase.dart';
+import 'package:be_sharp/use_case/purchases/purchases_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 part 'purchases_view_model.g.dart';
@@ -51,7 +51,7 @@ class Purchases extends _$Purchases {
     final purchaseParam =
         PurchasesCore.param(details, state.value?.verifiedPurchases);
     await ToastUICore.showFlutterToast("情報を取得しています。 \nしばらくお待ちください。");
-    final repository = PurchasesRepository();
+    final repository = PurchaseRepository();
     final result = await repository.buyNonConsumable(purchaseParam);
     result.when(success: _onPurchaseSuccess, failure: _onPurchaseFailed);
   }
@@ -101,7 +101,7 @@ class Purchases extends _$Purchases {
   }
 
   void onRestoreButtonPressed() async {
-    final repository = PurchasesRepository();
+    final repository = PurchaseRepository();
     await repository.restorePurchases();
   }
 }

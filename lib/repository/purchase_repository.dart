@@ -1,7 +1,7 @@
 import 'package:be_sharp/repository/result/result.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-class PurchasesRepository {
+class PurchaseRepository {
   InAppPurchase get inAppPurchase => InAppPurchase.instance;
   FutureResult<bool> buyNonConsumable(PurchaseParam purchaseParam) async {
     try {

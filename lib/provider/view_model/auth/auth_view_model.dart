@@ -1,5 +1,5 @@
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
-import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

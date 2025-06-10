@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:be_sharp/model/firestore_model/private_user/private_user.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
-import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

@@ -2,7 +2,7 @@ import 'package:be_sharp/core/credential_core.dart';
 import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
-import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';

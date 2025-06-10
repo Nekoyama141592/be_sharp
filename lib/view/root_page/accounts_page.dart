@@ -1,5 +1,5 @@
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
-import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/root_page/logouted_page.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';

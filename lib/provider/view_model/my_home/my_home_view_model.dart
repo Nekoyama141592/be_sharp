@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:be_sharp/core/route_core.dart';
-import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/provider/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/typedefs/firestore_typedef.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 part 'my_home_view_model.g.dart';

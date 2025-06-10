@@ -1,6 +1,6 @@
-import 'package:be_sharp/provider/global/private_user/private_user_provider.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_provider.dart';
 import 'package:be_sharp/provider/view_model/my_home/my_home_view_model.dart';
-import 'package:be_sharp/provider/global/purchases/purchases_view_model.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/purchases/purchases_view_model.dart';
 import 'package:be_sharp/ui_core/bnb_ui_core.dart';
 import 'package:be_sharp/view/common/drawer/original_drawer.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
