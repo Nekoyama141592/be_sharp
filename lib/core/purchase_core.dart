@@ -1,13 +1,10 @@
 import 'dart:io';
 
 import 'package:be_sharp/constants/enums/env_key.dart';
-import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-import 'package:in_app_purchase_android/billing_client_wrappers.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
-import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
 
 class PurchaseCore {
   static PurchaseDetails purchaseDetailsFromJson(Map<String, dynamic> json) {
@@ -61,31 +58,6 @@ class PurchaseCore {
     final productDetails = res.productDetails;
     final products = productDetails.isEmpty ? _mockProducts() : productDetails;
     return products;
-  }
-
-  static InAppPurchase get inAppPurchase => InAppPurchase.instance;
-  static Stream<List<PurchaseDetails>> stream() => inAppPurchase.purchaseStream;
-  static Future<void> completePurchase(PurchaseDetails purchaseDetails) async {
-    if (!purchaseDetails.pendingCompletePurchase) return;
-    await inAppPurchase.completePurchase(purchaseDetails);
-  }
-
-  static Future<void> acknowledge(PurchaseDetails details) async {
-    if (!Platform.isAndroid || details.isPending) return;
-    // 承認を行う.行わないと払い戻しが行われる.
-    final client = BillingClient((_) {}, (__) {});
-    final serverVerificationData =
-        details.verificationData.serverVerificationData;
-    await client.acknowledgePurchase(serverVerificationData);
-  }
-
-  static Future<void> cancelTransctions() async {
-    if (!Platform.isIOS) return;
-    final wrapper = SKPaymentQueueWrapper();
-    final transactions = await wrapper.transactions();
-    for (final tx in transactions) {
-      await wrapper.finishTransaction(tx);
-    }
   }
 
   static PurchaseParam param(

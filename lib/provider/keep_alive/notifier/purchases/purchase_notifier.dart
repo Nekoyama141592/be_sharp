@@ -6,6 +6,7 @@ import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purcha
 import 'package:be_sharp/model/view_model_state/purchase_state/purchase_state.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
+import 'package:be_sharp/provider/repository/purchase/purchase_repository_provider.dart';
 import 'package:be_sharp/provider/use_case/purchase/purchase_use_case_provider.dart';
 import 'package:be_sharp/repository/purchase_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
@@ -15,14 +16,14 @@ part 'purchase_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
 class PurchaseNotifier extends _$PurchaseNotifier {
-  late StreamSubscription<List<PurchaseDetails>> subscription;
   bool isVerifing = false;
   @override
   FutureOr<PurchaseState> build() async {
-    subscription = _getSubscription();
+    // final detailsList = ref.watch(purchaseStreamProvider).value ?? [];
     return _fetch();
   }
 
+  PurchaseRepository get _repository => ref.read(purchaseRepositoryProvider);
   Future<PurchaseState> _fetch() async {
     final inAppPurchase = InAppPurchase.instance;
     final bool storeConnected = await inAppPurchase.isAvailable();
@@ -40,19 +41,12 @@ class PurchaseNotifier extends _$PurchaseNotifier {
     return ref.read(databaseRepositoryProvider).getVerifiedPurchases(uid);
   }
 
-  StreamSubscription<List<PurchaseDetails>> _getSubscription() {
-    final stream = PurchaseCore.stream();
-    final result = stream.listen(_onListen);
-    return result;
-  }
-
   void onPurchaseButtonPressed(ProductDetails details) async {
-    await PurchaseCore.cancelTransctions();
+    await _repository.cancelTransctions();
     final purchaseParam =
         PurchaseCore.param(details, state.value?.verifiedPurchases);
     await ToastUICore.showFlutterToast("情報を取得しています。 \nしばらくお待ちください。");
-    final repository = PurchaseRepository();
-    final result = await repository.buyNonConsumable(purchaseParam);
+    final result = await _repository.buyNonConsumable(purchaseParam);
     result.when(success: _onPurchaseSuccess, failure: _onPurchaseFailed);
   }
 
@@ -62,7 +56,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
     ToastUICore.showFlutterToast(msg);
   }
 
-  Future<void> _onListen(List<PurchaseDetails> detailsList) async {
+  Future<List<VerifiedPurchase>> _onListen(List<PurchaseDetails> detailsList) async {
     ToastUICore.showFlutterToast('購入情報を検証しています');
     isVerifing = true;
     for (int i = 0; i < detailsList.length; i++) {
@@ -72,26 +66,14 @@ class PurchaseNotifier extends _$PurchaseNotifier {
       await result.when(
           success: (_) => _onVerifySuccess(details), failure: _onVerifyFailed);
     }
-    await _updateVerifiedPurchases();
     isVerifing = false;
     ToastUICore.showFlutterToast('購入情報の検証が完了しました');
+    return _fetchPurchases();
   }
 
   Future<void> _onVerifySuccess(PurchaseDetails details) async {
-    await PurchaseCore.completePurchase(details);
-    await PurchaseCore.acknowledge(details);
-  }
-
-  Future<void> _updateVerifiedPurchases() async {
-    final stateValue = state.value;
-    if (stateValue == null) return;
-    state = await AsyncValue.guard(() async {
-      final newVerifiedPurchases = await _fetchPurchases();
-      final result = stateValue.copyWith(
-        verifiedPurchases: newVerifiedPurchases,
-      );
-      return result;
-    });
+    await _repository.completePurchase(details);
+    await _repository.acknowledge(details);
   }
 
   Future<void> _onVerifyFailed(String msg) async {
@@ -100,7 +82,6 @@ class PurchaseNotifier extends _$PurchaseNotifier {
   }
 
   void onRestoreButtonPressed() async {
-    final repository = PurchaseRepository();
-    await repository.restorePurchases();
+    await _repository.restorePurchases();
   }
 }
