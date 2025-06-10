@@ -1,4 +1,4 @@
-import 'package:be_sharp/provider/overrides/prefs_provider.dart';
+import 'package:be_sharp/provider/keep_alive/overrides/prefs/prefs_provider.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/use_case/file_use_case.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
