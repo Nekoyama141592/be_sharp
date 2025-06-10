@@ -12,10 +12,10 @@ import 'package:be_sharp/repository/purchase_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-part 'purchase_notifier.g.dart';
+part 'products_notifier.g.dart';
 
 @Riverpod(keepAlive: true)
-class PurchaseNotifier extends _$PurchaseNotifier {
+class ProductsNotifier extends _$ProductsNotifier {
   bool isVerifing = false;
   @override
   FutureOr<PurchaseState> build() async {

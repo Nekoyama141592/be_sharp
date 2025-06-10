@@ -1,6 +1,6 @@
 import 'package:be_sharp/constants/colors.dart';
 import 'package:be_sharp/core/purchase_core.dart';
-import 'package:be_sharp/provider/keep_alive/notifier/purchases/purchase_notifier.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/products/products_notifier.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/products_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +13,8 @@ class ProductsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    PurchaseNotifier notifier() => ref.read(purchaseNotifierProvider.notifier);
-    final asyncValue = ref.watch(purchaseNotifierProvider);
+    ProductsNotifier notifier() => ref.read(productsNotifierProvider.notifier);
+    final asyncValue = ref.watch(productsNotifierProvider);
     return AsyncScreen(
       asyncValue: asyncValue,
       data: (state) {
