@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'latest_problem_view_model.dart';
+part of 'purchase_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$latestProblemViewModelHash() =>
-    r'eff3be67a255e718e0ffbe42eb7e4d15cefe5577';
+String _$purchaseNotifierHash() => r'8ee06a40df70909ac3eaabb33a0a1ce6e57392de';
 
-/// See also [LatestProblemViewModel].
-@ProviderFor(LatestProblemViewModel)
-final latestProblemViewModelProvider = AutoDisposeAsyncNotifierProvider<
-    LatestProblemViewModel, LatestProblemState>.internal(
-  LatestProblemViewModel.new,
-  name: r'latestProblemViewModelProvider',
+/// See also [PurchaseNotifier].
+@ProviderFor(PurchaseNotifier)
+final purchaseNotifierProvider =
+    AsyncNotifierProvider<PurchaseNotifier, PurchaseState>.internal(
+  PurchaseNotifier.new,
+  name: r'purchaseNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$latestProblemViewModelHash,
+      : _$purchaseNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$LatestProblemViewModel = AutoDisposeAsyncNotifier<LatestProblemState>;
+typedef _$PurchaseNotifier = AsyncNotifier<PurchaseState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

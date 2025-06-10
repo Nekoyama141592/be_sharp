@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/purchases_core.dart';
+import 'package:be_sharp/core/purchase_core.dart';
 import 'package:be_sharp/model/rest_api/verify_purchase/response/android_receipt_response/android_receipt_response.dart';
 import 'package:be_sharp/model/rest_api/verify_purchase/response/ios_receipt_response/ios_receipt_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -27,7 +27,7 @@ abstract class VerifiedPurchase with _$VerifiedPurchase {
   IOSReceiptResponse get _iosReceipt =>
       IOSReceiptResponse.fromJson(verifiedReceipt);
   PurchaseDetails typedPurchaseDetails() {
-    return PurchasesCore.purchaseDetailsFromJson(purchaseDetails);
+    return PurchaseCore.purchaseDetailsFromJson(purchaseDetails);
   }
 
   String get _expiryTimeMillis {

@@ -6,7 +6,7 @@ import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.da
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-part 'private_user_provider.g.dart';
+part 'private_user_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 class PrivateUserNotifier extends _$PrivateUserNotifier {

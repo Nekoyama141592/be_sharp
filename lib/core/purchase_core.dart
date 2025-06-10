@@ -9,7 +9,7 @@ import 'package:in_app_purchase_android/billing_client_wrappers.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
 
-class PurchasesCore {
+class PurchaseCore {
   static PurchaseDetails purchaseDetailsFromJson(Map<String, dynamic> json) {
     return PurchaseDetails(
       purchaseID: json['purchaseID'],

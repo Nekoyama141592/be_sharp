@@ -1,20 +1,20 @@
 import 'package:be_sharp/constants/colors.dart';
-import 'package:be_sharp/core/purchases_core.dart';
-import 'package:be_sharp/provider/keep_alive/notifier/purchases/purchases_view_model.dart';
+import 'package:be_sharp/core/purchase_core.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/purchases/purchase_notifier.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
-import 'package:be_sharp/view/page/my_home_page/components/purchases_screen/components/policy_buttons.dart';
+import 'package:be_sharp/view/page/my_home_page/components/products_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PurchasesScreen extends ConsumerWidget {
-  const PurchasesScreen({super.key});
+class ProductsScreen extends ConsumerWidget {
+  const ProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Purchases notifier() => ref.read(purchasesProvider.notifier);
-    final asyncValue = ref.watch(purchasesProvider);
+    PurchaseNotifier notifier() => ref.read(purchaseNotifierProvider.notifier);
+    final asyncValue = ref.watch(purchaseNotifierProvider);
     return AsyncScreen(
       asyncValue: asyncValue,
       data: (state) {
@@ -57,7 +57,7 @@ class PurchasesScreen extends ConsumerWidget {
                     ...products.map((product) {
                       return PurchaseCard(
                         product: product,
-                        isMonthPlan: product.id == PurchasesCore.monthItemId(),
+                        isMonthPlan: product.id == PurchaseCore.monthItemId(),
                         isPurchased: state.isPurchased(product.id),
                         onPressed: () {
                           notifier().onPurchaseButtonPressed(product);

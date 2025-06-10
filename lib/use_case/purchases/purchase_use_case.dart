@@ -7,14 +7,14 @@ import 'package:be_sharp/repository/result/result.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-part 'purchases_usecase.g.dart';
+part 'purchase_use_case.g.dart';
 
 @riverpod
-PurchasesUsecase purchasesUsecase(Ref ref) =>
-    PurchasesUsecase(ref.watch(cloudFunctionsRepositoryProvider));
+PurchaseUseCase purchaseUseCase(Ref ref) =>
+    PurchaseUseCase(ref.watch(cloudFunctionsRepositoryProvider));
 
-class PurchasesUsecase {
-  PurchasesUsecase(this.repository);
+class PurchaseUseCase {
+  PurchaseUseCase(this.repository);
   final CloudFunctionsRepository repository;
   FutureResult<VerifiedPurchase> verifyPurchase(
     PurchaseDetails purchaseDetails,

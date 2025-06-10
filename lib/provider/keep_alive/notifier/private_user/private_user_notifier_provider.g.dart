@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'purchases_usecase.dart';
+part of 'private_user_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$purchasesUsecaseHash() => r'80be3c930940677b1b9d805bf34a6aebde6e1b38';
+String _$privateUserNotifierHash() =>
+    r'61fe3597beb9032b048c453e5f3e590a075dc608';
 
-/// See also [purchasesUsecase].
-@ProviderFor(purchasesUsecase)
-final purchasesUsecaseProvider = AutoDisposeProvider<PurchasesUsecase>.internal(
-  purchasesUsecase,
-  name: r'purchasesUsecaseProvider',
+/// See also [PrivateUserNotifier].
+@ProviderFor(PrivateUserNotifier)
+final privateUserNotifierProvider =
+    AsyncNotifierProvider<PrivateUserNotifier, PrivateUser?>.internal(
+  PrivateUserNotifier.new,
+  name: r'privateUserNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$purchasesUsecaseHash,
+      : _$privateUserNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef PurchasesUsecaseRef = AutoDisposeProviderRef<PurchasesUsecase>;
+typedef _$PrivateUserNotifier = AsyncNotifier<PrivateUser?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

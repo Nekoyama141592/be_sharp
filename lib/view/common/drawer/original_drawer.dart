@@ -1,5 +1,5 @@
 import 'package:be_sharp/core/route_core.dart';
-import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_provider.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:be_sharp/core/route_core.dart';
-import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_provider.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
