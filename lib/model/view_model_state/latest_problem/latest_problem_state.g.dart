@@ -6,9 +6,8 @@ part of 'latest_problem_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LatestProblemStateImpl _$$LatestProblemStateImplFromJson(
-        Map<String, dynamic> json) =>
-    _$LatestProblemStateImpl(
+_LatestProblemState _$LatestProblemStateFromJson(Map<String, dynamic> json) =>
+    _LatestProblemState(
       problem: json['problem'] == null
           ? null
           : ReadProblem.fromJson(json['problem'] as Map<String, dynamic>),
@@ -17,8 +16,7 @@ _$LatestProblemStateImpl _$$LatestProblemStateImplFromJson(
           : ReadUserAnswer.fromJson(json['userAnswer'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$LatestProblemStateImplToJson(
-        _$LatestProblemStateImpl instance) =>
+Map<String, dynamic> _$LatestProblemStateToJson(_LatestProblemState instance) =>
     <String, dynamic>{
       'problem': instance.problem,
       'userAnswer': instance.userAnswer,

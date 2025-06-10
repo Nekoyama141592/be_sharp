@@ -6,9 +6,8 @@ part of 'write_public_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$WritePublicUserImpl _$$WritePublicUserImplFromJson(
-        Map<String, dynamic> json) =>
-    _$WritePublicUserImpl(
+_WritePublicUser _$WritePublicUserFromJson(Map<String, dynamic> json) =>
+    _WritePublicUser(
       createdAt: json['createdAt'],
       followerCount: (json['followerCount'] as num?)?.toInt() ?? 0,
       followingCount: (json['followingCount'] as num?)?.toInt() ?? 0,
@@ -17,8 +16,7 @@ _$WritePublicUserImpl _$$WritePublicUserImplFromJson(
       updatedAt: json['updatedAt'],
     );
 
-Map<String, dynamic> _$$WritePublicUserImplToJson(
-        _$WritePublicUserImpl instance) =>
+Map<String, dynamic> _$WritePublicUserToJson(_WritePublicUser instance) =>
     <String, dynamic>{
       'createdAt': instance.createdAt,
       'followerCount': instance.followerCount,

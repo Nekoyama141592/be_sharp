@@ -4,7 +4,7 @@ part 'edit_user_info_request.freezed.dart';
 part 'edit_user_info_request.g.dart';
 
 @freezed
-abstract class EditUserInfoRequest implements _$EditUserInfoRequest {
+abstract class EditUserInfoRequest with _$EditUserInfoRequest {
   const EditUserInfoRequest._();
   const factory EditUserInfoRequest({
     required String stringNickName,

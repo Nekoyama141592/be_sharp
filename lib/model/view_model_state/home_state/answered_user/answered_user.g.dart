@@ -6,8 +6,8 @@ part of 'answered_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AnsweredUserImpl _$$AnsweredUserImplFromJson(Map<String, dynamic> json) =>
-    _$AnsweredUserImpl(
+_AnsweredUser _$AnsweredUserFromJson(Map<String, dynamic> json) =>
+    _AnsweredUser(
       publicUser:
           ReadPublicUser.fromJson(json['publicUser'] as Map<String, dynamic>),
       userAnswer:
@@ -15,7 +15,7 @@ _$AnsweredUserImpl _$$AnsweredUserImplFromJson(Map<String, dynamic> json) =>
       userImage: json['userImage'] as String?,
     );
 
-Map<String, dynamic> _$$AnsweredUserImplToJson(_$AnsweredUserImpl instance) =>
+Map<String, dynamic> _$AnsweredUserToJson(_AnsweredUser instance) =>
     <String, dynamic>{
       'publicUser': instance.publicUser,
       'userAnswer': instance.userAnswer,

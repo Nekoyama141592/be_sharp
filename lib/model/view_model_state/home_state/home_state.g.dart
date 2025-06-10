@@ -6,8 +6,7 @@ part of 'home_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$HomeStateImpl _$$HomeStateImplFromJson(Map<String, dynamic> json) =>
-    _$HomeStateImpl(
+_HomeState _$HomeStateFromJson(Map<String, dynamic> json) => _HomeState(
       latestProblem: json['latestProblem'] == null
           ? null
           : ReadProblem.fromJson(json['latestProblem'] as Map<String, dynamic>),
@@ -22,7 +21,7 @@ _$HomeStateImpl _$$HomeStateImplFromJson(Map<String, dynamic> json) =>
       userCount: (json['userCount'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$HomeStateImplToJson(_$HomeStateImpl instance) =>
+Map<String, dynamic> _$HomeStateToJson(_HomeState instance) =>
     <String, dynamic>{
       'latestProblem': instance.latestProblem,
       'answeredUsers': instance.answeredUsers,

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,169 +10,30 @@ part of 'latest_problem_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LatestProblemState _$LatestProblemStateFromJson(Map<String, dynamic> json) {
-  return _LatestProblemState.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LatestProblemState {
-  ReadProblem? get problem => throw _privateConstructorUsedError;
-  ReadUserAnswer? get userAnswer => throw _privateConstructorUsedError;
-
-  /// Serializes this LatestProblemState to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  ReadProblem? get problem;
+  ReadUserAnswer? get userAnswer;
 
   /// Create a copy of LatestProblemState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $LatestProblemStateCopyWith<LatestProblemState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$LatestProblemStateCopyWithImpl<LatestProblemState>(
+          this as LatestProblemState, _$identity);
 
-/// @nodoc
-abstract class $LatestProblemStateCopyWith<$Res> {
-  factory $LatestProblemStateCopyWith(
-          LatestProblemState value, $Res Function(LatestProblemState) then) =
-      _$LatestProblemStateCopyWithImpl<$Res, LatestProblemState>;
-  @useResult
-  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
-
-  $ReadProblemCopyWith<$Res>? get problem;
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
-}
-
-/// @nodoc
-class _$LatestProblemStateCopyWithImpl<$Res, $Val extends LatestProblemState>
-    implements $LatestProblemStateCopyWith<$Res> {
-  _$LatestProblemStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of LatestProblemState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? problem = freezed,
-    Object? userAnswer = freezed,
-  }) {
-    return _then(_value.copyWith(
-      problem: freezed == problem
-          ? _value.problem
-          : problem // ignore: cast_nullable_to_non_nullable
-              as ReadProblem?,
-      userAnswer: freezed == userAnswer
-          ? _value.userAnswer
-          : userAnswer // ignore: cast_nullable_to_non_nullable
-              as ReadUserAnswer?,
-    ) as $Val);
-  }
-
-  /// Create a copy of LatestProblemState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReadProblemCopyWith<$Res>? get problem {
-    if (_value.problem == null) {
-      return null;
-    }
-
-    return $ReadProblemCopyWith<$Res>(_value.problem!, (value) {
-      return _then(_value.copyWith(problem: value) as $Val);
-    });
-  }
-
-  /// Create a copy of LatestProblemState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer {
-    if (_value.userAnswer == null) {
-      return null;
-    }
-
-    return $ReadUserAnswerCopyWith<$Res>(_value.userAnswer!, (value) {
-      return _then(_value.copyWith(userAnswer: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$LatestProblemStateImplCopyWith<$Res>
-    implements $LatestProblemStateCopyWith<$Res> {
-  factory _$$LatestProblemStateImplCopyWith(_$LatestProblemStateImpl value,
-          $Res Function(_$LatestProblemStateImpl) then) =
-      __$$LatestProblemStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
-
-  @override
-  $ReadProblemCopyWith<$Res>? get problem;
-  @override
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
-}
-
-/// @nodoc
-class __$$LatestProblemStateImplCopyWithImpl<$Res>
-    extends _$LatestProblemStateCopyWithImpl<$Res, _$LatestProblemStateImpl>
-    implements _$$LatestProblemStateImplCopyWith<$Res> {
-  __$$LatestProblemStateImplCopyWithImpl(_$LatestProblemStateImpl _value,
-      $Res Function(_$LatestProblemStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of LatestProblemState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? problem = freezed,
-    Object? userAnswer = freezed,
-  }) {
-    return _then(_$LatestProblemStateImpl(
-      problem: freezed == problem
-          ? _value.problem
-          : problem // ignore: cast_nullable_to_non_nullable
-              as ReadProblem?,
-      userAnswer: freezed == userAnswer
-          ? _value.userAnswer
-          : userAnswer // ignore: cast_nullable_to_non_nullable
-              as ReadUserAnswer?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$LatestProblemStateImpl extends _LatestProblemState {
-  const _$LatestProblemStateImpl({this.problem, this.userAnswer}) : super._();
-
-  factory _$LatestProblemStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LatestProblemStateImplFromJson(json);
-
-  @override
-  final ReadProblem? problem;
-  @override
-  final ReadUserAnswer? userAnswer;
-
-  @override
-  String toString() {
-    return 'LatestProblemState(problem: $problem, userAnswer: $userAnswer)';
-  }
+  /// Serializes this LatestProblemState to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LatestProblemStateImpl &&
+            other is LatestProblemState &&
             (identical(other.problem, problem) || other.problem == problem) &&
             (identical(other.userAnswer, userAnswer) ||
                 other.userAnswer == userAnswer));
@@ -181,41 +43,199 @@ class _$LatestProblemStateImpl extends _LatestProblemState {
   @override
   int get hashCode => Object.hash(runtimeType, problem, userAnswer);
 
-  /// Create a copy of LatestProblemState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$LatestProblemStateImplCopyWith<_$LatestProblemStateImpl> get copyWith =>
-      __$$LatestProblemStateImplCopyWithImpl<_$LatestProblemStateImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LatestProblemStateImplToJson(
-      this,
-    );
+  String toString() {
+    return 'LatestProblemState(problem: $problem, userAnswer: $userAnswer)';
   }
 }
 
-abstract class _LatestProblemState extends LatestProblemState {
-  const factory _LatestProblemState(
-      {final ReadProblem? problem,
-      final ReadUserAnswer? userAnswer}) = _$LatestProblemStateImpl;
-  const _LatestProblemState._() : super._();
+/// @nodoc
+abstract mixin class $LatestProblemStateCopyWith<$Res> {
+  factory $LatestProblemStateCopyWith(
+          LatestProblemState value, $Res Function(LatestProblemState) _then) =
+      _$LatestProblemStateCopyWithImpl;
+  @useResult
+  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
 
-  factory _LatestProblemState.fromJson(Map<String, dynamic> json) =
-      _$LatestProblemStateImpl.fromJson;
+  $ReadProblemCopyWith<$Res>? get problem;
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
+}
+
+/// @nodoc
+class _$LatestProblemStateCopyWithImpl<$Res>
+    implements $LatestProblemStateCopyWith<$Res> {
+  _$LatestProblemStateCopyWithImpl(this._self, this._then);
+
+  final LatestProblemState _self;
+  final $Res Function(LatestProblemState) _then;
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? problem = freezed,
+    Object? userAnswer = freezed,
+  }) {
+    return _then(_self.copyWith(
+      problem: freezed == problem
+          ? _self.problem
+          : problem // ignore: cast_nullable_to_non_nullable
+              as ReadProblem?,
+      userAnswer: freezed == userAnswer
+          ? _self.userAnswer
+          : userAnswer // ignore: cast_nullable_to_non_nullable
+              as ReadUserAnswer?,
+    ));
+  }
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadProblemCopyWith<$Res>? get problem {
+    if (_self.problem == null) {
+      return null;
+    }
+
+    return $ReadProblemCopyWith<$Res>(_self.problem!, (value) {
+      return _then(_self.copyWith(problem: value));
+    });
+  }
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer {
+    if (_self.userAnswer == null) {
+      return null;
+    }
+
+    return $ReadUserAnswerCopyWith<$Res>(_self.userAnswer!, (value) {
+      return _then(_self.copyWith(userAnswer: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _LatestProblemState extends LatestProblemState {
+  const _LatestProblemState({this.problem, this.userAnswer}) : super._();
+  factory _LatestProblemState.fromJson(Map<String, dynamic> json) =>
+      _$LatestProblemStateFromJson(json);
 
   @override
-  ReadProblem? get problem;
+  final ReadProblem? problem;
   @override
-  ReadUserAnswer? get userAnswer;
+  final ReadUserAnswer? userAnswer;
 
   /// Create a copy of LatestProblemState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LatestProblemStateImplCopyWith<_$LatestProblemStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$LatestProblemStateCopyWith<_LatestProblemState> get copyWith =>
+      __$LatestProblemStateCopyWithImpl<_LatestProblemState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$LatestProblemStateToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _LatestProblemState &&
+            (identical(other.problem, problem) || other.problem == problem) &&
+            (identical(other.userAnswer, userAnswer) ||
+                other.userAnswer == userAnswer));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, problem, userAnswer);
+
+  @override
+  String toString() {
+    return 'LatestProblemState(problem: $problem, userAnswer: $userAnswer)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$LatestProblemStateCopyWith<$Res>
+    implements $LatestProblemStateCopyWith<$Res> {
+  factory _$LatestProblemStateCopyWith(
+          _LatestProblemState value, $Res Function(_LatestProblemState) _then) =
+      __$LatestProblemStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
+
+  @override
+  $ReadProblemCopyWith<$Res>? get problem;
+  @override
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
+}
+
+/// @nodoc
+class __$LatestProblemStateCopyWithImpl<$Res>
+    implements _$LatestProblemStateCopyWith<$Res> {
+  __$LatestProblemStateCopyWithImpl(this._self, this._then);
+
+  final _LatestProblemState _self;
+  final $Res Function(_LatestProblemState) _then;
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? problem = freezed,
+    Object? userAnswer = freezed,
+  }) {
+    return _then(_LatestProblemState(
+      problem: freezed == problem
+          ? _self.problem
+          : problem // ignore: cast_nullable_to_non_nullable
+              as ReadProblem?,
+      userAnswer: freezed == userAnswer
+          ? _self.userAnswer
+          : userAnswer // ignore: cast_nullable_to_non_nullable
+              as ReadUserAnswer?,
+    ));
+  }
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadProblemCopyWith<$Res>? get problem {
+    if (_self.problem == null) {
+      return null;
+    }
+
+    return $ReadProblemCopyWith<$Res>(_self.problem!, (value) {
+      return _then(_self.copyWith(problem: value));
+    });
+  }
+
+  /// Create a copy of LatestProblemState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadUserAnswerCopyWith<$Res>? get userAnswer {
+    if (_self.userAnswer == null) {
+      return null;
+    }
+
+    return $ReadUserAnswerCopyWith<$Res>(_self.userAnswer!, (value) {
+      return _then(_self.copyWith(userAnswer: value));
+    });
+  }
+}
+
+// dart format on

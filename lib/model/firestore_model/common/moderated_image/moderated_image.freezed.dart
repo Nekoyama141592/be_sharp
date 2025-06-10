@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,87 +10,57 @@ part of 'moderated_image.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ModeratedImage _$ModeratedImageFromJson(Map<String, dynamic> json) {
-  return _ModeratedImage.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ModeratedImage {
-  List<Map<String, dynamic>> get moderationLabels =>
-      throw _privateConstructorUsedError;
-  String get moderationModelVersion => throw _privateConstructorUsedError;
-  String get value => throw _privateConstructorUsedError;
-
-  /// Serializes this ModeratedImage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get moderationLabels;
+  String get moderationModelVersion;
+  String get value;
 
   /// Create a copy of ModeratedImage
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ModeratedImageCopyWith<ModeratedImage> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ModeratedImageCopyWith<$Res> {
-  factory $ModeratedImageCopyWith(
-          ModeratedImage value, $Res Function(ModeratedImage) then) =
-      _$ModeratedImageCopyWithImpl<$Res, ModeratedImage>;
-  @useResult
-  $Res call(
-      {List<Map<String, dynamic>> moderationLabels,
-      String moderationModelVersion,
-      String value});
-}
-
-/// @nodoc
-class _$ModeratedImageCopyWithImpl<$Res, $Val extends ModeratedImage>
-    implements $ModeratedImageCopyWith<$Res> {
-  _$ModeratedImageCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ModeratedImage
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ModeratedImageCopyWith<ModeratedImage> get copyWith =>
+      _$ModeratedImageCopyWithImpl<ModeratedImage>(
+          this as ModeratedImage, _$identity);
+
+  /// Serializes this ModeratedImage to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? moderationLabels = null,
-    Object? moderationModelVersion = null,
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      moderationLabels: null == moderationLabels
-          ? _value.moderationLabels
-          : moderationLabels // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>,
-      moderationModelVersion: null == moderationModelVersion
-          ? _value.moderationModelVersion
-          : moderationModelVersion // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ModeratedImage &&
+            const DeepCollectionEquality()
+                .equals(other.moderationLabels, moderationLabels) &&
+            (identical(other.moderationModelVersion, moderationModelVersion) ||
+                other.moderationModelVersion == moderationModelVersion) &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(moderationLabels),
+      moderationModelVersion,
+      value);
+
+  @override
+  String toString() {
+    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, value: $value)';
   }
 }
 
 /// @nodoc
-abstract class _$$ModeratedImageImplCopyWith<$Res>
-    implements $ModeratedImageCopyWith<$Res> {
-  factory _$$ModeratedImageImplCopyWith(_$ModeratedImageImpl value,
-          $Res Function(_$ModeratedImageImpl) then) =
-      __$$ModeratedImageImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ModeratedImageCopyWith<$Res> {
+  factory $ModeratedImageCopyWith(
+          ModeratedImage value, $Res Function(ModeratedImage) _then) =
+      _$ModeratedImageCopyWithImpl;
   @useResult
   $Res call(
       {List<Map<String, dynamic>> moderationLabels,
@@ -98,12 +69,12 @@ abstract class _$$ModeratedImageImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ModeratedImageImplCopyWithImpl<$Res>
-    extends _$ModeratedImageCopyWithImpl<$Res, _$ModeratedImageImpl>
-    implements _$$ModeratedImageImplCopyWith<$Res> {
-  __$$ModeratedImageImplCopyWithImpl(
-      _$ModeratedImageImpl _value, $Res Function(_$ModeratedImageImpl) _then)
-      : super(_value, _then);
+class _$ModeratedImageCopyWithImpl<$Res>
+    implements $ModeratedImageCopyWith<$Res> {
+  _$ModeratedImageCopyWithImpl(this._self, this._then);
+
+  final ModeratedImage _self;
+  final $Res Function(ModeratedImage) _then;
 
   /// Create a copy of ModeratedImage
   /// with the given fields replaced by the non-null parameter values.
@@ -114,17 +85,17 @@ class __$$ModeratedImageImplCopyWithImpl<$Res>
     Object? moderationModelVersion = null,
     Object? value = null,
   }) {
-    return _then(_$ModeratedImageImpl(
+    return _then(_self.copyWith(
       moderationLabels: null == moderationLabels
-          ? _value._moderationLabels
+          ? _self.moderationLabels
           : moderationLabels // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
       moderationModelVersion: null == moderationModelVersion
-          ? _value.moderationModelVersion
+          ? _self.moderationModelVersion
           : moderationModelVersion // ignore: cast_nullable_to_non_nullable
               as String,
       value: null == value
-          ? _value.value
+          ? _self.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -133,16 +104,15 @@ class __$$ModeratedImageImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ModeratedImageImpl extends _ModeratedImage {
-  const _$ModeratedImageImpl(
+class _ModeratedImage extends ModeratedImage {
+  const _ModeratedImage(
       {final List<Map<String, dynamic>> moderationLabels = const [],
       this.moderationModelVersion = '',
       this.value = ''})
       : _moderationLabels = moderationLabels,
         super._();
-
-  factory _$ModeratedImageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ModeratedImageImplFromJson(json);
+  factory _ModeratedImage.fromJson(Map<String, dynamic> json) =>
+      _$ModeratedImageFromJson(json);
 
   final List<Map<String, dynamic>> _moderationLabels;
   @override
@@ -161,16 +131,26 @@ class _$ModeratedImageImpl extends _ModeratedImage {
   @JsonKey()
   final String value;
 
+  /// Create a copy of ModeratedImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, value: $value)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ModeratedImageCopyWith<_ModeratedImage> get copyWith =>
+      __$ModeratedImageCopyWithImpl<_ModeratedImage>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ModeratedImageToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ModeratedImageImpl &&
+            other is _ModeratedImage &&
             const DeepCollectionEquality()
                 .equals(other._moderationLabels, _moderationLabels) &&
             (identical(other.moderationModelVersion, moderationModelVersion) ||
@@ -186,44 +166,58 @@ class _$ModeratedImageImpl extends _ModeratedImage {
       moderationModelVersion,
       value);
 
-  /// Create a copy of ModeratedImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ModeratedImageImplCopyWith<_$ModeratedImageImpl> get copyWith =>
-      __$$ModeratedImageImplCopyWithImpl<_$ModeratedImageImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ModeratedImageImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, value: $value)';
   }
 }
 
-abstract class _ModeratedImage extends ModeratedImage {
-  const factory _ModeratedImage(
-      {final List<Map<String, dynamic>> moderationLabels,
-      final String moderationModelVersion,
-      final String value}) = _$ModeratedImageImpl;
-  const _ModeratedImage._() : super._();
+/// @nodoc
+abstract mixin class _$ModeratedImageCopyWith<$Res>
+    implements $ModeratedImageCopyWith<$Res> {
+  factory _$ModeratedImageCopyWith(
+          _ModeratedImage value, $Res Function(_ModeratedImage) _then) =
+      __$ModeratedImageCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {List<Map<String, dynamic>> moderationLabels,
+      String moderationModelVersion,
+      String value});
+}
 
-  factory _ModeratedImage.fromJson(Map<String, dynamic> json) =
-      _$ModeratedImageImpl.fromJson;
+/// @nodoc
+class __$ModeratedImageCopyWithImpl<$Res>
+    implements _$ModeratedImageCopyWith<$Res> {
+  __$ModeratedImageCopyWithImpl(this._self, this._then);
 
-  @override
-  List<Map<String, dynamic>> get moderationLabels;
-  @override
-  String get moderationModelVersion;
-  @override
-  String get value;
+  final _ModeratedImage _self;
+  final $Res Function(_ModeratedImage) _then;
 
   /// Create a copy of ModeratedImage
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ModeratedImageImplCopyWith<_$ModeratedImageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? moderationLabels = null,
+    Object? moderationModelVersion = null,
+    Object? value = null,
+  }) {
+    return _then(_ModeratedImage(
+      moderationLabels: null == moderationLabels
+          ? _self._moderationLabels
+          : moderationLabels // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      moderationModelVersion: null == moderationModelVersion
+          ? _self.moderationModelVersion
+          : moderationModelVersion // ignore: cast_nullable_to_non_nullable
+              as String,
+      value: null == value
+          ? _self.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
+
+// dart format on

@@ -6,9 +6,9 @@ part of 'create_problem_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreateProblemRequestImpl _$$CreateProblemRequestImplFromJson(
+_CreateProblemRequest _$CreateProblemRequestFromJson(
         Map<String, dynamic> json) =>
-    _$CreateProblemRequestImpl(
+    _CreateProblemRequest(
       question: json['question'] as String,
       latex: json['latex'] as String,
       problemId: json['problemId'] as String,
@@ -19,8 +19,8 @@ _$CreateProblemRequestImpl _$$CreateProblemRequestImplFromJson(
       category: json['category'] as String? ?? 'unlimited',
     );
 
-Map<String, dynamic> _$$CreateProblemRequestImplToJson(
-        _$CreateProblemRequestImpl instance) =>
+Map<String, dynamic> _$CreateProblemRequestToJson(
+        _CreateProblemRequest instance) =>
     <String, dynamic>{
       'question': instance.question,
       'latex': instance.latex,

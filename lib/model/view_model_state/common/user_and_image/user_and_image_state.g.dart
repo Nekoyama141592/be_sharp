@@ -6,17 +6,15 @@ part of 'user_and_image_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserAndImageStateImpl _$$UserAndImageStateImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UserAndImageStateImpl(
+_UserAndImageState _$UserAndImageStateFromJson(Map<String, dynamic> json) =>
+    _UserAndImageState(
       user: json['user'] == null
           ? null
           : ReadPublicUser.fromJson(json['user'] as Map<String, dynamic>),
       image: json['image'] as String?,
     );
 
-Map<String, dynamic> _$$UserAndImageStateImplToJson(
-        _$UserAndImageStateImpl instance) =>
+Map<String, dynamic> _$UserAndImageStateToJson(_UserAndImageState instance) =>
     <String, dynamic>{
       'user': instance.user,
       'image': instance.image,

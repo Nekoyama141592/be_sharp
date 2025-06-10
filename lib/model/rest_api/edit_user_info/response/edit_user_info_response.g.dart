@@ -6,16 +6,16 @@ part of 'edit_user_info_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EditUserInfoResponseImpl _$$EditUserInfoResponseImplFromJson(
+_EditUserInfoResponse _$EditUserInfoResponseFromJson(
         Map<String, dynamic> json) =>
-    _$EditUserInfoResponseImpl(
+    _EditUserInfoResponse(
       nickName: DetectedText.fromJson(json['nickName'] as Map<String, dynamic>),
       bio: DetectedText.fromJson(json['bio'] as Map<String, dynamic>),
       image: ModeratedImage.fromJson(json['image'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$EditUserInfoResponseImplToJson(
-        _$EditUserInfoResponseImpl instance) =>
+Map<String, dynamic> _$EditUserInfoResponseToJson(
+        _EditUserInfoResponse instance) =>
     <String, dynamic>{
       'nickName': instance.nickName,
       'bio': instance.bio,

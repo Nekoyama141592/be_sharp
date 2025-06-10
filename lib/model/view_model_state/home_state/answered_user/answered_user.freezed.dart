@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,184 +10,31 @@ part of 'answered_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AnsweredUser _$AnsweredUserFromJson(Map<String, dynamic> json) {
-  return _AnsweredUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AnsweredUser {
-  ReadPublicUser get publicUser => throw _privateConstructorUsedError;
-  ReadUserAnswer get userAnswer => throw _privateConstructorUsedError;
-  String? get userImage => throw _privateConstructorUsedError;
-
-  /// Serializes this AnsweredUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  ReadPublicUser get publicUser;
+  ReadUserAnswer get userAnswer;
+  String? get userImage;
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $AnsweredUserCopyWith<AnsweredUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$AnsweredUserCopyWithImpl<AnsweredUser>(
+          this as AnsweredUser, _$identity);
 
-/// @nodoc
-abstract class $AnsweredUserCopyWith<$Res> {
-  factory $AnsweredUserCopyWith(
-          AnsweredUser value, $Res Function(AnsweredUser) then) =
-      _$AnsweredUserCopyWithImpl<$Res, AnsweredUser>;
-  @useResult
-  $Res call(
-      {ReadPublicUser publicUser,
-      ReadUserAnswer userAnswer,
-      String? userImage});
-
-  $ReadPublicUserCopyWith<$Res> get publicUser;
-  $ReadUserAnswerCopyWith<$Res> get userAnswer;
-}
-
-/// @nodoc
-class _$AnsweredUserCopyWithImpl<$Res, $Val extends AnsweredUser>
-    implements $AnsweredUserCopyWith<$Res> {
-  _$AnsweredUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AnsweredUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? publicUser = null,
-    Object? userAnswer = null,
-    Object? userImage = freezed,
-  }) {
-    return _then(_value.copyWith(
-      publicUser: null == publicUser
-          ? _value.publicUser
-          : publicUser // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser,
-      userAnswer: null == userAnswer
-          ? _value.userAnswer
-          : userAnswer // ignore: cast_nullable_to_non_nullable
-              as ReadUserAnswer,
-      userImage: freezed == userImage
-          ? _value.userImage
-          : userImage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  /// Create a copy of AnsweredUser
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res> get publicUser {
-    return $ReadPublicUserCopyWith<$Res>(_value.publicUser, (value) {
-      return _then(_value.copyWith(publicUser: value) as $Val);
-    });
-  }
-
-  /// Create a copy of AnsweredUser
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReadUserAnswerCopyWith<$Res> get userAnswer {
-    return $ReadUserAnswerCopyWith<$Res>(_value.userAnswer, (value) {
-      return _then(_value.copyWith(userAnswer: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$AnsweredUserImplCopyWith<$Res>
-    implements $AnsweredUserCopyWith<$Res> {
-  factory _$$AnsweredUserImplCopyWith(
-          _$AnsweredUserImpl value, $Res Function(_$AnsweredUserImpl) then) =
-      __$$AnsweredUserImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {ReadPublicUser publicUser,
-      ReadUserAnswer userAnswer,
-      String? userImage});
-
-  @override
-  $ReadPublicUserCopyWith<$Res> get publicUser;
-  @override
-  $ReadUserAnswerCopyWith<$Res> get userAnswer;
-}
-
-/// @nodoc
-class __$$AnsweredUserImplCopyWithImpl<$Res>
-    extends _$AnsweredUserCopyWithImpl<$Res, _$AnsweredUserImpl>
-    implements _$$AnsweredUserImplCopyWith<$Res> {
-  __$$AnsweredUserImplCopyWithImpl(
-      _$AnsweredUserImpl _value, $Res Function(_$AnsweredUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AnsweredUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? publicUser = null,
-    Object? userAnswer = null,
-    Object? userImage = freezed,
-  }) {
-    return _then(_$AnsweredUserImpl(
-      publicUser: null == publicUser
-          ? _value.publicUser
-          : publicUser // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser,
-      userAnswer: null == userAnswer
-          ? _value.userAnswer
-          : userAnswer // ignore: cast_nullable_to_non_nullable
-              as ReadUserAnswer,
-      userImage: freezed == userImage
-          ? _value.userImage
-          : userImage // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AnsweredUserImpl extends _AnsweredUser {
-  const _$AnsweredUserImpl(
-      {required this.publicUser,
-      required this.userAnswer,
-      required this.userImage})
-      : super._();
-
-  factory _$AnsweredUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AnsweredUserImplFromJson(json);
-
-  @override
-  final ReadPublicUser publicUser;
-  @override
-  final ReadUserAnswer userAnswer;
-  @override
-  final String? userImage;
-
-  @override
-  String toString() {
-    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer, userImage: $userImage)';
-  }
+  /// Serializes this AnsweredUser to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AnsweredUserImpl &&
+            other is AnsweredUser &&
             (identical(other.publicUser, publicUser) ||
                 other.publicUser == publicUser) &&
             (identical(other.userAnswer, userAnswer) ||
@@ -200,43 +48,208 @@ class _$AnsweredUserImpl extends _AnsweredUser {
   int get hashCode =>
       Object.hash(runtimeType, publicUser, userAnswer, userImage);
 
-  /// Create a copy of AnsweredUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AnsweredUserImplCopyWith<_$AnsweredUserImpl> get copyWith =>
-      __$$AnsweredUserImplCopyWithImpl<_$AnsweredUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AnsweredUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer, userImage: $userImage)';
   }
 }
 
-abstract class _AnsweredUser extends AnsweredUser {
-  const factory _AnsweredUser(
-      {required final ReadPublicUser publicUser,
-      required final ReadUserAnswer userAnswer,
-      required final String? userImage}) = _$AnsweredUserImpl;
-  const _AnsweredUser._() : super._();
+/// @nodoc
+abstract mixin class $AnsweredUserCopyWith<$Res> {
+  factory $AnsweredUserCopyWith(
+          AnsweredUser value, $Res Function(AnsweredUser) _then) =
+      _$AnsweredUserCopyWithImpl;
+  @useResult
+  $Res call(
+      {ReadPublicUser publicUser,
+      ReadUserAnswer userAnswer,
+      String? userImage});
 
-  factory _AnsweredUser.fromJson(Map<String, dynamic> json) =
-      _$AnsweredUserImpl.fromJson;
+  $ReadPublicUserCopyWith<$Res> get publicUser;
+  $ReadUserAnswerCopyWith<$Res> get userAnswer;
+}
+
+/// @nodoc
+class _$AnsweredUserCopyWithImpl<$Res> implements $AnsweredUserCopyWith<$Res> {
+  _$AnsweredUserCopyWithImpl(this._self, this._then);
+
+  final AnsweredUser _self;
+  final $Res Function(AnsweredUser) _then;
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? publicUser = null,
+    Object? userAnswer = null,
+    Object? userImage = freezed,
+  }) {
+    return _then(_self.copyWith(
+      publicUser: null == publicUser
+          ? _self.publicUser
+          : publicUser // ignore: cast_nullable_to_non_nullable
+              as ReadPublicUser,
+      userAnswer: null == userAnswer
+          ? _self.userAnswer
+          : userAnswer // ignore: cast_nullable_to_non_nullable
+              as ReadUserAnswer,
+      userImage: freezed == userImage
+          ? _self.userImage
+          : userImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadPublicUserCopyWith<$Res> get publicUser {
+    return $ReadPublicUserCopyWith<$Res>(_self.publicUser, (value) {
+      return _then(_self.copyWith(publicUser: value));
+    });
+  }
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadUserAnswerCopyWith<$Res> get userAnswer {
+    return $ReadUserAnswerCopyWith<$Res>(_self.userAnswer, (value) {
+      return _then(_self.copyWith(userAnswer: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _AnsweredUser extends AnsweredUser {
+  const _AnsweredUser(
+      {required this.publicUser,
+      required this.userAnswer,
+      required this.userImage})
+      : super._();
+  factory _AnsweredUser.fromJson(Map<String, dynamic> json) =>
+      _$AnsweredUserFromJson(json);
 
   @override
-  ReadPublicUser get publicUser;
+  final ReadPublicUser publicUser;
   @override
-  ReadUserAnswer get userAnswer;
+  final ReadUserAnswer userAnswer;
   @override
-  String? get userImage;
+  final String? userImage;
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AnsweredUserImplCopyWith<_$AnsweredUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$AnsweredUserCopyWith<_AnsweredUser> get copyWith =>
+      __$AnsweredUserCopyWithImpl<_AnsweredUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AnsweredUserToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AnsweredUser &&
+            (identical(other.publicUser, publicUser) ||
+                other.publicUser == publicUser) &&
+            (identical(other.userAnswer, userAnswer) ||
+                other.userAnswer == userAnswer) &&
+            (identical(other.userImage, userImage) ||
+                other.userImage == userImage));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, publicUser, userAnswer, userImage);
+
+  @override
+  String toString() {
+    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer, userImage: $userImage)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$AnsweredUserCopyWith<$Res>
+    implements $AnsweredUserCopyWith<$Res> {
+  factory _$AnsweredUserCopyWith(
+          _AnsweredUser value, $Res Function(_AnsweredUser) _then) =
+      __$AnsweredUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {ReadPublicUser publicUser,
+      ReadUserAnswer userAnswer,
+      String? userImage});
+
+  @override
+  $ReadPublicUserCopyWith<$Res> get publicUser;
+  @override
+  $ReadUserAnswerCopyWith<$Res> get userAnswer;
+}
+
+/// @nodoc
+class __$AnsweredUserCopyWithImpl<$Res>
+    implements _$AnsweredUserCopyWith<$Res> {
+  __$AnsweredUserCopyWithImpl(this._self, this._then);
+
+  final _AnsweredUser _self;
+  final $Res Function(_AnsweredUser) _then;
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? publicUser = null,
+    Object? userAnswer = null,
+    Object? userImage = freezed,
+  }) {
+    return _then(_AnsweredUser(
+      publicUser: null == publicUser
+          ? _self.publicUser
+          : publicUser // ignore: cast_nullable_to_non_nullable
+              as ReadPublicUser,
+      userAnswer: null == userAnswer
+          ? _self.userAnswer
+          : userAnswer // ignore: cast_nullable_to_non_nullable
+              as ReadUserAnswer,
+      userImage: freezed == userImage
+          ? _self.userImage
+          : userImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadPublicUserCopyWith<$Res> get publicUser {
+    return $ReadPublicUserCopyWith<$Res>(_self.publicUser, (value) {
+      return _then(_self.copyWith(publicUser: value));
+    });
+  }
+
+  /// Create a copy of AnsweredUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadUserAnswerCopyWith<$Res> get userAnswer {
+    return $ReadUserAnswerCopyWith<$Res>(_self.userAnswer, (value) {
+      return _then(_self.copyWith(userAnswer: value));
+    });
+  }
+}
+
+// dart format on

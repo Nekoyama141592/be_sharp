@@ -5,7 +5,7 @@ part 'check_state.freezed.dart';
 part 'check_state.g.dart';
 
 @freezed
-abstract class CheckState implements _$CheckState {
+abstract class CheckState with _$CheckState {
   const CheckState._();
   const factory CheckState(
       {required bool needsAgreeToTerms,

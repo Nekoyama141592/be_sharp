@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,207 +10,33 @@ part of 'read_user_answer.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ReadUserAnswer _$ReadUserAnswerFromJson(Map<String, dynamic> json) {
-  return _ReadUserAnswer.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ReadUserAnswer {
-  String get answer => throw _privateConstructorUsedError;
-  dynamic get createdAt => throw _privateConstructorUsedError;
-  String get problemId => throw _privateConstructorUsedError;
-  DetectedText? get caption => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-
-  /// Serializes this ReadUserAnswer to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get answer;
+  dynamic get createdAt;
+  String get problemId;
+  DetectedText? get caption;
+  String get uid;
 
   /// Create a copy of ReadUserAnswer
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ReadUserAnswerCopyWith<ReadUserAnswer> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$ReadUserAnswerCopyWithImpl<ReadUserAnswer>(
+          this as ReadUserAnswer, _$identity);
 
-/// @nodoc
-abstract class $ReadUserAnswerCopyWith<$Res> {
-  factory $ReadUserAnswerCopyWith(
-          ReadUserAnswer value, $Res Function(ReadUserAnswer) then) =
-      _$ReadUserAnswerCopyWithImpl<$Res, ReadUserAnswer>;
-  @useResult
-  $Res call(
-      {String answer,
-      dynamic createdAt,
-      String problemId,
-      DetectedText? caption,
-      String uid});
-
-  $DetectedTextCopyWith<$Res>? get caption;
-}
-
-/// @nodoc
-class _$ReadUserAnswerCopyWithImpl<$Res, $Val extends ReadUserAnswer>
-    implements $ReadUserAnswerCopyWith<$Res> {
-  _$ReadUserAnswerCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ReadUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? answer = null,
-    Object? createdAt = freezed,
-    Object? problemId = null,
-    Object? caption = freezed,
-    Object? uid = null,
-  }) {
-    return _then(_value.copyWith(
-      answer: null == answer
-          ? _value.answer
-          : answer // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      caption: freezed == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
-              as DetectedText?,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-
-  /// Create a copy of ReadUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DetectedTextCopyWith<$Res>? get caption {
-    if (_value.caption == null) {
-      return null;
-    }
-
-    return $DetectedTextCopyWith<$Res>(_value.caption!, (value) {
-      return _then(_value.copyWith(caption: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ReadUserAnswerImplCopyWith<$Res>
-    implements $ReadUserAnswerCopyWith<$Res> {
-  factory _$$ReadUserAnswerImplCopyWith(_$ReadUserAnswerImpl value,
-          $Res Function(_$ReadUserAnswerImpl) then) =
-      __$$ReadUserAnswerImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String answer,
-      dynamic createdAt,
-      String problemId,
-      DetectedText? caption,
-      String uid});
-
-  @override
-  $DetectedTextCopyWith<$Res>? get caption;
-}
-
-/// @nodoc
-class __$$ReadUserAnswerImplCopyWithImpl<$Res>
-    extends _$ReadUserAnswerCopyWithImpl<$Res, _$ReadUserAnswerImpl>
-    implements _$$ReadUserAnswerImplCopyWith<$Res> {
-  __$$ReadUserAnswerImplCopyWithImpl(
-      _$ReadUserAnswerImpl _value, $Res Function(_$ReadUserAnswerImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ReadUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? answer = null,
-    Object? createdAt = freezed,
-    Object? problemId = null,
-    Object? caption = freezed,
-    Object? uid = null,
-  }) {
-    return _then(_$ReadUserAnswerImpl(
-      answer: null == answer
-          ? _value.answer
-          : answer // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      caption: freezed == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
-              as DetectedText?,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ReadUserAnswerImpl extends _ReadUserAnswer {
-  const _$ReadUserAnswerImpl(
-      {required this.answer,
-      required this.createdAt,
-      required this.problemId,
-      required this.caption,
-      required this.uid})
-      : super._();
-
-  factory _$ReadUserAnswerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReadUserAnswerImplFromJson(json);
-
-  @override
-  final String answer;
-  @override
-  final dynamic createdAt;
-  @override
-  final String problemId;
-  @override
-  final DetectedText? caption;
-  @override
-  final String uid;
-
-  @override
-  String toString() {
-    return 'ReadUserAnswer(answer: $answer, createdAt: $createdAt, problemId: $problemId, caption: $caption, uid: $uid)';
-  }
+  /// Serializes this ReadUserAnswer to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReadUserAnswerImpl &&
+            other is ReadUserAnswer &&
             (identical(other.answer, answer) || other.answer == answer) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.problemId, problemId) ||
@@ -223,50 +50,224 @@ class _$ReadUserAnswerImpl extends _ReadUserAnswer {
   int get hashCode => Object.hash(runtimeType, answer,
       const DeepCollectionEquality().hash(createdAt), problemId, caption, uid);
 
-  /// Create a copy of ReadUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ReadUserAnswerImplCopyWith<_$ReadUserAnswerImpl> get copyWith =>
-      __$$ReadUserAnswerImplCopyWithImpl<_$ReadUserAnswerImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReadUserAnswerImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ReadUserAnswer(answer: $answer, createdAt: $createdAt, problemId: $problemId, caption: $caption, uid: $uid)';
   }
 }
 
-abstract class _ReadUserAnswer extends ReadUserAnswer {
-  const factory _ReadUserAnswer(
-      {required final String answer,
-      required final dynamic createdAt,
-      required final String problemId,
-      required final DetectedText? caption,
-      required final String uid}) = _$ReadUserAnswerImpl;
-  const _ReadUserAnswer._() : super._();
+/// @nodoc
+abstract mixin class $ReadUserAnswerCopyWith<$Res> {
+  factory $ReadUserAnswerCopyWith(
+          ReadUserAnswer value, $Res Function(ReadUserAnswer) _then) =
+      _$ReadUserAnswerCopyWithImpl;
+  @useResult
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      String problemId,
+      DetectedText? caption,
+      String uid});
 
-  factory _ReadUserAnswer.fromJson(Map<String, dynamic> json) =
-      _$ReadUserAnswerImpl.fromJson;
+  $DetectedTextCopyWith<$Res>? get caption;
+}
+
+/// @nodoc
+class _$ReadUserAnswerCopyWithImpl<$Res>
+    implements $ReadUserAnswerCopyWith<$Res> {
+  _$ReadUserAnswerCopyWithImpl(this._self, this._then);
+
+  final ReadUserAnswer _self;
+  final $Res Function(ReadUserAnswer) _then;
+
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? answer = null,
+    Object? createdAt = freezed,
+    Object? problemId = null,
+    Object? caption = freezed,
+    Object? uid = null,
+  }) {
+    return _then(_self.copyWith(
+      answer: null == answer
+          ? _self.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: freezed == caption
+          ? _self.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as DetectedText?,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res>? get caption {
+    if (_self.caption == null) {
+      return null;
+    }
+
+    return $DetectedTextCopyWith<$Res>(_self.caption!, (value) {
+      return _then(_self.copyWith(caption: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ReadUserAnswer extends ReadUserAnswer {
+  const _ReadUserAnswer(
+      {required this.answer,
+      required this.createdAt,
+      required this.problemId,
+      required this.caption,
+      required this.uid})
+      : super._();
+  factory _ReadUserAnswer.fromJson(Map<String, dynamic> json) =>
+      _$ReadUserAnswerFromJson(json);
 
   @override
-  String get answer;
+  final String answer;
   @override
-  dynamic get createdAt;
+  final dynamic createdAt;
   @override
-  String get problemId;
+  final String problemId;
   @override
-  DetectedText? get caption;
+  final DetectedText? caption;
   @override
-  String get uid;
+  final String uid;
 
   /// Create a copy of ReadUserAnswer
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReadUserAnswerImplCopyWith<_$ReadUserAnswerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ReadUserAnswerCopyWith<_ReadUserAnswer> get copyWith =>
+      __$ReadUserAnswerCopyWithImpl<_ReadUserAnswer>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ReadUserAnswerToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ReadUserAnswer &&
+            (identical(other.answer, answer) || other.answer == answer) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            (identical(other.caption, caption) || other.caption == caption) &&
+            (identical(other.uid, uid) || other.uid == uid));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, answer,
+      const DeepCollectionEquality().hash(createdAt), problemId, caption, uid);
+
+  @override
+  String toString() {
+    return 'ReadUserAnswer(answer: $answer, createdAt: $createdAt, problemId: $problemId, caption: $caption, uid: $uid)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ReadUserAnswerCopyWith<$Res>
+    implements $ReadUserAnswerCopyWith<$Res> {
+  factory _$ReadUserAnswerCopyWith(
+          _ReadUserAnswer value, $Res Function(_ReadUserAnswer) _then) =
+      __$ReadUserAnswerCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      String problemId,
+      DetectedText? caption,
+      String uid});
+
+  @override
+  $DetectedTextCopyWith<$Res>? get caption;
+}
+
+/// @nodoc
+class __$ReadUserAnswerCopyWithImpl<$Res>
+    implements _$ReadUserAnswerCopyWith<$Res> {
+  __$ReadUserAnswerCopyWithImpl(this._self, this._then);
+
+  final _ReadUserAnswer _self;
+  final $Res Function(_ReadUserAnswer) _then;
+
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? answer = null,
+    Object? createdAt = freezed,
+    Object? problemId = null,
+    Object? caption = freezed,
+    Object? uid = null,
+  }) {
+    return _then(_ReadUserAnswer(
+      answer: null == answer
+          ? _self.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: freezed == caption
+          ? _self.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as DetectedText?,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  /// Create a copy of ReadUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res>? get caption {
+    if (_self.caption == null) {
+      return null;
+    }
+
+    return $DetectedTextCopyWith<$Res>(_self.caption!, (value) {
+      return _then(_self.copyWith(caption: value));
+    });
+  }
+}
+
+// dart format on

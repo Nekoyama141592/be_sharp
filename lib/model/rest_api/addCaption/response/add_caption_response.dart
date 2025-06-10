@@ -5,7 +5,7 @@ part 'add_caption_response.freezed.dart';
 part 'add_caption_response.g.dart';
 
 @freezed
-abstract class AddCaptionResponse implements _$AddCaptionResponse {
+abstract class AddCaptionResponse with _$AddCaptionResponse {
   const AddCaptionResponse._();
   const factory AddCaptionResponse(
       {required String problemId,

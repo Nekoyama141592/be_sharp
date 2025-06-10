@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,150 +10,30 @@ part of 'add_caption_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AddCaptionResponse _$AddCaptionResponseFromJson(Map<String, dynamic> json) {
-  return _AddCaptionResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AddCaptionResponse {
-  String get problemId => throw _privateConstructorUsedError;
-  DetectedText get caption => throw _privateConstructorUsedError;
-
-  /// Serializes this AddCaptionResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get problemId;
+  DetectedText get caption;
 
   /// Create a copy of AddCaptionResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $AddCaptionResponseCopyWith<AddCaptionResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$AddCaptionResponseCopyWithImpl<AddCaptionResponse>(
+          this as AddCaptionResponse, _$identity);
 
-/// @nodoc
-abstract class $AddCaptionResponseCopyWith<$Res> {
-  factory $AddCaptionResponseCopyWith(
-          AddCaptionResponse value, $Res Function(AddCaptionResponse) then) =
-      _$AddCaptionResponseCopyWithImpl<$Res, AddCaptionResponse>;
-  @useResult
-  $Res call({String problemId, DetectedText caption});
-
-  $DetectedTextCopyWith<$Res> get caption;
-}
-
-/// @nodoc
-class _$AddCaptionResponseCopyWithImpl<$Res, $Val extends AddCaptionResponse>
-    implements $AddCaptionResponseCopyWith<$Res> {
-  _$AddCaptionResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AddCaptionResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? problemId = null,
-    Object? caption = null,
-  }) {
-    return _then(_value.copyWith(
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      caption: null == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
-              as DetectedText,
-    ) as $Val);
-  }
-
-  /// Create a copy of AddCaptionResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DetectedTextCopyWith<$Res> get caption {
-    return $DetectedTextCopyWith<$Res>(_value.caption, (value) {
-      return _then(_value.copyWith(caption: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$AddCaptionResponseImplCopyWith<$Res>
-    implements $AddCaptionResponseCopyWith<$Res> {
-  factory _$$AddCaptionResponseImplCopyWith(_$AddCaptionResponseImpl value,
-          $Res Function(_$AddCaptionResponseImpl) then) =
-      __$$AddCaptionResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String problemId, DetectedText caption});
-
-  @override
-  $DetectedTextCopyWith<$Res> get caption;
-}
-
-/// @nodoc
-class __$$AddCaptionResponseImplCopyWithImpl<$Res>
-    extends _$AddCaptionResponseCopyWithImpl<$Res, _$AddCaptionResponseImpl>
-    implements _$$AddCaptionResponseImplCopyWith<$Res> {
-  __$$AddCaptionResponseImplCopyWithImpl(_$AddCaptionResponseImpl _value,
-      $Res Function(_$AddCaptionResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddCaptionResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? problemId = null,
-    Object? caption = null,
-  }) {
-    return _then(_$AddCaptionResponseImpl(
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      caption: null == caption
-          ? _value.caption
-          : caption // ignore: cast_nullable_to_non_nullable
-              as DetectedText,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AddCaptionResponseImpl extends _AddCaptionResponse {
-  const _$AddCaptionResponseImpl(
-      {required this.problemId, required this.caption})
-      : super._();
-
-  factory _$AddCaptionResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AddCaptionResponseImplFromJson(json);
-
-  @override
-  final String problemId;
-  @override
-  final DetectedText caption;
-
-  @override
-  String toString() {
-    return 'AddCaptionResponse(problemId: $problemId, caption: $caption)';
-  }
+  /// Serializes this AddCaptionResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddCaptionResponseImpl &&
+            other is AddCaptionResponse &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.caption, caption) || other.caption == caption));
@@ -162,41 +43,161 @@ class _$AddCaptionResponseImpl extends _AddCaptionResponse {
   @override
   int get hashCode => Object.hash(runtimeType, problemId, caption);
 
-  /// Create a copy of AddCaptionResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AddCaptionResponseImplCopyWith<_$AddCaptionResponseImpl> get copyWith =>
-      __$$AddCaptionResponseImplCopyWithImpl<_$AddCaptionResponseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AddCaptionResponseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AddCaptionResponse(problemId: $problemId, caption: $caption)';
   }
 }
 
-abstract class _AddCaptionResponse extends AddCaptionResponse {
-  const factory _AddCaptionResponse(
-      {required final String problemId,
-      required final DetectedText caption}) = _$AddCaptionResponseImpl;
-  const _AddCaptionResponse._() : super._();
+/// @nodoc
+abstract mixin class $AddCaptionResponseCopyWith<$Res> {
+  factory $AddCaptionResponseCopyWith(
+          AddCaptionResponse value, $Res Function(AddCaptionResponse) _then) =
+      _$AddCaptionResponseCopyWithImpl;
+  @useResult
+  $Res call({String problemId, DetectedText caption});
 
-  factory _AddCaptionResponse.fromJson(Map<String, dynamic> json) =
-      _$AddCaptionResponseImpl.fromJson;
+  $DetectedTextCopyWith<$Res> get caption;
+}
+
+/// @nodoc
+class _$AddCaptionResponseCopyWithImpl<$Res>
+    implements $AddCaptionResponseCopyWith<$Res> {
+  _$AddCaptionResponseCopyWithImpl(this._self, this._then);
+
+  final AddCaptionResponse _self;
+  final $Res Function(AddCaptionResponse) _then;
+
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? problemId = null,
+    Object? caption = null,
+  }) {
+    return _then(_self.copyWith(
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: null == caption
+          ? _self.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as DetectedText,
+    ));
+  }
+
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res> get caption {
+    return $DetectedTextCopyWith<$Res>(_self.caption, (value) {
+      return _then(_self.copyWith(caption: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _AddCaptionResponse extends AddCaptionResponse {
+  const _AddCaptionResponse({required this.problemId, required this.caption})
+      : super._();
+  factory _AddCaptionResponse.fromJson(Map<String, dynamic> json) =>
+      _$AddCaptionResponseFromJson(json);
 
   @override
-  String get problemId;
+  final String problemId;
   @override
-  DetectedText get caption;
+  final DetectedText caption;
 
   /// Create a copy of AddCaptionResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddCaptionResponseImplCopyWith<_$AddCaptionResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$AddCaptionResponseCopyWith<_AddCaptionResponse> get copyWith =>
+      __$AddCaptionResponseCopyWithImpl<_AddCaptionResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AddCaptionResponseToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddCaptionResponse &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            (identical(other.caption, caption) || other.caption == caption));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, problemId, caption);
+
+  @override
+  String toString() {
+    return 'AddCaptionResponse(problemId: $problemId, caption: $caption)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$AddCaptionResponseCopyWith<$Res>
+    implements $AddCaptionResponseCopyWith<$Res> {
+  factory _$AddCaptionResponseCopyWith(
+          _AddCaptionResponse value, $Res Function(_AddCaptionResponse) _then) =
+      __$AddCaptionResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String problemId, DetectedText caption});
+
+  @override
+  $DetectedTextCopyWith<$Res> get caption;
+}
+
+/// @nodoc
+class __$AddCaptionResponseCopyWithImpl<$Res>
+    implements _$AddCaptionResponseCopyWith<$Res> {
+  __$AddCaptionResponseCopyWithImpl(this._self, this._then);
+
+  final _AddCaptionResponse _self;
+  final $Res Function(_AddCaptionResponse) _then;
+
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? problemId = null,
+    Object? caption = null,
+  }) {
+    return _then(_AddCaptionResponse(
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      caption: null == caption
+          ? _self.caption
+          : caption // ignore: cast_nullable_to_non_nullable
+              as DetectedText,
+    ));
+  }
+
+  /// Create a copy of AddCaptionResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $DetectedTextCopyWith<$Res> get caption {
+    return $DetectedTextCopyWith<$Res>(_self.caption, (value) {
+      return _then(_self.copyWith(caption: value));
+    });
+  }
+}
+
+// dart format on

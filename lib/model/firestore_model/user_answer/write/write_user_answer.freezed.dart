@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,189 +10,33 @@ part of 'write_user_answer.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-WriteUserAnswer _$WriteUserAnswerFromJson(Map<String, dynamic> json) {
-  return _WriteUserAnswer.fromJson(json);
-}
 
 /// @nodoc
 mixin _$WriteUserAnswer {
-  String get answer => throw _privateConstructorUsedError;
-  dynamic get createdAt => throw _privateConstructorUsedError;
-  int get likeCount => throw _privateConstructorUsedError;
-  String get problemId => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-
-  /// Serializes this WriteUserAnswer to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get answer;
+  dynamic get createdAt;
+  int get likeCount;
+  String get problemId;
+  String get uid;
 
   /// Create a copy of WriteUserAnswer
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $WriteUserAnswerCopyWith<WriteUserAnswer> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$WriteUserAnswerCopyWithImpl<WriteUserAnswer>(
+          this as WriteUserAnswer, _$identity);
 
-/// @nodoc
-abstract class $WriteUserAnswerCopyWith<$Res> {
-  factory $WriteUserAnswerCopyWith(
-          WriteUserAnswer value, $Res Function(WriteUserAnswer) then) =
-      _$WriteUserAnswerCopyWithImpl<$Res, WriteUserAnswer>;
-  @useResult
-  $Res call(
-      {String answer,
-      dynamic createdAt,
-      int likeCount,
-      String problemId,
-      String uid});
-}
-
-/// @nodoc
-class _$WriteUserAnswerCopyWithImpl<$Res, $Val extends WriteUserAnswer>
-    implements $WriteUserAnswerCopyWith<$Res> {
-  _$WriteUserAnswerCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of WriteUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? answer = null,
-    Object? createdAt = freezed,
-    Object? likeCount = null,
-    Object? problemId = null,
-    Object? uid = null,
-  }) {
-    return _then(_value.copyWith(
-      answer: null == answer
-          ? _value.answer
-          : answer // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      likeCount: null == likeCount
-          ? _value.likeCount
-          : likeCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$WriteUserAnswerImplCopyWith<$Res>
-    implements $WriteUserAnswerCopyWith<$Res> {
-  factory _$$WriteUserAnswerImplCopyWith(_$WriteUserAnswerImpl value,
-          $Res Function(_$WriteUserAnswerImpl) then) =
-      __$$WriteUserAnswerImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String answer,
-      dynamic createdAt,
-      int likeCount,
-      String problemId,
-      String uid});
-}
-
-/// @nodoc
-class __$$WriteUserAnswerImplCopyWithImpl<$Res>
-    extends _$WriteUserAnswerCopyWithImpl<$Res, _$WriteUserAnswerImpl>
-    implements _$$WriteUserAnswerImplCopyWith<$Res> {
-  __$$WriteUserAnswerImplCopyWithImpl(
-      _$WriteUserAnswerImpl _value, $Res Function(_$WriteUserAnswerImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WriteUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? answer = null,
-    Object? createdAt = freezed,
-    Object? likeCount = null,
-    Object? problemId = null,
-    Object? uid = null,
-  }) {
-    return _then(_$WriteUserAnswerImpl(
-      answer: null == answer
-          ? _value.answer
-          : answer // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      likeCount: null == likeCount
-          ? _value.likeCount
-          : likeCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WriteUserAnswerImpl extends _WriteUserAnswer {
-  const _$WriteUserAnswerImpl(
-      {required this.answer,
-      required this.createdAt,
-      this.likeCount = 0,
-      required this.problemId,
-      required this.uid})
-      : super._();
-
-  factory _$WriteUserAnswerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WriteUserAnswerImplFromJson(json);
-
-  @override
-  final String answer;
-  @override
-  final dynamic createdAt;
-  @override
-  @JsonKey()
-  final int likeCount;
-  @override
-  final String problemId;
-  @override
-  final String uid;
-
-  @override
-  String toString() {
-    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
-  }
+  /// Serializes this WriteUserAnswer to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WriteUserAnswerImpl &&
+            other is WriteUserAnswer &&
             (identical(other.answer, answer) || other.answer == answer) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.likeCount, likeCount) ||
@@ -211,50 +56,198 @@ class _$WriteUserAnswerImpl extends _WriteUserAnswer {
       problemId,
       uid);
 
-  /// Create a copy of WriteUserAnswer
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$WriteUserAnswerImplCopyWith<_$WriteUserAnswerImpl> get copyWith =>
-      __$$WriteUserAnswerImplCopyWithImpl<_$WriteUserAnswerImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WriteUserAnswerImplToJson(
-      this,
-    );
+  String toString() {
+    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
   }
 }
 
-abstract class _WriteUserAnswer extends WriteUserAnswer {
-  const factory _WriteUserAnswer(
-      {required final String answer,
-      required final dynamic createdAt,
-      final int likeCount,
-      required final String problemId,
-      required final String uid}) = _$WriteUserAnswerImpl;
-  const _WriteUserAnswer._() : super._();
+/// @nodoc
+abstract mixin class $WriteUserAnswerCopyWith<$Res> {
+  factory $WriteUserAnswerCopyWith(
+          WriteUserAnswer value, $Res Function(WriteUserAnswer) _then) =
+      _$WriteUserAnswerCopyWithImpl;
+  @useResult
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      int likeCount,
+      String problemId,
+      String uid});
+}
 
-  factory _WriteUserAnswer.fromJson(Map<String, dynamic> json) =
-      _$WriteUserAnswerImpl.fromJson;
+/// @nodoc
+class _$WriteUserAnswerCopyWithImpl<$Res>
+    implements $WriteUserAnswerCopyWith<$Res> {
+  _$WriteUserAnswerCopyWithImpl(this._self, this._then);
+
+  final WriteUserAnswer _self;
+  final $Res Function(WriteUserAnswer) _then;
+
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? answer = null,
+    Object? createdAt = freezed,
+    Object? likeCount = null,
+    Object? problemId = null,
+    Object? uid = null,
+  }) {
+    return _then(_self.copyWith(
+      answer: null == answer
+          ? _self.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      likeCount: null == likeCount
+          ? _self.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _WriteUserAnswer extends WriteUserAnswer {
+  const _WriteUserAnswer(
+      {required this.answer,
+      required this.createdAt,
+      this.likeCount = 0,
+      required this.problemId,
+      required this.uid})
+      : super._();
+  factory _WriteUserAnswer.fromJson(Map<String, dynamic> json) =>
+      _$WriteUserAnswerFromJson(json);
 
   @override
-  String get answer;
+  final String answer;
   @override
-  dynamic get createdAt;
+  final dynamic createdAt;
   @override
-  int get likeCount;
+  @JsonKey()
+  final int likeCount;
   @override
-  String get problemId;
+  final String problemId;
   @override
-  String get uid;
+  final String uid;
 
   /// Create a copy of WriteUserAnswer
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WriteUserAnswerImplCopyWith<_$WriteUserAnswerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$WriteUserAnswerCopyWith<_WriteUserAnswer> get copyWith =>
+      __$WriteUserAnswerCopyWithImpl<_WriteUserAnswer>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$WriteUserAnswerToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _WriteUserAnswer &&
+            (identical(other.answer, answer) || other.answer == answer) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.likeCount, likeCount) ||
+                other.likeCount == likeCount) &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            (identical(other.uid, uid) || other.uid == uid));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      answer,
+      const DeepCollectionEquality().hash(createdAt),
+      likeCount,
+      problemId,
+      uid);
+
+  @override
+  String toString() {
+    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$WriteUserAnswerCopyWith<$Res>
+    implements $WriteUserAnswerCopyWith<$Res> {
+  factory _$WriteUserAnswerCopyWith(
+          _WriteUserAnswer value, $Res Function(_WriteUserAnswer) _then) =
+      __$WriteUserAnswerCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String answer,
+      dynamic createdAt,
+      int likeCount,
+      String problemId,
+      String uid});
+}
+
+/// @nodoc
+class __$WriteUserAnswerCopyWithImpl<$Res>
+    implements _$WriteUserAnswerCopyWith<$Res> {
+  __$WriteUserAnswerCopyWithImpl(this._self, this._then);
+
+  final _WriteUserAnswer _self;
+  final $Res Function(_WriteUserAnswer) _then;
+
+  /// Create a copy of WriteUserAnswer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? answer = null,
+    Object? createdAt = freezed,
+    Object? likeCount = null,
+    Object? problemId = null,
+    Object? uid = null,
+  }) {
+    return _then(_WriteUserAnswer(
+      answer: null == answer
+          ? _self.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      likeCount: null == likeCount
+          ? _self.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

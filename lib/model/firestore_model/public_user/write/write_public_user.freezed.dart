@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,207 +10,34 @@ part of 'write_public_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-WritePublicUser _$WritePublicUserFromJson(Map<String, dynamic> json) {
-  return _WritePublicUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$WritePublicUser {
-  dynamic get createdAt => throw _privateConstructorUsedError;
-  int get followerCount => throw _privateConstructorUsedError;
-  int get followingCount => throw _privateConstructorUsedError;
-  int get muteCount => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  dynamic get updatedAt => throw _privateConstructorUsedError;
-
-  /// Serializes this WritePublicUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  dynamic get createdAt;
+  int get followerCount;
+  int get followingCount;
+  int get muteCount;
+  String get uid;
+  dynamic get updatedAt;
 
   /// Create a copy of WritePublicUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $WritePublicUserCopyWith<WritePublicUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$WritePublicUserCopyWithImpl<WritePublicUser>(
+          this as WritePublicUser, _$identity);
 
-/// @nodoc
-abstract class $WritePublicUserCopyWith<$Res> {
-  factory $WritePublicUserCopyWith(
-          WritePublicUser value, $Res Function(WritePublicUser) then) =
-      _$WritePublicUserCopyWithImpl<$Res, WritePublicUser>;
-  @useResult
-  $Res call(
-      {dynamic createdAt,
-      int followerCount,
-      int followingCount,
-      int muteCount,
-      String uid,
-      dynamic updatedAt});
-}
-
-/// @nodoc
-class _$WritePublicUserCopyWithImpl<$Res, $Val extends WritePublicUser>
-    implements $WritePublicUserCopyWith<$Res> {
-  _$WritePublicUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of WritePublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? createdAt = freezed,
-    Object? followerCount = null,
-    Object? followingCount = null,
-    Object? muteCount = null,
-    Object? uid = null,
-    Object? updatedAt = freezed,
-  }) {
-    return _then(_value.copyWith(
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      followerCount: null == followerCount
-          ? _value.followerCount
-          : followerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      followingCount: null == followingCount
-          ? _value.followingCount
-          : followingCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      muteCount: null == muteCount
-          ? _value.muteCount
-          : muteCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$WritePublicUserImplCopyWith<$Res>
-    implements $WritePublicUserCopyWith<$Res> {
-  factory _$$WritePublicUserImplCopyWith(_$WritePublicUserImpl value,
-          $Res Function(_$WritePublicUserImpl) then) =
-      __$$WritePublicUserImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {dynamic createdAt,
-      int followerCount,
-      int followingCount,
-      int muteCount,
-      String uid,
-      dynamic updatedAt});
-}
-
-/// @nodoc
-class __$$WritePublicUserImplCopyWithImpl<$Res>
-    extends _$WritePublicUserCopyWithImpl<$Res, _$WritePublicUserImpl>
-    implements _$$WritePublicUserImplCopyWith<$Res> {
-  __$$WritePublicUserImplCopyWithImpl(
-      _$WritePublicUserImpl _value, $Res Function(_$WritePublicUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of WritePublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? createdAt = freezed,
-    Object? followerCount = null,
-    Object? followingCount = null,
-    Object? muteCount = null,
-    Object? uid = null,
-    Object? updatedAt = freezed,
-  }) {
-    return _then(_$WritePublicUserImpl(
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      followerCount: null == followerCount
-          ? _value.followerCount
-          : followerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      followingCount: null == followingCount
-          ? _value.followingCount
-          : followingCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      muteCount: null == muteCount
-          ? _value.muteCount
-          : muteCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WritePublicUserImpl extends _WritePublicUser {
-  const _$WritePublicUserImpl(
-      {required this.createdAt,
-      this.followerCount = 0,
-      this.followingCount = 0,
-      this.muteCount = 0,
-      required this.uid,
-      required this.updatedAt})
-      : super._();
-
-  factory _$WritePublicUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WritePublicUserImplFromJson(json);
-
-  @override
-  final dynamic createdAt;
-  @override
-  @JsonKey()
-  final int followerCount;
-  @override
-  @JsonKey()
-  final int followingCount;
-  @override
-  @JsonKey()
-  final int muteCount;
-  @override
-  final String uid;
-  @override
-  final dynamic updatedAt;
-
-  @override
-  String toString() {
-    return 'WritePublicUser(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
-  }
+  /// Serializes this WritePublicUser to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WritePublicUserImpl &&
+            other is WritePublicUser &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.followerCount, followerCount) ||
                 other.followerCount == followerCount) &&
@@ -232,53 +60,218 @@ class _$WritePublicUserImpl extends _WritePublicUser {
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
-  /// Create a copy of WritePublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$WritePublicUserImplCopyWith<_$WritePublicUserImpl> get copyWith =>
-      __$$WritePublicUserImplCopyWithImpl<_$WritePublicUserImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WritePublicUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'WritePublicUser(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
-abstract class _WritePublicUser extends WritePublicUser {
-  const factory _WritePublicUser(
-      {required final dynamic createdAt,
-      final int followerCount,
-      final int followingCount,
-      final int muteCount,
-      required final String uid,
-      required final dynamic updatedAt}) = _$WritePublicUserImpl;
-  const _WritePublicUser._() : super._();
+/// @nodoc
+abstract mixin class $WritePublicUserCopyWith<$Res> {
+  factory $WritePublicUserCopyWith(
+          WritePublicUser value, $Res Function(WritePublicUser) _then) =
+      _$WritePublicUserCopyWithImpl;
+  @useResult
+  $Res call(
+      {dynamic createdAt,
+      int followerCount,
+      int followingCount,
+      int muteCount,
+      String uid,
+      dynamic updatedAt});
+}
 
-  factory _WritePublicUser.fromJson(Map<String, dynamic> json) =
-      _$WritePublicUserImpl.fromJson;
+/// @nodoc
+class _$WritePublicUserCopyWithImpl<$Res>
+    implements $WritePublicUserCopyWith<$Res> {
+  _$WritePublicUserCopyWithImpl(this._self, this._then);
+
+  final WritePublicUser _self;
+  final $Res Function(WritePublicUser) _then;
+
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? createdAt = freezed,
+    Object? followerCount = null,
+    Object? followingCount = null,
+    Object? muteCount = null,
+    Object? uid = null,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_self.copyWith(
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      followerCount: null == followerCount
+          ? _self.followerCount
+          : followerCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followingCount: null == followingCount
+          ? _self.followingCount
+          : followingCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      muteCount: null == muteCount
+          ? _self.muteCount
+          : muteCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: freezed == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _WritePublicUser extends WritePublicUser {
+  const _WritePublicUser(
+      {required this.createdAt,
+      this.followerCount = 0,
+      this.followingCount = 0,
+      this.muteCount = 0,
+      required this.uid,
+      required this.updatedAt})
+      : super._();
+  factory _WritePublicUser.fromJson(Map<String, dynamic> json) =>
+      _$WritePublicUserFromJson(json);
 
   @override
-  dynamic get createdAt;
+  final dynamic createdAt;
   @override
-  int get followerCount;
+  @JsonKey()
+  final int followerCount;
   @override
-  int get followingCount;
+  @JsonKey()
+  final int followingCount;
   @override
-  int get muteCount;
+  @JsonKey()
+  final int muteCount;
   @override
-  String get uid;
+  final String uid;
   @override
-  dynamic get updatedAt;
+  final dynamic updatedAt;
 
   /// Create a copy of WritePublicUser
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$WritePublicUserImplCopyWith<_$WritePublicUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$WritePublicUserCopyWith<_WritePublicUser> get copyWith =>
+      __$WritePublicUserCopyWithImpl<_WritePublicUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$WritePublicUserToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _WritePublicUser &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.followerCount, followerCount) ||
+                other.followerCount == followerCount) &&
+            (identical(other.followingCount, followingCount) ||
+                other.followingCount == followingCount) &&
+            (identical(other.muteCount, muteCount) ||
+                other.muteCount == muteCount) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(createdAt),
+      followerCount,
+      followingCount,
+      muteCount,
+      uid,
+      const DeepCollectionEquality().hash(updatedAt));
+
+  @override
+  String toString() {
+    return 'WritePublicUser(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$WritePublicUserCopyWith<$Res>
+    implements $WritePublicUserCopyWith<$Res> {
+  factory _$WritePublicUserCopyWith(
+          _WritePublicUser value, $Res Function(_WritePublicUser) _then) =
+      __$WritePublicUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {dynamic createdAt,
+      int followerCount,
+      int followingCount,
+      int muteCount,
+      String uid,
+      dynamic updatedAt});
+}
+
+/// @nodoc
+class __$WritePublicUserCopyWithImpl<$Res>
+    implements _$WritePublicUserCopyWith<$Res> {
+  __$WritePublicUserCopyWithImpl(this._self, this._then);
+
+  final _WritePublicUser _self;
+  final $Res Function(_WritePublicUser) _then;
+
+  /// Create a copy of WritePublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? createdAt = freezed,
+    Object? followerCount = null,
+    Object? followingCount = null,
+    Object? muteCount = null,
+    Object? uid = null,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_WritePublicUser(
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+      followerCount: null == followerCount
+          ? _self.followerCount
+          : followerCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      followingCount: null == followingCount
+          ? _self.followingCount
+          : followingCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      muteCount: null == muteCount
+          ? _self.muteCount
+          : muteCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: freezed == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+// dart format on

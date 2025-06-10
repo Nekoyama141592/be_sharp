@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,86 +10,58 @@ part of 'create_problem_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CreateProblemResponse _$CreateProblemResponseFromJson(
-    Map<String, dynamic> json) {
-  return _CreateProblemResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CreateProblemResponse {
-  int get status => throw _privateConstructorUsedError;
-
-  /// Serializes this CreateProblemResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get status;
 
   /// Create a copy of CreateProblemResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CreateProblemResponseCopyWith<CreateProblemResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CreateProblemResponseCopyWith<$Res> {
-  factory $CreateProblemResponseCopyWith(CreateProblemResponse value,
-          $Res Function(CreateProblemResponse) then) =
-      _$CreateProblemResponseCopyWithImpl<$Res, CreateProblemResponse>;
-  @useResult
-  $Res call({int status});
-}
-
-/// @nodoc
-class _$CreateProblemResponseCopyWithImpl<$Res,
-        $Val extends CreateProblemResponse>
-    implements $CreateProblemResponseCopyWith<$Res> {
-  _$CreateProblemResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of CreateProblemResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $CreateProblemResponseCopyWith<CreateProblemResponse> get copyWith =>
+      _$CreateProblemResponseCopyWithImpl<CreateProblemResponse>(
+          this as CreateProblemResponse, _$identity);
+
+  /// Serializes this CreateProblemResponse to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? status = null,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreateProblemResponse &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @override
+  String toString() {
+    return 'CreateProblemResponse(status: $status)';
   }
 }
 
 /// @nodoc
-abstract class _$$CreateProblemResponseImplCopyWith<$Res>
-    implements $CreateProblemResponseCopyWith<$Res> {
-  factory _$$CreateProblemResponseImplCopyWith(
-          _$CreateProblemResponseImpl value,
-          $Res Function(_$CreateProblemResponseImpl) then) =
-      __$$CreateProblemResponseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CreateProblemResponseCopyWith<$Res> {
+  factory $CreateProblemResponseCopyWith(CreateProblemResponse value,
+          $Res Function(CreateProblemResponse) _then) =
+      _$CreateProblemResponseCopyWithImpl;
   @useResult
   $Res call({int status});
 }
 
 /// @nodoc
-class __$$CreateProblemResponseImplCopyWithImpl<$Res>
-    extends _$CreateProblemResponseCopyWithImpl<$Res,
-        _$CreateProblemResponseImpl>
-    implements _$$CreateProblemResponseImplCopyWith<$Res> {
-  __$$CreateProblemResponseImplCopyWithImpl(_$CreateProblemResponseImpl _value,
-      $Res Function(_$CreateProblemResponseImpl) _then)
-      : super(_value, _then);
+class _$CreateProblemResponseCopyWithImpl<$Res>
+    implements $CreateProblemResponseCopyWith<$Res> {
+  _$CreateProblemResponseCopyWithImpl(this._self, this._then);
+
+  final CreateProblemResponse _self;
+  final $Res Function(CreateProblemResponse) _then;
 
   /// Create a copy of CreateProblemResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -97,9 +70,9 @@ class __$$CreateProblemResponseImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$CreateProblemResponseImpl(
+    return _then(_self.copyWith(
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -108,25 +81,35 @@ class __$$CreateProblemResponseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CreateProblemResponseImpl extends _CreateProblemResponse {
-  const _$CreateProblemResponseImpl({required this.status}) : super._();
-
-  factory _$CreateProblemResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CreateProblemResponseImplFromJson(json);
+class _CreateProblemResponse extends CreateProblemResponse {
+  const _CreateProblemResponse({required this.status}) : super._();
+  factory _CreateProblemResponse.fromJson(Map<String, dynamic> json) =>
+      _$CreateProblemResponseFromJson(json);
 
   @override
   final int status;
 
+  /// Create a copy of CreateProblemResponse
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CreateProblemResponse(status: $status)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateProblemResponseCopyWith<_CreateProblemResponse> get copyWith =>
+      __$CreateProblemResponseCopyWithImpl<_CreateProblemResponse>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CreateProblemResponseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateProblemResponseImpl &&
+            other is _CreateProblemResponse &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -134,38 +117,45 @@ class _$CreateProblemResponseImpl extends _CreateProblemResponse {
   @override
   int get hashCode => Object.hash(runtimeType, status);
 
-  /// Create a copy of CreateProblemResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CreateProblemResponseImplCopyWith<_$CreateProblemResponseImpl>
-      get copyWith => __$$CreateProblemResponseImplCopyWithImpl<
-          _$CreateProblemResponseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CreateProblemResponseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CreateProblemResponse(status: $status)';
   }
 }
 
-abstract class _CreateProblemResponse extends CreateProblemResponse {
-  const factory _CreateProblemResponse({required final int status}) =
-      _$CreateProblemResponseImpl;
-  const _CreateProblemResponse._() : super._();
-
-  factory _CreateProblemResponse.fromJson(Map<String, dynamic> json) =
-      _$CreateProblemResponseImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CreateProblemResponseCopyWith<$Res>
+    implements $CreateProblemResponseCopyWith<$Res> {
+  factory _$CreateProblemResponseCopyWith(_CreateProblemResponse value,
+          $Res Function(_CreateProblemResponse) _then) =
+      __$CreateProblemResponseCopyWithImpl;
   @override
-  int get status;
+  @useResult
+  $Res call({int status});
+}
+
+/// @nodoc
+class __$CreateProblemResponseCopyWithImpl<$Res>
+    implements _$CreateProblemResponseCopyWith<$Res> {
+  __$CreateProblemResponseCopyWithImpl(this._self, this._then);
+
+  final _CreateProblemResponse _self;
+  final $Res Function(_CreateProblemResponse) _then;
 
   /// Create a copy of CreateProblemResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateProblemResponseImplCopyWith<_$CreateProblemResponseImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_CreateProblemResponse(
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
+
+// dart format on

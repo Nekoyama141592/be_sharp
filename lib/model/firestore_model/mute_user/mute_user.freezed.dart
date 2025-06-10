@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,133 +10,29 @@ part of 'mute_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MuteUser _$MuteUserFromJson(Map<String, dynamic> json) {
-  return _MuteUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MuteUser {
-  String get muteUid => throw _privateConstructorUsedError;
-  dynamic get createdAt => throw _privateConstructorUsedError;
-
-  /// Serializes this MuteUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get muteUid;
+  dynamic get createdAt;
 
   /// Create a copy of MuteUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $MuteUserCopyWith<MuteUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$MuteUserCopyWithImpl<MuteUser>(this as MuteUser, _$identity);
 
-/// @nodoc
-abstract class $MuteUserCopyWith<$Res> {
-  factory $MuteUserCopyWith(MuteUser value, $Res Function(MuteUser) then) =
-      _$MuteUserCopyWithImpl<$Res, MuteUser>;
-  @useResult
-  $Res call({String muteUid, dynamic createdAt});
-}
-
-/// @nodoc
-class _$MuteUserCopyWithImpl<$Res, $Val extends MuteUser>
-    implements $MuteUserCopyWith<$Res> {
-  _$MuteUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of MuteUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? muteUid = null,
-    Object? createdAt = freezed,
-  }) {
-    return _then(_value.copyWith(
-      muteUid: null == muteUid
-          ? _value.muteUid
-          : muteUid // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MuteUserImplCopyWith<$Res>
-    implements $MuteUserCopyWith<$Res> {
-  factory _$$MuteUserImplCopyWith(
-          _$MuteUserImpl value, $Res Function(_$MuteUserImpl) then) =
-      __$$MuteUserImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String muteUid, dynamic createdAt});
-}
-
-/// @nodoc
-class __$$MuteUserImplCopyWithImpl<$Res>
-    extends _$MuteUserCopyWithImpl<$Res, _$MuteUserImpl>
-    implements _$$MuteUserImplCopyWith<$Res> {
-  __$$MuteUserImplCopyWithImpl(
-      _$MuteUserImpl _value, $Res Function(_$MuteUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of MuteUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? muteUid = null,
-    Object? createdAt = freezed,
-  }) {
-    return _then(_$MuteUserImpl(
-      muteUid: null == muteUid
-          ? _value.muteUid
-          : muteUid // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MuteUserImpl extends _MuteUser {
-  const _$MuteUserImpl({required this.muteUid, required this.createdAt})
-      : super._();
-
-  factory _$MuteUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MuteUserImplFromJson(json);
-
-  @override
-  final String muteUid;
-  @override
-  final dynamic createdAt;
-
-  @override
-  String toString() {
-    return 'MuteUser(muteUid: $muteUid, createdAt: $createdAt)';
-  }
+  /// Serializes this MuteUser to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MuteUserImpl &&
+            other is MuteUser &&
             (identical(other.muteUid, muteUid) || other.muteUid == muteUid) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
@@ -145,40 +42,131 @@ class _$MuteUserImpl extends _MuteUser {
   int get hashCode => Object.hash(
       runtimeType, muteUid, const DeepCollectionEquality().hash(createdAt));
 
-  /// Create a copy of MuteUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MuteUserImplCopyWith<_$MuteUserImpl> get copyWith =>
-      __$$MuteUserImplCopyWithImpl<_$MuteUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MuteUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'MuteUser(muteUid: $muteUid, createdAt: $createdAt)';
   }
 }
 
-abstract class _MuteUser extends MuteUser {
-  const factory _MuteUser(
-      {required final String muteUid,
-      required final dynamic createdAt}) = _$MuteUserImpl;
-  const _MuteUser._() : super._();
+/// @nodoc
+abstract mixin class $MuteUserCopyWith<$Res> {
+  factory $MuteUserCopyWith(MuteUser value, $Res Function(MuteUser) _then) =
+      _$MuteUserCopyWithImpl;
+  @useResult
+  $Res call({String muteUid, dynamic createdAt});
+}
 
-  factory _MuteUser.fromJson(Map<String, dynamic> json) =
-      _$MuteUserImpl.fromJson;
+/// @nodoc
+class _$MuteUserCopyWithImpl<$Res> implements $MuteUserCopyWith<$Res> {
+  _$MuteUserCopyWithImpl(this._self, this._then);
+
+  final MuteUser _self;
+  final $Res Function(MuteUser) _then;
+
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? muteUid = null,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_self.copyWith(
+      muteUid: null == muteUid
+          ? _self.muteUid
+          : muteUid // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _MuteUser extends MuteUser {
+  const _MuteUser({required this.muteUid, required this.createdAt}) : super._();
+  factory _MuteUser.fromJson(Map<String, dynamic> json) =>
+      _$MuteUserFromJson(json);
 
   @override
-  String get muteUid;
+  final String muteUid;
   @override
-  dynamic get createdAt;
+  final dynamic createdAt;
 
   /// Create a copy of MuteUser
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MuteUserImplCopyWith<_$MuteUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$MuteUserCopyWith<_MuteUser> get copyWith =>
+      __$MuteUserCopyWithImpl<_MuteUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MuteUserToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _MuteUser &&
+            (identical(other.muteUid, muteUid) || other.muteUid == muteUid) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, muteUid, const DeepCollectionEquality().hash(createdAt));
+
+  @override
+  String toString() {
+    return 'MuteUser(muteUid: $muteUid, createdAt: $createdAt)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$MuteUserCopyWith<$Res>
+    implements $MuteUserCopyWith<$Res> {
+  factory _$MuteUserCopyWith(_MuteUser value, $Res Function(_MuteUser) _then) =
+      __$MuteUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String muteUid, dynamic createdAt});
+}
+
+/// @nodoc
+class __$MuteUserCopyWithImpl<$Res> implements _$MuteUserCopyWith<$Res> {
+  __$MuteUserCopyWithImpl(this._self, this._then);
+
+  final _MuteUser _self;
+  final $Res Function(_MuteUser) _then;
+
+  /// Create a copy of MuteUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? muteUid = null,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_MuteUser(
+      muteUid: null == muteUid
+          ? _self.muteUid
+          : muteUid // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+// dart format on

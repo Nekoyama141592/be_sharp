@@ -6,15 +6,13 @@ part of 'add_caption_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AddCaptionRequestImpl _$$AddCaptionRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AddCaptionRequestImpl(
+_AddCaptionRequest _$AddCaptionRequestFromJson(Map<String, dynamic> json) =>
+    _AddCaptionRequest(
       problemId: json['problemId'] as String,
       stringCaption: json['stringCaption'] as String,
     );
 
-Map<String, dynamic> _$$AddCaptionRequestImplToJson(
-        _$AddCaptionRequestImpl instance) =>
+Map<String, dynamic> _$AddCaptionRequestToJson(_AddCaptionRequest instance) =>
     <String, dynamic>{
       'problemId': instance.problemId,
       'stringCaption': instance.stringCaption,

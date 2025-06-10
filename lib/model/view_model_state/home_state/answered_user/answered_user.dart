@@ -6,7 +6,7 @@ part 'answered_user.freezed.dart';
 part 'answered_user.g.dart';
 
 @freezed
-abstract class AnsweredUser implements _$AnsweredUser {
+abstract class AnsweredUser with _$AnsweredUser {
   const AnsweredUser._();
   const factory AnsweredUser(
       {required ReadPublicUser publicUser,

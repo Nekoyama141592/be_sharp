@@ -5,7 +5,7 @@ part 'write_public_user.freezed.dart';
 part 'write_public_user.g.dart';
 
 @freezed
-abstract class WritePublicUser implements _$WritePublicUser {
+abstract class WritePublicUser with _$WritePublicUser {
   const WritePublicUser._();
   const factory WritePublicUser(
       {required dynamic createdAt,

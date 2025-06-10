@@ -4,7 +4,7 @@ part 'private_user.freezed.dart';
 part 'private_user.g.dart';
 
 @freezed
-abstract class PrivateUser implements _$PrivateUser {
+abstract class PrivateUser with _$PrivateUser {
   const PrivateUser._();
   const factory PrivateUser({
     required String fcmToken,

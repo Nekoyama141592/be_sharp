@@ -4,7 +4,7 @@ part 'add_caption_request.freezed.dart';
 part 'add_caption_request.g.dart';
 
 @freezed
-abstract class AddCaptionRequest implements _$AddCaptionRequest {
+abstract class AddCaptionRequest with _$AddCaptionRequest {
   const AddCaptionRequest._();
   const factory AddCaptionRequest(
       {required String problemId,

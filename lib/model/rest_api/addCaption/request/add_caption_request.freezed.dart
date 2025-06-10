@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,135 +10,30 @@ part of 'add_caption_request.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AddCaptionRequest _$AddCaptionRequestFromJson(Map<String, dynamic> json) {
-  return _AddCaptionRequest.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AddCaptionRequest {
-  String get problemId => throw _privateConstructorUsedError;
-  String get stringCaption => throw _privateConstructorUsedError;
-
-  /// Serializes this AddCaptionRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get problemId;
+  String get stringCaption;
 
   /// Create a copy of AddCaptionRequest
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $AddCaptionRequestCopyWith<AddCaptionRequest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$AddCaptionRequestCopyWithImpl<AddCaptionRequest>(
+          this as AddCaptionRequest, _$identity);
 
-/// @nodoc
-abstract class $AddCaptionRequestCopyWith<$Res> {
-  factory $AddCaptionRequestCopyWith(
-          AddCaptionRequest value, $Res Function(AddCaptionRequest) then) =
-      _$AddCaptionRequestCopyWithImpl<$Res, AddCaptionRequest>;
-  @useResult
-  $Res call({String problemId, String stringCaption});
-}
-
-/// @nodoc
-class _$AddCaptionRequestCopyWithImpl<$Res, $Val extends AddCaptionRequest>
-    implements $AddCaptionRequestCopyWith<$Res> {
-  _$AddCaptionRequestCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AddCaptionRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? problemId = null,
-    Object? stringCaption = null,
-  }) {
-    return _then(_value.copyWith(
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      stringCaption: null == stringCaption
-          ? _value.stringCaption
-          : stringCaption // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$AddCaptionRequestImplCopyWith<$Res>
-    implements $AddCaptionRequestCopyWith<$Res> {
-  factory _$$AddCaptionRequestImplCopyWith(_$AddCaptionRequestImpl value,
-          $Res Function(_$AddCaptionRequestImpl) then) =
-      __$$AddCaptionRequestImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String problemId, String stringCaption});
-}
-
-/// @nodoc
-class __$$AddCaptionRequestImplCopyWithImpl<$Res>
-    extends _$AddCaptionRequestCopyWithImpl<$Res, _$AddCaptionRequestImpl>
-    implements _$$AddCaptionRequestImplCopyWith<$Res> {
-  __$$AddCaptionRequestImplCopyWithImpl(_$AddCaptionRequestImpl _value,
-      $Res Function(_$AddCaptionRequestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AddCaptionRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? problemId = null,
-    Object? stringCaption = null,
-  }) {
-    return _then(_$AddCaptionRequestImpl(
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      stringCaption: null == stringCaption
-          ? _value.stringCaption
-          : stringCaption // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$AddCaptionRequestImpl extends _AddCaptionRequest {
-  const _$AddCaptionRequestImpl(
-      {required this.problemId, required this.stringCaption})
-      : super._();
-
-  factory _$AddCaptionRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AddCaptionRequestImplFromJson(json);
-
-  @override
-  final String problemId;
-  @override
-  final String stringCaption;
-
-  @override
-  String toString() {
-    return 'AddCaptionRequest(problemId: $problemId, stringCaption: $stringCaption)';
-  }
+  /// Serializes this AddCaptionRequest to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddCaptionRequestImpl &&
+            other is AddCaptionRequest &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.stringCaption, stringCaption) ||
@@ -148,41 +44,138 @@ class _$AddCaptionRequestImpl extends _AddCaptionRequest {
   @override
   int get hashCode => Object.hash(runtimeType, problemId, stringCaption);
 
-  /// Create a copy of AddCaptionRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AddCaptionRequestImplCopyWith<_$AddCaptionRequestImpl> get copyWith =>
-      __$$AddCaptionRequestImplCopyWithImpl<_$AddCaptionRequestImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AddCaptionRequestImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AddCaptionRequest(problemId: $problemId, stringCaption: $stringCaption)';
   }
 }
 
-abstract class _AddCaptionRequest extends AddCaptionRequest {
-  const factory _AddCaptionRequest(
-      {required final String problemId,
-      required final String stringCaption}) = _$AddCaptionRequestImpl;
-  const _AddCaptionRequest._() : super._();
+/// @nodoc
+abstract mixin class $AddCaptionRequestCopyWith<$Res> {
+  factory $AddCaptionRequestCopyWith(
+          AddCaptionRequest value, $Res Function(AddCaptionRequest) _then) =
+      _$AddCaptionRequestCopyWithImpl;
+  @useResult
+  $Res call({String problemId, String stringCaption});
+}
 
-  factory _AddCaptionRequest.fromJson(Map<String, dynamic> json) =
-      _$AddCaptionRequestImpl.fromJson;
+/// @nodoc
+class _$AddCaptionRequestCopyWithImpl<$Res>
+    implements $AddCaptionRequestCopyWith<$Res> {
+  _$AddCaptionRequestCopyWithImpl(this._self, this._then);
+
+  final AddCaptionRequest _self;
+  final $Res Function(AddCaptionRequest) _then;
+
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? problemId = null,
+    Object? stringCaption = null,
+  }) {
+    return _then(_self.copyWith(
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      stringCaption: null == stringCaption
+          ? _self.stringCaption
+          : stringCaption // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _AddCaptionRequest extends AddCaptionRequest {
+  const _AddCaptionRequest(
+      {required this.problemId, required this.stringCaption})
+      : super._();
+  factory _AddCaptionRequest.fromJson(Map<String, dynamic> json) =>
+      _$AddCaptionRequestFromJson(json);
 
   @override
-  String get problemId;
+  final String problemId;
   @override
-  String get stringCaption;
+  final String stringCaption;
 
   /// Create a copy of AddCaptionRequest
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddCaptionRequestImplCopyWith<_$AddCaptionRequestImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$AddCaptionRequestCopyWith<_AddCaptionRequest> get copyWith =>
+      __$AddCaptionRequestCopyWithImpl<_AddCaptionRequest>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AddCaptionRequestToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddCaptionRequest &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            (identical(other.stringCaption, stringCaption) ||
+                other.stringCaption == stringCaption));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, problemId, stringCaption);
+
+  @override
+  String toString() {
+    return 'AddCaptionRequest(problemId: $problemId, stringCaption: $stringCaption)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$AddCaptionRequestCopyWith<$Res>
+    implements $AddCaptionRequestCopyWith<$Res> {
+  factory _$AddCaptionRequestCopyWith(
+          _AddCaptionRequest value, $Res Function(_AddCaptionRequest) _then) =
+      __$AddCaptionRequestCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String problemId, String stringCaption});
+}
+
+/// @nodoc
+class __$AddCaptionRequestCopyWithImpl<$Res>
+    implements _$AddCaptionRequestCopyWith<$Res> {
+  __$AddCaptionRequestCopyWithImpl(this._self, this._then);
+
+  final _AddCaptionRequest _self;
+  final $Res Function(_AddCaptionRequest) _then;
+
+  /// Create a copy of AddCaptionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? problemId = null,
+    Object? stringCaption = null,
+  }) {
+    return _then(_AddCaptionRequest(
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      stringCaption: null == stringCaption
+          ? _self.stringCaption
+          : stringCaption // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,165 +10,31 @@ part of 'private_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PrivateUser _$PrivateUserFromJson(Map<String, dynamic> json) {
-  return _PrivateUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PrivateUser {
-  String get fcmToken => throw _privateConstructorUsedError;
-  bool get isAdmin => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  dynamic get createdAt => throw _privateConstructorUsedError;
-
-  /// Serializes this PrivateUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get fcmToken;
+  bool get isAdmin;
+  String get uid;
+  dynamic get createdAt;
 
   /// Create a copy of PrivateUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $PrivateUserCopyWith<PrivateUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$PrivateUserCopyWithImpl<PrivateUser>(this as PrivateUser, _$identity);
 
-/// @nodoc
-abstract class $PrivateUserCopyWith<$Res> {
-  factory $PrivateUserCopyWith(
-          PrivateUser value, $Res Function(PrivateUser) then) =
-      _$PrivateUserCopyWithImpl<$Res, PrivateUser>;
-  @useResult
-  $Res call({String fcmToken, bool isAdmin, String uid, dynamic createdAt});
-}
-
-/// @nodoc
-class _$PrivateUserCopyWithImpl<$Res, $Val extends PrivateUser>
-    implements $PrivateUserCopyWith<$Res> {
-  _$PrivateUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PrivateUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fcmToken = null,
-    Object? isAdmin = null,
-    Object? uid = null,
-    Object? createdAt = freezed,
-  }) {
-    return _then(_value.copyWith(
-      fcmToken: null == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAdmin: null == isAdmin
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PrivateUserImplCopyWith<$Res>
-    implements $PrivateUserCopyWith<$Res> {
-  factory _$$PrivateUserImplCopyWith(
-          _$PrivateUserImpl value, $Res Function(_$PrivateUserImpl) then) =
-      __$$PrivateUserImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String fcmToken, bool isAdmin, String uid, dynamic createdAt});
-}
-
-/// @nodoc
-class __$$PrivateUserImplCopyWithImpl<$Res>
-    extends _$PrivateUserCopyWithImpl<$Res, _$PrivateUserImpl>
-    implements _$$PrivateUserImplCopyWith<$Res> {
-  __$$PrivateUserImplCopyWithImpl(
-      _$PrivateUserImpl _value, $Res Function(_$PrivateUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PrivateUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fcmToken = null,
-    Object? isAdmin = null,
-    Object? uid = null,
-    Object? createdAt = freezed,
-  }) {
-    return _then(_$PrivateUserImpl(
-      fcmToken: null == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAdmin: null == isAdmin
-          ? _value.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$PrivateUserImpl extends _PrivateUser {
-  const _$PrivateUserImpl(
-      {required this.fcmToken,
-      this.isAdmin = false,
-      required this.uid,
-      required this.createdAt})
-      : super._();
-
-  factory _$PrivateUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PrivateUserImplFromJson(json);
-
-  @override
-  final String fcmToken;
-  @override
-  @JsonKey()
-  final bool isAdmin;
-  @override
-  final String uid;
-  @override
-  final dynamic createdAt;
-
-  @override
-  String toString() {
-    return 'PrivateUser(fcmToken: $fcmToken, isAdmin: $isAdmin, uid: $uid, createdAt: $createdAt)';
-  }
+  /// Serializes this PrivateUser to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PrivateUserImpl &&
+            other is PrivateUser &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
@@ -180,46 +47,166 @@ class _$PrivateUserImpl extends _PrivateUser {
   int get hashCode => Object.hash(runtimeType, fcmToken, isAdmin, uid,
       const DeepCollectionEquality().hash(createdAt));
 
-  /// Create a copy of PrivateUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$PrivateUserImplCopyWith<_$PrivateUserImpl> get copyWith =>
-      __$$PrivateUserImplCopyWithImpl<_$PrivateUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PrivateUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'PrivateUser(fcmToken: $fcmToken, isAdmin: $isAdmin, uid: $uid, createdAt: $createdAt)';
   }
 }
 
-abstract class _PrivateUser extends PrivateUser {
-  const factory _PrivateUser(
-      {required final String fcmToken,
-      final bool isAdmin,
-      required final String uid,
-      required final dynamic createdAt}) = _$PrivateUserImpl;
-  const _PrivateUser._() : super._();
+/// @nodoc
+abstract mixin class $PrivateUserCopyWith<$Res> {
+  factory $PrivateUserCopyWith(
+          PrivateUser value, $Res Function(PrivateUser) _then) =
+      _$PrivateUserCopyWithImpl;
+  @useResult
+  $Res call({String fcmToken, bool isAdmin, String uid, dynamic createdAt});
+}
 
-  factory _PrivateUser.fromJson(Map<String, dynamic> json) =
-      _$PrivateUserImpl.fromJson;
+/// @nodoc
+class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
+  _$PrivateUserCopyWithImpl(this._self, this._then);
+
+  final PrivateUser _self;
+  final $Res Function(PrivateUser) _then;
+
+  /// Create a copy of PrivateUser
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fcmToken = null,
+    Object? isAdmin = null,
+    Object? uid = null,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_self.copyWith(
+      fcmToken: null == fcmToken
+          ? _self.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAdmin: null == isAdmin
+          ? _self.isAdmin
+          : isAdmin // ignore: cast_nullable_to_non_nullable
+              as bool,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _PrivateUser extends PrivateUser {
+  const _PrivateUser(
+      {required this.fcmToken,
+      this.isAdmin = false,
+      required this.uid,
+      required this.createdAt})
+      : super._();
+  factory _PrivateUser.fromJson(Map<String, dynamic> json) =>
+      _$PrivateUserFromJson(json);
 
   @override
-  String get fcmToken;
+  final String fcmToken;
   @override
-  bool get isAdmin;
+  @JsonKey()
+  final bool isAdmin;
   @override
-  String get uid;
+  final String uid;
   @override
-  dynamic get createdAt;
+  final dynamic createdAt;
 
   /// Create a copy of PrivateUser
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PrivateUserImplCopyWith<_$PrivateUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$PrivateUserCopyWith<_PrivateUser> get copyWith =>
+      __$PrivateUserCopyWithImpl<_PrivateUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$PrivateUserToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _PrivateUser &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, fcmToken, isAdmin, uid,
+      const DeepCollectionEquality().hash(createdAt));
+
+  @override
+  String toString() {
+    return 'PrivateUser(fcmToken: $fcmToken, isAdmin: $isAdmin, uid: $uid, createdAt: $createdAt)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$PrivateUserCopyWith<$Res>
+    implements $PrivateUserCopyWith<$Res> {
+  factory _$PrivateUserCopyWith(
+          _PrivateUser value, $Res Function(_PrivateUser) _then) =
+      __$PrivateUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String fcmToken, bool isAdmin, String uid, dynamic createdAt});
+}
+
+/// @nodoc
+class __$PrivateUserCopyWithImpl<$Res> implements _$PrivateUserCopyWith<$Res> {
+  __$PrivateUserCopyWithImpl(this._self, this._then);
+
+  final _PrivateUser _self;
+  final $Res Function(_PrivateUser) _then;
+
+  /// Create a copy of PrivateUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? fcmToken = null,
+    Object? isAdmin = null,
+    Object? uid = null,
+    Object? createdAt = freezed,
+  }) {
+    return _then(_PrivateUser(
+      fcmToken: null == fcmToken
+          ? _self.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      isAdmin: null == isAdmin
+          ? _self.isAdmin
+          : isAdmin // ignore: cast_nullable_to_non_nullable
+              as bool,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: freezed == createdAt
+          ? _self.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+// dart format on

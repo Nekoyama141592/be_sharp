@@ -6,16 +6,15 @@ part of 'edit_user_info_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EditUserInfoRequestImpl _$$EditUserInfoRequestImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EditUserInfoRequestImpl(
+_EditUserInfoRequest _$EditUserInfoRequestFromJson(Map<String, dynamic> json) =>
+    _EditUserInfoRequest(
       stringNickName: json['stringNickName'] as String,
       stringBio: json['stringBio'] as String,
       object: json['object'] as String,
     );
 
-Map<String, dynamic> _$$EditUserInfoRequestImplToJson(
-        _$EditUserInfoRequestImpl instance) =>
+Map<String, dynamic> _$EditUserInfoRequestToJson(
+        _EditUserInfoRequest instance) =>
     <String, dynamic>{
       'stringNickName': instance.stringNickName,
       'stringBio': instance.stringBio,

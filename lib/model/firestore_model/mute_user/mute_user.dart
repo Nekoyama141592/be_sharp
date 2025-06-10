@@ -4,7 +4,7 @@ part 'mute_user.freezed.dart';
 part 'mute_user.g.dart';
 
 @freezed
-abstract class MuteUser implements _$MuteUser {
+abstract class MuteUser with _$MuteUser {
   const MuteUser._();
   const factory MuteUser({
     required String muteUid,

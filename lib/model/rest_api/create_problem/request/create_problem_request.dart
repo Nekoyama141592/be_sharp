@@ -4,7 +4,7 @@ part 'create_problem_request.freezed.dart';
 part 'create_problem_request.g.dart';
 
 @freezed
-abstract class CreateProblemRequest implements _$CreateProblemRequest {
+abstract class CreateProblemRequest with _$CreateProblemRequest {
   const CreateProblemRequest._();
   const factory CreateProblemRequest(
       {required String question,

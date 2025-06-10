@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,152 +10,30 @@ part of 'user_and_image_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-UserAndImageState _$UserAndImageStateFromJson(Map<String, dynamic> json) {
-  return _UserAndImageState.fromJson(json);
-}
 
 /// @nodoc
 mixin _$UserAndImageState {
-  ReadPublicUser? get user => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
-
-  /// Serializes this UserAndImageState to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  ReadPublicUser? get user;
+  String? get image;
 
   /// Create a copy of UserAndImageState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $UserAndImageStateCopyWith<UserAndImageState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$UserAndImageStateCopyWithImpl<UserAndImageState>(
+          this as UserAndImageState, _$identity);
 
-/// @nodoc
-abstract class $UserAndImageStateCopyWith<$Res> {
-  factory $UserAndImageStateCopyWith(
-          UserAndImageState value, $Res Function(UserAndImageState) then) =
-      _$UserAndImageStateCopyWithImpl<$Res, UserAndImageState>;
-  @useResult
-  $Res call({ReadPublicUser? user, String? image});
-
-  $ReadPublicUserCopyWith<$Res>? get user;
-}
-
-/// @nodoc
-class _$UserAndImageStateCopyWithImpl<$Res, $Val extends UserAndImageState>
-    implements $UserAndImageStateCopyWith<$Res> {
-  _$UserAndImageStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of UserAndImageState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = freezed,
-    Object? image = freezed,
-  }) {
-    return _then(_value.copyWith(
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  /// Create a copy of UserAndImageState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res>? get user {
-    if (_value.user == null) {
-      return null;
-    }
-
-    return $ReadPublicUserCopyWith<$Res>(_value.user!, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$UserAndImageStateImplCopyWith<$Res>
-    implements $UserAndImageStateCopyWith<$Res> {
-  factory _$$UserAndImageStateImplCopyWith(_$UserAndImageStateImpl value,
-          $Res Function(_$UserAndImageStateImpl) then) =
-      __$$UserAndImageStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ReadPublicUser? user, String? image});
-
-  @override
-  $ReadPublicUserCopyWith<$Res>? get user;
-}
-
-/// @nodoc
-class __$$UserAndImageStateImplCopyWithImpl<$Res>
-    extends _$UserAndImageStateCopyWithImpl<$Res, _$UserAndImageStateImpl>
-    implements _$$UserAndImageStateImplCopyWith<$Res> {
-  __$$UserAndImageStateImplCopyWithImpl(_$UserAndImageStateImpl _value,
-      $Res Function(_$UserAndImageStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of UserAndImageState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = freezed,
-    Object? image = freezed,
-  }) {
-    return _then(_$UserAndImageStateImpl(
-      user: freezed == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$UserAndImageStateImpl extends _UserAndImageState {
-  const _$UserAndImageStateImpl({this.user, this.image}) : super._();
-
-  factory _$UserAndImageStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserAndImageStateImplFromJson(json);
-
-  @override
-  final ReadPublicUser? user;
-  @override
-  final String? image;
-
-  @override
-  String toString() {
-    return 'UserAndImageState(user: $user, image: $image)';
-  }
+  /// Serializes this UserAndImageState to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserAndImageStateImpl &&
+            other is UserAndImageState &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.image, image) || other.image == image));
   }
@@ -163,41 +42,167 @@ class _$UserAndImageStateImpl extends _UserAndImageState {
   @override
   int get hashCode => Object.hash(runtimeType, user, image);
 
-  /// Create a copy of UserAndImageState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$UserAndImageStateImplCopyWith<_$UserAndImageStateImpl> get copyWith =>
-      __$$UserAndImageStateImplCopyWithImpl<_$UserAndImageStateImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserAndImageStateImplToJson(
-      this,
-    );
+  String toString() {
+    return 'UserAndImageState(user: $user, image: $image)';
   }
 }
 
-abstract class _UserAndImageState extends UserAndImageState {
-  const factory _UserAndImageState(
-      {final ReadPublicUser? user,
-      final String? image}) = _$UserAndImageStateImpl;
-  const _UserAndImageState._() : super._();
+/// @nodoc
+abstract mixin class $UserAndImageStateCopyWith<$Res> {
+  factory $UserAndImageStateCopyWith(
+          UserAndImageState value, $Res Function(UserAndImageState) _then) =
+      _$UserAndImageStateCopyWithImpl;
+  @useResult
+  $Res call({ReadPublicUser? user, String? image});
 
-  factory _UserAndImageState.fromJson(Map<String, dynamic> json) =
-      _$UserAndImageStateImpl.fromJson;
+  $ReadPublicUserCopyWith<$Res>? get user;
+}
+
+/// @nodoc
+class _$UserAndImageStateCopyWithImpl<$Res>
+    implements $UserAndImageStateCopyWith<$Res> {
+  _$UserAndImageStateCopyWithImpl(this._self, this._then);
+
+  final UserAndImageState _self;
+  final $Res Function(UserAndImageState) _then;
+
+  /// Create a copy of UserAndImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_self.copyWith(
+      user: freezed == user
+          ? _self.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as ReadPublicUser?,
+      image: freezed == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of UserAndImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadPublicUserCopyWith<$Res>? get user {
+    if (_self.user == null) {
+      return null;
+    }
+
+    return $ReadPublicUserCopyWith<$Res>(_self.user!, (value) {
+      return _then(_self.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _UserAndImageState extends UserAndImageState {
+  const _UserAndImageState({this.user, this.image}) : super._();
+  factory _UserAndImageState.fromJson(Map<String, dynamic> json) =>
+      _$UserAndImageStateFromJson(json);
 
   @override
-  ReadPublicUser? get user;
+  final ReadPublicUser? user;
   @override
-  String? get image;
+  final String? image;
 
   /// Create a copy of UserAndImageState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserAndImageStateImplCopyWith<_$UserAndImageStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$UserAndImageStateCopyWith<_UserAndImageState> get copyWith =>
+      __$UserAndImageStateCopyWithImpl<_UserAndImageState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$UserAndImageStateToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UserAndImageState &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, user, image);
+
+  @override
+  String toString() {
+    return 'UserAndImageState(user: $user, image: $image)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$UserAndImageStateCopyWith<$Res>
+    implements $UserAndImageStateCopyWith<$Res> {
+  factory _$UserAndImageStateCopyWith(
+          _UserAndImageState value, $Res Function(_UserAndImageState) _then) =
+      __$UserAndImageStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({ReadPublicUser? user, String? image});
+
+  @override
+  $ReadPublicUserCopyWith<$Res>? get user;
+}
+
+/// @nodoc
+class __$UserAndImageStateCopyWithImpl<$Res>
+    implements _$UserAndImageStateCopyWith<$Res> {
+  __$UserAndImageStateCopyWithImpl(this._self, this._then);
+
+  final _UserAndImageState _self;
+  final $Res Function(_UserAndImageState) _then;
+
+  /// Create a copy of UserAndImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? user = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_UserAndImageState(
+      user: freezed == user
+          ? _self.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as ReadPublicUser?,
+      image: freezed == image
+          ? _self.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of UserAndImageState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadPublicUserCopyWith<$Res>? get user {
+    if (_self.user == null) {
+      return null;
+    }
+
+    return $ReadPublicUserCopyWith<$Res>(_self.user!, (value) {
+      return _then(_self.copyWith(user: value));
+    });
+  }
+}
+
+// dart format on

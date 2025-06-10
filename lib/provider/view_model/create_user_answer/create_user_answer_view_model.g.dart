@@ -7,7 +7,7 @@ part of 'create_user_answer_view_model.dart';
 // **************************************************************************
 
 String _$createUserAnswerViewModelHash() =>
-    r'035de1e180600498b63fba1c8165b742ef41656f';
+    r'5c12734e07b25210001eee5b372f5d8ab1cf5754';
 
 /// Copied from Dart SDK
 class _SystemHash {

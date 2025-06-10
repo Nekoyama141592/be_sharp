@@ -4,7 +4,7 @@ part 'write_user_answer.freezed.dart';
 part 'write_user_answer.g.dart';
 
 @freezed
-abstract class WriteUserAnswer implements _$WriteUserAnswer {
+abstract class WriteUserAnswer with _$WriteUserAnswer {
   const WriteUserAnswer._();
   const factory WriteUserAnswer({
     required String answer,

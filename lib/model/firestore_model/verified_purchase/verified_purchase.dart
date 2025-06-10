@@ -8,7 +8,7 @@ part 'verified_purchase.freezed.dart';
 part 'verified_purchase.g.dart';
 
 @freezed
-abstract class VerifiedPurchase implements _$VerifiedPurchase {
+abstract class VerifiedPurchase with _$VerifiedPurchase {
   const VerifiedPurchase._();
   const factory VerifiedPurchase({
     required Map<String, dynamic> purchaseDetails,

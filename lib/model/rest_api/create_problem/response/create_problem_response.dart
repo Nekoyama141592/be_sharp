@@ -4,7 +4,7 @@ part 'create_problem_response.freezed.dart';
 part 'create_problem_response.g.dart';
 
 @freezed
-abstract class CreateProblemResponse implements _$CreateProblemResponse {
+abstract class CreateProblemResponse with _$CreateProblemResponse {
   const CreateProblemResponse._();
   const factory CreateProblemResponse({required int status}) =
       _CreateProblemResponse;

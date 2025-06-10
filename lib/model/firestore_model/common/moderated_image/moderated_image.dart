@@ -4,7 +4,7 @@ part 'moderated_image.freezed.dart';
 part 'moderated_image.g.dart';
 
 @freezed
-abstract class ModeratedImage implements _$ModeratedImage {
+abstract class ModeratedImage with _$ModeratedImage {
   const ModeratedImage._();
   const factory ModeratedImage({
     @Default([]) List<Map<String, dynamic>> moderationLabels,

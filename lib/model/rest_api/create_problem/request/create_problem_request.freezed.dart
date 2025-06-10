@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,115 +10,71 @@ part of 'create_problem_request.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CreateProblemRequest _$CreateProblemRequestFromJson(Map<String, dynamic> json) {
-  return _CreateProblemRequest.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CreateProblemRequest {
-  String get question => throw _privateConstructorUsedError;
-  String get latex => throw _privateConstructorUsedError;
-  String get problemId => throw _privateConstructorUsedError;
-  List<String> get answers => throw _privateConstructorUsedError;
-  int get timeLimitSeconds => throw _privateConstructorUsedError;
-  String get subject => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-
-  /// Serializes this CreateProblemRequest to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get question;
+  String get latex;
+  String get problemId;
+  List<String> get answers;
+  int get timeLimitSeconds;
+  String get subject;
+  String get category;
 
   /// Create a copy of CreateProblemRequest
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CreateProblemRequestCopyWith<CreateProblemRequest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CreateProblemRequestCopyWith<$Res> {
-  factory $CreateProblemRequestCopyWith(CreateProblemRequest value,
-          $Res Function(CreateProblemRequest) then) =
-      _$CreateProblemRequestCopyWithImpl<$Res, CreateProblemRequest>;
-  @useResult
-  $Res call(
-      {String question,
-      String latex,
-      String problemId,
-      List<String> answers,
-      int timeLimitSeconds,
-      String subject,
-      String category});
-}
-
-/// @nodoc
-class _$CreateProblemRequestCopyWithImpl<$Res,
-        $Val extends CreateProblemRequest>
-    implements $CreateProblemRequestCopyWith<$Res> {
-  _$CreateProblemRequestCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of CreateProblemRequest
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $CreateProblemRequestCopyWith<CreateProblemRequest> get copyWith =>
+      _$CreateProblemRequestCopyWithImpl<CreateProblemRequest>(
+          this as CreateProblemRequest, _$identity);
+
+  /// Serializes this CreateProblemRequest to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? question = null,
-    Object? latex = null,
-    Object? problemId = null,
-    Object? answers = null,
-    Object? timeLimitSeconds = null,
-    Object? subject = null,
-    Object? category = null,
-  }) {
-    return _then(_value.copyWith(
-      question: null == question
-          ? _value.question
-          : question // ignore: cast_nullable_to_non_nullable
-              as String,
-      latex: null == latex
-          ? _value.latex
-          : latex // ignore: cast_nullable_to_non_nullable
-              as String,
-      problemId: null == problemId
-          ? _value.problemId
-          : problemId // ignore: cast_nullable_to_non_nullable
-              as String,
-      answers: null == answers
-          ? _value.answers
-          : answers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      timeLimitSeconds: null == timeLimitSeconds
-          ? _value.timeLimitSeconds
-          : timeLimitSeconds // ignore: cast_nullable_to_non_nullable
-              as int,
-      subject: null == subject
-          ? _value.subject
-          : subject // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CreateProblemRequest &&
+            (identical(other.question, question) ||
+                other.question == question) &&
+            (identical(other.latex, latex) || other.latex == latex) &&
+            (identical(other.problemId, problemId) ||
+                other.problemId == problemId) &&
+            const DeepCollectionEquality().equals(other.answers, answers) &&
+            (identical(other.timeLimitSeconds, timeLimitSeconds) ||
+                other.timeLimitSeconds == timeLimitSeconds) &&
+            (identical(other.subject, subject) || other.subject == subject) &&
+            (identical(other.category, category) ||
+                other.category == category));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      question,
+      latex,
+      problemId,
+      const DeepCollectionEquality().hash(answers),
+      timeLimitSeconds,
+      subject,
+      category);
+
+  @override
+  String toString() {
+    return 'CreateProblemRequest(question: $question, latex: $latex, problemId: $problemId, answers: $answers, timeLimitSeconds: $timeLimitSeconds, subject: $subject, category: $category)';
   }
 }
 
 /// @nodoc
-abstract class _$$CreateProblemRequestImplCopyWith<$Res>
-    implements $CreateProblemRequestCopyWith<$Res> {
-  factory _$$CreateProblemRequestImplCopyWith(_$CreateProblemRequestImpl value,
-          $Res Function(_$CreateProblemRequestImpl) then) =
-      __$$CreateProblemRequestImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CreateProblemRequestCopyWith<$Res> {
+  factory $CreateProblemRequestCopyWith(CreateProblemRequest value,
+          $Res Function(CreateProblemRequest) _then) =
+      _$CreateProblemRequestCopyWithImpl;
   @useResult
   $Res call(
       {String question,
@@ -130,12 +87,12 @@ abstract class _$$CreateProblemRequestImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CreateProblemRequestImplCopyWithImpl<$Res>
-    extends _$CreateProblemRequestCopyWithImpl<$Res, _$CreateProblemRequestImpl>
-    implements _$$CreateProblemRequestImplCopyWith<$Res> {
-  __$$CreateProblemRequestImplCopyWithImpl(_$CreateProblemRequestImpl _value,
-      $Res Function(_$CreateProblemRequestImpl) _then)
-      : super(_value, _then);
+class _$CreateProblemRequestCopyWithImpl<$Res>
+    implements $CreateProblemRequestCopyWith<$Res> {
+  _$CreateProblemRequestCopyWithImpl(this._self, this._then);
+
+  final CreateProblemRequest _self;
+  final $Res Function(CreateProblemRequest) _then;
 
   /// Create a copy of CreateProblemRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -150,33 +107,33 @@ class __$$CreateProblemRequestImplCopyWithImpl<$Res>
     Object? subject = null,
     Object? category = null,
   }) {
-    return _then(_$CreateProblemRequestImpl(
+    return _then(_self.copyWith(
       question: null == question
-          ? _value.question
+          ? _self.question
           : question // ignore: cast_nullable_to_non_nullable
               as String,
       latex: null == latex
-          ? _value.latex
+          ? _self.latex
           : latex // ignore: cast_nullable_to_non_nullable
               as String,
       problemId: null == problemId
-          ? _value.problemId
+          ? _self.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
               as String,
       answers: null == answers
-          ? _value._answers
+          ? _self.answers
           : answers // ignore: cast_nullable_to_non_nullable
               as List<String>,
       timeLimitSeconds: null == timeLimitSeconds
-          ? _value.timeLimitSeconds
+          ? _self.timeLimitSeconds
           : timeLimitSeconds // ignore: cast_nullable_to_non_nullable
               as int,
       subject: null == subject
-          ? _value.subject
+          ? _self.subject
           : subject // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
-          ? _value.category
+          ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -185,8 +142,8 @@ class __$$CreateProblemRequestImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CreateProblemRequestImpl extends _CreateProblemRequest {
-  const _$CreateProblemRequestImpl(
+class _CreateProblemRequest extends CreateProblemRequest {
+  const _CreateProblemRequest(
       {required this.question,
       required this.latex,
       required this.problemId,
@@ -196,9 +153,8 @@ class _$CreateProblemRequestImpl extends _CreateProblemRequest {
       this.category = 'unlimited'})
       : _answers = answers,
         super._();
-
-  factory _$CreateProblemRequestImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CreateProblemRequestImplFromJson(json);
+  factory _CreateProblemRequest.fromJson(Map<String, dynamic> json) =>
+      _$CreateProblemRequestFromJson(json);
 
   @override
   final String question;
@@ -224,16 +180,27 @@ class _$CreateProblemRequestImpl extends _CreateProblemRequest {
   @JsonKey()
   final String category;
 
+  /// Create a copy of CreateProblemRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CreateProblemRequest(question: $question, latex: $latex, problemId: $problemId, answers: $answers, timeLimitSeconds: $timeLimitSeconds, subject: $subject, category: $category)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CreateProblemRequestCopyWith<_CreateProblemRequest> get copyWith =>
+      __$CreateProblemRequestCopyWithImpl<_CreateProblemRequest>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CreateProblemRequestToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CreateProblemRequestImpl &&
+            other is _CreateProblemRequest &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.latex, latex) || other.latex == latex) &&
@@ -259,57 +226,82 @@ class _$CreateProblemRequestImpl extends _CreateProblemRequest {
       subject,
       category);
 
-  /// Create a copy of CreateProblemRequest
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CreateProblemRequestImplCopyWith<_$CreateProblemRequestImpl>
-      get copyWith =>
-          __$$CreateProblemRequestImplCopyWithImpl<_$CreateProblemRequestImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CreateProblemRequestImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CreateProblemRequest(question: $question, latex: $latex, problemId: $problemId, answers: $answers, timeLimitSeconds: $timeLimitSeconds, subject: $subject, category: $category)';
   }
 }
 
-abstract class _CreateProblemRequest extends CreateProblemRequest {
-  const factory _CreateProblemRequest(
-      {required final String question,
-      required final String latex,
-      required final String problemId,
-      required final List<String> answers,
-      final int timeLimitSeconds,
-      final String subject,
-      final String category}) = _$CreateProblemRequestImpl;
-  const _CreateProblemRequest._() : super._();
+/// @nodoc
+abstract mixin class _$CreateProblemRequestCopyWith<$Res>
+    implements $CreateProblemRequestCopyWith<$Res> {
+  factory _$CreateProblemRequestCopyWith(_CreateProblemRequest value,
+          $Res Function(_CreateProblemRequest) _then) =
+      __$CreateProblemRequestCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String question,
+      String latex,
+      String problemId,
+      List<String> answers,
+      int timeLimitSeconds,
+      String subject,
+      String category});
+}
 
-  factory _CreateProblemRequest.fromJson(Map<String, dynamic> json) =
-      _$CreateProblemRequestImpl.fromJson;
+/// @nodoc
+class __$CreateProblemRequestCopyWithImpl<$Res>
+    implements _$CreateProblemRequestCopyWith<$Res> {
+  __$CreateProblemRequestCopyWithImpl(this._self, this._then);
 
-  @override
-  String get question;
-  @override
-  String get latex;
-  @override
-  String get problemId;
-  @override
-  List<String> get answers;
-  @override
-  int get timeLimitSeconds;
-  @override
-  String get subject;
-  @override
-  String get category;
+  final _CreateProblemRequest _self;
+  final $Res Function(_CreateProblemRequest) _then;
 
   /// Create a copy of CreateProblemRequest
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CreateProblemRequestImplCopyWith<_$CreateProblemRequestImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? question = null,
+    Object? latex = null,
+    Object? problemId = null,
+    Object? answers = null,
+    Object? timeLimitSeconds = null,
+    Object? subject = null,
+    Object? category = null,
+  }) {
+    return _then(_CreateProblemRequest(
+      question: null == question
+          ? _self.question
+          : question // ignore: cast_nullable_to_non_nullable
+              as String,
+      latex: null == latex
+          ? _self.latex
+          : latex // ignore: cast_nullable_to_non_nullable
+              as String,
+      problemId: null == problemId
+          ? _self.problemId
+          : problemId // ignore: cast_nullable_to_non_nullable
+              as String,
+      answers: null == answers
+          ? _self._answers
+          : answers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      timeLimitSeconds: null == timeLimitSeconds
+          ? _self.timeLimitSeconds
+          : timeLimitSeconds // ignore: cast_nullable_to_non_nullable
+              as int,
+      subject: null == subject
+          ? _self.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
+
+// dart format on

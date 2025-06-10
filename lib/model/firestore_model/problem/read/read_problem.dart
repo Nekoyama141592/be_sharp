@@ -5,7 +5,7 @@ part 'read_problem.freezed.dart';
 part 'read_problem.g.dart';
 
 @freezed
-abstract class ReadProblem implements _$ReadProblem {
+abstract class ReadProblem with _$ReadProblem {
   const ReadProblem._();
   const factory ReadProblem(
       {required dynamic createdAt,

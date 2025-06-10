@@ -6,7 +6,7 @@ part 'registered_info.freezed.dart';
 part 'registered_info.g.dart';
 
 @freezed
-abstract class RegisteredInfo implements _$RegisteredInfo {
+abstract class RegisteredInfo with _$RegisteredInfo {
   const RegisteredInfo._();
   const factory RegisteredInfo(
       {required DetectedText nickName,

@@ -6,8 +6,7 @@ part of 'read_problem.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ReadProblemImpl _$$ReadProblemImplFromJson(Map<String, dynamic> json) =>
-    _$ReadProblemImpl(
+_ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) => _ReadProblem(
       createdAt: json['createdAt'],
       question: json['question'] as String,
       latex: json['latex'] as String,
@@ -20,7 +19,7 @@ _$ReadProblemImpl _$$ReadProblemImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'],
     );
 
-Map<String, dynamic> _$$ReadProblemImplToJson(_$ReadProblemImpl instance) =>
+Map<String, dynamic> _$ReadProblemToJson(_ReadProblem instance) =>
     <String, dynamic>{
       'createdAt': instance.createdAt,
       'question': instance.question,

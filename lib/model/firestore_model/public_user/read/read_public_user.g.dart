@@ -6,8 +6,8 @@ part of 'read_public_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ReadPublicUserImpl _$$ReadPublicUserImplFromJson(Map<String, dynamic> json) =>
-    _$ReadPublicUserImpl(
+_ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) =>
+    _ReadPublicUser(
       registeredInfo: json['registeredInfo'] == null
           ? null
           : RegisteredInfo.fromJson(
@@ -16,8 +16,7 @@ _$ReadPublicUserImpl _$$ReadPublicUserImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updatedAt'],
     );
 
-Map<String, dynamic> _$$ReadPublicUserImplToJson(
-        _$ReadPublicUserImpl instance) =>
+Map<String, dynamic> _$ReadPublicUserToJson(_ReadPublicUser instance) =>
     <String, dynamic>{
       'registeredInfo': instance.registeredInfo,
       'uid': instance.uid,

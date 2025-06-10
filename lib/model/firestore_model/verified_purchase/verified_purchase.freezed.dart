@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,95 +10,60 @@ part of 'verified_purchase.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-VerifiedPurchase _$VerifiedPurchaseFromJson(Map<String, dynamic> json) {
-  return _VerifiedPurchase.fromJson(json);
-}
 
 /// @nodoc
 mixin _$VerifiedPurchase {
-  Map<String, dynamic> get purchaseDetails =>
-      throw _privateConstructorUsedError;
-  Map<String, dynamic> get verifiedReceipt =>
-      throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  String get os => throw _privateConstructorUsedError;
-
-  /// Serializes this VerifiedPurchase to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> get purchaseDetails;
+  Map<String, dynamic> get verifiedReceipt;
+  String get uid;
+  String get os;
 
   /// Create a copy of VerifiedPurchase
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $VerifiedPurchaseCopyWith<VerifiedPurchase> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $VerifiedPurchaseCopyWith<$Res> {
-  factory $VerifiedPurchaseCopyWith(
-          VerifiedPurchase value, $Res Function(VerifiedPurchase) then) =
-      _$VerifiedPurchaseCopyWithImpl<$Res, VerifiedPurchase>;
-  @useResult
-  $Res call(
-      {Map<String, dynamic> purchaseDetails,
-      Map<String, dynamic> verifiedReceipt,
-      String uid,
-      String os});
-}
-
-/// @nodoc
-class _$VerifiedPurchaseCopyWithImpl<$Res, $Val extends VerifiedPurchase>
-    implements $VerifiedPurchaseCopyWith<$Res> {
-  _$VerifiedPurchaseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of VerifiedPurchase
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $VerifiedPurchaseCopyWith<VerifiedPurchase> get copyWith =>
+      _$VerifiedPurchaseCopyWithImpl<VerifiedPurchase>(
+          this as VerifiedPurchase, _$identity);
+
+  /// Serializes this VerifiedPurchase to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? purchaseDetails = null,
-    Object? verifiedReceipt = null,
-    Object? uid = null,
-    Object? os = null,
-  }) {
-    return _then(_value.copyWith(
-      purchaseDetails: null == purchaseDetails
-          ? _value.purchaseDetails
-          : purchaseDetails // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      verifiedReceipt: null == verifiedReceipt
-          ? _value.verifiedReceipt
-          : verifiedReceipt // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      os: null == os
-          ? _value.os
-          : os // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is VerifiedPurchase &&
+            const DeepCollectionEquality()
+                .equals(other.purchaseDetails, purchaseDetails) &&
+            const DeepCollectionEquality()
+                .equals(other.verifiedReceipt, verifiedReceipt) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.os, os) || other.os == os));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(purchaseDetails),
+      const DeepCollectionEquality().hash(verifiedReceipt),
+      uid,
+      os);
+
+  @override
+  String toString() {
+    return 'VerifiedPurchase(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
   }
 }
 
 /// @nodoc
-abstract class _$$VerifiedPurchaseImplCopyWith<$Res>
-    implements $VerifiedPurchaseCopyWith<$Res> {
-  factory _$$VerifiedPurchaseImplCopyWith(_$VerifiedPurchaseImpl value,
-          $Res Function(_$VerifiedPurchaseImpl) then) =
-      __$$VerifiedPurchaseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $VerifiedPurchaseCopyWith<$Res> {
+  factory $VerifiedPurchaseCopyWith(
+          VerifiedPurchase value, $Res Function(VerifiedPurchase) _then) =
+      _$VerifiedPurchaseCopyWithImpl;
   @useResult
   $Res call(
       {Map<String, dynamic> purchaseDetails,
@@ -107,12 +73,12 @@ abstract class _$$VerifiedPurchaseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$VerifiedPurchaseImplCopyWithImpl<$Res>
-    extends _$VerifiedPurchaseCopyWithImpl<$Res, _$VerifiedPurchaseImpl>
-    implements _$$VerifiedPurchaseImplCopyWith<$Res> {
-  __$$VerifiedPurchaseImplCopyWithImpl(_$VerifiedPurchaseImpl _value,
-      $Res Function(_$VerifiedPurchaseImpl) _then)
-      : super(_value, _then);
+class _$VerifiedPurchaseCopyWithImpl<$Res>
+    implements $VerifiedPurchaseCopyWith<$Res> {
+  _$VerifiedPurchaseCopyWithImpl(this._self, this._then);
+
+  final VerifiedPurchase _self;
+  final $Res Function(VerifiedPurchase) _then;
 
   /// Create a copy of VerifiedPurchase
   /// with the given fields replaced by the non-null parameter values.
@@ -124,21 +90,21 @@ class __$$VerifiedPurchaseImplCopyWithImpl<$Res>
     Object? uid = null,
     Object? os = null,
   }) {
-    return _then(_$VerifiedPurchaseImpl(
+    return _then(_self.copyWith(
       purchaseDetails: null == purchaseDetails
-          ? _value._purchaseDetails
+          ? _self.purchaseDetails
           : purchaseDetails // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       verifiedReceipt: null == verifiedReceipt
-          ? _value._verifiedReceipt
+          ? _self.verifiedReceipt
           : verifiedReceipt // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
       uid: null == uid
-          ? _value.uid
+          ? _self.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
       os: null == os
-          ? _value.os
+          ? _self.os
           : os // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -147,8 +113,8 @@ class __$$VerifiedPurchaseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$VerifiedPurchaseImpl extends _VerifiedPurchase {
-  const _$VerifiedPurchaseImpl(
+class _VerifiedPurchase extends VerifiedPurchase {
+  const _VerifiedPurchase(
       {required final Map<String, dynamic> purchaseDetails,
       required final Map<String, dynamic> verifiedReceipt,
       required this.uid,
@@ -156,9 +122,8 @@ class _$VerifiedPurchaseImpl extends _VerifiedPurchase {
       : _purchaseDetails = purchaseDetails,
         _verifiedReceipt = verifiedReceipt,
         super._();
-
-  factory _$VerifiedPurchaseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$VerifiedPurchaseImplFromJson(json);
+  factory _VerifiedPurchase.fromJson(Map<String, dynamic> json) =>
+      _$VerifiedPurchaseFromJson(json);
 
   final Map<String, dynamic> _purchaseDetails;
   @override
@@ -181,16 +146,26 @@ class _$VerifiedPurchaseImpl extends _VerifiedPurchase {
   @override
   final String os;
 
+  /// Create a copy of VerifiedPurchase
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'VerifiedPurchase(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$VerifiedPurchaseCopyWith<_VerifiedPurchase> get copyWith =>
+      __$VerifiedPurchaseCopyWithImpl<_VerifiedPurchase>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$VerifiedPurchaseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$VerifiedPurchaseImpl &&
+            other is _VerifiedPurchase &&
             const DeepCollectionEquality()
                 .equals(other._purchaseDetails, _purchaseDetails) &&
             const DeepCollectionEquality()
@@ -208,47 +183,64 @@ class _$VerifiedPurchaseImpl extends _VerifiedPurchase {
       uid,
       os);
 
-  /// Create a copy of VerifiedPurchase
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$VerifiedPurchaseImplCopyWith<_$VerifiedPurchaseImpl> get copyWith =>
-      __$$VerifiedPurchaseImplCopyWithImpl<_$VerifiedPurchaseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$VerifiedPurchaseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'VerifiedPurchase(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
   }
 }
 
-abstract class _VerifiedPurchase extends VerifiedPurchase {
-  const factory _VerifiedPurchase(
-      {required final Map<String, dynamic> purchaseDetails,
-      required final Map<String, dynamic> verifiedReceipt,
-      required final String uid,
-      required final String os}) = _$VerifiedPurchaseImpl;
-  const _VerifiedPurchase._() : super._();
+/// @nodoc
+abstract mixin class _$VerifiedPurchaseCopyWith<$Res>
+    implements $VerifiedPurchaseCopyWith<$Res> {
+  factory _$VerifiedPurchaseCopyWith(
+          _VerifiedPurchase value, $Res Function(_VerifiedPurchase) _then) =
+      __$VerifiedPurchaseCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {Map<String, dynamic> purchaseDetails,
+      Map<String, dynamic> verifiedReceipt,
+      String uid,
+      String os});
+}
 
-  factory _VerifiedPurchase.fromJson(Map<String, dynamic> json) =
-      _$VerifiedPurchaseImpl.fromJson;
+/// @nodoc
+class __$VerifiedPurchaseCopyWithImpl<$Res>
+    implements _$VerifiedPurchaseCopyWith<$Res> {
+  __$VerifiedPurchaseCopyWithImpl(this._self, this._then);
 
-  @override
-  Map<String, dynamic> get purchaseDetails;
-  @override
-  Map<String, dynamic> get verifiedReceipt;
-  @override
-  String get uid;
-  @override
-  String get os;
+  final _VerifiedPurchase _self;
+  final $Res Function(_VerifiedPurchase) _then;
 
   /// Create a copy of VerifiedPurchase
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VerifiedPurchaseImplCopyWith<_$VerifiedPurchaseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? purchaseDetails = null,
+    Object? verifiedReceipt = null,
+    Object? uid = null,
+    Object? os = null,
+  }) {
+    return _then(_VerifiedPurchase(
+      purchaseDetails: null == purchaseDetails
+          ? _self._purchaseDetails
+          : purchaseDetails // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      verifiedReceipt: null == verifiedReceipt
+          ? _self._verifiedReceipt
+          : verifiedReceipt // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      os: null == os
+          ? _self.os
+          : os // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
+
+// dart format on

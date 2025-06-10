@@ -6,14 +6,14 @@ part of 'create_problem_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CreateProblemResponseImpl _$$CreateProblemResponseImplFromJson(
+_CreateProblemResponse _$CreateProblemResponseFromJson(
         Map<String, dynamic> json) =>
-    _$CreateProblemResponseImpl(
+    _CreateProblemResponse(
       status: (json['status'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$CreateProblemResponseImplToJson(
-        _$CreateProblemResponseImpl instance) =>
+Map<String, dynamic> _$CreateProblemResponseToJson(
+        _CreateProblemResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
     };

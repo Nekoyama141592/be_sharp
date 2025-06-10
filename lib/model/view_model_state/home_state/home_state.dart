@@ -6,7 +6,7 @@ part 'home_state.freezed.dart';
 part 'home_state.g.dart';
 
 @freezed
-abstract class HomeState implements _$HomeState {
+abstract class HomeState with _$HomeState {
   const HomeState._();
   const factory HomeState(
       {ReadProblem? latestProblem,

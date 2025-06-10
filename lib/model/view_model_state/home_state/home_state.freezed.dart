@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,36 +10,59 @@ part of 'home_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-HomeState _$HomeStateFromJson(Map<String, dynamic> json) {
-  return _HomeState.fromJson(json);
-}
 
 /// @nodoc
 mixin _$HomeState {
-  ReadProblem? get latestProblem => throw _privateConstructorUsedError;
-  List<AnsweredUser> get answeredUsers => throw _privateConstructorUsedError;
-  List<String> get muteUids => throw _privateConstructorUsedError;
-  int get userCount => throw _privateConstructorUsedError;
-
-  /// Serializes this HomeState to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  ReadProblem? get latestProblem;
+  List<AnsweredUser> get answeredUsers;
+  List<String> get muteUids;
+  int get userCount;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $HomeStateCopyWith<HomeState> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$HomeStateCopyWithImpl<HomeState>(this as HomeState, _$identity);
+
+  /// Serializes this HomeState to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HomeState &&
+            (identical(other.latestProblem, latestProblem) ||
+                other.latestProblem == latestProblem) &&
+            const DeepCollectionEquality()
+                .equals(other.answeredUsers, answeredUsers) &&
+            const DeepCollectionEquality().equals(other.muteUids, muteUids) &&
+            (identical(other.userCount, userCount) ||
+                other.userCount == userCount));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      latestProblem,
+      const DeepCollectionEquality().hash(answeredUsers),
+      const DeepCollectionEquality().hash(muteUids),
+      userCount);
+
+  @override
+  String toString() {
+    return 'HomeState(latestProblem: $latestProblem, answeredUsers: $answeredUsers, muteUids: $muteUids, userCount: $userCount)';
+  }
 }
 
 /// @nodoc
-abstract class $HomeStateCopyWith<$Res> {
-  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res, HomeState>;
+abstract mixin class $HomeStateCopyWith<$Res> {
+  factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) =
+      _$HomeStateCopyWithImpl;
   @useResult
   $Res call(
       {ReadProblem? latestProblem,
@@ -50,14 +74,11 @@ abstract class $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
-    implements $HomeStateCopyWith<$Res> {
-  _$HomeStateCopyWithImpl(this._value, this._then);
+class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
+  _$HomeStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final HomeState _self;
+  final $Res Function(HomeState) _then;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
@@ -69,24 +90,24 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? muteUids = null,
     Object? userCount = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       latestProblem: freezed == latestProblem
-          ? _value.latestProblem
+          ? _self.latestProblem
           : latestProblem // ignore: cast_nullable_to_non_nullable
               as ReadProblem?,
       answeredUsers: null == answeredUsers
-          ? _value.answeredUsers
+          ? _self.answeredUsers
           : answeredUsers // ignore: cast_nullable_to_non_nullable
               as List<AnsweredUser>,
       muteUids: null == muteUids
-          ? _value.muteUids
+          ? _self.muteUids
           : muteUids // ignore: cast_nullable_to_non_nullable
               as List<String>,
       userCount: null == userCount
-          ? _value.userCount
+          ? _self.userCount
           : userCount // ignore: cast_nullable_to_non_nullable
               as int,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of HomeState
@@ -94,77 +115,20 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   @pragma('vm:prefer-inline')
   $ReadProblemCopyWith<$Res>? get latestProblem {
-    if (_value.latestProblem == null) {
+    if (_self.latestProblem == null) {
       return null;
     }
 
-    return $ReadProblemCopyWith<$Res>(_value.latestProblem!, (value) {
-      return _then(_value.copyWith(latestProblem: value) as $Val);
+    return $ReadProblemCopyWith<$Res>(_self.latestProblem!, (value) {
+      return _then(_self.copyWith(latestProblem: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$HomeStateImplCopyWith<$Res>
-    implements $HomeStateCopyWith<$Res> {
-  factory _$$HomeStateImplCopyWith(
-          _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
-      __$$HomeStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {ReadProblem? latestProblem,
-      List<AnsweredUser> answeredUsers,
-      List<String> muteUids,
-      int userCount});
-
-  @override
-  $ReadProblemCopyWith<$Res>? get latestProblem;
-}
-
-/// @nodoc
-class __$$HomeStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$HomeStateImpl>
-    implements _$$HomeStateImplCopyWith<$Res> {
-  __$$HomeStateImplCopyWithImpl(
-      _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? latestProblem = freezed,
-    Object? answeredUsers = null,
-    Object? muteUids = null,
-    Object? userCount = null,
-  }) {
-    return _then(_$HomeStateImpl(
-      latestProblem: freezed == latestProblem
-          ? _value.latestProblem
-          : latestProblem // ignore: cast_nullable_to_non_nullable
-              as ReadProblem?,
-      answeredUsers: null == answeredUsers
-          ? _value._answeredUsers
-          : answeredUsers // ignore: cast_nullable_to_non_nullable
-              as List<AnsweredUser>,
-      muteUids: null == muteUids
-          ? _value._muteUids
-          : muteUids // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      userCount: null == userCount
-          ? _value.userCount
-          : userCount // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$HomeStateImpl extends _HomeState {
-  const _$HomeStateImpl(
+class _HomeState extends HomeState {
+  const _HomeState(
       {this.latestProblem,
       final List<AnsweredUser> answeredUsers = const [],
       final List<String> muteUids = const [],
@@ -172,9 +136,8 @@ class _$HomeStateImpl extends _HomeState {
       : _answeredUsers = answeredUsers,
         _muteUids = muteUids,
         super._();
-
-  factory _$HomeStateImpl.fromJson(Map<String, dynamic> json) =>
-      _$$HomeStateImplFromJson(json);
+  factory _HomeState.fromJson(Map<String, dynamic> json) =>
+      _$HomeStateFromJson(json);
 
   @override
   final ReadProblem? latestProblem;
@@ -200,16 +163,26 @@ class _$HomeStateImpl extends _HomeState {
   @JsonKey()
   final int userCount;
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'HomeState(latestProblem: $latestProblem, answeredUsers: $answeredUsers, muteUids: $muteUids, userCount: $userCount)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$HomeStateCopyWith<_HomeState> get copyWith =>
+      __$HomeStateCopyWithImpl<_HomeState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$HomeStateToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$HomeStateImpl &&
+            other is _HomeState &&
             (identical(other.latestProblem, latestProblem) ||
                 other.latestProblem == latestProblem) &&
             const DeepCollectionEquality()
@@ -228,46 +201,80 @@ class _$HomeStateImpl extends _HomeState {
       const DeepCollectionEquality().hash(_muteUids),
       userCount);
 
-  /// Create a copy of HomeState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$HomeStateImplToJson(
-      this,
-    );
+  String toString() {
+    return 'HomeState(latestProblem: $latestProblem, answeredUsers: $answeredUsers, muteUids: $muteUids, userCount: $userCount)';
   }
 }
 
-abstract class _HomeState extends HomeState {
-  const factory _HomeState(
-      {final ReadProblem? latestProblem,
-      final List<AnsweredUser> answeredUsers,
-      final List<String> muteUids,
-      final int userCount}) = _$HomeStateImpl;
-  const _HomeState._() : super._();
+/// @nodoc
+abstract mixin class _$HomeStateCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$HomeStateCopyWith(
+          _HomeState value, $Res Function(_HomeState) _then) =
+      __$HomeStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {ReadProblem? latestProblem,
+      List<AnsweredUser> answeredUsers,
+      List<String> muteUids,
+      int userCount});
 
-  factory _HomeState.fromJson(Map<String, dynamic> json) =
-      _$HomeStateImpl.fromJson;
+  @override
+  $ReadProblemCopyWith<$Res>? get latestProblem;
+}
 
-  @override
-  ReadProblem? get latestProblem;
-  @override
-  List<AnsweredUser> get answeredUsers;
-  @override
-  List<String> get muteUids;
-  @override
-  int get userCount;
+/// @nodoc
+class __$HomeStateCopyWithImpl<$Res> implements _$HomeStateCopyWith<$Res> {
+  __$HomeStateCopyWithImpl(this._self, this._then);
+
+  final _HomeState _self;
+  final $Res Function(_HomeState) _then;
 
   /// Create a copy of HomeState
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? latestProblem = freezed,
+    Object? answeredUsers = null,
+    Object? muteUids = null,
+    Object? userCount = null,
+  }) {
+    return _then(_HomeState(
+      latestProblem: freezed == latestProblem
+          ? _self.latestProblem
+          : latestProblem // ignore: cast_nullable_to_non_nullable
+              as ReadProblem?,
+      answeredUsers: null == answeredUsers
+          ? _self._answeredUsers
+          : answeredUsers // ignore: cast_nullable_to_non_nullable
+              as List<AnsweredUser>,
+      muteUids: null == muteUids
+          ? _self._muteUids
+          : muteUids // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      userCount: null == userCount
+          ? _self.userCount
+          : userCount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReadProblemCopyWith<$Res>? get latestProblem {
+    if (_self.latestProblem == null) {
+      return null;
+    }
+
+    return $ReadProblemCopyWith<$Res>(_self.latestProblem!, (value) {
+      return _then(_self.copyWith(latestProblem: value));
+    });
+  }
 }
+
+// dart format on

@@ -5,7 +5,7 @@ part 'user_and_image_state.freezed.dart';
 part 'user_and_image_state.g.dart';
 
 @freezed
-abstract class UserAndImageState implements _$UserAndImageState {
+abstract class UserAndImageState with _$UserAndImageState {
   const UserAndImageState._();
   const factory UserAndImageState(
       {ReadPublicUser? user,String? image}) = _UserAndImageState;

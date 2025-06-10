@@ -6,8 +6,8 @@ part of 'moderated_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ModeratedImageImpl _$$ModeratedImageImplFromJson(Map<String, dynamic> json) =>
-    _$ModeratedImageImpl(
+_ModeratedImage _$ModeratedImageFromJson(Map<String, dynamic> json) =>
+    _ModeratedImage(
       moderationLabels: (json['moderationLabels'] as List<dynamic>?)
               ?.map((e) => e as Map<String, dynamic>)
               .toList() ??
@@ -16,8 +16,7 @@ _$ModeratedImageImpl _$$ModeratedImageImplFromJson(Map<String, dynamic> json) =>
       value: json['value'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$ModeratedImageImplToJson(
-        _$ModeratedImageImpl instance) =>
+Map<String, dynamic> _$ModeratedImageToJson(_ModeratedImage instance) =>
     <String, dynamic>{
       'moderationLabels': instance.moderationLabels,
       'moderationModelVersion': instance.moderationModelVersion,

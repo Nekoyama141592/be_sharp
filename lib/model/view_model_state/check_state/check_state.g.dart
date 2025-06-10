@@ -6,8 +6,7 @@ part of 'check_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CheckStateImpl _$$CheckStateImplFromJson(Map<String, dynamic> json) =>
-    _$CheckStateImpl(
+_CheckState _$CheckStateFromJson(Map<String, dynamic> json) => _CheckState(
       needsAgreeToTerms: json['needsAgreeToTerms'] as bool,
       needsSignup: json['needsSignup'] as bool,
       user: json['user'] == null
@@ -15,7 +14,7 @@ _$CheckStateImpl _$$CheckStateImplFromJson(Map<String, dynamic> json) =>
           : ReadPublicUser.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$CheckStateImplToJson(_$CheckStateImpl instance) =>
+Map<String, dynamic> _$CheckStateToJson(_CheckState instance) =>
     <String, dynamic>{
       'needsAgreeToTerms': instance.needsAgreeToTerms,
       'needsSignup': instance.needsSignup,

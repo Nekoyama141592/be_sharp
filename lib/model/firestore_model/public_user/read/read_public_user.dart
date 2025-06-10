@@ -6,7 +6,7 @@ part 'read_public_user.freezed.dart';
 part 'read_public_user.g.dart';
 
 @freezed
-abstract class ReadPublicUser implements _$ReadPublicUser {
+abstract class ReadPublicUser with _$ReadPublicUser {
   const ReadPublicUser._();
   const factory ReadPublicUser({
     required RegisteredInfo? registeredInfo,

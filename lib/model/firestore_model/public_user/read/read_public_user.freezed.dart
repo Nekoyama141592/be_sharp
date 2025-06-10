@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,169 +10,31 @@ part of 'read_public_user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) {
-  return _ReadPublicUser.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ReadPublicUser {
-  RegisteredInfo? get registeredInfo => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  dynamic get updatedAt => throw _privateConstructorUsedError;
-
-  /// Serializes this ReadPublicUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  RegisteredInfo? get registeredInfo;
+  String get uid;
+  dynamic get updatedAt;
 
   /// Create a copy of ReadPublicUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ReadPublicUserCopyWith<ReadPublicUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$ReadPublicUserCopyWithImpl<ReadPublicUser>(
+          this as ReadPublicUser, _$identity);
 
-/// @nodoc
-abstract class $ReadPublicUserCopyWith<$Res> {
-  factory $ReadPublicUserCopyWith(
-          ReadPublicUser value, $Res Function(ReadPublicUser) then) =
-      _$ReadPublicUserCopyWithImpl<$Res, ReadPublicUser>;
-  @useResult
-  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
-
-  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
-}
-
-/// @nodoc
-class _$ReadPublicUserCopyWithImpl<$Res, $Val extends ReadPublicUser>
-    implements $ReadPublicUserCopyWith<$Res> {
-  _$ReadPublicUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ReadPublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? registeredInfo = freezed,
-    Object? uid = null,
-    Object? updatedAt = freezed,
-  }) {
-    return _then(_value.copyWith(
-      registeredInfo: freezed == registeredInfo
-          ? _value.registeredInfo
-          : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as RegisteredInfo?,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-
-  /// Create a copy of ReadPublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RegisteredInfoCopyWith<$Res>? get registeredInfo {
-    if (_value.registeredInfo == null) {
-      return null;
-    }
-
-    return $RegisteredInfoCopyWith<$Res>(_value.registeredInfo!, (value) {
-      return _then(_value.copyWith(registeredInfo: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ReadPublicUserImplCopyWith<$Res>
-    implements $ReadPublicUserCopyWith<$Res> {
-  factory _$$ReadPublicUserImplCopyWith(_$ReadPublicUserImpl value,
-          $Res Function(_$ReadPublicUserImpl) then) =
-      __$$ReadPublicUserImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
-
-  @override
-  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
-}
-
-/// @nodoc
-class __$$ReadPublicUserImplCopyWithImpl<$Res>
-    extends _$ReadPublicUserCopyWithImpl<$Res, _$ReadPublicUserImpl>
-    implements _$$ReadPublicUserImplCopyWith<$Res> {
-  __$$ReadPublicUserImplCopyWithImpl(
-      _$ReadPublicUserImpl _value, $Res Function(_$ReadPublicUserImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ReadPublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? registeredInfo = freezed,
-    Object? uid = null,
-    Object? updatedAt = freezed,
-  }) {
-    return _then(_$ReadPublicUserImpl(
-      registeredInfo: freezed == registeredInfo
-          ? _value.registeredInfo
-          : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as RegisteredInfo?,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ReadPublicUserImpl extends _ReadPublicUser {
-  const _$ReadPublicUserImpl(
-      {required this.registeredInfo,
-      required this.uid,
-      required this.updatedAt})
-      : super._();
-
-  factory _$ReadPublicUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReadPublicUserImplFromJson(json);
-
-  @override
-  final RegisteredInfo? registeredInfo;
-  @override
-  final String uid;
-  @override
-  final dynamic updatedAt;
-
-  @override
-  String toString() {
-    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
-  }
+  /// Serializes this ReadPublicUser to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ReadPublicUserImpl &&
+            other is ReadPublicUser &&
             (identical(other.registeredInfo, registeredInfo) ||
                 other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
@@ -183,44 +46,186 @@ class _$ReadPublicUserImpl extends _ReadPublicUser {
   int get hashCode => Object.hash(runtimeType, registeredInfo, uid,
       const DeepCollectionEquality().hash(updatedAt));
 
-  /// Create a copy of ReadPublicUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ReadPublicUserImplCopyWith<_$ReadPublicUserImpl> get copyWith =>
-      __$$ReadPublicUserImplCopyWithImpl<_$ReadPublicUserImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ReadPublicUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
-abstract class _ReadPublicUser extends ReadPublicUser {
-  const factory _ReadPublicUser(
-      {required final RegisteredInfo? registeredInfo,
-      required final String uid,
-      required final dynamic updatedAt}) = _$ReadPublicUserImpl;
-  const _ReadPublicUser._() : super._();
+/// @nodoc
+abstract mixin class $ReadPublicUserCopyWith<$Res> {
+  factory $ReadPublicUserCopyWith(
+          ReadPublicUser value, $Res Function(ReadPublicUser) _then) =
+      _$ReadPublicUserCopyWithImpl;
+  @useResult
+  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
 
-  factory _ReadPublicUser.fromJson(Map<String, dynamic> json) =
-      _$ReadPublicUserImpl.fromJson;
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
+}
+
+/// @nodoc
+class _$ReadPublicUserCopyWithImpl<$Res>
+    implements $ReadPublicUserCopyWith<$Res> {
+  _$ReadPublicUserCopyWithImpl(this._self, this._then);
+
+  final ReadPublicUser _self;
+  final $Res Function(ReadPublicUser) _then;
+
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? registeredInfo = freezed,
+    Object? uid = null,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_self.copyWith(
+      registeredInfo: freezed == registeredInfo
+          ? _self.registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as RegisteredInfo?,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: freezed == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo {
+    if (_self.registeredInfo == null) {
+      return null;
+    }
+
+    return $RegisteredInfoCopyWith<$Res>(_self.registeredInfo!, (value) {
+      return _then(_self.copyWith(registeredInfo: value));
+    });
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ReadPublicUser extends ReadPublicUser {
+  const _ReadPublicUser(
+      {required this.registeredInfo,
+      required this.uid,
+      required this.updatedAt})
+      : super._();
+  factory _ReadPublicUser.fromJson(Map<String, dynamic> json) =>
+      _$ReadPublicUserFromJson(json);
 
   @override
-  RegisteredInfo? get registeredInfo;
+  final RegisteredInfo? registeredInfo;
   @override
-  String get uid;
+  final String uid;
   @override
-  dynamic get updatedAt;
+  final dynamic updatedAt;
 
   /// Create a copy of ReadPublicUser
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ReadPublicUserImplCopyWith<_$ReadPublicUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ReadPublicUserCopyWith<_ReadPublicUser> get copyWith =>
+      __$ReadPublicUserCopyWithImpl<_ReadPublicUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ReadPublicUserToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ReadPublicUser &&
+            (identical(other.registeredInfo, registeredInfo) ||
+                other.registeredInfo == registeredInfo) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, registeredInfo, uid,
+      const DeepCollectionEquality().hash(updatedAt));
+
+  @override
+  String toString() {
+    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ReadPublicUserCopyWith<$Res>
+    implements $ReadPublicUserCopyWith<$Res> {
+  factory _$ReadPublicUserCopyWith(
+          _ReadPublicUser value, $Res Function(_ReadPublicUser) _then) =
+      __$ReadPublicUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
+
+  @override
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
+}
+
+/// @nodoc
+class __$ReadPublicUserCopyWithImpl<$Res>
+    implements _$ReadPublicUserCopyWith<$Res> {
+  __$ReadPublicUserCopyWithImpl(this._self, this._then);
+
+  final _ReadPublicUser _self;
+  final $Res Function(_ReadPublicUser) _then;
+
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? registeredInfo = freezed,
+    Object? uid = null,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_ReadPublicUser(
+      registeredInfo: freezed == registeredInfo
+          ? _self.registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as RegisteredInfo?,
+      uid: null == uid
+          ? _self.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedAt: freezed == updatedAt
+          ? _self.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+
+  /// Create a copy of ReadPublicUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo {
+    if (_self.registeredInfo == null) {
+      return null;
+    }
+
+    return $RegisteredInfoCopyWith<$Res>(_self.registeredInfo!, (value) {
+      return _then(_self.copyWith(registeredInfo: value));
+    });
+  }
+}
+
+// dart format on

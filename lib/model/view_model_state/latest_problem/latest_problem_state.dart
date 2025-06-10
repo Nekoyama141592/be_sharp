@@ -6,7 +6,7 @@ part 'latest_problem_state.freezed.dart';
 part 'latest_problem_state.g.dart';
 
 @freezed
-abstract class LatestProblemState implements _$LatestProblemState {
+abstract class LatestProblemState with _$LatestProblemState {
   const LatestProblemState._();
   const factory LatestProblemState(
       {ReadProblem? problem, ReadUserAnswer? userAnswer}) = _LatestProblemState;

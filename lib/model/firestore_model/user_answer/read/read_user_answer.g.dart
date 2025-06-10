@@ -6,8 +6,8 @@ part of 'read_user_answer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ReadUserAnswerImpl _$$ReadUserAnswerImplFromJson(Map<String, dynamic> json) =>
-    _$ReadUserAnswerImpl(
+_ReadUserAnswer _$ReadUserAnswerFromJson(Map<String, dynamic> json) =>
+    _ReadUserAnswer(
       answer: json['answer'] as String,
       createdAt: json['createdAt'],
       problemId: json['problemId'] as String,
@@ -17,8 +17,7 @@ _$ReadUserAnswerImpl _$$ReadUserAnswerImplFromJson(Map<String, dynamic> json) =>
       uid: json['uid'] as String,
     );
 
-Map<String, dynamic> _$$ReadUserAnswerImplToJson(
-        _$ReadUserAnswerImpl instance) =>
+Map<String, dynamic> _$ReadUserAnswerToJson(_ReadUserAnswer instance) =>
     <String, dynamic>{
       'answer': instance.answer,
       'createdAt': instance.createdAt,
