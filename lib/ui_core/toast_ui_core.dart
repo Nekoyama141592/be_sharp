@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;
 import 'package:get/get.dart';
 
-class ToastUICore {
+class ToastUiCore {
   static const timeInSecForIosWeb = 3;
   static void showPopup(
       {required BuildContext context,

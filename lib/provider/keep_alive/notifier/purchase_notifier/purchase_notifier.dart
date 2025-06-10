@@ -26,7 +26,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
   Future<List<VerifiedPurchase>> _onListen(
     List<PurchaseDetails> detailsList,
   ) async {
-    ToastUICore.showFlutterToast('購入情報を検証しています');
+    ToastUiCore.showFlutterToast('購入情報を検証しています');
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
       if (details.isError || !details.isPurchased) continue;
@@ -38,7 +38,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
         failure: _onVerifyFailed,
       );
     }
-    ToastUICore.showFlutterToast('購入情報の検証が完了しました');
+    ToastUiCore.showFlutterToast('購入情報の検証が完了しました');
     return _fetchPurchases();
   }
 
@@ -53,7 +53,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
 
   Future<void> _onVerifyFailed(String msg) async {
     // 失敗した時の処理.
-    ToastUICore.showErrorFlutterToast(msg);
+    ToastUiCore.showErrorFlutterToast(msg);
   }
 
   Future<List<VerifiedPurchase>> _fetchPurchases() {

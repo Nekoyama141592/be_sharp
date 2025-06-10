@@ -34,7 +34,7 @@ class ProductsNotifier extends _$ProductsNotifier {
     await _repository.cancelTransctions();
     final purchaseParam =
         PurchaseCore.param(details, state.value?.verifiedPurchases);
-    await ToastUICore.showFlutterToast("情報を取得しています。 \nしばらくお待ちください。");
+    await ToastUiCore.showFlutterToast("情報を取得しています。 \nしばらくお待ちください。");
     return _repository.buyNonConsumable(purchaseParam);
   }
 

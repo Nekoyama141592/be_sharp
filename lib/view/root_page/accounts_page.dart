@@ -35,7 +35,7 @@ class AccountPage extends ConsumerWidget {
                 result.when(success: (_) {
                   RouteCore.pushPath(LogoutedPage.path);
                 }, failure: (msg) {
-                  ToastUICore.showErrorFlutterToast(msg);
+                  ToastUiCore.showErrorFlutterToast(msg);
                 });
               },
             ),

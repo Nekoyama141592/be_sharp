@@ -39,12 +39,12 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   }
 
   void onReauthenticateSuccess(bool res) {
-    ToastUICore.cupertinoAlertDialog(
+    ToastUiCore.cupertinoAlertDialog(
         "ユーザーを削除しますが本当によろしいですか？", _deletePublicUser);
   }
 
   void onReauthenticateFailure(String msg) {
-    ToastUICore.showErrorFlutterToast('再認証に失敗しました');
+    ToastUiCore.showErrorFlutterToast('再認証に失敗しました');
   }
 
   Future<void> _deletePublicUser() async {
@@ -57,6 +57,6 @@ class DeleteUserViewModel extends AutoDisposeNotifier<User?> {
   }
 
   void onDeleteFailure(String msg) {
-    ToastUICore.showErrorFlutterToast("ユーザーの削除が失敗しました");
+    ToastUiCore.showErrorFlutterToast("ユーザーの削除が失敗しました");
   }
 }

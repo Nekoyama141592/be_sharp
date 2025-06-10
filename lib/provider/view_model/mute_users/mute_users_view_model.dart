@@ -26,7 +26,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     const msg = 'このユーザーのミュートを解除しますか？';
-    ToastUICore.cupertinoAlertDialog(msg, () => _unMute(uid, muteUid));
+    ToastUiCore.cupertinoAlertDialog(msg, () => _unMute(uid, muteUid));
   }
 
   Future<void> _unMute(String uid, String muteUid) async {
@@ -49,11 +49,11 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
       final result = stateValue..removeWhere((e) => e.uid == muteUid);
       return result;
     });
-    ToastUICore.showFlutterToast('ミュートを解除しました');
+    ToastUiCore.showFlutterToast('ミュートを解除しました');
   }
 
   void _failure(String msg) {
     _closeDialog();
-    ToastUICore.showErrorFlutterToast('ミュート解除に失敗しました');
+    ToastUiCore.showErrorFlutterToast('ミュート解除に失敗しました');
   }
 }

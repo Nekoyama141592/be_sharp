@@ -49,8 +49,8 @@ class ProductsScreen extends ConsumerWidget {
                         result.when(
                           success:
                               (_) =>
-                                  ToastUICore.showSuccessSnackBar(context, '購入の検証が成功しました'),
-                          failure: (msg) => ToastUICore.showFailureSnackBar(context, msg),
+                                  ToastUiCore.showSuccessSnackBar(context, '購入の検証が成功しました'),
+                          failure: (msg) => ToastUiCore.showFailureSnackBar(context, msg),
                         );
                       },
                       child: Text(
@@ -71,7 +71,7 @@ class ProductsScreen extends ConsumerWidget {
                         isMonthPlan: product.id == PurchaseCore.monthItemId(),
                         isPurchased: state.isPurchased(product.id),
                         onPressed: () async {
-                        ToastUICore.showSuccessSnackBar(
+                        ToastUiCore.showSuccessSnackBar(
                           context,
                           '情報を取得しています。 \nしばらくお待ちください。',
                         );
@@ -80,13 +80,13 @@ class ProductsScreen extends ConsumerWidget {
                         );
                         result.when(
                           success: (_) {
-                            ToastUICore.showSuccessSnackBar(
+                            ToastUiCore.showSuccessSnackBar(
                               context,
                               '購入が成功しました',
                             );
                           },
                           failure: (msg) {
-                            ToastUICore.showFailureSnackBar(context, msg);
+                            ToastUiCore.showFailureSnackBar(context, msg);
                           },
                         );
                       },

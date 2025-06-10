@@ -57,7 +57,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   void onCaptionButtonPressed() {
     final isSubscribing = ref.read(productsNotifierProvider).value?.isSubscribing() ?? false;
     if (!isSubscribing) {
-      ToastUICore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
+      ToastUiCore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
       return;
     }
     Get.dialog(FormDialog(
@@ -80,7 +80,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   void _onSendSuccess(AddCaptionResponse res) async {
-    ToastUICore.showFlutterToast('キャプションの追加が成功しました');
+    ToastUiCore.showFlutterToast('キャプションの追加が成功しました');
     final stateValue = state.value;
     final oldUserAnswer = stateValue?.userAnswer;
     if (stateValue == null || oldUserAnswer == null) return;
@@ -93,7 +93,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   void _onSendFailure(String msg) {
-    ToastUICore.showErrorFlutterToast('キャプションの追加が失敗しました');
+    ToastUiCore.showErrorFlutterToast('キャプションの追加が失敗しました');
   }
 
   void onRankingButtonPressed() async {

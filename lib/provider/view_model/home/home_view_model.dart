@@ -77,11 +77,11 @@ class HomeViewModel extends _$HomeViewModel {
       final result = stateValue.copyWith(muteUids: muteUids);
       return result;
     });
-    ToastUICore.showFlutterToast('ユーザーをミュートしました');
+    ToastUiCore.showFlutterToast('ユーザーをミュートしました');
   }
 
   void _onMuteFailure(BuildContext context) {
     RouteCore.backWithContext(context);
-    ToastUICore.showErrorFlutterToast('ユーザーをミュートできませんでした');
+    ToastUiCore.showErrorFlutterToast('ユーザーをミュートできませんでした');
   }
 }

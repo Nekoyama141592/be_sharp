@@ -27,7 +27,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
 
   void _showDialog(String uid, String problemId, String answer) {
     const msg = '回答を送信します。変更できませんがよろしいですか？';
-    ToastUICore.cupertinoAlertDialog(
+    ToastUiCore.cupertinoAlertDialog(
         msg, () async => await _positiveAction(uid, problemId, answer));
   }
 

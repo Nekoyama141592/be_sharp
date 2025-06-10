@@ -56,7 +56,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     if (uid == null) return;
     final image = state.value?.image;
     if (image == null) {
-      ToastUICore.showErrorFlutterToast("アイコンをタップしてプロフィール画像を設定してください");
+      ToastUiCore.showErrorFlutterToast("アイコンをタップしてプロフィール画像を設定してください");
       return;
     }
     final stateValue = state.value;
@@ -71,7 +71,7 @@ class EditUserViewModel extends _$EditUserViewModel {
       await result.when(success: (res) async {
         await _updateUser();
       }, failure: (String msg) {
-        ToastUICore.showErrorFlutterToast("画像のアップロードが失敗しました");
+        ToastUiCore.showErrorFlutterToast("画像のアップロードが失敗しました");
       });
     } else {
       // 写真がそのまま場合の処理
@@ -88,7 +88,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     if (result == null) return;
     final isNotSquare = await FileCore.isNotSquareImage(result);
     if (isNotSquare) {
-      ToastUICore.showErrorFlutterToast(FileCore.squareImageRequestMsg);
+      ToastUiCore.showErrorFlutterToast(FileCore.squareImageRequestMsg);
       return;
     }
     final stateValue = state.value;
@@ -111,14 +111,14 @@ class EditUserViewModel extends _$EditUserViewModel {
   Future<void> _success(EditUserInfoResponse res) async {
     final uid = ref.read(streamAuthUidProvider).value!;
     await ref.read(checkViewModelProvider.notifier).onUserUpdateSuccess(uid);
-    ToastUICore.showFlutterToast("プロフィールを更新しました。");
+    ToastUiCore.showFlutterToast("プロフィールを更新しました。");
     if (Get.currentRoute == EditUserPage.path) {
       RouteCore.back();
     }
   }
 
   Future<void> _failure(String msg) async {
-    ToastUICore.showErrorFlutterToast("プロフィールを更新できませんでした");
+    ToastUiCore.showErrorFlutterToast("プロフィールを更新できませんでした");
   }
 }
 
