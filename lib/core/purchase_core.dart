@@ -33,7 +33,7 @@ class PurchaseCore {
     return identifiers.toSet();
   }
 
-  static List<ProductDetails> _mockProducts() {
+  static List<ProductDetails> mockProducts() {
     return [
       ProductDetails(
           id: monthItemId(),
@@ -52,12 +52,6 @@ class PurchaseCore {
           currencyCode: "JPY",
           currencySymbol: "¥"),
     ];
-  }
-
-  static List<ProductDetails> getProducts(ProductDetailsResponse res) {
-    final productDetails = res.productDetails;
-    final products = productDetails.isEmpty ? _mockProducts() : productDetails;
-    return products;
   }
 
   static PurchaseParam param(
