@@ -1,5 +1,5 @@
 import 'package:be_sharp/repository/database_repository.dart';
-import 'package:be_sharp/use_case/file/file_use_case.dart';
+import 'package:be_sharp/use_case/file_use_case.dart';
 
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
