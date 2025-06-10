@@ -1,6 +1,7 @@
 import 'package:be_sharp/constants/colors.dart';
 import 'package:be_sharp/core/purchase_core.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/products/products_notifier.dart';
+import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/products_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,17 @@ class ProductsScreen extends ConsumerWidget {
                     const PolicyButtons(),
                     const SizedBox(height: 24),
                     TextButton(
-                      onPressed: notifier().onRestoreButtonPressed,
+                      onPressed: () async {
+            final result =
+                await notifier()
+                    .onRestoreButtonPressed();
+                        result.when(
+                          success:
+                              (_) =>
+                                  ToastUICore.showSuccessSnackBar(context, '購入の検証が成功しました'),
+                          failure: (msg) => ToastUICore.showFailureSnackBar(context, msg),
+                        );
+                      },
                       child: Text(
                         '購入を復元',
                         style: GoogleFonts.notoSans(
@@ -59,9 +70,26 @@ class ProductsScreen extends ConsumerWidget {
                         product: product,
                         isMonthPlan: product.id == PurchaseCore.monthItemId(),
                         isPurchased: state.isPurchased(product.id),
-                        onPressed: () {
-                          notifier().onPurchaseButtonPressed(product);
-                        },
+                        onPressed: () async {
+                        ToastUICore.showSuccessSnackBar(
+                          context,
+                          '情報を取得しています。 \nしばらくお待ちください。',
+                        );
+                        final result = await notifier().onPurchaseButtonPressed(
+                          product,
+                        );
+                        result.when(
+                          success: (_) {
+                            ToastUICore.showSuccessSnackBar(
+                              context,
+                              '購入が成功しました',
+                            );
+                          },
+                          failure: (msg) {
+                            ToastUICore.showFailureSnackBar(context, msg);
+                          },
+                        );
+                      },
                       );
                     })
                   ],

@@ -1,3 +1,4 @@
+import 'package:be_sharp/view/common/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;
@@ -24,6 +25,18 @@ class ToastUICore {
         msg: msg,
         timeInSecForIosWeb: timeInSecForIosWeb,
         backgroundColor: Colors.red);
+  }
+
+  static void _showSnackBar(BuildContext context, SnackBar snackBar) {
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  static void showSuccessSnackBar(BuildContext context, String msg) {
+    _showSnackBar(context, CustomSnackBar.success(context, msg));
+  }
+
+  static void showFailureSnackBar(BuildContext context, String msg) {
+    _showSnackBar(context, CustomSnackBar.failure(context, msg));
   }
 
   static void cupertinoAlertDialog(
