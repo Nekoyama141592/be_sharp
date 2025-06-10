@@ -12,7 +12,7 @@ import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_rep
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:be_sharp/use_case/file/file_usecase.dart';
+import 'package:be_sharp/provider/use_case/file/file_use_case_provider.dart';
 import 'package:be_sharp/view/root_page/edit_user_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/repository/cloud_functions_repository.dart';

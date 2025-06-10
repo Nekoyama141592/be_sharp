@@ -1,6 +1,6 @@
 import 'package:be_sharp/model/view_model_state/common/user_and_image/user_and_image_state.dart';
+import 'package:be_sharp/provider/use_case/file/file_use_case_provider.dart';
 import 'package:be_sharp/provider/view_model/check/check_view_model.dart';
-import 'package:be_sharp/use_case/file/file_usecase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'original_drawer_view_model.g.dart';
 

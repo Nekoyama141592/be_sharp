@@ -5,7 +5,7 @@ import 'package:be_sharp/model/view_model_state/home_state/answered_user/answere
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
-import 'package:be_sharp/provider/user_case/home_use_case_provider.dart';
+import 'package:be_sharp/provider/use_case/home/home_use_case_provider.dart';
 import 'package:be_sharp/ui_core/dialog_ui_core.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/use_case/home/home_use_case.dart';
