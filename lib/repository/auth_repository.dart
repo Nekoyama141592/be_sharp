@@ -22,7 +22,7 @@ class AuthRepository {
       return Result.failure('Appleサインインエラー: $errorMessage');
     } catch (e) {
       debugPrint(e.toString());
-      return Result.failure('予期せぬエラーによりAppleサインインに失敗しました。');
+      return const Result.failure('予期せぬエラーによりAppleサインインに失敗しました。');
     }
   }
 
@@ -41,7 +41,7 @@ class AuthRepository {
       return Result.failure('Googleサインインエラー: $errorMessage');
     } catch (e) {
       debugPrint(e.toString());
-      return Result.failure('予期せぬエラーによりGoogleサインインに失敗しました。');
+      return const Result.failure('予期せぬエラーによりGoogleサインインに失敗しました。');
     }
   }
 

@@ -1,5 +1,5 @@
 class FormatUICore {
-  static formatDuration(Duration duration) {
+  static String formatDuration(Duration duration) {
     final seconds = duration.inSeconds;
     final formattedSeconds = seconds.toString().replaceAllMapped(
         RegExp(r'(\d)(?=(\d{3})+$)'), (match) => '${match[1]},');
@@ -7,7 +7,7 @@ class FormatUICore {
     return result;
   }
 
-  static formatDurationWithResult(Duration duration, bool isInTime) {
+  static String formatDurationWithResult(Duration duration, bool isInTime) {
     final result = isInTime ? '(クリア)' : '';
     return '${formatDuration(duration)}$result';
   }
