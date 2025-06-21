@@ -29,7 +29,7 @@ class MuteUsersPage extends ConsumerWidget {
                   return ListTile(
                     title: Text(nickName),
                     subtitle: Text(bio),
-                    onTap: () => notifier().onTap(e.uid),
+                    onTap: () => notifier().onTap(context, e.uid),
                   );
                 }).toList(),
               ),

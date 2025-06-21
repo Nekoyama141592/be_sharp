@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/dialog/text_action.dart';
 import 'package:be_sharp/model/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
@@ -68,7 +67,7 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   void _onMuteSuccess(BuildContext context, String muteUid) async {
-    RouteCore.backWithContext(context);
+    Navigator.pop(context);
     final stateValue = state.value;
     if (stateValue == null) return;
     state = const AsyncValue.loading();
@@ -81,7 +80,7 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   void _onMuteFailure(BuildContext context) {
-    RouteCore.backWithContext(context);
+    Navigator.pop(context);
     ToastUiCore.showErrorFlutterToast('ユーザーをミュートできませんでした');
   }
 }

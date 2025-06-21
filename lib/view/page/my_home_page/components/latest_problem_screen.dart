@@ -41,7 +41,7 @@ class LatestProblemScreen extends ConsumerWidget {
     } else if (userAnswer == null) {
       final isInTime = problem.isInTimeLimit();
       final text = '最新の問題に${isInTime ? '回答(まだ間に合います！)' : '遅れて回答'}';
-      return _buildCenteredButton(text, notifier().onToAnswerPageButtonPressed);
+      return _buildCenteredButton(text, () => notifier().onToAnswerPageButtonPressed(context));
     } else if (problem.answers.isEmpty) {
       return _buildCenteredMessage('回答時間中...');
     } else {
@@ -179,7 +179,7 @@ class LatestProblemScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               OriginalButton(
-                  onPressed: notifier().onRankingButtonPressed,
+                  onPressed: () => notifier().onRankingButtonPressed(context),
                   isPaid: false,
                   labelText: 'ランキング',
                   iconData: Icons.star),
@@ -187,7 +187,7 @@ class LatestProblemScreen extends ConsumerWidget {
                 width: 16.0,
               ),
               OriginalButton(
-                onPressed: notifier().onCaptionButtonPressed,
+                onPressed: () => notifier().onCaptionButtonPressed(context),
                 isPaid: true,
                 labelText: 'キャプション',
                 iconData: isCaptionExists ? Icons.edit : Icons.add_comment,

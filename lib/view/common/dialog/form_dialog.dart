@@ -1,5 +1,4 @@
 import 'package:be_sharp/constants/colors.dart';
-import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -36,7 +35,7 @@ class FormDialog extends HookWidget {
       actions: [
         TextButton(
           onPressed: () {
-            RouteCore.backWithContext(context);
+            Navigator.pop(context);
           },
           child: const Text(
             'キャンセル',

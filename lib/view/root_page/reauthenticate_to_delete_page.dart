@@ -22,8 +22,8 @@ class ReauthenticateToDeletePage extends ConsumerWidget {
                     false,
             iconData: Icons.delete,
             title: "ユーザーの削除には再認証が必要です",
-            onAppleSignInButtonPressed: notifier().onAppleSignInButtonPressed,
-            onGoogleSignInButtonPressed:
-                notifier().onGoogleSignInButtonPressed));
+            onAppleSignInButtonPressed: () => notifier().onAppleSignInButtonPressed(context),
+            onGoogleSignInButtonPressed:() => 
+                notifier().onGoogleSignInButtonPressed(context)));
   }
 }

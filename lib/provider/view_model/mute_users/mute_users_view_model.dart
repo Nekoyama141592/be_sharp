@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:get/get.dart';
+
 part 'mute_users_view_model.g.dart';
 @riverpod
 class MuteUsersViewModel extends _$MuteUsersViewModel {
@@ -22,27 +22,21 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
 
   
 
-  void onTap(String muteUid) {
+  void onTap(BuildContext context,String muteUid) {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     const msg = 'このユーザーのミュートを解除しますか？';
-    ToastUiCore.cupertinoAlertDialog(msg, () => _unMute(uid, muteUid));
+    ToastUiCore.cupertinoAlertDialog(context, msg, () => _unMute(context, uid, muteUid));
   }
 
-  Future<void> _unMute(String uid, String muteUid) async {
+  Future<void> _unMute(BuildContext context,String uid, String muteUid) async {
     final repository = ref.read(databaseRepositoryProvider);
     final result = await repository.unMute(uid, muteUid);
-    result.when(success: (_) => _success(muteUid), failure: _failure);
+    result.when(success: (_) => _success(context, muteUid), failure: (_) => _failure(context,muteUid));
   }
 
-  void _closeDialog() {
-    if (Get.isDialogOpen ?? false) {
-      RouteCore.back();
-    }
-  }
-
-  void _success(String muteUid) async {
-    _closeDialog();
+  void _success(BuildContext context,String muteUid) async {
+    Navigator.pop(context);
     final stateValue = state.value;
     if (stateValue == null) return;
     state = await AsyncValue.guard(() async {
@@ -52,8 +46,8 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
     ToastUiCore.showFlutterToast('ミュートを解除しました');
   }
 
-  void _failure(String msg) {
-    _closeDialog();
+  void _failure(BuildContext context,String msg) {
+    Navigator.pop(context);
     ToastUiCore.showErrorFlutterToast('ミュート解除に失敗しました');
   }
 }

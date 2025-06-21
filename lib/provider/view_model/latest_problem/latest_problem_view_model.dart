@@ -13,8 +13,8 @@ import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:be_sharp/view/common/dialog/form_dialog.dart';
 import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:get/route_manager.dart';
 part 'latest_problem_view_model.g.dart';
 
 @riverpod
@@ -46,35 +46,33 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     return _repository.fetchLatestUserAnswer(uid, problemId);
   }
 
-  void onToAnswerPageButtonPressed() {
+  void onToAnswerPageButtonPressed(BuildContext context) {
     final problem = state.value?.problem;
     if (problem == null) return;
     final problemId = problem.problemId;
     final path = CreateUserAnswerPage.generatePath(problemId);
-    RouteCore.pushPath(path);
+    RouteCore.pushPath(context, path);
   }
 
-  void onCaptionButtonPressed() {
+  void onCaptionButtonPressed(BuildContext context) {
     final isSubscribing = ref.read(productsNotifierProvider).value?.isSubscribing() ?? false;
     if (!isSubscribing) {
       ToastUiCore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
       return;
     }
-    Get.dialog(FormDialog(
+    showDialog(context: context,builder: (innerContext) => FormDialog(
       initialValue: state.value?.userAnswer?.caption?.value,
-      onSend: _onSend,
+      onSend: (caption) => _onSend(innerContext,caption),
     ));
   }
 
-  Future<void> _onSend(String caption) async {
+  Future<void> _onSend(BuildContext context,String caption) async {
     final userAnswer = state.value?.userAnswer;
     if (userAnswer == null) return;
     final problemId = userAnswer.problemId;
     final repository = ref.read(cloudFunctionsRepositoryProvider);
     final result = await repository.addCaption(problemId, caption);
-    if (Get.isDialogOpen ?? false) {
-      RouteCore.back();
-    }
+    Navigator.pop(context);
     state = const AsyncValue.loading();
     result.when(success: _onSendSuccess, failure: _onSendFailure);
   }
@@ -96,12 +94,12 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     ToastUiCore.showErrorFlutterToast('キャプションの追加が失敗しました');
   }
 
-  void onRankingButtonPressed() async {
+  void onRankingButtonPressed(BuildContext context) async {
     final answers = state.value?.problem?.answers;
     final userAnswer = state.value?.userAnswer;
     if (answers == null || userAnswer == null) return;
     final problemId = userAnswer.problemId;
     final rank = await ref.read(databaseRepositoryProvider).getRank(problemId, answers, userAnswer);
-    Get.dialog(RankDialog(rank: rank));
+    showDialog(context: context,builder: (innerContext) => RankDialog(rank: rank));
   }
 }

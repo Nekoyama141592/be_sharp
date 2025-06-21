@@ -5,16 +5,47 @@ import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/circle_image/circle_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:be_sharp/core/route_core.dart';
-import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/services.dart';
 
-// ユーザー情報を編集するページ
-class EditUserPage extends HookConsumerWidget {
-  EditUserPage({super.key});
-  final formKey = GlobalKey<FormState>();
+const backgroundColor = Color(0xFFF8F9FE);
+const textColor = Color(0xFF2E3E5C);
+
+class EditUserPage extends StatelessWidget {
+  const EditUserPage({super.key});
   static const path = "/editUser";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+          backgroundColor: backgroundColor,
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: const Text(
+              "プロフィール編集",
+              style: TextStyle(
+                color: textColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            leading: IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: textColor,
+                    ),
+                    onPressed: () => RouteCore.back(context),
+                  )
+          ));
+  }
+}
+// ユーザー情報を編集するページ
+class EditUserScreen extends HookConsumerWidget {
+  EditUserScreen({super.key});
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,8 +56,6 @@ class EditUserPage extends HookConsumerWidget {
     // テーマカラーの定義
     const primaryColor = Color(0xFF6C63FF);
     const secondaryColor = Color(0xFF8F8CF2);
-    const backgroundColor = Color(0xFFF8F9FE);
-    const textColor = Color(0xFF2E3E5C);
 
     // アニメーション用のコントローラー
     const animationDuration = Duration(milliseconds: 300);
@@ -57,7 +86,7 @@ class EditUserPage extends HookConsumerWidget {
             final isValid = formKey.currentState!.validate();
             if (!isValid) return;
             formKey.currentState!.save();
-            notifier().onUpdateButtonPressed();
+            notifier().onUpdateButtonPressed(context);
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
@@ -305,31 +334,7 @@ class EditUserPage extends HookConsumerWidget {
       data: (state) {
         final user = state.user;
         final image = state.image;
-        return Scaffold(
-          backgroundColor: backgroundColor,
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: const Text(
-              "プロフィール編集",
-              style: TextStyle(
-                color: textColor,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            leading: Get.currentRoute == path
-                ? IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: textColor,
-                    ),
-                    onPressed: () => RouteCore.back(),
-                  )
-                : null,
-          ),
-          body: SafeArea(
+        return  SafeArea(
             child: GestureDetector(
               onTap: () {
                 FocusScope.of(context).unfocus();
@@ -369,8 +374,7 @@ class EditUserPage extends HookConsumerWidget {
                 ),
               ),
             ),
-          ),
-        );
+          );
       },
     );
   }

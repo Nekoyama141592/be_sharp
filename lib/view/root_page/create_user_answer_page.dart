@@ -6,8 +6,8 @@ import 'package:be_sharp/ui_core/validator_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -37,7 +37,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
           final isValid = formKey.currentState!.validate();
           if (!isValid) return;
           final answer = textController.text;
-          notifier.onPositiveButtonPressed(answer);
+          notifier.onPositiveButtonPressed(context, answer);
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),

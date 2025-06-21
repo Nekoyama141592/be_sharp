@@ -1,11 +1,9 @@
 import 'package:be_sharp/core/id_core.dart';
-import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -43,10 +41,10 @@ class AdminViewModel extends _$AdminViewModel {
     timeLimitSecond = intValue;
   }
 
-  void onPositiveButtonPressed() {
-    Get.dialog(AlertDialog(
+  void onPositiveButtonPressed(BuildContext context) {
+    showDialog(context: context,builder: (innerContext) => AlertDialog(
         content: SizedBox(
-      height: Get.height * 0.8,
+      height: MediaQuery.of(context).size.height * 0.8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -71,9 +69,7 @@ class AdminViewModel extends _$AdminViewModel {
           const Divider(),
           TextButton(
               onPressed: () async {
-                if (Get.isDialogOpen ?? false) {
-                  RouteCore.back();
-                }
+                Navigator.pop(innerContext);
                 await _send();
               },
               child: const Text(

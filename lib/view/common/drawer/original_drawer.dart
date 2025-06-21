@@ -22,30 +22,30 @@ class OriginalDrawer extends ConsumerWidget {
             ListTile(
               title: const Text("プロフィール編集"),
               onTap: () {
-                RouteCore.back();
-                RouteCore.pushPath(EditUserPage.path);
+                Navigator.pop(context);
+                RouteCore.pushPath(context, EditUserPage.path);
               },
             ),
             ListTile(
               title: const Text("アカウント情報"),
               onTap: () {
-                RouteCore.back();
-                RouteCore.pushPath(AccountPage.path);
+                Navigator.pop(context);
+                RouteCore.pushPath(context, AccountPage.path);
               },
             ),
             ListTile(
               title: const Text("ミュートしているユーザー"),
               onTap: () {
-                RouteCore.back();
-                RouteCore.pushPath(MuteUsersPage.path);
+                Navigator.pop(context);
+                RouteCore.pushPath(context, MuteUsersPage.path);
               },
             ),
             if (data?.isAdmin ?? false)
               ListTile(
                 title: const Text("管理者ページ"),
                 onTap: () {
-                  RouteCore.back();
-                  RouteCore.pushPath(AdminPage.path);
+                  Navigator.pop(context);
+                  RouteCore.pushPath(context, AdminPage.path);
                 },
               ),
           ],

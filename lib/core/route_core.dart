@@ -1,20 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+
 class RouteCore {
-  static void pushPath(String path) {
+  static void pushPath(BuildContext context,String path) {
     Get.toNamed(path);
   }
-  static void pushReplace(String path) {
+  static void pushReplace(BuildContext context,String path) {
     Get.offAndToNamed(path);
   }
-  static void pushPathWithoutContext(String path) {
-    Get.toNamed(path);
-  }
 
-  static void back() {
+  static void back(BuildContext context) {
     Get.back();
-  }
-  static void backWithContext(BuildContext context) {
-    Navigator.of(context).pop();
   }
 }

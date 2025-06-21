@@ -1,6 +1,5 @@
 import 'package:be_sharp/flavors.dart';
-import 'package:be_sharp/view/page/check_page.dart';
-import 'package:be_sharp/view/page/my_home_page/my_home_page.dart';
+import 'package:be_sharp/view/page/first_page.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
@@ -23,9 +22,7 @@ class MyApp extends ConsumerWidget {
         debugShowCheckedModeBanner: false,
         getPages: getPages,
         initialRoute: path,
-        home: const CheckPage(
-          child: MyHomePage(),
-        ));
+        home: const FirstPage());
   }
 }
 
@@ -33,7 +30,7 @@ final getPages = [
   GetPage(name: MyApp.path, page: () => const MyApp()),
   GetPage(name: AccountPage.path, page: () => const AccountPage()),
   GetPage(name: AdminPage.path, page: () => AdminPage()),
-  GetPage(name: EditUserPage.path, page: () => EditUserPage()),
+  GetPage(name: EditUserPage.path, page: () => const EditUserPage()),
   GetPage(name: CreateUserAnswerPage.path, page: () => CreateUserAnswerPage()),
   GetPage(name: MuteUsersPage.path, page: () => const MuteUsersPage()),
   GetPage(name: LogoutedPage.path, page: () => const LogoutedPage()),

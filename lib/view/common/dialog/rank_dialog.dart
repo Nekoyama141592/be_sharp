@@ -1,7 +1,5 @@
-import 'package:be_sharp/core/route_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
 
@@ -380,8 +378,7 @@ class RankDialog extends HookWidget {
                         FadeTransition(
                           opacity: fadeAnimation,
                           child: TextButton(
-                            onPressed:
-                                (Get.isDialogOpen ?? false) ? RouteCore.back : null,
+                            onPressed: () => Navigator.pop(context),
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(

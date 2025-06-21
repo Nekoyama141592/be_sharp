@@ -85,7 +85,7 @@ class AdminPage extends HookConsumerWidget {
           final isValid = formKey.currentState!.validate();
           if (!isValid) return;
           formKey.currentState!.save();
-          notifier.onPositiveButtonPressed();
+          notifier.onPositiveButtonPressed(context);
         },
       );
     }

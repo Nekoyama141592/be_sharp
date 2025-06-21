@@ -33,7 +33,7 @@ class AccountPage extends ConsumerWidget {
               onTap: () async {
                 final result = await ref.read(authRepositoryProvider).signOut();
                 result.when(success: (_) {
-                  RouteCore.pushPath(LogoutedPage.path);
+                  RouteCore.pushPath(context, LogoutedPage.path);
                 }, failure: (msg) {
                   ToastUiCore.showErrorFlutterToast(msg);
                 });
@@ -44,7 +44,7 @@ class AccountPage extends ConsumerWidget {
                   "ユーザーを消去する",
                   style: TextStyle(color: Colors.red),
                 ),
-                onTap: () => RouteCore.pushPath(ReauthenticateToDeletePage.path))
+                onTap: () => RouteCore.pushPath(context, ReauthenticateToDeletePage.path))
           ]
         ],
       ),
