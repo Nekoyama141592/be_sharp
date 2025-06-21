@@ -6,7 +6,7 @@ part of 'products_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$productsNotifierHash() => r'70c3a2730fcdc655a9f3c6a8b0f2682ce3526508';
+String _$productsNotifierHash() => r'71f05cfd6e73c057953492b64e89b4e1cc80d65d';
 
 /// See also [ProductsNotifier].
 @ProviderFor(ProductsNotifier)

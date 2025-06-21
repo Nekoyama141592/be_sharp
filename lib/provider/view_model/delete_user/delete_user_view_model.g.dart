@@ -7,7 +7,7 @@ part of 'delete_user_view_model.dart';
 // **************************************************************************
 
 String _$deleteUserViewModelHash() =>
-    r'6d06fcde386a3b1931291543e1aa36e57e47ca42';
+    r'0584d3492d83d78ca6754069ddba3fd8ec6b3867';
 
 /// See also [DeleteUserViewModel].
 @ProviderFor(DeleteUserViewModel)

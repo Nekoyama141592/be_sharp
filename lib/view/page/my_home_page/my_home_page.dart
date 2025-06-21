@@ -1,5 +1,6 @@
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_notifier_provider.dart';
-import 'package:be_sharp/provider/view_model/my_home/my_home_view_model.dart';
+import 'package:be_sharp/provider/keep_alive/notifier/latest_problem/latest_problem_notifier_provider.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/products/products_notifier.dart';
 import 'package:be_sharp/ui_core/bnb_ui_core.dart';
 import 'package:be_sharp/view/common/drawer/original_drawer.dart';
@@ -7,6 +8,7 @@ import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:be_sharp/view/page/my_home_page/components/home_screen/home_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/latest_problem_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/products_screen/products_screen.dart';
+import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -18,8 +20,14 @@ class MyHomePage extends HookConsumerWidget {
     final pageIndex = useState(0);
     final pageController = usePageController();
     ref.watch(privateUserNotifierProvider);
-    ref.watch(myHomeViewModelProvider);
     ref.watch(productsNotifierProvider);
+    final latestProblemState = ref.watch(latestProblemNotifierProvider).value;
+    final isNewProblem = latestProblemState?.isNewProblem ?? false;
+    final problemId = latestProblemState?.problemId;
+    if (isNewProblem && problemId != null) {
+      final path = CreateUserAnswerPage.generatePath(problemId);
+      RouteCore.pushPath(context, path);
+    }
     return BasicPage(
         drawer: const OriginalDrawer(),
         bottomNavigationBar: BottomNavigationBar(
