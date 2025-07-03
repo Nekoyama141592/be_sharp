@@ -1,6 +1,6 @@
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/provider/view_model/delete_user/delete_user_view_model.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/view/common/auth_screen.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:be_sharp/view/root_page/user_deleted_page.dart';
@@ -22,7 +22,7 @@ class ReauthenticateToDeletePage extends ConsumerWidget {
         _showConfirmDialog(context, notifier);
       }
       if (next.state == DeleteUserState.deleted) {
-        RouteCore.pushPath(context, UserDeletedPage.path);
+        RouteUtil.pushPath(context, UserDeletedPage.path);
       }
     });
 
@@ -45,7 +45,7 @@ class ReauthenticateToDeletePage extends ConsumerWidget {
   }
 
   void _showConfirmDialog(BuildContext context, DeleteUserViewModel notifier) {
-    ToastUiCore.cupertinoAlertDialog(
+    ToastUiUtil.cupertinoAlertDialog(
       context,
       "ユーザーを削除しますが本当によろしいですか？",
       () => notifier.confirmDelete(),

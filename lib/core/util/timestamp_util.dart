@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class TimestampCore {
+class TimestampUtil {
   static Timestamp getTyped(dynamic value) {
     if (value is Map<String, dynamic>) {
       const int kThousand = 1000;

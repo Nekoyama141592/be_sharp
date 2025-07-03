@@ -1,11 +1,11 @@
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/view/root_page/logouted_page.dart';
 import 'package:be_sharp/view/root_page/reauthenticate_to_delete_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 
 class AccountPage extends ConsumerWidget {
   const AccountPage({
@@ -33,9 +33,9 @@ class AccountPage extends ConsumerWidget {
               onTap: () async {
                 final result = await ref.read(authRepositoryProvider).signOut();
                 result.when(success: (_) {
-                  RouteCore.pushPath(context, LogoutedPage.path);
+                  RouteUtil.pushPath(context, LogoutedPage.path);
                 }, failure: (msg) {
-                  ToastUiCore.showErrorFlutterToast(msg);
+                  ToastUiUtil.showErrorFlutterToast(msg);
                 });
               },
             ),
@@ -44,7 +44,7 @@ class AccountPage extends ConsumerWidget {
                   "ユーザーを消去する",
                   style: TextStyle(color: Colors.red),
                 ),
-                onTap: () => RouteCore.pushPath(
+                onTap: () => RouteUtil.pushPath(
                     context, ReauthenticateToDeletePage.path))
           ]
         ],

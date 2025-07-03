@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/purchase_core.dart';
+import 'package:be_sharp/core/util/purchase_util.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/repository/result/result.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -62,7 +62,7 @@ class PurchaseRepository {
 
   Future<List<ProductDetails>?> queryProductDetails() async {
     try {
-      final identifiers = PurchaseCore.productIds();
+      final identifiers = PurchaseUtil.productIds();
       final res = await inAppPurchase.queryProductDetails(identifiers);
       return res.productDetails;
     } catch (e) {

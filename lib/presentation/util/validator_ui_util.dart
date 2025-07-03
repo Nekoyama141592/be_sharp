@@ -1,6 +1,6 @@
 import 'package:be_sharp/constants/edit_user_constants.dart';
 
-class ValidatorUICore {
+class ValidatorUIUtil {
   static String? nickName(String? value) {
     if (value!.length > EditUserConstants.maxNickNameLimit) {
       return EditUserConstants.textLimitMsg(

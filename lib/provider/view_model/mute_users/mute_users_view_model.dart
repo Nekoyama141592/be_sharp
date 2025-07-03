@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -25,7 +25,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     const msg = 'このユーザーのミュートを解除しますか？';
-    ToastUiCore.cupertinoAlertDialog(
+    ToastUiUtil.cupertinoAlertDialog(
         context, msg, () => _unMute(context, uid, muteUid));
   }
 
@@ -45,11 +45,11 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
       final result = stateValue..removeWhere((e) => e.uid == muteUid);
       return result;
     });
-    ToastUiCore.showFlutterToast('ミュートを解除しました');
+    ToastUiUtil.showFlutterToast('ミュートを解除しました');
   }
 
   void _failure(BuildContext context, String msg) {
     Navigator.pop(context);
-    ToastUiCore.showErrorFlutterToast('ミュート解除に失敗しました');
+    ToastUiUtil.showErrorFlutterToast('ミュート解除に失敗しました');
   }
 }

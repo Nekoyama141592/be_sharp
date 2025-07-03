@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/json_core.dart';
+import 'package:be_sharp/core/util/json_util.dart';
 import 'package:be_sharp/extensions/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/model/rest_api/addCaption/request/add_caption_request.dart';
@@ -32,7 +32,7 @@ class CloudFunctionsRepository {
     );
     final result = await callable.call(request);
     final data = result.data;
-    final decoded = JsonCore.encodeDecode(data);
+    final decoded = JsonUtil.encodeDecode(data);
     return decoded;
   }
 

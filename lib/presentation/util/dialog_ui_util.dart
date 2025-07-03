@@ -1,7 +1,7 @@
 import 'package:be_sharp/model/dialog/text_action.dart';
 import 'package:flutter/cupertino.dart';
 
-class DialogUiCore {
+class DialogUiUtil {
   static void showPopup(
       {required BuildContext context, required List<TextAction> actions}) {
     showCupertinoModalPopup(

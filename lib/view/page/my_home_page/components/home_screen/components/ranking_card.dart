@@ -1,5 +1,5 @@
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/ui_core/format_ui_core.dart';
+import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -204,7 +204,7 @@ class RankingCard extends StatelessWidget {
         Icon(Icons.timer, color: _userTextColor(), size: 24),
         const SizedBox(width: 4),
         Text(
-          FormatUICore.formatDurationWithResult(answerTime, isInTime),
+          FormatUIUtil.formatDurationWithResult(answerTime, isInTime),
           style: GoogleFonts.roboto(
             color: _userTextColor(),
             fontSize: 18,

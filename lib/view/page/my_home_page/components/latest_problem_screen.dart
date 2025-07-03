@@ -1,8 +1,8 @@
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/provider/view_model/latest_problem/latest_problem_view_model.dart';
-import 'package:be_sharp/ui_core/format_ui_core.dart';
+import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/dialog/form_dialog.dart';
 import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
@@ -47,7 +47,7 @@ class LatestProblemScreen extends ConsumerWidget {
       return _buildCenteredButton(text, () {
         final path = notifier().getAnswerPagePath();
         if (path != null) {
-          RouteCore.pushPath(context, path);
+          RouteUtil.pushPath(context, path);
         }
       });
     } else if (problem.answers.isEmpty) {
@@ -174,11 +174,11 @@ class LatestProblemScreen extends ConsumerWidget {
               _buildAnswerSection(
                   context,
                   '制限時間',
-                  FormatUICore.formatDuration(problem.timeLimitDuration()),
+                  FormatUIUtil.formatDuration(problem.timeLimitDuration()),
                   isInTime),
               const SizedBox(width: 20),
               _buildAnswerSection(context, '回答時間',
-                  FormatUICore.formatDuration(answerTime), isInTime),
+                  FormatUIUtil.formatDuration(answerTime), isInTime),
             ],
           ),
           const SizedBox(height: 20),

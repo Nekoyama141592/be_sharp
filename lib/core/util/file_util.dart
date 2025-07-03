@@ -7,7 +7,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
-class FileCore {
+class FileUtil {
   static Future<Uint8List?> getCompressedImage(ImageSource source) async {
     final xFile = await _pickImage(source);
     final croppedFile = await _cropImage(xFile);

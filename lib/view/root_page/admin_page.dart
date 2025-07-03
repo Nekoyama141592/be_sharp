@@ -1,6 +1,6 @@
-import 'package:be_sharp/core/padding_core.dart';
+import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/provider/view_model/admin/admin_view_model.dart';
-import 'package:be_sharp/ui_core/validator_ui_core.dart';
+import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/view/common/rounded_button.dart';
 import 'package:be_sharp/view/common/text_field_container.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
@@ -18,44 +18,44 @@ class AdminPage extends HookConsumerWidget {
     // 問題の入力をする関数
     Widget questionField() {
       return TextFieldContainer(
-          width: PaddingCore.textFieldWidth(context),
+          width: PaddingUtil.textFieldWidth(context),
           child: TextFormField(
             decoration: const InputDecoration(hintText: '問題を入力'),
             onSaved: notifier.setQuestion,
-            validator: ValidatorUICore.text,
+            validator: ValidatorUIUtil.text,
           ));
     }
 
     // Latexの入力をする関数
     Widget latexField() {
       return TextFieldContainer(
-          width: PaddingCore.textFieldWidth(context),
+          width: PaddingUtil.textFieldWidth(context),
           child: TextFormField(
             decoration: const InputDecoration(hintText: 'LaTexを入力'),
             onSaved: notifier.setLatex,
-            validator: ValidatorUICore.text,
+            validator: ValidatorUIUtil.text,
           ));
     }
 
     // 正解の入力をする関数
     Widget answerField() {
       return TextFieldContainer(
-          width: PaddingCore.textFieldWidth(context),
+          width: PaddingUtil.textFieldWidth(context),
           child: TextFormField(
             decoration: const InputDecoration(hintText: '正解を入力'),
             onSaved: notifier.setAnswer,
-            validator: ValidatorUICore.text,
+            validator: ValidatorUIUtil.text,
           ));
     }
 
     // 制限時間の入力をする関数
     Widget timeLimitField() {
       return TextFieldContainer(
-          width: PaddingCore.textFieldWidth(context),
+          width: PaddingUtil.textFieldWidth(context),
           child: TextFormField(
             decoration: const InputDecoration(hintText: '制限時間を入力'),
             onSaved: notifier.setTimeLimit,
-            validator: ValidatorUICore.number,
+            validator: ValidatorUIUtil.number,
             keyboardType: TextInputType.number,
           ));
     }

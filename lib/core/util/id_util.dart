@@ -1,5 +1,5 @@
 import 'package:ulid/ulid.dart';
 
-class IDCore {
+class IDUtil {
   static String ulid() => Ulid().toString();
 }

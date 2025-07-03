@@ -1,8 +1,8 @@
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/latest_problem/latest_problem_notifier_provider.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/products/products_notifier.dart';
-import 'package:be_sharp/ui_core/bnb_ui_core.dart';
+import 'package:be_sharp/presentation/util/bnb_ui_util.dart';
 import 'package:be_sharp/view/common/drawer/original_drawer.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:be_sharp/view/page/my_home_page/components/home_screen/home_screen.dart';
@@ -26,13 +26,13 @@ class MyHomePage extends HookConsumerWidget {
     final problemId = latestProblemState?.problemId;
     if (isNewProblem && problemId != null) {
       final path = CreateUserAnswerPage.generatePath(problemId);
-      RouteCore.pushPath(context, path);
+      RouteUtil.pushPath(context, path);
     }
     return BasicPage(
         drawer: const OriginalDrawer(),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            items: BNBUICore.values(),
+            items: BNBUIUtil.values(),
             currentIndex: pageIndex.value,
             onTap: (index) async {
               pageController.animateToPage(index,

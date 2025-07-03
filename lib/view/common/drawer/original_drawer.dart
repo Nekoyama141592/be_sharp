@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
@@ -23,21 +23,21 @@ class OriginalDrawer extends ConsumerWidget {
               title: const Text("プロフィール編集"),
               onTap: () {
                 Navigator.pop(context);
-                RouteCore.pushPath(context, EditUserPage.path);
+                RouteUtil.pushPath(context, EditUserPage.path);
               },
             ),
             ListTile(
               title: const Text("アカウント情報"),
               onTap: () {
                 Navigator.pop(context);
-                RouteCore.pushPath(context, AccountPage.path);
+                RouteUtil.pushPath(context, AccountPage.path);
               },
             ),
             ListTile(
               title: const Text("ミュートしているユーザー"),
               onTap: () {
                 Navigator.pop(context);
-                RouteCore.pushPath(context, MuteUsersPage.path);
+                RouteUtil.pushPath(context, MuteUsersPage.path);
               },
             ),
             if (data?.isAdmin ?? false)
@@ -45,7 +45,7 @@ class OriginalDrawer extends ConsumerWidget {
                 title: const Text("管理者ページ"),
                 onTap: () {
                   Navigator.pop(context);
-                  RouteCore.pushPath(context, AdminPage.path);
+                  RouteUtil.pushPath(context, AdminPage.path);
                 },
               ),
           ],

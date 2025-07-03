@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/credential_core.dart';
+import 'package:be_sharp/core/util/credential_util.dart';
 import 'package:be_sharp/repository/result/result.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,7 @@ class AuthRepository {
 
   FutureResult<User> signInWithApple() async {
     try {
-      final credential = await CredentialCore.appleCredential();
+      final credential = await CredentialUtil.appleCredential();
       final res = await client.signInWithCredential(credential);
       final user = res.user;
       if (user == null) {
@@ -28,7 +28,7 @@ class AuthRepository {
 
   FutureResult<User> signInWithGoogle() async {
     try {
-      final credential = await CredentialCore.googleCredential();
+      final credential = await CredentialUtil.googleCredential();
       final res = await client.signInWithCredential(credential);
       final user = res.user;
       if (user == null) {

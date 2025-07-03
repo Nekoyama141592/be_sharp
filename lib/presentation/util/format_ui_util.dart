@@ -1,4 +1,4 @@
-class FormatUICore {
+class FormatUIUtil {
   static String formatDuration(Duration duration) {
     final seconds = duration.inSeconds;
     final formattedSeconds = seconds.toString().replaceAllMapped(

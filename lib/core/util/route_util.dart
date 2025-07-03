@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-class RouteCore {
+class RouteUtil {
   static void pushPath(BuildContext context, String path) {
     Get.toNamed(path);
   }

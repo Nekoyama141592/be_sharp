@@ -1,8 +1,8 @@
-import 'package:be_sharp/core/id_core.dart';
+import 'package:be_sharp/core/util/id_util.dart';
 import 'package:be_sharp/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -82,7 +82,7 @@ class AdminViewModel extends _$AdminViewModel {
   }
 
   Future<void> _send() async {
-    final problemId = IDCore.ulid();
+    final problemId = IDUtil.ulid();
     final repository = ref.read(cloudFunctionsRepositoryProvider);
     final request = CreateProblemRequest(
         question: question,
@@ -95,10 +95,10 @@ class AdminViewModel extends _$AdminViewModel {
   }
 
   void _onSuccess(CreateProblemResponse res) {
-    ToastUiCore.showFlutterToast('作成が成功しました');
+    ToastUiUtil.showFlutterToast('作成が成功しました');
   }
 
   void _onFailure(String msg) {
-    ToastUiCore.showErrorFlutterToast(msg);
+    ToastUiUtil.showErrorFlutterToast(msg);
   }
 }

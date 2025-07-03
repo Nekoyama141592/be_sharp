@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/view/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -29,7 +29,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   void _showDialog(
       BuildContext context, String uid, String problemId, String answer) {
     const msg = '回答を送信します。変更できませんがよろしいですか？';
-    ToastUiCore.cupertinoAlertDialog(context, msg,
+    ToastUiUtil.cupertinoAlertDialog(context, msg,
         () async => await _positiveAction(context, uid, problemId, answer));
   }
 
@@ -42,7 +42,7 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
 
   void onSuccess(BuildContext context) {
     Navigator.pop(context);
-    RouteCore.pushReplace(context, MyApp.path);
+    RouteUtil.pushReplace(context, MyApp.path);
     _requestReview();
   }
 
@@ -54,6 +54,6 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   }
 
   void onFailure(BuildContext context) {
-    RouteCore.back(context);
+    RouteUtil.back(context);
   }
 }

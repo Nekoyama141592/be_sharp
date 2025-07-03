@@ -8,7 +8,7 @@ import 'package:be_sharp/provider/repository/database_repository/database_reposi
 import 'package:be_sharp/provider/repository/purchase/purchase_repository_provider.dart';
 import 'package:be_sharp/provider/use_case/purchase/purchase_use_case_provider.dart';
 import 'package:be_sharp/repository/purchase_repository.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'purchase_notifier.g.dart';
@@ -26,7 +26,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
   Future<List<VerifiedPurchase>> _onListen(
     List<PurchaseDetails> detailsList,
   ) async {
-    ToastUiCore.showFlutterToast('購入情報を検証しています');
+    ToastUiUtil.showFlutterToast('購入情報を検証しています');
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
       if (details.isError || !details.isPurchased) continue;
@@ -37,7 +37,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
         failure: _onVerifyFailed,
       );
     }
-    ToastUiCore.showFlutterToast('購入情報の検証が完了しました');
+    ToastUiUtil.showFlutterToast('購入情報の検証が完了しました');
     return _fetchPurchases();
   }
 
@@ -51,7 +51,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
 
   Future<void> _onVerifyFailed(String msg) async {
     // 失敗した時の処理.
-    ToastUiCore.showErrorFlutterToast(msg);
+    ToastUiUtil.showErrorFlutterToast(msg);
   }
 
   Future<List<VerifiedPurchase>> _fetchPurchases() {

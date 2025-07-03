@@ -1,7 +1,7 @@
 // material
 import 'package:flutter/material.dart';
 
-class BNBUICore {
+class BNBUIUtil {
   static List<BottomNavigationBarItem> values() => [
         const BottomNavigationBarItem(
             label: 'ホーム',

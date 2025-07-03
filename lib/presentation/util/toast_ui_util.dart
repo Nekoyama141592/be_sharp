@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;
 
-class ToastUiCore {
+class ToastUiUtil {
   static const timeInSecForIosWeb = 3;
   static void showPopup(
       {required BuildContext context,

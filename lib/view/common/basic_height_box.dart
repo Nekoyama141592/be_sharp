@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/padding_core.dart';
+import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:flutter/material.dart';
 
 class BasicHeightBox extends StatelessWidget {
@@ -6,7 +6,7 @@ class BasicHeightBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: PaddingCore.vertical(context),
+      height: PaddingUtil.vertical(context),
     );
   }
 }

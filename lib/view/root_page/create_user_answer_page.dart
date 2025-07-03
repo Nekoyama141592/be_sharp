@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/provider/view_model/create_user_answer/create_user_answer_view_model.dart';
-import 'package:be_sharp/ui_core/validator_ui_core.dart';
+import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +91,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                                   decoration: const InputDecoration(
                                     labelText: '回答',
                                   ),
-                                  validator: ValidatorUICore.number,
+                                  validator: ValidatorUIUtil.number,
                                   keyboardType: TextInputType.text,
                                 ),
                               )),

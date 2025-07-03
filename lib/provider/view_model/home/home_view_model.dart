@@ -5,8 +5,8 @@ import 'package:be_sharp/model/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/provider/use_case/home/home_use_case_provider.dart';
-import 'package:be_sharp/ui_core/dialog_ui_core.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/dialog_ui_util.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/use_case/home_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +63,7 @@ class HomeViewModel extends _$HomeViewModel {
           }),
       TextAction(text: 'キャンセル', action: Navigator.pop),
     ];
-    DialogUiCore.showPopup(context: context, actions: actions);
+    DialogUiUtil.showPopup(context: context, actions: actions);
   }
 
   Future<void> _muteUser(BuildContext context, String muteUid) async {
@@ -86,11 +86,11 @@ class HomeViewModel extends _$HomeViewModel {
       final result = stateValue.copyWith(muteUids: muteUids);
       return result;
     });
-    ToastUiCore.showFlutterToast('ユーザーをミュートしました');
+    ToastUiUtil.showFlutterToast('ユーザーをミュートしました');
   }
 
   void _onMuteFailure(BuildContext context) {
     Navigator.pop(context);
-    ToastUiCore.showErrorFlutterToast('ユーザーをミュートできませんでした');
+    ToastUiUtil.showErrorFlutterToast('ユーザーをミュートできませんでした');
   }
 }

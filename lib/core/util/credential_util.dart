@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class CredentialCore {
+class CredentialUtil {
   static Future<OAuthCredential> appleCredential() async {
     final appleCredential = await SignInWithApple.getAppleIDCredential(
       scopes: [

@@ -1,7 +1,7 @@
 import 'package:be_sharp/constants/colors.dart';
-import 'package:be_sharp/core/purchase_core.dart';
+import 'package:be_sharp/core/util/purchase_util.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/products/products_notifier.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/page/my_home_page/components/products_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';
@@ -46,10 +46,10 @@ class ProductsScreen extends ConsumerWidget {
                         final result =
                             await notifier().onRestoreButtonPressed();
                         result.when(
-                          success: (_) => ToastUiCore.showSuccessSnackBar(
+                          success: (_) => ToastUiUtil.showSuccessSnackBar(
                               context, '購入の検証が成功しました'),
                           failure: (msg) =>
-                              ToastUiCore.showFailureSnackBar(context, msg),
+                              ToastUiUtil.showFailureSnackBar(context, msg),
                         );
                       },
                       child: Text(
@@ -67,10 +67,10 @@ class ProductsScreen extends ConsumerWidget {
                     ...products.map((product) {
                       return PurchaseCard(
                         product: product,
-                        isMonthPlan: product.id == PurchaseCore.monthItemId(),
+                        isMonthPlan: product.id == PurchaseUtil.monthItemId(),
                         isPurchased: state.isPurchased(product.id),
                         onPressed: () async {
-                          ToastUiCore.showSuccessSnackBar(
+                          ToastUiUtil.showSuccessSnackBar(
                             context,
                             '情報を取得しています。 \nしばらくお待ちください。',
                           );
@@ -80,13 +80,13 @@ class ProductsScreen extends ConsumerWidget {
                           );
                           result.when(
                             success: (_) {
-                              ToastUiCore.showSuccessSnackBar(
+                              ToastUiUtil.showSuccessSnackBar(
                                 context,
                                 '購入が成功しました',
                               );
                             },
                             failure: (msg) {
-                              ToastUiCore.showFailureSnackBar(context, msg);
+                              ToastUiUtil.showFailureSnackBar(context, msg);
                             },
                           );
                         },

@@ -8,7 +8,7 @@ import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.da
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'latest_problem_view_model.g.dart';
@@ -51,7 +51,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     final isSubscribing =
         ref.read(productsNotifierProvider).value?.isSubscribing() ?? false;
     if (!isSubscribing) {
-      ToastUiCore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
+      ToastUiUtil.showErrorFlutterToast('サブスクリプションに登録する必要があります');
       return false;
     }
     return true;
@@ -72,7 +72,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   void _onSendSuccess(AddCaptionResponse res) async {
-    ToastUiCore.showFlutterToast('キャプションの追加が成功しました');
+    ToastUiUtil.showFlutterToast('キャプションの追加が成功しました');
     final stateValue = state.value;
     final oldUserAnswer = stateValue?.userAnswer;
     if (stateValue == null || oldUserAnswer == null) return;
@@ -85,7 +85,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   void _onSendFailure(String msg) {
-    ToastUiCore.showErrorFlutterToast('キャプションの追加が失敗しました');
+    ToastUiUtil.showErrorFlutterToast('キャプションの追加が失敗しました');
   }
 
   Future<int?> getRankForDialog() async {

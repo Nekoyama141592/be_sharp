@@ -6,7 +6,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
-class PurchaseCore {
+class PurchaseUtil {
   static PurchaseDetails purchaseDetailsFromJson(Map<String, dynamic> json) {
     return PurchaseDetails(
       purchaseID: json['purchaseID'],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PaddingCore {
+class PaddingUtil {
   static double _fullHeight(BuildContext context) =>
       MediaQuery.of(context).size.height;
   static double _fullWidth(BuildContext context) =>

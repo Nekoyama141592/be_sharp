@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:be_sharp/core/url_core.dart';
+import 'package:be_sharp/core/util/url_util.dart';
 import 'package:be_sharp/view/common/policy/policy_button.dart';
 import 'package:flutter/material.dart';
 
@@ -14,16 +14,16 @@ class PolicyButtons extends StatelessWidget {
         children: [
           const PolicyButton(
             label: 'プライバシーポリシー',
-            onPressed: UrlCore.toPrivacyPage,
+            onPressed: UrlUtil.toPrivacyPage,
           ),
           const PolicyButton(
             label: '利用規約',
-            onPressed: UrlCore.toTosPage,
+            onPressed: UrlUtil.toTosPage,
           ),
           if (Platform.isIOS)
             const PolicyButton(
               label: 'EULA',
-              onPressed: UrlCore.toEULAPage,
+              onPressed: UrlUtil.toEULAPage,
             ),
         ],
       ),

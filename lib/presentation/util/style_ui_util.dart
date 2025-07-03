@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class StyleUICore {
+class StyleUIUtil {
   static double _bodyLargeFontSize(BuildContext context) {
     return Theme.of(context).textTheme.bodyLarge?.fontSize ?? 14.0;
   }

@@ -1,5 +1,5 @@
 // material
-import 'package:be_sharp/core/padding_core.dart';
+import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/view/common/texts.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class RoundedButton extends StatelessWidget {
   final Color? borderColor;
   @override
   Widget build(BuildContext context) {
-    final vertical = PaddingCore.vertical(context);
+    final vertical = PaddingUtil.vertical(context);
     final size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * widthRate,

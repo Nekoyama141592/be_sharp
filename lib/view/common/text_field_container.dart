@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/padding_core.dart';
+import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldContainer extends StatelessWidget {
@@ -13,7 +13,7 @@ class TextFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: PaddingCore.vertical(context)),
+      padding: EdgeInsets.symmetric(vertical: PaddingUtil.vertical(context)),
       child: Container(
         width: width,
         decoration: BoxDecoration(

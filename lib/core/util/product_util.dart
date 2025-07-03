@@ -1,6 +1,6 @@
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-class ProductCore {
+class ProductUtil {
   List<ProductDetails> mockList = [
     ProductDetails(
         id: 'subscription_basic_month',

@@ -1,10 +1,10 @@
-import 'package:be_sharp/core/credential_core.dart';
+import 'package:be_sharp/core/util/credential_util.dart';
 import 'package:be_sharp/provider/repository/auth_repository/auth_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/repository/auth_repository.dart';
 import 'package:be_sharp/repository/database_repository.dart';
-import 'package:be_sharp/ui_core/toast_ui_core.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -61,12 +61,12 @@ class DeleteUserViewModel
       ref.read(databaseRepositoryProvider);
 
   Future<void> onGoogleSignInButtonPressed() async {
-    final credential = await CredentialCore.googleCredential();
+    final credential = await CredentialUtil.googleCredential();
     await _reauthenticateToDelete(credential);
   }
 
   Future<void> onAppleSignInButtonPressed() async {
-    final credential = await CredentialCore.appleCredential();
+    final credential = await CredentialUtil.appleCredential();
     await _reauthenticateToDelete(credential);
   }
 
@@ -87,7 +87,7 @@ class DeleteUserViewModel
           state: DeleteUserState.error,
           errorMessage: msg,
         ),
-        ToastUiCore.showErrorFlutterToast('再認証に失敗しました'),
+        ToastUiUtil.showErrorFlutterToast('再認証に失敗しました'),
       },
     );
   }
@@ -108,7 +108,7 @@ class DeleteUserViewModel
           state: DeleteUserState.error,
           errorMessage: msg,
         ),
-        ToastUiCore.showErrorFlutterToast("ユーザーの削除が失敗しました"),
+        ToastUiUtil.showErrorFlutterToast("ユーザーの削除が失敗しました"),
       },
     );
   }

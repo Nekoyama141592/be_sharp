@@ -1,12 +1,12 @@
-import 'package:be_sharp/core/padding_core.dart';
+import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/provider/view_model/edit_user/edit_user_view_model.dart';
-import 'package:be_sharp/ui_core/validator_ui_core.dart';
+import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
 import 'package:be_sharp/view/common/circle_image/circle_image.dart';
 import 'package:flutter/material.dart';
 
-import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/view/my_app.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/services.dart';
@@ -38,7 +38,7 @@ class EditUserPage extends StatelessWidget {
                 Icons.arrow_back_ios,
                 color: textColor,
               ),
-              onPressed: () => RouteCore.back(context),
+              onPressed: () => RouteUtil.back(context),
             )));
   }
 }
@@ -59,7 +59,7 @@ class EditUserScreen extends HookConsumerWidget {
       if (next.hasValue && next.value != null) {
         final viewModel = ref.read(editUserViewModelProvider.notifier);
         if (viewModel.isSuccess) {
-          RouteCore.pushReplace(context, MyApp.path);
+          RouteUtil.pushReplace(context, MyApp.path);
           viewModel.resetState();
         }
       }
@@ -75,7 +75,7 @@ class EditUserScreen extends HookConsumerWidget {
     // 更新ボタン
     Widget positiveButton() {
       return Container(
-        width: PaddingCore.textFieldWidth(context),
+        width: PaddingUtil.textFieldWidth(context),
         height: 56,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -138,7 +138,7 @@ class EditUserScreen extends HookConsumerWidget {
           ),
         ),
         Container(
-          width: PaddingCore.textFieldWidth(context),
+          width: PaddingUtil.textFieldWidth(context),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
@@ -153,7 +153,7 @@ class EditUserScreen extends HookConsumerWidget {
           child: TextFormField(
             initialValue: user?.nickNameValue(),
             onSaved: notifier().setNickName,
-            validator: ValidatorUICore.nickName,
+            validator: ValidatorUIUtil.nickName,
             style: const TextStyle(
               color: textColor,
               fontSize: 16,
@@ -197,7 +197,7 @@ class EditUserScreen extends HookConsumerWidget {
           ),
         ),
         Container(
-          width: PaddingCore.textFieldWidth(context),
+          width: PaddingUtil.textFieldWidth(context),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
@@ -212,7 +212,7 @@ class EditUserScreen extends HookConsumerWidget {
           child: TextFormField(
             initialValue: user?.bioValue(),
             onSaved: notifier().setBio,
-            validator: ValidatorUICore.bio,
+            validator: ValidatorUIUtil.bio,
             style: const TextStyle(
               color: textColor,
               fontSize: 16,

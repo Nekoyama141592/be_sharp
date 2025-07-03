@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/padding_core.dart';
+import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/view/common/text_field_container.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class OriginalForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
-      width: PaddingCore.textFieldWidth(context),
+      width: PaddingUtil.textFieldWidth(context),
       child: TextFormField(
         initialValue: initialValue,
         keyboardType: keyboardType,
