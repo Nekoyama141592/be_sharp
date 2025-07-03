@@ -1,5 +1,5 @@
 import 'package:be_sharp/core/util/purchase_util.dart';
-import 'package:be_sharp/extensions/purchase_details_extension.dart';
+import 'package:be_sharp/core/extension/purchase_details_extension.dart';
 import 'package:be_sharp/repository/result/result.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 

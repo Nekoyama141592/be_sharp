@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:be_sharp/extensions/purchase_details_extension.dart';
+import 'package:be_sharp/core/extension/purchase_details_extension.dart';
 import 'package:be_sharp/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/keep_alive/stream/purchase/purchase_stream_provider.dart';
