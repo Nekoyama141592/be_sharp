@@ -9,7 +9,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
-import 'package:be_sharp/typedefs/firestore_typedef.dart';
 part 'latest_problem_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
