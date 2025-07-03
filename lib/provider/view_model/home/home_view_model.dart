@@ -7,7 +7,7 @@ import 'package:be_sharp/provider/repository/database_repository/database_reposi
 import 'package:be_sharp/provider/use_case/home/home_use_case_provider.dart';
 import 'package:be_sharp/presentation/util/dialog_ui_util.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
-import 'package:be_sharp/use_case/home_use_case.dart';
+import 'package:be_sharp/application/use_case/home_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
