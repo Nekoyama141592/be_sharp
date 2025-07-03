@@ -1,4 +1,4 @@
-import 'package:be_sharp/constants/edit_user_constants.dart';
+import 'package:be_sharp/presentation/constants/edit_user_constants.dart';
 
 class ValidatorUIUtil {
   static String? nickName(String? value) {

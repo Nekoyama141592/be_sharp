@@ -1,4 +1,4 @@
-import 'package:be_sharp/view/common/custom_snack_bar.dart';
+import 'package:be_sharp/presentation/common/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart' as ft;

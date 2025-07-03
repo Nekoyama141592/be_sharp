@@ -1,5 +1,5 @@
-import 'package:be_sharp/model/rest_api/get_object/request/get_object_request.dart';
-import 'package:be_sharp/repository/cloud_functions_repository.dart';
+import 'package:be_sharp/infrastructure/model/rest_api/get_object/request/get_object_request.dart';
+import 'package:be_sharp/infrastructure/repository/cloud_functions_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FileUseCase {
