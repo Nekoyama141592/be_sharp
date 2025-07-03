@@ -1,19 +1,15 @@
 import 'dart:async';
-import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/model/view_model_state/latest_problem_state/latest_problem_state.dart';
-import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/keep_alive/notifier/products/products_notifier.dart';
+import 'package:be_sharp/provider/keep_alive/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/repository/database_repository.dart';
 import 'package:be_sharp/ui_core/toast_ui_core.dart';
-import 'package:be_sharp/view/common/dialog/form_dialog.dart';
-import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
 import 'package:be_sharp/view/root_page/create_user_answer_page.dart';
-import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'latest_problem_view_model.g.dart';
 
@@ -30,8 +26,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     if (uid == null || problem == null) {
       return LatestProblemState(problem: problem);
     }
-    final userAnswer =
-        await _fetchLatestUserAnswer(uid, problem.problemId);
+    final userAnswer = await _fetchLatestUserAnswer(uid, problem.problemId);
     return LatestProblemState(problem: problem, userAnswer: userAnswer);
   }
 
@@ -41,38 +36,37 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     return _repository.fetchLatestProblem();
   }
 
-  Future<ReadUserAnswer?> _fetchLatestUserAnswer(
-      String uid, String problemId) {
+  Future<ReadUserAnswer?> _fetchLatestUserAnswer(String uid, String problemId) {
     return _repository.fetchLatestUserAnswer(uid, problemId);
   }
 
-  void onToAnswerPageButtonPressed(BuildContext context) {
+  String? getAnswerPagePath() {
     final problem = state.value?.problem;
-    if (problem == null) return;
+    if (problem == null) return null;
     final problemId = problem.problemId;
-    final path = CreateUserAnswerPage.generatePath(problemId);
-    RouteCore.pushPath(context, path);
+    return CreateUserAnswerPage.generatePath(problemId);
   }
 
-  void onCaptionButtonPressed(BuildContext context) {
-    final isSubscribing = ref.read(productsNotifierProvider).value?.isSubscribing() ?? false;
+  bool get canShowCaptionDialog {
+    final isSubscribing =
+        ref.read(productsNotifierProvider).value?.isSubscribing() ?? false;
     if (!isSubscribing) {
       ToastUiCore.showErrorFlutterToast('サブスクリプションに登録する必要があります');
-      return;
+      return false;
     }
-    showDialog(context: context,builder: (innerContext) => FormDialog(
-      initialValue: state.value?.userAnswer?.caption?.value,
-      onSend: (caption) => _onSend(innerContext,caption),
-    ));
+    return true;
   }
 
-  Future<void> _onSend(BuildContext context,String caption) async {
+  String? get initialCaptionValue {
+    return state.value?.userAnswer?.caption?.value;
+  }
+
+  Future<void> onSendCaption(String caption) async {
     final userAnswer = state.value?.userAnswer;
     if (userAnswer == null) return;
     final problemId = userAnswer.problemId;
     final repository = ref.read(cloudFunctionsRepositoryProvider);
     final result = await repository.addCaption(problemId, caption);
-    Navigator.pop(context);
     state = const AsyncValue.loading();
     result.when(success: _onSendSuccess, failure: _onSendFailure);
   }
@@ -94,12 +88,13 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     ToastUiCore.showErrorFlutterToast('キャプションの追加が失敗しました');
   }
 
-  void onRankingButtonPressed(BuildContext context) async {
+  Future<int?> getRankForDialog() async {
     final answers = state.value?.problem?.answers;
     final userAnswer = state.value?.userAnswer;
-    if (answers == null || userAnswer == null) return;
+    if (answers == null || userAnswer == null) return null;
     final problemId = userAnswer.problemId;
-    final rank = await ref.read(databaseRepositoryProvider).getRank(problemId, answers, userAnswer);
-    showDialog(context: context,builder: (innerContext) => RankDialog(rank: rank));
+    return await ref
+        .read(databaseRepositoryProvider)
+        .getRank(problemId, answers, userAnswer);
   }
 }

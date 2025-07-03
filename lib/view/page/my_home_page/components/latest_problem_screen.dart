@@ -1,8 +1,11 @@
+import 'package:be_sharp/core/route_core.dart';
 import 'package:be_sharp/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/provider/view_model/latest_problem/latest_problem_view_model.dart';
 import 'package:be_sharp/ui_core/format_ui_core.dart';
 import 'package:be_sharp/view/common/async_screen.dart';
+import 'package:be_sharp/view/common/dialog/form_dialog.dart';
+import 'package:be_sharp/view/common/dialog/rank_dialog.dart';
 import 'package:be_sharp/view/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,7 +44,12 @@ class LatestProblemScreen extends ConsumerWidget {
     } else if (userAnswer == null) {
       final isInTime = problem.isInTimeLimit();
       final text = '最新の問題に${isInTime ? '回答(まだ間に合います！)' : '遅れて回答'}';
-      return _buildCenteredButton(text, () => notifier().onToAnswerPageButtonPressed(context));
+      return _buildCenteredButton(text, () {
+        final path = notifier().getAnswerPagePath();
+        if (path != null) {
+          RouteCore.pushPath(context, path);
+        }
+      });
     } else if (problem.answers.isEmpty) {
       return _buildCenteredMessage('回答時間中...');
     } else {
@@ -142,8 +150,7 @@ class LatestProblemScreen extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 10),
-                    Text(
-                        problem.latex,
+                    Text(problem.latex,
                         style: GoogleFonts.notoSans(
                           fontSize: 24,
                           fontWeight: FontWeight.w500,
@@ -179,7 +186,15 @@ class LatestProblemScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               OriginalButton(
-                  onPressed: () => notifier().onRankingButtonPressed(context),
+                  onPressed: () async {
+                    final rank = await notifier().getRankForDialog();
+                    if (rank != null && context.mounted) {
+                      showDialog(
+                        context: context,
+                        builder: (innerContext) => RankDialog(rank: rank),
+                      );
+                    }
+                  },
                   isPaid: false,
                   labelText: 'ランキング',
                   iconData: Icons.star),
@@ -187,7 +202,20 @@ class LatestProblemScreen extends ConsumerWidget {
                 width: 16.0,
               ),
               OriginalButton(
-                onPressed: () => notifier().onCaptionButtonPressed(context),
+                onPressed: () {
+                  if (notifier().canShowCaptionDialog) {
+                    showDialog(
+                      context: context,
+                      builder: (innerContext) => FormDialog(
+                        initialValue: notifier().initialCaptionValue,
+                        onSend: (caption) async {
+                          Navigator.pop(context);
+                          await notifier().onSendCaption(caption);
+                        },
+                      ),
+                    );
+                  }
+                },
                 isPaid: true,
                 labelText: 'キャプション',
                 iconData: isCaptionExists ? Icons.edit : Icons.add_comment,

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'mute_users_view_model.g.dart';
+
 @riverpod
 class MuteUsersViewModel extends _$MuteUsersViewModel {
   @override
@@ -20,22 +21,23 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
     return ref.read(databaseRepositoryProvider).fetchMutePublicUsers(uid);
   }
 
-  
-
-  void onTap(BuildContext context,String muteUid) {
+  void onTap(BuildContext context, String muteUid) {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     const msg = 'このユーザーのミュートを解除しますか？';
-    ToastUiCore.cupertinoAlertDialog(context, msg, () => _unMute(context, uid, muteUid));
+    ToastUiCore.cupertinoAlertDialog(
+        context, msg, () => _unMute(context, uid, muteUid));
   }
 
-  Future<void> _unMute(BuildContext context,String uid, String muteUid) async {
+  Future<void> _unMute(BuildContext context, String uid, String muteUid) async {
     final repository = ref.read(databaseRepositoryProvider);
     final result = await repository.unMute(uid, muteUid);
-    result.when(success: (_) => _success(context, muteUid), failure: (_) => _failure(context,muteUid));
+    result.when(
+        success: (_) => _success(context, muteUid),
+        failure: (_) => _failure(context, muteUid));
   }
 
-  void _success(BuildContext context,String muteUid) async {
+  void _success(BuildContext context, String muteUid) async {
     Navigator.pop(context);
     final stateValue = state.value;
     if (stateValue == null) return;
@@ -46,7 +48,7 @@ class MuteUsersViewModel extends _$MuteUsersViewModel {
     ToastUiCore.showFlutterToast('ミュートを解除しました');
   }
 
-  void _failure(BuildContext context,String msg) {
+  void _failure(BuildContext context, String msg) {
     Navigator.pop(context);
     ToastUiCore.showErrorFlutterToast('ミュート解除に失敗しました');
   }

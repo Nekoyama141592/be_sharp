@@ -13,7 +13,8 @@ import 'package:be_sharp/typedefs/firestore_typedef.dart';
 part 'latest_problem_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-Stream<QuerySnapshot<Map<String, dynamic>>> latestProblemStream(Ref ref) => ref.watch(databaseRepositoryProvider).latestPromblemSnapshots();
+Stream<QuerySnapshot<Map<String, dynamic>>> latestProblemStream(Ref ref) =>
+    ref.watch(databaseRepositoryProvider).latestPromblemSnapshots();
 
 @Riverpod(keepAlive: true)
 class LatestProblemNotifier extends _$LatestProblemNotifier {
@@ -33,7 +34,8 @@ class LatestProblemNotifier extends _$LatestProblemNotifier {
     if (docs.isEmpty) return const LatestProblemNotifierState();
     final problemDoc = docs.first;
     final isNewProblem = await _getIsNewProblem(uid, problemDoc);
-    return LatestProblemNotifierState(isNewProblem: isNewProblem,problemId: problemDoc.id);
+    return LatestProblemNotifierState(
+        isNewProblem: isNewProblem, problemId: problemDoc.id);
   }
 
   Future<bool> _getIsNewProblem(String uid, QDoc problemDoc) async {

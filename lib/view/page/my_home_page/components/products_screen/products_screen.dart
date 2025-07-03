@@ -43,14 +43,13 @@ class ProductsScreen extends ConsumerWidget {
                     const SizedBox(height: 24),
                     TextButton(
                       onPressed: () async {
-            final result =
-                await notifier()
-                    .onRestoreButtonPressed();
+                        final result =
+                            await notifier().onRestoreButtonPressed();
                         result.when(
-                          success:
-                              (_) =>
-                                  ToastUiCore.showSuccessSnackBar(context, '購入の検証が成功しました'),
-                          failure: (msg) => ToastUiCore.showFailureSnackBar(context, msg),
+                          success: (_) => ToastUiCore.showSuccessSnackBar(
+                              context, '購入の検証が成功しました'),
+                          failure: (msg) =>
+                              ToastUiCore.showFailureSnackBar(context, msg),
                         );
                       },
                       child: Text(
@@ -71,25 +70,26 @@ class ProductsScreen extends ConsumerWidget {
                         isMonthPlan: product.id == PurchaseCore.monthItemId(),
                         isPurchased: state.isPurchased(product.id),
                         onPressed: () async {
-                        ToastUiCore.showSuccessSnackBar(
-                          context,
-                          '情報を取得しています。 \nしばらくお待ちください。',
-                        );
-                        final result = await notifier().onPurchaseButtonPressed(
-                          product,
-                        );
-                        result.when(
-                          success: (_) {
-                            ToastUiCore.showSuccessSnackBar(
-                              context,
-                              '購入が成功しました',
-                            );
-                          },
-                          failure: (msg) {
-                            ToastUiCore.showFailureSnackBar(context, msg);
-                          },
-                        );
-                      },
+                          ToastUiCore.showSuccessSnackBar(
+                            context,
+                            '情報を取得しています。 \nしばらくお待ちください。',
+                          );
+                          final result =
+                              await notifier().onPurchaseButtonPressed(
+                            product,
+                          );
+                          result.when(
+                            success: (_) {
+                              ToastUiCore.showSuccessSnackBar(
+                                context,
+                                '購入が成功しました',
+                              );
+                            },
+                            failure: (msg) {
+                              ToastUiCore.showFailureSnackBar(context, msg);
+                            },
+                          );
+                        },
                       );
                     })
                   ],

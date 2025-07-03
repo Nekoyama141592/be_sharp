@@ -18,28 +18,31 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   FutureOr<ReadProblem?> build(String problemId) {
     return _repository.getProblem(problemId);
   }
+
   DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
-  void onPositiveButtonPressed(BuildContext context,String answer) async {
+  void onPositiveButtonPressed(BuildContext context, String answer) async {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return;
     _showDialog(context, uid, problemId, answer);
   }
 
-  void _showDialog(BuildContext context,String uid, String problemId, String answer) {
+  void _showDialog(
+      BuildContext context, String uid, String problemId, String answer) {
     const msg = '回答を送信します。変更できませんがよろしいですか？';
-    ToastUiCore.cupertinoAlertDialog(context,
-        msg, () async => await _positiveAction(context, uid, problemId, answer));
+    ToastUiCore.cupertinoAlertDialog(context, msg,
+        () async => await _positiveAction(context, uid, problemId, answer));
   }
 
-  Future<void> _positiveAction(BuildContext context,
-      String uid, String problemId, String answer) async {
+  Future<void> _positiveAction(
+      BuildContext context, String uid, String problemId, String answer) async {
     final result = await _repository.createAnswer(uid, problemId, answer);
-    result.when(success: (_) => onSuccess(context), failure: (_) => onFailure(context));
+    result.when(
+        success: (_) => onSuccess(context), failure: (_) => onFailure(context));
   }
 
   void onSuccess(BuildContext context) {
     Navigator.pop(context);
-    RouteCore.pushReplace(context,MyApp.path);
+    RouteCore.pushReplace(context, MyApp.path);
     _requestReview();
   }
 

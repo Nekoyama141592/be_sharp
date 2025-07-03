@@ -42,42 +42,43 @@ class AdminViewModel extends _$AdminViewModel {
   }
 
   void onPositiveButtonPressed(BuildContext context) {
-    showDialog(context: context,builder: (innerContext) => AlertDialog(
-        content: SizedBox(
-      height: MediaQuery.of(context).size.height * 0.8,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'プレビュー',
-          ),
-          const SizedBox(height: 10),
-          Text(
-            question,
-            style: GoogleFonts.notoSans(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-              latex,
-              style: GoogleFonts.notoSans(
-                fontSize: 28,
-                fontWeight: FontWeight.w500,
-              )),
-          const Divider(),
-          TextButton(
-              onPressed: () async {
-                Navigator.pop(innerContext);
-                await _send();
-              },
-              child: const Text(
-                'OK',
-              )),
-        ],
-      ),
-    )));
+    showDialog(
+        context: context,
+        builder: (innerContext) => AlertDialog(
+                content: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'プレビュー',
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    question,
+                    style: GoogleFonts.notoSans(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(latex,
+                      style: GoogleFonts.notoSans(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w500,
+                      )),
+                  const Divider(),
+                  TextButton(
+                      onPressed: () async {
+                        Navigator.pop(innerContext);
+                        await _send();
+                      },
+                      child: const Text(
+                        'OK',
+                      )),
+                ],
+              ),
+            )));
   }
 
   Future<void> _send() async {

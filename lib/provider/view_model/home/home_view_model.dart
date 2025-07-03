@@ -19,21 +19,29 @@ class HomeViewModel extends _$HomeViewModel {
   FutureOr<HomeState> build() async {
     return _fetchData();
   }
+
   HomeUseCase get _homeUseCase => ref.read(homeUseCaseProvider);
 
   Future<HomeState> _fetchData() async {
-    final latestProblem = await ref.read(databaseRepositoryProvider).fetchLatestProblem();
+    final latestProblem =
+        await ref.read(databaseRepositoryProvider).fetchLatestProblem();
     if (latestProblem == null) return const HomeState();
     final problemId = latestProblem.problemId;
     final answers = latestProblem.answers;
     if (answers.isEmpty) {
       return HomeState(latestProblem: latestProblem);
     }
-    final userAnswers = await ref.read(databaseRepositoryProvider).fetchCorrectUserAnswers(problemId, answers);
-    final [(answeredUsers as List<AnsweredUser>), (muteUids as List<String>),(userCount as int)] =
-        await Future.wait([
+    final userAnswers = await ref
+        .read(databaseRepositoryProvider)
+        .fetchCorrectUserAnswers(problemId, answers);
+    final [
+      (answeredUsers as List<AnsweredUser>),
+      (muteUids as List<String>),
+      (userCount as int)
+    ] = await Future.wait([
       _homeUseCase.fetchAnsweredUsers(userAnswers),
-      _homeUseCase.fetchMuteUsers(ref.read(streamAuthUidProvider).value, userAnswers),
+      _homeUseCase.fetchMuteUsers(
+          ref.read(streamAuthUidProvider).value, userAnswers),
       _homeUseCase.fetchUserCount(problemId)
     ]);
     // 早い順に並べる
@@ -45,6 +53,7 @@ class HomeViewModel extends _$HomeViewModel {
         muteUids: muteUids,
         userCount: userCount);
   }
+
   void onMoreButtonPressed(BuildContext context, String muteUid) {
     final actions = <TextAction>[
       TextAction(
@@ -60,7 +69,8 @@ class HomeViewModel extends _$HomeViewModel {
   Future<void> _muteUser(BuildContext context, String muteUid) async {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null || uid == muteUid) return;
-    final result = await ref.read(databaseRepositoryProvider).muteUser(uid, muteUid);
+    final result =
+        await ref.read(databaseRepositoryProvider).muteUser(uid, muteUid);
     result.when(
         success: (_) => _onMuteSuccess(context, muteUid),
         failure: (_) => _onMuteFailure(context));

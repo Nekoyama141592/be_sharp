@@ -13,10 +13,9 @@ String _$purchaseStreamHash() => r'bc03ad725e8e8e8710a498664a08501b23ec4914';
 final purchaseStreamProvider = StreamProvider<List<PurchaseDetails>>.internal(
   purchaseStream,
   name: r'purchaseStreamProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$purchaseStreamHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$purchaseStreamHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

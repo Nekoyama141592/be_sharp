@@ -20,7 +20,8 @@ class CreateUserAnswerPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final problemId = Get.parameters['problemId']!;
-    final notifier = ref.read(createUserAnswerViewModelProvider(problemId).notifier);
+    final notifier =
+        ref.read(createUserAnswerViewModelProvider(problemId).notifier);
     final asyncValue = ref.watch(createUserAnswerViewModelProvider(problemId));
     final textController = useTextEditingController();
     final animationController = useAnimationController(
@@ -161,7 +162,6 @@ class QuestionCard extends StatelessWidget {
   }
 }
 
-
 class CountdownTimer extends HookWidget {
   final int seconds;
 
@@ -182,9 +182,7 @@ class CountdownTimer extends HookWidget {
     }, const []);
 
     return Text(
-      currentSeconds.value > 0
-          ? '残り時間: ${currentSeconds.value}秒'
-          : 'タイムアップです',
+      currentSeconds.value > 0 ? '残り時間: ${currentSeconds.value}秒' : 'タイムアップです',
       style: GoogleFonts.roboto(
           fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
     );

@@ -30,9 +30,8 @@ class PurchaseNotifier extends _$PurchaseNotifier {
     for (int i = 0; i < detailsList.length; i++) {
       final details = detailsList[i];
       if (details.isError || !details.isPurchased) continue;
-      final result = await ref
-          .read(purchaseUseCaseProvider)
-          .verifyPurchase(details);
+      final result =
+          await ref.read(purchaseUseCaseProvider).verifyPurchase(details);
       await result.when(
         success: (res) => _onVerifySuccess(details, res),
         failure: _onVerifyFailed,
@@ -49,7 +48,6 @@ class PurchaseNotifier extends _$PurchaseNotifier {
     await _repository.completePurchase(details);
     await _repository.acknowledge(details);
   }
-
 
   Future<void> _onVerifyFailed(String msg) async {
     // 失敗した時の処理.

@@ -7,6 +7,7 @@ import 'package:be_sharp/view/common/circle_image/circle_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:be_sharp/core/route_core.dart';
+import 'package:be_sharp/view/my_app.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/services.dart';
 
@@ -19,8 +20,8 @@ class EditUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          backgroundColor: backgroundColor,
-          appBar: AppBar(
+        backgroundColor: backgroundColor,
+        appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
             centerTitle: true,
@@ -33,15 +34,15 @@ class EditUserPage extends StatelessWidget {
               ),
             ),
             leading: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_back_ios,
-                      color: textColor,
-                    ),
-                    onPressed: () => RouteCore.back(context),
-                  )
-          ));
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: textColor,
+              ),
+              onPressed: () => RouteCore.back(context),
+            )));
   }
 }
+
 // ユーザー情報を編集するページ
 class EditUserScreen extends HookConsumerWidget {
   EditUserScreen({super.key});
@@ -52,6 +53,17 @@ class EditUserScreen extends HookConsumerWidget {
     EditUserViewModel notifier() =>
         ref.read(editUserViewModelProvider.notifier);
     final asyncValue = ref.watch(editUserViewModelProvider);
+
+    // Listen for success state and navigate
+    ref.listen(editUserViewModelProvider, (previous, next) {
+      if (next.hasValue && next.value != null) {
+        final viewModel = ref.read(editUserViewModelProvider.notifier);
+        if (viewModel.isSuccess) {
+          RouteCore.pushReplace(context, MyApp.path);
+          viewModel.resetState();
+        }
+      }
+    });
 
     // テーマカラーの定義
     const primaryColor = Color(0xFF6C63FF);
@@ -86,7 +98,7 @@ class EditUserScreen extends HookConsumerWidget {
             final isValid = formKey.currentState!.validate();
             if (!isValid) return;
             formKey.currentState!.save();
-            notifier().onUpdateButtonPressed(context);
+            notifier().onUpdateButtonPressed();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
@@ -334,47 +346,47 @@ class EditUserScreen extends HookConsumerWidget {
       data: (state) {
         final user = state.user;
         final image = state.image;
-        return  SafeArea(
-            child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20),
-                      // プロフィール画像セクション
-                      AnimatedContainer(
-                        duration: animationDuration,
-                        curve: Curves.easeInOut,
-                        child: Column(
-                          children: userImage(image),
-                        ),
+        return SafeArea(
+          child: GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    // プロフィール画像セクション
+                    AnimatedContainer(
+                      duration: animationDuration,
+                      curve: Curves.easeInOut,
+                      child: Column(
+                        children: userImage(image),
                       ),
-                      const SizedBox(height: 32),
-                      // フォームセクション
-                      AnimatedContainer(
-                        duration: animationDuration,
-                        curve: Curves.easeInOut,
-                        child: updateUserInfoForm(user),
-                      ),
-                      const SizedBox(height: 40),
-                      // 更新ボタン
-                      AnimatedContainer(
-                        duration: animationDuration,
-                        curve: Curves.easeInOut,
-                        child: positiveButton(),
-                      ),
-                      const SizedBox(height: 40),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 32),
+                    // フォームセクション
+                    AnimatedContainer(
+                      duration: animationDuration,
+                      curve: Curves.easeInOut,
+                      child: updateUserInfoForm(user),
+                    ),
+                    const SizedBox(height: 40),
+                    // 更新ボタン
+                    AnimatedContainer(
+                      duration: animationDuration,
+                      curve: Curves.easeInOut,
+                      child: positiveButton(),
+                    ),
+                    const SizedBox(height: 40),
+                  ],
                 ),
               ),
             ),
-          );
+          ),
+        );
       },
     );
   }

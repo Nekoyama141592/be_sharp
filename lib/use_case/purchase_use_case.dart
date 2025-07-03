@@ -5,7 +5,6 @@ import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:be_sharp/repository/result/result.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-
 class PurchaseUseCase {
   PurchaseUseCase(this.repository);
   final CloudFunctionsRepository repository;

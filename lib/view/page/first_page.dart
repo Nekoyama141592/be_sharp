@@ -20,7 +20,9 @@ class FirstPage extends HookConsumerWidget {
           } else if (state.needsSignup) {
             return const AuthPage();
           } else if (state.user?.registeredInfo == null) {
-            return Scaffold(body: EditUserScreen(),);
+            return Scaffold(
+              body: EditUserScreen(),
+            );
           } else {
             return const MyHomePage();
           }

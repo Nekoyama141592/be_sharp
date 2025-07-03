@@ -31,9 +31,7 @@ class DatabaseRepository {
   MapQuery _latestProblemQuery() =>
       _problemsColRef().orderBy('createdAt', descending: true).limit(1);
   MapQuery _latestUserAnswerQuery(String uid, String problemId) =>
-      _userAnswersColRef(uid)
-          .where('problemId', isEqualTo: problemId)
-          .limit(1);
+      _userAnswersColRef(uid).where('problemId', isEqualTo: problemId).limit(1);
   MapQuery _userAnswersQuery(String problemId) => _instance
       .collectionGroup('userAnswers')
       .where('problemId', isEqualTo: problemId);
@@ -172,8 +170,9 @@ class DatabaseRepository {
     try {
       if (uids.isEmpty) return [];
       final usersQshot = await _usersQuery(uids).get();
-      final users =
-          usersQshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList();
+      final users = usersQshot.docs
+          .map((e) => ReadPublicUser.fromJson(e.data()))
+          .toList();
       return users;
     } catch (e) {
       debugPrint(e.toString());
@@ -306,7 +305,8 @@ class DatabaseRepository {
   FutureResult<bool> muteUser(String uid, String muteUid) {
     final docRef = _muteUserDocRef(uid, muteUid);
     final json =
-        MuteUser(muteUid: muteUid, createdAt: FieldValue.serverTimestamp()).toJson();
+        MuteUser(muteUid: muteUid, createdAt: FieldValue.serverTimestamp())
+            .toJson();
     return createDoc(docRef, json);
   }
 

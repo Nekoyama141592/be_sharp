@@ -44,7 +44,8 @@ class AccountPage extends ConsumerWidget {
                   "ユーザーを消去する",
                   style: TextStyle(color: Colors.red),
                 ),
-                onTap: () => RouteCore.pushPath(context, ReauthenticateToDeletePage.path))
+                onTap: () => RouteCore.pushPath(
+                    context, ReauthenticateToDeletePage.path))
           ]
         ],
       ),

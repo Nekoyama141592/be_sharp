@@ -24,7 +24,8 @@ class ProductsNotifier extends _$ProductsNotifier {
     final storeConnected = await _repository.isAvailable();
     if (!storeConnected) return PurchaseState();
     final res = await _repository.queryProductDetails();
-    final products = res != null && res.isNotEmpty ? res : PurchaseCore.mockProducts();
+    final products =
+        res != null && res.isNotEmpty ? res : PurchaseCore.mockProducts();
     final verifiedPurchases = ref.watch(purchaseNotifierProvider).value ?? [];
     return PurchaseState(
         products: products, verifiedPurchases: verifiedPurchases);

@@ -7,12 +7,12 @@ part of 'delete_user_view_model.dart';
 // **************************************************************************
 
 String _$deleteUserViewModelHash() =>
-    r'0584d3492d83d78ca6754069ddba3fd8ec6b3867';
+    r'dc91e23126d251dcea19163941dd359594ff9f36';
 
 /// See also [DeleteUserViewModel].
 @ProviderFor(DeleteUserViewModel)
-final deleteUserViewModelProvider =
-    AutoDisposeNotifierProvider<DeleteUserViewModel, User?>.internal(
+final deleteUserViewModelProvider = AutoDisposeNotifierProvider<
+    DeleteUserViewModel, DeleteUserViewModelState>.internal(
   DeleteUserViewModel.new,
   name: r'deleteUserViewModelProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final deleteUserViewModelProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$DeleteUserViewModel = AutoDisposeNotifier<User?>;
+typedef _$DeleteUserViewModel = AutoDisposeNotifier<DeleteUserViewModelState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -7,6 +7,6 @@ part 'file_use_case_provider.g.dart';
 
 @riverpod
 FileUseCase fileUseCase(Ref ref) => FileUseCase(
-  prefs: ref.watch(prefsProvider),
-  repository: ref.watch(cloudFunctionsRepositoryProvider),
-);
+      prefs: ref.watch(prefsProvider),
+      repository: ref.watch(cloudFunctionsRepositoryProvider),
+    );

@@ -5,11 +5,7 @@ import 'package:flutter/material.dart';
 
 class CircleImage extends StatelessWidget {
   const CircleImage(
-      {super.key,
-      this.width,
-      this.height,
-      required this.image,
-      this.onTap});
+      {super.key, this.width, this.height, required this.image, this.onTap});
   final String? image;
   final double? width, height;
   final void Function()? onTap;

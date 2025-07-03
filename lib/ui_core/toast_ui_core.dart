@@ -38,19 +38,21 @@ class ToastUiCore {
     _showSnackBar(context, CustomSnackBar.failure(context, msg));
   }
 
-  static void cupertinoAlertDialog(BuildContext context,
-      String msg, void Function()? positiveAction) {
+  static void cupertinoAlertDialog(
+      BuildContext context, String msg, void Function()? positiveAction) {
     showDialog(
-      context: context, 
-    builder: (innerContext) => CupertinoAlertDialog(
-      content: Text(msg),
-      actions: [
-        CupertinoDialogAction(onPressed: () => Navigator.pop(innerContext) , child: const Text('キャンセル')),
-        CupertinoDialogAction(
-            isDestructiveAction: true,
-            onPressed: positiveAction,
-            child: const Text('OK'))
-      ],
-    ));
+        context: context,
+        builder: (innerContext) => CupertinoAlertDialog(
+              content: Text(msg),
+              actions: [
+                CupertinoDialogAction(
+                    onPressed: () => Navigator.pop(innerContext),
+                    child: const Text('キャンセル')),
+                CupertinoDialogAction(
+                    isDestructiveAction: true,
+                    onPressed: positiveAction,
+                    child: const Text('OK'))
+              ],
+            ));
   }
 }

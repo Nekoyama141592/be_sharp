@@ -55,7 +55,8 @@ class AuthRepository {
     }
   }
 
-  FutureResult<bool> reauthenticateWithCredential(AuthCredential credential) async {
+  FutureResult<bool> reauthenticateWithCredential(
+      AuthCredential credential) async {
     try {
       await client.currentUser?.reauthenticateWithCredential(credential);
       return const Result.success(true);

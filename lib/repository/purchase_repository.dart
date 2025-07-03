@@ -77,7 +77,7 @@ class PurchaseRepository {
       return const Result.success(true);
     } catch (e) {
       debugPrint('buyNonConsumable: ${e.toString()}');
-      return Result.failure('購入が失敗しました');
+      return const Result.failure('購入が失敗しました');
     }
   }
 
@@ -87,7 +87,7 @@ class PurchaseRepository {
       return const Result.success(true);
     } catch (e) {
       debugPrint('restorePurchases: ${e.toString()}');
-      return Result.failure('購入の復元が失敗しました');
+      return const Result.failure('購入の復元が失敗しました');
     }
   }
 }

@@ -25,16 +25,17 @@ class CloudFunctionsRepository {
   Future<Map<String, dynamic>> call(
       String name, Map<String, dynamic> request) async {
     final callable = instance.httpsCallable(
-        name,
-        options: HttpsCallableOptions(
-          timeout: const Duration(seconds: 300),
-        ),
-      );
+      name,
+      options: HttpsCallableOptions(
+        timeout: const Duration(seconds: 300),
+      ),
+    );
     final result = await callable.call(request);
     final data = result.data;
     final decoded = JsonCore.encodeDecode(data);
     return decoded;
   }
+
   rs.FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
     try {
       const name = 'putObject';
@@ -51,7 +52,7 @@ class CloudFunctionsRepository {
       const name = 'getObject';
       final result = await call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
-      final image =  res.base64Image;
+      final image = res.base64Image;
       return image;
     } catch (e) {
       debugPrint('getImage: $e');

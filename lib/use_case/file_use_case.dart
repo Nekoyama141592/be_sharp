@@ -3,7 +3,7 @@ import 'package:be_sharp/repository/cloud_functions_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FileUseCase {
-  FileUseCase({required this.prefs,required this.repository});
+  FileUseCase({required this.prefs, required this.repository});
   final SharedPreferences prefs;
   final CloudFunctionsRepository repository;
   Future<String?> getS3Image(String? cacheKey, String? fileName) async {

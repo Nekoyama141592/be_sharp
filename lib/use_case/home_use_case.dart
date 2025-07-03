@@ -7,7 +7,7 @@ import 'package:be_sharp/model/view_model_state/home_state/answered_user/answere
 import 'package:collection/collection.dart';
 
 class HomeUseCase {
-  HomeUseCase({required this.repository,required this.fileUseCase});
+  HomeUseCase({required this.repository, required this.fileUseCase});
   final DatabaseRepository repository;
   final FileUseCase fileUseCase;
   List<String> _getUids(List<ReadUserAnswer> userAnswers) {
@@ -22,15 +22,14 @@ class HomeUseCase {
     final userImage = await fileUseCase.getS3Image(
         publicUser.imageCacheKey(), publicUser.imageValue());
     return AnsweredUser(
-        publicUser: publicUser,
-        userImage: userImage,
-        userAnswer: userAnswer);
+        publicUser: publicUser, userImage: userImage, userAnswer: userAnswer);
   }
 
-  Future<List<AnsweredUser>> fetchAnsweredUsers(List<ReadUserAnswer> userAnswers) async {
+  Future<List<AnsweredUser>> fetchAnsweredUsers(
+      List<ReadUserAnswer> userAnswers) async {
     final uids = _getUids(userAnswers);
     if (uids.isEmpty) return [];
-    
+
     final users = await repository.getUsers(uids);
     final nullableAnsweredUsers =
         await Future.wait(userAnswers.map((e) => _answer(e, users)));

@@ -13,10 +13,9 @@ String _$inAppPurchaseHash() => r'779c3f40fccca5579567b2350d8d7b9d9b2a18bb';
 final inAppPurchaseProvider = Provider<InAppPurchase>.internal(
   inAppPurchase,
   name: r'inAppPurchaseProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$inAppPurchaseHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$inAppPurchaseHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -31,10 +30,9 @@ String _$billingClientHash() => r'93e932c2446c072a7498f8d6539d752b640f13c1';
 final billingClientProvider = Provider<BillingClient>.internal(
   billingClient,
   name: r'billingClientProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$billingClientHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$billingClientHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -50,10 +48,9 @@ String _$sKPaymentQueueWrapperHash() =>
 final sKPaymentQueueWrapperProvider = Provider<SKPaymentQueueWrapper>.internal(
   sKPaymentQueueWrapper,
   name: r'sKPaymentQueueWrapperProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$sKPaymentQueueWrapperHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sKPaymentQueueWrapperHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

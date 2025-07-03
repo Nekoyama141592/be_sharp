@@ -6,4 +6,5 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'database_repository_provider.g.dart';
 
 @riverpod
-DatabaseRepository databaseRepository(Ref ref) => DatabaseRepository(ref.watch(firebaseFirestoreProvider));
+DatabaseRepository databaseRepository(Ref ref) =>
+    DatabaseRepository(ref.watch(firebaseFirestoreProvider));

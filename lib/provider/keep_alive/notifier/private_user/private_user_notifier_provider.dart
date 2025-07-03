@@ -14,6 +14,7 @@ class PrivateUserNotifier extends _$PrivateUserNotifier {
   FutureOr<PrivateUser?> build() async {
     return _fetchData();
   }
+
   DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
   Future<PrivateUser?> _fetchData() async {
     final uid = ref.watch(streamAuthUidProvider).value;

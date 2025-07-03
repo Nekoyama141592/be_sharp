@@ -5,4 +5,5 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'cloud_functions_repository_provider.g.dart';
 
 @riverpod
-CloudFunctionsRepository cloudFunctionsRepository(Ref ref) => CloudFunctionsRepository(ref.watch(firebaseFunctionsProvider));
+CloudFunctionsRepository cloudFunctionsRepository(Ref ref) =>
+    CloudFunctionsRepository(ref.watch(firebaseFunctionsProvider));
