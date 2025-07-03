@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:be_sharp/core/provider/keep_alive/overrides/prefs/prefs_provider.dart';
+import 'package:be_sharp/core/provider/overrides/prefs/prefs_provider.dart';
 import 'package:be_sharp/presentation/my_app.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

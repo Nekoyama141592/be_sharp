@@ -1,7 +1,7 @@
 import 'package:be_sharp/core/util/route_util.dart';
-import 'package:be_sharp/core/provider/keep_alive/notifier/private_user/private_user_notifier_provider.dart';
-import 'package:be_sharp/core/provider/keep_alive/notifier/latest_problem/latest_problem_notifier_provider.dart';
-import 'package:be_sharp/core/provider/keep_alive/notifier/products/products_notifier.dart';
+import 'package:be_sharp/presentation/notifier/keep_alive/private_user/private_user_notifier_provider.dart';
+import 'package:be_sharp/presentation/notifier/keep_alive/latest_problem/latest_problem_notifier_provider.dart';
+import 'package:be_sharp/presentation/notifier/keep_alive/products/products_notifier.dart';
 import 'package:be_sharp/presentation/util/bnb_ui_util.dart';
 import 'package:be_sharp/presentation/common/drawer/original_drawer.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';

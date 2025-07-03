@@ -1,4 +1,4 @@
-import 'package:be_sharp/infrastructure/model/dialog/text_action.dart';
+import 'package:be_sharp/domain/entity/dialog/text_action.dart';
 import 'package:flutter/cupertino.dart';
 
 class DialogUiUtil {

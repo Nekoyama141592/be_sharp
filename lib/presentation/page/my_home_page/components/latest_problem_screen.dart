@@ -1,7 +1,7 @@
 import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
-import 'package:be_sharp/core/provider/view_model/latest_problem/latest_problem_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/latest_problem/latest_problem_view_model.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/dialog/form_dialog.dart';

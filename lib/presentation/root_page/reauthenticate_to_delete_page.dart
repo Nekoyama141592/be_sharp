@@ -1,5 +1,5 @@
 import 'package:be_sharp/core/util/route_util.dart';
-import 'package:be_sharp/core/provider/view_model/delete_user/delete_user_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/delete_user/delete_user_view_model.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/common/auth_screen.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';

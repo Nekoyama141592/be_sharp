@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/core/provider/view_model/create_user_answer/create_user_answer_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/create_user_answer/create_user_answer_view_model.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';

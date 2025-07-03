@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:be_sharp/core/provider/view_model/auth/auth_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/auth/auth_view_model.dart';
 import 'package:be_sharp/presentation/common/auth_screen.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';
 import 'package:flutter/material.dart';

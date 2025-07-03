@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:be_sharp/presentation/constants/colors.dart';
-import 'package:be_sharp/core/provider/view_model/home/home_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/home/home_view_model.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/drawer/original_drawer.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card.dart';

@@ -1,6 +1,6 @@
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/core/util/purchase_util.dart';
-import 'package:be_sharp/core/provider/keep_alive/notifier/products/products_notifier.dart';
+import 'package:be_sharp/presentation/notifier/keep_alive/products/products_notifier.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/products_screen/components/policy_buttons.dart';

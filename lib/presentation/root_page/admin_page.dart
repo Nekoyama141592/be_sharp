@@ -1,5 +1,5 @@
 import 'package:be_sharp/core/util/padding_util.dart';
-import 'package:be_sharp/core/provider/view_model/admin/admin_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/admin/admin_view_model.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/rounded_button.dart';
 import 'package:be_sharp/presentation/common/text_field_container.dart';

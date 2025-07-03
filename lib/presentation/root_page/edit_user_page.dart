@@ -1,6 +1,6 @@
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/core/provider/view_model/edit_user/edit_user_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/circle_image/circle_image.dart';

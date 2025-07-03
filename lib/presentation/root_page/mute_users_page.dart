@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/provider/view_model/mute_users/mute_users_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/mute_users/mute_users_view_model.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';
 import 'package:flutter/material.dart';

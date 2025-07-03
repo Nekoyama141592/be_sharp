@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/provider/view_model/check/check_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/auth_page.dart';
 import 'package:be_sharp/presentation/page/my_home_page/my_home_page.dart';

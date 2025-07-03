@@ -3,7 +3,7 @@ import 'package:be_sharp/application/use_case/file_use_case.dart';
 
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
-import 'package:be_sharp/infrastructure/model/view_model_state/home_state/answered_user/answered_user.dart';
+import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:collection/collection.dart';
 
 class HomeUseCase {
