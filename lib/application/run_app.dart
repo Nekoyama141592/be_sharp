@@ -6,7 +6,7 @@ import 'package:be_sharp/provider/keep_alive/overrides/prefs/prefs_provider.dart
 import 'package:be_sharp/view/my_app.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:be_sharp/flavors.dart';
+import 'package:be_sharp/application/flavors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

@@ -1,4 +1,4 @@
-import 'package:be_sharp/flavors.dart';
+import 'package:be_sharp/application/flavors.dart';
 import 'package:be_sharp/view/page/first_page.dart';
 import 'package:be_sharp/view/root_page/accounts_page.dart';
 import 'package:be_sharp/view/root_page/admin_page.dart';
