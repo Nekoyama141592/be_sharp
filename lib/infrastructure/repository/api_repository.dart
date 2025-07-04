@@ -20,11 +20,11 @@ import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 class ApiRepository {
-  ApiRepository(this.instance);
-  final FirebaseFunctions instance;
+  ApiRepository(this._instance);
+  final FirebaseFunctions _instance;
   Future<Map<String, dynamic>> _call(
       String name, Map<String, dynamic> request) async {
-    final callable = instance.httpsCallable(
+    final callable = _instance.httpsCallable(
       name,
       options: HttpsCallableOptions(
         timeout: const Duration(seconds: 300),
@@ -36,9 +36,10 @@ class ApiRepository {
     return decoded;
   }
 
-  rs.FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
+  rs.FutureResult<PutObjectResponse> putObject(String base64Image, String object) async {
     try {
       const name = 'putObject';
+      final request = PutObjectRequest(base64Image: base64Image, object: object);
       final result = await _call(name, request.toJson());
       final res = PutObjectResponse.fromJson(result);
       return rs.Result.success(res);
@@ -47,9 +48,10 @@ class ApiRepository {
     }
   }
 
-  Future<String?> getObject(GetObjectRequest request) async {
+  Future<String?> getObject(String object) async {
     try {
       const name = 'getObject';
+      final request = GetObjectRequest(object: object);
       final result = await _call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
       final image = res.base64Image;
@@ -60,10 +62,10 @@ class ApiRepository {
     }
   }
 
-  rs.FutureResult<DeleteObjectResponse> deleteObject(
-      DeleteObjectRequest request) async {
+  rs.FutureResult<DeleteObjectResponse> deleteObject(String object) async {
     try {
       const name = 'deleteObject';
+      final request = DeleteObjectRequest(object: object);
       final result = await _call(name, request.toJson());
       final res = DeleteObjectResponse.fromJson(result);
       return rs.Result.success(res);
@@ -73,9 +75,14 @@ class ApiRepository {
   }
 
   rs.FutureResult<EditUserInfoResponse> editUserInfo(
-      EditUserInfoRequest request) async {
+      String stringNickName, String stringBio, String object) async {
     try {
       const name = 'editUserInfo';
+      final request = EditUserInfoRequest(
+        stringNickName: stringNickName,
+        stringBio: stringBio,
+        object: object,
+      );
       final result = await _call(name, request.toJson());
       final res = EditUserInfoResponse.fromJson(result);
       return rs.Result.success(res);
@@ -126,9 +133,24 @@ class ApiRepository {
   }
 
   rs.FutureResult<CreateProblemResponse> createProblem(
-      CreateProblemRequest request) async {
+      String question,
+      String latex,
+      String problemId,
+      List<String> answers,
+      {int timeLimitSeconds = 120,
+      String subject = 'math',
+      String category = 'unlimited'}) async {
     try {
       const name = 'createProblem';
+      final request = CreateProblemRequest(
+        question: question,
+        latex: latex,
+        problemId: problemId,
+        answers: answers,
+        timeLimitSeconds: timeLimitSeconds,
+        subject: subject,
+        category: category,
+      );
       final result = await _call(name, request.toJson());
       final res = CreateProblemResponse.fromJson(result);
       return rs.Result.success(res);

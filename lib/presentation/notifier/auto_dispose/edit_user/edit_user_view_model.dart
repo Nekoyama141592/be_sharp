@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:be_sharp/core/util/aws_s3_util.dart';
 import 'package:be_sharp/core/util/file_util.dart';
-import 'package:be_sharp/infrastructure/model/rest_api/put_object/request/put_object_request.dart';
 import 'package:be_sharp/presentation/state/view_model_state/common/user_and_image/user_and_image_state.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/core/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
@@ -14,7 +13,6 @@ import 'package:be_sharp/core/provider/use_case/file/file_use_case_provider.dart
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/infrastructure/repository/api_repository.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
-import 'package:be_sharp/infrastructure/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:image_picker/image_picker.dart';
 part 'edit_user_view_model.g.dart';
 
@@ -69,8 +67,7 @@ class EditUserViewModel extends _$EditUserViewModel {
     if (isPicked) {
       // 写真が新しくなった場合の処理
       final object = AWSS3Util.profileObject(uid);
-      final request = PutObjectRequest(base64Image: image, object: object);
-      final result = await repository.putObject(request);
+      final result = await repository.putObject(image, object);
       await result.when(
         success: (res) async {
           await _updateUser();
@@ -105,9 +102,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   Future<void> _updateUser() async {
     final uid = ref.read(streamAuthUidProvider).value!;
     final object = AWSS3Util.profileObject(uid);
-    final request = EditUserInfoRequest(
-        stringNickName: stringNickName!, stringBio: stringBio!, object: object);
-    final result = await repository.editUserInfo(request);
+    final result = await repository.editUserInfo(stringNickName!, stringBio!, object);
     await result.when(
       success: (_) => _success(),
       failure: (msg) => _failure(msg),

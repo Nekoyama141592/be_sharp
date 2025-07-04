@@ -1,4 +1,3 @@
-import 'package:be_sharp/infrastructure/model/rest_api/get_object/request/get_object_request.dart';
 import 'package:be_sharp/infrastructure/repository/api_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,8 +12,7 @@ class FileUseCase {
     String? image = prefs.getString(cacheKey); // キャッシュされている画像を取得.
     // キャッシュされていない場合、S3から取得.
     if (image == null) {
-      final request = GetObjectRequest(object: fileName);
-      image = await repository.getObject(request);
+      image = await repository.getObject(fileName);
       if (image != null) {
         prefs.setString(cacheKey, image);
       }
