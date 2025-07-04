@@ -1,14 +1,11 @@
 import 'dart:io';
 
 import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:be_sharp/core/util/env_util.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
-enum SubscriptionEnvKey {
-  SUBSCRIPTION_MONTH_ITEM_ID,
-  SUBSCRIPTION_ANNUAL_ITEM_ID
-}
+
 class PurchaseUtil {
   static PurchaseDetails purchaseDetailsFromJson(Map<String, dynamic> json) {
     return PurchaseDetails(
@@ -26,10 +23,8 @@ class PurchaseUtil {
     )..pendingCompletePurchase = json['pendingCompletePurchase'] ?? false;
   }
 
-  static String monthItemId() =>
-      dotenv.get(SubscriptionEnvKey.SUBSCRIPTION_MONTH_ITEM_ID.name);
-  static String _annualItemId() =>
-      dotenv.get(SubscriptionEnvKey.SUBSCRIPTION_ANNUAL_ITEM_ID.name);
+  static String monthItemId() => EnvUtil.subscriptionMonthItemId;
+  static String _annualItemId() => EnvUtil.subscriptionAnnualItemId;
   static List<String> _itemIds() => [monthItemId(), _annualItemId()];
   static Set<String> productIds() {
     final identifiers = _itemIds();

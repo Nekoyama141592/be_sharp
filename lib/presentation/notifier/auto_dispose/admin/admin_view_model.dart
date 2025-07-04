@@ -1,5 +1,4 @@
 import 'package:be_sharp/core/util/id_util.dart';
-import 'package:be_sharp/infrastructure/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/create_problem/response/create_problem_response.dart';
 import 'package:be_sharp/core/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
@@ -84,13 +83,13 @@ class AdminViewModel extends _$AdminViewModel {
   Future<void> _send() async {
     final problemId = IDUtil.ulid();
     final repository = ref.read(cloudFunctionsRepositoryProvider);
-    final request = CreateProblemRequest(
-        question: question,
-        latex: latex,
-        problemId: problemId,
-        timeLimitSeconds: timeLimitSecond!,
-        answers: <String>[answer!]);
-    final result = await repository.createProblem(request);
+    final result = await repository.createProblem(
+      question,
+      latex,
+      problemId,
+      <String>[answer!],
+      timeLimitSeconds: timeLimitSecond!,
+    );
     result.when(success: _onSuccess, failure: _onFailure);
   }
 

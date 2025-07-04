@@ -4,17 +4,6 @@ import 'package:be_sharp/core/util/purchase_util.dart';
 
 void main() {
   group('PurchaseUtil', () {
-    group('SubscriptionEnvKey enum', () {
-      test('should have correct enum values', () {
-        expect(SubscriptionEnvKey.SUBSCRIPTION_MONTH_ITEM_ID, isA<SubscriptionEnvKey>());
-        expect(SubscriptionEnvKey.SUBSCRIPTION_ANNUAL_ITEM_ID, isA<SubscriptionEnvKey>());
-      });
-
-      test('should have correct enum names', () {
-        expect(SubscriptionEnvKey.SUBSCRIPTION_MONTH_ITEM_ID.name, equals('SUBSCRIPTION_MONTH_ITEM_ID'));
-        expect(SubscriptionEnvKey.SUBSCRIPTION_ANNUAL_ITEM_ID.name, equals('SUBSCRIPTION_ANNUAL_ITEM_ID'));
-      });
-    });
 
     group('purchaseDetailsFromJson', () {
       test('should handle complete JSON structure', () {

@@ -11,23 +11,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-enum EnvKey {
-  // FIREBASE ANDROID
-  FIREBASE_ANDROID_API_KEY,
-  FIREBASE_ANDROID_APP_ID,
-  FIREBASE_ANDROID_MESSAGING_SENDER_ID,
-  FIREBASE_ANDROID_PROJECT_ID,
-  FIREBASE_ANDROID_STORAGE_BUCKET,
-  // FIREBASE IOS
-  FIREBASE_IOS_API_KEY,
-  FIREBASE_IOS_APP_ID,
-  FIREBASE_IOS_MESSAGING_SENDER_ID,
-  FIREBASE_IOS_PROJECT_ID,
-  FIREBASE_IOS_STORAGE_BUCKET,
-  FIREBASE_IOS_CLIENT_ID,
-  FIREBASE_IOS_BUNDLE_ID,
-
-}
+import 'package:be_sharp/core/util/env_util.dart';
 
 class RunApp {
   static Future<void> runMyApp() async {
@@ -57,23 +41,21 @@ class RunApp {
   static FirebaseOptions getFirebaseOption() {
     if (Platform.isAndroid) {
       return FirebaseOptions(
-        apiKey: dotenv.get(EnvKey.FIREBASE_ANDROID_API_KEY.name),
-        appId: dotenv.get(EnvKey.FIREBASE_ANDROID_APP_ID.name),
-        messagingSenderId:
-            dotenv.get(EnvKey.FIREBASE_ANDROID_MESSAGING_SENDER_ID.name),
-        projectId: dotenv.get(EnvKey.FIREBASE_ANDROID_PROJECT_ID.name),
-        storageBucket: dotenv.get(EnvKey.FIREBASE_ANDROID_STORAGE_BUCKET.name),
+        apiKey: EnvUtil.firebaseAndroidApiKey,
+        appId: EnvUtil.firebaseAndroidAppId,
+        messagingSenderId: EnvUtil.firebaseAndroidMessagingSenderId,
+        projectId: EnvUtil.firebaseAndroidProjectId,
+        storageBucket: EnvUtil.firebaseAndroidStorageBucket,
       );
     } else if (Platform.isIOS) {
       return FirebaseOptions(
-          apiKey: dotenv.get(EnvKey.FIREBASE_IOS_API_KEY.name),
-          appId: dotenv.get(EnvKey.FIREBASE_IOS_APP_ID.name),
-          messagingSenderId:
-              dotenv.get(EnvKey.FIREBASE_IOS_MESSAGING_SENDER_ID.name),
-          projectId: dotenv.get(EnvKey.FIREBASE_IOS_PROJECT_ID.name),
-          storageBucket: dotenv.get(EnvKey.FIREBASE_IOS_STORAGE_BUCKET.name),
-          iosClientId: dotenv.get(EnvKey.FIREBASE_IOS_CLIENT_ID.name),
-          iosBundleId: dotenv.get(EnvKey.FIREBASE_IOS_BUNDLE_ID.name));
+          apiKey: EnvUtil.firebaseIosApiKey,
+          appId: EnvUtil.firebaseIosAppId,
+          messagingSenderId: EnvUtil.firebaseIosMessagingSenderId,
+          projectId: EnvUtil.firebaseIosProjectId,
+          storageBucket: EnvUtil.firebaseIosStorageBucket,
+          iosClientId: EnvUtil.firebaseIosClientId,
+          iosBundleId: EnvUtil.firebaseIosBundleId);
     } else {
       throw Error();
     }
