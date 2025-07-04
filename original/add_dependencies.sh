@@ -18,7 +18,6 @@ packages=(
   "fluttertoast"
   "font_awesome_flutter"
   "freezed_annotation"
-  "get"
   "google_fonts"
   "google_sign_in"
   "gpt_markdown"

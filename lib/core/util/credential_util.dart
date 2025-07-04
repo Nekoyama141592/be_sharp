@@ -22,15 +22,19 @@ class CredentialUtil {
 
   static Future<AuthCredential> googleCredential() async {
     final clientId = RunApp.getFirebaseOption().iosClientId;
-    final GoogleSignInAccount? googleUser =
-        await GoogleSignIn(clientId: clientId).signIn();
-
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+    final GoogleSignIn signIn = GoogleSignIn.instance;
+    await signIn.initialize(clientId: clientId);
+    const List<String> scopes = <String>[
+      'https://www.googleapis.com/auth/contacts.readonly',
+    ];
+    final googleUser = await GoogleSignIn.instance.authenticate();
+    final authorization =
+        await googleUser.authorizationClient.authorizationForScopes(scopes);
+    final googleAuth = googleUser.authentication;
 
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+      accessToken: authorization?.accessToken,
+      idToken: googleAuth.idToken,
     );
     return credential;
   }
