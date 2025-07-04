@@ -5,7 +5,6 @@ import 'package:be_sharp/core/util/env_util.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
-
 class PurchaseUtil {
   static PurchaseDetails purchaseDetailsFromJson(Map<String, dynamic> json) {
     return PurchaseDetails(

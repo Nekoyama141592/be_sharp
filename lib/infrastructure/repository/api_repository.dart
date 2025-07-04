@@ -36,10 +36,12 @@ class ApiRepository {
     return decoded;
   }
 
-  rs.FutureResult<PutObjectResponse> putObject(String base64Image, String object) async {
+  rs.FutureResult<PutObjectResponse> putObject(
+      String base64Image, String object) async {
     try {
       const name = 'putObject';
-      final request = PutObjectRequest(base64Image: base64Image, object: object);
+      final request =
+          PutObjectRequest(base64Image: base64Image, object: object);
       final result = await _call(name, request.toJson());
       final res = PutObjectResponse.fromJson(result);
       return rs.Result.success(res);
@@ -133,10 +135,7 @@ class ApiRepository {
   }
 
   rs.FutureResult<CreateProblemResponse> createProblem(
-      String question,
-      String latex,
-      String problemId,
-      List<String> answers,
+      String question, String latex, String problemId, List<String> answers,
       {int timeLimitSeconds = 120,
       String subject = 'math',
       String category = 'unlimited'}) async {

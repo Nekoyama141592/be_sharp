@@ -24,6 +24,7 @@ typedef DocRef = DocumentReference<Map<String, dynamic>>;
 typedef ColRef = CollectionReference<Map<String, dynamic>>;
 
 typedef MapQuery = Query<Map<String, dynamic>>;
+
 class DatabaseRepository {
   DatabaseRepository(this._instance);
   final FirebaseFirestore _instance;

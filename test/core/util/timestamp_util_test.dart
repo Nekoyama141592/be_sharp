@@ -8,7 +8,7 @@ void main() {
       test('should convert Map with _seconds to Timestamp', () {
         final input = {'_seconds': 1640995200};
         final result = TimestampUtil.getTyped(input);
-        
+
         expect(result, isA<Timestamp>());
         expect(result.millisecondsSinceEpoch, equals(1640995200000));
       });
@@ -16,7 +16,7 @@ void main() {
       test('should handle zero seconds', () {
         final input = {'_seconds': 0};
         final result = TimestampUtil.getTyped(input);
-        
+
         expect(result, isA<Timestamp>());
         expect(result.millisecondsSinceEpoch, equals(0));
       });
@@ -24,7 +24,7 @@ void main() {
       test('should handle negative seconds', () {
         final input = {'_seconds': -1000};
         final result = TimestampUtil.getTyped(input);
-        
+
         expect(result, isA<Timestamp>());
         expect(result.millisecondsSinceEpoch, equals(-1000000));
       });
@@ -32,7 +32,7 @@ void main() {
       test('should return Timestamp as-is when already a Timestamp', () {
         final timestamp = Timestamp.fromMillisecondsSinceEpoch(1640995200000);
         final result = TimestampUtil.getTyped(timestamp);
-        
+
         expect(result, equals(timestamp));
         expect(result.millisecondsSinceEpoch, equals(1640995200000));
       });
@@ -40,9 +40,10 @@ void main() {
       test('should handle current timestamp', () {
         final now = Timestamp.now();
         final result = TimestampUtil.getTyped(now);
-        
+
         expect(result, equals(now));
-        expect(result.millisecondsSinceEpoch, equals(now.millisecondsSinceEpoch));
+        expect(
+            result.millisecondsSinceEpoch, equals(now.millisecondsSinceEpoch));
       });
 
       test('should throw when _seconds is not an int', () {
@@ -56,7 +57,8 @@ void main() {
       });
 
       test('should throw when input is neither Map nor Timestamp', () {
-        expect(() => TimestampUtil.getTyped('string'), throwsA(isA<TypeError>()));
+        expect(
+            () => TimestampUtil.getTyped('string'), throwsA(isA<TypeError>()));
         expect(() => TimestampUtil.getTyped(123), throwsA(isA<TypeError>()));
         expect(() => TimestampUtil.getTyped(true), throwsA(isA<TypeError>()));
       });
@@ -64,7 +66,7 @@ void main() {
       test('should handle large timestamp values', () {
         final input = {'_seconds': 2147483647};
         final result = TimestampUtil.getTyped(input);
-        
+
         expect(result, isA<Timestamp>());
         expect(result.millisecondsSinceEpoch, equals(2147483647000));
       });
@@ -76,7 +78,7 @@ void main() {
           'number': 42
         };
         final result = TimestampUtil.getTyped(input);
-        
+
         expect(result, isA<Timestamp>());
         expect(result.millisecondsSinceEpoch, equals(1640995200000));
       });

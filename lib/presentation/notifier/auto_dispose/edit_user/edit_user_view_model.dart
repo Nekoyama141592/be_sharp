@@ -38,8 +38,7 @@ class EditUserViewModel extends _$EditUserViewModel {
 
   DatabaseRepository get _databaseRepository =>
       ref.read(databaseRepositoryProvider);
-  ApiRepository get repository =>
-      ref.read(cloudFunctionsRepositoryProvider);
+  ApiRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
     final uid = ref.read(streamAuthUidProvider).value!;
     final user = await _databaseRepository.getPublicUser(uid);
@@ -102,7 +101,8 @@ class EditUserViewModel extends _$EditUserViewModel {
   Future<void> _updateUser() async {
     final uid = ref.read(streamAuthUidProvider).value!;
     final object = AWSS3Util.profileObject(uid);
-    final result = await repository.editUserInfo(stringNickName!, stringBio!, object);
+    final result =
+        await repository.editUserInfo(stringNickName!, stringBio!, object);
     await result.when(
       success: (_) => _success(),
       failure: (msg) => _failure(msg),

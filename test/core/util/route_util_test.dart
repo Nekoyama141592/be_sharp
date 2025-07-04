@@ -6,19 +6,19 @@ void main() {
   group('RouteUtil', () {
     testWidgets('should have pushPath method', (tester) async {
       final context = await _buildTestContext(tester);
-      
+
       expect(() => RouteUtil.pushPath(context, '/test'), isA<Function>());
     });
 
     testWidgets('should have pushReplace method', (tester) async {
       final context = await _buildTestContext(tester);
-      
+
       expect(() => RouteUtil.pushReplace(context, '/test'), isA<Function>());
     });
 
     testWidgets('should have back method', (tester) async {
       final context = await _buildTestContext(tester);
-      
+
       expect(() => RouteUtil.back(context), isA<Function>());
     });
 
@@ -48,7 +48,7 @@ void main() {
 
 Future<BuildContext> _buildTestContext(WidgetTester tester) async {
   late BuildContext capturedContext;
-  
+
   await tester.pumpWidget(
     MaterialApp(
       home: Builder(
@@ -59,6 +59,6 @@ Future<BuildContext> _buildTestContext(WidgetTester tester) async {
       ),
     ),
   );
-  
+
   return capturedContext;
 }

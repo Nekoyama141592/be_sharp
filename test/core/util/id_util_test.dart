@@ -21,7 +21,7 @@ void main() {
         final id1 = IDUtil.ulid();
         await Future.delayed(const Duration(milliseconds: 1));
         final id2 = IDUtil.ulid();
-        
+
         expect(id1.compareTo(id2), lessThan(0));
       });
 

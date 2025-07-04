@@ -44,14 +44,14 @@ void main() {
         ];
 
         for (final key in requiredKeys) {
-          expect(EnvUtil.containsKey(key), isTrue, 
-            reason: 'DEV environment variable $key should be defined');
-          
+          expect(EnvUtil.containsKey(key), isTrue,
+              reason: 'DEV environment variable $key should be defined');
+
           final value = EnvUtil.getValue(key);
-          expect(value, isNotNull, 
-            reason: 'DEV environment variable $key should not be null');
-          expect(value, isNotEmpty, 
-            reason: 'DEV environment variable $key should not be empty');
+          expect(value, isNotNull,
+              reason: 'DEV environment variable $key should not be null');
+          expect(value, isNotEmpty,
+              reason: 'DEV environment variable $key should not be empty');
         }
       });
 
@@ -109,14 +109,14 @@ void main() {
         ];
 
         for (final key in requiredKeys) {
-          expect(EnvUtil.containsKey(key), isTrue, 
-            reason: 'STG environment variable $key should be defined');
-          
+          expect(EnvUtil.containsKey(key), isTrue,
+              reason: 'STG environment variable $key should be defined');
+
           final value = EnvUtil.getValue(key);
-          expect(value, isNotNull, 
-            reason: 'STG environment variable $key should not be null');
-          expect(value, isNotEmpty, 
-            reason: 'STG environment variable $key should not be empty');
+          expect(value, isNotNull,
+              reason: 'STG environment variable $key should not be null');
+          expect(value, isNotEmpty,
+              reason: 'STG environment variable $key should not be empty');
         }
       });
 
@@ -174,14 +174,14 @@ void main() {
         ];
 
         for (final key in requiredKeys) {
-          expect(EnvUtil.containsKey(key), isTrue, 
-            reason: 'PROD environment variable $key should be defined');
-          
+          expect(EnvUtil.containsKey(key), isTrue,
+              reason: 'PROD environment variable $key should be defined');
+
           final value = EnvUtil.getValue(key);
-          expect(value, isNotNull, 
-            reason: 'PROD environment variable $key should not be null');
-          expect(value, isNotEmpty, 
-            reason: 'PROD environment variable $key should not be empty');
+          expect(value, isNotNull,
+              reason: 'PROD environment variable $key should not be null');
+          expect(value, isNotEmpty,
+              reason: 'PROD environment variable $key should not be empty');
         }
       });
 
@@ -336,7 +336,7 @@ void main() {
         expect(itemIds, hasLength(2));
         expect(itemIds, contains(EnvUtil.subscriptionMonthItemId));
         expect(itemIds, contains(EnvUtil.subscriptionAnnualItemId));
-        
+
         for (final itemId in itemIds) {
           expect(itemId, isNotNull);
           expect(itemId, isNotEmpty);
@@ -350,7 +350,7 @@ void main() {
         expect(productIds, hasLength(2));
         expect(productIds, contains(EnvUtil.subscriptionMonthItemId));
         expect(productIds, contains(EnvUtil.subscriptionAnnualItemId));
-        
+
         for (final productId in productIds) {
           expect(productId, isNotNull);
           expect(productId, isNotEmpty);
@@ -391,7 +391,8 @@ void main() {
     });
 
     group('All environment keys validation', () {
-      test('all required environment variables should be defined and non-empty', () {
+      test('all required environment variables should be defined and non-empty',
+          () {
         final requiredKeys = [
           'FIREBASE_ANDROID_API_KEY',
           'FIREBASE_ANDROID_APP_ID',
@@ -410,16 +411,17 @@ void main() {
         ];
 
         for (final key in requiredKeys) {
-          expect(EnvUtil.containsKey(key), isTrue, 
-            reason: 'Environment variable $key should be defined');
-          
+          expect(EnvUtil.containsKey(key), isTrue,
+              reason: 'Environment variable $key should be defined');
+
           final value = EnvUtil.getValue(key);
-          expect(value, isNotNull, 
-            reason: 'Environment variable $key should not be null');
-          expect(value, isNotEmpty, 
-            reason: 'Environment variable $key should not be empty');
-          expect(value.trim(), isNotEmpty, 
-            reason: 'Environment variable $key should not be whitespace only');
+          expect(value, isNotNull,
+              reason: 'Environment variable $key should not be null');
+          expect(value, isNotEmpty,
+              reason: 'Environment variable $key should not be empty');
+          expect(value.trim(), isNotEmpty,
+              reason:
+                  'Environment variable $key should not be whitespace only');
         }
       });
     });

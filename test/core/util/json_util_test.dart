@@ -34,7 +34,8 @@ void main() {
 
       test('should throw for primitive types (type mismatch)', () {
         // Since the method returns Map<String, dynamic>, primitives should cause type errors
-        expect(() => JsonUtil.encodeDecode('string'), throwsA(isA<TypeError>()));
+        expect(
+            () => JsonUtil.encodeDecode('string'), throwsA(isA<TypeError>()));
         expect(() => JsonUtil.encodeDecode(42), throwsA(isA<TypeError>()));
         expect(() => JsonUtil.encodeDecode(true), throwsA(isA<TypeError>()));
         expect(() => JsonUtil.encodeDecode(null), throwsA(isA<TypeError>()));
@@ -43,7 +44,7 @@ void main() {
       test('should handle empty Map', () {
         expect(JsonUtil.encodeDecode({}), equals({}));
       });
-      
+
       test('should throw for empty List (type mismatch)', () {
         expect(() => JsonUtil.encodeDecode([]), throwsA(isA<TypeError>()));
       });
@@ -51,28 +52,28 @@ void main() {
       test('should handle complex nested structure', () {
         final input = {
           'data': [
-            {'id': 1, 'values': [1, 2, 3]},
-            {'id': 2, 'values': [4, 5, 6]}
+            {
+              'id': 1,
+              'values': [1, 2, 3]
+            },
+            {
+              'id': 2,
+              'values': [4, 5, 6]
+            }
           ],
-          'metadata': {
-            'count': 2,
-            'status': 'active'
-          }
+          'metadata': {'count': 2, 'status': 'active'}
         };
         final result = JsonUtil.encodeDecode(input);
         expect(result, equals(input));
       });
 
       test('should throw exception for non-serializable objects', () {
-        expect(() => JsonUtil.encodeDecode(DateTime.now()), throwsA(isA<JsonUnsupportedObjectError>()));
+        expect(() => JsonUtil.encodeDecode(DateTime.now()),
+            throwsA(isA<JsonUnsupportedObjectError>()));
       });
 
       test('should preserve numeric types correctly', () {
-        final input = {
-          'int': 42,
-          'double': 3.14,
-          'negative': -10
-        };
+        final input = {'int': 42, 'double': 3.14, 'negative': -10};
         final result = JsonUtil.encodeDecode(input);
         expect(result['int'], equals(42));
         expect(result['double'], equals(3.14));

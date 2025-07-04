@@ -7,15 +7,18 @@ void main() {
       test('should have valid privacy policy URI', () {
         expect(UrlUtil.privacyPolicyUri, isA<Uri>());
         expect(UrlUtil.privacyPolicyUri.scheme, 'https');
-        expect(UrlUtil.privacyPolicyUri.host, 'impartial-literature-dfb.notion.site');
-        expect(UrlUtil.privacyPolicyUri.path, '/2b71dbec76c64d80b16baefc8fc8485b');
+        expect(UrlUtil.privacyPolicyUri.host,
+            'impartial-literature-dfb.notion.site');
+        expect(
+            UrlUtil.privacyPolicyUri.path, '/2b71dbec76c64d80b16baefc8fc8485b');
       });
 
       test('should have valid EULA URI', () {
         expect(UrlUtil.eulaUri, isA<Uri>());
         expect(UrlUtil.eulaUri.scheme, 'https');
         expect(UrlUtil.eulaUri.host, 'www.apple.com');
-        expect(UrlUtil.eulaUri.path, '/legal/internet-services/itunes/dev/stdeula/');
+        expect(UrlUtil.eulaUri.path,
+            '/legal/internet-services/itunes/dev/stdeula/');
       });
 
       test('should have valid Terms of Service URI', () {
@@ -32,7 +35,7 @@ void main() {
           UrlUtil.eulaUri,
           UrlUtil.tosUri
         ];
-        
+
         for (final uri in uris) {
           expect(uri.scheme, 'https');
           expect(uri.host, isNotEmpty);

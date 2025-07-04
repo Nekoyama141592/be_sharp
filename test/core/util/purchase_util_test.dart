@@ -4,7 +4,6 @@ import 'package:be_sharp/core/util/purchase_util.dart';
 
 void main() {
   group('PurchaseUtil', () {
-
     group('purchaseDetailsFromJson', () {
       test('should handle complete JSON structure', () {
         final json = {
@@ -21,11 +20,13 @@ void main() {
         };
 
         final result = PurchaseUtil.purchaseDetailsFromJson(json);
-        
+
         expect(result.purchaseID, equals('test_purchase_id'));
         expect(result.productID, equals('test_product_id'));
-        expect(result.verificationData.localVerificationData, equals('local_data'));
-        expect(result.verificationData.serverVerificationData, equals('server_data'));
+        expect(result.verificationData.localVerificationData,
+            equals('local_data'));
+        expect(result.verificationData.serverVerificationData,
+            equals('server_data'));
         expect(result.verificationData.source, equals('test_source'));
         expect(result.transactionDate, equals('2023-01-01T00:00:00Z'));
         expect(result.status, equals(PurchaseStatus.purchased));
@@ -50,8 +51,14 @@ void main() {
       });
 
       test('should handle different purchase statuses', () {
-        final statuses = ['purchased', 'pending', 'error', 'restored', 'canceled'];
-        
+        final statuses = [
+          'purchased',
+          'pending',
+          'error',
+          'restored',
+          'canceled'
+        ];
+
         for (final status in statuses) {
           final json = {
             'purchaseID': 'test_purchase_id',
@@ -93,15 +100,14 @@ void main() {
     group('param method', () {
       test('should create PurchaseParam with ProductDetails', () {
         final mockProduct = ProductDetails(
-          id: 'test_id',
-          title: 'Test Product',
-          description: 'Test Description',
-          price: '¥100',
-          rawPrice: 100,
-          currencyCode: 'JPY',
-          currencySymbol: '¥'
-        );
-        
+            id: 'test_id',
+            title: 'Test Product',
+            description: 'Test Description',
+            price: '¥100',
+            rawPrice: 100,
+            currencyCode: 'JPY',
+            currencySymbol: '¥');
+
         final param = PurchaseUtil.param(mockProduct, null);
         expect(param, isA<PurchaseParam>());
         expect(param.productDetails, equals(mockProduct));
@@ -109,29 +115,27 @@ void main() {
 
       test('should handle null verified purchases', () {
         final mockProduct = ProductDetails(
-          id: 'test_id',
-          title: 'Test Product',
-          description: 'Test Description',
-          price: '¥100',
-          rawPrice: 100,
-          currencyCode: 'JPY',
-          currencySymbol: '¥'
-        );
-        
+            id: 'test_id',
+            title: 'Test Product',
+            description: 'Test Description',
+            price: '¥100',
+            rawPrice: 100,
+            currencyCode: 'JPY',
+            currencySymbol: '¥');
+
         expect(() => PurchaseUtil.param(mockProduct, null), returnsNormally);
       });
 
       test('should handle empty verified purchases list', () {
         final mockProduct = ProductDetails(
-          id: 'test_id',
-          title: 'Test Product',
-          description: 'Test Description',
-          price: '¥100',
-          rawPrice: 100,
-          currencyCode: 'JPY',
-          currencySymbol: '¥'
-        );
-        
+            id: 'test_id',
+            title: 'Test Product',
+            description: 'Test Description',
+            price: '¥100',
+            rawPrice: 100,
+            currencyCode: 'JPY',
+            currencySymbol: '¥');
+
         expect(() => PurchaseUtil.param(mockProduct, []), returnsNormally);
       });
     });
