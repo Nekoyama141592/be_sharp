@@ -12,7 +12,7 @@ import 'package:be_sharp/infrastructure/repository/database_repository.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/core/provider/use_case/file/file_use_case_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:be_sharp/infrastructure/repository/cloud_functions_repository.dart';
+import 'package:be_sharp/infrastructure/repository/api_repository.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/edit_user_info/request/edit_user_info_request.dart';
 import 'package:image_picker/image_picker.dart';
@@ -40,7 +40,7 @@ class EditUserViewModel extends _$EditUserViewModel {
 
   DatabaseRepository get _databaseRepository =>
       ref.read(databaseRepositoryProvider);
-  CloudFunctionsRepository get repository =>
+  ApiRepository get repository =>
       ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
     final uid = ref.read(streamAuthUidProvider).value!;

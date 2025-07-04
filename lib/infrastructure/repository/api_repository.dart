@@ -19,10 +19,10 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-class CloudFunctionsRepository {
-  CloudFunctionsRepository(this.instance);
+class ApiRepository {
+  ApiRepository(this.instance);
   final FirebaseFunctions instance;
-  Future<Map<String, dynamic>> call(
+  Future<Map<String, dynamic>> _call(
       String name, Map<String, dynamic> request) async {
     final callable = instance.httpsCallable(
       name,
@@ -39,7 +39,7 @@ class CloudFunctionsRepository {
   rs.FutureResult<PutObjectResponse> putObject(PutObjectRequest request) async {
     try {
       const name = 'putObject';
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = PutObjectResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
@@ -50,7 +50,7 @@ class CloudFunctionsRepository {
   Future<String?> getObject(GetObjectRequest request) async {
     try {
       const name = 'getObject';
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = GetObjectResponse.fromJson(result);
       final image = res.base64Image;
       return image;
@@ -64,7 +64,7 @@ class CloudFunctionsRepository {
       DeleteObjectRequest request) async {
     try {
       const name = 'deleteObject';
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = DeleteObjectResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
@@ -76,7 +76,7 @@ class CloudFunctionsRepository {
       EditUserInfoRequest request) async {
     try {
       const name = 'editUserInfo';
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = EditUserInfoResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
@@ -89,7 +89,7 @@ class CloudFunctionsRepository {
     try {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
@@ -102,7 +102,7 @@ class CloudFunctionsRepository {
     try {
       const name = 'verifyIOSReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = VerifiedPurchase.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
@@ -116,7 +116,7 @@ class CloudFunctionsRepository {
       const name = 'addCaption';
       final request =
           AddCaptionRequest(problemId: problemId, stringCaption: caption);
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = AddCaptionResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
@@ -129,7 +129,7 @@ class CloudFunctionsRepository {
       CreateProblemRequest request) async {
     try {
       const name = 'createProblem';
-      final result = await call(name, request.toJson());
+      final result = await _call(name, request.toJson());
       final res = CreateProblemResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
