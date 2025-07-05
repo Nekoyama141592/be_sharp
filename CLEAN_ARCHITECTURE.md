@@ -12,7 +12,6 @@ lib/
   ├── application/
   │   └── usecase/
   ├── infrastructure/
-  │   ├── datasource/
   │   └── repository/
   ├── presentation/
   │   ├── component/
@@ -20,5 +19,4 @@ lib/
   │   ├── notifier/
   │   ├── state/
   │   └── navigation/
-  └── main_dev.dart
-  └── main_prod.dart
+  └── main.dart
