@@ -66,7 +66,10 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     if (userAnswer == null) return;
     final problemId = userAnswer.problemId;
     final repository = ref.read(cloudFunctionsRepositoryProvider);
-    final result = await repository.addCaption(problemId, caption);
+    final result = await repository.addCaption(
+      problemId: problemId,
+      stringCaption: caption,
+    );
     state = const AsyncValue.loading();
     result.when(success: _onSendSuccess, failure: _onSendFailure);
   }

@@ -42,11 +42,20 @@ class EditUserViewModel extends _$EditUserViewModel {
   Future<UserAndImageState> _fetchData() async {
     final uid = ref.read(streamAuthUidProvider).value!;
     final user = await _databaseRepository.getPublicUser(uid);
-    final image = user != null
-        ? await ref
+    String? image;
+    if (user != null) {
+      final imageCacheKey = user.imageCacheKey();
+      final imageValue = user.imageValue();
+      if (imageCacheKey != null && imageValue != null) {
+        final result = await ref
             .read(fileUseCaseProvider)
-            .getS3Image(user.imageCacheKey(), user.imageValue())
-        : null;
+            .getS3Image(imageCacheKey, imageValue);
+        image = result.when(
+          success: (img) => img,
+          failure: (_) => null,
+        );
+      }
+    }
     return UserAndImageState(user: user, image: image);
   }
 
@@ -66,7 +75,10 @@ class EditUserViewModel extends _$EditUserViewModel {
     if (isPicked) {
       // 写真が新しくなった場合の処理
       final object = AWSS3Util.profileObject(uid);
-      final result = await repository.putObject(image, object);
+      final result = await repository.putObject(
+        base64Image: image,
+        object: object,
+      );
       await result.when(
         success: (res) async {
           await _updateUser();
@@ -101,8 +113,11 @@ class EditUserViewModel extends _$EditUserViewModel {
   Future<void> _updateUser() async {
     final uid = ref.read(streamAuthUidProvider).value!;
     final object = AWSS3Util.profileObject(uid);
-    final result =
-        await repository.editUserInfo(stringNickName!, stringBio!, object);
+    final result = await repository.editUserInfo(
+      stringNickName: stringNickName!,
+      stringBio: stringBio!,
+      object: object,
+    );
     await result.when(
       success: (_) => _success(),
       failure: (msg) => _failure(msg),

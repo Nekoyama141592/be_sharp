@@ -84,10 +84,10 @@ class AdminViewModel extends _$AdminViewModel {
     final problemId = IDUtil.ulid();
     final repository = ref.read(cloudFunctionsRepositoryProvider);
     final result = await repository.createProblem(
-      question,
-      latex,
-      problemId,
-      <String>[answer!],
+      question: question,
+      latex: latex,
+      problemId: problemId,
+      answers: <String>[answer!],
       timeLimitSeconds: timeLimitSecond!,
     );
     result.when(success: _onSuccess, failure: _onFailure);

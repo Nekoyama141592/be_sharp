@@ -1,13 +1,15 @@
 import 'package:be_sharp/core/util/credential_util.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
+import 'package:be_sharp/domain/repository_interface/auth_repository_interface.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AuthRepository {
+class AuthRepository implements AuthRepositoryInterface {
   AuthRepository(this.client);
   final FirebaseAuth client;
 
-  FutureResult<User> signInWithApple() async {
+  @override
+  FutureResult<UserCredential> signInWithApple() async {
     try {
       final credential = await CredentialUtil.appleCredential();
       final res = await client.signInWithCredential(credential);
@@ -15,7 +17,7 @@ class AuthRepository {
       if (user == null) {
         return const Result.failure('Appleサインインに失敗しました: ユーザー情報が見つかりません。');
       } else {
-        return Result.success(user);
+        return Result.success(res);
       }
     } on FirebaseAuthException catch (e) {
       final errorMessage = _getFirebaseAuthErrorMessage(e);
@@ -26,7 +28,8 @@ class AuthRepository {
     }
   }
 
-  FutureResult<User> signInWithGoogle() async {
+  @override
+  FutureResult<UserCredential> signInWithGoogle() async {
     try {
       final credential = await CredentialUtil.googleCredential();
       final res = await client.signInWithCredential(credential);
@@ -34,7 +37,7 @@ class AuthRepository {
       if (user == null) {
         return const Result.failure('Googleサインインに失敗しました: ユーザー情報が見つかりません。');
       } else {
-        return Result.success(user);
+        return Result.success(res);
       }
     } on FirebaseAuthException catch (e) {
       final errorMessage = _getFirebaseAuthErrorMessage(e);
@@ -45,6 +48,7 @@ class AuthRepository {
     }
   }
 
+  @override
   FutureResult<bool> signOut() async {
     try {
       await client.signOut();
@@ -55,6 +59,7 @@ class AuthRepository {
     }
   }
 
+  @override
   FutureResult<bool> reauthenticateWithCredential(
       AuthCredential credential) async {
     try {
@@ -70,6 +75,7 @@ class AuthRepository {
     }
   }
 
+  @override
   FutureResult<bool> deleteUser() async {
     try {
       await client.currentUser?.delete();

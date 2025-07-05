@@ -10,6 +10,7 @@ import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/r
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/write/write_user_answer.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
+import 'package:be_sharp/domain/repository_interface/database_repository_interface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
@@ -25,7 +26,7 @@ typedef ColRef = CollectionReference<Map<String, dynamic>>;
 
 typedef MapQuery = Query<Map<String, dynamic>>;
 
-class DatabaseRepository {
+class DatabaseRepository implements DatabaseRepositoryInterface {
   DatabaseRepository(this._instance);
   final FirebaseFirestore _instance;
 
@@ -177,6 +178,7 @@ class DatabaseRepository {
     }
   }
 
+  @override
   Future<List<ReadPublicUser>> getUsers(List<String> uids) async {
     try {
       if (uids.isEmpty) return [];
@@ -207,6 +209,7 @@ class DatabaseRepository {
     }
   }
 
+  @override
   Future<List<String>> getMuteUsers(String? uid, List<String> muteUids) async {
     try {
       if (uid == null || muteUids.isEmpty) return [];
@@ -220,6 +223,7 @@ class DatabaseRepository {
     }
   }
 
+  @override
   Future<int> getUserCount(String problemId) async {
     final query = _userAnswersQuery(problemId);
     final qshot = await query.count().get();

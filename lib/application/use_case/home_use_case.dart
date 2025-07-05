@@ -1,12 +1,13 @@
 import 'package:be_sharp/infrastructure/repository/database_repository.dart';
 import 'package:be_sharp/application/use_case/file_use_case.dart';
+import 'package:be_sharp/domain/use_case_interface/home_use_case_interface.dart';
 
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:collection/collection.dart';
 
-class HomeUseCase {
+class HomeUseCase implements HomeUseCaseInterface {
   HomeUseCase({required this.repository, required this.fileUseCase});
   final DatabaseRepository repository;
   final FileUseCase fileUseCase;
@@ -19,14 +20,29 @@ class HomeUseCase {
       ReadUserAnswer userAnswer, List<ReadPublicUser> users) async {
     final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
     if (publicUser == null) return null;
-    final userImage = await fileUseCase.getS3Image(
-        publicUser.imageCacheKey(), publicUser.imageValue());
+
+    final imageCacheKey = publicUser.imageCacheKey();
+    final imageValue = publicUser.imageValue();
+    String? userImage;
+
+    if (imageCacheKey != null && imageValue != null) {
+      final result = await fileUseCase.getS3Image(imageCacheKey, imageValue);
+      userImage = result.when(
+        success: (image) => image,
+        failure: (_) => null,
+      );
+    }
+
     return AnsweredUser(
         publicUser: publicUser, userImage: userImage, userAnswer: userAnswer);
   }
 
+  @override
   Future<List<AnsweredUser>> fetchAnsweredUsers(
-      List<ReadUserAnswer> userAnswers) async {
+      String problemId, List<String> answers) async {
+    // Fetch correct user answers for the problem
+    final userAnswers =
+        await repository.fetchCorrectUserAnswers(problemId, answers);
     final uids = _getUids(userAnswers);
     if (uids.isEmpty) return [];
 
@@ -38,12 +54,12 @@ class HomeUseCase {
     return answeredUsers;
   }
 
-  Future<List<String>> fetchMuteUsers(
-      String? currentUid, List<ReadUserAnswer> userAnswers) {
-    final uids = _getUids(userAnswers);
+  @override
+  Future<List<String>> fetchMuteUsers(String? currentUid, List<String> uids) {
     return repository.getMuteUsers(currentUid, uids);
   }
 
+  @override
   Future<int> fetchUserCount(String problemId) {
     return repository.getUserCount(problemId);
   }

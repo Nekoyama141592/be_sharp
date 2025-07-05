@@ -1,6 +1,7 @@
 import 'package:be_sharp/core/util/purchase_util.dart';
 import 'package:be_sharp/core/extension/purchase_details_extension.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
+import 'package:be_sharp/domain/repository_interface/purchase_repository_interface.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 import 'dart:io';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:in_app_purchase_android/billing_client_wrappers.dart';
 import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
 
-class PurchaseRepository {
+class PurchaseRepository implements PurchaseRepositoryInterface {
   PurchaseRepository({
     required this.inAppPurchase,
     required this.client,
@@ -17,6 +18,12 @@ class PurchaseRepository {
   final InAppPurchase inAppPurchase;
   final BillingClient client;
   final SKPaymentQueueWrapper wrapper;
+
+  @override
+  Stream<List<PurchaseDetails>> get purchaseUpdated =>
+      inAppPurchase.purchaseStream
+          .map((details) => details)
+          .asBroadcastStream();
 
   Future<void> cancelTransctions() async {
     if (!Platform.isIOS) return;
@@ -58,6 +65,29 @@ class PurchaseRepository {
     } catch (e) {
       debugPrint('acknowledge: ${e.toString()}');
     }
+  }
+
+  @override
+  Future<void> initStore() async {
+    // Initialize store if needed
+  }
+
+  @override
+  Future<List<ProductDetails>> getProducts() async {
+    final products = await queryProductDetails();
+    return products ?? [];
+  }
+
+  @override
+  Future<void> buyProduct(String productId) async {
+    final products = await queryProductDetails();
+    if (products == null) return;
+
+    final product = products.where((p) => p.id == productId).firstOrNull;
+    if (product == null) return;
+
+    final purchaseParam = PurchaseParam(productDetails: product);
+    await buyNonConsumable(purchaseParam);
   }
 
   Future<List<ProductDetails>?> queryProductDetails() async {

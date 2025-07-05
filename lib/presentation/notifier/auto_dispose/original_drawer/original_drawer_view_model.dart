@@ -12,9 +12,18 @@ class OriginalDrawerViewModel extends _$OriginalDrawerViewModel {
     if (user == null) {
       return UserAndImageState(user: user, image: null);
     }
-    final image = await ref
-        .read(fileUseCaseProvider)
-        .getS3Image(user.imageCacheKey(), user.imageValue());
+    String? image;
+    final imageCacheKey = user.imageCacheKey();
+    final imageValue = user.imageValue();
+    if (imageCacheKey != null && imageValue != null) {
+      final result = await ref
+          .read(fileUseCaseProvider)
+          .getS3Image(imageCacheKey, imageValue);
+      image = result.when(
+        success: (img) => img,
+        failure: (_) => null,
+      );
+    }
     return UserAndImageState(user: user, image: image);
   }
 }
