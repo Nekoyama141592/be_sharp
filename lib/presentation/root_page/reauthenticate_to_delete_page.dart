@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/delete_user/delete_user_view_model.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
@@ -7,6 +8,7 @@ import 'package:be_sharp/presentation/root_page/user_deleted_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+@RoutePage()
 class ReauthenticateToDeletePage extends ConsumerWidget {
   const ReauthenticateToDeletePage({super.key});
   static const path = "/reauthenticate/delete";

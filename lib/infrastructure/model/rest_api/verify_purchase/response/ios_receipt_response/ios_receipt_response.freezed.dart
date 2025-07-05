@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -254,6 +253,274 @@ class _$IOSReceiptResponseCopyWithImpl<$Res>
           : web_order_line_item_id // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [IOSReceiptResponse].
+extension IOSReceiptResponsePatterns on IOSReceiptResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_IOSReceiptResponse value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _IOSReceiptResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_IOSReceiptResponse value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _IOSReceiptResponse():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_IOSReceiptResponse value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _IOSReceiptResponse() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String expires_date,
+            String expires_date_ms,
+            String expires_date_pst,
+            String in_app_ownership_type,
+            String is_in_intro_offer_period,
+            String is_trial_period,
+            String original_purchase_date,
+            String original_purchase_date_ms,
+            String original_purchase_date_pst,
+            String original_transaction_id,
+            String product_id,
+            String purchase_date,
+            String purchase_date_ms,
+            String purchase_date_pst,
+            String quantity,
+            String subscription_group_identifier,
+            String transaction_id,
+            String web_order_line_item_id)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _IOSReceiptResponse() when $default != null:
+        return $default(
+            _that.expires_date,
+            _that.expires_date_ms,
+            _that.expires_date_pst,
+            _that.in_app_ownership_type,
+            _that.is_in_intro_offer_period,
+            _that.is_trial_period,
+            _that.original_purchase_date,
+            _that.original_purchase_date_ms,
+            _that.original_purchase_date_pst,
+            _that.original_transaction_id,
+            _that.product_id,
+            _that.purchase_date,
+            _that.purchase_date_ms,
+            _that.purchase_date_pst,
+            _that.quantity,
+            _that.subscription_group_identifier,
+            _that.transaction_id,
+            _that.web_order_line_item_id);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String expires_date,
+            String expires_date_ms,
+            String expires_date_pst,
+            String in_app_ownership_type,
+            String is_in_intro_offer_period,
+            String is_trial_period,
+            String original_purchase_date,
+            String original_purchase_date_ms,
+            String original_purchase_date_pst,
+            String original_transaction_id,
+            String product_id,
+            String purchase_date,
+            String purchase_date_ms,
+            String purchase_date_pst,
+            String quantity,
+            String subscription_group_identifier,
+            String transaction_id,
+            String web_order_line_item_id)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _IOSReceiptResponse():
+        return $default(
+            _that.expires_date,
+            _that.expires_date_ms,
+            _that.expires_date_pst,
+            _that.in_app_ownership_type,
+            _that.is_in_intro_offer_period,
+            _that.is_trial_period,
+            _that.original_purchase_date,
+            _that.original_purchase_date_ms,
+            _that.original_purchase_date_pst,
+            _that.original_transaction_id,
+            _that.product_id,
+            _that.purchase_date,
+            _that.purchase_date_ms,
+            _that.purchase_date_pst,
+            _that.quantity,
+            _that.subscription_group_identifier,
+            _that.transaction_id,
+            _that.web_order_line_item_id);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String expires_date,
+            String expires_date_ms,
+            String expires_date_pst,
+            String in_app_ownership_type,
+            String is_in_intro_offer_period,
+            String is_trial_period,
+            String original_purchase_date,
+            String original_purchase_date_ms,
+            String original_purchase_date_pst,
+            String original_transaction_id,
+            String product_id,
+            String purchase_date,
+            String purchase_date_ms,
+            String purchase_date_pst,
+            String quantity,
+            String subscription_group_identifier,
+            String transaction_id,
+            String web_order_line_item_id)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _IOSReceiptResponse() when $default != null:
+        return $default(
+            _that.expires_date,
+            _that.expires_date_ms,
+            _that.expires_date_pst,
+            _that.in_app_ownership_type,
+            _that.is_in_intro_offer_period,
+            _that.is_trial_period,
+            _that.original_purchase_date,
+            _that.original_purchase_date_ms,
+            _that.original_purchase_date_pst,
+            _that.original_transaction_id,
+            _that.product_id,
+            _that.purchase_date,
+            _that.purchase_date_ms,
+            _that.purchase_date_pst,
+            _that.quantity,
+            _that.subscription_group_identifier,
+            _that.transaction_id,
+            _that.web_order_line_item_id);
+      case _:
+        return null;
+    }
   }
 }
 

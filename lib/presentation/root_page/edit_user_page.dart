@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/services.dart';
 const backgroundColor = Color(0xFFF8F9FE);
 const textColor = Color(0xFF2E3E5C);
 
+@RoutePage()
 class EditUserPage extends StatelessWidget {
   const EditUserPage({super.key});
   static const path = "/editUser";

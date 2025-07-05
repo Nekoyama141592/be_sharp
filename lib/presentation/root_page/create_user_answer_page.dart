@@ -6,20 +6,23 @@ import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage()
 class CreateUserAnswerPage extends HookConsumerWidget {
-  CreateUserAnswerPage({super.key});
+  CreateUserAnswerPage({super.key, @pathParam this.problemId});
+  final String? problemId;
   static const path = '/problems/:problemId/createUserAnswer';
   static String generatePath(String problemId) =>
       '/problems/$problemId/createUserAnswer';
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final problemId = Get.parameters['problemId']!;
+    final problemId = this.problemId ??
+        context.routeData.inheritedPathParams.getString('problemId');
     final notifier =
         ref.read(createUserAnswerViewModelProvider(problemId).notifier);
     final asyncValue = ref.watch(createUserAnswerViewModelProvider(problemId));

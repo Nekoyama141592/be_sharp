@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  auto_route: ^10.1.0+1
   cloud_firestore: ^5.6.11 
   cloud_functions: ^5.6.1 
   collection: ^1.19.1 
@@ -49,6 +50,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  auto_route_generator: ^10.2.3
   build_runner: ^2.5.4 
   flutter_launcher_icons: ^0.14.4 
   flutter_lints: ^6.0.0 

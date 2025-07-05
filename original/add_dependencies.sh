@@ -1,6 +1,7 @@
 #!/bin/bash
 
 packages=(
+  "auto_route"
   "cloud_firestore"
   "cloud_functions"
   "collection"

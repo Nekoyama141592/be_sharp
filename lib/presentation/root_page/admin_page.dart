@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/admin/admin_view_model.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
@@ -7,6 +8,7 @@ import 'package:be_sharp/presentation/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage()
 class AdminPage extends HookConsumerWidget {
   AdminPage({super.key});
   static const path = '/admin';

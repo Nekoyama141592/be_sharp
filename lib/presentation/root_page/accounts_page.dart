@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/core/provider/repository/auth_repository/auth_repository_provider.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:be_sharp/core/util/route_util.dart';
 
+@RoutePage()
 class AccountPage extends ConsumerWidget {
   const AccountPage({
     super.key,

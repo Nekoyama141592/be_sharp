@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/mute_users/mute_users_view_model.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+@RoutePage()
 class MuteUsersPage extends ConsumerWidget {
   const MuteUsersPage({super.key});
   static const path = '/muteUsers';

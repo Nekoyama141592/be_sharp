@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/auth_page.dart';
@@ -7,6 +8,7 @@ import 'package:be_sharp/presentation/page/terms_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+@RoutePage()
 class FirstPage extends HookConsumerWidget {
   const FirstPage({super.key});
   @override
