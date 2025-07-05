@@ -46,6 +46,10 @@ dependencies:
   sign_in_with_apple: ^7.0.1 
   ulid: ^2.0.1 
   url_launcher: ^6.3.1 
+  mockito: ^5.4.6
+  fake_cloud_firestore: ^3.1.0
+  fake_firebase_security_rules: ^0.5.3
+  firebase_auth_mocks: ^0.14.2
 
 dev_dependencies:
   flutter_test:
