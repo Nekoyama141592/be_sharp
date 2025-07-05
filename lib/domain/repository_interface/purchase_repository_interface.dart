@@ -1,8 +1,8 @@
-import 'package:be_sharp/domain/repository_interface/repository_interface.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 
-abstract class PurchaseRepositoryInterface extends RepositoryInterface<void> {
-  Stream<List<dynamic>> get purchaseUpdated;
+abstract class PurchaseRepositoryInterface {
+  Stream<List<PurchaseDetails>> get purchaseUpdated;
   Future<void> initStore();
-  Future<List<dynamic>> getProducts();
+  Future<List<ProductDetails>> getProducts();
   Future<void> buyProduct(String productId);
 }
