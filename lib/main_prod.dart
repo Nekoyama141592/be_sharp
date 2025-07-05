@@ -1,8 +1,7 @@
-import 'flavors.dart';
-
-import 'main.dart' as runner;
+import 'application/flavors.dart';
+import 'package:be_sharp/application/run_app.dart';
 
 Future<void> main() async {
   F.appFlavor = Flavor.prod;
-  await runner.main();
+  await RunApp.runMyApp();
 }
