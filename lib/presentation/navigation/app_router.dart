@@ -23,35 +23,35 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(
           page: AccountRoute.page,
-          path: '/account',
+          path: AccountPage.path,
         ),
         AutoRoute(
           page: AdminRoute.page,
-          path: '/admin',
+          path: AdminPage.path,
         ),
         AutoRoute(
           page: EditUserRoute.page,
-          path: '/edit-user',
+          path: EditUserPage.path,
         ),
         AutoRoute(
           page: CreateUserAnswerRoute.page,
-          path: '/problems/:problemId/createUserAnswer',
+          path: CreateUserAnswerPage.path,
         ),
         AutoRoute(
           page: MuteUsersRoute.page,
-          path: '/mute-users',
+          path: MuteUsersPage.path,
         ),
         AutoRoute(
           page: LogoutedRoute.page,
-          path: '/logouted',
+          path: LogoutedPage.path,
         ),
         AutoRoute(
           page: ReauthenticateToDeleteRoute.page,
-          path: '/reauthenticate-to-delete',
+          path: ReauthenticateToDeletePage.path,
         ),
         AutoRoute(
           page: UserDeletedRoute.page,
-          path: '/user-deleted',
+          path: UserDeletedPage.path,
         ),
       ];
 }
