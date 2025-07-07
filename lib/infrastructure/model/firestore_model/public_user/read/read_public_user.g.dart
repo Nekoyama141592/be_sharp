@@ -13,12 +13,13 @@ _ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) =>
           : RegisteredInfo.fromJson(
               json['registeredInfo'] as Map<String, dynamic>),
       uid: json['uid'] as String,
-      updatedAt: json['updatedAt'],
+      updatedAt:
+          const TimestampConverter().fromJson(json['updatedAt'] as Timestamp?),
     );
 
 Map<String, dynamic> _$ReadPublicUserToJson(_ReadPublicUser instance) =>
     <String, dynamic>{
       'registeredInfo': instance.registeredInfo,
       'uid': instance.uid,
-      'updatedAt': instance.updatedAt,
+      'updatedAt': const TimestampConverter().toJson(instance.updatedAt),
     };

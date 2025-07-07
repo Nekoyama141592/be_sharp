@@ -2,7 +2,6 @@ import 'package:be_sharp/domain/converter/timestamp_converter.dart';
 import 'package:be_sharp/domain/entity/database/common/detected_image/detected_text_entity.dart';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_answer_entity.freezed.dart';
@@ -24,9 +23,7 @@ abstract class UserAnswerEntity with _$UserAnswerEntity {
   factory UserAnswerEntity.fromModel(ReadUserAnswer model) {
     return UserAnswerEntity(
       answer: model.answer,
-      createdAt: model.createdAt is Timestamp 
-          ? (model.createdAt as Timestamp).toDate()
-          : null,
+      createdAt: model.createdAt,
       problemId: model.problemId,
       caption: model.caption != null
           ? DetectedTextEntity(

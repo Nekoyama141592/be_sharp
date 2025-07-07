@@ -16,7 +16,8 @@ T _$identity<T>(T value) => value;
 mixin _$ReadPublicUser {
   RegisteredInfo? get registeredInfo;
   String get uid;
-  dynamic get updatedAt;
+  @TimestampConverter()
+  DateTime? get updatedAt;
 
   /// Create a copy of ReadPublicUser
   /// with the given fields replaced by the non-null parameter values.
@@ -37,13 +38,13 @@ mixin _$ReadPublicUser {
             (identical(other.registeredInfo, registeredInfo) ||
                 other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, registeredInfo, uid,
-      const DeepCollectionEquality().hash(updatedAt));
+  int get hashCode => Object.hash(runtimeType, registeredInfo, uid, updatedAt);
 
   @override
   String toString() {
@@ -57,7 +58,10 @@ abstract mixin class $ReadPublicUserCopyWith<$Res> {
           ReadPublicUser value, $Res Function(ReadPublicUser) _then) =
       _$ReadPublicUserCopyWithImpl;
   @useResult
-  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
+  $Res call(
+      {RegisteredInfo? registeredInfo,
+      String uid,
+      @TimestampConverter() DateTime? updatedAt});
 
   $RegisteredInfoCopyWith<$Res>? get registeredInfo;
 }
@@ -91,7 +95,7 @@ class _$ReadPublicUserCopyWithImpl<$Res>
       updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
     ));
   }
 
@@ -203,8 +207,8 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            RegisteredInfo? registeredInfo, String uid, dynamic updatedAt)?
+    TResult Function(RegisteredInfo? registeredInfo, String uid,
+            @TimestampConverter() DateTime? updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -232,8 +236,8 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            RegisteredInfo? registeredInfo, String uid, dynamic updatedAt)
+    TResult Function(RegisteredInfo? registeredInfo, String uid,
+            @TimestampConverter() DateTime? updatedAt)
         $default,
   ) {
     final _that = this;
@@ -259,8 +263,8 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            RegisteredInfo? registeredInfo, String uid, dynamic updatedAt)?
+    TResult? Function(RegisteredInfo? registeredInfo, String uid,
+            @TimestampConverter() DateTime? updatedAt)?
         $default,
   ) {
     final _that = this;
@@ -279,7 +283,7 @@ class _ReadPublicUser extends ReadPublicUser {
   const _ReadPublicUser(
       {required this.registeredInfo,
       required this.uid,
-      required this.updatedAt})
+      @TimestampConverter() required this.updatedAt})
       : super._();
   factory _ReadPublicUser.fromJson(Map<String, dynamic> json) =>
       _$ReadPublicUserFromJson(json);
@@ -289,7 +293,8 @@ class _ReadPublicUser extends ReadPublicUser {
   @override
   final String uid;
   @override
-  final dynamic updatedAt;
+  @TimestampConverter()
+  final DateTime? updatedAt;
 
   /// Create a copy of ReadPublicUser
   /// with the given fields replaced by the non-null parameter values.
@@ -314,13 +319,13 @@ class _ReadPublicUser extends ReadPublicUser {
             (identical(other.registeredInfo, registeredInfo) ||
                 other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, registeredInfo, uid,
-      const DeepCollectionEquality().hash(updatedAt));
+  int get hashCode => Object.hash(runtimeType, registeredInfo, uid, updatedAt);
 
   @override
   String toString() {
@@ -336,7 +341,10 @@ abstract mixin class _$ReadPublicUserCopyWith<$Res>
       __$ReadPublicUserCopyWithImpl;
   @override
   @useResult
-  $Res call({RegisteredInfo? registeredInfo, String uid, dynamic updatedAt});
+  $Res call(
+      {RegisteredInfo? registeredInfo,
+      String uid,
+      @TimestampConverter() DateTime? updatedAt});
 
   @override
   $RegisteredInfoCopyWith<$Res>? get registeredInfo;
@@ -371,7 +379,7 @@ class __$ReadPublicUserCopyWithImpl<$Res>
       updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
     ));
   }
 

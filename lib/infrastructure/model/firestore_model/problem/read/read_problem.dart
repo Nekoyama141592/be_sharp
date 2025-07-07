@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:be_sharp/domain/converter/timestamp_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'read_problem.freezed.dart';
@@ -8,7 +8,7 @@ part 'read_problem.g.dart';
 abstract class ReadProblem with _$ReadProblem {
   const ReadProblem._();
   const factory ReadProblem(
-      {required dynamic createdAt,
+      {@TimestampConverter() required DateTime? createdAt,
       required String question,
       required String latex,
       required String problemId,
@@ -16,24 +16,7 @@ abstract class ReadProblem with _$ReadProblem {
       required List<String> answers,
       @Default('math') String subject,
       @Default('unlimited') String category,
-      required dynamic updatedAt}) = _ReadProblem;
+      @TimestampConverter() required DateTime? updatedAt}) = _ReadProblem;
   factory ReadProblem.fromJson(Map<String, dynamic> json) =>
       _$ReadProblemFromJson(json);
-
-  Timestamp typedCreatedAt() => createdAt as Timestamp;
-
-  bool isInTimeLimit() {
-    final createdAtDate = typedCreatedAt().toDate();
-    final nowDate = DateTime.now();
-    final difference = nowDate.difference(createdAtDate).inSeconds;
-    return difference < timeLimitSeconds;
-  }
-
-  Duration timeLimitDuration() => Duration(seconds: timeLimitSeconds);
-
-  DateTime timeLimitDate() {
-    final createdAtDate = typedCreatedAt().toDate();
-    final timeLimitDate = createdAtDate.add(timeLimitDuration());
-    return timeLimitDate;
-  }
 }

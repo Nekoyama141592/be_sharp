@@ -1,3 +1,4 @@
+import 'package:be_sharp/domain/converter/timestamp_converter.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/common/detected_text/detected_text.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,7 +10,7 @@ abstract class ReadUserAnswer with _$ReadUserAnswer {
   const ReadUserAnswer._();
   const factory ReadUserAnswer({
     required String answer,
-    required dynamic createdAt,
+    @TimestampConverter() required DateTime? createdAt,
     required String problemId,
     required DetectedText? caption,
     required String uid,

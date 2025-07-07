@@ -9,7 +9,8 @@ part of 'read_user_answer.dart';
 _ReadUserAnswer _$ReadUserAnswerFromJson(Map<String, dynamic> json) =>
     _ReadUserAnswer(
       answer: json['answer'] as String,
-      createdAt: json['createdAt'],
+      createdAt:
+          const TimestampConverter().fromJson(json['createdAt'] as Timestamp?),
       problemId: json['problemId'] as String,
       caption: json['caption'] == null
           ? null
@@ -20,7 +21,7 @@ _ReadUserAnswer _$ReadUserAnswerFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ReadUserAnswerToJson(_ReadUserAnswer instance) =>
     <String, dynamic>{
       'answer': instance.answer,
-      'createdAt': instance.createdAt,
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
       'problemId': instance.problemId,
       'caption': instance.caption,
       'uid': instance.uid,

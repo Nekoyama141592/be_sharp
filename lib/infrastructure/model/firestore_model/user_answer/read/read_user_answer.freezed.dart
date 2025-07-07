@@ -15,7 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ReadUserAnswer {
   String get answer;
-  dynamic get createdAt;
+  @TimestampConverter()
+  DateTime? get createdAt;
   String get problemId;
   DetectedText? get caption;
   String get uid;
@@ -37,7 +38,8 @@ mixin _$ReadUserAnswer {
         (other.runtimeType == runtimeType &&
             other is ReadUserAnswer &&
             (identical(other.answer, answer) || other.answer == answer) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.caption, caption) || other.caption == caption) &&
@@ -46,8 +48,8 @@ mixin _$ReadUserAnswer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, answer,
-      const DeepCollectionEquality().hash(createdAt), problemId, caption, uid);
+  int get hashCode =>
+      Object.hash(runtimeType, answer, createdAt, problemId, caption, uid);
 
   @override
   String toString() {
@@ -63,7 +65,7 @@ abstract mixin class $ReadUserAnswerCopyWith<$Res> {
   @useResult
   $Res call(
       {String answer,
-      dynamic createdAt,
+      @TimestampConverter() DateTime? createdAt,
       String problemId,
       DetectedText? caption,
       String uid});
@@ -98,7 +100,7 @@ class _$ReadUserAnswerCopyWithImpl<$Res>
       createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
       problemId: null == problemId
           ? _self.problemId
           : problemId // ignore: cast_nullable_to_non_nullable
@@ -222,8 +224,8 @@ extension ReadUserAnswerPatterns on ReadUserAnswer {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String answer, dynamic createdAt, String problemId,
-            DetectedText? caption, String uid)?
+    TResult Function(String answer, @TimestampConverter() DateTime? createdAt,
+            String problemId, DetectedText? caption, String uid)?
         $default, {
     required TResult orElse(),
   }) {
@@ -252,8 +254,8 @@ extension ReadUserAnswerPatterns on ReadUserAnswer {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String answer, dynamic createdAt, String problemId,
-            DetectedText? caption, String uid)
+    TResult Function(String answer, @TimestampConverter() DateTime? createdAt,
+            String problemId, DetectedText? caption, String uid)
         $default,
   ) {
     final _that = this;
@@ -280,8 +282,8 @@ extension ReadUserAnswerPatterns on ReadUserAnswer {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String answer, dynamic createdAt, String problemId,
-            DetectedText? caption, String uid)?
+    TResult? Function(String answer, @TimestampConverter() DateTime? createdAt,
+            String problemId, DetectedText? caption, String uid)?
         $default,
   ) {
     final _that = this;
@@ -300,7 +302,7 @@ extension ReadUserAnswerPatterns on ReadUserAnswer {
 class _ReadUserAnswer extends ReadUserAnswer {
   const _ReadUserAnswer(
       {required this.answer,
-      required this.createdAt,
+      @TimestampConverter() required this.createdAt,
       required this.problemId,
       required this.caption,
       required this.uid})
@@ -311,7 +313,8 @@ class _ReadUserAnswer extends ReadUserAnswer {
   @override
   final String answer;
   @override
-  final dynamic createdAt;
+  @TimestampConverter()
+  final DateTime? createdAt;
   @override
   final String problemId;
   @override
@@ -340,7 +343,8 @@ class _ReadUserAnswer extends ReadUserAnswer {
         (other.runtimeType == runtimeType &&
             other is _ReadUserAnswer &&
             (identical(other.answer, answer) || other.answer == answer) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.problemId, problemId) ||
                 other.problemId == problemId) &&
             (identical(other.caption, caption) || other.caption == caption) &&
@@ -349,8 +353,8 @@ class _ReadUserAnswer extends ReadUserAnswer {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, answer,
-      const DeepCollectionEquality().hash(createdAt), problemId, caption, uid);
+  int get hashCode =>
+      Object.hash(runtimeType, answer, createdAt, problemId, caption, uid);
 
   @override
   String toString() {
@@ -368,7 +372,7 @@ abstract mixin class _$ReadUserAnswerCopyWith<$Res>
   @useResult
   $Res call(
       {String answer,
-      dynamic createdAt,
+      @TimestampConverter() DateTime? createdAt,
       String problemId,
       DetectedText? caption,
       String uid});
@@ -404,7 +408,7 @@ class __$ReadUserAnswerCopyWithImpl<$Res>
       createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
       problemId: null == problemId
           ? _self.problemId
           : problemId // ignore: cast_nullable_to_non_nullable

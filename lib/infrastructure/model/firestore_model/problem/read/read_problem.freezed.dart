@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$ReadProblem {
-  dynamic get createdAt;
+  @TimestampConverter()
+  DateTime? get createdAt;
   String get question;
   String get latex;
   String get problemId;
@@ -22,7 +23,8 @@ mixin _$ReadProblem {
   List<String> get answers;
   String get subject;
   String get category;
-  dynamic get updatedAt;
+  @TimestampConverter()
+  DateTime? get updatedAt;
 
   /// Create a copy of ReadProblem
   /// with the given fields replaced by the non-null parameter values.
@@ -39,7 +41,8 @@ mixin _$ReadProblem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is ReadProblem &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.latex, latex) || other.latex == latex) &&
@@ -51,14 +54,15 @@ mixin _$ReadProblem {
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
+      createdAt,
       question,
       latex,
       problemId,
@@ -66,7 +70,7 @@ mixin _$ReadProblem {
       const DeepCollectionEquality().hash(answers),
       subject,
       category,
-      const DeepCollectionEquality().hash(updatedAt));
+      updatedAt);
 
   @override
   String toString() {
@@ -81,7 +85,7 @@ abstract mixin class $ReadProblemCopyWith<$Res> {
       _$ReadProblemCopyWithImpl;
   @useResult
   $Res call(
-      {dynamic createdAt,
+      {@TimestampConverter() DateTime? createdAt,
       String question,
       String latex,
       String problemId,
@@ -89,7 +93,7 @@ abstract mixin class $ReadProblemCopyWith<$Res> {
       List<String> answers,
       String subject,
       String category,
-      dynamic updatedAt});
+      @TimestampConverter() DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -118,7 +122,7 @@ class _$ReadProblemCopyWithImpl<$Res> implements $ReadProblemCopyWith<$Res> {
       createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
       question: null == question
           ? _self.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -150,7 +154,7 @@ class _$ReadProblemCopyWithImpl<$Res> implements $ReadProblemCopyWith<$Res> {
       updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
     ));
   }
 }
@@ -249,7 +253,7 @@ extension ReadProblemPatterns on ReadProblem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            dynamic createdAt,
+            @TimestampConverter() DateTime? createdAt,
             String question,
             String latex,
             String problemId,
@@ -257,7 +261,7 @@ extension ReadProblemPatterns on ReadProblem {
             List<String> answers,
             String subject,
             String category,
-            dynamic updatedAt)?
+            @TimestampConverter() DateTime? updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
@@ -295,7 +299,7 @@ extension ReadProblemPatterns on ReadProblem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            dynamic createdAt,
+            @TimestampConverter() DateTime? createdAt,
             String question,
             String latex,
             String problemId,
@@ -303,7 +307,7 @@ extension ReadProblemPatterns on ReadProblem {
             List<String> answers,
             String subject,
             String category,
-            dynamic updatedAt)
+            @TimestampConverter() DateTime? updatedAt)
         $default,
   ) {
     final _that = this;
@@ -339,7 +343,7 @@ extension ReadProblemPatterns on ReadProblem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            dynamic createdAt,
+            @TimestampConverter() DateTime? createdAt,
             String question,
             String latex,
             String problemId,
@@ -347,7 +351,7 @@ extension ReadProblemPatterns on ReadProblem {
             List<String> answers,
             String subject,
             String category,
-            dynamic updatedAt)?
+            @TimestampConverter() DateTime? updatedAt)?
         $default,
   ) {
     final _that = this;
@@ -373,7 +377,7 @@ extension ReadProblemPatterns on ReadProblem {
 @JsonSerializable()
 class _ReadProblem extends ReadProblem {
   const _ReadProblem(
-      {required this.createdAt,
+      {@TimestampConverter() required this.createdAt,
       required this.question,
       required this.latex,
       required this.problemId,
@@ -381,14 +385,15 @@ class _ReadProblem extends ReadProblem {
       required final List<String> answers,
       this.subject = 'math',
       this.category = 'unlimited',
-      required this.updatedAt})
+      @TimestampConverter() required this.updatedAt})
       : _answers = answers,
         super._();
   factory _ReadProblem.fromJson(Map<String, dynamic> json) =>
       _$ReadProblemFromJson(json);
 
   @override
-  final dynamic createdAt;
+  @TimestampConverter()
+  final DateTime? createdAt;
   @override
   final String question;
   @override
@@ -412,7 +417,8 @@ class _ReadProblem extends ReadProblem {
   @JsonKey()
   final String category;
   @override
-  final dynamic updatedAt;
+  @TimestampConverter()
+  final DateTime? updatedAt;
 
   /// Create a copy of ReadProblem
   /// with the given fields replaced by the non-null parameter values.
@@ -434,7 +440,8 @@ class _ReadProblem extends ReadProblem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ReadProblem &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.question, question) ||
                 other.question == question) &&
             (identical(other.latex, latex) || other.latex == latex) &&
@@ -446,14 +453,15 @@ class _ReadProblem extends ReadProblem {
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.category, category) ||
                 other.category == category) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
+      createdAt,
       question,
       latex,
       problemId,
@@ -461,7 +469,7 @@ class _ReadProblem extends ReadProblem {
       const DeepCollectionEquality().hash(_answers),
       subject,
       category,
-      const DeepCollectionEquality().hash(updatedAt));
+      updatedAt);
 
   @override
   String toString() {
@@ -478,7 +486,7 @@ abstract mixin class _$ReadProblemCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {dynamic createdAt,
+      {@TimestampConverter() DateTime? createdAt,
       String question,
       String latex,
       String problemId,
@@ -486,7 +494,7 @@ abstract mixin class _$ReadProblemCopyWith<$Res>
       List<String> answers,
       String subject,
       String category,
-      dynamic updatedAt});
+      @TimestampConverter() DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -515,7 +523,7 @@ class __$ReadProblemCopyWithImpl<$Res> implements _$ReadProblemCopyWith<$Res> {
       createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
       question: null == question
           ? _self.question
           : question // ignore: cast_nullable_to_non_nullable
@@ -547,7 +555,7 @@ class __$ReadProblemCopyWithImpl<$Res> implements _$ReadProblemCopyWith<$Res> {
       updatedAt: freezed == updatedAt
           ? _self.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as DateTime?,
     ));
   }
 }

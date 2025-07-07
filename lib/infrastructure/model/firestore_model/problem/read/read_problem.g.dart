@@ -7,7 +7,8 @@ part of 'read_problem.dart';
 // **************************************************************************
 
 _ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) => _ReadProblem(
-      createdAt: json['createdAt'],
+      createdAt:
+          const TimestampConverter().fromJson(json['createdAt'] as Timestamp?),
       question: json['question'] as String,
       latex: json['latex'] as String,
       problemId: json['problemId'] as String,
@@ -16,12 +17,13 @@ _ReadProblem _$ReadProblemFromJson(Map<String, dynamic> json) => _ReadProblem(
           (json['answers'] as List<dynamic>).map((e) => e as String).toList(),
       subject: json['subject'] as String? ?? 'math',
       category: json['category'] as String? ?? 'unlimited',
-      updatedAt: json['updatedAt'],
+      updatedAt:
+          const TimestampConverter().fromJson(json['updatedAt'] as Timestamp?),
     );
 
 Map<String, dynamic> _$ReadProblemToJson(_ReadProblem instance) =>
     <String, dynamic>{
-      'createdAt': instance.createdAt,
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
       'question': instance.question,
       'latex': instance.latex,
       'problemId': instance.problemId,
@@ -29,5 +31,5 @@ Map<String, dynamic> _$ReadProblemToJson(_ReadProblem instance) =>
       'answers': instance.answers,
       'subject': instance.subject,
       'category': instance.category,
-      'updatedAt': instance.updatedAt,
+      'updatedAt': const TimestampConverter().toJson(instance.updatedAt),
     };
