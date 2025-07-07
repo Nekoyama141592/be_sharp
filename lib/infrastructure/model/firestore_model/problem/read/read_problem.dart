@@ -19,7 +19,9 @@ abstract class ReadProblem with _$ReadProblem {
       required dynamic updatedAt}) = _ReadProblem;
   factory ReadProblem.fromJson(Map<String, dynamic> json) =>
       _$ReadProblemFromJson(json);
+
   Timestamp typedCreatedAt() => createdAt as Timestamp;
+
   bool isInTimeLimit() {
     final createdAtDate = typedCreatedAt().toDate();
     final nowDate = DateTime.now();
@@ -28,19 +30,10 @@ abstract class ReadProblem with _$ReadProblem {
   }
 
   Duration timeLimitDuration() => Duration(seconds: timeLimitSeconds);
+
   DateTime timeLimitDate() {
     final createdAtDate = typedCreatedAt().toDate();
     final timeLimitDate = createdAtDate.add(timeLimitDuration());
     return timeLimitDate;
-  }
-
-  Duration leftTime() {
-    final now = DateTime.now();
-    return timeLimitDate().difference(now);
-  }
-
-  String timeLimitDateText() {
-    final value = timeLimitDate();
-    return '${value.hour}時${value.minute}分${value.second}秒';
   }
 }

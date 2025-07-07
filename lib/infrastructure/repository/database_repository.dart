@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/constants/limit_constant.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_user.dart';
@@ -254,11 +255,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  Future<ReadProblem?> getProblem(String problemId) async {
+  Future<ProblemEntity?> getProblem(String problemId) async {
     try {
       final docRef = _problemDocRef(problemId);
       final doc = await _getDoc(docRef);
-      return ReadProblem.fromJson(doc.data()!);
+      final model = ReadProblem.fromJson(doc.data()!);
+      return ProblemEntity.fromModel(model);
     } catch (e) {
       debugPrint(e.toString());
       return null;
@@ -277,12 +279,13 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return createDoc(docRef, json);
   }
 
-  Future<ReadProblem?> fetchLatestProblem() async {
+  Future<ProblemEntity?> fetchLatestProblem() async {
     final query = _latestProblemQuery();
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
-    return ReadProblem.fromJson(docs.first.data());
+    final model = ReadProblem.fromJson(docs.first.data());
+    return ProblemEntity.fromModel(model);
   }
 
   Future<UserAnswerEntity?> fetchLatestUserAnswer(

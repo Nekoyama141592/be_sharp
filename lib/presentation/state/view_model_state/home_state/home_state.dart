@@ -1,4 +1,4 @@
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
+import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -9,7 +9,7 @@ part 'home_state.g.dart';
 abstract class HomeState with _$HomeState {
   const HomeState._();
   const factory HomeState(
-      {ReadProblem? latestProblem,
+      {ProblemEntity? latestProblem,
       @Default([]) List<AnsweredUser> answeredUsers,
       @Default([]) List<String> muteUids,
       @Default(0) int userCount}) = _HomeState;

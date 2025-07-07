@@ -10,7 +10,7 @@ _LatestProblemState _$LatestProblemStateFromJson(Map<String, dynamic> json) =>
     _LatestProblemState(
       problem: json['problem'] == null
           ? null
-          : ReadProblem.fromJson(json['problem'] as Map<String, dynamic>),
+          : ProblemEntity.fromJson(json['problem'] as Map<String, dynamic>),
       userAnswer: json['userAnswer'] == null
           ? null
           : UserAnswerEntity.fromJson(

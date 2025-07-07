@@ -9,7 +9,8 @@ part of 'home_state.dart';
 _HomeState _$HomeStateFromJson(Map<String, dynamic> json) => _HomeState(
       latestProblem: json['latestProblem'] == null
           ? null
-          : ReadProblem.fromJson(json['latestProblem'] as Map<String, dynamic>),
+          : ProblemEntity.fromJson(
+              json['latestProblem'] as Map<String, dynamic>),
       answeredUsers: (json['answeredUsers'] as List<dynamic>?)
               ?.map((e) => AnsweredUser.fromJson(e as Map<String, dynamic>))
               .toList() ??

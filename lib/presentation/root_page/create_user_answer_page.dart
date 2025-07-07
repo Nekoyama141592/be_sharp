@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
+import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/create_user_answer/create_user_answer_view_model.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
@@ -115,7 +115,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
 }
 
 class QuestionCard extends StatelessWidget {
-  final ReadProblem state;
+  final ProblemEntity state;
 
   const QuestionCard({super.key, required this.state});
 
