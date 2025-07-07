@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/presentation/state/view_model_state/latest_problem_state/latest_problem_state.dart';
 import 'package:be_sharp/presentation/notifier/keep_alive/products/products_notifier.dart';
@@ -36,8 +36,8 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     return _repository.fetchLatestProblem();
   }
 
-  Future<ReadUserAnswer?> _fetchLatestUserAnswer(String uid, String problemId) {
-    return _repository.fetchLatestUserAnswer(uid, problemId);
+  Future<UserAnswerEntity?> _fetchLatestUserAnswer(String uid, String problemId) async {
+    return await _repository.fetchLatestUserAnswer(uid, problemId);
   }
 
   String? getAnswerPagePath() {

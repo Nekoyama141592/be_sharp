@@ -13,7 +13,8 @@ _LatestProblemState _$LatestProblemStateFromJson(Map<String, dynamic> json) =>
           : ReadProblem.fromJson(json['problem'] as Map<String, dynamic>),
       userAnswer: json['userAnswer'] == null
           ? null
-          : ReadUserAnswer.fromJson(json['userAnswer'] as Map<String, dynamic>),
+          : UserAnswerEntity.fromJson(
+              json['userAnswer'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$LatestProblemStateToJson(_LatestProblemState instance) =>

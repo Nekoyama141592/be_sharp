@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LatestProblemState {
   ReadProblem? get problem;
-  ReadUserAnswer? get userAnswer;
+  UserAnswerEntity? get userAnswer;
 
   /// Create a copy of LatestProblemState
   /// with the given fields replaced by the non-null parameter values.
@@ -54,10 +54,10 @@ abstract mixin class $LatestProblemStateCopyWith<$Res> {
           LatestProblemState value, $Res Function(LatestProblemState) _then) =
       _$LatestProblemStateCopyWithImpl;
   @useResult
-  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
+  $Res call({ReadProblem? problem, UserAnswerEntity? userAnswer});
 
   $ReadProblemCopyWith<$Res>? get problem;
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
+  $UserAnswerEntityCopyWith<$Res>? get userAnswer;
 }
 
 /// @nodoc
@@ -84,7 +84,7 @@ class _$LatestProblemStateCopyWithImpl<$Res>
       userAnswer: freezed == userAnswer
           ? _self.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
-              as ReadUserAnswer?,
+              as UserAnswerEntity?,
     ));
   }
 
@@ -106,12 +106,12 @@ class _$LatestProblemStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer {
+  $UserAnswerEntityCopyWith<$Res>? get userAnswer {
     if (_self.userAnswer == null) {
       return null;
     }
 
-    return $ReadUserAnswerCopyWith<$Res>(_self.userAnswer!, (value) {
+    return $UserAnswerEntityCopyWith<$Res>(_self.userAnswer!, (value) {
       return _then(_self.copyWith(userAnswer: value));
     });
   }
@@ -210,7 +210,7 @@ extension LatestProblemStatePatterns on LatestProblemState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(ReadProblem? problem, ReadUserAnswer? userAnswer)?
+    TResult Function(ReadProblem? problem, UserAnswerEntity? userAnswer)?
         $default, {
     required TResult orElse(),
   }) {
@@ -238,7 +238,8 @@ extension LatestProblemStatePatterns on LatestProblemState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(ReadProblem? problem, ReadUserAnswer? userAnswer) $default,
+    TResult Function(ReadProblem? problem, UserAnswerEntity? userAnswer)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -263,7 +264,7 @@ extension LatestProblemStatePatterns on LatestProblemState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(ReadProblem? problem, ReadUserAnswer? userAnswer)?
+    TResult? Function(ReadProblem? problem, UserAnswerEntity? userAnswer)?
         $default,
   ) {
     final _that = this;
@@ -286,7 +287,7 @@ class _LatestProblemState extends LatestProblemState {
   @override
   final ReadProblem? problem;
   @override
-  final ReadUserAnswer? userAnswer;
+  final UserAnswerEntity? userAnswer;
 
   /// Create a copy of LatestProblemState
   /// with the given fields replaced by the non-null parameter values.
@@ -331,12 +332,12 @@ abstract mixin class _$LatestProblemStateCopyWith<$Res>
       __$LatestProblemStateCopyWithImpl;
   @override
   @useResult
-  $Res call({ReadProblem? problem, ReadUserAnswer? userAnswer});
+  $Res call({ReadProblem? problem, UserAnswerEntity? userAnswer});
 
   @override
   $ReadProblemCopyWith<$Res>? get problem;
   @override
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer;
+  $UserAnswerEntityCopyWith<$Res>? get userAnswer;
 }
 
 /// @nodoc
@@ -363,7 +364,7 @@ class __$LatestProblemStateCopyWithImpl<$Res>
       userAnswer: freezed == userAnswer
           ? _self.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
-              as ReadUserAnswer?,
+              as UserAnswerEntity?,
     ));
   }
 
@@ -385,12 +386,12 @@ class __$LatestProblemStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadUserAnswerCopyWith<$Res>? get userAnswer {
+  $UserAnswerEntityCopyWith<$Res>? get userAnswer {
     if (_self.userAnswer == null) {
       return null;
     }
 
-    return $ReadUserAnswerCopyWith<$Res>(_self.userAnswer!, (value) {
+    return $UserAnswerEntityCopyWith<$Res>(_self.userAnswer!, (value) {
       return _then(_self.copyWith(userAnswer: value));
     });
   }

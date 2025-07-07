@@ -14,6 +14,7 @@ abstract class DetectedText with _$DetectedText {
       @Default("") String value}) = _DetectedText;
   factory DetectedText.fromJson(Map<String, dynamic> json) =>
       _$DetectedTextFromJson(json);
+  
   bool isInvalid() {
     const limit = 85;
     return negativeScore > limit;

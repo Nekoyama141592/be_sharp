@@ -1,9 +1,9 @@
+import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/repository/database_repository.dart';
 import 'package:be_sharp/application/use_case/file_use_case.dart';
 import 'package:be_sharp/domain/use_case_interface/home_use_case_interface.dart';
 
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:collection/collection.dart';
 
@@ -11,13 +11,13 @@ class HomeUseCase implements HomeUseCaseInterface {
   HomeUseCase({required this.repository, required this.fileUseCase});
   final DatabaseRepository repository;
   final FileUseCase fileUseCase;
-  List<String> _getUids(List<ReadUserAnswer> userAnswers) {
+  List<String> _getUids(List<UserAnswerEntity> userAnswers) {
     final uids = userAnswers.map((e) => e.uid).toList();
     return uids;
   }
 
   Future<AnsweredUser?> _answer(
-      ReadUserAnswer userAnswer, List<ReadPublicUser> users) async {
+      UserAnswerEntity userAnswer, List<ReadPublicUser> users) async {
     final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
     if (publicUser == null) return null;
 

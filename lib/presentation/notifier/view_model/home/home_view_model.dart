@@ -46,7 +46,7 @@ class HomeViewModel extends _$HomeViewModel {
     ]);
     // 早い順に並べる
     final result = [...answeredUsers]..sort((a, b) =>
-        a.userAnswer.typedCreateAt().compareTo(b.userAnswer.typedCreateAt()));
+        a.userAnswer.createdAt!.compareTo(b.userAnswer.createdAt!));
     return HomeState(
         latestProblem: latestProblem,
         answeredUsers: result,

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/constants/limit_constant.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user.dart';
@@ -232,8 +233,9 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   }
 
   Future<int> getRank(
-      String problemId, List<String> answers, ReadUserAnswer userAnswer) async {
-    final query = _rankingQuery(problemId, answers, userAnswer.typedCreateAt());
+      String problemId, List<String> answers, UserAnswerEntity userAnswer) async {
+    final createdAt = Timestamp.fromDate(userAnswer.createdAt!);
+    final query = _rankingQuery(problemId, answers, createdAt);
     final qshot = await query.count().get();
     final result = qshot.count ?? 0;
     return result;
@@ -283,13 +285,15 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return ReadProblem.fromJson(docs.first.data());
   }
 
-  Future<ReadUserAnswer?> fetchLatestUserAnswer(
+  Future<UserAnswerEntity?> fetchLatestUserAnswer(
       String uid, String problemId) async {
     final query = _latestUserAnswerQuery(uid, problemId);
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
-    return ReadUserAnswer.fromJson(docs.first.data());
+    final model = ReadUserAnswer.fromJson(docs.first.data());
+    final entity = UserAnswerEntity.fromJson(model.toJson());
+    return entity;
   }
 
   Future<List<String>> _fetchMuteUids(String? uid) async {
@@ -330,12 +334,14 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return deleteDoc(docRef);
   }
 
-  Future<List<ReadUserAnswer>> fetchCorrectUserAnswers(
+  Future<List<UserAnswerEntity>> fetchCorrectUserAnswers(
       String problemId, List<String> answers) async {
     try {
       final query = _correctUserAnswersQuery(problemId, answers);
       final qshot = await _getDocs(query);
-      return qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
+      final models = qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
+      final entities = models.map((e) => UserAnswerEntity.fromJson(e.toJson())).toList();
+      return entities;
     } catch (e) {
       debugPrint(e.toString());
       return [];

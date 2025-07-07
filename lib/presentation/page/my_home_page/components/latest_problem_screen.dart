@@ -1,6 +1,6 @@
 import 'package:be_sharp/core/util/route_util.dart';
+import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/latest_problem/latest_problem_view_model.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
@@ -38,7 +38,7 @@ class LatestProblemScreen extends ConsumerWidget {
   }
 
   Widget _buildContent(BuildContext context, ReadProblem? problem,
-      ReadUserAnswer? userAnswer, LatestProblemViewModel Function() notifier) {
+      UserAnswerEntity? userAnswer, LatestProblemViewModel Function() notifier) {
     if (problem == null) {
       return _buildCenteredMessage('問題が存在しません');
     } else if (userAnswer == null) {
@@ -94,7 +94,7 @@ class LatestProblemScreen extends ConsumerWidget {
   }
 
   Widget _buildQuizResult(BuildContext context, ReadProblem problem,
-      ReadUserAnswer userAnswer, LatestProblemViewModel Function() notifier) {
+      UserAnswerEntity userAnswer, LatestProblemViewModel Function() notifier) {
     final isCorrect = userAnswer.isCorrect(problem);
     final isInTime = userAnswer.isInTime(problem);
     final answerTime = userAnswer.getDifference(problem);

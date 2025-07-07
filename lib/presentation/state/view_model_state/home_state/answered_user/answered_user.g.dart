@@ -11,7 +11,7 @@ _AnsweredUser _$AnsweredUserFromJson(Map<String, dynamic> json) =>
       publicUser:
           ReadPublicUser.fromJson(json['publicUser'] as Map<String, dynamic>),
       userAnswer:
-          ReadUserAnswer.fromJson(json['userAnswer'] as Map<String, dynamic>),
+          UserAnswerEntity.fromJson(json['userAnswer'] as Map<String, dynamic>),
       userImage: json['userImage'] as String?,
     );
 

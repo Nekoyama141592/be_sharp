@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:be_sharp/domain/entity/dialog/text_action.dart';
-import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
@@ -34,19 +33,18 @@ class HomeViewModel extends _$HomeViewModel {
     final userAnswers = await ref
         .read(databaseRepositoryProvider)
         .fetchCorrectUserAnswers(problemId, answers);
+    final answeredUsers = await _homeUseCase.fetchAnsweredUsers(problemId, answers);
     final [
-      (answeredUsers as List<AnsweredUser>),
       (muteUids as List<String>),
       (userCount as int)
     ] = await Future.wait([
-      _homeUseCase.fetchAnsweredUsers(problemId, answers),
       _homeUseCase.fetchMuteUsers(ref.read(streamAuthUidProvider).value,
           userAnswers.map((e) => e.uid).toList()),
       _homeUseCase.fetchUserCount(problemId)
     ]);
     // 早い順に並べる
     final result = [...answeredUsers]..sort((a, b) =>
-        a.userAnswer.typedCreateAt().compareTo(b.userAnswer.typedCreateAt()));
+        a.userAnswer.createdAt!.compareTo(b.userAnswer.createdAt!));
     return HomeState(
         latestProblem: latestProblem,
         answeredUsers: result,
