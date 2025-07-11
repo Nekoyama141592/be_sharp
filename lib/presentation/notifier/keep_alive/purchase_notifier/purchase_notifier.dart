@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:be_sharp/core/extension/purchase_details_extension.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
+import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/core/provider/stream/purchase/purchase_stream_provider.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
@@ -16,14 +16,14 @@ part 'purchase_notifier.g.dart';
 @Riverpod(keepAlive: true)
 class PurchaseNotifier extends _$PurchaseNotifier {
   @override
-  FutureOr<List<VerifiedPurchaseModel>> build() {
+  FutureOr<List<VerifiedPurchaseEntity>> build() {
     final detailsList = ref.watch(purchaseStreamProvider).value ?? [];
     return _onListen(detailsList);
   }
 
   PurchaseRepository get _repository => ref.read(purchaseRepositoryProvider);
 
-  Future<List<VerifiedPurchaseModel>> _onListen(
+  Future<List<VerifiedPurchaseEntity>> _onListen(
     List<PurchaseDetails> detailsList,
   ) async {
     ToastUiUtil.showFlutterToast('購入情報を検証しています');
@@ -43,7 +43,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
 
   Future<void> _onVerifySuccess(
     PurchaseDetails details,
-    VerifiedPurchaseModel res,
+    VerifiedPurchaseEntity res,
   ) async {
     await _repository.completePurchase(details);
     await _repository.acknowledge(details);
@@ -54,7 +54,7 @@ class PurchaseNotifier extends _$PurchaseNotifier {
     ToastUiUtil.showErrorFlutterToast(msg);
   }
 
-  Future<List<VerifiedPurchaseModel>> _fetchPurchases() {
+  Future<List<VerifiedPurchaseEntity>> _fetchPurchases() {
     final uid = ref.read(streamAuthUidProvider).value;
     return ref.read(databaseRepositoryProvider).getVerifiedPurchases(uid);
   }

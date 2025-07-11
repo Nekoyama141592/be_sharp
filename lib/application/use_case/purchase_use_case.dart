@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:be_sharp/infrastructure/repository/api_repository.dart';
 import 'package:be_sharp/domain/use_case_interface/purchase_use_case_interface.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
+import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 class PurchaseUseCase implements PurchaseUseCaseInterface {
@@ -33,7 +33,7 @@ class PurchaseUseCase implements PurchaseUseCaseInterface {
   }
 
   @override
-  FutureResult<VerifiedPurchaseModel> verifyPurchase(
+  FutureResult<VerifiedPurchaseEntity> verifyPurchase(
       PurchaseDetails purchaseDetails) async {
     return Platform.isAndroid
         ? await repository.verifyAndroidReceipt(purchaseDetails)

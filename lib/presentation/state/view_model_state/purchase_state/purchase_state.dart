@@ -1,18 +1,18 @@
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
+import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 class PurchaseState {
-  final List<VerifiedPurchaseModel> verifiedPurchases;
+  final List<VerifiedPurchaseEntity> verifiedPurchases;
   final List<ProductDetails> products;
 
   PurchaseState(
-      {List<VerifiedPurchaseModel>? verifiedPurchases,
+      {List<VerifiedPurchaseEntity>? verifiedPurchases,
       List<ProductDetails>? products})
       : verifiedPurchases = verifiedPurchases ?? [],
         products = products ?? [];
 
   PurchaseState copyWith(
-      {List<VerifiedPurchaseModel>? verifiedPurchases,
+      {List<VerifiedPurchaseEntity>? verifiedPurchases,
       List<ProductDetails>? products}) {
     return PurchaseState(
       verifiedPurchases: verifiedPurchases ?? this.verifiedPurchases,
@@ -22,10 +22,10 @@ class PurchaseState {
 
   bool isPurchased(String productID) {
     return verifiedPurchases.any(
-        (e) => e.isValid() && productID == e.typedPurchaseDetails().productID);
+        (e) => productID == e.productId);
   }
 
   bool isSubscribing() {
-    return verifiedPurchases.any((e) => e.isValid());
+    return verifiedPurchases.any((e) => e.expiryTime.isAfter(DateTime.now()));
   }
 }

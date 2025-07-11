@@ -9,6 +9,7 @@ import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.d
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/public_user_model.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/user_answer_model.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
+import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
 import 'package:be_sharp/domain/repository_interface/database_repository_interface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -190,7 +191,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  Future<List<VerifiedPurchaseModel>> getVerifiedPurchases(String? uid) async {
+  Future<List<VerifiedPurchaseEntity>> getVerifiedPurchases(String? uid) async {
     try {
       if (uid == null) return [];
       final colRef = _verifiedPurchasesColRef(uid);
@@ -198,7 +199,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final docs = qshot.docs;
       final verifiedPurchases =
           docs.map((e) => VerifiedPurchaseModel.fromJson(e.data())).toList();
-      final results = verifiedPurchases.where((e) => e.isValid()).toList();
+      final validPurchases = verifiedPurchases.where((e) => e.isValid()).toList();
+      final results = validPurchases.map((e) => VerifiedPurchaseEntity.fromModel(e)).toList();
       return results;
     } catch (e) {
       debugPrint(e.toString());

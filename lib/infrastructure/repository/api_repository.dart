@@ -1,6 +1,7 @@
 import 'package:be_sharp/core/util/json_util.dart';
 import 'package:be_sharp/core/extension/purchase_details_extension.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
+import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/request/add_caption_request.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/create_problem/request/create_problem_request.dart';
@@ -113,34 +114,37 @@ class ApiRepository implements ApiRepositoryInterface {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _call(name, request.toJson());
-      final res = VerifiedPurchaseModel.fromJson(result);
-      return rs.Result.success(res);
+      final model = VerifiedPurchaseModel.fromJson(result);
+      final entity = VerifiedPurchaseEntity.fromModel(model);
+      return rs.Result.success(entity);
     } catch (e) {
       return rs.Result.failure('Failed to verify purchase: $e');
     }
   }
 
-  rs.FutureResult<VerifiedPurchaseModel> verifyAndroidReceipt(
+  rs.FutureResult<VerifiedPurchaseEntity> verifyAndroidReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _call(name, request.toJson());
-      final res = VerifiedPurchaseModel.fromJson(result);
-      return rs.Result.success(res);
+      final model = VerifiedPurchaseModel.fromJson(result);
+      final entity = VerifiedPurchaseEntity.fromModel(model);
+      return rs.Result.success(entity);
     } catch (e) {
       return rs.Result.failure('Failed to verify Android receipt: $e');
     }
   }
 
-  rs.FutureResult<VerifiedPurchaseModel> verifyIOSReceipt(
+  rs.FutureResult<VerifiedPurchaseEntity> verifyIOSReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyIOSReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _call(name, request.toJson());
-      final res = VerifiedPurchaseModel.fromJson(result);
-      return rs.Result.success(res);
+      final model = VerifiedPurchaseModel.fromJson(result);
+      final entity = VerifiedPurchaseEntity.fromModel(model);
+      return rs.Result.success(entity);
     } catch (e) {
       return rs.Result.failure('Failed to verify iOS receipt: $e');
     }

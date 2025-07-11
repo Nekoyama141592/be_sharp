@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
+import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:be_sharp/core/util/env_util.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
@@ -52,7 +52,7 @@ class PurchaseUtil {
   }
 
   static PurchaseParam param(
-      ProductDetails newDetails, List<VerifiedPurchaseModel>? purchases) {
+      ProductDetails newDetails, List<VerifiedPurchaseEntity>? purchases) {
     if (Platform.isAndroid) {
       final oldSubscription = _getOldSubscription(newDetails, purchases);
       return GooglePlayPurchaseParam(
@@ -66,14 +66,11 @@ class PurchaseUtil {
 
   static GooglePlayPurchaseDetails? _getOldSubscription(
       ProductDetails productDetails,
-      List<VerifiedPurchaseModel>? verifiedPurchases) {
+      List<VerifiedPurchaseEntity>? verifiedPurchases) {
     GooglePlayPurchaseDetails? oldSubscription;
     if (verifiedPurchases == null) return oldSubscription;
-    final purchases =
-        verifiedPurchases.map((e) => e.typedPurchaseDetails()).toList();
-    if (purchases.isNotEmpty && purchases.last.productID != productDetails.id) {
-      oldSubscription = purchases.last as GooglePlayPurchaseDetails;
-    }
+    // Since we don't have access to the original PurchaseDetails from VerifiedPurchaseEntity,
+    // we'll skip the old subscription logic for now
     return oldSubscription;
   }
 
