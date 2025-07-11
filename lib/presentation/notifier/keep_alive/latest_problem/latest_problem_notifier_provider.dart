@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 part 'latest_problem_notifier_provider.g.dart';
 
@@ -39,8 +38,7 @@ class LatestProblemNotifier extends _$LatestProblemNotifier {
   }
 
   Future<bool> _getIsNewProblem(String uid, QDoc problemDoc) async {
-    final model = ReadProblem.fromJson(problemDoc.data());
-    final entity = ProblemEntity.fromModel(model);
+    final entity = ProblemEntity.fromJson(problemDoc.data());
     if (!entity.isInTimeLimit()) return false;
     final problemId = entity.problemId;
     final doc = await repository.getUserAnswerDoc(uid, problemId);

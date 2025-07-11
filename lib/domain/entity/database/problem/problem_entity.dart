@@ -1,5 +1,4 @@
 import 'package:be_sharp/domain/converter/timestamp_converter.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'problem_entity.freezed.dart';
@@ -18,17 +17,6 @@ abstract class ProblemEntity with _$ProblemEntity {
   }) = _ProblemEntity;
   factory ProblemEntity.fromJson(Map<String, dynamic> json) =>
       _$ProblemEntityFromJson(json);
-
-  factory ProblemEntity.fromModel(ReadProblem model) {
-    return ProblemEntity(
-      createdAt: model.createdAt,
-      question: model.question,
-      latex: model.latex,
-      problemId: model.problemId,
-      timeLimitSeconds: model.timeLimitSeconds,
-      answers: model.answers,
-    );
-  }
 
 
   bool isInTimeLimit() {

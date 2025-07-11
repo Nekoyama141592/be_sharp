@@ -5,7 +5,6 @@ import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.d
 import 'package:be_sharp/infrastructure/constants/limit_constant.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/write/write_public_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
@@ -259,8 +258,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     try {
       final docRef = _problemDocRef(problemId);
       final doc = await _getDoc(docRef);
-      final model = ReadProblem.fromJson(doc.data()!);
-      return ProblemEntity.fromModel(model);
+      return ProblemEntity.fromJson(doc.data()!);
     } catch (e) {
       debugPrint(e.toString());
       return null;
@@ -284,8 +282,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
-    final model = ReadProblem.fromJson(docs.first.data());
-    return ProblemEntity.fromModel(model);
+    return ProblemEntity.fromJson(docs.first.data());
   }
 
   Future<UserAnswerEntity?> fetchLatestUserAnswer(
