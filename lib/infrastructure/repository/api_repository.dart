@@ -1,6 +1,6 @@
 import 'package:be_sharp/core/util/json_util.dart';
 import 'package:be_sharp/core/extension/purchase_details_extension.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase.dart';
+import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/request/add_caption_request.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/create_problem/request/create_problem_request.dart';
@@ -113,33 +113,33 @@ class ApiRepository implements ApiRepositoryInterface {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _call(name, request.toJson());
-      final res = VerifiedPurchase.fromJson(result);
+      final res = VerifiedPurchaseModel.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
       return rs.Result.failure('Failed to verify purchase: $e');
     }
   }
 
-  rs.FutureResult<VerifiedPurchase> verifyAndroidReceipt(
+  rs.FutureResult<VerifiedPurchaseModel> verifyAndroidReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyAndroidReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _call(name, request.toJson());
-      final res = VerifiedPurchase.fromJson(result);
+      final res = VerifiedPurchaseModel.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
       return rs.Result.failure('Failed to verify Android receipt: $e');
     }
   }
 
-  rs.FutureResult<VerifiedPurchase> verifyIOSReceipt(
+  rs.FutureResult<VerifiedPurchaseModel> verifyIOSReceipt(
       PurchaseDetails purchaseDetails) async {
     try {
       const name = 'verifyIOSReceipt';
       final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
       final result = await _call(name, request.toJson());
-      final res = VerifiedPurchase.fromJson(result);
+      final res = VerifiedPurchaseModel.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
       return rs.Result.failure('Failed to verify iOS receipt: $e');

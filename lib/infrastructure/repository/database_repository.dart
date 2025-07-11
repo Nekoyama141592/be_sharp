@@ -8,7 +8,7 @@ import 'package:be_sharp/infrastructure/model/firestore_model/private_user/priva
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/public_user_model.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/user_answer_model.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase.dart';
+import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
 import 'package:be_sharp/domain/repository_interface/database_repository_interface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -190,14 +190,14 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  Future<List<VerifiedPurchase>> getVerifiedPurchases(String? uid) async {
+  Future<List<VerifiedPurchaseModel>> getVerifiedPurchases(String? uid) async {
     try {
       if (uid == null) return [];
       final colRef = _verifiedPurchasesColRef(uid);
       final qshot = await colRef.get();
       final docs = qshot.docs;
       final verifiedPurchases =
-          docs.map((e) => VerifiedPurchase.fromJson(e.data())).toList();
+          docs.map((e) => VerifiedPurchaseModel.fromJson(e.data())).toList();
       final results = verifiedPurchases.where((e) => e.isValid()).toList();
       return results;
     } catch (e) {

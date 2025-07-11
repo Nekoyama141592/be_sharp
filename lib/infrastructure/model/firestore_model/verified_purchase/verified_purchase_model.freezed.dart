@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'verified_purchase.dart';
+part of 'verified_purchase_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,28 +13,28 @@ part of 'verified_purchase.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$VerifiedPurchase {
+mixin _$VerifiedPurchaseModel {
   Map<String, dynamic> get purchaseDetails;
   Map<String, dynamic> get verifiedReceipt;
   String get uid;
   String get os;
 
-  /// Create a copy of VerifiedPurchase
+  /// Create a copy of VerifiedPurchaseModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VerifiedPurchaseCopyWith<VerifiedPurchase> get copyWith =>
-      _$VerifiedPurchaseCopyWithImpl<VerifiedPurchase>(
-          this as VerifiedPurchase, _$identity);
+  $VerifiedPurchaseModelCopyWith<VerifiedPurchaseModel> get copyWith =>
+      _$VerifiedPurchaseModelCopyWithImpl<VerifiedPurchaseModel>(
+          this as VerifiedPurchaseModel, _$identity);
 
-  /// Serializes this VerifiedPurchase to a JSON map.
+  /// Serializes this VerifiedPurchaseModel to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VerifiedPurchase &&
+            other is VerifiedPurchaseModel &&
             const DeepCollectionEquality()
                 .equals(other.purchaseDetails, purchaseDetails) &&
             const DeepCollectionEquality()
@@ -54,15 +54,15 @@ mixin _$VerifiedPurchase {
 
   @override
   String toString() {
-    return 'VerifiedPurchase(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
+    return 'VerifiedPurchaseModel(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VerifiedPurchaseCopyWith<$Res> {
-  factory $VerifiedPurchaseCopyWith(
-          VerifiedPurchase value, $Res Function(VerifiedPurchase) _then) =
-      _$VerifiedPurchaseCopyWithImpl;
+abstract mixin class $VerifiedPurchaseModelCopyWith<$Res> {
+  factory $VerifiedPurchaseModelCopyWith(VerifiedPurchaseModel value,
+          $Res Function(VerifiedPurchaseModel) _then) =
+      _$VerifiedPurchaseModelCopyWithImpl;
   @useResult
   $Res call(
       {Map<String, dynamic> purchaseDetails,
@@ -72,14 +72,14 @@ abstract mixin class $VerifiedPurchaseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VerifiedPurchaseCopyWithImpl<$Res>
-    implements $VerifiedPurchaseCopyWith<$Res> {
-  _$VerifiedPurchaseCopyWithImpl(this._self, this._then);
+class _$VerifiedPurchaseModelCopyWithImpl<$Res>
+    implements $VerifiedPurchaseModelCopyWith<$Res> {
+  _$VerifiedPurchaseModelCopyWithImpl(this._self, this._then);
 
-  final VerifiedPurchase _self;
-  final $Res Function(VerifiedPurchase) _then;
+  final VerifiedPurchaseModel _self;
+  final $Res Function(VerifiedPurchaseModel) _then;
 
-  /// Create a copy of VerifiedPurchase
+  /// Create a copy of VerifiedPurchaseModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -110,8 +110,8 @@ class _$VerifiedPurchaseCopyWithImpl<$Res>
   }
 }
 
-/// Adds pattern-matching-related methods to [VerifiedPurchase].
-extension VerifiedPurchasePatterns on VerifiedPurchase {
+/// Adds pattern-matching-related methods to [VerifiedPurchaseModel].
+extension VerifiedPurchaseModelPatterns on VerifiedPurchaseModel {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -126,12 +126,12 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_VerifiedPurchase value)? $default, {
+    TResult Function(_VerifiedPurchaseModel value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchase() when $default != null:
+      case _VerifiedPurchaseModel() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -153,11 +153,11 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_VerifiedPurchase value) $default,
+    TResult Function(_VerifiedPurchaseModel value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchase():
+      case _VerifiedPurchaseModel():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -178,11 +178,11 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_VerifiedPurchase value)? $default,
+    TResult? Function(_VerifiedPurchaseModel value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchase() when $default != null:
+      case _VerifiedPurchaseModel() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -210,7 +210,7 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
   }) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchase() when $default != null:
+      case _VerifiedPurchaseModel() when $default != null:
         return $default(
             _that.purchaseDetails, _that.verifiedReceipt, _that.uid, _that.os);
       case _:
@@ -239,7 +239,7 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchase():
+      case _VerifiedPurchaseModel():
         return $default(
             _that.purchaseDetails, _that.verifiedReceipt, _that.uid, _that.os);
       case _:
@@ -267,7 +267,7 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchase() when $default != null:
+      case _VerifiedPurchaseModel() when $default != null:
         return $default(
             _that.purchaseDetails, _that.verifiedReceipt, _that.uid, _that.os);
       case _:
@@ -278,8 +278,8 @@ extension VerifiedPurchasePatterns on VerifiedPurchase {
 
 /// @nodoc
 @JsonSerializable()
-class _VerifiedPurchase extends VerifiedPurchase {
-  const _VerifiedPurchase(
+class _VerifiedPurchaseModel extends VerifiedPurchaseModel {
+  const _VerifiedPurchaseModel(
       {required final Map<String, dynamic> purchaseDetails,
       required final Map<String, dynamic> verifiedReceipt,
       required this.uid,
@@ -287,8 +287,8 @@ class _VerifiedPurchase extends VerifiedPurchase {
       : _purchaseDetails = purchaseDetails,
         _verifiedReceipt = verifiedReceipt,
         super._();
-  factory _VerifiedPurchase.fromJson(Map<String, dynamic> json) =>
-      _$VerifiedPurchaseFromJson(json);
+  factory _VerifiedPurchaseModel.fromJson(Map<String, dynamic> json) =>
+      _$VerifiedPurchaseModelFromJson(json);
 
   final Map<String, dynamic> _purchaseDetails;
   @override
@@ -311,17 +311,18 @@ class _VerifiedPurchase extends VerifiedPurchase {
   @override
   final String os;
 
-  /// Create a copy of VerifiedPurchase
+  /// Create a copy of VerifiedPurchaseModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VerifiedPurchaseCopyWith<_VerifiedPurchase> get copyWith =>
-      __$VerifiedPurchaseCopyWithImpl<_VerifiedPurchase>(this, _$identity);
+  _$VerifiedPurchaseModelCopyWith<_VerifiedPurchaseModel> get copyWith =>
+      __$VerifiedPurchaseModelCopyWithImpl<_VerifiedPurchaseModel>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VerifiedPurchaseToJson(
+    return _$VerifiedPurchaseModelToJson(
       this,
     );
   }
@@ -330,7 +331,7 @@ class _VerifiedPurchase extends VerifiedPurchase {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VerifiedPurchase &&
+            other is _VerifiedPurchaseModel &&
             const DeepCollectionEquality()
                 .equals(other._purchaseDetails, _purchaseDetails) &&
             const DeepCollectionEquality()
@@ -350,16 +351,16 @@ class _VerifiedPurchase extends VerifiedPurchase {
 
   @override
   String toString() {
-    return 'VerifiedPurchase(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
+    return 'VerifiedPurchaseModel(purchaseDetails: $purchaseDetails, verifiedReceipt: $verifiedReceipt, uid: $uid, os: $os)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VerifiedPurchaseCopyWith<$Res>
-    implements $VerifiedPurchaseCopyWith<$Res> {
-  factory _$VerifiedPurchaseCopyWith(
-          _VerifiedPurchase value, $Res Function(_VerifiedPurchase) _then) =
-      __$VerifiedPurchaseCopyWithImpl;
+abstract mixin class _$VerifiedPurchaseModelCopyWith<$Res>
+    implements $VerifiedPurchaseModelCopyWith<$Res> {
+  factory _$VerifiedPurchaseModelCopyWith(_VerifiedPurchaseModel value,
+          $Res Function(_VerifiedPurchaseModel) _then) =
+      __$VerifiedPurchaseModelCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -370,14 +371,14 @@ abstract mixin class _$VerifiedPurchaseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$VerifiedPurchaseCopyWithImpl<$Res>
-    implements _$VerifiedPurchaseCopyWith<$Res> {
-  __$VerifiedPurchaseCopyWithImpl(this._self, this._then);
+class __$VerifiedPurchaseModelCopyWithImpl<$Res>
+    implements _$VerifiedPurchaseModelCopyWith<$Res> {
+  __$VerifiedPurchaseModelCopyWithImpl(this._self, this._then);
 
-  final _VerifiedPurchase _self;
-  final $Res Function(_VerifiedPurchase) _then;
+  final _VerifiedPurchaseModel _self;
+  final $Res Function(_VerifiedPurchaseModel) _then;
 
-  /// Create a copy of VerifiedPurchase
+  /// Create a copy of VerifiedPurchaseModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -387,7 +388,7 @@ class __$VerifiedPurchaseCopyWithImpl<$Res>
     Object? uid = null,
     Object? os = null,
   }) {
-    return _then(_VerifiedPurchase(
+    return _then(_VerifiedPurchaseModel(
       purchaseDetails: null == purchaseDetails
           ? _self._purchaseDetails
           : purchaseDetails // ignore: cast_nullable_to_non_nullable

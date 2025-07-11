@@ -4,20 +4,20 @@ import 'package:be_sharp/infrastructure/model/rest_api/verify_purchase/response/
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-part 'verified_purchase.freezed.dart';
-part 'verified_purchase.g.dart';
+part 'verified_purchase_model.freezed.dart';
+part 'verified_purchase_model.g.dart';
 
 @freezed
-abstract class VerifiedPurchase with _$VerifiedPurchase {
-  const VerifiedPurchase._();
-  const factory VerifiedPurchase({
+abstract class VerifiedPurchaseModel with _$VerifiedPurchaseModel {
+  const VerifiedPurchaseModel._();
+  const factory VerifiedPurchaseModel({
     required Map<String, dynamic> purchaseDetails,
     required Map<String, dynamic> verifiedReceipt,
     required String uid,
     required String os,
-  }) = _VerifiedPurchase;
-  factory VerifiedPurchase.fromJson(Map<String, dynamic> json) =>
-      _$VerifiedPurchaseFromJson(json);
+  }) = _VerifiedPurchaseModel;
+  factory VerifiedPurchaseModel.fromJson(Map<String, dynamic> json) =>
+      _$VerifiedPurchaseModelFromJson(json);
   bool _isAndroidReceipt() {
     return os == 'Android';
   }
