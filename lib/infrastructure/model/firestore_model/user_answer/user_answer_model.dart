@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_answer_model.freezed.dart';
@@ -15,4 +16,18 @@ abstract class UserAnswerModel with _$UserAnswerModel {
   }) = _UserAnswerModel;
   factory UserAnswerModel.fromJson(Map<String, dynamic> json) =>
       _$UserAnswerModelFromJson(json);
+  factory UserAnswerModel.withServerTimestamp({
+    required String answer,
+    required String problemId,
+    required String uid,
+    int likeCount = 0,
+  }) {
+    return UserAnswerModel(
+      answer: answer,
+      createdAt: FieldValue.serverTimestamp(),
+      likeCount: likeCount,
+      problemId: problemId,
+      uid: uid,
+    );
+  }
 }

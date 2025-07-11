@@ -119,10 +119,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   }
 
   FutureResult<bool> createPrivateUser(String uid, String? token) {
-    final privateUser = PrivateUserModel(
-        fcmToken: token ?? '',
-        uid: uid,
-        createdAt: FieldValue.serverTimestamp());
+    final privateUser = PrivateUserModel.withServerTimestamp(uid, fcmToken: token);
     final docRef = _privateUserDocRef(uid);
     final data = privateUser.toJson();
     return createDoc(docRef, data);
@@ -267,9 +264,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   FutureResult<bool> createAnswer(
       String uid, String problemId, String answer) async {
     final docRef = _userAnswerDocRef(uid, problemId);
-    final json = UserAnswerModel(
+    final json = UserAnswerModel.withServerTimestamp(
             answer: answer,
-            createdAt: FieldValue.serverTimestamp(),
             problemId: problemId,
             uid: uid)
         .toJson();
@@ -321,7 +317,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   FutureResult<bool> muteUser(String uid, String muteUid) {
     final docRef = _muteUserDocRef(uid, muteUid);
     final json =
-        MuteUserModel(muteUid: muteUid, createdAt: FieldValue.serverTimestamp())
+        MuteUserModel.withServerTimestamp(muteUid)
             .toJson();
     return createDoc(docRef, json);
   }

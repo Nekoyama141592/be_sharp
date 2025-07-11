@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'private_user_model.freezed.dart';
@@ -14,4 +15,12 @@ abstract class PrivateUserModel with _$PrivateUserModel {
   }) = _PrivateUserModel;
   factory PrivateUserModel.fromJson(Map<String, dynamic> json) =>
       _$PrivateUserModelFromJson(json);
+  factory PrivateUserModel.withServerTimestamp(String uid, {String? fcmToken, bool isAdmin = false}) {
+    return PrivateUserModel(
+      fcmToken: fcmToken ?? '',
+      isAdmin: isAdmin,
+      uid: uid,
+      createdAt: FieldValue.serverTimestamp(),
+    );
+  }
 }
