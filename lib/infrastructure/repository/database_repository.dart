@@ -7,7 +7,6 @@ import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_use
 import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/write/write_public_user.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/write/write_user_answer.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
@@ -291,9 +290,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     final qshot = await query.get();
     final docs = qshot.docs;
     if (docs.isEmpty) return null;
-    final model = ReadUserAnswer.fromJson(docs.first.data());
-    final entity = UserAnswerEntity.fromJson(model.toJson());
-    return entity;
+    return UserAnswerEntity.fromJson(docs.first.data());
   }
 
   Future<List<String>> _fetchMuteUids(String? uid) async {
@@ -339,8 +336,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     try {
       final query = _correctUserAnswersQuery(problemId, answers);
       final qshot = await _getDocs(query);
-      final models = qshot.docs.map((e) => ReadUserAnswer.fromJson(e.data())).toList();
-      final entities = models.map((e) => UserAnswerEntity.fromJson(e.toJson())).toList();
+      final entities = qshot.docs.map((e) => UserAnswerEntity.fromJson(e.data())).toList();
       return entities;
     } catch (e) {
       debugPrint(e.toString());
