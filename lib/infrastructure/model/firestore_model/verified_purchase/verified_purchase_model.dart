@@ -30,14 +30,14 @@ abstract class VerifiedPurchaseModel with _$VerifiedPurchaseModel {
     return PurchaseUtil.purchaseDetailsFromJson(purchaseDetails);
   }
 
-  String get _expiryTimeMillis {
+  String get expiryTimeMillis {
     return _isAndroidReceipt()
         ? _androidReceipt.expiryTimeMillis
         : _iosReceipt.expires_date_ms;
   }
 
   bool isValid() {
-    final intExpiryMills = int.tryParse(_expiryTimeMillis);
+    final intExpiryMills = int.tryParse(expiryTimeMillis);
     if (intExpiryMills == null) {
       return false;
     } else {
