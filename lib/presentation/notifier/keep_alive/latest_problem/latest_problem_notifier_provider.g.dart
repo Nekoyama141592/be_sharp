@@ -27,7 +27,7 @@ final latestProblemStreamProvider =
 typedef LatestProblemStreamRef
     = StreamProviderRef<QuerySnapshot<Map<String, dynamic>>>;
 String _$latestProblemNotifierHash() =>
-    r'9c2c1547967dc1e7e1e9e71dc218e12177132158';
+    r'4d27ca6c727c4d8e2106d751358981cfd3fb1ad6';
 
 /// See also [LatestProblemNotifier].
 @ProviderFor(LatestProblemNotifier)

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'write_public_user.dart';
+part of 'public_user_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,7 +13,7 @@ part of 'write_public_user.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$WritePublicUser {
+mixin _$PublicUserModel {
   dynamic get createdAt;
   int get followerCount;
   int get followingCount;
@@ -21,22 +21,22 @@ mixin _$WritePublicUser {
   String get uid;
   dynamic get updatedAt;
 
-  /// Create a copy of WritePublicUser
+  /// Create a copy of PublicUserModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $WritePublicUserCopyWith<WritePublicUser> get copyWith =>
-      _$WritePublicUserCopyWithImpl<WritePublicUser>(
-          this as WritePublicUser, _$identity);
+  $PublicUserModelCopyWith<PublicUserModel> get copyWith =>
+      _$PublicUserModelCopyWithImpl<PublicUserModel>(
+          this as PublicUserModel, _$identity);
 
-  /// Serializes this WritePublicUser to a JSON map.
+  /// Serializes this PublicUserModel to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WritePublicUser &&
+            other is PublicUserModel &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.followerCount, followerCount) ||
                 other.followerCount == followerCount) &&
@@ -61,15 +61,15 @@ mixin _$WritePublicUser {
 
   @override
   String toString() {
-    return 'WritePublicUser(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
+    return 'PublicUserModel(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class $WritePublicUserCopyWith<$Res> {
-  factory $WritePublicUserCopyWith(
-          WritePublicUser value, $Res Function(WritePublicUser) _then) =
-      _$WritePublicUserCopyWithImpl;
+abstract mixin class $PublicUserModelCopyWith<$Res> {
+  factory $PublicUserModelCopyWith(
+          PublicUserModel value, $Res Function(PublicUserModel) _then) =
+      _$PublicUserModelCopyWithImpl;
   @useResult
   $Res call(
       {dynamic createdAt,
@@ -81,14 +81,14 @@ abstract mixin class $WritePublicUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WritePublicUserCopyWithImpl<$Res>
-    implements $WritePublicUserCopyWith<$Res> {
-  _$WritePublicUserCopyWithImpl(this._self, this._then);
+class _$PublicUserModelCopyWithImpl<$Res>
+    implements $PublicUserModelCopyWith<$Res> {
+  _$PublicUserModelCopyWithImpl(this._self, this._then);
 
-  final WritePublicUser _self;
-  final $Res Function(WritePublicUser) _then;
+  final PublicUserModel _self;
+  final $Res Function(PublicUserModel) _then;
 
-  /// Create a copy of WritePublicUser
+  /// Create a copy of PublicUserModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -129,8 +129,8 @@ class _$WritePublicUserCopyWithImpl<$Res>
   }
 }
 
-/// Adds pattern-matching-related methods to [WritePublicUser].
-extension WritePublicUserPatterns on WritePublicUser {
+/// Adds pattern-matching-related methods to [PublicUserModel].
+extension PublicUserModelPatterns on PublicUserModel {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -145,12 +145,12 @@ extension WritePublicUserPatterns on WritePublicUser {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_WritePublicUser value)? $default, {
+    TResult Function(_PublicUserModel value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _WritePublicUser() when $default != null:
+      case _PublicUserModel() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -172,11 +172,11 @@ extension WritePublicUserPatterns on WritePublicUser {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_WritePublicUser value) $default,
+    TResult Function(_PublicUserModel value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _WritePublicUser():
+      case _PublicUserModel():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -197,11 +197,11 @@ extension WritePublicUserPatterns on WritePublicUser {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_WritePublicUser value)? $default,
+    TResult? Function(_PublicUserModel value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _WritePublicUser() when $default != null:
+      case _PublicUserModel() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -229,7 +229,7 @@ extension WritePublicUserPatterns on WritePublicUser {
   }) {
     final _that = this;
     switch (_that) {
-      case _WritePublicUser() when $default != null:
+      case _PublicUserModel() when $default != null:
         return $default(_that.createdAt, _that.followerCount,
             _that.followingCount, _that.muteCount, _that.uid, _that.updatedAt);
       case _:
@@ -258,7 +258,7 @@ extension WritePublicUserPatterns on WritePublicUser {
   ) {
     final _that = this;
     switch (_that) {
-      case _WritePublicUser():
+      case _PublicUserModel():
         return $default(_that.createdAt, _that.followerCount,
             _that.followingCount, _that.muteCount, _that.uid, _that.updatedAt);
       case _:
@@ -286,7 +286,7 @@ extension WritePublicUserPatterns on WritePublicUser {
   ) {
     final _that = this;
     switch (_that) {
-      case _WritePublicUser() when $default != null:
+      case _PublicUserModel() when $default != null:
         return $default(_that.createdAt, _that.followerCount,
             _that.followingCount, _that.muteCount, _that.uid, _that.updatedAt);
       case _:
@@ -297,8 +297,8 @@ extension WritePublicUserPatterns on WritePublicUser {
 
 /// @nodoc
 @JsonSerializable()
-class _WritePublicUser extends WritePublicUser {
-  const _WritePublicUser(
+class _PublicUserModel extends PublicUserModel {
+  const _PublicUserModel(
       {required this.createdAt,
       this.followerCount = 0,
       this.followingCount = 0,
@@ -306,8 +306,8 @@ class _WritePublicUser extends WritePublicUser {
       required this.uid,
       required this.updatedAt})
       : super._();
-  factory _WritePublicUser.fromJson(Map<String, dynamic> json) =>
-      _$WritePublicUserFromJson(json);
+  factory _PublicUserModel.fromJson(Map<String, dynamic> json) =>
+      _$PublicUserModelFromJson(json);
 
   @override
   final dynamic createdAt;
@@ -325,17 +325,17 @@ class _WritePublicUser extends WritePublicUser {
   @override
   final dynamic updatedAt;
 
-  /// Create a copy of WritePublicUser
+  /// Create a copy of PublicUserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$WritePublicUserCopyWith<_WritePublicUser> get copyWith =>
-      __$WritePublicUserCopyWithImpl<_WritePublicUser>(this, _$identity);
+  _$PublicUserModelCopyWith<_PublicUserModel> get copyWith =>
+      __$PublicUserModelCopyWithImpl<_PublicUserModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$WritePublicUserToJson(
+    return _$PublicUserModelToJson(
       this,
     );
   }
@@ -344,7 +344,7 @@ class _WritePublicUser extends WritePublicUser {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WritePublicUser &&
+            other is _PublicUserModel &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.followerCount, followerCount) ||
                 other.followerCount == followerCount) &&
@@ -369,16 +369,16 @@ class _WritePublicUser extends WritePublicUser {
 
   @override
   String toString() {
-    return 'WritePublicUser(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
+    return 'PublicUserModel(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$WritePublicUserCopyWith<$Res>
-    implements $WritePublicUserCopyWith<$Res> {
-  factory _$WritePublicUserCopyWith(
-          _WritePublicUser value, $Res Function(_WritePublicUser) _then) =
-      __$WritePublicUserCopyWithImpl;
+abstract mixin class _$PublicUserModelCopyWith<$Res>
+    implements $PublicUserModelCopyWith<$Res> {
+  factory _$PublicUserModelCopyWith(
+          _PublicUserModel value, $Res Function(_PublicUserModel) _then) =
+      __$PublicUserModelCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -391,14 +391,14 @@ abstract mixin class _$WritePublicUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$WritePublicUserCopyWithImpl<$Res>
-    implements _$WritePublicUserCopyWith<$Res> {
-  __$WritePublicUserCopyWithImpl(this._self, this._then);
+class __$PublicUserModelCopyWithImpl<$Res>
+    implements _$PublicUserModelCopyWith<$Res> {
+  __$PublicUserModelCopyWithImpl(this._self, this._then);
 
-  final _WritePublicUser _self;
-  final $Res Function(_WritePublicUser) _then;
+  final _PublicUserModel _self;
+  final $Res Function(_PublicUserModel) _then;
 
-  /// Create a copy of WritePublicUser
+  /// Create a copy of PublicUserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -410,7 +410,7 @@ class __$WritePublicUserCopyWithImpl<$Res>
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
-    return _then(_WritePublicUser(
+    return _then(_PublicUserModel(
       createdAt: freezed == createdAt
           ? _self.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
