@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'write_user_answer.dart';
+part of 'user_answer_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_WriteUserAnswer _$WriteUserAnswerFromJson(Map<String, dynamic> json) =>
-    _WriteUserAnswer(
+_UserAnswerModel _$UserAnswerModelFromJson(Map<String, dynamic> json) =>
+    _UserAnswerModel(
       answer: json['answer'] as String,
       createdAt: json['createdAt'],
       likeCount: (json['likeCount'] as num?)?.toInt() ?? 0,
@@ -15,7 +15,7 @@ _WriteUserAnswer _$WriteUserAnswerFromJson(Map<String, dynamic> json) =>
       uid: json['uid'] as String,
     );
 
-Map<String, dynamic> _$WriteUserAnswerToJson(_WriteUserAnswer instance) =>
+Map<String, dynamic> _$UserAnswerModelToJson(_UserAnswerModel instance) =>
     <String, dynamic>{
       'answer': instance.answer,
       'createdAt': instance.createdAt,

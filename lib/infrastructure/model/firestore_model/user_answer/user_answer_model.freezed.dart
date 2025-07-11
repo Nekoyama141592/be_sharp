@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'write_user_answer.dart';
+part of 'user_answer_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,29 +13,29 @@ part of 'write_user_answer.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$WriteUserAnswer {
+mixin _$UserAnswerModel {
   String get answer;
   dynamic get createdAt;
   int get likeCount;
   String get problemId;
   String get uid;
 
-  /// Create a copy of WriteUserAnswer
+  /// Create a copy of UserAnswerModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $WriteUserAnswerCopyWith<WriteUserAnswer> get copyWith =>
-      _$WriteUserAnswerCopyWithImpl<WriteUserAnswer>(
-          this as WriteUserAnswer, _$identity);
+  $UserAnswerModelCopyWith<UserAnswerModel> get copyWith =>
+      _$UserAnswerModelCopyWithImpl<UserAnswerModel>(
+          this as UserAnswerModel, _$identity);
 
-  /// Serializes this WriteUserAnswer to a JSON map.
+  /// Serializes this UserAnswerModel to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is WriteUserAnswer &&
+            other is UserAnswerModel &&
             (identical(other.answer, answer) || other.answer == answer) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.likeCount, likeCount) ||
@@ -57,15 +57,15 @@ mixin _$WriteUserAnswer {
 
   @override
   String toString() {
-    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
+    return 'UserAnswerModel(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
   }
 }
 
 /// @nodoc
-abstract mixin class $WriteUserAnswerCopyWith<$Res> {
-  factory $WriteUserAnswerCopyWith(
-          WriteUserAnswer value, $Res Function(WriteUserAnswer) _then) =
-      _$WriteUserAnswerCopyWithImpl;
+abstract mixin class $UserAnswerModelCopyWith<$Res> {
+  factory $UserAnswerModelCopyWith(
+          UserAnswerModel value, $Res Function(UserAnswerModel) _then) =
+      _$UserAnswerModelCopyWithImpl;
   @useResult
   $Res call(
       {String answer,
@@ -76,14 +76,14 @@ abstract mixin class $WriteUserAnswerCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WriteUserAnswerCopyWithImpl<$Res>
-    implements $WriteUserAnswerCopyWith<$Res> {
-  _$WriteUserAnswerCopyWithImpl(this._self, this._then);
+class _$UserAnswerModelCopyWithImpl<$Res>
+    implements $UserAnswerModelCopyWith<$Res> {
+  _$UserAnswerModelCopyWithImpl(this._self, this._then);
 
-  final WriteUserAnswer _self;
-  final $Res Function(WriteUserAnswer) _then;
+  final UserAnswerModel _self;
+  final $Res Function(UserAnswerModel) _then;
 
-  /// Create a copy of WriteUserAnswer
+  /// Create a copy of UserAnswerModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -119,8 +119,8 @@ class _$WriteUserAnswerCopyWithImpl<$Res>
   }
 }
 
-/// Adds pattern-matching-related methods to [WriteUserAnswer].
-extension WriteUserAnswerPatterns on WriteUserAnswer {
+/// Adds pattern-matching-related methods to [UserAnswerModel].
+extension UserAnswerModelPatterns on UserAnswerModel {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -135,12 +135,12 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_WriteUserAnswer value)? $default, {
+    TResult Function(_UserAnswerModel value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _WriteUserAnswer() when $default != null:
+      case _UserAnswerModel() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -162,11 +162,11 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_WriteUserAnswer value) $default,
+    TResult Function(_UserAnswerModel value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _WriteUserAnswer():
+      case _UserAnswerModel():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -187,11 +187,11 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_WriteUserAnswer value)? $default,
+    TResult? Function(_UserAnswerModel value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _WriteUserAnswer() when $default != null:
+      case _UserAnswerModel() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -219,7 +219,7 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
   }) {
     final _that = this;
     switch (_that) {
-      case _WriteUserAnswer() when $default != null:
+      case _UserAnswerModel() when $default != null:
         return $default(_that.answer, _that.createdAt, _that.likeCount,
             _that.problemId, _that.uid);
       case _:
@@ -248,7 +248,7 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
   ) {
     final _that = this;
     switch (_that) {
-      case _WriteUserAnswer():
+      case _UserAnswerModel():
         return $default(_that.answer, _that.createdAt, _that.likeCount,
             _that.problemId, _that.uid);
       case _:
@@ -276,7 +276,7 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
   ) {
     final _that = this;
     switch (_that) {
-      case _WriteUserAnswer() when $default != null:
+      case _UserAnswerModel() when $default != null:
         return $default(_that.answer, _that.createdAt, _that.likeCount,
             _that.problemId, _that.uid);
       case _:
@@ -287,16 +287,16 @@ extension WriteUserAnswerPatterns on WriteUserAnswer {
 
 /// @nodoc
 @JsonSerializable()
-class _WriteUserAnswer extends WriteUserAnswer {
-  const _WriteUserAnswer(
+class _UserAnswerModel extends UserAnswerModel {
+  const _UserAnswerModel(
       {required this.answer,
       required this.createdAt,
       this.likeCount = 0,
       required this.problemId,
       required this.uid})
       : super._();
-  factory _WriteUserAnswer.fromJson(Map<String, dynamic> json) =>
-      _$WriteUserAnswerFromJson(json);
+  factory _UserAnswerModel.fromJson(Map<String, dynamic> json) =>
+      _$UserAnswerModelFromJson(json);
 
   @override
   final String answer;
@@ -310,17 +310,17 @@ class _WriteUserAnswer extends WriteUserAnswer {
   @override
   final String uid;
 
-  /// Create a copy of WriteUserAnswer
+  /// Create a copy of UserAnswerModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$WriteUserAnswerCopyWith<_WriteUserAnswer> get copyWith =>
-      __$WriteUserAnswerCopyWithImpl<_WriteUserAnswer>(this, _$identity);
+  _$UserAnswerModelCopyWith<_UserAnswerModel> get copyWith =>
+      __$UserAnswerModelCopyWithImpl<_UserAnswerModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$WriteUserAnswerToJson(
+    return _$UserAnswerModelToJson(
       this,
     );
   }
@@ -329,7 +329,7 @@ class _WriteUserAnswer extends WriteUserAnswer {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WriteUserAnswer &&
+            other is _UserAnswerModel &&
             (identical(other.answer, answer) || other.answer == answer) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             (identical(other.likeCount, likeCount) ||
@@ -351,16 +351,16 @@ class _WriteUserAnswer extends WriteUserAnswer {
 
   @override
   String toString() {
-    return 'WriteUserAnswer(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
+    return 'UserAnswerModel(answer: $answer, createdAt: $createdAt, likeCount: $likeCount, problemId: $problemId, uid: $uid)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$WriteUserAnswerCopyWith<$Res>
-    implements $WriteUserAnswerCopyWith<$Res> {
-  factory _$WriteUserAnswerCopyWith(
-          _WriteUserAnswer value, $Res Function(_WriteUserAnswer) _then) =
-      __$WriteUserAnswerCopyWithImpl;
+abstract mixin class _$UserAnswerModelCopyWith<$Res>
+    implements $UserAnswerModelCopyWith<$Res> {
+  factory _$UserAnswerModelCopyWith(
+          _UserAnswerModel value, $Res Function(_UserAnswerModel) _then) =
+      __$UserAnswerModelCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -372,14 +372,14 @@ abstract mixin class _$WriteUserAnswerCopyWith<$Res>
 }
 
 /// @nodoc
-class __$WriteUserAnswerCopyWithImpl<$Res>
-    implements _$WriteUserAnswerCopyWith<$Res> {
-  __$WriteUserAnswerCopyWithImpl(this._self, this._then);
+class __$UserAnswerModelCopyWithImpl<$Res>
+    implements _$UserAnswerModelCopyWith<$Res> {
+  __$UserAnswerModelCopyWithImpl(this._self, this._then);
 
-  final _WriteUserAnswer _self;
-  final $Res Function(_WriteUserAnswer) _then;
+  final _UserAnswerModel _self;
+  final $Res Function(_UserAnswerModel) _then;
 
-  /// Create a copy of WriteUserAnswer
+  /// Create a copy of UserAnswerModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -390,7 +390,7 @@ class __$WriteUserAnswerCopyWithImpl<$Res>
     Object? problemId = null,
     Object? uid = null,
   }) {
-    return _then(_WriteUserAnswer(
+    return _then(_UserAnswerModel(
       answer: null == answer
           ? _self.answer
           : answer // ignore: cast_nullable_to_non_nullable

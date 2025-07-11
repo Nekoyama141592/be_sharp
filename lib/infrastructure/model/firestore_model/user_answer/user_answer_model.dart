@@ -1,0 +1,18 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'user_answer_model.freezed.dart';
+part 'user_answer_model.g.dart';
+
+@freezed
+abstract class UserAnswerModel with _$UserAnswerModel {
+  const UserAnswerModel._();
+  const factory UserAnswerModel({
+    required String answer,
+    required dynamic createdAt,
+    @Default(0) int likeCount,
+    required String problemId,
+    required String uid,
+  }) = _UserAnswerModel;
+  factory UserAnswerModel.fromJson(Map<String, dynamic> json) =>
+      _$UserAnswerModelFromJson(json);
+}

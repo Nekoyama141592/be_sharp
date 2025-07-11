@@ -7,7 +7,7 @@ import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_use
 import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/public_user_model.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/write/write_user_answer.dart';
+import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/user_answer_model.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
 import 'package:be_sharp/domain/repository_interface/database_repository_interface.dart';
@@ -267,7 +267,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   FutureResult<bool> createAnswer(
       String uid, String problemId, String answer) async {
     final docRef = _userAnswerDocRef(uid, problemId);
-    final json = WriteUserAnswer(
+    final json = UserAnswerModel(
             answer: answer,
             createdAt: FieldValue.serverTimestamp(),
             problemId: problemId,
