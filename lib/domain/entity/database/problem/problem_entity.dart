@@ -1,4 +1,5 @@
 import 'package:be_sharp/domain/converter/timestamp_converter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'problem_entity.freezed.dart';

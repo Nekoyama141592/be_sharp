@@ -1,6 +1,7 @@
 import 'package:be_sharp/domain/converter/timestamp_converter.dart';
 import 'package:be_sharp/domain/entity/database/common/detected_image/detected_text_entity.dart';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_answer_entity.freezed.dart';

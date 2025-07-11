@@ -1,5 +1,6 @@
 import 'package:be_sharp/domain/converter/timestamp_converter.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/registeredInfo/registered_info.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'public_user_entity.freezed.dart';
