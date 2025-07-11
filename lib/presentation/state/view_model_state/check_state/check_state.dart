@@ -1,4 +1,4 @@
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'check_state.freezed.dart';
@@ -10,7 +10,7 @@ abstract class CheckState with _$CheckState {
   const factory CheckState(
       {required bool needsAgreeToTerms,
       required bool needsSignup,
-      required ReadPublicUser? user}) = _CheckState;
+      required PublicUserEntity? user}) = _CheckState;
   factory CheckState.fromJson(Map<String, dynamic> json) =>
       _$CheckStateFromJson(json);
 }

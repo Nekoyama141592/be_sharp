@@ -1,4 +1,4 @@
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 class RankingCard extends StatelessWidget {
   final bool isMute;
   final int rank;
-  final ReadPublicUser user;
+  final PublicUserEntity user;
   final Duration answerTime;
   final ImageProvider userImage;
   final String? caption;

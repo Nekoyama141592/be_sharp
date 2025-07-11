@@ -9,7 +9,7 @@ part of 'answered_user.dart';
 _AnsweredUser _$AnsweredUserFromJson(Map<String, dynamic> json) =>
     _AnsweredUser(
       publicUser:
-          ReadPublicUser.fromJson(json['publicUser'] as Map<String, dynamic>),
+          PublicUserEntity.fromJson(json['publicUser'] as Map<String, dynamic>),
       userAnswer:
           UserAnswerEntity.fromJson(json['userAnswer'] as Map<String, dynamic>),
       userImage: json['userImage'] as String?,

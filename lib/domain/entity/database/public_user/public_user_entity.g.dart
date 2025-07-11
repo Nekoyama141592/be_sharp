@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'read_public_user.dart';
+part of 'public_user_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) =>
-    _ReadPublicUser(
+_PublicUserEntity _$PublicUserEntityFromJson(Map<String, dynamic> json) =>
+    _PublicUserEntity(
       registeredInfo: json['registeredInfo'] == null
           ? null
           : RegisteredInfo.fromJson(
@@ -17,7 +17,7 @@ _ReadPublicUser _$ReadPublicUserFromJson(Map<String, dynamic> json) =>
           const TimestampConverter().fromJson(json['updatedAt'] as Timestamp?),
     );
 
-Map<String, dynamic> _$ReadPublicUserToJson(_ReadPublicUser instance) =>
+Map<String, dynamic> _$PublicUserEntityToJson(_PublicUserEntity instance) =>
     <String, dynamic>{
       'registeredInfo': instance.registeredInfo,
       'uid': instance.uid,

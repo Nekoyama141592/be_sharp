@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/presentation/state/view_model_state/check_state/check_state.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
@@ -36,7 +36,7 @@ class CheckViewModel extends _$CheckViewModel {
     return false;
   }
 
-  Future<ReadPublicUser?> _fetchUser(String uid) async {
+  Future<PublicUserEntity?> _fetchUser(String uid) async {
     final user = await _repository.getPublicUser(uid);
     if (user != null) return user;
     return _repository.createPublicUser(uid);

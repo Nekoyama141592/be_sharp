@@ -2,19 +2,19 @@ import 'package:be_sharp/domain/converter/timestamp_converter.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/registeredInfo/registered_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'read_public_user.freezed.dart';
-part 'read_public_user.g.dart';
+part 'public_user_entity.freezed.dart';
+part 'public_user_entity.g.dart';
 
 @freezed
-abstract class ReadPublicUser with _$ReadPublicUser {
-  const ReadPublicUser._();
-  const factory ReadPublicUser({
+abstract class PublicUserEntity with _$PublicUserEntity {
+  const PublicUserEntity._();
+  const factory PublicUserEntity({
     required RegisteredInfo? registeredInfo,
     required String uid,
     @TimestampConverter() required DateTime? updatedAt,
-  }) = _ReadPublicUser;
-  factory ReadPublicUser.fromJson(Map<String, dynamic> json) =>
-      _$ReadPublicUserFromJson(json);
+  }) = _PublicUserEntity;
+  factory PublicUserEntity.fromJson(Map<String, dynamic> json) =>
+      _$PublicUserEntityFromJson(json);
   String? bioValue() => registeredInfo?.bio.value;
   String? nickNameValue() => registeredInfo?.nickName.value;
   String? imageValue() => registeredInfo?.image.value;

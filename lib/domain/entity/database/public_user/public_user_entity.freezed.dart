@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'read_public_user.dart';
+part of 'public_user_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,28 +13,28 @@ part of 'read_public_user.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$ReadPublicUser {
+mixin _$PublicUserEntity {
   RegisteredInfo? get registeredInfo;
   String get uid;
   @TimestampConverter()
   DateTime? get updatedAt;
 
-  /// Create a copy of ReadPublicUser
+  /// Create a copy of PublicUserEntity
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<ReadPublicUser> get copyWith =>
-      _$ReadPublicUserCopyWithImpl<ReadPublicUser>(
-          this as ReadPublicUser, _$identity);
+  $PublicUserEntityCopyWith<PublicUserEntity> get copyWith =>
+      _$PublicUserEntityCopyWithImpl<PublicUserEntity>(
+          this as PublicUserEntity, _$identity);
 
-  /// Serializes this ReadPublicUser to a JSON map.
+  /// Serializes this PublicUserEntity to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ReadPublicUser &&
+            other is PublicUserEntity &&
             (identical(other.registeredInfo, registeredInfo) ||
                 other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
@@ -48,15 +48,15 @@ mixin _$ReadPublicUser {
 
   @override
   String toString() {
-    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
+    return 'PublicUserEntity(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class $ReadPublicUserCopyWith<$Res> {
-  factory $ReadPublicUserCopyWith(
-          ReadPublicUser value, $Res Function(ReadPublicUser) _then) =
-      _$ReadPublicUserCopyWithImpl;
+abstract mixin class $PublicUserEntityCopyWith<$Res> {
+  factory $PublicUserEntityCopyWith(
+          PublicUserEntity value, $Res Function(PublicUserEntity) _then) =
+      _$PublicUserEntityCopyWithImpl;
   @useResult
   $Res call(
       {RegisteredInfo? registeredInfo,
@@ -67,14 +67,14 @@ abstract mixin class $ReadPublicUserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReadPublicUserCopyWithImpl<$Res>
-    implements $ReadPublicUserCopyWith<$Res> {
-  _$ReadPublicUserCopyWithImpl(this._self, this._then);
+class _$PublicUserEntityCopyWithImpl<$Res>
+    implements $PublicUserEntityCopyWith<$Res> {
+  _$PublicUserEntityCopyWithImpl(this._self, this._then);
 
-  final ReadPublicUser _self;
-  final $Res Function(ReadPublicUser) _then;
+  final PublicUserEntity _self;
+  final $Res Function(PublicUserEntity) _then;
 
-  /// Create a copy of ReadPublicUser
+  /// Create a copy of PublicUserEntity
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -99,7 +99,7 @@ class _$ReadPublicUserCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of ReadPublicUser
+  /// Create a copy of PublicUserEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -114,8 +114,8 @@ class _$ReadPublicUserCopyWithImpl<$Res>
   }
 }
 
-/// Adds pattern-matching-related methods to [ReadPublicUser].
-extension ReadPublicUserPatterns on ReadPublicUser {
+/// Adds pattern-matching-related methods to [PublicUserEntity].
+extension PublicUserEntityPatterns on PublicUserEntity {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -130,12 +130,12 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ReadPublicUser value)? $default, {
+    TResult Function(_PublicUserEntity value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _ReadPublicUser() when $default != null:
+      case _PublicUserEntity() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -157,11 +157,11 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ReadPublicUser value) $default,
+    TResult Function(_PublicUserEntity value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ReadPublicUser():
+      case _PublicUserEntity():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -182,11 +182,11 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ReadPublicUser value)? $default,
+    TResult? Function(_PublicUserEntity value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _ReadPublicUser() when $default != null:
+      case _PublicUserEntity() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -214,7 +214,7 @@ extension ReadPublicUserPatterns on ReadPublicUser {
   }) {
     final _that = this;
     switch (_that) {
-      case _ReadPublicUser() when $default != null:
+      case _PublicUserEntity() when $default != null:
         return $default(_that.registeredInfo, _that.uid, _that.updatedAt);
       case _:
         return orElse();
@@ -242,7 +242,7 @@ extension ReadPublicUserPatterns on ReadPublicUser {
   ) {
     final _that = this;
     switch (_that) {
-      case _ReadPublicUser():
+      case _PublicUserEntity():
         return $default(_that.registeredInfo, _that.uid, _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
@@ -269,7 +269,7 @@ extension ReadPublicUserPatterns on ReadPublicUser {
   ) {
     final _that = this;
     switch (_that) {
-      case _ReadPublicUser() when $default != null:
+      case _PublicUserEntity() when $default != null:
         return $default(_that.registeredInfo, _that.uid, _that.updatedAt);
       case _:
         return null;
@@ -279,14 +279,14 @@ extension ReadPublicUserPatterns on ReadPublicUser {
 
 /// @nodoc
 @JsonSerializable()
-class _ReadPublicUser extends ReadPublicUser {
-  const _ReadPublicUser(
+class _PublicUserEntity extends PublicUserEntity {
+  const _PublicUserEntity(
       {required this.registeredInfo,
       required this.uid,
       @TimestampConverter() required this.updatedAt})
       : super._();
-  factory _ReadPublicUser.fromJson(Map<String, dynamic> json) =>
-      _$ReadPublicUserFromJson(json);
+  factory _PublicUserEntity.fromJson(Map<String, dynamic> json) =>
+      _$PublicUserEntityFromJson(json);
 
   @override
   final RegisteredInfo? registeredInfo;
@@ -296,17 +296,17 @@ class _ReadPublicUser extends ReadPublicUser {
   @TimestampConverter()
   final DateTime? updatedAt;
 
-  /// Create a copy of ReadPublicUser
+  /// Create a copy of PublicUserEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$ReadPublicUserCopyWith<_ReadPublicUser> get copyWith =>
-      __$ReadPublicUserCopyWithImpl<_ReadPublicUser>(this, _$identity);
+  _$PublicUserEntityCopyWith<_PublicUserEntity> get copyWith =>
+      __$PublicUserEntityCopyWithImpl<_PublicUserEntity>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$ReadPublicUserToJson(
+    return _$PublicUserEntityToJson(
       this,
     );
   }
@@ -315,7 +315,7 @@ class _ReadPublicUser extends ReadPublicUser {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ReadPublicUser &&
+            other is _PublicUserEntity &&
             (identical(other.registeredInfo, registeredInfo) ||
                 other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
@@ -329,16 +329,16 @@ class _ReadPublicUser extends ReadPublicUser {
 
   @override
   String toString() {
-    return 'ReadPublicUser(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
+    return 'PublicUserEntity(registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$ReadPublicUserCopyWith<$Res>
-    implements $ReadPublicUserCopyWith<$Res> {
-  factory _$ReadPublicUserCopyWith(
-          _ReadPublicUser value, $Res Function(_ReadPublicUser) _then) =
-      __$ReadPublicUserCopyWithImpl;
+abstract mixin class _$PublicUserEntityCopyWith<$Res>
+    implements $PublicUserEntityCopyWith<$Res> {
+  factory _$PublicUserEntityCopyWith(
+          _PublicUserEntity value, $Res Function(_PublicUserEntity) _then) =
+      __$PublicUserEntityCopyWithImpl;
   @override
   @useResult
   $Res call(
@@ -351,14 +351,14 @@ abstract mixin class _$ReadPublicUserCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ReadPublicUserCopyWithImpl<$Res>
-    implements _$ReadPublicUserCopyWith<$Res> {
-  __$ReadPublicUserCopyWithImpl(this._self, this._then);
+class __$PublicUserEntityCopyWithImpl<$Res>
+    implements _$PublicUserEntityCopyWith<$Res> {
+  __$PublicUserEntityCopyWithImpl(this._self, this._then);
 
-  final _ReadPublicUser _self;
-  final $Res Function(_ReadPublicUser) _then;
+  final _PublicUserEntity _self;
+  final $Res Function(_PublicUserEntity) _then;
 
-  /// Create a copy of ReadPublicUser
+  /// Create a copy of PublicUserEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -367,7 +367,7 @@ class __$ReadPublicUserCopyWithImpl<$Res>
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
-    return _then(_ReadPublicUser(
+    return _then(_PublicUserEntity(
       registeredInfo: freezed == registeredInfo
           ? _self.registeredInfo
           : registeredInfo // ignore: cast_nullable_to_non_nullable
@@ -383,7 +383,7 @@ class __$ReadPublicUserCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of ReadPublicUser
+  /// Create a copy of PublicUserEntity
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')

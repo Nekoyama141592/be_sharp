@@ -3,7 +3,7 @@ import 'package:be_sharp/infrastructure/repository/database_repository.dart';
 import 'package:be_sharp/application/use_case/file_use_case.dart';
 import 'package:be_sharp/domain/use_case_interface/home_use_case_interface.dart';
 
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:collection/collection.dart';
 
@@ -17,7 +17,7 @@ class HomeUseCase implements HomeUseCaseInterface {
   }
 
   Future<AnsweredUser?> _answer(
-      UserAnswerEntity userAnswer, List<ReadPublicUser> users) async {
+      UserAnswerEntity userAnswer, List<PublicUserEntity> users) async {
     final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
     if (publicUser == null) return null;
 

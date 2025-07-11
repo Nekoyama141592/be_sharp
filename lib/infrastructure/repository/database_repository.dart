@@ -6,7 +6,7 @@ import 'package:be_sharp/infrastructure/constants/limit_constant.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/write/write_public_user.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/read/read_user_answer.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/write/write_user_answer.dart';
@@ -84,12 +84,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   Future<void> _deleteDoc(DocRef ref) => ref.delete();
   FutureDoc _getDoc(DocRef ref) => ref.get();
 
-  Future<ReadPublicUser?> getPublicUser(String uid) async {
+  Future<PublicUserEntity?> getPublicUser(String uid) async {
     try {
       final doc = await _userDocRef(uid).get();
       final docData = doc.data();
       if (docData == null) return null;
-      return ReadPublicUser.fromJson(docData);
+      return PublicUserEntity.fromJson(docData);
     } catch (e) {
       debugPrint(e.toString());
       return null;
@@ -181,12 +181,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   }
 
   @override
-  Future<List<ReadPublicUser>> getUsers(List<String> uids) async {
+  Future<List<PublicUserEntity>> getUsers(List<String> uids) async {
     try {
       if (uids.isEmpty) return [];
       final usersQshot = await _usersQuery(uids).get();
       final users = usersQshot.docs
-          .map((e) => ReadPublicUser.fromJson(e.data()))
+          .map((e) => PublicUserEntity.fromJson(e.data()))
           .toList();
       return users;
     } catch (e) {
@@ -242,7 +242,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return result;
   }
 
-  Future<ReadPublicUser?> createPublicUser(String uid) async {
+  Future<PublicUserEntity?> createPublicUser(String uid) async {
     try {
       final docRef = _userDocRef(uid);
       final writeUser = WritePublicUser.instance(uid);
@@ -307,17 +307,17 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
   }
 
-  Future<List<ReadPublicUser>> fetchMutePublicUsers(String? uid) async {
+  Future<List<PublicUserEntity>> fetchMutePublicUsers(String? uid) async {
     final uids = await _fetchMuteUids(uid);
     if (uids.isEmpty) return [];
-    final chunks = <Future<List<ReadPublicUser>>>[];
+    final chunks = <Future<List<PublicUserEntity>>>[];
     const whereInLimit = LimitConstant.whereInLimit;
     for (var i = 0; i < uids.length; i += whereInLimit) {
       final chunk = uids.sublist(
           i, i + whereInLimit > uids.length ? uids.length : i + whereInLimit);
       final query = _usersQuery(chunk);
       final qshot = _getDocs(query).then((snapshot) =>
-          snapshot.docs.map((e) => ReadPublicUser.fromJson(e.data())).toList());
+          snapshot.docs.map((e) => PublicUserEntity.fromJson(e.data())).toList());
       chunks.add(qshot);
     }
     final results = await Future.wait(chunks);

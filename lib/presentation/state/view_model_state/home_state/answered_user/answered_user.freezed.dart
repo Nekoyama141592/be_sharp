@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$AnsweredUser {
-  ReadPublicUser get publicUser;
+  PublicUserEntity get publicUser;
   UserAnswerEntity get userAnswer;
   String? get userImage;
 
@@ -60,11 +60,11 @@ abstract mixin class $AnsweredUserCopyWith<$Res> {
       _$AnsweredUserCopyWithImpl;
   @useResult
   $Res call(
-      {ReadPublicUser publicUser,
+      {PublicUserEntity publicUser,
       UserAnswerEntity userAnswer,
       String? userImage});
 
-  $ReadPublicUserCopyWith<$Res> get publicUser;
+  $PublicUserEntityCopyWith<$Res> get publicUser;
   $UserAnswerEntityCopyWith<$Res> get userAnswer;
 }
 
@@ -88,7 +88,7 @@ class _$AnsweredUserCopyWithImpl<$Res> implements $AnsweredUserCopyWith<$Res> {
       publicUser: null == publicUser
           ? _self.publicUser
           : publicUser // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser,
+              as PublicUserEntity,
       userAnswer: null == userAnswer
           ? _self.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
@@ -104,8 +104,8 @@ class _$AnsweredUserCopyWithImpl<$Res> implements $AnsweredUserCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res> get publicUser {
-    return $ReadPublicUserCopyWith<$Res>(_self.publicUser, (value) {
+  $PublicUserEntityCopyWith<$Res> get publicUser {
+    return $PublicUserEntityCopyWith<$Res>(_self.publicUser, (value) {
       return _then(_self.copyWith(publicUser: value));
     });
   }
@@ -214,7 +214,7 @@ extension AnsweredUserPatterns on AnsweredUser {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(ReadPublicUser publicUser, UserAnswerEntity userAnswer,
+    TResult Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer,
             String? userImage)?
         $default, {
     required TResult orElse(),
@@ -243,7 +243,7 @@ extension AnsweredUserPatterns on AnsweredUser {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(ReadPublicUser publicUser, UserAnswerEntity userAnswer,
+    TResult Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer,
             String? userImage)
         $default,
   ) {
@@ -270,7 +270,7 @@ extension AnsweredUserPatterns on AnsweredUser {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(ReadPublicUser publicUser, UserAnswerEntity userAnswer,
+    TResult? Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer,
             String? userImage)?
         $default,
   ) {
@@ -296,7 +296,7 @@ class _AnsweredUser extends AnsweredUser {
       _$AnsweredUserFromJson(json);
 
   @override
-  final ReadPublicUser publicUser;
+  final PublicUserEntity publicUser;
   @override
   final UserAnswerEntity userAnswer;
   @override
@@ -350,12 +350,12 @@ abstract mixin class _$AnsweredUserCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ReadPublicUser publicUser,
+      {PublicUserEntity publicUser,
       UserAnswerEntity userAnswer,
       String? userImage});
 
   @override
-  $ReadPublicUserCopyWith<$Res> get publicUser;
+  $PublicUserEntityCopyWith<$Res> get publicUser;
   @override
   $UserAnswerEntityCopyWith<$Res> get userAnswer;
 }
@@ -381,7 +381,7 @@ class __$AnsweredUserCopyWithImpl<$Res>
       publicUser: null == publicUser
           ? _self.publicUser
           : publicUser // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser,
+              as PublicUserEntity,
       userAnswer: null == userAnswer
           ? _self.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
@@ -397,8 +397,8 @@ class __$AnsweredUserCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res> get publicUser {
-    return $ReadPublicUserCopyWith<$Res>(_self.publicUser, (value) {
+  $PublicUserEntityCopyWith<$Res> get publicUser {
+    return $PublicUserEntityCopyWith<$Res>(_self.publicUser, (value) {
       return _then(_self.copyWith(publicUser: value));
     });
   }

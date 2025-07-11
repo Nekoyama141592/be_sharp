@@ -11,7 +11,7 @@ _CheckState _$CheckStateFromJson(Map<String, dynamic> json) => _CheckState(
       needsSignup: json['needsSignup'] as bool,
       user: json['user'] == null
           ? null
-          : ReadPublicUser.fromJson(json['user'] as Map<String, dynamic>),
+          : PublicUserEntity.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CheckStateToJson(_CheckState instance) =>

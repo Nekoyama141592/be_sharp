@@ -1,5 +1,5 @@
 import 'package:be_sharp/core/util/padding_util.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
@@ -121,7 +121,7 @@ class EditUserScreen extends HookConsumerWidget {
     }
 
     // ニックネームの入力フィールド
-    List<Widget> nickNameField(ReadPublicUser? user) {
+    List<Widget> nickNameField(PublicUserEntity? user) {
       return [
         const Align(
           alignment: Alignment.centerLeft,
@@ -180,7 +180,7 @@ class EditUserScreen extends HookConsumerWidget {
     }
 
     // 紹介文の入力フィールド
-    List<Widget> bioField(ReadPublicUser? user) {
+    List<Widget> bioField(PublicUserEntity? user) {
       return [
         const Align(
           alignment: Alignment.centerLeft,
@@ -244,7 +244,7 @@ class EditUserScreen extends HookConsumerWidget {
     }
 
     // フォーム全体
-    Widget updateUserInfoForm(ReadPublicUser? user) {
+    Widget updateUserInfoForm(PublicUserEntity? user) {
       return Form(
         key: formKey,
         child: Column(
