@@ -6,7 +6,7 @@ part 'purchase_repository_provider.g.dart';
 
 @riverpod
 PurchaseRepository purchaseRepository(Ref ref) => PurchaseRepository(
-      inAppPurchase: ref.read(inAppPurchaseProvider),
-      client: ref.read(billingClientProvider),
-      wrapper: ref.read(sKPaymentQueueWrapperProvider),
+      ref.read(inAppPurchaseProvider),
+      ref.read(billingClientProvider),
+      ref.read(sKPaymentQueueWrapperProvider),
     );
