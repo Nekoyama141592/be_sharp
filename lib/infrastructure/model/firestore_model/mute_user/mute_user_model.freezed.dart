@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'private_user.dart';
+part of 'mute_user_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,83 +13,70 @@ part of 'private_user.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PrivateUser {
-  String get fcmToken;
-  bool get isAdmin;
-  String get uid;
+mixin _$MuteUserModel {
+  String get muteUid;
   dynamic get createdAt;
 
-  /// Create a copy of PrivateUser
+  /// Create a copy of MuteUserModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PrivateUserCopyWith<PrivateUser> get copyWith =>
-      _$PrivateUserCopyWithImpl<PrivateUser>(this as PrivateUser, _$identity);
+  $MuteUserModelCopyWith<MuteUserModel> get copyWith =>
+      _$MuteUserModelCopyWithImpl<MuteUserModel>(
+          this as MuteUserModel, _$identity);
 
-  /// Serializes this PrivateUser to a JSON map.
+  /// Serializes this MuteUserModel to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PrivateUser &&
-            (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken) &&
-            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
-            (identical(other.uid, uid) || other.uid == uid) &&
+            other is MuteUserModel &&
+            (identical(other.muteUid, muteUid) || other.muteUid == muteUid) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fcmToken, isAdmin, uid,
-      const DeepCollectionEquality().hash(createdAt));
+  int get hashCode => Object.hash(
+      runtimeType, muteUid, const DeepCollectionEquality().hash(createdAt));
 
   @override
   String toString() {
-    return 'PrivateUser(fcmToken: $fcmToken, isAdmin: $isAdmin, uid: $uid, createdAt: $createdAt)';
+    return 'MuteUserModel(muteUid: $muteUid, createdAt: $createdAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PrivateUserCopyWith<$Res> {
-  factory $PrivateUserCopyWith(
-          PrivateUser value, $Res Function(PrivateUser) _then) =
-      _$PrivateUserCopyWithImpl;
+abstract mixin class $MuteUserModelCopyWith<$Res> {
+  factory $MuteUserModelCopyWith(
+          MuteUserModel value, $Res Function(MuteUserModel) _then) =
+      _$MuteUserModelCopyWithImpl;
   @useResult
-  $Res call({String fcmToken, bool isAdmin, String uid, dynamic createdAt});
+  $Res call({String muteUid, dynamic createdAt});
 }
 
 /// @nodoc
-class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
-  _$PrivateUserCopyWithImpl(this._self, this._then);
+class _$MuteUserModelCopyWithImpl<$Res>
+    implements $MuteUserModelCopyWith<$Res> {
+  _$MuteUserModelCopyWithImpl(this._self, this._then);
 
-  final PrivateUser _self;
-  final $Res Function(PrivateUser) _then;
+  final MuteUserModel _self;
+  final $Res Function(MuteUserModel) _then;
 
-  /// Create a copy of PrivateUser
+  /// Create a copy of MuteUserModel
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fcmToken = null,
-    Object? isAdmin = null,
-    Object? uid = null,
+    Object? muteUid = null,
     Object? createdAt = freezed,
   }) {
     return _then(_self.copyWith(
-      fcmToken: null == fcmToken
-          ? _self.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAdmin: null == isAdmin
-          ? _self.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      uid: null == uid
-          ? _self.uid
-          : uid // ignore: cast_nullable_to_non_nullable
+      muteUid: null == muteUid
+          ? _self.muteUid
+          : muteUid // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: freezed == createdAt
           ? _self.createdAt
@@ -99,8 +86,8 @@ class _$PrivateUserCopyWithImpl<$Res> implements $PrivateUserCopyWith<$Res> {
   }
 }
 
-/// Adds pattern-matching-related methods to [PrivateUser].
-extension PrivateUserPatterns on PrivateUser {
+/// Adds pattern-matching-related methods to [MuteUserModel].
+extension MuteUserModelPatterns on MuteUserModel {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -115,12 +102,12 @@ extension PrivateUserPatterns on PrivateUser {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PrivateUser value)? $default, {
+    TResult Function(_MuteUserModel value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _PrivateUser() when $default != null:
+      case _MuteUserModel() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -142,11 +129,11 @@ extension PrivateUserPatterns on PrivateUser {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_PrivateUser value) $default,
+    TResult Function(_MuteUserModel value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PrivateUser():
+      case _MuteUserModel():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -167,11 +154,11 @@ extension PrivateUserPatterns on PrivateUser {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PrivateUser value)? $default,
+    TResult? Function(_MuteUserModel value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PrivateUser() when $default != null:
+      case _MuteUserModel() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -192,16 +179,13 @@ extension PrivateUserPatterns on PrivateUser {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(
-            String fcmToken, bool isAdmin, String uid, dynamic createdAt)?
-        $default, {
+    TResult Function(String muteUid, dynamic createdAt)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _PrivateUser() when $default != null:
-        return $default(
-            _that.fcmToken, _that.isAdmin, _that.uid, _that.createdAt);
+      case _MuteUserModel() when $default != null:
+        return $default(_that.muteUid, _that.createdAt);
       case _:
         return orElse();
     }
@@ -222,15 +206,12 @@ extension PrivateUserPatterns on PrivateUser {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(
-            String fcmToken, bool isAdmin, String uid, dynamic createdAt)
-        $default,
+    TResult Function(String muteUid, dynamic createdAt) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PrivateUser():
-        return $default(
-            _that.fcmToken, _that.isAdmin, _that.uid, _that.createdAt);
+      case _MuteUserModel():
+        return $default(_that.muteUid, _that.createdAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -250,15 +231,12 @@ extension PrivateUserPatterns on PrivateUser {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(
-            String fcmToken, bool isAdmin, String uid, dynamic createdAt)?
-        $default,
+    TResult? Function(String muteUid, dynamic createdAt)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PrivateUser() when $default != null:
-        return $default(
-            _that.fcmToken, _that.isAdmin, _that.uid, _that.createdAt);
+      case _MuteUserModel() when $default != null:
+        return $default(_that.muteUid, _that.createdAt);
       case _:
         return null;
     }
@@ -267,37 +245,28 @@ extension PrivateUserPatterns on PrivateUser {
 
 /// @nodoc
 @JsonSerializable()
-class _PrivateUser extends PrivateUser {
-  const _PrivateUser(
-      {required this.fcmToken,
-      this.isAdmin = false,
-      required this.uid,
-      required this.createdAt})
+class _MuteUserModel extends MuteUserModel {
+  const _MuteUserModel({required this.muteUid, required this.createdAt})
       : super._();
-  factory _PrivateUser.fromJson(Map<String, dynamic> json) =>
-      _$PrivateUserFromJson(json);
+  factory _MuteUserModel.fromJson(Map<String, dynamic> json) =>
+      _$MuteUserModelFromJson(json);
 
   @override
-  final String fcmToken;
-  @override
-  @JsonKey()
-  final bool isAdmin;
-  @override
-  final String uid;
+  final String muteUid;
   @override
   final dynamic createdAt;
 
-  /// Create a copy of PrivateUser
+  /// Create a copy of MuteUserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PrivateUserCopyWith<_PrivateUser> get copyWith =>
-      __$PrivateUserCopyWithImpl<_PrivateUser>(this, _$identity);
+  _$MuteUserModelCopyWith<_MuteUserModel> get copyWith =>
+      __$MuteUserModelCopyWithImpl<_MuteUserModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$PrivateUserToJson(
+    return _$MuteUserModelToJson(
       this,
     );
   }
@@ -306,65 +275,53 @@ class _PrivateUser extends PrivateUser {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PrivateUser &&
-            (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken) &&
-            (identical(other.isAdmin, isAdmin) || other.isAdmin == isAdmin) &&
-            (identical(other.uid, uid) || other.uid == uid) &&
+            other is _MuteUserModel &&
+            (identical(other.muteUid, muteUid) || other.muteUid == muteUid) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fcmToken, isAdmin, uid,
-      const DeepCollectionEquality().hash(createdAt));
+  int get hashCode => Object.hash(
+      runtimeType, muteUid, const DeepCollectionEquality().hash(createdAt));
 
   @override
   String toString() {
-    return 'PrivateUser(fcmToken: $fcmToken, isAdmin: $isAdmin, uid: $uid, createdAt: $createdAt)';
+    return 'MuteUserModel(muteUid: $muteUid, createdAt: $createdAt)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PrivateUserCopyWith<$Res>
-    implements $PrivateUserCopyWith<$Res> {
-  factory _$PrivateUserCopyWith(
-          _PrivateUser value, $Res Function(_PrivateUser) _then) =
-      __$PrivateUserCopyWithImpl;
+abstract mixin class _$MuteUserModelCopyWith<$Res>
+    implements $MuteUserModelCopyWith<$Res> {
+  factory _$MuteUserModelCopyWith(
+          _MuteUserModel value, $Res Function(_MuteUserModel) _then) =
+      __$MuteUserModelCopyWithImpl;
   @override
   @useResult
-  $Res call({String fcmToken, bool isAdmin, String uid, dynamic createdAt});
+  $Res call({String muteUid, dynamic createdAt});
 }
 
 /// @nodoc
-class __$PrivateUserCopyWithImpl<$Res> implements _$PrivateUserCopyWith<$Res> {
-  __$PrivateUserCopyWithImpl(this._self, this._then);
+class __$MuteUserModelCopyWithImpl<$Res>
+    implements _$MuteUserModelCopyWith<$Res> {
+  __$MuteUserModelCopyWithImpl(this._self, this._then);
 
-  final _PrivateUser _self;
-  final $Res Function(_PrivateUser) _then;
+  final _MuteUserModel _self;
+  final $Res Function(_MuteUserModel) _then;
 
-  /// Create a copy of PrivateUser
+  /// Create a copy of MuteUserModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? fcmToken = null,
-    Object? isAdmin = null,
-    Object? uid = null,
+    Object? muteUid = null,
     Object? createdAt = freezed,
   }) {
-    return _then(_PrivateUser(
-      fcmToken: null == fcmToken
-          ? _self.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      isAdmin: null == isAdmin
-          ? _self.isAdmin
-          : isAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      uid: null == uid
-          ? _self.uid
-          : uid // ignore: cast_nullable_to_non_nullable
+    return _then(_MuteUserModel(
+      muteUid: null == muteUid
+          ? _self.muteUid
+          : muteUid // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: freezed == createdAt
           ? _self.createdAt

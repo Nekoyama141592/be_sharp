@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/constants/limit_constant.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_user.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user.dart';
+import 'package:be_sharp/infrastructure/model/firestore_model/mute_user/mute_user_model.dart';
+import 'package:be_sharp/infrastructure/model/firestore_model/private_user/private_user_model.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/public_user_model.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/user_answer_model.dart';
@@ -94,12 +94,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  Future<PrivateUser?> getPrivateUser(String uid) async {
+  Future<PrivateUserModel?> getPrivateUser(String uid) async {
     try {
       final doc = await _privateUsersColRef().doc(uid).get();
       final docData = doc.data();
       if (docData == null) return null;
-      return PrivateUser.fromJson(docData);
+      return PrivateUserModel.fromJson(docData);
     } catch (e) {
       debugPrint(e.toString());
       return null;
@@ -119,7 +119,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   }
 
   FutureResult<bool> createPrivateUser(String uid, String? token) {
-    final privateUser = PrivateUser(
+    final privateUser = PrivateUserModel(
         fcmToken: token ?? '',
         uid: uid,
         createdAt: FieldValue.serverTimestamp());
@@ -216,7 +216,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final query = _muteUsers(uid: uid, uids: muteUids);
       final usersQshot = await query.get();
       final docs = usersQshot.docs;
-      return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
+      return docs.map((e) => MuteUserModel.fromJson(e.data()).muteUid).toList();
     } catch (e) {
       debugPrint(e.toString());
       return [];
@@ -298,7 +298,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     final query = _muteUsers(uid: uid);
     final qshot = await _getDocs(query);
     final docs = qshot.docs;
-    return docs.map((e) => MuteUser.fromJson(e.data()).muteUid).toList();
+    return docs.map((e) => MuteUserModel.fromJson(e.data()).muteUid).toList();
   }
 
   Future<List<PublicUserEntity>> fetchMutePublicUsers(String? uid) async {
@@ -321,7 +321,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   FutureResult<bool> muteUser(String uid, String muteUid) {
     final docRef = _muteUserDocRef(uid, muteUid);
     final json =
-        MuteUser(muteUid: muteUid, createdAt: FieldValue.serverTimestamp())
+        MuteUserModel(muteUid: muteUid, createdAt: FieldValue.serverTimestamp())
             .toJson();
     return createDoc(docRef, json);
   }
