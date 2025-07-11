@@ -243,7 +243,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   Future<PublicUserEntity?> createPublicUser(String uid) async {
     try {
       final docRef = _userDocRef(uid);
-      final writeUser = PublicUserModel.instance(uid);
+      final writeUser = PublicUserModel.withServerTimestamp(uid);
       final writeData = writeUser.toJson();
       await _createDoc(docRef, writeData);
       return getPublicUser(uid);

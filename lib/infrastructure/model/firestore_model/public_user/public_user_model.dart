@@ -16,7 +16,7 @@ abstract class PublicUserModel with _$PublicUserModel {
       required dynamic updatedAt}) = _PublicUserModel;
   factory PublicUserModel.fromJson(Map<String, dynamic> json) =>
       _$PublicUserModelFromJson(json);
-  factory PublicUserModel.instance(String uid) {
+  factory PublicUserModel.withServerTimestamp(String uid) {
     final now = FieldValue.serverTimestamp();
     return PublicUserModel(createdAt: now, uid: uid, updatedAt: now);
   }
