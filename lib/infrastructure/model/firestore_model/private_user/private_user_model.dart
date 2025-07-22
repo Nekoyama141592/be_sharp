@@ -15,7 +15,8 @@ abstract class PrivateUserModel with _$PrivateUserModel {
   }) = _PrivateUserModel;
   factory PrivateUserModel.fromJson(Map<String, dynamic> json) =>
       _$PrivateUserModelFromJson(json);
-  factory PrivateUserModel.withServerTimestamp(String uid, {String? fcmToken, bool isAdmin = false}) {
+  factory PrivateUserModel.withServerTimestamp(String uid,
+      {String? fcmToken, bool isAdmin = false}) {
     return PrivateUserModel(
       fcmToken: fcmToken ?? '',
       isAdmin: isAdmin,

@@ -45,8 +45,8 @@ class HomeViewModel extends _$HomeViewModel {
       _homeUseCase.fetchUserCount(problemId)
     ]);
     // 早い順に並べる
-    final result = [...answeredUsers]..sort((a, b) =>
-        a.userAnswer.createdAt!.compareTo(b.userAnswer.createdAt!));
+    final result = [...answeredUsers]..sort(
+        (a, b) => a.userAnswer.createdAt!.compareTo(b.userAnswer.createdAt!));
     return HomeState(
         latestProblem: latestProblem,
         answeredUsers: result,

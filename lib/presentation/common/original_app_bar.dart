@@ -1,6 +1,5 @@
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class OriginalAppBar extends StatelessWidget implements PreferredSizeWidget {
   const OriginalAppBar({super.key, this.text});
@@ -10,13 +9,18 @@ class OriginalAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         text ?? 'BeSharp.',
-        style: GoogleFonts.notoSans(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: AppColors.text,
         ),
       ),
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: AppColors.background,
       elevation: 0,
+      centerTitle: true,
+      iconTheme: const IconThemeData(
+        color: AppColors.text,
+      ),
     );
   }
 

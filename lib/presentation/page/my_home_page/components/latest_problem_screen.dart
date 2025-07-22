@@ -37,8 +37,11 @@ class LatestProblemScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildContent(BuildContext context, ProblemEntity? problem,
-      UserAnswerEntity? userAnswer, LatestProblemViewModel Function() notifier) {
+  Widget _buildContent(
+      BuildContext context,
+      ProblemEntity? problem,
+      UserAnswerEntity? userAnswer,
+      LatestProblemViewModel Function() notifier) {
     if (problem == null) {
       return _buildCenteredMessage('問題が存在しません');
     } else if (userAnswer == null) {

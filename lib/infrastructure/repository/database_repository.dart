@@ -120,7 +120,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   }
 
   FutureResult<bool> createPrivateUser(String uid, String? token) {
-    final privateUser = PrivateUserModel.withServerTimestamp(uid, fcmToken: token);
+    final privateUser =
+        PrivateUserModel.withServerTimestamp(uid, fcmToken: token);
     final docRef = _privateUserDocRef(uid);
     final data = privateUser.toJson();
     return createDoc(docRef, data);
@@ -199,8 +200,11 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final docs = qshot.docs;
       final verifiedPurchases =
           docs.map((e) => VerifiedPurchaseModel.fromJson(e.data())).toList();
-      final validPurchases = verifiedPurchases.where((e) => e.isValid()).toList();
-      final results = validPurchases.map((e) => VerifiedPurchaseEntity.fromModel(e)).toList();
+      final validPurchases =
+          verifiedPurchases.where((e) => e.isValid()).toList();
+      final results = validPurchases
+          .map((e) => VerifiedPurchaseEntity.fromModel(e))
+          .toList();
       return results;
     } catch (e) {
       debugPrint(e.toString());
@@ -230,8 +234,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return result;
   }
 
-  Future<int> getRank(
-      String problemId, List<String> answers, UserAnswerEntity userAnswer) async {
+  Future<int> getRank(String problemId, List<String> answers,
+      UserAnswerEntity userAnswer) async {
     final createdAt = Timestamp.fromDate(userAnswer.createdAt!);
     final query = _rankingQuery(problemId, answers, createdAt);
     final qshot = await query.count().get();
@@ -267,9 +271,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       String uid, String problemId, String answer) async {
     final docRef = _userAnswerDocRef(uid, problemId);
     final json = UserAnswerModel.withServerTimestamp(
-            answer: answer,
-            problemId: problemId,
-            uid: uid)
+            answer: answer, problemId: problemId, uid: uid)
         .toJson();
     return createDoc(docRef, json);
   }
@@ -308,8 +310,9 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final chunk = uids.sublist(
           i, i + whereInLimit > uids.length ? uids.length : i + whereInLimit);
       final query = _usersQuery(chunk);
-      final qshot = _getDocs(query).then((snapshot) =>
-          snapshot.docs.map((e) => PublicUserEntity.fromJson(e.data())).toList());
+      final qshot = _getDocs(query).then((snapshot) => snapshot.docs
+          .map((e) => PublicUserEntity.fromJson(e.data()))
+          .toList());
       chunks.add(qshot);
     }
     final results = await Future.wait(chunks);
@@ -318,9 +321,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
 
   FutureResult<bool> muteUser(String uid, String muteUid) {
     final docRef = _muteUserDocRef(uid, muteUid);
-    final json =
-        MuteUserModel.withServerTimestamp(muteUid)
-            .toJson();
+    final json = MuteUserModel.withServerTimestamp(muteUid).toJson();
     return createDoc(docRef, json);
   }
 
@@ -334,7 +335,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     try {
       final query = _correctUserAnswersQuery(problemId, answers);
       final qshot = await _getDocs(query);
-      final entities = qshot.docs.map((e) => UserAnswerEntity.fromJson(e.data())).toList();
+      final entities =
+          qshot.docs.map((e) => UserAnswerEntity.fromJson(e.data())).toList();
       return entities;
     } catch (e) {
       debugPrint(e.toString());

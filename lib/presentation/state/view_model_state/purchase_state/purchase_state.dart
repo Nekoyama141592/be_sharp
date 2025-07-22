@@ -21,8 +21,7 @@ class PurchaseState {
   }
 
   bool isPurchased(String productID) {
-    return verifiedPurchases.any(
-        (e) => productID == e.productId);
+    return verifiedPurchases.any((e) => productID == e.productId);
   }
 
   bool isSubscribing() {

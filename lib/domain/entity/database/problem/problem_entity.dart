@@ -19,7 +19,6 @@ abstract class ProblemEntity with _$ProblemEntity {
   factory ProblemEntity.fromJson(Map<String, dynamic> json) =>
       _$ProblemEntityFromJson(json);
 
-
   bool isInTimeLimit() {
     final createdAtDate = createdAt!;
     final nowDate = DateTime.now();

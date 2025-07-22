@@ -13,7 +13,8 @@ abstract class ModeratedImage with _$ModeratedImage {
   }) = _ModeratedImage;
   factory ModeratedImage.fromJson(Map<String, dynamic> json) =>
       _$ModeratedImageFromJson(json);
-  
+
   bool isInvalid() => moderationLabels.isNotEmpty;
-  String reason() => moderationLabels.map((e) => e['name'] ?? '').toList().join(',');
+  String reason() =>
+      moderationLabels.map((e) => e['name'] ?? '').toList().join(',');
 }

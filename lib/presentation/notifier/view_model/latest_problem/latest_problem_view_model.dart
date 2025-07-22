@@ -36,7 +36,8 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
     return _repository.fetchLatestProblem();
   }
 
-  Future<UserAnswerEntity?> _fetchLatestUserAnswer(String uid, String problemId) async {
+  Future<UserAnswerEntity?> _fetchLatestUserAnswer(
+      String uid, String problemId) async {
     return await _repository.fetchLatestUserAnswer(uid, problemId);
   }
 

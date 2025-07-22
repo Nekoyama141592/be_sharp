@@ -33,18 +33,16 @@ class HomeViewModel extends _$HomeViewModel {
     final userAnswers = await ref
         .read(databaseRepositoryProvider)
         .fetchCorrectUserAnswers(problemId, answers);
-    final answeredUsers = await _homeUseCase.fetchAnsweredUsers(problemId, answers);
-    final [
-      (muteUids as List<String>),
-      (userCount as int)
-    ] = await Future.wait([
+    final answeredUsers =
+        await _homeUseCase.fetchAnsweredUsers(problemId, answers);
+    final [(muteUids as List<String>), (userCount as int)] = await Future.wait([
       _homeUseCase.fetchMuteUsers(ref.read(streamAuthUidProvider).value,
           userAnswers.map((e) => e.uid).toList()),
       _homeUseCase.fetchUserCount(problemId)
     ]);
     // 早い順に並べる
-    final result = [...answeredUsers]..sort((a, b) =>
-        a.userAnswer.createdAt!.compareTo(b.userAnswer.createdAt!));
+    final result = [...answeredUsers]..sort(
+        (a, b) => a.userAnswer.createdAt!.compareTo(b.userAnswer.createdAt!));
     return HomeState(
         latestProblem: latestProblem,
         answeredUsers: result,

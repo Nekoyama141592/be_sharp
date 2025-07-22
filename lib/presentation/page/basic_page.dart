@@ -21,7 +21,7 @@ class BasicPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      backgroundColor: scaffoldBackgroundColor,
+      backgroundColor: AppColors.background,
       appBar: showAppBar ? OriginalAppBar(text: appBarText) : null,
       floatingActionButton: floatingActionButton,
       body: child,

@@ -9,7 +9,8 @@ part 'latest_problem_state.g.dart';
 abstract class LatestProblemState with _$LatestProblemState {
   const LatestProblemState._();
   const factory LatestProblemState(
-      {ProblemEntity? problem, UserAnswerEntity? userAnswer}) = _LatestProblemState;
+      {ProblemEntity? problem,
+      UserAnswerEntity? userAnswer}) = _LatestProblemState;
   factory LatestProblemState.fromJson(Map<String, dynamic> json) =>
       _$LatestProblemStateFromJson(json);
 }
