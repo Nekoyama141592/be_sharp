@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/home/home_view_model.dart';
-import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/drawer/original_drawer.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card.dart';
+import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card_skeleton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,8 +18,14 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       drawer: const OriginalDrawer(),
-      body: AsyncScreen(
-        asyncValue: asyncValue,
+      body: asyncValue.when(
+        loading: _buildLoadingState,
+        error: (error, stackTrace) =>const Center(
+          child: Text(
+            'エラーが発生しました',
+            style: TextStyle(color: AppColors.text),
+          ),
+        ),
         data: (state) {
           final users = state.answeredUsers;
           final problem = state.latestProblem;
@@ -83,6 +89,32 @@ class HomeScreen extends ConsumerWidget {
           );
         },
       ),
+    );
+  }
+  
+  Widget _buildLoadingState() {
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.all(16),
+          sliver: SliverToBoxAdapter(
+            child: Container(
+              height: 18,
+              width: 200,
+              decoration: BoxDecoration(
+                color: AppColors.surface,
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => const RankingCardSkeleton(),
+            childCount: 10,
+          ),
+        ),
+      ],
     );
   }
 }

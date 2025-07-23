@@ -259,7 +259,7 @@ class AccountPage extends ConsumerWidget {
                     ],
                   ),
                 ),
-                Icon(
+                const Icon(
                   Icons.arrow_forward_ios,
                   color: AppColors.textLight,
                   size: 16,

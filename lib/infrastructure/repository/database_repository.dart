@@ -277,11 +277,16 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   }
 
   Future<ProblemEntity?> fetchLatestProblem() async {
-    final query = _latestProblemQuery();
-    final qshot = await query.get();
-    final docs = qshot.docs;
-    if (docs.isEmpty) return null;
-    return ProblemEntity.fromJson(docs.first.data());
+    try {
+      final query = _latestProblemQuery();
+      final qshot = await query.get();
+      final docs = qshot.docs;
+      if (docs.isEmpty) return null;
+      return ProblemEntity.fromJson(docs.first.data());
+    } catch(e) {
+      debugPrint(e.toString());
+      return null;
+    }
   }
 
   Future<UserAnswerEntity?> fetchLatestUserAnswer(

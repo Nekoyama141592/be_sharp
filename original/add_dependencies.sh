@@ -40,6 +40,7 @@ packages=(
   "fake_cloud_firestore"
   "fake_firebase_security_rules"
   "firebase_auth_mocks"
+  "shimmer"
 )
 
 echo "Adding packages to dependencies..."
