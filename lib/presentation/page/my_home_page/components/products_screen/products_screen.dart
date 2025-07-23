@@ -30,29 +30,6 @@ class ProductsScreen extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            AppColors.premiumGradientStart,
-                            AppColors.premiumGradientEnd,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                      child: Text(
-                        'Premium Subscription',
-                        style: GoogleFonts.notoSans(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
                     const PolicyButtons(),
                     const SizedBox(height: 24),
                     Container(
@@ -78,7 +55,7 @@ class ProductsScreen extends ConsumerWidget {
                         },
                         icon: const Icon(
                           Icons.restore,
-                          color: AppColors.premiumAccent,
+                          color: AppColors.text,
                           size: 20,
                         ),
                         label: Text(
@@ -115,7 +92,7 @@ class ProductsScreen extends ConsumerWidget {
                                 ),
                                 child: const Icon(
                                   Icons.star,
-                                  color: AppColors.premiumAccent,
+                                  color: AppColors.text,
                                   size: 20,
                                 ),
                               ),
@@ -189,27 +166,11 @@ class PurchaseButton extends StatelessWidget {
       width: double.infinity,
       height: 56,
       decoration: BoxDecoration(
-        gradient: isPurchased 
-            ? null 
-            : LinearGradient(
-                colors: [
-                  AppColors.premiumGradientStart,
-                  AppColors.premiumGradientEnd,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-        color: isPurchased ? AppColors.premiumButtonDisabled : null,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: isPurchased 
-            ? null 
-            : [
-                BoxShadow(
-                  color: AppColors.premiumGradientStart.withValues(alpha: 0.3),
-                  blurRadius: 12,
-                  offset: const Offset(0, 6),
-                ),
-              ],
+        color: isPurchased ? AppColors.inactive : AppColors.text,
+        borderRadius: BorderRadius.circular(12),
+        border: isPurchased 
+            ? Border.all(color: AppColors.border, width: 1)
+            : null,
       ),
       child: ElevatedButton(
         onPressed: isPurchased ? null : onPressed,
@@ -226,7 +187,7 @@ class PurchaseButton extends StatelessWidget {
             if (!isPurchased) ...[
               const Icon(
                 Icons.star,
-                color: Colors.white,
+                color: Colors.black,
                 size: 20,
               ),
               const SizedBox(width: 8),
@@ -234,9 +195,9 @@ class PurchaseButton extends StatelessWidget {
             Text(
               isPurchased ? '購入済みです' : 'プレミアムを始める',
               style: GoogleFonts.notoSans(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: isPurchased ? AppColors.textLight : AppColors.background,
               ),
             ),
           ],
@@ -300,10 +261,8 @@ class PurchaseCard extends StatelessWidget {
         color: AppColors.premiumCardBackground,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isRecommended 
-              ? AppColors.premiumAccent 
-              : AppColors.border,
-          width: isRecommended ? 2 : 1,
+          color: AppColors.border,
+          width: 1,
         ),
         boxShadow: [
           BoxShadow(
@@ -317,23 +276,20 @@ class PurchaseCard extends StatelessWidget {
         children: [
           if (isRecommended)
             Positioned(
-              top: 0,
-              right: 24,
+              top: -2,
+              right: 16,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppColors.premiumAccent,
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                  ),
+                  color: AppColors.text,
+                  borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
                   'おすすめ',
                   style: GoogleFonts.notoSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.background,
                   ),
                 ),
               ),
@@ -349,18 +305,17 @@ class PurchaseCard extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            AppColors.premiumGradientStart.withValues(alpha: 0.3),
-                            AppColors.premiumGradientEnd.withValues(alpha: 0.3),
-                          ],
+                        color: AppColors.surface,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: AppColors.border,
+                          width: 1,
                         ),
-                        borderRadius: BorderRadius.circular(16),
                       ),
                       child: Icon(
                         isMonthPlan ? Icons.calendar_month : Icons.calendar_today,
                         size: 32,
-                        color: AppColors.premiumAccent,
+                        color: AppColors.text,
                       ),
                     ),
                     const SizedBox(width: 20),
@@ -407,7 +362,7 @@ class PurchaseCard extends StatelessWidget {
                       style: GoogleFonts.notoSans(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.premiumAccent,
+                        color: AppColors.text,
                       ),
                     ),
                     const SizedBox(width: 8),
