@@ -7,6 +7,7 @@ import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/dialog/form_dialog.dart';
 import 'package:be_sharp/presentation/common/dialog/rank_dialog.dart';
 import 'package:be_sharp/presentation/page/basic_page.dart';
+import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,6 +69,7 @@ class LatestProblemScreen extends ConsumerWidget {
         style: GoogleFonts.notoSans(
           fontSize: 36,
           fontWeight: FontWeight.w500,
+          color: AppColors.text,
         ),
       ),
     );
@@ -78,8 +80,8 @@ class LatestProblemScreen extends ConsumerWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.blue.shade700,
+          backgroundColor: AppColors.card,
+          foregroundColor: AppColors.text,
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
@@ -122,7 +124,9 @@ class LatestProblemScreen extends ConsumerWidget {
             style: GoogleFonts.notoSans(
               fontSize: 18,
               fontWeight: FontWeight.bold,
+              color: AppColors.text,
             ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20),
           SizedBox(
@@ -141,7 +145,7 @@ class LatestProblemScreen extends ConsumerWidget {
                       style: GoogleFonts.notoSans(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue.shade700,
+                        color: AppColors.premiumInfo,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -150,6 +154,7 @@ class LatestProblemScreen extends ConsumerWidget {
                       style: GoogleFonts.notoSans(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
+                        color: AppColors.text,
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -157,6 +162,7 @@ class LatestProblemScreen extends ConsumerWidget {
                         style: GoogleFonts.notoSans(
                           fontSize: 24,
                           fontWeight: FontWeight.w500,
+                          color: AppColors.text,
                         )),
                   ],
                 ),
@@ -233,6 +239,7 @@ class LatestProblemScreen extends ConsumerWidget {
                 style: GoogleFonts.notoSans(
                   fontSize: 21,
                   fontWeight: FontWeight.bold,
+                  color: AppColors.text,
                 ),
               ),
             ),
@@ -243,28 +250,31 @@ class LatestProblemScreen extends ConsumerWidget {
 
   Widget _buildAnswerSection(
       BuildContext context, String title, String content, bool isValid) {
-    MaterialColor resultColor() {
-      return isValid ? Colors.green : Colors.red;
+    Color resultColor() {
+      return isValid ? AppColors.premiumSuccess : Colors.redAccent;
     }
 
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.4,
-      child: Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.card,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: resultColor(),
+            width: 2,
+          ),
         ),
-        color: resultColor().shade50,
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(12),
           child: Column(
             children: [
               Text(
                 title,
                 style: GoogleFonts.notoSans(
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: resultColor().shade700,
+                  color: resultColor(),
                 ),
               ),
               const SizedBox(height: 8),
@@ -273,6 +283,7 @@ class LatestProblemScreen extends ConsumerWidget {
                 style: GoogleFonts.notoSans(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
+                  color: AppColors.text,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -319,8 +330,8 @@ class OriginalButton extends StatelessWidget {
         ),
       ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.blue.shade700,
+        backgroundColor: AppColors.card,
+        foregroundColor: AppColors.text,
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
