@@ -31,7 +31,7 @@ class ProductsScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const PolicyButtons(),
-                    const SizedBox(height: 24),
+                    const SizedBox(height: 12),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -110,41 +110,49 @@ class ProductsScreen extends ConsumerWidget {
                           const SizedBox(height: 16),
                           const SubscriptionEffect(text: 'キャプションが追加可能に'),
                           const SizedBox(height: 8),
-                          const SubscriptionEffect(text: '広告なしでスムーズな体験'),
-                          const SizedBox(height: 8),
                           const SubscriptionEffect(text: '新機能を優先的に利用可能'),
                         ],
                       ),
                     ),
                     const SizedBox(height: 24),
-                    ...products.map((product) {
-                      return PurchaseCard(
-                        product: product,
-                        isMonthPlan: product.id == PurchaseUtil.monthItemId(),
-                        isPurchased: state.isPurchased(product.id),
-                        onPressed: () async {
-                          ToastUiUtil.showSuccessSnackBar(
-                            context,
-                            '情報を取得しています。 \nしばらくお待ちください。',
-                          );
-                          final result =
-                              await notifier().onPurchaseButtonPressed(
-                            product,
-                          );
-                          result.when(
-                            success: (_) {
-                              ToastUiUtil.showSuccessSnackBar(
-                                context,
-                                '購入が成功しました',
-                              );
-                            },
-                            failure: (msg) {
-                              ToastUiUtil.showFailureSnackBar(context, msg);
-                            },
-                          );
-                        },
-                      );
-                    })
+                    Row(
+                      children: products.map((product) {
+                        return Expanded(
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              right: product.id == PurchaseUtil.monthItemId() ? 8 : 0,
+                              left: product.id != PurchaseUtil.monthItemId() ? 8 : 0,
+                            ),
+                            child: PurchaseCard(
+                              product: product,
+                              isMonthPlan: product.id == PurchaseUtil.monthItemId(),
+                              isPurchased: state.isPurchased(product.id),
+                              onPressed: () async {
+                                ToastUiUtil.showSuccessSnackBar(
+                                  context,
+                                  '情報を取得しています。 \nしばらくお待ちください。',
+                                );
+                                final result =
+                                    await notifier().onPurchaseButtonPressed(
+                                  product,
+                                );
+                                result.when(
+                                  success: (_) {
+                                    ToastUiUtil.showSuccessSnackBar(
+                                      context,
+                                      '購入が成功しました',
+                                    );
+                                  },
+                                  failure: (msg) {
+                                    ToastUiUtil.showFailureSnackBar(context, msg);
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ],
                 ),
               ),
@@ -184,7 +192,14 @@ class PurchaseButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (!isPurchased) ...[
+            if (isPurchased) ...[
+              const Icon(
+                Icons.check_circle,
+                color: AppColors.textLight,
+                size: 20,
+              ),
+              const SizedBox(width: 8),
+            ] else ...[
               const Icon(
                 Icons.star,
                 color: Colors.black,
@@ -193,9 +208,9 @@ class PurchaseButton extends StatelessWidget {
               const SizedBox(width: 8),
             ],
             Text(
-              isPurchased ? '購入済みです' : 'プレミアムを始める',
+              '購入',
               style: GoogleFonts.notoSans(
-                fontSize: 17,
+                fontSize: isPurchased ? 16 : 17,
                 fontWeight: FontWeight.w600,
                 color: isPurchased ? AppColors.textLight : AppColors.background,
               ),
@@ -256,127 +271,97 @@ class PurchaseCard extends StatelessWidget {
     final isRecommended = !isMonthPlan; // 年額プランを推奨
     
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
+      height: 320,
       decoration: BoxDecoration(
         color: AppColors.premiumCardBackground,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: AppColors.border,
-          width: 1,
+          color: isRecommended ? AppColors.text : AppColors.border,
+          width: isRecommended ? 2 : 1,
         ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
           ),
         ],
       ),
       child: Stack(
         children: [
-          if (isRecommended)
-            Positioned(
-              top: -2,
-              right: 16,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                  color: AppColors.text,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  'おすすめ',
-                  style: GoogleFonts.notoSans(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.background,
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: AppColors.surface,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: AppColors.border,
+                      width: 1,
+                    ),
+                  ),
+                  child: Icon(
+                    isMonthPlan ? Icons.calendar_month : Icons.calendar_today,
+                    size: 28,
+                    color: AppColors.text,
                   ),
                 ),
-              ),
-            ),
-          Padding(
-            padding: const EdgeInsets.all(28.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: isRecommended ? 20 : 0),
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: AppColors.surface,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: AppColors.border,
-                          width: 1,
-                        ),
-                      ),
-                      child: Icon(
-                        isMonthPlan ? Icons.calendar_month : Icons.calendar_today,
-                        size: 32,
-                        color: AppColors.text,
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            isMonthPlan ? '月額プラン' : '年額プラン',
-                            style: GoogleFonts.notoSans(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.text,
-                            ),
-                          ),
-                          if (!isMonthPlan)
-                            Container(
-                              margin: const EdgeInsets.only(top: 4),
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                              decoration: BoxDecoration(
-                                color: AppColors.premiumSuccess.withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                '2ヶ月分お得！',
-                                style: GoogleFonts.notoSans(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.premiumSuccess,
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    ),
-                  ],
+                const SizedBox(height: 16),
+                Text(
+                  isMonthPlan ? '月額プラン' : '年額プラン',
+                  style: GoogleFonts.notoSans(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.text,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
+                if (!isMonthPlan) ...[
+                  const SizedBox(height: 8),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColors.premiumSuccess.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      '2ヶ月分お得',
+                      style: GoogleFonts.notoSans(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.premiumSuccess,
+                      ),
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 20),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                Column(
                   children: [
                     Text(
                       product.price,
                       style: GoogleFonts.notoSans(
-                        fontSize: 36,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                         color: AppColors.text,
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    const SizedBox(width: 8),
                     Text(
                       isMonthPlan ? '/月' : '/年',
                       style: GoogleFonts.notoSans(
-                        fontSize: 18,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: AppColors.textLight,
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 28),
+                const Spacer(),
                 PurchaseButton(
                   isPurchased: isPurchased,
                   onPressed: onPressed,
@@ -384,6 +369,26 @@ class PurchaseCard extends StatelessWidget {
               ],
             ),
           ),
+          if (isRecommended)
+            Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: AppColors.text,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  'おすすめ',
+                  style: GoogleFonts.notoSans(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.background,
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
