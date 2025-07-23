@@ -20,7 +20,7 @@ class HomeScreen extends ConsumerWidget {
       drawer: const OriginalDrawer(),
       body: asyncValue.when(
         loading: _buildLoadingState,
-        error: (error, stackTrace) =>const Center(
+        error: (error, stackTrace) => const Center(
           child: Text(
             'エラーが発生しました',
             style: TextStyle(color: AppColors.text),
@@ -91,7 +91,7 @@ class HomeScreen extends ConsumerWidget {
       ),
     );
   }
-  
+
   Widget _buildLoadingState() {
     return CustomScrollView(
       slivers: [

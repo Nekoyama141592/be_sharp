@@ -33,7 +33,7 @@ class RankingCardSkeleton extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            
+
             // Avatar skeleton
             Container(
               width: 40,
@@ -44,7 +44,7 @@ class RankingCardSkeleton extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            
+
             // Text content skeleton
             Expanded(
               child: Column(
@@ -60,7 +60,7 @@ class RankingCardSkeleton extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  
+
                   // Time skeleton
                   Container(
                     height: 14,
@@ -71,7 +71,7 @@ class RankingCardSkeleton extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  
+
                   // Caption skeleton (optional)
                   Container(
                     height: 12,
@@ -84,7 +84,7 @@ class RankingCardSkeleton extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             // More button skeleton
             Container(
               width: 20,

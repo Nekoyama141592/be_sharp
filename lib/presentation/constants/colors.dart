@@ -13,7 +13,7 @@ class AppColors {
   static const Color border = Color(0xFF2C2C2E);
   static const Color inactive = Color(0xFF48484A);
   static const Color surface = Color(0xFF111111);
-  
+
   // Premium/Subscription specific colors
   static const Color premiumGradientStart = Color(0xFF6B73FF);
   static const Color premiumGradientEnd = Color(0xFF9546FF);

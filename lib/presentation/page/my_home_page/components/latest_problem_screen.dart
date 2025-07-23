@@ -120,130 +120,130 @@ class LatestProblemScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-          Text(
-            title(),
-            style: GoogleFonts.notoSans(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.text,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 20),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Card(
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+            Text(
+              title(),
+              style: GoogleFonts.notoSans(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: AppColors.text,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Text(
-                      '問題',
-                      style: GoogleFonts.notoSans(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.premiumInfo,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      problem.question,
-                      style: GoogleFonts.notoSans(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.text,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(problem.latex,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        '問題',
                         style: GoogleFonts.notoSans(
                           fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.premiumInfo,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        problem.question,
+                        style: GoogleFonts.notoSans(
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                           color: AppColors.text,
-                        )),
-                  ],
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(problem.latex,
+                          style: GoogleFonts.notoSans(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.text,
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            _buildAnswerSection(
-                context, '正解', problem.answers.join(','), isCorrect),
-            const SizedBox(width: 20),
-            _buildAnswerSection(context, '回答', userAnswer.answer, isCorrect),
-          ]),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            const SizedBox(height: 20),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               _buildAnswerSection(
-                  context,
-                  '制限時間',
-                  FormatUIUtil.formatDuration(problem.timeLimitDuration()),
-                  isInTime),
+                  context, '正解', problem.answers.join(','), isCorrect),
               const SizedBox(width: 20),
-              _buildAnswerSection(context, '回答時間',
-                  FormatUIUtil.formatDuration(answerTime), isInTime),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OriginalButton(
-                  onPressed: () async {
-                    final rank = await notifier().getRankForDialog();
-                    if (rank != null && context.mounted) {
+              _buildAnswerSection(context, '回答', userAnswer.answer, isCorrect),
+            ]),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildAnswerSection(
+                    context,
+                    '制限時間',
+                    FormatUIUtil.formatDuration(problem.timeLimitDuration()),
+                    isInTime),
+                const SizedBox(width: 20),
+                _buildAnswerSection(context, '回答時間',
+                    FormatUIUtil.formatDuration(answerTime), isInTime),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OriginalButton(
+                    onPressed: () async {
+                      final rank = await notifier().getRankForDialog();
+                      if (rank != null && context.mounted) {
+                        showDialog(
+                          context: context,
+                          builder: (innerContext) => RankDialog(rank: rank),
+                        );
+                      }
+                    },
+                    isPaid: false,
+                    labelText: 'ランキング',
+                    iconData: Icons.star),
+                const SizedBox(
+                  width: 16.0,
+                ),
+                OriginalButton(
+                  onPressed: () {
+                    if (notifier().canShowCaptionDialog) {
                       showDialog(
                         context: context,
-                        builder: (innerContext) => RankDialog(rank: rank),
+                        builder: (innerContext) => FormDialog(
+                          initialValue: notifier().initialCaptionValue,
+                          onSend: (caption) async {
+                            Navigator.pop(context);
+                            await notifier().onSendCaption(caption);
+                          },
+                        ),
                       );
                     }
                   },
-                  isPaid: false,
-                  labelText: 'ランキング',
-                  iconData: Icons.star),
-              const SizedBox(
-                width: 16.0,
-              ),
-              OriginalButton(
-                onPressed: () {
-                  if (notifier().canShowCaptionDialog) {
-                    showDialog(
-                      context: context,
-                      builder: (innerContext) => FormDialog(
-                        initialValue: notifier().initialCaptionValue,
-                        onSend: (caption) async {
-                          Navigator.pop(context);
-                          await notifier().onSendCaption(caption);
-                        },
-                      ),
-                    );
-                  }
-                },
-                isPaid: true,
-                labelText: 'キャプション',
-                iconData: isCaptionExists ? Icons.edit : Icons.add_comment,
-              ),
-            ],
-          ),
-          if (isCaptionExists)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Text(
-                caption.value,
-                style: GoogleFonts.notoSans(
-                  fontSize: 21,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.text,
+                  isPaid: true,
+                  labelText: 'キャプション',
+                  iconData: isCaptionExists ? Icons.edit : Icons.add_comment,
+                ),
+              ],
+            ),
+            if (isCaptionExists)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Text(
+                  caption.value,
+                  style: GoogleFonts.notoSans(
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.text,
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),

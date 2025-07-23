@@ -87,7 +87,8 @@ class ProductsScreen extends ConsumerWidget {
                               Container(
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                  color: AppColors.premiumAccent.withValues(alpha: 0.2),
+                                  color: AppColors.premiumAccent
+                                      .withValues(alpha: 0.2),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: const Icon(
@@ -120,12 +121,17 @@ class ProductsScreen extends ConsumerWidget {
                         return Expanded(
                           child: Container(
                             margin: EdgeInsets.only(
-                              right: product.id == PurchaseUtil.monthItemId() ? 8 : 0,
-                              left: product.id != PurchaseUtil.monthItemId() ? 8 : 0,
+                              right: product.id == PurchaseUtil.monthItemId()
+                                  ? 8
+                                  : 0,
+                              left: product.id != PurchaseUtil.monthItemId()
+                                  ? 8
+                                  : 0,
                             ),
                             child: PurchaseCard(
                               product: product,
-                              isMonthPlan: product.id == PurchaseUtil.monthItemId(),
+                              isMonthPlan:
+                                  product.id == PurchaseUtil.monthItemId(),
                               isPurchased: state.isPurchased(product.id),
                               onPressed: () async {
                                 ToastUiUtil.showSuccessSnackBar(
@@ -144,7 +150,8 @@ class ProductsScreen extends ConsumerWidget {
                                     );
                                   },
                                   failure: (msg) {
-                                    ToastUiUtil.showFailureSnackBar(context, msg);
+                                    ToastUiUtil.showFailureSnackBar(
+                                        context, msg);
                                   },
                                 );
                               },
@@ -176,9 +183,8 @@ class PurchaseButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: isPurchased ? AppColors.inactive : AppColors.text,
         borderRadius: BorderRadius.circular(12),
-        border: isPurchased 
-            ? Border.all(color: AppColors.border, width: 1)
-            : null,
+        border:
+            isPurchased ? Border.all(color: AppColors.border, width: 1) : null,
       ),
       child: ElevatedButton(
         onPressed: isPurchased ? null : onPressed,
@@ -269,7 +275,7 @@ class PurchaseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isRecommended = !isMonthPlan; // 年額プランを推奨
-    
+
     return Container(
       height: 320,
       decoration: BoxDecoration(
@@ -324,7 +330,8 @@ class PurchaseCard extends StatelessWidget {
                 if (!isMonthPlan) ...[
                   const SizedBox(height: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: AppColors.premiumSuccess.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(6),

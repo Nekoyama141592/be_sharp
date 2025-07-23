@@ -4,7 +4,6 @@ import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:be_sharp/core/util/route_util.dart';
 
-
 @RoutePage()
 class EditUserPage extends StatelessWidget {
   const EditUserPage({super.key});
@@ -12,7 +11,7 @@ class EditUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: EditUserScreen(),
+        body: EditUserScreen(),
         backgroundColor: AppColors.background,
         appBar: AppBar(
             elevation: 0,
@@ -33,7 +32,5 @@ class EditUserPage extends StatelessWidget {
               ),
               onPressed: () => RouteUtil.back(context),
             )));
-            
   }
 }
-

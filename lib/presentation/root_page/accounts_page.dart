@@ -59,7 +59,7 @@ class AccountPage extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 32),
-              
+
               // Account info section
               _buildInfoCard(
                 icon: Icons.person_outline,
@@ -68,7 +68,7 @@ class AccountPage extends ConsumerWidget {
                 isSelectable: true,
               ),
               const SizedBox(height: 16),
-              
+
               _buildInfoCard(
                 icon: Icons.email_outlined,
                 title: 'メールアドレス',
@@ -76,14 +76,16 @@ class AccountPage extends ConsumerWidget {
                 isSelectable: true,
               ),
               const SizedBox(height: 16),
-              
+
               _buildInfoCard(
                 icon: Icons.security_outlined,
                 title: '認証プロバイダー',
-                value: state?.providerData.map((e) => e.providerId).join(', ') ?? '---',
+                value:
+                    state?.providerData.map((e) => e.providerId).join(', ') ??
+                        '---',
               ),
               const SizedBox(height: 40),
-              
+
               // Action buttons section
               if (state != null) ...[
                 Text(
@@ -95,13 +97,13 @@ class AccountPage extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                
                 _buildActionButton(
                   icon: Icons.logout,
                   title: 'ログアウト',
                   subtitle: 'アプリからサインアウトします',
                   onTap: () async {
-                    final result = await ref.read(authRepositoryProvider).signOut();
+                    final result =
+                        await ref.read(authRepositoryProvider).signOut();
                     result.when(success: (_) {
                       RouteUtil.pushPath(context, LogoutedPage.path);
                     }, failure: (msg) {
@@ -110,7 +112,6 @@ class AccountPage extends ConsumerWidget {
                   },
                 ),
                 const SizedBox(height: 12),
-                
                 _buildActionButton(
                   icon: Icons.delete_forever_outlined,
                   title: 'アカウントを削除',
@@ -126,7 +127,7 @@ class AccountPage extends ConsumerWidget {
       ),
     );
   }
-  
+
   Widget _buildInfoCard({
     required IconData icon,
     required String title,
@@ -195,7 +196,7 @@ class AccountPage extends ConsumerWidget {
       ),
     );
   }
-  
+
   Widget _buildActionButton({
     required IconData icon,
     required String title,
@@ -208,7 +209,9 @@ class AccountPage extends ConsumerWidget {
         color: AppColors.card,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isDestructive ? Colors.red.withValues(alpha: 0.3) : AppColors.border,
+          color: isDestructive
+              ? Colors.red.withValues(alpha: 0.3)
+              : AppColors.border,
           width: 1,
         ),
       ),
@@ -224,7 +227,7 @@ class AccountPage extends ConsumerWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: isDestructive 
+                    color: isDestructive
                         ? Colors.red.withValues(alpha: 0.1)
                         : AppColors.surface,
                     borderRadius: BorderRadius.circular(12),

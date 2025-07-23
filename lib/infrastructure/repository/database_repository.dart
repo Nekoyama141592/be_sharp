@@ -283,7 +283,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final docs = qshot.docs;
       if (docs.isEmpty) return null;
       return ProblemEntity.fromJson(docs.first.data());
-    } catch(e) {
+    } catch (e) {
       debugPrint(e.toString());
       return null;
     }

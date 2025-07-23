@@ -93,11 +93,11 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 32),
-                    
+
                     // Question Card
                     if (state != null) QuestionCard(state: state),
                     const SizedBox(height: 32),
-                    
+
                     // Answer Input
                     Text(
                       'あなたの答え',
@@ -143,7 +143,7 @@ class CreateUserAnswerPage extends HookConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 32),
-                    
+
                     // Submit Button
                     submitButton(),
                   ],
@@ -188,7 +188,7 @@ class QuestionCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          
+
           // Math expression
           Center(
             child: Container(
@@ -208,7 +208,7 @@ class QuestionCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          
+
           // Time info
           Row(
             children: [
@@ -230,7 +230,7 @@ class QuestionCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          
+
           // Countdown timer
           Center(
             child: CountdownTimer(seconds: seconds),
@@ -239,7 +239,7 @@ class QuestionCard extends StatelessWidget {
       ),
     );
   }
-  
+
   Widget _buildInfoItem(String title, String value, IconData icon) {
     return Container(
       padding: const EdgeInsets.all(12),
@@ -300,20 +300,20 @@ class CountdownTimer extends HookWidget {
 
     final isTimeUp = currentSeconds.value <= 0;
     final isUrgent = currentSeconds.value <= 30;
-    
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: isTimeUp 
+        color: isTimeUp
             ? Colors.red.withValues(alpha: 0.1)
-            : isUrgent 
+            : isUrgent
                 ? Colors.orange.withValues(alpha: 0.1)
                 : AppColors.premiumInfo.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isTimeUp 
+          color: isTimeUp
               ? Colors.red
-              : isUrgent 
+              : isUrgent
                   ? Colors.orange
                   : AppColors.premiumInfo,
           width: 1,
@@ -324,24 +324,22 @@ class CountdownTimer extends HookWidget {
         children: [
           Icon(
             isTimeUp ? Icons.timer_off : Icons.access_time,
-            color: isTimeUp 
+            color: isTimeUp
                 ? Colors.red
-                : isUrgent 
+                : isUrgent
                     ? Colors.orange
                     : AppColors.premiumInfo,
             size: 20,
           ),
           const SizedBox(width: 8),
           Text(
-            currentSeconds.value > 0 
-                ? '残り ${currentSeconds.value}秒' 
-                : 'タイムアップ',
+            currentSeconds.value > 0 ? '残り ${currentSeconds.value}秒' : 'タイムアップ',
             style: GoogleFonts.notoSans(
               fontSize: 16,
               fontWeight: FontWeight.w600,
-              color: isTimeUp 
+              color: isTimeUp
                   ? Colors.red
-                  : isUrgent 
+                  : isUrgent
                       ? Colors.orange
                       : AppColors.premiumInfo,
             ),
