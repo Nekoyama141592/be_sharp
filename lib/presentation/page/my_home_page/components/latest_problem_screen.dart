@@ -115,10 +115,11 @@ class LatestProblemScreen extends ConsumerWidget {
       }
     }
 
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
           Text(
             title(),
             style: GoogleFonts.notoSans(
@@ -243,7 +244,8 @@ class LatestProblemScreen extends ConsumerWidget {
                 ),
               ),
             ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -255,7 +257,7 @@ class LatestProblemScreen extends ConsumerWidget {
     }
 
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.4,
+      width: MediaQuery.of(context).size.width * 0.35,
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.card,
@@ -312,7 +314,7 @@ class OriginalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.40,
+      width: MediaQuery.of(context).size.width * 0.38,
       child:
           isPaid ? _buildPremiumButton(context) : _buildRegularButton(context),
     );
