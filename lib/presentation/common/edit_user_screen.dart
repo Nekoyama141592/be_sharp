@@ -4,44 +4,12 @@ import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/circle_image/circle_image.dart';
-import 'package:flutter/material.dart';
-
+import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/presentation/my_app.dart';
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/services.dart';
-
-const backgroundColor = Color(0xFFF8F9FE);
-const textColor = Color(0xFF2E3E5C);
-
-class EditUserPage extends StatelessWidget {
-  const EditUserPage({super.key});
-  static const path = "/editUser";
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
-            title: const Text(
-              "プロフィール編集",
-              style: TextStyle(
-                color: textColor,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            leading: IconButton(
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: textColor,
-              ),
-              onPressed: () => RouteUtil.back(context),
-            )));
-  }
-}
 
 // ユーザー情報を編集するページ
 class EditUserScreen extends HookConsumerWidget {
@@ -66,8 +34,8 @@ class EditUserScreen extends HookConsumerWidget {
     });
 
     // テーマカラーの定義
-    const primaryColor = Color(0xFF6C63FF);
-    const secondaryColor = Color(0xFF8F8CF2);
+    const primaryColor = AppColors.premiumInfo;
+    const secondaryColor = AppColors.premiumInfo;
 
     // アニメーション用のコントローラー
     const animationDuration = Duration(milliseconds: 300);
@@ -79,11 +47,7 @@ class EditUserScreen extends HookConsumerWidget {
         height: 56,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          gradient: const LinearGradient(
-            colors: [primaryColor, secondaryColor],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
+          color: primaryColor,
           boxShadow: [
             BoxShadow(
               color: primaryColor.withValues(alpha: 0.3),
@@ -130,7 +94,7 @@ class EditUserScreen extends HookConsumerWidget {
             child: Text(
               'ニックネーム',
               style: TextStyle(
-                color: textColor,
+                color: AppColors.text,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
@@ -140,7 +104,7 @@ class EditUserScreen extends HookConsumerWidget {
         Container(
           width: PaddingUtil.textFieldWidth(context),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.card,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -155,13 +119,13 @@ class EditUserScreen extends HookConsumerWidget {
             onSaved: notifier().setNickName,
             validator: ValidatorUIUtil.nickName,
             style: const TextStyle(
-              color: textColor,
+              color: AppColors.text,
               fontSize: 16,
             ),
             decoration: InputDecoration(
               hintText: 'あなたのニックネームを入力',
-              hintStyle: TextStyle(
-                color: Colors.grey.shade400,
+              hintStyle: const TextStyle(
+                color: AppColors.textLight,
                 fontSize: 16,
               ),
               prefixIcon: const Icon(
@@ -189,7 +153,7 @@ class EditUserScreen extends HookConsumerWidget {
             child: Text(
               '自己紹介',
               style: TextStyle(
-                color: textColor,
+                color: AppColors.text,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
               ),
@@ -199,7 +163,7 @@ class EditUserScreen extends HookConsumerWidget {
         Container(
           width: PaddingUtil.textFieldWidth(context),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.card,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -214,14 +178,14 @@ class EditUserScreen extends HookConsumerWidget {
             onSaved: notifier().setBio,
             validator: ValidatorUIUtil.bio,
             style: const TextStyle(
-              color: textColor,
+              color: AppColors.text,
               fontSize: 16,
             ),
             maxLines: 4,
             decoration: InputDecoration(
               hintText: 'あなたのことを教えてください',
-              hintStyle: TextStyle(
-                color: Colors.grey.shade400,
+              hintStyle: const TextStyle(
+                color: AppColors.textLight,
                 fontSize: 16,
               ),
               prefixIcon: const Padding(
@@ -329,10 +293,10 @@ class EditUserScreen extends HookConsumerWidget {
         ),
         if (isImageNull) ...[
           const SizedBox(height: 12.0),
-          Text(
+          const Text(
             'プロフィール画像を選択',
             style: TextStyle(
-              color: textColor.withValues(alpha: 0.7),
+              color: AppColors.textLight,
               fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
