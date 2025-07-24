@@ -1,0 +1,21 @@
+android {
+    flavorDimensions += "flavor-type"
+
+    productFlavors {
+        dev {
+            dimension "flavor-type"
+            applicationId "com.firebaseapp.be_sharp_dev"
+            resValue "string", "app_name", "BeSharp. DEV"
+        }
+        stg {
+            dimension "flavor-type"
+            applicationId "com.firebaseapp.be_sharp_stg"
+            resValue "string", "app_name", "BeSharp. STG"
+        }
+        prod {
+            dimension "flavor-type"
+            applicationId "com.firebaseapp.be_sharp_prod"
+            resValue "string", "app_name", "BeSharp."
+        }
+    }
+}

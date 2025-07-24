@@ -1,4 +1,3 @@
-// DEV
 // !$*UTF8*$!
 {
 	archiveVersion = 1;
@@ -1558,85 +1557,49 @@
 		};
 		D85CB05D2D26702100FDFB06 /* Debug-dev */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4B86145ED6144F09F9A173D /* Pods-Runner.debug-dev.xcconfig */;
+			baseConfigurationReference = 2B9AE8D61941F06A9B97D845 /* devDebug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Debug-dev";
 		};
 		D85CB05E2D26702100FDFB06 /* Profile-dev */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED6B39E3B7013C3FD8C41BDD /* Pods-Runner.profile-dev.xcconfig */;
+			baseConfigurationReference = 6C0F1429C52288DBFD994FDD /* devProfile.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Profile-dev";
 		};
 		D85CB05F2D26702100FDFB06 /* Release-dev */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00CB1916ED0CC35243BF1CE8 /* Pods-Runner.release-dev.xcconfig */;
+			baseConfigurationReference = 5E078AC11EFD04F7D302701C /* devRelease.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Release-dev";
 		};
 		D85CB0602D26702100FDFB06 /* Debug-stg */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67363CC3439B38FC59BA0B76 /* Pods-Runner.debug-stg.xcconfig */;
+			baseConfigurationReference = 0C7E0F2256FFDF249DF56AC8 /* stgDebug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Debug-stg";
 		};
 		D85CB0612D26702100FDFB06 /* Profile-stg */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 37BBD7B7DA073F7BF5E96B81 /* Pods-Runner.profile-stg.xcconfig */;
+			baseConfigurationReference = 9F26D01CDEB231A0480F824D /* stgProfile.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Profile-stg";
 		};
 		D85CB0622D26702100FDFB06 /* Release-stg */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B7577F1CF1BD92830296DFC /* Pods-Runner.release-stg.xcconfig */;
+			baseConfigurationReference = 6096FAD2B6B7985353B7C451 /* stgRelease.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Release-stg";
 		};
@@ -1756,43 +1719,25 @@
 		};
 		D85CB06F2D26A0B200FDFB06 /* Debug-prod */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4991694482FE08607EB1D35C /* Pods-Runner.debug-prod.xcconfig */;
+			baseConfigurationReference = C19BCBD8995E6C09072D790C /* prodDebug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Debug-prod";
 		};
 		D85CB0702D26A0B200FDFB06 /* Profile-prod */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B41739A769652E07D6FA666 /* Pods-Runner.profile-prod.xcconfig */;
+			baseConfigurationReference = C385AC254133A77066F1E1B7 /* prodProfile.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Profile-prod";
 		};
 		D85CB0712D26A0B200FDFB06 /* Release-prod */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E24139819809F65D95121D0B /* Pods-Runner.release-prod.xcconfig */;
+			baseConfigurationReference = 348E51967364F8C286C18041 /* prodRelease.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dev";
-				BUNDLE_DISPLAY_NAME = "BeSharp. DEV";
-				BUNDLE_NAME = "BeSharp. DEV";
-				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
-				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.beSharpDev;
-				PRODUCT_NAME = Runner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = "Release-prod";
 		};
