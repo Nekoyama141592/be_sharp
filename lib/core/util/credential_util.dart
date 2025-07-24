@@ -1,4 +1,4 @@
-import 'package:be_sharp/application/run_app.dart';
+import 'package:be_sharp/core/util/env_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -21,7 +21,7 @@ class CredentialUtil {
   }
 
   static Future<AuthCredential> googleCredential() async {
-    final clientId = RunApp.getFirebaseOption().iosClientId;
+    final clientId = EnvUtil.getFirebaseOption().iosClientId;
     final GoogleSignIn signIn = GoogleSignIn.instance;
     await signIn.initialize(clientId: clientId);
     const List<String> scopes = <String>[

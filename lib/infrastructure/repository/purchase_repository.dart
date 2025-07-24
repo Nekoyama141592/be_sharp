@@ -1,6 +1,7 @@
 import 'package:be_sharp/core/util/purchase_util.dart';
 import 'package:be_sharp/core/extension/purchase_details_extension.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
+import 'package:be_sharp/domain/repository_interface/purchase_repository_interface.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 import 'dart:io';
@@ -8,22 +9,24 @@ import 'package:flutter/material.dart';
 import 'package:in_app_purchase_android/billing_client_wrappers.dart';
 import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
 
-class PurchaseRepository {
-  PurchaseRepository({
-    required this.inAppPurchase,
-    required this.client,
-    required this.wrapper,
-  });
-  final InAppPurchase inAppPurchase;
-  final BillingClient client;
-  final SKPaymentQueueWrapper wrapper;
+class PurchaseRepository implements PurchaseRepositoryInterface {
+  PurchaseRepository(this._inAppPurchase, this._client, this._wrapper);
+  final InAppPurchase _inAppPurchase;
+  final BillingClient _client;
+  final SKPaymentQueueWrapper _wrapper;
+
+  @override
+  Stream<List<PurchaseDetails>> get purchaseUpdated =>
+      _inAppPurchase.purchaseStream
+          .map((details) => details)
+          .asBroadcastStream();
 
   Future<void> cancelTransctions() async {
     if (!Platform.isIOS) return;
     try {
-      final transactions = await wrapper.transactions();
+      final transactions = await _wrapper.transactions();
       for (final tx in transactions) {
-        await wrapper.finishTransaction(tx);
+        await _wrapper.finishTransaction(tx);
       }
     } catch (e) {
       debugPrint('cancelTransactions: ${e.toString()}');
@@ -33,7 +36,7 @@ class PurchaseRepository {
   Future<void> completePurchase(PurchaseDetails details) async {
     if (!details.pendingCompletePurchase) return;
     try {
-      await inAppPurchase.completePurchase(details);
+      await _inAppPurchase.completePurchase(details);
     } catch (e) {
       debugPrint('completePurchase: ${e.toString()}');
     }
@@ -41,7 +44,7 @@ class PurchaseRepository {
 
   Future<bool> isAvailable() async {
     try {
-      return inAppPurchase.isAvailable();
+      return _inAppPurchase.isAvailable();
     } catch (e) {
       debugPrint('isAvailable: ${e.toString()}');
       return false;
@@ -54,16 +57,39 @@ class PurchaseRepository {
       // 承認を行う.行わないと払い戻しが行われる.
       final serverVerificationData =
           details.verificationData.serverVerificationData;
-      await client.acknowledgePurchase(serverVerificationData);
+      await _client.acknowledgePurchase(serverVerificationData);
     } catch (e) {
       debugPrint('acknowledge: ${e.toString()}');
     }
   }
 
+  @override
+  Future<void> initStore() async {
+    // Initialize store if needed
+  }
+
+  @override
+  Future<List<ProductDetails>> getProducts() async {
+    final products = await queryProductDetails();
+    return products ?? [];
+  }
+
+  @override
+  Future<void> buyProduct(String productId) async {
+    final products = await queryProductDetails();
+    if (products == null) return;
+
+    final product = products.where((p) => p.id == productId).firstOrNull;
+    if (product == null) return;
+
+    final purchaseParam = PurchaseParam(productDetails: product);
+    await buyNonConsumable(purchaseParam);
+  }
+
   Future<List<ProductDetails>?> queryProductDetails() async {
     try {
       final identifiers = PurchaseUtil.productIds();
-      final res = await inAppPurchase.queryProductDetails(identifiers);
+      final res = await _inAppPurchase.queryProductDetails(identifiers);
       return res.productDetails;
     } catch (e) {
       debugPrint('queryProductDetails: ${e.toString()}');
@@ -73,7 +99,7 @@ class PurchaseRepository {
 
   FutureResult<bool> buyNonConsumable(PurchaseParam purchaseParam) async {
     try {
-      await inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
+      await _inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
       return const Result.success(true);
     } catch (e) {
       debugPrint('buyNonConsumable: ${e.toString()}');
@@ -83,7 +109,7 @@ class PurchaseRepository {
 
   FutureResult<bool> restorePurchases() async {
     try {
-      await inAppPurchase.restorePurchases();
+      await _inAppPurchase.restorePurchases();
       return const Result.success(true);
     } catch (e) {
       debugPrint('restorePurchases: ${e.toString()}');

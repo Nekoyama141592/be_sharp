@@ -1,4 +1,5 @@
 import 'package:be_sharp/core/util/route_util.dart';
+import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/presentation/notifier/keep_alive/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/presentation/notifier/keep_alive/latest_problem/latest_problem_notifier_provider.dart';
 import 'package:be_sharp/presentation/notifier/keep_alive/products/products_notifier.dart';
@@ -32,12 +33,16 @@ class MyHomePage extends HookConsumerWidget {
         drawer: const OriginalDrawer(),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
+            backgroundColor: AppColors.surface,
+            selectedItemColor: AppColors.primary,
+            unselectedItemColor: AppColors.inactive,
+            elevation: 0,
             items: BNBUIUtil.values(),
             currentIndex: pageIndex.value,
             onTap: (index) async {
               pageController.animateToPage(index,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.fastLinearToSlowEaseIn);
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut);
             }),
         child: PageView(
           onPageChanged: (index) => pageIndex.value = index,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/state/notifier_state/latest_problem_notifier_state.dart';
 import 'package:be_sharp/presentation/notifier/keep_alive/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
@@ -7,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 part 'latest_problem_notifier_provider.g.dart';
 
@@ -38,9 +38,9 @@ class LatestProblemNotifier extends _$LatestProblemNotifier {
   }
 
   Future<bool> _getIsNewProblem(String uid, QDoc problemDoc) async {
-    final problem = ReadProblem.fromJson(problemDoc.data());
-    if (!problem.isInTimeLimit()) return false;
-    final problemId = problem.problemId;
+    final entity = ProblemEntity.fromJson(problemDoc.data());
+    if (!entity.isInTimeLimit()) return false;
+    final problemId = entity.problemId;
     final doc = await repository.getUserAnswerDoc(uid, problemId);
     final isExists = doc?.exists ?? false;
     return !isExists;

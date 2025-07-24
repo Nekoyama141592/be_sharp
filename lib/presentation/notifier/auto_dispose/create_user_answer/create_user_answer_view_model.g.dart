@@ -7,7 +7,7 @@ part of 'create_user_answer_view_model.dart';
 // **************************************************************************
 
 String _$createUserAnswerViewModelHash() =>
-    r'fe604fa45ddd0e6ba415a91bbacf15e2d0893797';
+    r'6b0372f6d09c375f991b59921b51d3edc4a1639c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$CreateUserAnswerViewModel
-    extends BuildlessAutoDisposeAsyncNotifier<ReadProblem?> {
+    extends BuildlessAutoDisposeAsyncNotifier<ProblemEntity?> {
   late final String problemId;
 
-  FutureOr<ReadProblem?> build(
+  FutureOr<ProblemEntity?> build(
     String problemId,
   );
 }
@@ -44,7 +44,8 @@ abstract class _$CreateUserAnswerViewModel
 const createUserAnswerViewModelProvider = CreateUserAnswerViewModelFamily();
 
 /// See also [CreateUserAnswerViewModel].
-class CreateUserAnswerViewModelFamily extends Family<AsyncValue<ReadProblem?>> {
+class CreateUserAnswerViewModelFamily
+    extends Family<AsyncValue<ProblemEntity?>> {
   /// See also [CreateUserAnswerViewModel].
   const CreateUserAnswerViewModelFamily();
 
@@ -84,7 +85,7 @@ class CreateUserAnswerViewModelFamily extends Family<AsyncValue<ReadProblem?>> {
 /// See also [CreateUserAnswerViewModel].
 class CreateUserAnswerViewModelProvider
     extends AutoDisposeAsyncNotifierProviderImpl<CreateUserAnswerViewModel,
-        ReadProblem?> {
+        ProblemEntity?> {
   /// See also [CreateUserAnswerViewModel].
   CreateUserAnswerViewModelProvider(
     String problemId,
@@ -115,7 +116,7 @@ class CreateUserAnswerViewModelProvider
   final String problemId;
 
   @override
-  FutureOr<ReadProblem?> runNotifierBuild(
+  FutureOr<ProblemEntity?> runNotifierBuild(
     covariant CreateUserAnswerViewModel notifier,
   ) {
     return notifier.build(
@@ -141,7 +142,7 @@ class CreateUserAnswerViewModelProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<CreateUserAnswerViewModel,
-      ReadProblem?> createElement() {
+      ProblemEntity?> createElement() {
     return _CreateUserAnswerViewModelProviderElement(this);
   }
 
@@ -163,14 +164,14 @@ class CreateUserAnswerViewModelProvider
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 mixin CreateUserAnswerViewModelRef
-    on AutoDisposeAsyncNotifierProviderRef<ReadProblem?> {
+    on AutoDisposeAsyncNotifierProviderRef<ProblemEntity?> {
   /// The parameter `problemId` of this provider.
   String get problemId;
 }
 
 class _CreateUserAnswerViewModelProviderElement
     extends AutoDisposeAsyncNotifierProviderElement<CreateUserAnswerViewModel,
-        ReadProblem?> with CreateUserAnswerViewModelRef {
+        ProblemEntity?> with CreateUserAnswerViewModelRef {
   _CreateUserAnswerViewModelProviderElement(super.provider);
 
   @override

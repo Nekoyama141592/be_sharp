@@ -10,7 +10,7 @@ _UserAndImageState _$UserAndImageStateFromJson(Map<String, dynamic> json) =>
     _UserAndImageState(
       user: json['user'] == null
           ? null
-          : ReadPublicUser.fromJson(json['user'] as Map<String, dynamic>),
+          : PublicUserEntity.fromJson(json['user'] as Map<String, dynamic>),
       image: json['image'] as String?,
     );
 

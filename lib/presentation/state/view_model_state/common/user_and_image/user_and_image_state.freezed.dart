@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$UserAndImageState {
-  ReadPublicUser? get user;
+  PublicUserEntity? get user;
   String? get image;
 
   /// Create a copy of UserAndImageState
@@ -53,9 +53,9 @@ abstract mixin class $UserAndImageStateCopyWith<$Res> {
           UserAndImageState value, $Res Function(UserAndImageState) _then) =
       _$UserAndImageStateCopyWithImpl;
   @useResult
-  $Res call({ReadPublicUser? user, String? image});
+  $Res call({PublicUserEntity? user, String? image});
 
-  $ReadPublicUserCopyWith<$Res>? get user;
+  $PublicUserEntityCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -78,7 +78,7 @@ class _$UserAndImageStateCopyWithImpl<$Res>
       user: freezed == user
           ? _self.user
           : user // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser?,
+              as PublicUserEntity?,
       image: freezed == image
           ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -90,12 +90,12 @@ class _$UserAndImageStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res>? get user {
+  $PublicUserEntityCopyWith<$Res>? get user {
     if (_self.user == null) {
       return null;
     }
 
-    return $ReadPublicUserCopyWith<$Res>(_self.user!, (value) {
+    return $PublicUserEntityCopyWith<$Res>(_self.user!, (value) {
       return _then(_self.copyWith(user: value));
     });
   }
@@ -194,7 +194,7 @@ extension UserAndImageStatePatterns on UserAndImageState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(ReadPublicUser? user, String? image)? $default, {
+    TResult Function(PublicUserEntity? user, String? image)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
@@ -221,7 +221,7 @@ extension UserAndImageStatePatterns on UserAndImageState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(ReadPublicUser? user, String? image) $default,
+    TResult Function(PublicUserEntity? user, String? image) $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -246,7 +246,7 @@ extension UserAndImageStatePatterns on UserAndImageState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(ReadPublicUser? user, String? image)? $default,
+    TResult? Function(PublicUserEntity? user, String? image)? $default,
   ) {
     final _that = this;
     switch (_that) {
@@ -266,7 +266,7 @@ class _UserAndImageState extends UserAndImageState {
       _$UserAndImageStateFromJson(json);
 
   @override
-  final ReadPublicUser? user;
+  final PublicUserEntity? user;
   @override
   final String? image;
 
@@ -312,10 +312,10 @@ abstract mixin class _$UserAndImageStateCopyWith<$Res>
       __$UserAndImageStateCopyWithImpl;
   @override
   @useResult
-  $Res call({ReadPublicUser? user, String? image});
+  $Res call({PublicUserEntity? user, String? image});
 
   @override
-  $ReadPublicUserCopyWith<$Res>? get user;
+  $PublicUserEntityCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -338,7 +338,7 @@ class __$UserAndImageStateCopyWithImpl<$Res>
       user: freezed == user
           ? _self.user
           : user // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser?,
+              as PublicUserEntity?,
       image: freezed == image
           ? _self.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -350,12 +350,12 @@ class __$UserAndImageStateCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res>? get user {
+  $PublicUserEntityCopyWith<$Res>? get user {
     if (_self.user == null) {
       return null;
     }
 
-    return $ReadPublicUserCopyWith<$Res>(_self.user!, (value) {
+    return $PublicUserEntityCopyWith<$Res>(_self.user!, (value) {
       return _then(_self.copyWith(user: value));
     });
   }

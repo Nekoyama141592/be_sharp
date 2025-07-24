@@ -80,6 +80,7 @@ class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
   }) : super(
           CreateUserAnswerRoute.name,
           args: CreateUserAnswerRouteArgs(key: key, problemId: problemId),
+          rawPathParams: {'problemId': problemId},
           initialChildren: children,
         );
 
@@ -88,8 +89,11 @@ class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
+      final pathParams = data.inheritedPathParams;
       final args = data.argsAs<CreateUserAnswerRouteArgs>(
-        orElse: () => const CreateUserAnswerRouteArgs(),
+        orElse: () => CreateUserAnswerRouteArgs(
+          problemId: pathParams.optString('problemId'),
+        ),
       );
       return CreateUserAnswerPage(key: args.key, problemId: args.problemId);
     },

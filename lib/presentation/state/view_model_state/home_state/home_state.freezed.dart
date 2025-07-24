@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 
 /// @nodoc
 mixin _$HomeState {
-  ReadProblem? get latestProblem;
+  ProblemEntity? get latestProblem;
   List<AnsweredUser> get answeredUsers;
   List<String> get muteUids;
   int get userCount;
@@ -64,12 +64,12 @@ abstract mixin class $HomeStateCopyWith<$Res> {
       _$HomeStateCopyWithImpl;
   @useResult
   $Res call(
-      {ReadProblem? latestProblem,
+      {ProblemEntity? latestProblem,
       List<AnsweredUser> answeredUsers,
       List<String> muteUids,
       int userCount});
 
-  $ReadProblemCopyWith<$Res>? get latestProblem;
+  $ProblemEntityCopyWith<$Res>? get latestProblem;
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
       latestProblem: freezed == latestProblem
           ? _self.latestProblem
           : latestProblem // ignore: cast_nullable_to_non_nullable
-              as ReadProblem?,
+              as ProblemEntity?,
       answeredUsers: null == answeredUsers
           ? _self.answeredUsers
           : answeredUsers // ignore: cast_nullable_to_non_nullable
@@ -113,12 +113,12 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadProblemCopyWith<$Res>? get latestProblem {
+  $ProblemEntityCopyWith<$Res>? get latestProblem {
     if (_self.latestProblem == null) {
       return null;
     }
 
-    return $ReadProblemCopyWith<$Res>(_self.latestProblem!, (value) {
+    return $ProblemEntityCopyWith<$Res>(_self.latestProblem!, (value) {
       return _then(_self.copyWith(latestProblem: value));
     });
   }
@@ -218,7 +218,7 @@ extension HomeStatePatterns on HomeState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            ReadProblem? latestProblem,
+            ProblemEntity? latestProblem,
             List<AnsweredUser> answeredUsers,
             List<String> muteUids,
             int userCount)?
@@ -251,7 +251,7 @@ extension HomeStatePatterns on HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            ReadProblem? latestProblem,
+            ProblemEntity? latestProblem,
             List<AnsweredUser> answeredUsers,
             List<String> muteUids,
             int userCount)
@@ -282,7 +282,7 @@ extension HomeStatePatterns on HomeState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            ReadProblem? latestProblem,
+            ProblemEntity? latestProblem,
             List<AnsweredUser> answeredUsers,
             List<String> muteUids,
             int userCount)?
@@ -314,7 +314,7 @@ class _HomeState extends HomeState {
       _$HomeStateFromJson(json);
 
   @override
-  final ReadProblem? latestProblem;
+  final ProblemEntity? latestProblem;
   final List<AnsweredUser> _answeredUsers;
   @override
   @JsonKey()
@@ -390,13 +390,13 @@ abstract mixin class _$HomeStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ReadProblem? latestProblem,
+      {ProblemEntity? latestProblem,
       List<AnsweredUser> answeredUsers,
       List<String> muteUids,
       int userCount});
 
   @override
-  $ReadProblemCopyWith<$Res>? get latestProblem;
+  $ProblemEntityCopyWith<$Res>? get latestProblem;
 }
 
 /// @nodoc
@@ -420,7 +420,7 @@ class __$HomeStateCopyWithImpl<$Res> implements _$HomeStateCopyWith<$Res> {
       latestProblem: freezed == latestProblem
           ? _self.latestProblem
           : latestProblem // ignore: cast_nullable_to_non_nullable
-              as ReadProblem?,
+              as ProblemEntity?,
       answeredUsers: null == answeredUsers
           ? _self._answeredUsers
           : answeredUsers // ignore: cast_nullable_to_non_nullable
@@ -440,12 +440,12 @@ class __$HomeStateCopyWithImpl<$Res> implements _$HomeStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadProblemCopyWith<$Res>? get latestProblem {
+  $ProblemEntityCopyWith<$Res>? get latestProblem {
     if (_self.latestProblem == null) {
       return null;
     }
 
-    return $ReadProblemCopyWith<$Res>(_self.latestProblem!, (value) {
+    return $ProblemEntityCopyWith<$Res>(_self.latestProblem!, (value) {
       return _then(_self.copyWith(latestProblem: value));
     });
   }

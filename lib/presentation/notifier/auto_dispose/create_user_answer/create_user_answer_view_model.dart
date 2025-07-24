@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:be_sharp/core/util/route_util.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/problem/read/read_problem.dart';
+import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/infrastructure/repository/database_repository.dart';
@@ -15,7 +15,7 @@ part 'create_user_answer_view_model.g.dart';
 @riverpod
 class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   @override
-  FutureOr<ReadProblem?> build(String problemId) {
+  FutureOr<ProblemEntity?> build(String problemId) {
     return _repository.getProblem(problemId);
   }
 

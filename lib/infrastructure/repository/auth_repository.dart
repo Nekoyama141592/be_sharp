@@ -1,21 +1,23 @@
 import 'package:be_sharp/core/util/credential_util.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
+import 'package:be_sharp/domain/repository_interface/auth_repository_interface.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AuthRepository {
-  AuthRepository(this.client);
-  final FirebaseAuth client;
+class AuthRepository implements AuthRepositoryInterface {
+  AuthRepository(this._client);
+  final FirebaseAuth _client;
 
-  FutureResult<User> signInWithApple() async {
+  @override
+  FutureResult<UserCredential> signInWithApple() async {
     try {
       final credential = await CredentialUtil.appleCredential();
-      final res = await client.signInWithCredential(credential);
+      final res = await _client.signInWithCredential(credential);
       final user = res.user;
       if (user == null) {
         return const Result.failure('Appleサインインに失敗しました: ユーザー情報が見つかりません。');
       } else {
-        return Result.success(user);
+        return Result.success(res);
       }
     } on FirebaseAuthException catch (e) {
       final errorMessage = _getFirebaseAuthErrorMessage(e);
@@ -26,15 +28,16 @@ class AuthRepository {
     }
   }
 
-  FutureResult<User> signInWithGoogle() async {
+  @override
+  FutureResult<UserCredential> signInWithGoogle() async {
     try {
       final credential = await CredentialUtil.googleCredential();
-      final res = await client.signInWithCredential(credential);
+      final res = await _client.signInWithCredential(credential);
       final user = res.user;
       if (user == null) {
         return const Result.failure('Googleサインインに失敗しました: ユーザー情報が見つかりません。');
       } else {
-        return Result.success(user);
+        return Result.success(res);
       }
     } on FirebaseAuthException catch (e) {
       final errorMessage = _getFirebaseAuthErrorMessage(e);
@@ -45,9 +48,10 @@ class AuthRepository {
     }
   }
 
+  @override
   FutureResult<bool> signOut() async {
     try {
-      await client.signOut();
+      await _client.signOut();
       return const Result.success(true);
     } catch (e) {
       debugPrint(e.toString());
@@ -55,10 +59,11 @@ class AuthRepository {
     }
   }
 
+  @override
   FutureResult<bool> reauthenticateWithCredential(
       AuthCredential credential) async {
     try {
-      await client.currentUser?.reauthenticateWithCredential(credential);
+      await _client.currentUser?.reauthenticateWithCredential(credential);
       return const Result.success(true);
     } on FirebaseAuthException catch (e) {
       final String errorMessage = _getReauthenticateErrorMessage(e.code);
@@ -70,9 +75,10 @@ class AuthRepository {
     }
   }
 
+  @override
   FutureResult<bool> deleteUser() async {
     try {
-      await client.currentUser?.delete();
+      await _client.currentUser?.delete();
       return const Result.success(true);
     } on FirebaseAuthException catch (e) {
       final String errorMessage = _getDeleteUserErrorMessage(e.code);

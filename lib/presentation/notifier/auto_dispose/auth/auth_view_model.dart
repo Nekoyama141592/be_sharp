@@ -16,8 +16,8 @@ class AuthViewModel extends _$AuthViewModel {
   void onGoogleSignInButtonPressed() async {
     final result = await repository.signInWithGoogle();
     result.when(
-        success: (res) {
-          state = res;
+        success: (userCredential) {
+          state = userCredential.user;
         },
         failure: (_) {});
   }
@@ -25,8 +25,8 @@ class AuthViewModel extends _$AuthViewModel {
   void onAppleSignInButtonPressed() async {
     final result = await repository.signInWithApple();
     result.when(
-        success: (res) {
-          state = res;
+        success: (userCredential) {
+          state = userCredential.user;
         },
         failure: (_) {});
   }

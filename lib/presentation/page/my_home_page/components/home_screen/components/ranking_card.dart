@@ -1,12 +1,12 @@
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
+import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RankingCard extends StatelessWidget {
   final bool isMute;
   final int rank;
-  final ReadPublicUser user;
+  final PublicUserEntity user;
   final Duration answerTime;
   final ImageProvider userImage;
   final String? caption;
@@ -30,6 +30,7 @@ class RankingCard extends StatelessWidget {
     final isInvalidNickName =
         user.registeredInfo?.nickName.isInvalid() ?? false;
     final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
+
     if (isInvalidNickName || isInvalidImage || isMute) {
       String reason = '';
       if (isInvalidNickName) {
@@ -45,215 +46,127 @@ class RankingCard extends StatelessWidget {
       if (isMute) {
         reason = 'ミュートしているユーザー';
       }
-      return Card(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        elevation: 8,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.card,
+          borderRadius: BorderRadius.circular(8),
         ),
-        child: Container(
-          height: 100,
-          color: Colors.black,
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              reason,
-              style: const TextStyle(color: Colors.white),
+        child: Center(
+          child: Text(
+            reason,
+            style: const TextStyle(
+              color: AppColors.textLight,
+              fontSize: 14,
             ),
           ),
         ),
       );
     }
-    return TweenAnimationBuilder<double>(
-      tween: Tween(begin: 0.0, end: 1.0),
-      duration: const Duration(milliseconds: 500),
-      builder: (context, value, child) {
-        return Transform.scale(
-          scale: value,
-          child: Opacity(
-            opacity: value,
-            child: Card(
-              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              elevation: 8,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      _getGradientColors(rank)[0],
-                      _getGradientColors(rank)[1],
-                    ],
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: AppColors.border,
+          width: 0.5,
+        ),
+      ),
+      child: Row(
+        children: [
+          _buildRankNumber(),
+          const SizedBox(width: 16),
+          CircleAvatar(
+            radius: 20,
+            backgroundImage: userImage,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  userName,
+                  style: const TextStyle(
+                    color: AppColors.text,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  FormatUIUtil.formatDurationWithResult(answerTime, isInTime),
+                  style: const TextStyle(
+                    color: AppColors.textLight,
+                    fontSize: 14,
                   ),
                 ),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: -20,
-                      left: -20,
-                      child: Icon(
-                        Icons.star,
-                        size: 100,
-                        color: _userTextColor().withValues(alpha: 0.2),
-                      ),
+                if (caption?.isNotEmpty ?? false) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    caption!,
+                    style: const TextStyle(
+                      color: AppColors.textLight,
+                      fontSize: 12,
+                      fontStyle: FontStyle.italic,
                     ),
-                    Positioned(
-                      top: 8,
-                      right: 24,
-                      child: InkWell(
-                        onTap: onMoreButtonPressed,
-                        child: const Icon(
-                          Icons.more_horiz,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        children: [
-                          _buildRankCircle(),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _buildUserInfo(userName),
-                                const SizedBox(height: 8),
-                                _buildAnswerTime(),
-                                if (caption?.isNotEmpty ?? false) ...[
-                                  const SizedBox(height: 8),
-                                  _buildCaption(),
-                                ],
-                              ],
-                            ),
-                          ),
-                          _buildTrophy(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ],
             ),
           ),
-        );
-      },
+          IconButton(
+            onPressed: onMoreButtonPressed,
+            icon: const Icon(
+              Icons.more_horiz,
+              color: AppColors.textLight,
+              size: 20,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  bool _isTopUser() => rank == 1 || rank == 2;
-  Color _userTextColor() => _isTopUser() ? Colors.black87 : Colors.white;
-  Widget _buildRankCircle() {
+  Widget _buildRankNumber() {
     return Container(
-      width: 60,
-      height: 60,
+      width: 32,
+      height: 32,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: _getRankColor(),
       ),
       child: Center(
         child: Text(
           '$rank',
-          style: GoogleFonts.roboto(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: _getGradientColors(rank)[1],
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: AppColors.background,
           ),
         ),
       ),
     );
   }
 
-  Widget _buildUserInfo(String userName) {
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 25,
-          backgroundImage: userImage,
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Text(
-            userName,
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.white,
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildAnswerTime() {
-    return Row(
-      children: [
-        Icon(Icons.timer, color: _userTextColor(), size: 24),
-        const SizedBox(width: 4),
-        Text(
-          FormatUIUtil.formatDurationWithResult(answerTime, isInTime),
-          style: GoogleFonts.roboto(
-            color: _userTextColor(),
-            fontSize: 18,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCaption() {
-    return Text(
-      caption ?? '',
-      style: GoogleFonts.roboto(
-        color: _userTextColor(),
-        fontSize: 18,
-        fontStyle: FontStyle.italic,
-      ),
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-
-  Widget _buildTrophy() {
-    return ShaderMask(
-      shaderCallback: (Rect bounds) {
-        return LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Colors.white, Colors.white.withValues(alpha: 0.5)],
-        ).createShader(bounds);
-      },
-      child: const Icon(
-        Icons.emoji_events,
-        color: Colors.white,
-        size: 40,
-      ),
-    );
-  }
-
-  List<Color> _getGradientColors(int rank) {
+  Color _getRankColor() {
     switch (rank) {
       case 1:
-        return [const Color(0xFFFFD700), const Color(0xFFFFA500)];
+        return const Color(0xFFFFD700);
       case 2:
-        return [const Color(0xFFC0C0C0), const Color(0xFF808080)];
+        return const Color(0xFFC0C0C0);
       case 3:
-        return [const Color(0xFFCD7F32), const Color(0xFF8B4513)];
+        return const Color(0xFFCD7F32);
       default:
-        return [const Color(0xFF4CAF50), const Color(0xFF2E7D32)];
+        return AppColors.textLight;
     }
   }
 }

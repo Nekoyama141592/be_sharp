@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:be_sharp/infrastructure/model/firestore_model/public_user/read/read_public_user.dart';
+import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
@@ -12,11 +12,11 @@ part 'mute_users_view_model.g.dart';
 @riverpod
 class MuteUsersViewModel extends _$MuteUsersViewModel {
   @override
-  FutureOr<List<ReadPublicUser>> build() {
+  FutureOr<List<PublicUserEntity>> build() {
     return _fetchData();
   }
 
-  Future<List<ReadPublicUser>> _fetchData() async {
+  Future<List<PublicUserEntity>> _fetchData() async {
     final uid = ref.read(streamAuthUidProvider).value;
     return ref.read(databaseRepositoryProvider).fetchMutePublicUsers(uid);
   }

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$CheckState {
   bool get needsAgreeToTerms;
   bool get needsSignup;
-  ReadPublicUser? get user;
+  PublicUserEntity? get user;
 
   /// Create a copy of CheckState
   /// with the given fields replaced by the non-null parameter values.
@@ -57,9 +57,9 @@ abstract mixin class $CheckStateCopyWith<$Res> {
           CheckState value, $Res Function(CheckState) _then) =
       _$CheckStateCopyWithImpl;
   @useResult
-  $Res call({bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user});
+  $Res call({bool needsAgreeToTerms, bool needsSignup, PublicUserEntity? user});
 
-  $ReadPublicUserCopyWith<$Res>? get user;
+  $PublicUserEntityCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class _$CheckStateCopyWithImpl<$Res> implements $CheckStateCopyWith<$Res> {
       user: freezed == user
           ? _self.user
           : user // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser?,
+              as PublicUserEntity?,
     ));
   }
 
@@ -98,12 +98,12 @@ class _$CheckStateCopyWithImpl<$Res> implements $CheckStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res>? get user {
+  $PublicUserEntityCopyWith<$Res>? get user {
     if (_self.user == null) {
       return null;
     }
 
-    return $ReadPublicUserCopyWith<$Res>(_self.user!, (value) {
+    return $PublicUserEntityCopyWith<$Res>(_self.user!, (value) {
       return _then(_self.copyWith(user: value));
     });
   }
@@ -203,7 +203,7 @@ extension CheckStatePatterns on CheckState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(
-            bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user)?
+            bool needsAgreeToTerms, bool needsSignup, PublicUserEntity? user)?
         $default, {
     required TResult orElse(),
   }) {
@@ -232,7 +232,7 @@ extension CheckStatePatterns on CheckState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(
-            bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user)
+            bool needsAgreeToTerms, bool needsSignup, PublicUserEntity? user)
         $default,
   ) {
     final _that = this;
@@ -259,7 +259,7 @@ extension CheckStatePatterns on CheckState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(
-            bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user)?
+            bool needsAgreeToTerms, bool needsSignup, PublicUserEntity? user)?
         $default,
   ) {
     final _that = this;
@@ -288,7 +288,7 @@ class _CheckState extends CheckState {
   @override
   final bool needsSignup;
   @override
-  final ReadPublicUser? user;
+  final PublicUserEntity? user;
 
   /// Create a copy of CheckState
   /// with the given fields replaced by the non-null parameter values.
@@ -336,10 +336,10 @@ abstract mixin class _$CheckStateCopyWith<$Res>
       __$CheckStateCopyWithImpl;
   @override
   @useResult
-  $Res call({bool needsAgreeToTerms, bool needsSignup, ReadPublicUser? user});
+  $Res call({bool needsAgreeToTerms, bool needsSignup, PublicUserEntity? user});
 
   @override
-  $ReadPublicUserCopyWith<$Res>? get user;
+  $PublicUserEntityCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -370,7 +370,7 @@ class __$CheckStateCopyWithImpl<$Res> implements _$CheckStateCopyWith<$Res> {
       user: freezed == user
           ? _self.user
           : user // ignore: cast_nullable_to_non_nullable
-              as ReadPublicUser?,
+              as PublicUserEntity?,
     ));
   }
 
@@ -378,12 +378,12 @@ class __$CheckStateCopyWithImpl<$Res> implements _$CheckStateCopyWith<$Res> {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ReadPublicUserCopyWith<$Res>? get user {
+  $PublicUserEntityCopyWith<$Res>? get user {
     if (_self.user == null) {
       return null;
     }
 
-    return $ReadPublicUserCopyWith<$Res>(_self.user!, (value) {
+    return $PublicUserEntityCopyWith<$Res>(_self.user!, (value) {
       return _then(_self.copyWith(user: value));
     });
   }

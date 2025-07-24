@@ -1,4 +1,4 @@
-import 'package:be_sharp/core/util/padding_util.dart';
+import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldContainer extends StatelessWidget {
@@ -13,11 +13,12 @@ class TextFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: PaddingUtil.vertical(context)),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Container(
         width: width,
         decoration: BoxDecoration(
-          border: Border.all(color: Theme.of(context).focusColor),
+          color: AppColors.card,
+          border: Border.all(color: AppColors.border, width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: child,
