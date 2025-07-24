@@ -50,3 +50,6 @@ rm -rf ~/Library/Caches/com.apple.dt.Xcode
 rm -rf ~/Library/Developer/Xcode/UserData/Previews
 rm -rf ~/Library/Developer/XCPGDevices
 rm -rf ~/Library/Developer/Xcode/iOS ＼DeviceSupport
+
+# const自動付与
+dart fix --apply

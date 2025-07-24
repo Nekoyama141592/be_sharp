@@ -51,7 +51,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final res = PutObjectResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
-      return rs.Result.failure('Failed to put object: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to put object');
     }
   }
 
@@ -66,7 +67,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final res = GetObjectResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
-      return rs.Result.failure('Failed to get object: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to get object');
     }
   }
 
@@ -81,7 +83,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final res = DeleteObjectResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
-      return rs.Result.failure('Failed to delete object: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to delete object');
     }
   }
 
@@ -102,7 +105,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final res = EditUserInfoResponse.fromJson(result);
       return rs.Result.success(res);
     } catch (e) {
-      return rs.Result.failure('Failed to edit user info: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to edit user info');
     }
   }
 
@@ -118,7 +122,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final entity = VerifiedPurchaseEntity.fromModel(model);
       return rs.Result.success(entity);
     } catch (e) {
-      return rs.Result.failure('Failed to verify purchase: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to verify purchase');
     }
   }
 
@@ -132,7 +137,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final entity = VerifiedPurchaseEntity.fromModel(model);
       return rs.Result.success(entity);
     } catch (e) {
-      return rs.Result.failure('Failed to verify Android receipt: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to verify Android receipt');
     }
   }
 
@@ -146,7 +152,8 @@ class ApiRepository implements ApiRepositoryInterface {
       final entity = VerifiedPurchaseEntity.fromModel(model);
       return rs.Result.success(entity);
     } catch (e) {
-      return rs.Result.failure('Failed to verify iOS receipt: $e');
+      debugPrint(e.toString());
+      return const rs.Result.failure('Failed to verify iOS receipt');
     }
   }
 
@@ -164,7 +171,7 @@ class ApiRepository implements ApiRepositoryInterface {
       return rs.Result.success(res);
     } catch (e) {
       debugPrint(e.toString());
-      return rs.Result.failure('Failed to add caption: $e');
+      return const rs.Result.failure('Failed to add caption');
     }
   }
 
@@ -190,7 +197,7 @@ class ApiRepository implements ApiRepositoryInterface {
       return rs.Result.success(res);
     } catch (e) {
       debugPrint(e.toString());
-      return rs.Result.failure('Failed to create problem: $e');
+      return const rs.Result.failure('Failed to create problem');
     }
   }
 }
