@@ -6,27 +6,27 @@
 ## 実行コード
 
 ### dev
-flutter run --flavor dev -t lib/main_dev.dart
+flutter run --flavor dev
 
 ### stg
-flutter run --flavor stg -t lib/main_stg.dart
+flutter run --flavor stg
 
 ### prod
-flutter run --flavor prod -t lib/main_prod.dart
+flutter run --flavor prod
 
 ## Build
 
 ### iOS
-flutter build ios --flavor dev -t lib/main_dev.dart --release
+flutter build ios --flavor dev
 
-flutter build ios --flavor stg -t lib/main_stg.dart --release
+flutter build ios --flavor stg
 
-flutter build ios --flavor prod -t lib/main_prod.dart --release
+flutter build ios --flavor prod
 
 ### Android
-flutter build appbundle --flavor dev -t lib/main_dev.dart
-flutter build appbundle --flavor stg -t lib/main_stg.dart
-flutter build appbundle --flavor prod -t lib/main_prod.dart
+flutter build appbundle --flavor dev
+flutter build appbundle --flavor stg
+flutter build appbundle --flavor prod
 
 ## フォーマット
 dart format --set-exit-if-changed .
