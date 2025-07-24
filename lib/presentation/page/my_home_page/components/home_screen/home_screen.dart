@@ -5,6 +5,7 @@ import 'package:be_sharp/presentation/notifier/auto_dispose/home/home_view_model
 import 'package:be_sharp/presentation/common/drawer/original_drawer.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card_skeleton.dart';
+import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -60,10 +61,19 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 ),
               ),
+              if (users.length >= 3) ...[
+                SliverToBoxAdapter(
+                  child: _buildPodium(users.take(3).toList(), problem, state, notifier),
+                ),
+                const SliverToBoxAdapter(
+                  child: SizedBox(height: 24),
+                ),
+              ],
               SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    final e = users[index];
+                    final actualIndex = users.length >= 3 ? index + 3 : index;
+                    final e = users[actualIndex];
                     final user = e.publicUser;
                     final isMute = state.isMute(user.uid);
                     return AnimatedOpacity(
@@ -71,7 +81,7 @@ class HomeScreen extends ConsumerWidget {
                       opacity: 1,
                       child: RankingCard(
                         isMute: isMute,
-                        rank: index + 1,
+                        rank: actualIndex + 1,
                         user: user,
                         answerTime: e.userAnswer.getDifference(problem),
                         userImage: MemoryImage(base64Decode(e.userImage!)),
@@ -82,7 +92,7 @@ class HomeScreen extends ConsumerWidget {
                       ),
                     );
                   },
-                  childCount: users.length,
+                  childCount: users.length >= 3 ? users.length - 3 : users.length,
                 ),
               ),
             ],
@@ -90,6 +100,216 @@ class HomeScreen extends ConsumerWidget {
         },
       ),
     );
+  }
+
+  Widget _buildPodium(List<dynamic> topThree, dynamic problem, dynamic state, Function() notifier) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              // 2nd place
+              if (topThree.length > 1)
+                _buildPodiumPosition(
+                  topThree[1], 
+                  2, 
+                  80, 
+                  problem, 
+                  state, 
+                  notifier,
+                ),
+              const SizedBox(width: 12),
+              // 1st place
+              _buildPodiumPosition(
+                topThree[0], 
+                1, 
+                100, 
+                problem, 
+                state, 
+                notifier,
+              ),
+              const SizedBox(width: 12),
+              // 3rd place
+              if (topThree.length > 2)
+                _buildPodiumPosition(
+                  topThree[2], 
+                  3, 
+                  60, 
+                  problem, 
+                  state, 
+                  notifier,
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPodiumPosition(
+    dynamic entry, 
+    int rank, 
+    double height, 
+    dynamic problem, 
+    dynamic state, 
+    Function() notifier,
+  ) {
+    final user = entry.publicUser;
+    final isMute = state.isMute(user.uid);
+    final userName = user.nickNameValue() ?? '';
+    final isInvalidNickName = user.registeredInfo?.nickName.isInvalid() ?? false;
+    final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
+
+    return Expanded(
+      child: Column(
+        children: [
+          // Medal/Crown
+          Container(
+            width: 32,
+            height: 32,
+            margin: const EdgeInsets.only(bottom: 8),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _getPodiumRankColor(rank),
+            ),
+            child: Center(
+              child: rank == 1 
+                ? const Icon(
+                    Icons.emoji_events,
+                    color: Colors.white,
+                    size: 18,
+                  )
+                : Text(
+                    '$rank',
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+            ),
+          ),
+          // User avatar
+          if (!isInvalidImage && !isMute)
+            Container(
+              width: rank == 1 ? 56 : 48,
+              height: rank == 1 ? 56 : 48,
+              margin: const EdgeInsets.only(bottom: 8),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: _getPodiumRankColor(rank),
+                  width: 3,
+                ),
+              ),
+              child: CircleAvatar(
+                radius: rank == 1 ? 25 : 21,
+                backgroundImage: MemoryImage(base64Decode(entry.userImage!)),
+              ),
+            )
+          else
+            Container(
+              width: rank == 1 ? 56 : 48,
+              height: rank == 1 ? 56 : 48,
+              margin: const EdgeInsets.only(bottom: 8),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.surface,
+                border: Border.all(
+                  color: _getPodiumRankColor(rank),
+                  width: 3,
+                ),
+              ),
+              child: Icon(
+                Icons.person,
+                color: AppColors.textLight,
+                size: rank == 1 ? 24 : 20,
+              ),
+            ),
+          // User name
+          if (!isInvalidNickName && !isMute)
+            Text(
+              userName,
+              style: TextStyle(
+                color: AppColors.text,
+                fontSize: rank == 1 ? 14 : 12,
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            )
+          else
+            Text(
+              isMute ? 'ミュート中' : '不適切な名前',
+              style: TextStyle(
+                color: AppColors.textLight,
+                fontSize: rank == 1 ? 14 : 12,
+                fontWeight: FontWeight.w400,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          const SizedBox(height: 4),
+          // Answer time
+          Text(
+            FormatUIUtil.formatDurationWithResult(
+              entry.userAnswer.getDifference(problem),
+              entry.userAnswer.isInTime(problem),
+            ),
+            style: TextStyle(
+              color: AppColors.textLight,
+              fontSize: rank == 1 ? 12 : 10,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 8),
+          // Podium base
+          Container(
+            width: double.infinity,
+            height: height,
+            decoration: BoxDecoration(
+              color: AppColors.card,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8),
+                topRight: Radius.circular(8),
+              ),
+              border: Border.all(
+                color: _getPodiumRankColor(rank),
+                width: 2,
+              ),
+            ),
+            child: Center(
+              child: Text(
+                '$rank',
+                style: TextStyle(
+                  fontSize: rank == 1 ? 24 : 20,
+                  fontWeight: FontWeight.bold,
+                  color: _getPodiumRankColor(rank),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Color _getPodiumRankColor(int rank) {
+    switch (rank) {
+      case 1:
+        return const Color(0xFFFFD700); // Gold
+      case 2:
+        return const Color(0xFFC0C0C0); // Silver
+      case 3:
+        return const Color(0xFFCD7F32); // Bronze
+      default:
+        return AppColors.textLight;
+    }
   }
 
   Widget _buildLoadingState() {
