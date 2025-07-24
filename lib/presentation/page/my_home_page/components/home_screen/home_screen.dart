@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/home/home_view_model.dart';
 import 'package:be_sharp/presentation/common/drawer/original_drawer.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/home_screen/components/ranking_card_skeleton.dart';
+import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
+import 'package:be_sharp/presentation/state/view_model_state/home_state/home_state.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -102,7 +105,7 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildPodium(List<dynamic> topThree, dynamic problem, dynamic state, Function() notifier) {
+  Widget _buildPodium(List<AnsweredUser> topThree, ProblemEntity problem, HomeState state, HomeViewModel Function() notifier) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -151,12 +154,12 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildPodiumPosition(
-    dynamic entry, 
+    AnsweredUser entry, 
     int rank, 
     double height, 
-    dynamic problem, 
-    dynamic state, 
-    Function() notifier,
+    ProblemEntity problem, 
+    HomeState state, 
+    HomeViewModel Function() notifier,
   ) {
     final user = entry.publicUser;
     final isMute = state.isMute(user.uid);
