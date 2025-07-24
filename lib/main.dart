@@ -1,12 +1,11 @@
 import 'package:be_sharp/application/flavors.dart';
-import 'package:be_sharp/application/run_app.dart';
+import 'package:be_sharp/core/util/env_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:be_sharp/core/provider/overrides/prefs/prefs_provider.dart';
 import 'package:be_sharp/presentation/my_app.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,11 +14,8 @@ void main() async {
   F.appFlavor = Flavor.values.firstWhere(
     (element) => element.name == appFlavor,
   );
-
-  final flavor = F.appFlavor;
-    await dotenv.load(fileName: "assets/env/.env.${flavor.name}");
     WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(options:RunApp.getFirebaseOption());
+    await Firebase.initializeApp(options: EnvUtil.getFirebaseOption());
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
     await FirebaseMessaging.instance.requestPermission(
       alert: true, // 通知が表示されるかどうか
