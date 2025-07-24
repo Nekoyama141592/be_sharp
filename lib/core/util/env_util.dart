@@ -1,3 +1,4 @@
+import 'package:be_sharp/application/flavors.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class EnvUtil {
@@ -35,11 +36,26 @@ class EnvUtil {
   static String get firebaseIosClientId => getValue('FIREBASE_IOS_CLIENT_ID');
   static String get firebaseIosBundleId => getValue('FIREBASE_IOS_BUNDLE_ID');
 
-  // Subscription methods
-  static String get subscriptionMonthItemId =>
-      getValue('SUBSCRIPTION_MONTH_ITEM_ID');
-  static String get subscriptionAnnualItemId =>
-      getValue('SUBSCRIPTION_ANNUAL_ITEM_ID');
+  static String get subscriptionMonthItemId {
+    switch (F.appFlavor) {
+      case Flavor.dev:
+        return 'be_sharp_dev_subscription_basic';
+      case Flavor.stg:
+        return 'be_sharp_stg_subscription_basic';
+      case Flavor.prod:
+        return 'be_sharp_prod_subscription_basic';
+    }
+  }
+  static String get subscriptionAnnualItemId {
+    switch (F.appFlavor) {
+      case Flavor.dev:
+        return 'be_sharp_dev_subscription_annual';
+      case Flavor.stg:
+        return 'be_sharp_stg_subscription_annual';
+      case Flavor.prod:
+        return 'be_sharp_prod_subscription_annual';
+    }
+  }
   static List<String> get subscriptionItemIds =>
       [subscriptionMonthItemId, subscriptionAnnualItemId];
   static Set<String> get subscriptionProductIds => subscriptionItemIds.toSet();

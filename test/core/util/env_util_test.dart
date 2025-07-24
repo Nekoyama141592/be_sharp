@@ -39,8 +39,6 @@ void main() {
           'FIREBASE_IOS_STORAGE_BUCKET',
           'FIREBASE_IOS_CLIENT_ID',
           'FIREBASE_IOS_BUNDLE_ID',
-          'SUBSCRIPTION_MONTH_ITEM_ID',
-          'SUBSCRIPTION_ANNUAL_ITEM_ID',
         ];
 
         for (final key in requiredKeys) {
@@ -104,8 +102,6 @@ void main() {
           'FIREBASE_IOS_STORAGE_BUCKET',
           'FIREBASE_IOS_CLIENT_ID',
           'FIREBASE_IOS_BUNDLE_ID',
-          'SUBSCRIPTION_MONTH_ITEM_ID',
-          'SUBSCRIPTION_ANNUAL_ITEM_ID',
         ];
 
         for (final key in requiredKeys) {
@@ -169,8 +165,6 @@ void main() {
           'FIREBASE_IOS_STORAGE_BUCKET',
           'FIREBASE_IOS_CLIENT_ID',
           'FIREBASE_IOS_BUNDLE_ID',
-          'SUBSCRIPTION_MONTH_ITEM_ID',
-          'SUBSCRIPTION_ANNUAL_ITEM_ID',
         ];
 
         for (final key in requiredKeys) {
@@ -406,8 +400,6 @@ void main() {
           'FIREBASE_IOS_STORAGE_BUCKET',
           'FIREBASE_IOS_CLIENT_ID',
           'FIREBASE_IOS_BUNDLE_ID',
-          'SUBSCRIPTION_MONTH_ITEM_ID',
-          'SUBSCRIPTION_ANNUAL_ITEM_ID',
         ];
 
         for (final key in requiredKeys) {
