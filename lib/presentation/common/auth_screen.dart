@@ -48,7 +48,7 @@ class AuthScreen extends StatelessWidget {
               const SizedBox(height: 48),
               if (useApple)
                 RoundedButton(
-                  borderColor: Colors.black,
+                  borderColor: Colors.white,
                   press: onAppleSignInButtonPressed,
                   icon: const FaIcon(
                     FontAwesomeIcons.apple,
