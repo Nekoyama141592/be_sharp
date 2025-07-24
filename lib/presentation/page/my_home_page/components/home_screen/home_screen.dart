@@ -328,13 +328,113 @@ class HomeScreen extends ConsumerWidget {
             ),
           ),
         ),
+        SliverToBoxAdapter(
+          child: _buildPodiumSkeleton(),
+        ),
+        const SliverToBoxAdapter(
+          child: SizedBox(height: 24),
+        ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) => const RankingCardSkeleton(),
-            childCount: 10,
+            childCount: 7,
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildPodiumSkeleton() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              // 2nd place skeleton
+              _buildPodiumPositionSkeleton(2, 80),
+              const SizedBox(width: 12),
+              // 1st place skeleton
+              _buildPodiumPositionSkeleton(1, 100),
+              const SizedBox(width: 12),
+              // 3rd place skeleton
+              _buildPodiumPositionSkeleton(3, 60),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPodiumPositionSkeleton(int rank, double height) {
+    return Expanded(
+      child: Column(
+        children: [
+          // Medal/Crown skeleton
+          Container(
+            width: 32,
+            height: 32,
+            margin: const EdgeInsets.only(bottom: 8),
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.surface,
+            ),
+          ),
+          // User avatar skeleton
+          Container(
+            width: rank == 1 ? 56 : 48,
+            height: rank == 1 ? 56 : 48,
+            margin: const EdgeInsets.only(bottom: 8),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.surface,
+              border: Border.all(
+                color: AppColors.border,
+                width: 3,
+              ),
+            ),
+          ),
+          // User name skeleton
+          Container(
+            height: rank == 1 ? 14 : 12,
+            width: double.infinity,
+            margin: const EdgeInsets.only(bottom: 4),
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          // Answer time skeleton
+          Container(
+            height: rank == 1 ? 12 : 10,
+            width: 60,
+            margin: const EdgeInsets.only(bottom: 8),
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          // Podium base skeleton
+          Container(
+            width: double.infinity,
+            height: height,
+            decoration: BoxDecoration(
+              color: AppColors.surface,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8),
+                topRight: Radius.circular(8),
+              ),
+              border: Border.all(
+                color: AppColors.border,
+                width: 2,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
