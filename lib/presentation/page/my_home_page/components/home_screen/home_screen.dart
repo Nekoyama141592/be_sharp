@@ -66,7 +66,8 @@ class HomeScreen extends ConsumerWidget {
               ),
               if (users.length >= 3) ...[
                 SliverToBoxAdapter(
-                  child: _buildPodium(users.take(3).toList(), problem, state, notifier),
+                  child: _buildPodium(
+                      users.take(3).toList(), problem, state, notifier),
                 ),
                 const SliverToBoxAdapter(
                   child: SizedBox(height: 24),
@@ -95,7 +96,8 @@ class HomeScreen extends ConsumerWidget {
                       ),
                     );
                   },
-                  childCount: users.length >= 3 ? users.length - 3 : users.length,
+                  childCount:
+                      users.length >= 3 ? users.length - 3 : users.length,
                 ),
               ),
             ],
@@ -105,7 +107,8 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildPodium(List<AnsweredUser> topThree, ProblemEntity problem, HomeState state, HomeViewModel Function() notifier) {
+  Widget _buildPodium(List<AnsweredUser> topThree, ProblemEntity problem,
+      HomeState state, HomeViewModel Function() notifier) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -118,32 +121,32 @@ class HomeScreen extends ConsumerWidget {
               // 2nd place
               if (topThree.length > 1)
                 _buildPodiumPosition(
-                  topThree[1], 
-                  2, 
-                  80, 
-                  problem, 
-                  state, 
+                  topThree[1],
+                  2,
+                  80,
+                  problem,
+                  state,
                   notifier,
                 ),
               const SizedBox(width: 12),
               // 1st place
               _buildPodiumPosition(
-                topThree[0], 
-                1, 
-                100, 
-                problem, 
-                state, 
+                topThree[0],
+                1,
+                100,
+                problem,
+                state,
                 notifier,
               ),
               const SizedBox(width: 12),
               // 3rd place
               if (topThree.length > 2)
                 _buildPodiumPosition(
-                  topThree[2], 
-                  3, 
-                  60, 
-                  problem, 
-                  state, 
+                  topThree[2],
+                  3,
+                  60,
+                  problem,
+                  state,
                   notifier,
                 ),
             ],
@@ -154,17 +157,18 @@ class HomeScreen extends ConsumerWidget {
   }
 
   Widget _buildPodiumPosition(
-    AnsweredUser entry, 
-    int rank, 
-    double height, 
-    ProblemEntity problem, 
-    HomeState state, 
+    AnsweredUser entry,
+    int rank,
+    double height,
+    ProblemEntity problem,
+    HomeState state,
     HomeViewModel Function() notifier,
   ) {
     final user = entry.publicUser;
     final isMute = state.isMute(user.uid);
     final userName = user.nickNameValue() ?? '';
-    final isInvalidNickName = user.registeredInfo?.nickName.isInvalid() ?? false;
+    final isInvalidNickName =
+        user.registeredInfo?.nickName.isInvalid() ?? false;
     final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
 
     return Expanded(
@@ -180,20 +184,20 @@ class HomeScreen extends ConsumerWidget {
               color: _getPodiumRankColor(rank),
             ),
             child: Center(
-              child: rank == 1 
-                ? const Icon(
-                    Icons.emoji_events,
-                    color: Colors.white,
-                    size: 18,
-                  )
-                : Text(
-                    '$rank',
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+              child: rank == 1
+                  ? const Icon(
+                      Icons.emoji_events,
                       color: Colors.white,
+                      size: 18,
+                    )
+                  : Text(
+                      '$rank',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
             ),
           ),
           // User avatar
