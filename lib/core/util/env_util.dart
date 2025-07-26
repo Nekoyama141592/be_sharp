@@ -3,8 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:be_sharp/gen/firebase_options_dev.dart' as dev;
 import 'package:be_sharp/gen/firebase_options_stg.dart' as stg;
 import 'package:be_sharp/gen/firebase_options_prod.dart' as prod;
+
 class EnvUtil {
-    static FirebaseOptions getFirebaseOption() {
+  static FirebaseOptions getFirebaseOption() {
     switch (F.appFlavor) {
       case Flavor.dev:
         return dev.DefaultFirebaseOptions.currentPlatform;
@@ -14,6 +15,7 @@ class EnvUtil {
         return prod.DefaultFirebaseOptions.currentPlatform;
     }
   }
+
   static String get subscriptionMonthItemId {
     switch (F.appFlavor) {
       case Flavor.dev:
@@ -24,6 +26,7 @@ class EnvUtil {
         return 'be_sharp_prod_subscription_basic';
     }
   }
+
   static String get subscriptionAnnualItemId {
     switch (F.appFlavor) {
       case Flavor.dev:
@@ -34,6 +37,7 @@ class EnvUtil {
         return 'be_sharp_prod_subscription_annual';
     }
   }
+
   static List<String> get subscriptionItemIds =>
       [subscriptionMonthItemId, subscriptionAnnualItemId];
   static Set<String> get subscriptionProductIds => subscriptionItemIds.toSet();

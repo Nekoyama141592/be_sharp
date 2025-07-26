@@ -14,25 +14,24 @@ void main() async {
   F.appFlavor = Flavor.values.firstWhere(
     (element) => element.name == appFlavor,
   );
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(options: EnvUtil.getFirebaseOption());
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-    await FirebaseMessaging.instance.requestPermission(
-      alert: true, // 通知が表示されるかどうか
-      announcement: false, // アナウンスメント通知が有効かどうか
-      badge: true, // バッジ（未読件数）が更新されるかどうか
-      carPlay: false, // CarPlayで通知が表示されるかどうか
-      criticalAlert: false, // 重要な通知（サイレントではない）が有効かどうか
-      provisional: false, // 仮の通知（ユーザーによる設定を尊重）が有効かどうか
-      sound: true, // 通知にサウンドが含まれるかどうか
-    );
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
-      alert: true, // フォアグラウンドで通知が表示されるかどうか
-      badge: false, // バッジ（未読件数）が表示されるかどうか
-      sound: true, // 通知にサウンドが含まれるかどうか
-    );
-    runApp(ProviderScope(overrides: [
-      prefsProvider.overrideWithValue(await SharedPreferences.getInstance()),
-    ], child: const MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: EnvUtil.getFirebaseOption());
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+  await FirebaseMessaging.instance.requestPermission(
+    alert: true, // 通知が表示されるかどうか
+    announcement: false, // アナウンスメント通知が有効かどうか
+    badge: true, // バッジ（未読件数）が更新されるかどうか
+    carPlay: false, // CarPlayで通知が表示されるかどうか
+    criticalAlert: false, // 重要な通知（サイレントではない）が有効かどうか
+    provisional: false, // 仮の通知（ユーザーによる設定を尊重）が有効かどうか
+    sound: true, // 通知にサウンドが含まれるかどうか
+  );
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true, // フォアグラウンドで通知が表示されるかどうか
+    badge: false, // バッジ（未読件数）が表示されるかどうか
+    sound: true, // 通知にサウンドが含まれるかどうか
+  );
+  runApp(ProviderScope(overrides: [
+    prefsProvider.overrideWithValue(await SharedPreferences.getInstance()),
+  ], child: const MyApp()));
 }
