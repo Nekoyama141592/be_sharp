@@ -1,3 +1,0 @@
-interface ReceiptRequest {
-    purchaseDetails: PurchaseDetails
-}
