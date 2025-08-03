@@ -33,6 +33,9 @@ workflows:
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
+      - name: Copy env file
+        script: |
+          echo $ENV | base64 --decode> $FCI_BUILD_DIR/assets/env/.env.dev
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release --flavor dev \
@@ -81,6 +84,9 @@ workflows:
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
+      - name: Copy env file
+        script: |
+          echo $ENV | base64 --decode> $FCI_BUILD_DIR/assets/env/.env.prod
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release --flavor stg \
