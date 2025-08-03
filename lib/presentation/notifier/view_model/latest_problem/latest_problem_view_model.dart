@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/response/add_caption_response.dart';
+import 'package:be_sharp/presentation/notifier/keep_alive/purchases/purchase_notifier.dart';
 import 'package:be_sharp/presentation/state/view_model_state/latest_problem_state/latest_problem_state.dart';
-import 'package:be_sharp/presentation/notifier/keep_alive/products/products_notifier.dart';
 import 'package:be_sharp/core/provider/stream/auth/stream_auth_provider.dart';
 import 'package:be_sharp/core/provider/repository/cloud_functions/cloud_functions_repository_provider.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
@@ -50,7 +50,7 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
 
   bool get canShowCaptionDialog {
     final isSubscribing =
-        ref.read(productsNotifierProvider).value?.isSubscribing() ?? false;
+        ref.read(purchaseNotifierProvider).value?.isActive ?? false;
     if (!isSubscribing) {
       ToastUiUtil.showErrorFlutterToast('サブスクリプションに登録する必要があります');
       return false;

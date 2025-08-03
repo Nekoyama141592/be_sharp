@@ -5,7 +5,6 @@ import 'package:be_sharp/infrastructure/model/rest_api/get_object/response/get_o
 import 'package:be_sharp/infrastructure/model/rest_api/delete_object/response/delete_object_response.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/edit_user_info/response/edit_user_info_response.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
 
 abstract class ApiRepositoryInterface {
   FutureResult<CreateProblemResponse> createProblem({
@@ -33,8 +32,5 @@ abstract class ApiRepositoryInterface {
     required String stringNickName,
     required String stringBio,
     required String object,
-  });
-  FutureResult<Object> verifyPurchase({
-    required PurchaseDetails purchaseDetails,
   });
 }

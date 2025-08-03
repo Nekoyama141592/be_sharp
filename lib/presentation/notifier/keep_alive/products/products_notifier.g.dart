@@ -6,12 +6,12 @@ part of 'products_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$productsNotifierHash() => r'8ff032fb96177320d288e64bb13df4f65af4ef10';
+String _$productsNotifierHash() => r'29f4d59c79c8150427b28abb941cd7c499424cd4';
 
 /// See also [ProductsNotifier].
 @ProviderFor(ProductsNotifier)
 final productsNotifierProvider =
-    AsyncNotifierProvider<ProductsNotifier, PurchaseState>.internal(
+    AsyncNotifierProvider<ProductsNotifier, ProductsState>.internal(
   ProductsNotifier.new,
   name: r'productsNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final productsNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ProductsNotifier = AsyncNotifier<PurchaseState>;
+typedef _$ProductsNotifier = AsyncNotifier<ProductsState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

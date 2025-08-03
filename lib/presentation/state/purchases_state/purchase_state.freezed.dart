@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'verified_purchase_entity.dart';
+part of 'purchase_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,82 +13,74 @@ part of 'verified_purchase_entity.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$VerifiedPurchaseEntity {
-  String get productId;
-  DateTime get expiryTime;
+mixin _$PurchaseState {
+  bool get isActive;
 
-  /// Create a copy of VerifiedPurchaseEntity
+  /// Create a copy of PurchaseState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $VerifiedPurchaseEntityCopyWith<VerifiedPurchaseEntity> get copyWith =>
-      _$VerifiedPurchaseEntityCopyWithImpl<VerifiedPurchaseEntity>(
-          this as VerifiedPurchaseEntity, _$identity);
+  $PurchaseStateCopyWith<PurchaseState> get copyWith =>
+      _$PurchaseStateCopyWithImpl<PurchaseState>(
+          this as PurchaseState, _$identity);
 
-  /// Serializes this VerifiedPurchaseEntity to a JSON map.
+  /// Serializes this PurchaseState to a JSON map.
   Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is VerifiedPurchaseEntity &&
-            (identical(other.productId, productId) ||
-                other.productId == productId) &&
-            (identical(other.expiryTime, expiryTime) ||
-                other.expiryTime == expiryTime));
+            other is PurchaseState &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, productId, expiryTime);
+  int get hashCode => Object.hash(runtimeType, isActive);
 
   @override
   String toString() {
-    return 'VerifiedPurchaseEntity(productId: $productId, expiryTime: $expiryTime)';
+    return 'PurchaseState(isActive: $isActive)';
   }
 }
 
 /// @nodoc
-abstract mixin class $VerifiedPurchaseEntityCopyWith<$Res> {
-  factory $VerifiedPurchaseEntityCopyWith(VerifiedPurchaseEntity value,
-          $Res Function(VerifiedPurchaseEntity) _then) =
-      _$VerifiedPurchaseEntityCopyWithImpl;
+abstract mixin class $PurchaseStateCopyWith<$Res> {
+  factory $PurchaseStateCopyWith(
+          PurchaseState value, $Res Function(PurchaseState) _then) =
+      _$PurchaseStateCopyWithImpl;
   @useResult
-  $Res call({String productId, DateTime expiryTime});
+  $Res call({bool isActive});
 }
 
 /// @nodoc
-class _$VerifiedPurchaseEntityCopyWithImpl<$Res>
-    implements $VerifiedPurchaseEntityCopyWith<$Res> {
-  _$VerifiedPurchaseEntityCopyWithImpl(this._self, this._then);
+class _$PurchaseStateCopyWithImpl<$Res>
+    implements $PurchaseStateCopyWith<$Res> {
+  _$PurchaseStateCopyWithImpl(this._self, this._then);
 
-  final VerifiedPurchaseEntity _self;
-  final $Res Function(VerifiedPurchaseEntity) _then;
+  final PurchaseState _self;
+  final $Res Function(PurchaseState) _then;
 
-  /// Create a copy of VerifiedPurchaseEntity
+  /// Create a copy of PurchaseState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productId = null,
-    Object? expiryTime = null,
+    Object? isActive = null,
   }) {
     return _then(_self.copyWith(
-      productId: null == productId
-          ? _self.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiryTime: null == expiryTime
-          ? _self.expiryTime
-          : expiryTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      isActive: null == isActive
+          ? _self.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [VerifiedPurchaseEntity].
-extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
+/// Adds pattern-matching-related methods to [PurchaseState].
+extension PurchaseStatePatterns on PurchaseState {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -103,12 +95,12 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_VerifiedPurchaseEntity value)? $default, {
+    TResult Function(_PurchaseState value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchaseEntity() when $default != null:
+      case _PurchaseState() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -130,11 +122,11 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_VerifiedPurchaseEntity value) $default,
+    TResult Function(_PurchaseState value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchaseEntity():
+      case _PurchaseState():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -155,11 +147,11 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_VerifiedPurchaseEntity value)? $default,
+    TResult? Function(_PurchaseState value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchaseEntity() when $default != null:
+      case _PurchaseState() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -180,13 +172,13 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String productId, DateTime expiryTime)? $default, {
+    TResult Function(bool isActive)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchaseEntity() when $default != null:
-        return $default(_that.productId, _that.expiryTime);
+      case _PurchaseState() when $default != null:
+        return $default(_that.isActive);
       case _:
         return orElse();
     }
@@ -207,12 +199,12 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(String productId, DateTime expiryTime) $default,
+    TResult Function(bool isActive) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchaseEntity():
-        return $default(_that.productId, _that.expiryTime);
+      case _PurchaseState():
+        return $default(_that.isActive);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -232,12 +224,12 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(String productId, DateTime expiryTime)? $default,
+    TResult? Function(bool isActive)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _VerifiedPurchaseEntity() when $default != null:
-        return $default(_that.productId, _that.expiryTime);
+      case _PurchaseState() when $default != null:
+        return $default(_that.isActive);
       case _:
         return null;
     }
@@ -246,30 +238,25 @@ extension VerifiedPurchaseEntityPatterns on VerifiedPurchaseEntity {
 
 /// @nodoc
 @JsonSerializable()
-class _VerifiedPurchaseEntity extends VerifiedPurchaseEntity {
-  const _VerifiedPurchaseEntity(
-      {required this.productId, required this.expiryTime})
-      : super._();
-  factory _VerifiedPurchaseEntity.fromJson(Map<String, dynamic> json) =>
-      _$VerifiedPurchaseEntityFromJson(json);
+class _PurchaseState implements PurchaseState {
+  const _PurchaseState({required this.isActive});
+  factory _PurchaseState.fromJson(Map<String, dynamic> json) =>
+      _$PurchaseStateFromJson(json);
 
   @override
-  final String productId;
-  @override
-  final DateTime expiryTime;
+  final bool isActive;
 
-  /// Create a copy of VerifiedPurchaseEntity
+  /// Create a copy of PurchaseState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$VerifiedPurchaseEntityCopyWith<_VerifiedPurchaseEntity> get copyWith =>
-      __$VerifiedPurchaseEntityCopyWithImpl<_VerifiedPurchaseEntity>(
-          this, _$identity);
+  _$PurchaseStateCopyWith<_PurchaseState> get copyWith =>
+      __$PurchaseStateCopyWithImpl<_PurchaseState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$VerifiedPurchaseEntityToJson(
+    return _$PurchaseStateToJson(
       this,
     );
   }
@@ -278,59 +265,52 @@ class _VerifiedPurchaseEntity extends VerifiedPurchaseEntity {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VerifiedPurchaseEntity &&
-            (identical(other.productId, productId) ||
-                other.productId == productId) &&
-            (identical(other.expiryTime, expiryTime) ||
-                other.expiryTime == expiryTime));
+            other is _PurchaseState &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, productId, expiryTime);
+  int get hashCode => Object.hash(runtimeType, isActive);
 
   @override
   String toString() {
-    return 'VerifiedPurchaseEntity(productId: $productId, expiryTime: $expiryTime)';
+    return 'PurchaseState(isActive: $isActive)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$VerifiedPurchaseEntityCopyWith<$Res>
-    implements $VerifiedPurchaseEntityCopyWith<$Res> {
-  factory _$VerifiedPurchaseEntityCopyWith(_VerifiedPurchaseEntity value,
-          $Res Function(_VerifiedPurchaseEntity) _then) =
-      __$VerifiedPurchaseEntityCopyWithImpl;
+abstract mixin class _$PurchaseStateCopyWith<$Res>
+    implements $PurchaseStateCopyWith<$Res> {
+  factory _$PurchaseStateCopyWith(
+          _PurchaseState value, $Res Function(_PurchaseState) _then) =
+      __$PurchaseStateCopyWithImpl;
   @override
   @useResult
-  $Res call({String productId, DateTime expiryTime});
+  $Res call({bool isActive});
 }
 
 /// @nodoc
-class __$VerifiedPurchaseEntityCopyWithImpl<$Res>
-    implements _$VerifiedPurchaseEntityCopyWith<$Res> {
-  __$VerifiedPurchaseEntityCopyWithImpl(this._self, this._then);
+class __$PurchaseStateCopyWithImpl<$Res>
+    implements _$PurchaseStateCopyWith<$Res> {
+  __$PurchaseStateCopyWithImpl(this._self, this._then);
 
-  final _VerifiedPurchaseEntity _self;
-  final $Res Function(_VerifiedPurchaseEntity) _then;
+  final _PurchaseState _self;
+  final $Res Function(_PurchaseState) _then;
 
-  /// Create a copy of VerifiedPurchaseEntity
+  /// Create a copy of PurchaseState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? productId = null,
-    Object? expiryTime = null,
+    Object? isActive = null,
   }) {
-    return _then(_VerifiedPurchaseEntity(
-      productId: null == productId
-          ? _self.productId
-          : productId // ignore: cast_nullable_to_non_nullable
-              as String,
-      expiryTime: null == expiryTime
-          ? _self.expiryTime
-          : expiryTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+    return _then(_PurchaseState(
+      isActive: null == isActive
+          ? _self.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
