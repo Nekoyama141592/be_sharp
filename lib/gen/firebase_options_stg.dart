@@ -62,6 +62,7 @@ class DefaultFirebaseOptions {
     appId: '1:1041614913419:ios:711ab95021df7a7563b98e',
     messagingSenderId: '1041614913419',
     projectId: 'be-sharp-stg',
+    iosClientId: '1041614913419-olm58si3ao7cr36uqdhkfd7n2k7ndq7s.apps.googleusercontent.com',
     storageBucket: 'be-sharp-stg.firebasestorage.app',
     iosBundleId: 'com.firebaseapp.beSharpStg',
   );
