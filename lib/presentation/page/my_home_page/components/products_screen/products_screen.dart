@@ -50,7 +50,7 @@ class ProductsScreen extends ConsumerWidget {
                           result.when(
                             success: (_) {
                               ToastUiUtil.showSuccessSnackBar(
-                                context, '購入の検証が成功しました');
+                                  context, '購入の検証が成功しました');
                               ref.invalidate(purchaseNotifierProvider);
                             },
                             failure: (msg) =>
