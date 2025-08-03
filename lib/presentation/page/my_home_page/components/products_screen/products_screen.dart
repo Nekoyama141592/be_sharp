@@ -48,8 +48,11 @@ class ProductsScreen extends ConsumerWidget {
                           final result =
                               await notifier().onRestoreButtonPressed();
                           result.when(
-                            success: (_) => ToastUiUtil.showSuccessSnackBar(
-                                context, '購入の検証が成功しました'),
+                            success: (_) {
+                              ToastUiUtil.showSuccessSnackBar(
+                                context, '購入の検証が成功しました');
+                              ref.invalidate(purchaseNotifierProvider);
+                            },
                             failure: (msg) =>
                                 ToastUiUtil.showFailureSnackBar(context, msg),
                           );
@@ -144,6 +147,7 @@ class ProductsScreen extends ConsumerWidget {
                                       context,
                                       '購入が成功しました',
                                     );
+                                    ref.invalidate(purchaseNotifierProvider);
                                   },
                                   failure: (msg) {
                                     ToastUiUtil.showFailureSnackBar(
