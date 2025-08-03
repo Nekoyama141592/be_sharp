@@ -8,6 +8,8 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m1
     environment:
+      groups: 
+        - be_sharp_dev
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.firebaseapp.beSharpDev
@@ -59,6 +61,8 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m1
     environment:
+      groups: 
+        - be_sharp_stg
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.firebaseapp.beSharpStg
@@ -86,7 +90,7 @@ workflows:
           find . -name "Podfile" -execdir pod install \;
       - name: Copy env file
         script: |
-          echo $ENV | base64 --decode> $FCI_BUILD_DIR/assets/env/.env.prod
+          echo $ENV | base64 --decode> $FCI_BUILD_DIR/assets/env/.env.stg
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release --flavor stg \
@@ -110,6 +114,8 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m1
     environment:
+      groups: 
+        - be_sharp_prod
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.firebaseapp.beSharpProd
@@ -135,6 +141,9 @@ workflows:
       - name: Install pods
         script: |
           find . -name "Podfile" -execdir pod install \;
+      - name: Copy env file
+        script: |
+          echo $ENV | base64 --decode> $FCI_BUILD_DIR/assets/env/.env.prod
       - name: Flutter build ipa and automatic versioning
         script: |
           flutter build ipa --release --flavor prod \
