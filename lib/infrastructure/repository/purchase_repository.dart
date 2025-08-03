@@ -70,7 +70,7 @@ class PurchaseRepository implements PurchaseRepositoryInterface {
   }
 
   bool _getIsActive(CustomerInfo purchaserInfo) {
-    final ent = purchaserInfo.entitlements.all['pro'];
+    final ent = purchaserInfo.entitlements.all['basic'];
     return ent?.isActive ?? false;
   }
 }
