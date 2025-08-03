@@ -39,6 +39,7 @@ packages=(
   "firebase_auth_mocks"
   "shimmer"
   "purchases_flutter"
+  "flutter_dotenv"
 )
 
 echo "Adding packages to dependencies..."
