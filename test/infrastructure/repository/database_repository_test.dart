@@ -530,25 +530,6 @@ void main() {
         expect(doc.data()!['uid'], uid);
       });
     });
-
-    group('getVerifiedPurchases', () {
-      test('should return empty list when uid is null', () async {
-        final result = await repository.getVerifiedPurchases(null);
-        expect(result, isEmpty);
-      });
-
-      test('should return verified purchases for user', () async {
-        // Arrange
-        const uid = 'test-user';
-
-        // Act
-        final result = await repository.getVerifiedPurchases(uid);
-
-        // Assert - Should handle gracefully even with no purchases
-        expect(result, isNotNull);
-        expect(result, isA<List>());
-      });
-    });
   });
 }
 

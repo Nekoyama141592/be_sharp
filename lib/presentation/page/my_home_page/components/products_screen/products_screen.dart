@@ -1,12 +1,12 @@
 import 'package:be_sharp/presentation/constants/colors.dart';
-import 'package:be_sharp/core/util/purchase_util.dart';
 import 'package:be_sharp/presentation/notifier/keep_alive/products/products_notifier.dart';
+import 'package:be_sharp/presentation/notifier/keep_alive/purchases/purchase_notifier.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/my_home_page/components/products_screen/components/policy_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:be_sharp/domain/entity/purchase/product/product_entity.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProductsScreen extends ConsumerWidget {
@@ -16,6 +16,7 @@ class ProductsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ProductsNotifier notifier() => ref.read(productsNotifierProvider.notifier);
     final asyncValue = ref.watch(productsNotifierProvider);
+    final purchaseState = ref.watch(purchaseNotifierProvider).value;
     return AsyncScreen(
       asyncValue: asyncValue,
       data: (state) {
@@ -47,8 +48,11 @@ class ProductsScreen extends ConsumerWidget {
                           final result =
                               await notifier().onRestoreButtonPressed();
                           result.when(
-                            success: (_) => ToastUiUtil.showSuccessSnackBar(
-                                context, '購入の検証が成功しました'),
+                            success: (_) {
+                              ToastUiUtil.showSuccessSnackBar(
+                                  context, '購入の検証が成功しました');
+                              ref.invalidate(purchaseNotifierProvider);
+                            },
                             failure: (msg) =>
                                 ToastUiUtil.showFailureSnackBar(context, msg),
                           );
@@ -121,18 +125,13 @@ class ProductsScreen extends ConsumerWidget {
                         return Expanded(
                           child: Container(
                             margin: EdgeInsets.only(
-                              right: product.id == PurchaseUtil.monthItemId()
-                                  ? 8
-                                  : 0,
-                              left: product.id != PurchaseUtil.monthItemId()
-                                  ? 8
-                                  : 0,
+                              right: product.isMonthly ? 8 : 0,
+                              left: !product.isMonthly ? 8 : 0,
                             ),
                             child: PurchaseCard(
                               product: product,
-                              isMonthPlan:
-                                  product.id == PurchaseUtil.monthItemId(),
-                              isPurchased: state.isPurchased(product.id),
+                              isMonthPlan: product.isMonthly,
+                              isPurchased: purchaseState?.isActive ?? false,
                               onPressed: () async {
                                 ToastUiUtil.showSuccessSnackBar(
                                   context,
@@ -148,6 +147,7 @@ class ProductsScreen extends ConsumerWidget {
                                       context,
                                       '購入が成功しました',
                                     );
+                                    ref.invalidate(purchaseNotifierProvider);
                                   },
                                   failure: (msg) {
                                     ToastUiUtil.showFailureSnackBar(
@@ -268,7 +268,7 @@ class PurchaseCard extends StatelessWidget {
       required this.isMonthPlan,
       required this.isPurchased,
       required this.onPressed});
-  final ProductDetails product;
+  final ProductEntity product;
   final bool isPurchased;
   final bool isMonthPlan;
   final void Function()? onPressed;

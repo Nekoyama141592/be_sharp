@@ -26,9 +26,6 @@ packages=(
   "image"
   "image_cropper"
   "image_picker"
-  "in_app_purchase"
-  "in_app_purchase_android"
-  "in_app_purchase_storekit"
   "in_app_review"
   "path_provider"
   "riverpod_annotation"
@@ -41,6 +38,8 @@ packages=(
   "fake_firebase_security_rules"
   "firebase_auth_mocks"
   "shimmer"
+  "purchases_flutter"
+  "flutter_dotenv"
 )
 
 echo "Adding packages to dependencies..."

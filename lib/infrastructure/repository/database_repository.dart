@@ -8,8 +8,6 @@ import 'package:be_sharp/infrastructure/model/firestore_model/private_user/priva
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/public_user/public_user_model.dart';
 import 'package:be_sharp/infrastructure/model/firestore_model/user_answer/user_answer_model.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
-import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart';
 import 'package:be_sharp/domain/repository_interface/database_repository_interface.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -73,8 +71,6 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   ColRef _muteUsersColRef(String uid) =>
       _instance.collection('users/$uid/muteUsers');
   ColRef _privateUsersColRef() => _instance.collection('privateUsers');
-  ColRef _verifiedPurchasesColRef(String uid) =>
-      _instance.collection('privateUsers/$uid/verifiedPurchases');
   ColRef _problemsColRef() => _instance.collection('problems');
   Future<void> _createDoc(DocRef ref, Map<String, dynamic> json) =>
       ref.set(json);
@@ -186,26 +182,6 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
           .map((e) => PublicUserEntity.fromJson(e.data()))
           .toList();
       return users;
-    } catch (e) {
-      debugPrint(e.toString());
-      return [];
-    }
-  }
-
-  Future<List<VerifiedPurchaseEntity>> getVerifiedPurchases(String? uid) async {
-    try {
-      if (uid == null) return [];
-      final colRef = _verifiedPurchasesColRef(uid);
-      final qshot = await colRef.get();
-      final docs = qshot.docs;
-      final verifiedPurchases =
-          docs.map((e) => VerifiedPurchaseModel.fromJson(e.data())).toList();
-      final validPurchases =
-          verifiedPurchases.where((e) => e.isValid()).toList();
-      final results = validPurchases
-          .map((e) => VerifiedPurchaseEntity.fromModel(e))
-          .toList();
-      return results;
     } catch (e) {
       debugPrint(e.toString());
       return [];

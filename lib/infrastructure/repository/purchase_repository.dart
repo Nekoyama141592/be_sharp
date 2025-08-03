@@ -1,119 +1,76 @@
-import 'package:be_sharp/core/util/purchase_util.dart';
-import 'package:be_sharp/core/extension/purchase_details_extension.dart';
-import 'package:be_sharp/infrastructure/repository/result/result.dart';
+import 'package:be_sharp/domain/entity/purchase/product/product_entity.dart';
 import 'package:be_sharp/domain/repository_interface/purchase_repository_interface.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
-
-import 'dart:io';
+import 'package:be_sharp/infrastructure/repository/result/result.dart';
 import 'package:flutter/material.dart';
-import 'package:in_app_purchase_android/billing_client_wrappers.dart';
-import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 
 class PurchaseRepository implements PurchaseRepositoryInterface {
-  PurchaseRepository(this._inAppPurchase, this._client, this._wrapper);
-  final InAppPurchase _inAppPurchase;
-  final BillingClient _client;
-  final SKPaymentQueueWrapper _wrapper;
-
   @override
-  Stream<List<PurchaseDetails>> get purchaseUpdated =>
-      _inAppPurchase.purchaseStream
-          .map((details) => details)
-          .asBroadcastStream();
-
-  Future<void> cancelTransctions() async {
-    if (!Platform.isIOS) return;
-    try {
-      final transactions = await _wrapper.transactions();
-      for (final tx in transactions) {
-        await _wrapper.finishTransaction(tx);
-      }
-    } catch (e) {
-      debugPrint('cancelTransactions: ${e.toString()}');
-    }
+  Future<bool> isActive() async {
+    return _getIsActive(await Purchases.getCustomerInfo());
   }
 
-  Future<void> completePurchase(PurchaseDetails details) async {
-    if (!details.pendingCompletePurchase) return;
-    try {
-      await _inAppPurchase.completePurchase(details);
-    } catch (e) {
-      debugPrint('completePurchase: ${e.toString()}');
-    }
-  }
-
-  Future<bool> isAvailable() async {
-    try {
-      return _inAppPurchase.isAvailable();
-    } catch (e) {
-      debugPrint('isAvailable: ${e.toString()}');
-      return false;
-    }
-  }
-
-  Future<void> acknowledge(PurchaseDetails details) async {
-    if (!Platform.isAndroid || details.isPending) return;
-    try {
-      // 承認を行う.行わないと払い戻しが行われる.
-      final serverVerificationData =
-          details.verificationData.serverVerificationData;
-      await _client.acknowledgePurchase(serverVerificationData);
-    } catch (e) {
-      debugPrint('acknowledge: ${e.toString()}');
-    }
+  Future<List<Package>?> _getPackages() async {
+    final offerings = await Purchases.getOfferings();
+    final packages = offerings.all['default']?.availablePackages;
+    return packages;
   }
 
   @override
-  Future<void> initStore() async {
-    // Initialize store if needed
-  }
-
-  @override
-  Future<List<ProductDetails>> getProducts() async {
-    final products = await queryProductDetails();
-    return products ?? [];
-  }
-
-  @override
-  Future<void> buyProduct(String productId) async {
-    final products = await queryProductDetails();
-    if (products == null) return;
-
-    final product = products.where((p) => p.id == productId).firstOrNull;
-    if (product == null) return;
-
-    final purchaseParam = PurchaseParam(productDetails: product);
-    await buyNonConsumable(purchaseParam);
-  }
-
-  Future<List<ProductDetails>?> queryProductDetails() async {
+  Future<List<ProductEntity>?> queryProductDetails() async {
     try {
-      final identifiers = PurchaseUtil.productIds();
-      final res = await _inAppPurchase.queryProductDetails(identifiers);
-      return res.productDetails;
+      final packages = await _getPackages();
+      final result = packages?.map((e) {
+        final isMonthly = e.packageType == PackageType.monthly;
+        final product = e.storeProduct;
+        return ProductEntity(
+          isMonthly: isMonthly,
+          packageId: e.identifier,
+          title: product.title,
+          description: product.description,
+          price: product.priceString,
+        );
+      }).toList();
+      return result;
     } catch (e) {
       debugPrint('queryProductDetails: ${e.toString()}');
       return null;
     }
   }
 
-  FutureResult<bool> buyNonConsumable(PurchaseParam purchaseParam) async {
+  @override
+  FutureResult<bool> buyNonConsumable(String packageId) async {
     try {
-      await _inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
-      return const Result.success(true);
+      final packages = await _getPackages();
+      final package =
+          packages?.firstWhereOrNull((e) => e.identifier == packageId);
+      if (package == null) {
+        return const Result.failure('購入が失敗しました');
+      }
+      final purchaseResult = await Purchases.purchasePackage(package);
+      final isActive = _getIsActive(purchaseResult.customerInfo);
+      return Result.success(isActive);
     } catch (e) {
       debugPrint('buyNonConsumable: ${e.toString()}');
       return const Result.failure('購入が失敗しました');
     }
   }
 
+  @override
   FutureResult<bool> restorePurchases() async {
     try {
-      await _inAppPurchase.restorePurchases();
-      return const Result.success(true);
+      final customerInfo = await Purchases.restorePurchases();
+      final isActive = _getIsActive(customerInfo);
+      return Result.success(isActive);
     } catch (e) {
       debugPrint('restorePurchases: ${e.toString()}');
       return const Result.failure('購入の復元が失敗しました');
     }
+  }
+
+  bool _getIsActive(CustomerInfo purchaserInfo) {
+    final ent = purchaserInfo.entitlements.all['basic'];
+    return ent?.isActive ?? false;
   }
 }

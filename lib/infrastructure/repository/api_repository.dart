@@ -1,12 +1,8 @@
 import 'package:be_sharp/core/util/json_util.dart';
-import 'package:be_sharp/core/extension/purchase_details_extension.dart';
-import 'package:be_sharp/infrastructure/model/firestore_model/verified_purchase/verified_purchase_model.dart';
-import 'package:be_sharp/domain/entity/database/verified_purchase/verified_purchase_entity.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/request/add_caption_request.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/addCaption/response/add_caption_response.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/create_problem/request/create_problem_request.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/create_problem/response/create_problem_response.dart';
-import 'package:be_sharp/infrastructure/model/rest_api/verify_purchase/request/receipt_request.dart';
 import 'package:be_sharp/infrastructure/repository/result/result.dart' as rs;
 import 'package:be_sharp/infrastructure/model/rest_api/delete_object/request/delete_object_request.dart';
 import 'package:be_sharp/infrastructure/model/rest_api/delete_object/response/delete_object_response.dart';
@@ -19,7 +15,6 @@ import 'package:be_sharp/infrastructure/model/rest_api/edit_user_info/response/e
 import 'package:be_sharp/domain/repository_interface/api_repository_interface.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/foundation.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
 
 class ApiRepository implements ApiRepositoryInterface {
   ApiRepository(this._instance);
@@ -107,53 +102,6 @@ class ApiRepository implements ApiRepositoryInterface {
     } catch (e) {
       debugPrint(e.toString());
       return const rs.Result.failure('Failed to edit user info');
-    }
-  }
-
-  @override
-  rs.FutureResult<Object> verifyPurchase({
-    required PurchaseDetails purchaseDetails,
-  }) async {
-    try {
-      const name = 'verifyAndroidReceipt';
-      final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await _call(name, request.toJson());
-      final model = VerifiedPurchaseModel.fromJson(result);
-      final entity = VerifiedPurchaseEntity.fromModel(model);
-      return rs.Result.success(entity);
-    } catch (e) {
-      debugPrint(e.toString());
-      return const rs.Result.failure('Failed to verify purchase');
-    }
-  }
-
-  rs.FutureResult<VerifiedPurchaseEntity> verifyAndroidReceipt(
-      PurchaseDetails purchaseDetails) async {
-    try {
-      const name = 'verifyAndroidReceipt';
-      final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await _call(name, request.toJson());
-      final model = VerifiedPurchaseModel.fromJson(result);
-      final entity = VerifiedPurchaseEntity.fromModel(model);
-      return rs.Result.success(entity);
-    } catch (e) {
-      debugPrint(e.toString());
-      return const rs.Result.failure('Failed to verify Android receipt');
-    }
-  }
-
-  rs.FutureResult<VerifiedPurchaseEntity> verifyIOSReceipt(
-      PurchaseDetails purchaseDetails) async {
-    try {
-      const name = 'verifyIOSReceipt';
-      final request = ReceiptRequest(purchaseDetails: purchaseDetails.toJson());
-      final result = await _call(name, request.toJson());
-      final model = VerifiedPurchaseModel.fromJson(result);
-      final entity = VerifiedPurchaseEntity.fromModel(model);
-      return rs.Result.success(entity);
-    } catch (e) {
-      debugPrint(e.toString());
-      return const rs.Result.failure('Failed to verify iOS receipt');
     }
   }
 
