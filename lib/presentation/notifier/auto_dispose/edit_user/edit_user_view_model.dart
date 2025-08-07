@@ -40,7 +40,10 @@ class EditUserViewModel extends _$EditUserViewModel {
       ref.read(databaseRepositoryProvider);
   ApiRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
-    final uid = ref.read(streamAuthUidProvider).value!;
+    final uid = ref.read(streamAuthUidProvider).value;
+    if (uid == null) {
+      return const UserAndImageState();
+    }
     final user = await _databaseRepository.getPublicUser(uid);
     String? image;
     if (user != null) {
