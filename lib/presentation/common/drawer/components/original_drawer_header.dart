@@ -3,6 +3,7 @@ import 'package:be_sharp/presentation/common/circle_image/circle_image.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shimmer/shimmer.dart';
 
 class OriginalDrawerHeader extends ConsumerWidget {
   const OriginalDrawerHeader({super.key});
@@ -62,8 +63,51 @@ class OriginalDrawerHeader extends ConsumerWidget {
       },
       loading: () => Container(
         width: double.infinity,
-        height: 140,
-        color: AppColors.surface,
+        padding: const EdgeInsets.fromLTRB(16, 40, 16, 16),
+        decoration: const BoxDecoration(
+          color: AppColors.surface,
+          border: Border(
+            bottom: BorderSide(
+              color: AppColors.border,
+              width: 0.5,
+            ),
+          ),
+        ),
+        child: Shimmer.fromColors(
+          baseColor: AppColors.surface,
+          highlightColor: AppColors.border,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 56.0,
+                height: 56.0,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Container(
+                height: 18,
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+              const SizedBox(height: 4),
+              Container(
+                height: 14,
+                width: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       error: (error, stack) => Container(
         width: double.infinity,
