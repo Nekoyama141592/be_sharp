@@ -84,7 +84,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final doc = await _userDocRef(uid).get();
       final docData = doc.data();
       if (docData == null) return null;
-      return PublicUserEntity.fromJson(docData);
+      final model = PublicUserModel.fromJson(docData);
+      return PublicUserEntity.fromJson(model.toJson());
     } catch (e) {
       debugPrint(e.toString());
       return null;
