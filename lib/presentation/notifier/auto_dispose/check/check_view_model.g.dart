@@ -6,7 +6,7 @@ part of 'check_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkViewModelHash() => r'115333128eececa19a00983c0f6d03799b9ccb1e';
+String _$checkViewModelHash() => r'b32b3f5c0b6b7a3bf4dca8ed0745beb47d3f406a';
 
 /// See also [CheckViewModel].
 @ProviderFor(CheckViewModel)

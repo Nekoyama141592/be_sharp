@@ -40,7 +40,7 @@ class EditUserViewModel extends _$EditUserViewModel {
       ref.read(databaseRepositoryProvider);
   ApiRepository get repository => ref.read(cloudFunctionsRepositoryProvider);
   Future<UserAndImageState> _fetchData() async {
-    final uid = ref.read(streamAuthUidProvider).value;
+    final uid = ref.watch(streamAuthUidProvider).value;
     if (uid == null) {
       return const UserAndImageState();
     }
@@ -128,8 +128,7 @@ class EditUserViewModel extends _$EditUserViewModel {
   }
 
   Future<void> _success() async {
-    final uid = ref.read(streamAuthUidProvider).value!;
-    await ref.read(checkViewModelProvider.notifier).onUserUpdateSuccess(uid);
+    ref.invalidate(checkViewModelProvider);
     ToastUiUtil.showFlutterToast("プロフィールを更新しました。");
     isSuccess = true;
   }

@@ -7,7 +7,7 @@ part of 'latest_problem_view_model.dart';
 // **************************************************************************
 
 String _$latestProblemViewModelHash() =>
-    r'7da4313897439c5fd4a4db14adbd3c8c27511627';
+    r'8a63b6c3b8ebc0f8264d3f84be17b3d29d5f4e15';
 
 /// See also [LatestProblemViewModel].
 @ProviderFor(LatestProblemViewModel)

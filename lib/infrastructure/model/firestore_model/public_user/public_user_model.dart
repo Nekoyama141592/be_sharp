@@ -12,6 +12,7 @@ abstract class PublicUserModel with _$PublicUserModel {
       @Default(0) int followerCount,
       @Default(0) int followingCount,
       @Default(0) int muteCount,
+      Map<String, dynamic>? registeredInfo,
       required String uid,
       required dynamic updatedAt}) = _PublicUserModel;
   factory PublicUserModel.fromJson(Map<String, dynamic> json) =>
