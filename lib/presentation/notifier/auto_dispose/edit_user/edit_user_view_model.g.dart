@@ -6,7 +6,7 @@ part of 'edit_user_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$editUserViewModelHash() => r'53d5fe702511c6ea5d64f623c511de8928e7b17c';
+String _$editUserViewModelHash() => r'6cebb8d44ede45fcd7120a06301dc8e1f308e92b';
 
 /// See also [EditUserViewModel].
 @ProviderFor(EditUserViewModel)

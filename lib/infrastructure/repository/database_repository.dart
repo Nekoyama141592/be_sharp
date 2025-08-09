@@ -84,7 +84,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final doc = await _userDocRef(uid).get();
       final docData = doc.data();
       if (docData == null) return null;
-      return PublicUserEntity.fromJson(docData);
+      final model = PublicUserModel.fromJson(docData);
+      return PublicUserEntity.fromJson(model.toJson());
     } catch (e) {
       debugPrint(e.toString());
       return null;
@@ -115,12 +116,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  FutureResult<bool> createPrivateUser(String uid, String? token) {
+  FutureResult<bool> createPrivateUser(String uid, String? token) async {
     final privateUser =
         PrivateUserModel.withServerTimestamp(uid, fcmToken: token);
     final docRef = _privateUserDocRef(uid);
     final data = privateUser.toJson();
-    return createDoc(docRef, data);
+    return await createDoc(docRef, data);
   }
 
   FutureResult<bool> updateDoc(DocRef ref, Map<String, dynamic> json) async {
@@ -133,10 +134,10 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  FutureResult<bool> updateToken(String uid, String token) {
+  FutureResult<bool> updateToken(String uid, String token) async {
     final docRef = _privateUserDocRef(uid);
     final data = {'fcmToken': token};
-    return updateDoc(docRef, data);
+    return await updateDoc(docRef, data);
   }
 
   FutureResult<bool> deleteDoc(DocRef ref) async {
@@ -149,9 +150,9 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     }
   }
 
-  FutureResult<bool> deleteUser(String uid) {
+  FutureResult<bool> deleteUser(String uid) async {
     final docRef = _userDocRef(uid);
-    return deleteDoc(docRef);
+    return await deleteDoc(docRef);
   }
 
   FutureResult<Doc> getDoc(DocRef ref) async {
@@ -225,7 +226,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final writeUser = PublicUserModel.withServerTimestamp(uid);
       final writeData = writeUser.toJson();
       await _createDoc(docRef, writeData);
-      return getPublicUser(uid);
+      return await getPublicUser(uid);
     } catch (e) {
       debugPrint(e.toString());
       return null;
@@ -249,7 +250,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     final json = UserAnswerModel.withServerTimestamp(
             answer: answer, problemId: problemId, uid: uid)
         .toJson();
-    return createDoc(docRef, json);
+    return await createDoc(docRef, json);
   }
 
   Future<ProblemEntity?> fetchLatestProblem() async {
@@ -300,15 +301,15 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
     return results.expand((x) => x).toList();
   }
 
-  FutureResult<bool> muteUser(String uid, String muteUid) {
+  FutureResult<bool> muteUser(String uid, String muteUid) async {
     final docRef = _muteUserDocRef(uid, muteUid);
     final json = MuteUserModel.withServerTimestamp(muteUid).toJson();
-    return createDoc(docRef, json);
+    return await createDoc(docRef, json);
   }
 
-  FutureResult<bool> unMute(String uid, String muteUid) {
+  FutureResult<bool> unMute(String uid, String muteUid) async {
     final docRef = _muteUserDocRef(uid, muteUid);
-    return deleteDoc(docRef);
+    return await deleteDoc(docRef);
   }
 
   Future<List<UserAnswerEntity>> fetchCorrectUserAnswers(
@@ -328,7 +329,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
   Future<Doc?> getUserAnswerDoc(String uid, String problemId) async {
     try {
       final docRef = _userAnswerDocRef(uid, problemId);
-      return _getDoc(docRef);
+      return await _getDoc(docRef);
     } catch (e) {
       debugPrint(e.toString());
       return null;

@@ -39,7 +39,7 @@ class CheckViewModel extends _$CheckViewModel {
   Future<PublicUserEntity?> _fetchUser(String uid) async {
     final user = await _repository.getPublicUser(uid);
     if (user != null) return user;
-    return _repository.createPublicUser(uid);
+    return await _repository.createPublicUser(uid);
   }
 
   Future<void> refetchUser(User user) async {
@@ -49,16 +49,6 @@ class CheckViewModel extends _$CheckViewModel {
     state = await AsyncValue.guard(() async {
       final result = stateValue.copyWith(
           needsSignup: false, user: await _fetchUser(user.uid));
-      return result;
-    });
-  }
-
-  Future<void> onUserUpdateSuccess(String uid) async {
-    final stateValue = state.value;
-    if (stateValue == null) return;
-    state = await AsyncValue.guard(() async {
-      final newUser = await _fetchUser(uid);
-      final result = stateValue.copyWith(user: newUser);
       return result;
     });
   }

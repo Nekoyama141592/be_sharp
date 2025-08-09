@@ -18,6 +18,7 @@ mixin _$PublicUserModel {
   int get followerCount;
   int get followingCount;
   int get muteCount;
+  Map<String, dynamic>? get registeredInfo;
   String get uid;
   dynamic get updatedAt;
 
@@ -44,6 +45,8 @@ mixin _$PublicUserModel {
                 other.followingCount == followingCount) &&
             (identical(other.muteCount, muteCount) ||
                 other.muteCount == muteCount) &&
+            const DeepCollectionEquality()
+                .equals(other.registeredInfo, registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -56,12 +59,13 @@ mixin _$PublicUserModel {
       followerCount,
       followingCount,
       muteCount,
+      const DeepCollectionEquality().hash(registeredInfo),
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
   @override
   String toString() {
-    return 'PublicUserModel(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
+    return 'PublicUserModel(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
@@ -76,6 +80,7 @@ abstract mixin class $PublicUserModelCopyWith<$Res> {
       int followerCount,
       int followingCount,
       int muteCount,
+      Map<String, dynamic>? registeredInfo,
       String uid,
       dynamic updatedAt});
 }
@@ -97,6 +102,7 @@ class _$PublicUserModelCopyWithImpl<$Res>
     Object? followerCount = null,
     Object? followingCount = null,
     Object? muteCount = null,
+    Object? registeredInfo = freezed,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
@@ -117,6 +123,10 @@ class _$PublicUserModelCopyWithImpl<$Res>
           ? _self.muteCount
           : muteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      registeredInfo: freezed == registeredInfo
+          ? _self.registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       uid: null == uid
           ? _self.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -222,16 +232,28 @@ extension PublicUserModelPatterns on PublicUserModel {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(dynamic createdAt, int followerCount, int followingCount,
-            int muteCount, String uid, dynamic updatedAt)?
+    TResult Function(
+            dynamic createdAt,
+            int followerCount,
+            int followingCount,
+            int muteCount,
+            Map<String, dynamic>? registeredInfo,
+            String uid,
+            dynamic updatedAt)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _PublicUserModel() when $default != null:
-        return $default(_that.createdAt, _that.followerCount,
-            _that.followingCount, _that.muteCount, _that.uid, _that.updatedAt);
+        return $default(
+            _that.createdAt,
+            _that.followerCount,
+            _that.followingCount,
+            _that.muteCount,
+            _that.registeredInfo,
+            _that.uid,
+            _that.updatedAt);
       case _:
         return orElse();
     }
@@ -252,15 +274,27 @@ extension PublicUserModelPatterns on PublicUserModel {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(dynamic createdAt, int followerCount, int followingCount,
-            int muteCount, String uid, dynamic updatedAt)
+    TResult Function(
+            dynamic createdAt,
+            int followerCount,
+            int followingCount,
+            int muteCount,
+            Map<String, dynamic>? registeredInfo,
+            String uid,
+            dynamic updatedAt)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _PublicUserModel():
-        return $default(_that.createdAt, _that.followerCount,
-            _that.followingCount, _that.muteCount, _that.uid, _that.updatedAt);
+        return $default(
+            _that.createdAt,
+            _that.followerCount,
+            _that.followingCount,
+            _that.muteCount,
+            _that.registeredInfo,
+            _that.uid,
+            _that.updatedAt);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -280,15 +314,27 @@ extension PublicUserModelPatterns on PublicUserModel {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(dynamic createdAt, int followerCount, int followingCount,
-            int muteCount, String uid, dynamic updatedAt)?
+    TResult? Function(
+            dynamic createdAt,
+            int followerCount,
+            int followingCount,
+            int muteCount,
+            Map<String, dynamic>? registeredInfo,
+            String uid,
+            dynamic updatedAt)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _PublicUserModel() when $default != null:
-        return $default(_that.createdAt, _that.followerCount,
-            _that.followingCount, _that.muteCount, _that.uid, _that.updatedAt);
+        return $default(
+            _that.createdAt,
+            _that.followerCount,
+            _that.followingCount,
+            _that.muteCount,
+            _that.registeredInfo,
+            _that.uid,
+            _that.updatedAt);
       case _:
         return null;
     }
@@ -303,9 +349,11 @@ class _PublicUserModel extends PublicUserModel {
       this.followerCount = 0,
       this.followingCount = 0,
       this.muteCount = 0,
+      final Map<String, dynamic>? registeredInfo,
       required this.uid,
       required this.updatedAt})
-      : super._();
+      : _registeredInfo = registeredInfo,
+        super._();
   factory _PublicUserModel.fromJson(Map<String, dynamic> json) =>
       _$PublicUserModelFromJson(json);
 
@@ -320,6 +368,16 @@ class _PublicUserModel extends PublicUserModel {
   @override
   @JsonKey()
   final int muteCount;
+  final Map<String, dynamic>? _registeredInfo;
+  @override
+  Map<String, dynamic>? get registeredInfo {
+    final value = _registeredInfo;
+    if (value == null) return null;
+    if (_registeredInfo is EqualUnmodifiableMapView) return _registeredInfo;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   final String uid;
   @override
@@ -352,6 +410,8 @@ class _PublicUserModel extends PublicUserModel {
                 other.followingCount == followingCount) &&
             (identical(other.muteCount, muteCount) ||
                 other.muteCount == muteCount) &&
+            const DeepCollectionEquality()
+                .equals(other._registeredInfo, _registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -364,12 +424,13 @@ class _PublicUserModel extends PublicUserModel {
       followerCount,
       followingCount,
       muteCount,
+      const DeepCollectionEquality().hash(_registeredInfo),
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
   @override
   String toString() {
-    return 'PublicUserModel(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, uid: $uid, updatedAt: $updatedAt)';
+    return 'PublicUserModel(createdAt: $createdAt, followerCount: $followerCount, followingCount: $followingCount, muteCount: $muteCount, registeredInfo: $registeredInfo, uid: $uid, updatedAt: $updatedAt)';
   }
 }
 
@@ -386,6 +447,7 @@ abstract mixin class _$PublicUserModelCopyWith<$Res>
       int followerCount,
       int followingCount,
       int muteCount,
+      Map<String, dynamic>? registeredInfo,
       String uid,
       dynamic updatedAt});
 }
@@ -407,6 +469,7 @@ class __$PublicUserModelCopyWithImpl<$Res>
     Object? followerCount = null,
     Object? followingCount = null,
     Object? muteCount = null,
+    Object? registeredInfo = freezed,
     Object? uid = null,
     Object? updatedAt = freezed,
   }) {
@@ -427,6 +490,10 @@ class __$PublicUserModelCopyWithImpl<$Res>
           ? _self.muteCount
           : muteCount // ignore: cast_nullable_to_non_nullable
               as int,
+      registeredInfo: freezed == registeredInfo
+          ? _self._registeredInfo
+          : registeredInfo // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       uid: null == uid
           ? _self.uid
           : uid // ignore: cast_nullable_to_non_nullable
