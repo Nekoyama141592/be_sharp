@@ -2,49 +2,40 @@ import 'dart:convert';
 
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
-import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
 import 'package:be_sharp/presentation/state/view_model_state/edit/edit_view_model_state.dart';
-import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
-import 'package:be_sharp/core/util/route_util.dart';
-import 'package:be_sharp/presentation/my_app.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-// ユーザー情報を編集するページ
 class EditUserScreen extends HookConsumerWidget {
-  EditUserScreen({super.key});
-  final formKey = GlobalKey<FormState>();
+  final bool isRoot;
+  final void Function() success;
+  final void Function() failure;
 
+  const EditUserScreen({
+    super.key,
+    required this.isRoot,
+    required this.success,
+    required this.failure,
+  });
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // useMemoizedでformKeyを生成
+    final formKey = useMemoized(() => GlobalKey<FormState>());
+
     EditUserViewModel notifier() =>
         ref.read(editUserViewModelProvider.notifier);
     final asyncValue = ref.watch(editUserViewModelProvider);
 
-    // Listen for success state and navigate
-    ref.listen(editUserViewModelProvider, (previous, next) {
-      if (next.hasValue && next.value != null) {
-        final viewModel = ref.read(editUserViewModelProvider.notifier);
-        if (viewModel.isSuccess) {
-          RouteUtil.pushReplace(context, MyApp.path);
-          viewModel.resetState();
-        }
-      }
-    });
-
-    // テーマカラーの定義
     const primaryColor = AppColors.premiumInfo;
     const secondaryColor = AppColors.premiumInfo;
-
-    // アニメーション用のコントローラー
     const animationDuration = Duration(milliseconds: 300);
 
-    // 更新ボタン
     Widget positiveButton() {
       return Container(
         width: PaddingUtil.textFieldWidth(context),
@@ -68,13 +59,8 @@ class EditUserScreen extends HookConsumerWidget {
             formKey.currentState!.save();
             final result = await notifier().onUpdateButtonPressed();
             result.when(
-              success: (_) {
-                ref.invalidate(checkViewModelProvider);
-                ToastUiUtil.showSuccessSnackBar(context, 'プロフィールを更新しました。');
-              },
-              failure: (error) {
-                ToastUiUtil.showFailureSnackBar(context, 'プロフィールの更新に失敗しました');
-              },
+              success: (_) => success(),
+              failure: (_) => failure(),
             );
           },
           style: ElevatedButton.styleFrom(
@@ -84,9 +70,9 @@ class EditUserScreen extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          child: const Text(
-            '更新する',
-            style: TextStyle(
+          child: Text(
+            isRoot ? '作成する' : '更新する',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -97,7 +83,6 @@ class EditUserScreen extends HookConsumerWidget {
       );
     }
 
-    // ニックネームの入力フィールド
     List<Widget> nickNameField(PublicUserEntity? user) {
       return [
         const Align(
@@ -156,7 +141,6 @@ class EditUserScreen extends HookConsumerWidget {
       ];
     }
 
-    // 紹介文の入力フィールド
     List<Widget> bioField(PublicUserEntity? user) {
       return [
         const Align(
@@ -220,7 +204,6 @@ class EditUserScreen extends HookConsumerWidget {
       ];
     }
 
-    // フォーム全体
     Widget updateUserInfoForm(PublicUserEntity? user) {
       return Form(
         key: formKey,
@@ -235,7 +218,6 @@ class EditUserScreen extends HookConsumerWidget {
       );
     }
 
-    // プロフィール画像
     List<Widget> userImage(String uid, EditViewModelState state) {
       final image = state.image;
       return [
@@ -332,7 +314,6 @@ class EditUserScreen extends HookConsumerWidget {
                 child: Column(
                   children: [
                     const SizedBox(height: 20),
-                    // プロフィール画像セクション
                     AnimatedContainer(
                       duration: animationDuration,
                       curve: Curves.easeInOut,
@@ -341,14 +322,12 @@ class EditUserScreen extends HookConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 32),
-                    // フォームセクション
                     AnimatedContainer(
                       duration: animationDuration,
                       curve: Curves.easeInOut,
                       child: updateUserInfoForm(user),
                     ),
                     const SizedBox(height: 40),
-                    // 更新ボタン
                     AnimatedContainer(
                       duration: animationDuration,
                       curve: Curves.easeInOut,
