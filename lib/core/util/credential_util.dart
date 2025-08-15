@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:be_sharp/core/util/env_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -21,9 +23,11 @@ class CredentialUtil {
   }
 
   static Future<AuthCredential> googleCredential() async {
-    final clientId = EnvUtil.getFirebaseOption().iosClientId;
+    final option = EnvUtil.getFirebaseOption();
+    final clientId = Platform.isIOS ? option.iosClientId : null;
+    final serverClientId = Platform.isAndroid ? option.androidClientId : null;
     final GoogleSignIn signIn = GoogleSignIn.instance;
-    await signIn.initialize(clientId: clientId);
+    await signIn.initialize(clientId: clientId, serverClientId: serverClientId);
     const List<String> scopes = <String>[
       'https://www.googleapis.com/auth/contacts.readonly',
     ];
