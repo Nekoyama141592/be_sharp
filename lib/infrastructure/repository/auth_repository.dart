@@ -41,7 +41,8 @@ class AuthRepository implements AuthRepositoryInterface {
       }
     } on FirebaseAuthException catch (e) {
       final errorMessage = _getFirebaseAuthErrorMessage(e);
-      return Result.failure('Googleサインインエラー: $errorMessage');
+      debugPrint('Googleサインインエラー: $errorMessage');
+      return const Result.failure('Googleサインインに失敗しました');
     } catch (e) {
       debugPrint(e.toString());
       return const Result.failure('予期せぬエラーによりGoogleサインインに失敗しました。');
