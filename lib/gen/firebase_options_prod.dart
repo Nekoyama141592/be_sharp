@@ -56,7 +56,7 @@ class DefaultFirebaseOptions {
       projectId: 'be-sharp-prod',
       storageBucket: 'be-sharp-prod.firebasestorage.app',
       androidClientId:
-          '1041614913419-qrhfn3gujqtr1uhvqtotp8rq0e1lp22e.apps.googleusercontent.com');
+          '676895541932-rhm9250pnh4jfgigsrd72pthks9337bb.apps.googleusercontent.com');
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCWAG1OLC78H6XgUrL-sDq1QJ_q1JFrz7c',
