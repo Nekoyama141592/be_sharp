@@ -5,4 +5,4 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'firebase_functions_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-FirebaseFunctions firebaseFunctions(Ref ref) => FirebaseFunctions.instance;
+FirebaseFunctions firebaseFunctions(Ref ref) => FirebaseFunctions.instanceFor(region: 'asia-northeast1');

@@ -6,7 +6,6 @@ import 'package:be_sharp/core/provider/repository/database_repository/database_r
 import 'package:be_sharp/core/provider/use_case/home/home_use_case_provider.dart';
 import 'package:be_sharp/presentation/util/dialog_ui_util.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
-import 'package:be_sharp/application/use_case/home_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -18,8 +17,6 @@ class HomeViewModel extends _$HomeViewModel {
   FutureOr<HomeState> build() async {
     return _fetchData();
   }
-
-  HomeUseCase get _homeUseCase => ref.read(homeUseCaseProvider);
 
   Future<HomeState> _fetchData() async {
     final latestProblem =

@@ -18,9 +18,5 @@ abstract class PublicUserEntity with _$PublicUserEntity {
       _$PublicUserEntityFromJson(json);
   String? bioValue() => registeredInfo?.bio.value;
   String? nickNameValue() => registeredInfo?.nickName.value;
-  String? imageValue() => registeredInfo?.image.key ?? '/profile.jpg';
-
-  String _updatedAtKey() => updatedAt?.microsecondsSinceEpoch.toString() ?? '0';
-  String? imageCacheKey() =>
-      imageValue() != null ? 'user-image-$uid-${_updatedAtKey()}' : null;
+  String imageKey() => registeredInfo?.image.key ?? '/profile.jpg';
 }

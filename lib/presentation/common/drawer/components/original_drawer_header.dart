@@ -15,7 +15,6 @@ class OriginalDrawerHeader extends ConsumerWidget {
     return asyncValue.when(
       data: (data) {
         final user = data.user;
-        final image = data.image;
 
         return Container(
           width: double.infinity,
@@ -35,7 +34,8 @@ class OriginalDrawerHeader extends ConsumerWidget {
               CircleImage(
                 height: 56.0,
                 width: 56.0,
-                image: image,
+                imageKey: user?.imageKey() ?? '',
+                uid: user?.uid ?? '',
               ),
               const SizedBox(height: 12),
               Text(

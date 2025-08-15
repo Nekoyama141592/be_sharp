@@ -7,7 +7,7 @@ part 'user_and_image_state.g.dart';
 @freezed
 abstract class UserAndImageState with _$UserAndImageState {
   const UserAndImageState._();
-  const factory UserAndImageState({PublicUserEntity? user, String? image}) =
+  const factory UserAndImageState({PublicUserEntity? user}) =
       _UserAndImageState;
   factory UserAndImageState.fromJson(Map<String, dynamic> json) =>
       _$UserAndImageStateFromJson(json);
