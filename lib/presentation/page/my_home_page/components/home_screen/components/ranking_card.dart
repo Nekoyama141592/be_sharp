@@ -29,20 +29,11 @@ class RankingCard extends StatelessWidget {
     final userName = user.nickNameValue() ?? '';
     final isInvalidNickName =
         user.registeredInfo?.nickName.isInvalid() ?? false;
-    final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
-
-    if (isInvalidNickName || isInvalidImage || isMute) {
+    if (isInvalidNickName || isMute) {
       String reason = '';
       if (isInvalidNickName) {
-        reason += 'ニックネームが不適切';
+        reason += 'ニックネームが不適切なユーザー';
       }
-      if (isInvalidNickName && isInvalidImage) {
-        reason += 'かつ、';
-      }
-      if (isInvalidImage) {
-        reason += '画像が不適切(理由: ${user.registeredInfo?.image.reason() ?? '不明'})';
-      }
-      reason += 'なユーザー';
       if (isMute) {
         reason = 'ミュートしているユーザー';
       }

@@ -12,13 +12,13 @@ _ModeratedImage _$ModeratedImageFromJson(Map<String, dynamic> json) =>
               ?.map((e) => e as Map<String, dynamic>)
               .toList() ??
           const [],
-      moderationModelVersion: json['moderationModelVersion'] as String? ?? '',
-      value: json['value'] as String? ?? '',
+      moderationModelVersion: json['moderationModelVersion'] as String? ?? "",
+      key: json['key'] as String?,
     );
 
 Map<String, dynamic> _$ModeratedImageToJson(_ModeratedImage instance) =>
     <String, dynamic>{
       'moderationLabels': instance.moderationLabels,
       'moderationModelVersion': instance.moderationModelVersion,
-      'value': instance.value,
+      'key': instance.key,
     };

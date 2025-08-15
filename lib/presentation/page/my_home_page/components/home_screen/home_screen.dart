@@ -169,8 +169,6 @@ class HomeScreen extends ConsumerWidget {
     final userName = user.nickNameValue() ?? '';
     final isInvalidNickName =
         user.registeredInfo?.nickName.isInvalid() ?? false;
-    final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
-
     return Expanded(
       child: Column(
         children: [
@@ -201,7 +199,7 @@ class HomeScreen extends ConsumerWidget {
             ),
           ),
           // User avatar
-          if (!isInvalidImage && !isMute)
+          if (!isMute)
             Container(
               width: rank == 1 ? 56 : 48,
               height: rank == 1 ? 56 : 48,

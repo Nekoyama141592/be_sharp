@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$ModeratedImage {
   List<Map<String, dynamic>> get moderationLabels;
   String get moderationModelVersion;
-  String get value;
+  String? get key;
 
   /// Create a copy of ModeratedImage
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +38,7 @@ mixin _$ModeratedImage {
                 .equals(other.moderationLabels, moderationLabels) &&
             (identical(other.moderationModelVersion, moderationModelVersion) ||
                 other.moderationModelVersion == moderationModelVersion) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -47,11 +47,11 @@ mixin _$ModeratedImage {
       runtimeType,
       const DeepCollectionEquality().hash(moderationLabels),
       moderationModelVersion,
-      value);
+      key);
 
   @override
   String toString() {
-    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, value: $value)';
+    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, key: $key)';
   }
 }
 
@@ -64,7 +64,7 @@ abstract mixin class $ModeratedImageCopyWith<$Res> {
   $Res call(
       {List<Map<String, dynamic>> moderationLabels,
       String moderationModelVersion,
-      String value});
+      String? key});
 }
 
 /// @nodoc
@@ -82,7 +82,7 @@ class _$ModeratedImageCopyWithImpl<$Res>
   $Res call({
     Object? moderationLabels = null,
     Object? moderationModelVersion = null,
-    Object? value = null,
+    Object? key = freezed,
   }) {
     return _then(_self.copyWith(
       moderationLabels: null == moderationLabels
@@ -93,10 +93,10 @@ class _$ModeratedImageCopyWithImpl<$Res>
           ? _self.moderationModelVersion
           : moderationModelVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
+      key: freezed == key
+          ? _self.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -195,7 +195,7 @@ extension ModeratedImagePatterns on ModeratedImage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(List<Map<String, dynamic>> moderationLabels,
-            String moderationModelVersion, String value)?
+            String moderationModelVersion, String? key)?
         $default, {
     required TResult orElse(),
   }) {
@@ -203,7 +203,7 @@ extension ModeratedImagePatterns on ModeratedImage {
     switch (_that) {
       case _ModeratedImage() when $default != null:
         return $default(
-            _that.moderationLabels, _that.moderationModelVersion, _that.value);
+            _that.moderationLabels, _that.moderationModelVersion, _that.key);
       case _:
         return orElse();
     }
@@ -225,14 +225,14 @@ extension ModeratedImagePatterns on ModeratedImage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(List<Map<String, dynamic>> moderationLabels,
-            String moderationModelVersion, String value)
+            String moderationModelVersion, String? key)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ModeratedImage():
         return $default(
-            _that.moderationLabels, _that.moderationModelVersion, _that.value);
+            _that.moderationLabels, _that.moderationModelVersion, _that.key);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -253,14 +253,14 @@ extension ModeratedImagePatterns on ModeratedImage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(List<Map<String, dynamic>> moderationLabels,
-            String moderationModelVersion, String value)?
+            String moderationModelVersion, String? key)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _ModeratedImage() when $default != null:
         return $default(
-            _that.moderationLabels, _that.moderationModelVersion, _that.value);
+            _that.moderationLabels, _that.moderationModelVersion, _that.key);
       case _:
         return null;
     }
@@ -272,8 +272,8 @@ extension ModeratedImagePatterns on ModeratedImage {
 class _ModeratedImage extends ModeratedImage {
   const _ModeratedImage(
       {final List<Map<String, dynamic>> moderationLabels = const [],
-      this.moderationModelVersion = '',
-      this.value = ''})
+      this.moderationModelVersion = "",
+      this.key})
       : _moderationLabels = moderationLabels,
         super._();
   factory _ModeratedImage.fromJson(Map<String, dynamic> json) =>
@@ -293,8 +293,7 @@ class _ModeratedImage extends ModeratedImage {
   @JsonKey()
   final String moderationModelVersion;
   @override
-  @JsonKey()
-  final String value;
+  final String? key;
 
   /// Create a copy of ModeratedImage
   /// with the given fields replaced by the non-null parameter values.
@@ -320,7 +319,7 @@ class _ModeratedImage extends ModeratedImage {
                 .equals(other._moderationLabels, _moderationLabels) &&
             (identical(other.moderationModelVersion, moderationModelVersion) ||
                 other.moderationModelVersion == moderationModelVersion) &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -329,11 +328,11 @@ class _ModeratedImage extends ModeratedImage {
       runtimeType,
       const DeepCollectionEquality().hash(_moderationLabels),
       moderationModelVersion,
-      value);
+      key);
 
   @override
   String toString() {
-    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, value: $value)';
+    return 'ModeratedImage(moderationLabels: $moderationLabels, moderationModelVersion: $moderationModelVersion, key: $key)';
   }
 }
 
@@ -348,7 +347,7 @@ abstract mixin class _$ModeratedImageCopyWith<$Res>
   $Res call(
       {List<Map<String, dynamic>> moderationLabels,
       String moderationModelVersion,
-      String value});
+      String? key});
 }
 
 /// @nodoc
@@ -366,7 +365,7 @@ class __$ModeratedImageCopyWithImpl<$Res>
   $Res call({
     Object? moderationLabels = null,
     Object? moderationModelVersion = null,
-    Object? value = null,
+    Object? key = freezed,
   }) {
     return _then(_ModeratedImage(
       moderationLabels: null == moderationLabels
@@ -377,10 +376,10 @@ class __$ModeratedImageCopyWithImpl<$Res>
           ? _self.moderationModelVersion
           : moderationModelVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      value: null == value
-          ? _self.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
+      key: freezed == key
+          ? _self.key
+          : key // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
