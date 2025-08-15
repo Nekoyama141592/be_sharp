@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:be_sharp/presentation/common/edit_user_screen.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/page/auth_page.dart';
+import 'package:be_sharp/presentation/page/create_user_page.dart';
 import 'package:be_sharp/presentation/page/my_home_page/my_home_page.dart';
 import 'package:be_sharp/presentation/page/terms_page.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +22,7 @@ class FirstPage extends HookConsumerWidget {
           } else if (state.needsSignup) {
             return const AuthPage();
           } else if (state.user?.registeredInfo == null) {
-            return Scaffold(
-              body: EditUserScreen(),
-            );
+            return const CreateUserPage();
           } else {
             return const MyHomePage();
           }

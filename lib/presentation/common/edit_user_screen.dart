@@ -2,23 +2,27 @@ import 'dart:convert';
 
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
-import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
 import 'package:be_sharp/presentation/state/view_model_state/edit/edit_view_model_state.dart';
-import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
-import 'package:be_sharp/core/util/route_util.dart';
-import 'package:be_sharp/presentation/my_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class EditUserScreen extends HookConsumerWidget {
-  const EditUserScreen({super.key});
+  final bool isRoot;
+  final void Function() success;
+  final void Function() failure;
 
+  const EditUserScreen({
+    super.key,
+    required this.isRoot,
+    required this.success,
+    required this.failure,
+  });
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // useMemoizedでformKeyを生成
@@ -27,17 +31,6 @@ class EditUserScreen extends HookConsumerWidget {
     EditUserViewModel notifier() =>
         ref.read(editUserViewModelProvider.notifier);
     final asyncValue = ref.watch(editUserViewModelProvider);
-
-    // Listen for success state and navigate
-    ref.listen(editUserViewModelProvider, (previous, next) {
-      if (next.hasValue && next.value != null) {
-        final viewModel = ref.read(editUserViewModelProvider.notifier);
-        if (viewModel.isSuccess) {
-          RouteUtil.pushReplace(context, MyApp.path);
-          viewModel.resetState();
-        }
-      }
-    });
 
     const primaryColor = AppColors.premiumInfo;
     const secondaryColor = AppColors.premiumInfo;
@@ -66,13 +59,8 @@ class EditUserScreen extends HookConsumerWidget {
             formKey.currentState!.save();
             final result = await notifier().onUpdateButtonPressed();
             result.when(
-              success: (_) {
-                ref.invalidate(checkViewModelProvider);
-                ToastUiUtil.showSuccessSnackBar(context, 'プロフィールを更新しました。');
-              },
-              failure: (error) {
-                ToastUiUtil.showFailureSnackBar(context, 'プロフィールの更新に失敗しました');
-              },
+              success: (_) => success(),
+              failure: (_) => failure(),
             );
           },
           style: ElevatedButton.styleFrom(
@@ -82,9 +70,9 @@ class EditUserScreen extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(16),
             ),
           ),
-          child: const Text(
-            '更新する',
-            style: TextStyle(
+          child: Text(
+            isRoot ? '作成する' : '更新する',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.bold,

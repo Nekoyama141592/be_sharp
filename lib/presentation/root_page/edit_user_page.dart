@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:be_sharp/presentation/common/edit_user_screen.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:flutter/material.dart';
 import 'package:be_sharp/core/util/route_util.dart';
 
@@ -11,7 +12,16 @@ class EditUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: EditUserScreen(),
+        body: EditUserScreen(
+          isRoot: false,
+          success: () {
+            ToastUiUtil.showSuccessSnackBar(context, 'プロフィールを更新しました。');
+            RouteUtil.back(context);
+          },
+          failure: () {
+            ToastUiUtil.showFailureSnackBar(context, 'プロフィールの更新に失敗しました。');
+          },
+        ),
         backgroundColor: AppColors.background,
         appBar: AppBar(
             elevation: 0,
