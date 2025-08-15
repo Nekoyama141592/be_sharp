@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
 import 'package:be_sharp/presentation/state/view_model_state/edit/edit_view_model_state.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
@@ -67,10 +69,11 @@ class EditUserScreen extends HookConsumerWidget {
             final result = await notifier().onUpdateButtonPressed();
             result.when(
               success: (_) {
-                notifier().success();
+                ref.invalidate(checkViewModelProvider);
+                ToastUiUtil.showSuccessSnackBar(context, 'プロフィールを更新しました。');
               },
               failure: (error) {
-                notifier().failure('更新に失敗しました');
+                ToastUiUtil.showFailureSnackBar(context, 'プロフィールの更新に失敗しました');
               },
             );
           },

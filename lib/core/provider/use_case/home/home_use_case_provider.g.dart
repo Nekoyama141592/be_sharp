@@ -6,7 +6,7 @@ part of 'home_use_case_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeUseCaseHash() => r'3724a2239a18fd15db690a6f216ba4aa5c4b489f';
+String _$homeUseCaseHash() => r'55c0e1b33579396d3c5aac7e2cde22cb5dba3d9b';
 
 /// See also [homeUseCase].
 @ProviderFor(homeUseCase)

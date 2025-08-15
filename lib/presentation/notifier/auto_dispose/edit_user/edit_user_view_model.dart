@@ -12,7 +12,6 @@ import 'package:be_sharp/presentation/state/view_model_state/edit/edit_view_mode
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:be_sharp/infrastructure/repository/api_repository.dart';
-import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:image_picker/image_picker.dart';
 part 'edit_user_view_model.g.dart';
 
@@ -77,16 +76,6 @@ class EditUserViewModel extends _$EditUserViewModel {
     isPicked = true;
   }
 
-
-  Future<void> success() async {
-    ref.invalidate(checkViewModelProvider);
-    ToastUiUtil.showFlutterToast("プロフィールを更新しました。");
-    isSuccess = true;
-  }
-
-  Future<void> failure(String msg) async {
-    ToastUiUtil.showErrorFlutterToast("プロフィールを更新できませんでした");
-  }
 
   void resetState() {
     isSuccess = false;

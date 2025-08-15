@@ -18,7 +18,7 @@ mixin _$PublicUserModel {
   int get followerCount;
   int get followingCount;
   int get muteCount;
-  Map<String, dynamic>? get registeredInfo;
+  RegisteredInfo? get registeredInfo;
   String get uid;
   dynamic get updatedAt;
 
@@ -45,8 +45,8 @@ mixin _$PublicUserModel {
                 other.followingCount == followingCount) &&
             (identical(other.muteCount, muteCount) ||
                 other.muteCount == muteCount) &&
-            const DeepCollectionEquality()
-                .equals(other.registeredInfo, registeredInfo) &&
+            (identical(other.registeredInfo, registeredInfo) ||
+                other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -59,7 +59,7 @@ mixin _$PublicUserModel {
       followerCount,
       followingCount,
       muteCount,
-      const DeepCollectionEquality().hash(registeredInfo),
+      registeredInfo,
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -80,9 +80,11 @@ abstract mixin class $PublicUserModelCopyWith<$Res> {
       int followerCount,
       int followingCount,
       int muteCount,
-      Map<String, dynamic>? registeredInfo,
+      RegisteredInfo? registeredInfo,
       String uid,
       dynamic updatedAt});
+
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
 }
 
 /// @nodoc
@@ -126,7 +128,7 @@ class _$PublicUserModelCopyWithImpl<$Res>
       registeredInfo: freezed == registeredInfo
           ? _self.registeredInfo
           : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as RegisteredInfo?,
       uid: null == uid
           ? _self.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -136,6 +138,20 @@ class _$PublicUserModelCopyWithImpl<$Res>
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
     ));
+  }
+
+  /// Create a copy of PublicUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo {
+    if (_self.registeredInfo == null) {
+      return null;
+    }
+
+    return $RegisteredInfoCopyWith<$Res>(_self.registeredInfo!, (value) {
+      return _then(_self.copyWith(registeredInfo: value));
+    });
   }
 }
 
@@ -237,7 +253,7 @@ extension PublicUserModelPatterns on PublicUserModel {
             int followerCount,
             int followingCount,
             int muteCount,
-            Map<String, dynamic>? registeredInfo,
+            RegisteredInfo? registeredInfo,
             String uid,
             dynamic updatedAt)?
         $default, {
@@ -279,7 +295,7 @@ extension PublicUserModelPatterns on PublicUserModel {
             int followerCount,
             int followingCount,
             int muteCount,
-            Map<String, dynamic>? registeredInfo,
+            RegisteredInfo? registeredInfo,
             String uid,
             dynamic updatedAt)
         $default,
@@ -319,7 +335,7 @@ extension PublicUserModelPatterns on PublicUserModel {
             int followerCount,
             int followingCount,
             int muteCount,
-            Map<String, dynamic>? registeredInfo,
+            RegisteredInfo? registeredInfo,
             String uid,
             dynamic updatedAt)?
         $default,
@@ -349,11 +365,10 @@ class _PublicUserModel extends PublicUserModel {
       this.followerCount = 0,
       this.followingCount = 0,
       this.muteCount = 0,
-      final Map<String, dynamic>? registeredInfo,
+      this.registeredInfo,
       required this.uid,
       required this.updatedAt})
-      : _registeredInfo = registeredInfo,
-        super._();
+      : super._();
   factory _PublicUserModel.fromJson(Map<String, dynamic> json) =>
       _$PublicUserModelFromJson(json);
 
@@ -368,16 +383,8 @@ class _PublicUserModel extends PublicUserModel {
   @override
   @JsonKey()
   final int muteCount;
-  final Map<String, dynamic>? _registeredInfo;
   @override
-  Map<String, dynamic>? get registeredInfo {
-    final value = _registeredInfo;
-    if (value == null) return null;
-    if (_registeredInfo is EqualUnmodifiableMapView) return _registeredInfo;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(value);
-  }
-
+  final RegisteredInfo? registeredInfo;
   @override
   final String uid;
   @override
@@ -410,8 +417,8 @@ class _PublicUserModel extends PublicUserModel {
                 other.followingCount == followingCount) &&
             (identical(other.muteCount, muteCount) ||
                 other.muteCount == muteCount) &&
-            const DeepCollectionEquality()
-                .equals(other._registeredInfo, _registeredInfo) &&
+            (identical(other.registeredInfo, registeredInfo) ||
+                other.registeredInfo == registeredInfo) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
   }
@@ -424,7 +431,7 @@ class _PublicUserModel extends PublicUserModel {
       followerCount,
       followingCount,
       muteCount,
-      const DeepCollectionEquality().hash(_registeredInfo),
+      registeredInfo,
       uid,
       const DeepCollectionEquality().hash(updatedAt));
 
@@ -447,9 +454,12 @@ abstract mixin class _$PublicUserModelCopyWith<$Res>
       int followerCount,
       int followingCount,
       int muteCount,
-      Map<String, dynamic>? registeredInfo,
+      RegisteredInfo? registeredInfo,
       String uid,
       dynamic updatedAt});
+
+  @override
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo;
 }
 
 /// @nodoc
@@ -491,9 +501,9 @@ class __$PublicUserModelCopyWithImpl<$Res>
           : muteCount // ignore: cast_nullable_to_non_nullable
               as int,
       registeredInfo: freezed == registeredInfo
-          ? _self._registeredInfo
+          ? _self.registeredInfo
           : registeredInfo // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as RegisteredInfo?,
       uid: null == uid
           ? _self.uid
           : uid // ignore: cast_nullable_to_non_nullable
@@ -503,6 +513,20 @@ class __$PublicUserModelCopyWithImpl<$Res>
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
     ));
+  }
+
+  /// Create a copy of PublicUserModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisteredInfoCopyWith<$Res>? get registeredInfo {
+    if (_self.registeredInfo == null) {
+      return null;
+    }
+
+    return $RegisteredInfoCopyWith<$Res>(_self.registeredInfo!, (value) {
+      return _then(_self.copyWith(registeredInfo: value));
+    });
   }
 }
 

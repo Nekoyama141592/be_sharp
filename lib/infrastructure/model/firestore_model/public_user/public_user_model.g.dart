@@ -12,7 +12,10 @@ _PublicUserModel _$PublicUserModelFromJson(Map<String, dynamic> json) =>
       followerCount: (json['followerCount'] as num?)?.toInt() ?? 0,
       followingCount: (json['followingCount'] as num?)?.toInt() ?? 0,
       muteCount: (json['muteCount'] as num?)?.toInt() ?? 0,
-      registeredInfo: json['registeredInfo'] as Map<String, dynamic>?,
+      registeredInfo: json['registeredInfo'] == null
+          ? null
+          : RegisteredInfo.fromJson(
+              json['registeredInfo'] as Map<String, dynamic>),
       uid: json['uid'] as String,
       updatedAt: json['updatedAt'],
     );

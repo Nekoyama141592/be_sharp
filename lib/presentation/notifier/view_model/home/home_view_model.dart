@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:be_sharp/application/use_case/home_use_case.dart';
 import 'package:be_sharp/domain/entity/dialog/text_action.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/answered_user/answered_user.dart';
 import 'package:be_sharp/presentation/state/view_model_state/home_state/home_state.dart';
@@ -18,7 +19,7 @@ class HomeViewModel extends _$HomeViewModel {
   FutureOr<HomeState> build() async {
     return _fetchData();
   }
-
+  HomeUseCase get _homeUseCase => ref.read(homeUseCaseProvider);
   Future<HomeState> _fetchData() async {
     final latestProblem =
         await ref.read(databaseRepositoryProvider).fetchLatestProblem();

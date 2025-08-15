@@ -85,9 +85,9 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final docData = doc.data();
       if (docData == null) return null;
       final model = PublicUserModel.fromJson(docData);
-      return PublicUserEntity.fromJson(model.toJson());
+      return PublicUserEntity.fromModel(model);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('getPublicUser: ${e.toString()}');
       return null;
     }
   }
@@ -99,7 +99,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       if (docData == null) return null;
       return PrivateUserModel.fromJson(docData);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('getPrivateUser: ${e.toString()}');
       return null;
     }
   }
@@ -111,7 +111,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       await _createDoc(ref, json);
       return const Result.success(true);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('createDoc: ${e.toString()}');
       return Result.failure('ドキュメントの作成に失敗しました: ${e.toString()}');
     }
   }
@@ -129,7 +129,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       await _updateDoc(ref, json);
       return const Result.success(true);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('updateDoc: ${e.toString()}');
       return Result.failure('ドキュメントの更新に失敗しました: ${e.toString()}');
     }
   }
@@ -145,7 +145,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       await _deleteDoc(ref);
       return const Result.success(true);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('deleteDoc: ${e.toString()}');
       return Result.failure('ドキュメントの削除に失敗しました: ${e.toString()}');
     }
   }
@@ -184,7 +184,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
           .toList();
       return users;
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('getUsers: ${e.toString()}');
       return [];
     }
   }
@@ -198,7 +198,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final docs = usersQshot.docs;
       return docs.map((e) => MuteUserModel.fromJson(e.data()).muteUid).toList();
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('getMuteUsers: ${e.toString()}');
       return [];
     }
   }
@@ -228,7 +228,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       await _createDoc(docRef, writeData);
       return await getPublicUser(uid);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('createPublicUser: ${e.toString()}');
       return null;
     }
   }
@@ -239,7 +239,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final doc = await _getDoc(docRef);
       return ProblemEntity.fromJson(doc.data()!);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('getProblem: ${e.toString()}');
       return null;
     }
   }
@@ -261,7 +261,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       if (docs.isEmpty) return null;
       return ProblemEntity.fromJson(docs.first.data());
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('fetchLatestProblem: ${e.toString()}');
       return null;
     }
   }
@@ -321,7 +321,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
           qshot.docs.map((e) => UserAnswerEntity.fromJson(e.data())).toList();
       return entities;
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('fetchCorrectUserAnswers: ${e.toString()}');
       return [];
     }
   }
@@ -331,7 +331,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       final docRef = _userAnswerDocRef(uid, problemId);
       return await _getDoc(docRef);
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint('getUserAnswerDoc: ${e.toString()}');
       return null;
     }
   }
