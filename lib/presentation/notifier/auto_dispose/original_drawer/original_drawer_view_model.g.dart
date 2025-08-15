@@ -7,7 +7,7 @@ part of 'original_drawer_view_model.dart';
 // **************************************************************************
 
 String _$originalDrawerViewModelHash() =>
-    r'81d31a4aa827ae8117b2790e85c7bde1d8563785';
+    r'21442366e5b45b72140f45845b8501a3a621fe03';
 
 /// See also [OriginalDrawerViewModel].
 @ProviderFor(OriginalDrawerViewModel)

@@ -16,7 +16,6 @@ T _$identity<T>(T value) => value;
 mixin _$AnsweredUser {
   PublicUserEntity get publicUser;
   UserAnswerEntity get userAnswer;
-  String? get userImage;
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.
@@ -37,19 +36,16 @@ mixin _$AnsweredUser {
             (identical(other.publicUser, publicUser) ||
                 other.publicUser == publicUser) &&
             (identical(other.userAnswer, userAnswer) ||
-                other.userAnswer == userAnswer) &&
-            (identical(other.userImage, userImage) ||
-                other.userImage == userImage));
+                other.userAnswer == userAnswer));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, publicUser, userAnswer, userImage);
+  int get hashCode => Object.hash(runtimeType, publicUser, userAnswer);
 
   @override
   String toString() {
-    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer, userImage: $userImage)';
+    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer)';
   }
 }
 
@@ -59,10 +55,7 @@ abstract mixin class $AnsweredUserCopyWith<$Res> {
           AnsweredUser value, $Res Function(AnsweredUser) _then) =
       _$AnsweredUserCopyWithImpl;
   @useResult
-  $Res call(
-      {PublicUserEntity publicUser,
-      UserAnswerEntity userAnswer,
-      String? userImage});
+  $Res call({PublicUserEntity publicUser, UserAnswerEntity userAnswer});
 
   $PublicUserEntityCopyWith<$Res> get publicUser;
   $UserAnswerEntityCopyWith<$Res> get userAnswer;
@@ -82,7 +75,6 @@ class _$AnsweredUserCopyWithImpl<$Res> implements $AnsweredUserCopyWith<$Res> {
   $Res call({
     Object? publicUser = null,
     Object? userAnswer = null,
-    Object? userImage = freezed,
   }) {
     return _then(_self.copyWith(
       publicUser: null == publicUser
@@ -93,10 +85,6 @@ class _$AnsweredUserCopyWithImpl<$Res> implements $AnsweredUserCopyWith<$Res> {
           ? _self.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
               as UserAnswerEntity,
-      userImage: freezed == userImage
-          ? _self.userImage
-          : userImage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 
@@ -214,15 +202,14 @@ extension AnsweredUserPatterns on AnsweredUser {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer,
-            String? userImage)?
+    TResult Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _AnsweredUser() when $default != null:
-        return $default(_that.publicUser, _that.userAnswer, _that.userImage);
+        return $default(_that.publicUser, _that.userAnswer);
       case _:
         return orElse();
     }
@@ -243,14 +230,13 @@ extension AnsweredUserPatterns on AnsweredUser {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer,
-            String? userImage)
+    TResult Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _AnsweredUser():
-        return $default(_that.publicUser, _that.userAnswer, _that.userImage);
+        return $default(_that.publicUser, _that.userAnswer);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -270,14 +256,13 @@ extension AnsweredUserPatterns on AnsweredUser {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer,
-            String? userImage)?
+    TResult? Function(PublicUserEntity publicUser, UserAnswerEntity userAnswer)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _AnsweredUser() when $default != null:
-        return $default(_that.publicUser, _that.userAnswer, _that.userImage);
+        return $default(_that.publicUser, _that.userAnswer);
       case _:
         return null;
     }
@@ -287,10 +272,7 @@ extension AnsweredUserPatterns on AnsweredUser {
 /// @nodoc
 @JsonSerializable()
 class _AnsweredUser extends AnsweredUser {
-  const _AnsweredUser(
-      {required this.publicUser,
-      required this.userAnswer,
-      required this.userImage})
+  const _AnsweredUser({required this.publicUser, required this.userAnswer})
       : super._();
   factory _AnsweredUser.fromJson(Map<String, dynamic> json) =>
       _$AnsweredUserFromJson(json);
@@ -299,8 +281,6 @@ class _AnsweredUser extends AnsweredUser {
   final PublicUserEntity publicUser;
   @override
   final UserAnswerEntity userAnswer;
-  @override
-  final String? userImage;
 
   /// Create a copy of AnsweredUser
   /// with the given fields replaced by the non-null parameter values.
@@ -325,19 +305,16 @@ class _AnsweredUser extends AnsweredUser {
             (identical(other.publicUser, publicUser) ||
                 other.publicUser == publicUser) &&
             (identical(other.userAnswer, userAnswer) ||
-                other.userAnswer == userAnswer) &&
-            (identical(other.userImage, userImage) ||
-                other.userImage == userImage));
+                other.userAnswer == userAnswer));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, publicUser, userAnswer, userImage);
+  int get hashCode => Object.hash(runtimeType, publicUser, userAnswer);
 
   @override
   String toString() {
-    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer, userImage: $userImage)';
+    return 'AnsweredUser(publicUser: $publicUser, userAnswer: $userAnswer)';
   }
 }
 
@@ -349,10 +326,7 @@ abstract mixin class _$AnsweredUserCopyWith<$Res>
       __$AnsweredUserCopyWithImpl;
   @override
   @useResult
-  $Res call(
-      {PublicUserEntity publicUser,
-      UserAnswerEntity userAnswer,
-      String? userImage});
+  $Res call({PublicUserEntity publicUser, UserAnswerEntity userAnswer});
 
   @override
   $PublicUserEntityCopyWith<$Res> get publicUser;
@@ -375,7 +349,6 @@ class __$AnsweredUserCopyWithImpl<$Res>
   $Res call({
     Object? publicUser = null,
     Object? userAnswer = null,
-    Object? userImage = freezed,
   }) {
     return _then(_AnsweredUser(
       publicUser: null == publicUser
@@ -386,10 +359,6 @@ class __$AnsweredUserCopyWithImpl<$Res>
           ? _self.userAnswer
           : userAnswer // ignore: cast_nullable_to_non_nullable
               as UserAnswerEntity,
-      userImage: freezed == userImage
-          ? _self.userImage
-          : userImage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 

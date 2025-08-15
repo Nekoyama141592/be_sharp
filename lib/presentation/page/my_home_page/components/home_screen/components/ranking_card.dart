@@ -1,6 +1,7 @@
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class RankingCard extends StatelessWidget {
@@ -8,7 +9,7 @@ class RankingCard extends StatelessWidget {
   final int rank;
   final PublicUserEntity user;
   final Duration answerTime;
-  final ImageProvider userImage;
+  final String userImageUrl;
   final String? caption;
   final bool isInTime;
   final void Function()? onMoreButtonPressed;
@@ -19,7 +20,7 @@ class RankingCard extends StatelessWidget {
       required this.rank,
       required this.user,
       required this.answerTime,
-      required this.userImage,
+      required this.userImageUrl,
       required this.caption,
       required this.isInTime,
       required this.onMoreButtonPressed});
@@ -29,20 +30,11 @@ class RankingCard extends StatelessWidget {
     final userName = user.nickNameValue() ?? '';
     final isInvalidNickName =
         user.registeredInfo?.nickName.isInvalid() ?? false;
-    final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
-
-    if (isInvalidNickName || isInvalidImage || isMute) {
+    if (isInvalidNickName || isMute) {
       String reason = '';
       if (isInvalidNickName) {
-        reason += 'ニックネームが不適切';
+        reason += 'ニックネームが不適切なユーザー';
       }
-      if (isInvalidNickName && isInvalidImage) {
-        reason += 'かつ、';
-      }
-      if (isInvalidImage) {
-        reason += '画像が不適切(理由: ${user.registeredInfo?.image.reason() ?? '不明'})';
-      }
-      reason += 'なユーザー';
       if (isMute) {
         reason = 'ミュートしているユーザー';
       }
@@ -81,9 +73,20 @@ class RankingCard extends StatelessWidget {
         children: [
           _buildRankNumber(),
           const SizedBox(width: 16),
-          CircleAvatar(
-            radius: 20,
-            backgroundImage: userImage,
+          ClipOval(
+            child: CachedNetworkImage(
+              imageUrl: userImageUrl,
+              width: 40,
+              height: 40,
+              fit: BoxFit.cover,
+              placeholder: (context, url) =>
+                  const CircularProgressIndicator(strokeWidth: 2),
+              errorWidget: (context, url, error) => const Icon(
+                Icons.person,
+                color: AppColors.textLight,
+                size: 20,
+              ),
+            ),
           ),
           const SizedBox(width: 12),
           Expanded(

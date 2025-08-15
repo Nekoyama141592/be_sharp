@@ -1,6 +1,6 @@
-import 'dart:convert';
-
+import 'package:be_sharp/core/util/image_url_util.dart';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/home/home_view_model.dart';
 import 'package:be_sharp/presentation/common/drawer/original_drawer.dart';
@@ -88,7 +88,8 @@ class HomeScreen extends ConsumerWidget {
                         rank: actualIndex + 1,
                         user: user,
                         answerTime: e.userAnswer.getDifference(problem),
-                        userImage: MemoryImage(base64Decode(e.userImage!)),
+                        userImageUrl: ImageUrlUtil.getUserImageUrl(
+                            uid: user.uid, key: user.imageKey()),
                         caption: e.userAnswer.caption?.value,
                         isInTime: e.userAnswer.isInTime(problem),
                         onMoreButtonPressed: () => notifier()
@@ -169,8 +170,6 @@ class HomeScreen extends ConsumerWidget {
     final userName = user.nickNameValue() ?? '';
     final isInvalidNickName =
         user.registeredInfo?.nickName.isInvalid() ?? false;
-    final isInvalidImage = user.registeredInfo?.image.isInvalid() ?? false;
-
     return Expanded(
       child: Column(
         children: [
@@ -201,7 +200,7 @@ class HomeScreen extends ConsumerWidget {
             ),
           ),
           // User avatar
-          if (!isInvalidImage && !isMute)
+          if (!isMute)
             Container(
               width: rank == 1 ? 56 : 48,
               height: rank == 1 ? 56 : 48,
@@ -213,9 +212,24 @@ class HomeScreen extends ConsumerWidget {
                   width: 3,
                 ),
               ),
-              child: CircleAvatar(
-                radius: rank == 1 ? 25 : 21,
-                backgroundImage: MemoryImage(base64Decode(entry.userImage!)),
+              child: ClipOval(
+                child: CachedNetworkImage(
+                  imageUrl: ImageUrlUtil.getUserImageUrl(
+                      uid: user.uid, key: user.imageKey()),
+                  width: rank == 1 ? 50 : 42,
+                  height: rank == 1 ? 50 : 42,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => CircularProgressIndicator(
+                    strokeWidth: 2,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                        _getPodiumRankColor(rank)),
+                  ),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.person,
+                    color: AppColors.textLight,
+                    size: rank == 1 ? 24 : 20,
+                  ),
+                ),
               ),
             )
           else

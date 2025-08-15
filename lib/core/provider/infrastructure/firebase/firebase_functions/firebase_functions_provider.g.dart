@@ -6,7 +6,7 @@ part of 'firebase_functions_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseFunctionsHash() => r'd93861c0944a5de507eaed64d4c4ecf0b90ae818';
+String _$firebaseFunctionsHash() => r'097fd9df60c1e156f273cabdfd9196deb30b9f18';
 
 /// See also [firebaseFunctions].
 @ProviderFor(firebaseFunctions)

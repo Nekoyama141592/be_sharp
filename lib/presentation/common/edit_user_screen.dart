@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:be_sharp/core/util/padding_util.dart';
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/check/check_view_model.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/edit_user/edit_user_view_model.dart';
+import 'package:be_sharp/presentation/state/view_model_state/edit/edit_view_model_state.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
-import 'package:be_sharp/presentation/common/circle_image/circle_image.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
 import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/presentation/my_app.dart';
@@ -57,12 +61,21 @@ class EditUserScreen extends HookConsumerWidget {
           ],
         ),
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             HapticFeedback.mediumImpact();
             final isValid = formKey.currentState!.validate();
             if (!isValid) return;
             formKey.currentState!.save();
-            notifier().onUpdateButtonPressed();
+            final result = await notifier().onUpdateButtonPressed();
+            result.when(
+              success: (_) {
+                ref.invalidate(checkViewModelProvider);
+                ToastUiUtil.showSuccessSnackBar(context, 'プロフィールを更新しました。');
+              },
+              failure: (error) {
+                ToastUiUtil.showFailureSnackBar(context, 'プロフィールの更新に失敗しました');
+              },
+            );
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
@@ -223,8 +236,8 @@ class EditUserScreen extends HookConsumerWidget {
     }
 
     // プロフィール画像
-    List<Widget> userImage(String? image) {
-      final isImageNull = image == null;
+    List<Widget> userImage(String uid, EditViewModelState state) {
+      final image = state.image;
       return [
         Stack(
           alignment: Alignment.bottomRight,
@@ -252,15 +265,24 @@ class EditUserScreen extends HookConsumerWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: CircleImage(
-                  height: 112.0,
-                  width: 112.0,
-                  image: image,
-                  onTap: () {
-                    HapticFeedback.lightImpact();
-                    notifier().onImagePickButtonPressed();
-                  },
-                ),
+                child: InkWell(
+                    onTap: () {
+                      HapticFeedback.lightImpact();
+                      notifier().onImagePickButtonPressed();
+                    },
+                    child: image == null
+                        ? const Icon(
+                            Icons.person,
+                            size: 112,
+                          )
+                        : ClipOval(
+                            child: Image.memory(
+                              base64Decode(image),
+                              width: 112,
+                              height: 112,
+                              fit: BoxFit.cover,
+                            ),
+                          )),
               ),
             ),
             Container(
@@ -291,17 +313,6 @@ class EditUserScreen extends HookConsumerWidget {
             ),
           ],
         ),
-        if (isImageNull) ...[
-          const SizedBox(height: 12.0),
-          const Text(
-            'プロフィール画像を選択',
-            style: TextStyle(
-              color: AppColors.textLight,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ]
       ];
     }
 
@@ -309,7 +320,6 @@ class EditUserScreen extends HookConsumerWidget {
       asyncValue: asyncValue,
       data: (state) {
         final user = state.user;
-        final image = state.image;
         return SafeArea(
           child: GestureDetector(
             onTap: () {
@@ -327,7 +337,7 @@ class EditUserScreen extends HookConsumerWidget {
                       duration: animationDuration,
                       curve: Curves.easeInOut,
                       child: Column(
-                        children: userImage(image),
+                        children: userImage(user?.uid ?? '', state),
                       ),
                     ),
                     const SizedBox(height: 32),

@@ -1,6 +1,5 @@
 import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/infrastructure/repository/database_repository.dart';
-import 'package:be_sharp/application/use_case/file_use_case.dart';
 import 'package:be_sharp/domain/use_case_interface/home_use_case_interface.dart';
 
 import 'package:be_sharp/domain/entity/database/public_user/public_user_entity.dart';
@@ -8,9 +7,8 @@ import 'package:be_sharp/presentation/state/view_model_state/home_state/answered
 import 'package:collection/collection.dart';
 
 class HomeUseCase implements HomeUseCaseInterface {
-  HomeUseCase({required this.repository, required this.fileUseCase});
+  HomeUseCase({required this.repository});
   final DatabaseRepository repository;
-  final FileUseCase fileUseCase;
   List<String> _getUids(List<UserAnswerEntity> userAnswers) {
     final uids = userAnswers.map((e) => e.uid).toList();
     return uids;
@@ -21,20 +19,7 @@ class HomeUseCase implements HomeUseCaseInterface {
     final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
     if (publicUser == null) return null;
 
-    final imageCacheKey = publicUser.imageCacheKey();
-    final imageValue = publicUser.imageValue();
-    String? userImage;
-
-    if (imageCacheKey != null && imageValue != null) {
-      final result = await fileUseCase.getS3Image(imageCacheKey, imageValue);
-      userImage = result.when(
-        success: (image) => image,
-        failure: (_) => null,
-      );
-    }
-
-    return AnsweredUser(
-        publicUser: publicUser, userImage: userImage, userAnswer: userAnswer);
+    return AnsweredUser(publicUser: publicUser, userAnswer: userAnswer);
   }
 
   @override
