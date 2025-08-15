@@ -5,5 +5,5 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'home_use_case_provider.g.dart';
 
 @riverpod
-HomeUseCase homeUseCase(Ref ref) => HomeUseCase(
-    repository: ref.watch(databaseRepositoryProvider));
+HomeUseCase homeUseCase(Ref ref) =>
+    HomeUseCase(repository: ref.watch(databaseRepositoryProvider));

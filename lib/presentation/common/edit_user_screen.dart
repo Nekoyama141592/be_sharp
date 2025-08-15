@@ -236,7 +236,7 @@ class EditUserScreen extends HookConsumerWidget {
     }
 
     // プロフィール画像
-    List<Widget> userImage(String uid,EditViewModelState state) {
+    List<Widget> userImage(String uid, EditViewModelState state) {
       final image = state.image;
       return [
         Stack(
@@ -266,21 +266,23 @@ class EditUserScreen extends HookConsumerWidget {
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: InkWell(
-                  onTap: () {
-                    HapticFeedback.lightImpact();
-                    notifier().onImagePickButtonPressed();
-                  },
-                  child: image == null ?
-                  const Icon(Icons.person ,size: 112,) :
-                  ClipOval(
-                    child: Image.memory(
-                      base64Decode(image),
-                      width: 112,
-                      height: 112,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                ),
+                    onTap: () {
+                      HapticFeedback.lightImpact();
+                      notifier().onImagePickButtonPressed();
+                    },
+                    child: image == null
+                        ? const Icon(
+                            Icons.person,
+                            size: 112,
+                          )
+                        : ClipOval(
+                            child: Image.memory(
+                              base64Decode(image),
+                              width: 112,
+                              height: 112,
+                              fit: BoxFit.cover,
+                            ),
+                          )),
               ),
             ),
             Container(
@@ -335,7 +337,7 @@ class EditUserScreen extends HookConsumerWidget {
                       duration: animationDuration,
                       curve: Curves.easeInOut,
                       child: Column(
-                        children: userImage(user?.uid ?? '',state),
+                        children: userImage(user?.uid ?? '', state),
                       ),
                     ),
                     const SizedBox(height: 32),

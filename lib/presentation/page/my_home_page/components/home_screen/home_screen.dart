@@ -88,7 +88,8 @@ class HomeScreen extends ConsumerWidget {
                         rank: actualIndex + 1,
                         user: user,
                         answerTime: e.userAnswer.getDifference(problem),
-                        userImageUrl: ImageUrlUtil.getUserImageUrl(uid: user.uid, key: user.imageKey()),
+                        userImageUrl: ImageUrlUtil.getUserImageUrl(
+                            uid: user.uid, key: user.imageKey()),
                         caption: e.userAnswer.caption?.value,
                         isInTime: e.userAnswer.isInTime(problem),
                         onMoreButtonPressed: () => notifier()
@@ -213,13 +214,15 @@ class HomeScreen extends ConsumerWidget {
               ),
               child: ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: ImageUrlUtil.getUserImageUrl(uid: user.uid, key: user.imageKey()),
+                  imageUrl: ImageUrlUtil.getUserImageUrl(
+                      uid: user.uid, key: user.imageKey()),
                   width: rank == 1 ? 50 : 42,
                   height: rank == 1 ? 50 : 42,
                   fit: BoxFit.cover,
                   placeholder: (context, url) => CircularProgressIndicator(
                     strokeWidth: 2,
-                    valueColor: AlwaysStoppedAnimation<Color>(_getPodiumRankColor(rank)),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                        _getPodiumRankColor(rank)),
                   ),
                   errorWidget: (context, url, error) => Icon(
                     Icons.person,

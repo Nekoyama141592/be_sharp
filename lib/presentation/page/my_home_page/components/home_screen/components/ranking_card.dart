@@ -79,7 +79,8 @@ class RankingCard extends StatelessWidget {
               width: 40,
               height: 40,
               fit: BoxFit.cover,
-              placeholder: (context, url) => const CircularProgressIndicator(strokeWidth: 2),
+              placeholder: (context, url) =>
+                  const CircularProgressIndicator(strokeWidth: 2),
               errorWidget: (context, url, error) => const Icon(
                 Icons.person,
                 color: AppColors.textLight,

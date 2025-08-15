@@ -19,6 +19,7 @@ class HomeViewModel extends _$HomeViewModel {
   FutureOr<HomeState> build() async {
     return _fetchData();
   }
+
   HomeUseCase get _homeUseCase => ref.read(homeUseCaseProvider);
   Future<HomeState> _fetchData() async {
     final latestProblem =

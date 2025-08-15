@@ -56,7 +56,8 @@ class EditUserViewModel extends _$EditUserViewModel {
     }
     state = const AsyncValue.loading();
 
-    final result = await repository.updateUser(base64Image: image,bio: stringBio!,userName: stringNickName!);
+    final result = await repository.updateUser(
+        base64Image: image, bio: stringBio!, userName: stringNickName!);
     return result;
   }
 
@@ -75,7 +76,6 @@ class EditUserViewModel extends _$EditUserViewModel {
     state = AsyncValue.data(currentState.copyWith(image: base64Encode(result)));
     isPicked = true;
   }
-
 
   void resetState() {
     isSuccess = false;

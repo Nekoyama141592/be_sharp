@@ -19,8 +19,7 @@ class HomeUseCase implements HomeUseCaseInterface {
     final publicUser = users.firstWhereOrNull((e) => e.uid == userAnswer.uid);
     if (publicUser == null) return null;
 
-    return AnsweredUser(
-        publicUser: publicUser, userAnswer: userAnswer);
+    return AnsweredUser(publicUser: publicUser, userAnswer: userAnswer);
   }
 
   @override

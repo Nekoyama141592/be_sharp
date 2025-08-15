@@ -8,9 +8,10 @@ part 'answered_user.g.dart';
 @freezed
 abstract class AnsweredUser with _$AnsweredUser {
   const AnsweredUser._();
-  const factory AnsweredUser(
-      {required PublicUserEntity publicUser,
-      required UserAnswerEntity userAnswer,}) = _AnsweredUser;
+  const factory AnsweredUser({
+    required PublicUserEntity publicUser,
+    required UserAnswerEntity userAnswer,
+  }) = _AnsweredUser;
   factory AnsweredUser.fromJson(Map<String, dynamic> json) =>
       _$AnsweredUserFromJson(json);
 }

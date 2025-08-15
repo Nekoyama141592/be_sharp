@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 
 class CircleImage extends StatelessWidget {
   const CircleImage(
-      {super.key, this.width, this.height, required this.uid, this.onTap,required this.imageKey});
+      {super.key,
+      this.width,
+      this.height,
+      required this.uid,
+      this.onTap,
+      required this.imageKey});
   final String uid;
   final String imageKey;
   final double? width, height;
@@ -14,24 +19,24 @@ class CircleImage extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  shape: BoxShape.circle),
-              child: ClipOval(
-                child: SizedBox(
-                  width: width,
-                  height: width,
-                  child: CachedNetworkImage(
-                    imageUrl: ImageUrlUtil.getUserImageUrl(uid: uid, key: imageKey),
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
-                  ),
-                ),
-              ),
+        decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).primaryColor,
             ),
+            shape: BoxShape.circle),
+        child: ClipOval(
+          child: SizedBox(
+            width: width,
+            height: width,
+            child: CachedNetworkImage(
+              imageUrl: ImageUrlUtil.getUserImageUrl(uid: uid, key: imageKey),
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
