@@ -72,12 +72,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
       _instance.collection('users/$uid/muteUsers');
   ColRef _privateUsersColRef() => _instance.collection('privateUsers');
   ColRef _problemsColRef() => _instance.collection('problems');
-  Future<void> _createDoc(DocRef ref, Map<String, dynamic> json) =>
-      ref.set(json);
-  Future<void> _updateDoc(DocRef ref, Map<String, dynamic> json) =>
-      ref.update(json);
-  Future<void> _deleteDoc(DocRef ref) => ref.delete();
-  FutureDoc _getDoc(DocRef ref) => ref.get();
+  Future<void> _createDoc(DocRef ref, Map<String, dynamic> json) async =>
+      await ref.set(json);
+  Future<void> _updateDoc(DocRef ref, Map<String, dynamic> json) async =>
+      await ref.update(json);
+  Future<void> _deleteDoc(DocRef ref) async => await ref.delete();
+  FutureDoc _getDoc(DocRef ref) async => await ref.get();
 
   Future<PublicUserEntity?> getPublicUser(String uid) async {
     try {

@@ -21,8 +21,11 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   Future<LatestProblemState> _fetchData() async {
+    print('Hello,');
     final problem = await _fetchLatestProblem();
     final uid = ref.read(streamAuthUidProvider).value;
+    print(uid);
+    print(problem?.toString());
     if (uid == null || problem == null) {
       return LatestProblemState(problem: problem);
     }
@@ -32,8 +35,8 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
 
   DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
 
-  Future<ProblemEntity?> _fetchLatestProblem() {
-    return _repository.fetchLatestProblem();
+  Future<ProblemEntity?> _fetchLatestProblem() async {
+    return await _repository.fetchLatestProblem();
   }
 
   Future<UserAnswerEntity?> _fetchLatestUserAnswer(

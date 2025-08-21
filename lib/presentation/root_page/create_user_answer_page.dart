@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/create_user_answer/create_user_answer_view_model.dart';
+import 'package:be_sharp/presentation/notifier/auto_dispose/latest_problem/latest_problem_view_model.dart';
+import 'package:be_sharp/presentation/util/toast_ui_util.dart';
 import 'package:be_sharp/presentation/util/validator_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
@@ -13,16 +16,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 @RoutePage()
 class CreateUserAnswerPage extends HookConsumerWidget {
-  CreateUserAnswerPage({super.key, @pathParam this.problemId});
-  final String? problemId;
+  CreateUserAnswerPage({super.key, @pathParam this.problemId = ''});
+  final String problemId;
   static const path = '/problems/:problemId/createUserAnswer';
   static String generatePath(String problemId) =>
       '/problems/$problemId/createUserAnswer';
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final problemId = this.problemId ??
-        context.routeData.inheritedPathParams.getString('problemId');
     final notifier =
         ref.read(createUserAnswerViewModelProvider(problemId).notifier);
     final asyncValue = ref.watch(createUserAnswerViewModelProvider(problemId));
@@ -36,11 +37,19 @@ class CreateUserAnswerPage extends HookConsumerWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             final isValid = formKey.currentState!.validate();
             if (!isValid) return;
             final answer = textController.text;
-            notifier.onPositiveButtonPressed(context, answer);
+            final result =
+                await notifier.onPositiveButtonPressed(context, answer);
+            result.when(success: (_) {
+              RouteUtil.back(context);
+              ref.invalidate(latestProblemViewModelProvider);
+              notifier.requestReview();
+            }, failure: (msg) {
+              ToastUiUtil.showErrorFlutterToast(msg);
+            });
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,

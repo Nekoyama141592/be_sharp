@@ -75,7 +75,7 @@ class AdminRouteArgs {
 class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
   CreateUserAnswerRoute({
     Key? key,
-    String? problemId,
+    String problemId = '',
     List<PageRouteInfo>? children,
   }) : super(
           CreateUserAnswerRoute.name,
@@ -92,7 +92,7 @@ class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
       final pathParams = data.inheritedPathParams;
       final args = data.argsAs<CreateUserAnswerRouteArgs>(
         orElse: () => CreateUserAnswerRouteArgs(
-          problemId: pathParams.optString('problemId'),
+          problemId: pathParams.getString('problemId', ''),
         ),
       );
       return CreateUserAnswerPage(key: args.key, problemId: args.problemId);
@@ -101,11 +101,11 @@ class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
 }
 
 class CreateUserAnswerRouteArgs {
-  const CreateUserAnswerRouteArgs({this.key, this.problemId});
+  const CreateUserAnswerRouteArgs({this.key, this.problemId = ''});
 
   final Key? key;
 
-  final String? problemId;
+  final String problemId;
 
   @override
   String toString() {
