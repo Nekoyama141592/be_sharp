@@ -38,8 +38,8 @@ class MyHomePage extends HookConsumerWidget {
           onPageChanged: (index) => pageIndex.value = index,
           controller: pageController,
           children: const [
-            HomeScreen(),
             LatestProblemScreen(),
+            HomeScreen(),
             ProductsScreen()
           ],
         ));
