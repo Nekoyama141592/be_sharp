@@ -21,11 +21,8 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   }
 
   Future<LatestProblemState> _fetchData() async {
-    print('Hello,');
     final problem = await _fetchLatestProblem();
     final uid = ref.read(streamAuthUidProvider).value;
-    print(uid);
-    print(problem?.toString());
     if (uid == null || problem == null) {
       return LatestProblemState(problem: problem);
     }
