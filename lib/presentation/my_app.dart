@@ -1,6 +1,6 @@
 import 'package:be_sharp/application/flavors.dart';
+import 'package:be_sharp/core/provider/app_router/app_router_provider.dart';
 import 'package:be_sharp/presentation/constants/colors.dart';
-import 'package:be_sharp/presentation/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -10,7 +10,7 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appRouter = AppRouter();
+    final appRouter = ref.watch(appRouterProvider);
 
     return MaterialApp.router(
       title: F.title,
