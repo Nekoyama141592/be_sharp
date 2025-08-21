@@ -11,6 +11,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 @RoutePage()
 class FirstPage extends HookConsumerWidget {
   const FirstPage({super.key});
+  static const path = '/';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncCheckValue = ref.watch(checkViewModelProvider);

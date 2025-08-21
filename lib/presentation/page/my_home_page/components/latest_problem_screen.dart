@@ -2,6 +2,7 @@ import 'package:be_sharp/core/util/route_util.dart';
 import 'package:be_sharp/domain/entity/database/user_answer/user_answer_entity.dart';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/notifier/auto_dispose/latest_problem/latest_problem_view_model.dart';
+import 'package:be_sharp/presentation/root_page/create_user_answer_page.dart';
 import 'package:be_sharp/presentation/util/format_ui_util.dart';
 import 'package:be_sharp/presentation/common/async_screen.dart';
 import 'package:be_sharp/presentation/common/dialog/form_dialog.dart';
@@ -49,10 +50,8 @@ class LatestProblemScreen extends ConsumerWidget {
       final isInTime = problem.isInTimeLimit();
       final text = '最新の問題に${isInTime ? '回答(まだ間に合います！)' : '遅れて回答'}';
       return _buildCenteredButton(text, () {
-        final path = notifier().getAnswerPagePath();
-        if (path != null) {
-          RouteUtil.pushPath(context, path);
-        }
+        final path = CreateUserAnswerPage.path;
+        RouteUtil.pushPath(context, path);
       });
     } else if (problem.answers.isEmpty) {
       return _buildCenteredMessage('回答時間中...');

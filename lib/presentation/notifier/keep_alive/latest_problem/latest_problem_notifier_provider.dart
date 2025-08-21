@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:be_sharp/domain/entity/database/problem/problem_entity.dart';
 import 'package:be_sharp/presentation/state/notifier_state/latest_problem_notifier_state.dart';
-import 'package:be_sharp/presentation/notifier/keep_alive/private_user/private_user_notifier_provider.dart';
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/infrastructure/repository/database_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,8 +26,6 @@ class LatestProblemNotifier extends _$LatestProblemNotifier {
     final uid = ref.watch(streamAuthUidProvider).value;
     if (uid == null) return const LatestProblemNotifierState();
     final event = ref.watch(latestProblemStreamProvider).value;
-    final isAdmin = ref.read(privateUserNotifierProvider.notifier).isAdmin();
-    if (isAdmin) return const LatestProblemNotifierState();
     final docs = event?.docs ?? [];
     if (docs.isEmpty) return const LatestProblemNotifierState();
     final problemDoc = docs.first;

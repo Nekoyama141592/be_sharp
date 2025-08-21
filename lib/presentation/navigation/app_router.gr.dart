@@ -73,14 +73,10 @@ class AdminRouteArgs {
 /// generated route for
 /// [CreateUserAnswerPage]
 class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
-  CreateUserAnswerRoute({
-    Key? key,
-    String problemId = '',
-    List<PageRouteInfo>? children,
-  }) : super(
+  CreateUserAnswerRoute({Key? key, List<PageRouteInfo>? children})
+      : super(
           CreateUserAnswerRoute.name,
-          args: CreateUserAnswerRouteArgs(key: key, problemId: problemId),
-          rawPathParams: {'problemId': problemId},
+          args: CreateUserAnswerRouteArgs(key: key),
           initialChildren: children,
         );
 
@@ -89,38 +85,33 @@ class CreateUserAnswerRoute extends PageRouteInfo<CreateUserAnswerRouteArgs> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final pathParams = data.inheritedPathParams;
       final args = data.argsAs<CreateUserAnswerRouteArgs>(
-        orElse: () => CreateUserAnswerRouteArgs(
-          problemId: pathParams.getString('problemId', ''),
-        ),
+        orElse: () => const CreateUserAnswerRouteArgs(),
       );
-      return CreateUserAnswerPage(key: args.key, problemId: args.problemId);
+      return CreateUserAnswerPage(key: args.key);
     },
   );
 }
 
 class CreateUserAnswerRouteArgs {
-  const CreateUserAnswerRouteArgs({this.key, this.problemId = ''});
+  const CreateUserAnswerRouteArgs({this.key});
 
   final Key? key;
 
-  final String problemId;
-
   @override
   String toString() {
-    return 'CreateUserAnswerRouteArgs{key: $key, problemId: $problemId}';
+    return 'CreateUserAnswerRouteArgs{key: $key}';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! CreateUserAnswerRouteArgs) return false;
-    return key == other.key && problemId == other.problemId;
+    return key == other.key;
   }
 
   @override
-  int get hashCode => key.hashCode ^ problemId.hashCode;
+  int get hashCode => key.hashCode;
 }
 
 /// generated route for

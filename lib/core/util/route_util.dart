@@ -6,8 +6,8 @@ class RouteUtil {
     context.router.pushPath(path);
   }
 
-  static void pushReplace(BuildContext context, String path) {
-    context.router.replacePath(path);
+  static void pushReplacePath(BuildContext context) {
+    context.router.replacePath('/');
   }
 
   static void back(BuildContext context) {

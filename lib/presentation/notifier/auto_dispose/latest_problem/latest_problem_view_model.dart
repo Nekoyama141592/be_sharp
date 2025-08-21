@@ -9,7 +9,6 @@ import 'package:be_sharp/core/provider/repository/cloud_functions/cloud_function
 import 'package:be_sharp/core/provider/repository/database_repository/database_repository_provider.dart';
 import 'package:be_sharp/infrastructure/repository/database_repository.dart';
 import 'package:be_sharp/presentation/util/toast_ui_util.dart';
-import 'package:be_sharp/presentation/root_page/create_user_answer_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'latest_problem_view_model.g.dart';
 
@@ -39,13 +38,6 @@ class LatestProblemViewModel extends _$LatestProblemViewModel {
   Future<UserAnswerEntity?> _fetchLatestUserAnswer(
       String uid, String problemId) async {
     return await _repository.fetchLatestUserAnswer(uid, problemId);
-  }
-
-  String? getAnswerPagePath() {
-    final problem = state.value?.problem;
-    if (problem == null) return null;
-    final problemId = problem.problemId;
-    return CreateUserAnswerPage.generatePath(problemId);
   }
 
   bool get canShowCaptionDialog {

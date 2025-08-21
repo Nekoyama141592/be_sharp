@@ -13,8 +13,11 @@ part 'create_user_answer_view_model.g.dart';
 @riverpod
 class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
   @override
-  FutureOr<ProblemEntity?> build(String problemId) {
-    return _repository.getProblem(problemId);
+  FutureOr<ProblemEntity?> build() async {
+    final problem = await _repository.fetchLatestProblem();
+    final problemId = problem?.problemId;
+    if (problemId == null) throw Error();
+    return await _repository.getProblem(problemId);
   }
 
   DatabaseRepository get _repository => ref.read(databaseRepositoryProvider);
@@ -22,6 +25,9 @@ class CreateUserAnswerViewModel extends _$CreateUserAnswerViewModel {
       BuildContext context, String answer) async {
     final uid = ref.read(streamAuthUidProvider).value;
     if (uid == null) return const Result.failure('ログインしてください');
+    final problem = await _repository.fetchLatestProblem();
+    final problemId = problem?.problemId;
+    if (problemId == null) return const Result.failure('問題がありません');
     return await _repository.createAnswer(uid, problemId, answer);
   }
 
